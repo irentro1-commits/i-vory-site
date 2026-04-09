@@ -933,7 +933,7 @@ document.querySelectorAll('.rv').forEach(function(el){obs.observe(el)});
 
 // Hero scroll storytelling
 var prob=document.getElementById('prob'),lines=prob.querySelectorAll('.prob-line'),pBar=document.getElementById('probBar');
-function updateProb(){var rect=prob.getBoundingClientRect(),total=prob.offsetHeight-window.innerHeight,scrolled=-rect.top,progress=Math.max(0,Math.min(1,scrolled/total));pBar.style.width=(progress*100)+'%';var segment=1/lines.length,activeIndex=Math.min(Math.floor(progress/segment),lines.length-1);lines.forEach(function(l,i){l.classList.remove('act','past');if(i===activeIndex)l.classList.add('act');else if(i<activeIndex)l.classList.add('past')})}
+function updateProb(){var probTop=prob.offsetTop,probH=prob.offsetHeight,vh=window.innerHeight,scrolled=window.scrollY-probTop,total=probH-vh;if(total<=0)total=probH;var progress=Math.max(0,Math.min(1,scrolled/total));pBar.style.width=(progress*100)+'%';var segment=1/lines.length,activeIndex=Math.min(Math.floor(progress/segment),lines.length-1);if(progress>=.999)activeIndex=lines.length-1;lines.forEach(function(l,i){l.classList.remove('act','past');if(i===activeIndex)l.classList.add('act');else if(i<activeIndex)l.classList.add('past')})}
 window.addEventListener('scroll',updateProb,{passive:true});updateProb();
 
 // Portfolio tabs
