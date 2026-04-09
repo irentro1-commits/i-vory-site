@@ -528,14 +528,14 @@ function updateShooting(dt,t){
 // ========== PLANET EARTH (NASA texture) ==========
 const earthTex=new THREE.TextureLoader().load(window.__EARTH_TEX);
 earthTex.colorSpace=THREE.SRGBColorSpace;
-const planetGeo=new THREE.SphereGeometry(window.__IS_MOBILE?1.2:1.1,64,64);
-const planetMat=new THREE.MeshStandardMaterial({
+const planetGeo=new THREE.SphereGeometry(window.__IS_MOBILE?1.4:1.1,64,64);
+const planetMat=new THREE.MeshBasicMaterial({
   map:earthTex,
-  roughness:.85,
-  metalness:.1,
-  emissive:0x112244,
-  emissiveIntensity:.15
+  color:0xffffff,
+  transparent:false
 });
+// Add point light stuck to planet for glow on desktop
+const planetLight=new THREE.PointLight(0x6ab5ff,1.5,10);
 // Dummy uniforms object for animate loop compatibility
 planetMat.uniforms={time:{value:0}};
 const planet=new THREE.Mesh(planetGeo,planetMat);
