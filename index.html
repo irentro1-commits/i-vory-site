@@ -98,6 +98,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.1rem 2.5rem;displ
 @keyframes scHint{0%,100%{opacity:.5;transform:translate(-50%,0)}50%{opacity:1;transform:translate(-50%,6px)}}
 
 .s2{position:relative;min-height:90vh;display:flex;align-items:center;overflow:hidden;z-index:2}.s2-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:.5}.s2-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,5,5,.6) 0%,rgba(5,5,5,.45) 50%,rgba(5,5,5,.7) 100%);z-index:1}.s2-content{position:relative;z-index:2;max-width:700px;padding:6rem 2.5rem}.s2-tag{font-family:var(--fm);font-size:.7rem;color:var(--ac);letter-spacing:.14em;text-transform:uppercase;margin-bottom:1.5rem;display:flex;align-items:center;gap:.8rem}.s2-tag::before{content:'';width:24px;height:1.5px;background:var(--ac)}.s2 h2{font-family:var(--fd);font-size:clamp(2rem,5vw,3.5rem);font-weight:800;line-height:1.1;letter-spacing:-.04em;margin-bottom:1.2rem}.s2 .s2-desc{font-size:clamp(.95rem,1.8vw,1.12rem);color:var(--td);line-height:1.65;max-width:520px;margin-bottom:2rem}.s2 .s2-desc strong{color:var(--t);font-weight:600}.s2-actions{display:flex;gap:1rem;flex-wrap:wrap}.s2-prices{margin-top:1.5rem;font-family:var(--fm);font-size:.68rem;color:var(--tm);letter-spacing:.04em;line-height:1.8}.s2-prices em{color:var(--ac);font-style:normal;font-weight:600}
+.b-peach{background:linear-gradient(135deg,#ff9a3d,#ffb86b) !important;color:#1a0a00 !important;box-shadow:0 10px 30px rgba(255,154,61,.35),0 0 60px rgba(255,154,61,.15) !important}
+.b-peach:hover{box-shadow:0 14px 40px rgba(255,154,61,.5),0 0 80px rgba(255,154,61,.25) !important;transform:translateY(-2px) scale(1.02) !important}
 .bh{display:inline-flex;align-items:center;gap:.6rem;background:var(--ac);color:var(--bg);padding:.9rem 2rem;border-radius:100px;font-family:var(--fd);font-weight:700;font-size:.88rem;text-decoration:none;transition:transform .3s var(--e),box-shadow .3s}.bh:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 12px 40px rgba(0,224,192,.3)}.bh svg{transition:transform .3s var(--e)}.bh:hover svg{transform:translateX(3px)}.bg{display:inline-flex;align-items:center;color:var(--td);padding:.9rem 1.4rem;font-size:.85rem;font-weight:500;text-decoration:none;border-radius:100px;border:1px solid var(--br2);transition:border-color .3s,color .3s}.bg:hover{border-color:var(--ac);color:var(--t)}
 .mq{border-top:1px solid var(--br);border-bottom:1px solid var(--br);padding:1rem 0;overflow:hidden;background:rgba(5,5,5,.4);backdrop-filter:none}.mt{display:flex;width:max-content;animation:mq 35s linear infinite}.mi{display:flex;align-items:center;gap:1.8rem;padding:0 1.8rem;white-space:nowrap;font-family:var(--fd);font-size:.82rem;font-weight:600;color:#8a857e;letter-spacing:.02em;text-transform:uppercase}.md{width:5px;height:5px;border-radius:50%;background:var(--ac);opacity:.5;flex-shrink:0}
 .sec{padding:7rem 2.5rem;position:relative;z-index:2}
@@ -141,7 +143,29 @@ footer{border-top:1px solid var(--br);padding:2.5rem;background:rgba(5,5,5,.5);b
 @keyframes mq{to{transform:translateX(-50%)}}
 
 @media(max-width:1024px){.pg{grid-template-columns:1fr}.pf-grid{grid-template-columns:repeat(3,1fr)}.contact-alts{grid-template-columns:1fr}.types-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:768px){nav{padding:.7rem 1.2rem;min-height:60px}.nk{display:none}.ham{display:block}.sec{padding:4.5rem 1.2rem}.s2-content{padding:4rem 1.2rem}.pf-grid{grid-template-columns:repeat(2,1fr);gap:.6rem}.pf-img{aspect-ratio:1/1}.contact{padding:5rem 1.2rem}.how-item,.dce-item{gap:1.2rem}.how-num{font-size:1.8rem;min-width:45px}.fi{flex-direction:column;gap:1rem;align-items:center;text-align:center}.types-grid{grid-template-columns:1fr}.price-table .pt-name{min-width:auto;font-size:.88rem}.price-table .pt-detail{display:none}.price-table .pt-price{font-size:1.1rem}.blob{filter:blur(70px)}.pre-logo{font-size:2.4rem}}
+@media(max-width:768px){nav{padding:.7rem 1.2rem;min-height:60px}.nk{display:none}.ham{display:block}.sec{padding:4.5rem 1.2rem}
+@media(max-width:768px){
+  .dce-grid{grid-template-columns:1fr !important;gap:1rem !important}
+  .dce-item{padding:1.5rem !important}
+  .dce-item ul,.dce-item p{font-size:.88rem;line-height:1.55;white-space:normal !important;word-spacing:normal}
+  .how-grid{grid-template-columns:1fr !important}
+  .proof-grid{grid-template-columns:1fr 1fr !important;gap:1rem !important}
+  .types-grid{grid-template-columns:1fr !important}
+  .type-card{padding:1.4rem !important}
+  #servicii .si,#faq .si,.contact-inner,.how-grid{padding:2rem 1.3rem !important}
+  #pachete .si{padding:3.5rem 1.3rem 2.5rem !important}
+}
+@media(max-width:768px){
+  .dce-grid{grid-template-columns:1fr !important;gap:1rem !important}
+  .dce-item{padding:1.5rem !important}
+  .dce-item ul,.dce-item p{font-size:.88rem;line-height:1.55;white-space:normal !important;word-spacing:normal}
+  .how-grid{grid-template-columns:1fr !important}
+  .proof-grid{grid-template-columns:1fr 1fr !important;gap:1rem !important}
+  .types-grid{grid-template-columns:1fr !important}
+  .type-card{padding:1.4rem !important}
+  #servicii .si,#faq .si,.contact-inner,.how-grid{padding:2rem 1.3rem !important}
+  #pachete .si{padding:3.5rem 1.3rem 2.5rem !important}
+}.s2-content{padding:4rem 1.2rem}.pf-grid{grid-template-columns:repeat(2,1fr);gap:.6rem}.pf-img{aspect-ratio:1/1}.contact{padding:5rem 1.2rem}.how-item,.dce-item{gap:1.2rem}.how-num{font-size:1.8rem;min-width:45px}.fi{flex-direction:column;gap:1rem;align-items:center;text-align:center}.types-grid{grid-template-columns:1fr}.price-table .pt-name{min-width:auto;font-size:.88rem}.price-table .pt-detail{display:none}.price-table .pt-price{font-size:1.1rem}.blob{filter:blur(70px)}.pre-logo{font-size:2.4rem}}
 @media(max-width:768px){
   .hero3d{opacity:.85}
   .bgblobs{opacity:.7}
@@ -287,7 +311,7 @@ footer{border-top:1px solid var(--br);padding:2.5rem;background:rgba(5,5,5,.5);b
 <div class="lb" style="justify-content:center">Programează un call</div>
 <h2 class="sh">30 minute. Gratuit.<br><span style="color:var(--ac)">Concret.</span></h2>
 <p class="ss" style="margin-left:auto;margin-right:auto;margin-bottom:2rem">Discutăm ce ai nevoie, ce funcționează în nișa ta și cum putem ajuta. Dacă nu putem, îți spunem direct.</p>
-<a href="https://calendly.com/ivorymarketing2/30min" target="_blank" class="bh" style="font-size:1rem;padding:1.1rem 2.5rem">Alege o oră în calendar →</a>
+<a href="https://calendly.com/ivorymarketing2/30min" target="_blank" class="bh b-peach" style="font-size:1rem;padding:1.1rem 2.5rem">Alege o oră în calendar →</a>
 <p style="margin-top:1rem;font-size:.72rem;color:var(--tm)">Sau scrie-ne direct pe <a href="https://api.whatsapp.com/send/?phone=40775579706" target="_blank" style="color:var(--ac);text-decoration:none">WhatsApp</a></p>
 </div></div></section>
 
@@ -447,7 +471,7 @@ const marsMat=new THREE.MeshStandardMaterial({
   emissiveIntensity:.2
 });
 const mars=new THREE.Mesh(marsGeo,marsMat);
-mars.position.set(10,-6,-14);
+mars.position.set(window.__IS_MOBILE?5:10,window.__IS_MOBILE?-4:-6,window.__IS_MOBILE?-10:-14);
 scene.add(mars);
 
 // ========== SHOOTING STARS ==========
@@ -515,7 +539,7 @@ const planetMat=new THREE.MeshStandardMaterial({
 // Dummy uniforms object for animate loop compatibility
 planetMat.uniforms={time:{value:0}};
 const planet=new THREE.Mesh(planetGeo,planetMat);
-planet.position.set(-12,7,-15);
+planet.position.set(window.__IS_MOBILE?-5:-12,window.__IS_MOBILE?4:7,window.__IS_MOBILE?-10:-15);
 scene.add(planet);
 
 // ========== SOCIAL MEDIA SATELLITES ==========
@@ -564,8 +588,8 @@ const satellites=[];
 logos.forEach((l,i)=>{
   const mat=new THREE.SpriteMaterial({map:l.tex,transparent:true,depthWrite:false});
   const sprite=new THREE.Sprite(mat);
-  sprite.scale.set(.7,.7,.7);
-  satellites.push({sprite,angle:(i/logos.length)*Math.PI*2,radius:2.4,speed:.35+i*.04,tilt:i*.12});
+  sprite.scale.set(window.__IS_MOBILE?.5:.7,window.__IS_MOBILE?.5:.7,window.__IS_MOBILE?.5:.7);
+  satellites.push({sprite,angle:(i/logos.length)*Math.PI*2,radius:window.__IS_MOBILE?1.7:2.4,speed:.35+i*.04,tilt:i*.12});
   scene.add(sprite);
 });
 
@@ -772,7 +796,7 @@ const box=new THREE.Box3().setFromObject(elephantGroup);
 const center=box.getCenter(new THREE.Vector3());
 const size=box.getSize(new THREE.Vector3());
 const maxDim=Math.max(size.x,size.y);
-const targetSize=2.3;
+const targetSize=window.__IS_MOBILE?2.8:2.3;
 const scaleF=targetSize/maxDim;
 elephantGroup.children.forEach(m=>{
   m.geometry.translate(-center.x,-center.y,-20);
@@ -840,7 +864,7 @@ function animate(){
   mars.position.x=10+pullX*.5;
   mars.position.y=-6+pullY*.3;
   // Scroll camera — zoom out & pitch as you scroll
-  camera.position.z=8+scrollProg*6;
+  camera.position.z=(window.__IS_MOBILE?11:8)+scrollProg*6;
   camera.position.y=scrollProg*1.5;
   camera.rotation.x=-scrollProg*.08;
   particles.rotation.y=t*.05+mouseX*.3+scrollProg*.8;
