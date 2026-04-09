@@ -859,10 +859,11 @@ function animate(){
   // Cursor gravity — subtle pull toward mouse for planet & mars
   const pullX=mouseX*.8;
   const pullY=mouseY*.5;
-  planet.position.x=-12+pullX*.6;
-  planet.position.y=7+pullY*.4;
-  mars.position.x=10+pullX*.5;
-  mars.position.y=-6+pullY*.3;
+  const _pbx=window.__IS_MOBILE?2:-12,_pby=window.__IS_MOBILE?0:7,_mbx=window.__IS_MOBILE?-3:10,_mby=window.__IS_MOBILE?-2:-6;
+  planet.position.x=_pbx+pullX*.6;
+  planet.position.y=_pby+pullY*.4;
+  mars.position.x=_mbx+pullX*.5;
+  mars.position.y=_mby+pullY*.3;
   // Scroll camera — zoom out & pitch as you scroll
   camera.position.z=(window.__IS_MOBILE?7:8)+scrollProg*(window.__IS_MOBILE?3:6);
   camera.position.y=scrollProg*(window.__IS_MOBILE?.4:1.5);
