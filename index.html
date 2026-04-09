@@ -191,7 +191,9 @@ footer{border-top:1px solid var(--br);padding:2.5rem;background:rgba(5,5,5,.5);b
   /* Audio button smaller */
   [aria-label="Sunet ambient"]{width:40px !important;height:40px !important;bottom:1rem !important;left:1rem !important}
   .sec{padding:3.5rem 1rem}
-  .prob-line{font-size:clamp(1.15rem,5.2vw,1.9rem) !important;padding:.8rem 1rem !important;max-width:94vw !important;hyphens:none !important;word-break:keep-all !important;line-height:1.15 !important}
+  .prob-line{font-size:clamp(1.15rem,5.2vw,1.9rem) !important;padding:.8rem 1rem !important;max-width:94vw !important;hyphens:none !important;word-break:keep-all !important;line-height:1.15 !important;top:50% !important;left:50% !important;transform:translate(-50%,-50%) translateY(40px) scale(.95) !important;width:94vw}
+  .prob-line.act{transform:translate(-50%,-50%) translateY(0) scale(1) !important}
+  .prob-line.past{transform:translate(-50%,-50%) translateY(-40px) scale(.95) !important}
   h1,h2,h3{word-wrap:break-word;hyphens:auto}
   .contact-h{font-size:clamp(1.8rem,7vw,2.8rem) !important}
   .sh,.s2 h2{font-size:clamp(1.6rem,6.5vw,2.4rem) !important}
