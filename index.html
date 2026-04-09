@@ -471,7 +471,7 @@ const marsMat=new THREE.MeshStandardMaterial({
   emissiveIntensity:.2
 });
 const mars=new THREE.Mesh(marsGeo,marsMat);
-mars.position.set(window.__IS_MOBILE?5:10,window.__IS_MOBILE?-4:-6,window.__IS_MOBILE?-10:-14);
+mars.position.set(window.__IS_MOBILE?-3:10,window.__IS_MOBILE?-2:-6,window.__IS_MOBILE?-7:-14);
 scene.add(mars);
 
 // ========== SHOOTING STARS ==========
@@ -528,7 +528,7 @@ function updateShooting(dt,t){
 // ========== PLANET EARTH (NASA texture) ==========
 const earthTex=new THREE.TextureLoader().load(window.__EARTH_TEX);
 earthTex.colorSpace=THREE.SRGBColorSpace;
-const planetGeo=new THREE.SphereGeometry(window.__IS_MOBILE?1.4:1.1,64,64);
+const planetGeo=new THREE.SphereGeometry(window.__IS_MOBILE?1.7:1.1,64,64);
 const planetMat=new THREE.MeshStandardMaterial({
   map:earthTex,
   roughness:.85,
@@ -539,7 +539,7 @@ const planetMat=new THREE.MeshStandardMaterial({
 // Dummy uniforms object for animate loop compatibility
 planetMat.uniforms={time:{value:0}};
 const planet=new THREE.Mesh(planetGeo,planetMat);
-planet.position.set(window.__IS_MOBILE?0:-12,window.__IS_MOBILE?3:7,window.__IS_MOBILE?-9:-15);
+planet.position.set(window.__IS_MOBILE?2:-12,window.__IS_MOBILE?0:7,window.__IS_MOBILE?-6:-15);
 scene.add(planet);
 
 // ========== SOCIAL MEDIA SATELLITES ==========
@@ -588,8 +588,8 @@ const satellites=[];
 logos.forEach((l,i)=>{
   const mat=new THREE.SpriteMaterial({map:l.tex,transparent:true,depthWrite:false});
   const sprite=new THREE.Sprite(mat);
-  sprite.scale.set(window.__IS_MOBILE?.5:.7,window.__IS_MOBILE?.5:.7,window.__IS_MOBILE?.5:.7);
-  satellites.push({sprite,angle:(i/logos.length)*Math.PI*2,radius:window.__IS_MOBILE?1.7:2.4,speed:.35+i*.04,tilt:i*.12});
+  sprite.scale.set(window.__IS_MOBILE?.55:.7,window.__IS_MOBILE?.55:.7,window.__IS_MOBILE?.55:.7);
+  satellites.push({sprite,angle:(i/logos.length)*Math.PI*2,radius:window.__IS_MOBILE?2.1:2.4,speed:.35+i*.04,tilt:i*.12});
   scene.add(sprite);
 });
 
@@ -864,8 +864,8 @@ function animate(){
   mars.position.x=10+pullX*.5;
   mars.position.y=-6+pullY*.3;
   // Scroll camera — zoom out & pitch as you scroll
-  camera.position.z=(window.__IS_MOBILE?9:8)+scrollProg*6;
-  camera.position.y=scrollProg*1.5;
+  camera.position.z=(window.__IS_MOBILE?7:8)+scrollProg*(window.__IS_MOBILE?3:6);
+  camera.position.y=scrollProg*(window.__IS_MOBILE?.4:1.5);
   camera.rotation.x=-scrollProg*.08;
   particles.rotation.y=t*.05+mouseX*.3+scrollProg*.8;
   particles.rotation.x=mouseY*.2+scrollProg*.3;
