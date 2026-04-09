@@ -143,10 +143,10 @@ footer{border-top:1px solid var(--br);padding:2.5rem;background:rgba(5,5,5,.5);b
 @media(max-width:1024px){.pg{grid-template-columns:1fr}.pf-grid{grid-template-columns:repeat(3,1fr)}.contact-alts{grid-template-columns:1fr}.types-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:768px){nav{padding:.7rem 1.2rem;min-height:60px}.nk{display:none}.ham{display:block}.sec{padding:4.5rem 1.2rem}.s2-content{padding:4rem 1.2rem}.pf-grid{grid-template-columns:repeat(2,1fr);gap:.6rem}.pf-img{aspect-ratio:1/1}.contact{padding:5rem 1.2rem}.how-item,.dce-item{gap:1.2rem}.how-num{font-size:1.8rem;min-width:45px}.fi{flex-direction:column;gap:1rem;align-items:center;text-align:center}.types-grid{grid-template-columns:1fr}.price-table .pt-name{min-width:auto;font-size:.88rem}.price-table .pt-detail{display:none}.price-table .pt-price{font-size:1.1rem}.blob{filter:blur(70px)}.pre-logo{font-size:2.4rem}}
 @media(max-width:768px){
-  .hero3d{opacity:.45;will-change:auto}
-  .bgblobs{opacity:.35}
-  .blob{filter:blur(60px) !important}
-  .godrays{display:none !important}
+  .hero3d{opacity:.85}
+  .bgblobs{opacity:.7}
+  
+  
   /* Simplify sections */
   .sec{padding:3rem 1rem !important}
   .sec .si{padding:2rem 1rem !important;border-radius:16px !important}
@@ -156,11 +156,11 @@ footer{border-top:1px solid var(--br);padding:2.5rem;background:rgba(5,5,5,.5);b
   .nl img{width:24px;height:24px}
   .pre-logo-img{width:100px;height:100px}
   /* Kill expensive effects */
-  .txt-reveal{clip-path:none !important;animation:none !important}
-  *{will-change:auto !important}
+  
+  
   /* Prevent horizontal scroll */
   html,body{overflow-x:hidden;width:100%}
-  .sec h2,.s2 h2,.sh{transform:none !important}
+  
   /* Package cards stack */
   .packages-grid{grid-template-columns:1fr !important;gap:1.5rem !important}
   .types-grid{grid-template-columns:1fr 1fr !important;gap:1rem !important}
@@ -326,7 +326,7 @@ const scene=new THREE.Scene();
 const camera=new THREE.PerspectiveCamera(60,container.clientWidth/container.clientHeight,.1,100);
 camera.position.z=8;
 const renderer=new THREE.WebGLRenderer({antialias:true,alpha:true,powerPreference:'high-performance'});
-renderer.setPixelRatio(Math.min(window.devicePixelRatio,window.__LOW_PERF?1.3:2));
+renderer.setPixelRatio(Math.min(window.devicePixelRatio,window.__LOW_PERF?1.75:2));
 renderer.setSize(container.clientWidth,container.clientHeight);
 renderer.setClearColor(0x000000,0);
 renderer.toneMapping=THREE.ACESFilmicToneMapping;
@@ -451,7 +451,7 @@ mars.position.set(10,-6,-14);
 scene.add(mars);
 
 // ========== SHOOTING STARS ==========
-const shootCount=window.__LOW_PERF?1:3;
+const shootCount=window.__LOW_PERF?2:3;
 const shootStars=[];
 for(let i=0;i<shootCount;i++){
   const trailLen=40;
@@ -678,7 +678,7 @@ const particles=new THREE.Points(geometry,particleMaterial);
 scene.add(particles);
 
 // ========== DEEP SPACE STARFIELD ==========
-const starCount=window.__LOW_PERF?1500:5000;
+const starCount=window.__LOW_PERF?3500:5000;
 const starPos=new Float32Array(starCount*3);
 const starCol=new Float32Array(starCount*3);
 const starSize=new Float32Array(starCount);
@@ -801,7 +801,7 @@ window.addEventListener('scroll',()=>{const pr=document.getElementById('prob');i
 
 // Add render + bloom passes now that scene has content
 composer.addPass(new RenderPass(scene,camera));
-const bloomPass=new UnrealBloomPass(new THREE.Vector2(container.clientWidth*(window.__LOW_PERF?.5:1),container.clientHeight*(window.__LOW_PERF?.5:1)),window.__LOW_PERF?0.35:0.55,0.85,0.2);
+const bloomPass=new UnrealBloomPass(new THREE.Vector2(container.clientWidth*(window.__LOW_PERF?.75:1),container.clientHeight*(window.__LOW_PERF?.75:1)),0.55,0.85,0.2);
 bloomPass.threshold=0;
 bloomPass.strength=0.55;
 bloomPass.radius=0.85;

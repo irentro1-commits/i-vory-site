@@ -1,9 +1,9 @@
-// Premium interactions — mobile-aware
+// Premium interactions — mobile-aware, FULL premium on mobile
 const __MOB=window.__IS_MOBILE||("ontouchstart" in window)||matchMedia("(max-width:768px)").matches;
-const __LOW=window.__LOW_PERF||__MOB;
+const __LOW=false; // force full premium
 
 (function(){
-  // 1. MAGNETIC CTA BUTTONS (desktop only)
+  // 1. MAGNETIC CTA BUTTONS (desktop only - requires hover)
   if(!__MOB){
     const ctas=document.querySelectorAll('a.cta,a.btn,.hero-cta a,.contact-cta a,button.cta,.b,.b2');
     ctas.forEach(btn=>{
@@ -18,14 +18,14 @@ const __LOW=window.__LOW_PERF||__MOB;
     });
   }
 
-  // 2. PARALLAX TITLE SHIFT (desktop only)
+  // 2. PARALLAX TITLE SHIFT (desktop mouse + mobile scroll-based)
+  const titles=document.querySelectorAll('.sec h2,.s2 h2,.sh,.contact-h');
   if(!__MOB){
     let mx=0,my=0,tmx=0,tmy=0;
     window.addEventListener('mousemove',e=>{
       tmx=(e.clientX/window.innerWidth-.5)*2;
       tmy=(e.clientY/window.innerHeight-.5)*2;
     },{passive:true});
-    const titles=document.querySelectorAll('.sec h2,.s2 h2,.sh,.contact-h');
     function tick(){
       mx+=(tmx-mx)*.06;my+=(tmy-my)*.06;
       titles.forEach(t=>{t.style.transform=`translate(${-mx*8}px,${-my*6}px)`});
@@ -35,7 +35,7 @@ const __LOW=window.__LOW_PERF||__MOB;
   }
 
 
-  // 3. SCROLL TEXT REVEAL (both)
+  // 3. SCROLL TEXT REVEAL (all devices)
   const revealObs=new IntersectionObserver((entries)=>{
     entries.forEach(en=>{
       if(en.isIntersecting){
@@ -49,7 +49,7 @@ const __LOW=window.__LOW_PERF||__MOB;
     revealObs.observe(h);
   });
 
-  // 4. WARP SCROLL - stretch stars based on scroll velocity (both, cheap)
+  // 4. WARP SCROLL (all devices)
   let lastScroll=window.scrollY,scrollVel=0;
   window.addEventListener('scroll',()=>{
     const cur=window.scrollY;
@@ -61,10 +61,10 @@ const __LOW=window.__LOW_PERF||__MOB;
     if(window.__starMat&&window.__starMat.uniforms.warp){
       window.__starMat.uniforms.warp.value=scrollVel*.03;
     }
-  },__LOW?80:40);
+  },40);
 })();
 
-// CONSTELLATION — desktop only (expensive hover math)
+// CONSTELLATION — desktop only (requires hover)
 if(!__MOB){(function(){
   const cvs=document.createElement('canvas');
   cvs.style.cssText='position:fixed;inset:0;pointer-events:none;z-index:3;mix-blend-mode:screen';
@@ -94,9 +94,10 @@ if(!__MOB){(function(){
   draw();
 })()}
 
-// GALAXY DUST — reduced count on mobile
+
+// GALAXY DUST — full 200 on all devices
 (function(){
-  const N=__LOW?50:200;
+  const N=200;
   const dcvs=document.createElement('canvas');
   dcvs.style.cssText='position:fixed;inset:0;pointer-events:none;z-index:2;mix-blend-mode:screen';
   document.body.appendChild(dcvs);
@@ -108,12 +109,10 @@ if(!__MOB){(function(){
     dust.push({x:Math.random()*innerWidth,y:Math.random()*innerHeight,z:Math.random()*3+.3,vx:(Math.random()-.5)*.15,vy:(Math.random()-.5)*.1,r:Math.random()*1.2+.3,a:Math.random()*.6+.2,hue:Math.random()<.6?[180,255,240]:(Math.random()<.5?[200,160,255]:[255,200,160])});
   }
   let dmx=0,dmy=0;
-  if(!__MOB){addEventListener('mousemove',e=>{dmx=(e.clientX/innerWidth-.5)*2;dmy=(e.clientY/innerHeight-.5)*2},{passive:true})}
-  let frame=0;
+  addEventListener('mousemove',e=>{dmx=(e.clientX/innerWidth-.5)*2;dmy=(e.clientY/innerHeight-.5)*2},{passive:true});
+  // Touch drift on mobile
+  addEventListener('touchmove',e=>{if(e.touches[0]){dmx=(e.touches[0].clientX/innerWidth-.5)*2;dmy=(e.touches[0].clientY/innerHeight-.5)*2}},{passive:true});
   function dustTick(){
-    frame++;
-    // On mobile, render every other frame
-    if(__LOW&&frame%2){requestAnimationFrame(dustTick);return}
     dctx.clearRect(0,0,dcvs.width,dcvs.height);
     for(const p of dust){
       p.x+=p.vx+dmx*p.z*.3;p.y+=p.vy+dmy*p.z*.3;
@@ -128,7 +127,7 @@ if(!__MOB){(function(){
   dustTick();
 })();
 
-// LOGO BREATHING (both — cheap)
+// LOGO BREATHING (all devices)
 (function(){
   const navLogo=document.querySelector('nav .nl img,.nl img');
   if(navLogo){
@@ -138,11 +137,12 @@ if(!__MOB){(function(){
       phase+=.04;
       const intensity=.4+Math.sin(phase)*.35;
       navLogo.style.filter=`drop-shadow(0 0 ${8+intensity*12}px rgba(0,224,192,${intensity}))`;
-    },__LOW?100:50);
+    },50);
   }
 })();
 
-// SECTION TRANSITION ORBS (both — cheap)
+
+// SECTION TRANSITION ORBS (all)
 (function(){
   const orbContainer=document.createElement('div');
   orbContainer.style.cssText='position:fixed;inset:0;pointer-events:none;z-index:1;overflow:hidden';
@@ -170,7 +170,7 @@ if(!__MOB){(function(){
   });
 })();
 
-// AMBIENT AUDIO TOGGLE (both)
+// AMBIENT AUDIO TOGGLE (all)
 (function(){
   const audioBtn=document.createElement('button');
   audioBtn.setAttribute('aria-label','Sunet ambient');
