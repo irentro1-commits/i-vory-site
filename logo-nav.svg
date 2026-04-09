@@ -1,6 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 743.405233 606.554150" preserveAspectRatio="xMidYMid meet">
-<rect width="100%" height="100%" fill="#050510" rx="80"/>
-<g transform="translate(0,20)">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 520" preserveAspectRatio="xMidYMid meet">
+<g transform="translate(40,-20)">
 <g transform="translate(-10.000000,685.000000) scale(0.100000,-0.100000)"
 fill="#00e0c0" stroke="none">
 <path d="M1481 6833 c-12 -10 -23 -30 -24 -44 -2 -21 -100 -108 -516 -455
@@ -290,4 +289,6 @@ c-11 -41 -25 -101 -31 -134 -17 -92 -18 -94 -85 -165 l-62 -66 -5 -224 c-3
 26 29 67 10 90 -19 23 -76 19 -94 -7z"/>
 </g>
 </g>
+<text x="820" y="230" font-family="Syne,DM Sans,Arial,sans-serif" font-weight="800" font-size="240" letter-spacing="-8" fill="#f5ecd7">i-Vory</text>
+<text x="824" y="360" font-family="Syne,DM Sans,Arial,sans-serif" font-weight="700" font-size="95" letter-spacing="32" fill="#00e0c0">CREATIVE</text>
 </svg>

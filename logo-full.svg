@@ -1,5 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 743.405233 606.554150" preserveAspectRatio="xMidYMid meet">
-<rect width="100%" height="100%" fill="#050510" rx="80"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 600" preserveAspectRatio="xMidYMid meet">
+<defs>
+<style>
+.brand{font-family:'Syne','DM Sans',Arial,sans-serif;font-weight:800;letter-spacing:-0.02em}
+.brandSub{font-family:'Syne','DM Sans',Arial,sans-serif;font-weight:600;letter-spacing:0.3em}
+</style>
+</defs>
 <g transform="translate(0,20)">
 <g transform="translate(-10.000000,685.000000) scale(0.100000,-0.100000)"
 fill="#00e0c0" stroke="none">
@@ -290,4 +295,6 @@ c-11 -41 -25 -101 -31 -134 -17 -92 -18 -94 -85 -165 l-62 -66 -5 -224 c-3
 26 29 67 10 90 -19 23 -76 19 -94 -7z"/>
 </g>
 </g>
+<text x="800" y="320" class="brand" font-size="160" fill="#f5ecd7">i-Vory</text>
+<text x="800" y="430" class="brandSub" font-size="60" fill="#00e0c0">CREATIVE</text>
 </svg>
