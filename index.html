@@ -432,7 +432,59 @@ footer{border-top:1px solid var(--br);padding:2.5rem;background:rgba(5,5,5,.5);b
 .cw-go{display:block;width:100%;padding:.85rem;background:linear-gradient(135deg,#25d366,#128c7e);color:#fff;text-align:center;border-radius:12px;text-decoration:none;font-weight:700;font-size:.82rem;transition:all .3s}
 .cw-go:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(37,211,102,.4)}
 @media(max-width:768px){.cw,.calc-wrap,.mq-wrap{display:none !important}}
-</style><script>window.__mx=0;window.__my=0;document.addEventListener("mousemove",function(e){window.__mx=(e.clientX/window.innerWidth)*2-1;window.__my=(e.clientY/window.innerHeight)*2-1},{passive:true});</script></head>
+</style><script>window.__mx=0;window.__my=0;document.addEventListener("mousemove",function(e){window.__mx=(e.clientX/window.innerWidth)*2-1;window.__my=(e.clientY/window.innerHeight)*2-1},{passive:true});</script><style>
+/* CASE STUDY MODAL */
+.cs-ov{position:fixed;inset:0;background:rgba(4,6,14,.93);backdrop-filter:blur(14px);z-index:99997;display:none;align-items:center;justify-content:center;padding:2rem;opacity:0;transition:opacity .4s}
+.cs-ov.open{display:flex;opacity:1}
+.cs-box{background:linear-gradient(180deg,#0a0e1e,#06080f);border:1.5px solid rgba(0,224,192,.3);border-radius:24px;max-width:900px;width:100%;max-height:90vh;overflow-y:auto;padding:2.5rem;position:relative;transform:translateY(30px) scale(.96);transition:transform .5s cubic-bezier(.2,.9,.3,1.2);box-shadow:0 40px 100px rgba(0,0,0,.8)}
+.cs-ov.open .cs-box{transform:translateY(0) scale(1)}
+.cs-close{position:absolute;top:1rem;right:1rem;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:#fff5e6;font-size:1.4rem;cursor:pointer;z-index:2}
+.cs-close:hover{background:rgba(255,100,100,.2);transform:rotate(90deg);transition:all .3s}
+.cs-hdr{padding-right:3rem;margin-bottom:2rem}
+.cs-eyebrow{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:#00e0c0;font-weight:700;margin-bottom:.5rem}
+.cs-title{font-family:var(--fd);font-size:2rem;font-weight:900;color:#fff5e6;margin:0 0 .5rem;letter-spacing:-.02em;line-height:1.1}
+.cs-sub{color:#a8b5c0;font-size:.95rem;margin:0}
+.cs-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:2rem 0}
+.cs-stat{padding:1.2rem;background:rgba(0,224,192,.06);border:1px solid rgba(0,224,192,.2);border-radius:14px;text-align:center}
+.cs-stat-n{font-family:var(--fd);font-size:1.8rem;font-weight:900;color:#00e0c0;line-height:1}
+.cs-stat-l{font-size:.68rem;color:#a8b5c0;text-transform:uppercase;letter-spacing:.1em;margin-top:.3rem}
+.cs-section{margin-bottom:1.8rem}
+.cs-h{font-family:var(--fd);font-size:.75rem;text-transform:uppercase;letter-spacing:.15em;color:#ff9a3d;font-weight:800;margin:0 0 .6rem}
+.cs-p{color:#d8d4c8;font-size:.92rem;line-height:1.65;margin:0}
+.cs-quote{padding:1.2rem 1.5rem;background:linear-gradient(135deg,rgba(255,154,61,.08),rgba(0,224,192,.05));border-left:3px solid #ff9a3d;border-radius:12px;margin:1.5rem 0;font-style:italic;color:#fff5e6;font-size:.95rem;line-height:1.6}
+.cs-quote cite{display:block;font-style:normal;font-size:.78rem;color:#a8b5c0;margin-top:.6rem;font-weight:600}
+
+/* TESTIMONIAL CAROUSEL */
+.tc-wrap{max-width:1100px;margin:4rem auto;padding:0 2rem}
+.tc-head{text-align:center;margin-bottom:2.5rem}
+.tc-eyebrow{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:#00e0c0;font-weight:700;margin-bottom:.4rem}
+.tc-title{font-family:var(--fd);font-size:2.2rem;font-weight:800;color:#fff5e6;margin:0;letter-spacing:-.02em}
+.tc-track{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.tc-card{aspect-ratio:9/16;border-radius:20px;overflow:hidden;position:relative;cursor:pointer;background:#0a0e1e;border:1.5px solid rgba(0,224,192,.2);transition:all .4s cubic-bezier(.2,.9,.3,1.2)}
+.tc-card:hover{transform:translateY(-6px);border-color:#00e0c0;box-shadow:0 30px 60px rgba(0,0,0,.6),0 0 40px rgba(0,224,192,.25)}
+.tc-card video{width:100%;height:100%;object-fit:cover}
+.tc-card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(4,6,14,.9));pointer-events:none}
+.tc-info{position:absolute;bottom:1rem;left:1rem;right:1rem;z-index:2;color:#fff5e6}
+.tc-name{font-family:var(--fd);font-weight:800;font-size:.95rem}
+.tc-role{font-size:.72rem;color:#a8b5c0;margin-top:.2rem}
+.tc-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:56px;height:56px;border-radius:50%;background:rgba(0,224,192,.9);display:flex;align-items:center;justify-content:center;z-index:2;transition:all .3s;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+.tc-card:hover .tc-play{transform:translate(-50%,-50%) scale(1.1);background:#00e0c0}
+
+/* WORKFLOW TIMELINE INTERACTIVE */
+.wti-wrap{max-width:1200px;margin:4rem auto;padding:0 2rem}
+.wti-head{text-align:center;margin-bottom:3rem}
+.wti-track{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;position:relative}
+.wti-track::before{content:"";position:absolute;top:38px;left:8%;right:8%;height:2px;background:linear-gradient(90deg,rgba(0,224,192,.3),rgba(255,154,61,.3));z-index:0}
+.wti-step{position:relative;z-index:1;text-align:center;cursor:pointer;padding:0 .3rem;transition:all .3s}
+.wti-step:hover{transform:translateY(-4px)}
+.wti-num{width:76px;height:76px;margin:0 auto 1rem;border-radius:50%;background:linear-gradient(135deg,#04060e,#0a0e1e);border:2px solid rgba(0,224,192,.4);display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:1.6rem;font-weight:900;color:#00e0c0;transition:all .4s cubic-bezier(.2,.9,.3,1.2);box-shadow:0 10px 30px rgba(0,0,0,.5)}
+.wti-step:hover .wti-num{border-color:#ff9a3d;color:#ff9a3d;box-shadow:0 15px 40px rgba(255,154,61,.3);transform:scale(1.08)}
+.wti-t{font-family:var(--fd);font-size:.9rem;font-weight:800;color:#fff5e6;margin:0 0 .4rem;letter-spacing:-.01em}
+.wti-d{font-size:.72rem;color:#a8b5c0;line-height:1.5;margin:0}
+.wti-dur{display:inline-block;margin-top:.5rem;padding:.25rem .6rem;font-size:.62rem;background:rgba(0,224,192,.1);border:1px solid rgba(0,224,192,.3);border-radius:100px;color:#00e0c0;font-weight:700;letter-spacing:.05em}
+
+@media(max-width:900px){.cs-ov,.tc-wrap,.wti-wrap{display:none !important}}
+</style></head>
 <body>
 
 <!-- ========== GRADIENT BLOBS BACKGROUND ========== -->
@@ -1522,5 +1574,46 @@ fm.addEventListener("submit",async function(e){
   btn.innerHTML="âœ“ Trimis! Verifica emailul";
   setTimeout(close,2000);
 });
+})();
+</script><div class="wti-wrap rv">
+<div class="wti-head"><div class="tc-eyebrow">Cum lucram</div><h3 class="tc-title">De la brief la rezultate</h3></div>
+<div class="wti-track">
+<div class="wti-step"><div class="wti-num">1</div><div class="wti-t">Brief</div><p class="wti-d">Call 30 min pentru a intelege brandul, publicul si obiectivele</p><span class="wti-dur">Ziua 1</span></div>
+<div class="wti-step"><div class="wti-num">2</div><div class="wti-t">Research</div><p class="wti-d">Analiza competitie, audienta, tone of voice si referinte vizuale</p><span class="wti-dur">Ziua 2-3</span></div>
+<div class="wti-step"><div class="wti-num">3</div><div class="wti-t">Productie</div><p class="wti-d">Copywriting, design, filmare, editare - tot in-house</p><span class="wti-dur">48-72h</span></div>
+<div class="wti-step"><div class="wti-num">4</div><div class="wti-t">Publicare</div><p class="wti-d">Programare pe toate platformele cu ore optime de engagement</p><span class="wti-dur">Automat</span></div>
+<div class="wti-step"><div class="wti-num">5</div><div class="wti-t">Analytics</div><p class="wti-d">Raport lunar cu views, engagement, follower growth si recomandari</p><span class="wti-dur">Lunar</span></div>
+</div>
+</div>
+
+<div class="tc-wrap rv">
+<div class="tc-head"><div class="tc-eyebrow">Ce spun clientii</div><h3 class="tc-title">Rezultate reale, nu template-uri</h3></div>
+<div class="tc-track">
+<div class="tc-card" data-cs="ghibu"><video muted loop playsinline preload="none" poster="og-image.jpg"></video><div class="tc-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="#04060e"><polygon points="5 3 19 12 5 21"/></svg></div><div class="tc-info"><div class="tc-name">Dr. Nicolae Ghibu</div><div class="tc-role">Medical Educational</div></div></div>
+<div class="tc-card" data-cs="iorga"><video muted loop playsinline preload="none" poster="og-image.jpg"></video><div class="tc-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="#04060e"><polygon points="5 3 19 12 5 21"/></svg></div><div class="tc-info"><div class="tc-name">Dr. Iorga Bogdan</div><div class="tc-role">Dental Clinic</div></div></div>
+<div class="tc-card" data-cs="popa"><video muted loop playsinline preload="none" poster="og-image.jpg"></video><div class="tc-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="#04060e"><polygon points="5 3 19 12 5 21"/></svg></div><div class="tc-info"><div class="tc-name">Av. Popa-Alexandru</div><div class="tc-role">Criminal Law</div></div></div>
+</div>
+</div>
+
+<div class="cs-ov" id="csOv" role="dialog"><div class="cs-box"><button class="cs-close" id="csClose">&times;</button><div id="csContent"></div></div></div>
+
+<script>
+(function(){
+var cases={
+"ghibu":{eyebrow:"Case study Â· Medical",title:"Dr. Nicolae Ghibu",sub:"Continut educational medical pe TikTok si Instagram. De la 0 la 25K followers in 4 luni.",stats:[["+24.8K","Followers noi"],["1.2M","Views totale"],["14%","Engagement rate"]],challenge:"Domeniul medical e strict reglementat - zero spatiu pentru clickbait. Dr. Ghibu avea cunostinte valoroase dar zero prezenta online.",solution:"Am construit un sistem de carusele educationale + reels scurte cu explicatii accesibile, pastrand tonul profesional. Fiecare postare raspunde unei intrebari reale a pacientilor.",result:"In 4 luni, contul a devenit referinta in nisa. Pacienti noi mentioneaza direct TikTok-ul la programari.",quote:"Nu credeam ca social media poate sa functioneze pentru cabinetul meu. Acum primesc intrebari de la pacienti din intreaga tara.",author:"Dr. Nicolae Ghibu"},
+"iorga":{eyebrow:"Case study Â· Dental",title:"Dr. Iorga Bogdan",sub:"Rebranding social media pentru clinica stomatologica. Focus pe incredere si transparenta.",stats:[["+18.5K","Followers noi"],["780K","Views totale"],["9.2%","Engagement rate"]],challenge:"Piata dentara e saturata de reclame agresive si before/after fara context. Dr. Iorga voia o abordare educationala, fara presiune de vanzare.",solution:"Strategie bazata pe content educational: mituri despre dinti, ingrijire corecta, explicatii pentru proceduri complexe. Zero clickbait, totul cu tonul unui doctor real.",result:"Programari dublate in 3 luni. Pacientii vin deja informati si increzatori.",quote:"i-vory au inteles ca vreau sa construiesc relatie, nu doar sa umplu agenda. Fiecare pacient nou ne spune ca ne-a vazut pe TikTok.",author:"Dr. Iorga Bogdan"},
+"popa":{eyebrow:"Case study Â· Legal",title:"Av. Andreas Popa-Alexandru",sub:"Content juridic accesibil pentru avocat specializat in drept penal. Traffic organic catre site-ul casei de avocatura.",stats:[["+12.3K","Followers noi"],["540K","Views totale"],["+210%","Consultatii noi"]],challenge:"Dreptul penal e un subiect sensibil. Trebuia content educativ fara sa para ca incurajeaza infractiuni sau fara sa banalizeze procese.",solution:"Format Q&A scurt: drepturile tale in fata politiei, ce sa faci la audiere, cum functioneaza un proces penal. Ton calm, profesionist, zero senzationalism.",result:"Devenit una dintre cele mai urmarite pagini juridice din Romania pentru public non-juridic.",quote:"Oamenii vin la mine cu intrebari din TikTok. E primul lucru pe care il mentioneaza dupa 'buna ziua'.",author:"Av. Andreas Popa-Alexandru"}};
+
+function open(k){var c=cases[k];if(!c)return;
+var html='<div class="cs-hdr"><div class="cs-eyebrow">'+c.eyebrow+'</div><h2 class="cs-title">'+c.title+'</h2><p class="cs-sub">'+c.sub+'</p></div><div class="cs-stats">'+c.stats.map(function(s){return '<div class="cs-stat"><div class="cs-stat-n">'+s[0]+'</div><div class="cs-stat-l">'+s[1]+'</div></div>'}).join("")+'</div><div class="cs-section"><div class="cs-h">Provocarea</div><p class="cs-p">'+c.challenge+'</p></div><div class="cs-section"><div class="cs-h">Solutia</div><p class="cs-p">'+c.solution+'</p></div><div class="cs-section"><div class="cs-h">Rezultat</div><p class="cs-p">'+c.result+'</p></div><div class="cs-quote">"'+c.quote+'"<cite>â€” '+c.author+'</cite></div>';
+document.getElementById("csContent").innerHTML=html;
+document.getElementById("csOv").classList.add("open");
+document.body.style.overflow="hidden";
+}
+function close(){document.getElementById("csOv").classList.remove("open");document.body.style.overflow=""}
+document.querySelectorAll(".tc-card").forEach(function(el){el.addEventListener("click",function(){open(el.getAttribute("data-cs"))})});
+document.getElementById("csClose").addEventListener("click",close);
+document.getElementById("csOv").addEventListener("click",function(e){if(e.target.id==="csOv")close()});
+document.addEventListener("keydown",function(e){if(e.key==="Escape")close()});
 })();
 </script></body></html>
