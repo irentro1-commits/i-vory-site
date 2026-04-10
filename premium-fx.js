@@ -639,3 +639,170 @@ if(!__MOB){(function(){
     pk.addEventListener('mouseleave',()=>{badge.style.opacity='0';badge.style.transform='translateY(-6px)'});
   });
 })();
+
+// ========== PREMIUM FX ROUND 7 ==========
+
+// 24. LIQUID BLOB CURSOR (desktop only)
+if(!__MOB){(function(){
+  const cvs=document.createElement('canvas');
+  cvs.style.cssText='position:fixed;inset:0;pointer-events:none;z-index:9996;mix-blend-mode:screen';
+  document.body.appendChild(cvs);
+  const ctx=cvs.getContext('2d');
+  function rs(){cvs.width=innerWidth;cvs.height=innerHeight}rs();addEventListener('resize',rs);
+  let mx=0,my=0,bx=0,by=0,vx=0,vy=0,lastX=0,lastY=0;
+  addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY},{passive:true});
+  function tick(){
+    bx+=(mx-bx)*.18;by+=(my-by)*.18;
+    vx=bx-lastX;vy=by-lastY;lastX=bx;lastY=by;
+    const speed=Math.min(Math.sqrt(vx*vx+vy*vy),40);
+    const stretch=1+speed*.04;
+    const angle=Math.atan2(vy,vx);
+    ctx.clearRect(0,0,cvs.width,cvs.height);
+    ctx.save();
+    ctx.translate(bx,by);
+    ctx.rotate(angle);
+    const grad=ctx.createRadialGradient(0,0,0,0,0,18);
+    grad.addColorStop(0,'rgba(0,224,192,.55)');
+    grad.addColorStop(.5,'rgba(0,224,192,.2)');
+    grad.addColorStop(1,'rgba(0,224,192,0)');
+    ctx.fillStyle=grad;
+    ctx.beginPath();
+    ctx.ellipse(0,0,18*stretch,18/Math.max(stretch,1),0,0,Math.PI*2);
+    ctx.fill();
+    ctx.restore();
+    requestAnimationFrame(tick);
+  }
+  tick();
+})()}
+
+// 25. CONFETTI on form submit success
+(function(){
+  const form=document.getElementById('contactForm');
+  if(!form)return;
+  const cvs=document.createElement('canvas');
+  cvs.style.cssText='position:fixed;inset:0;pointer-events:none;z-index:10000';
+  document.body.appendChild(cvs);
+  const ctx=cvs.getContext('2d');
+  function rs(){cvs.width=innerWidth;cvs.height=innerHeight}rs();addEventListener('resize',rs);
+  const conf=[];
+  const colors=['#00e0c0','#ff9a3d','#ffe4b5','#fff5e6','#7dffe6'];
+  function explode(){
+    const cx=innerWidth/2,cy=innerHeight/2;
+    for(let i=0;i<160;i++){
+      const a=Math.random()*Math.PI*2;
+      const v=8+Math.random()*14;
+      conf.push({
+        x:cx,y:cy,
+        vx:Math.cos(a)*v,vy:Math.sin(a)*v-3,
+        rot:Math.random()*Math.PI*2,vrot:(Math.random()-.5)*.3,
+        w:6+Math.random()*8,h:3+Math.random()*5,
+        col:colors[Math.floor(Math.random()*colors.length)],
+        life:1
+      });
+    }
+  }
+  function draw(){
+    ctx.clearRect(0,0,cvs.width,cvs.height);
+    for(let i=conf.length-1;i>=0;i--){
+      const p=conf[i];
+      p.x+=p.vx;p.y+=p.vy;p.vy+=.32;p.vx*=.99;p.rot+=p.vrot;p.life-=.008;
+      if(p.life<=0||p.y>cvs.height+50){conf.splice(i,1);continue}
+      ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.rot);
+      ctx.fillStyle=p.col;ctx.globalAlpha=p.life;
+      ctx.fillRect(-p.w/2,-p.h/2,p.w,p.h);
+      ctx.restore();
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+  form.addEventListener('submit',()=>setTimeout(explode,200));
+})();
+
+// 26. ANIMATED TIMELINE WORKFLOW (inject before #pachete)
+(function(){
+  const target=document.querySelector('#pachete')||document.querySelector('#servicii');
+  if(!target||document.getElementById('workflow'))return;
+  const sec=document.createElement('section');
+  sec.id='workflow';sec.className='sec';
+  sec.innerHTML=`<div class="si" style="background:linear-gradient(180deg,rgba(8,10,20,.92),rgba(4,6,14,.96));border-radius:24px;padding:4rem 3rem;border:1px solid rgba(0,224,192,.1);box-shadow:0 50px 120px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.05);max-width:1200px;margin:0 auto">
+<div style="text-align:center;margin-bottom:3rem"><div style="font-family:var(--fd,Syne),sans-serif;font-size:.72rem;color:#00e0c0;letter-spacing:.32em;text-transform:uppercase;margin-bottom:.8rem">Workflow</div><h2 class="sh" style="font-family:var(--fd,Syne),sans-serif;font-size:clamp(1.8rem,4vw,3rem);color:#fff5e6;margin:0;font-weight:800">Cum lucrăm cu tine</h2></div>
+<div id="wfTrack" style="position:relative;display:grid;grid-template-columns:repeat(5,1fr);gap:1rem">
+<div style="position:absolute;top:32px;left:5%;right:5%;height:2px;background:rgba(0,224,192,.15);z-index:0"><div id="wfFill" style="height:100%;width:0;background:linear-gradient(90deg,#00e0c0,#ff9a3d);box-shadow:0 0 12px rgba(0,224,192,.6);transition:width .8s cubic-bezier(.2,.9,.3,1)"></div></div>
+${['Brief','Research','Producție','Publicare','Analytics'].map((step,i)=>`<div class="wf-step" data-i="${i}" style="position:relative;z-index:1;text-align:center"><div style="width:64px;height:64px;border-radius:50%;background:rgba(8,12,22,.95);border:2px solid rgba(0,224,192,.3);margin:0 auto 1rem;display:flex;align-items:center;justify-content:center;font-family:var(--fd,Syne),sans-serif;font-weight:800;color:#00e0c0;font-size:1.4rem;transition:all .4s">${i+1}</div><div style="font-family:var(--fd,Syne),sans-serif;font-weight:700;color:#fff5e6;font-size:.95rem;margin-bottom:.3rem">${step}</div><div style="color:#a8b5c0;font-size:.78rem;line-height:1.4">${['Înțelegem business-ul tău','Analizăm piață și competiție','Filmăm și edităm conținut','Distribuim pe platforme','Raportăm rezultatele'][i]}</div></div>`).join('')}
+</div></div>`;
+  target.parentNode.insertBefore(sec,target);
+  // Animate fill on scroll into view
+  const fill=sec.querySelector('#wfFill');
+  const steps=sec.querySelectorAll('.wf-step');
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(en=>{
+      if(en.isIntersecting){
+        fill.style.width='100%';
+        steps.forEach((s,i)=>{
+          setTimeout(()=>{
+            const c=s.querySelector('div');
+            c.style.background='linear-gradient(135deg,#00e0c0,#7dffe6)';
+            c.style.borderColor='#00e0c0';
+            c.style.color='#0a0e16';
+            c.style.boxShadow='0 0 24px rgba(0,224,192,.5)';
+            c.style.transform='scale(1.08)';
+          },i*180);
+        });
+        obs.unobserve(en.target);
+      }
+    });
+  },{threshold:.4});
+  obs.observe(sec);
+  // Mobile: stack 2 cols
+  const mq=document.createElement('style');
+  mq.textContent='@media(max-width:768px){#wfTrack{grid-template-columns:repeat(2,1fr) !important;gap:1.5rem !important}#workflow .si{padding:2.5rem 1.3rem !important}}';
+  document.head.appendChild(mq);
+})();
+
+// 27. GRADIENT MESH animated background
+(function(){
+  const s=document.createElement('style');
+  s.textContent='@keyframes meshShift{0%,100%{background-position:0% 50%,100% 50%,50% 0%}33%{background-position:50% 100%,0% 0%,100% 50%}66%{background-position:100% 0%,50% 100%,0% 50%}}body::before{content:"";position:fixed;inset:0;background:radial-gradient(ellipse 60% 50% at 0% 0%,rgba(0,224,192,.04),transparent 70%),radial-gradient(ellipse 50% 60% at 100% 100%,rgba(255,154,61,.035),transparent 70%),radial-gradient(ellipse 70% 40% at 50% 50%,rgba(125,255,230,.025),transparent 70%);background-size:200% 200%,200% 200%,200% 200%;animation:meshShift 28s ease-in-out infinite;pointer-events:none;z-index:1;mix-blend-mode:screen}';
+  document.head.appendChild(s);
+})();
+
+// 28. PORTFOLIO HOVER PREVIEW (autoplay video on hover)
+(function(){
+  const cards=document.querySelectorAll('.pf-img,.portfolio-item,.pf-card');
+  cards.forEach(card=>{
+    const img=card.querySelector('img');
+    if(!img)return;
+    // Try to find associated video
+    const vidSrc=card.dataset.video||'upscaled-video__8_.mp4';
+    let vid=null;
+    card.addEventListener('mouseenter',()=>{
+      if(__MOB)return;
+      if(!vid){
+        vid=document.createElement('video');
+        vid.src=vidSrc;vid.muted=true;vid.loop=true;vid.playsInline=true;
+        vid.style.cssText='position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .5s;border-radius:inherit;pointer-events:none';
+        if(getComputedStyle(card).position==='static')card.style.position='relative';
+        card.appendChild(vid);
+      }
+      vid.play().catch(()=>{});
+      requestAnimationFrame(()=>vid.style.opacity='1');
+    });
+    card.addEventListener('mouseleave',()=>{
+      if(vid){vid.style.opacity='0';setTimeout(()=>vid.pause(),500)}
+    });
+  });
+})();
+
+// 29. SMART CTA FLOAT — WhatsApp expand after 10sec
+(function(){
+  setTimeout(()=>{
+    const wa=document.querySelector('a[href*="whatsapp"][class*="float"],a[href*="api.whatsapp"][style*="fixed"],.whatsapp-float,a[aria-label*="WhatsApp"]')||document.querySelectorAll('a[href*="whatsapp.com"]')[document.querySelectorAll('a[href*="whatsapp.com"]').length-1];
+    if(!wa)return;
+    const tip=document.createElement('div');
+    tip.style.cssText='position:fixed;bottom:1.7rem;right:5rem;background:rgba(6,8,18,.95);backdrop-filter:blur(12px);color:#fff5e6;padding:.7rem 1.1rem;border-radius:100px;font-family:var(--fb,DM Sans),sans-serif;font-size:.82rem;border:1px solid rgba(0,224,192,.25);box-shadow:0 8px 32px rgba(0,0,0,.5),0 0 40px rgba(37,211,102,.15);z-index:98;opacity:0;transform:translateX(20px);transition:opacity .5s,transform .5s;pointer-events:none;white-space:nowrap';
+    tip.innerHTML='<span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#25d366;box-shadow:0 0 8px rgba(37,211,102,.8);margin-right:.5rem;animation:livePulse 1.6s ease-in-out infinite"></span>Răspundem în 2 min';
+    document.body.appendChild(tip);
+    requestAnimationFrame(()=>{tip.style.opacity='1';tip.style.transform='translateX(0)'});
+    setTimeout(()=>{tip.style.opacity='0';tip.style.transform='translateX(20px)';setTimeout(()=>tip.remove(),600)},6000);
+  },10000);
+})();
