@@ -1102,11 +1102,16 @@ if(!__MOB){(function(){
 // 47. CURSOR-AWARE WORD GLOW on paragraphs (desktop)
 if(!__MOB){(function(){
   const s=document.createElement('style');
-  s.textContent='.glow-p span.gw{transition:color .25s,text-shadow .25s}.glow-p span.gw.lit{color:#fff5e6;text-shadow:0 0 12px rgba(0,224,192,.6),0 0 24px rgba(255,154,61,.3)}';
+  s.textContent='.glow-p span.gw{transition:color .25s,text-shadow .25s;display:inline}.glow-p span.gw.lit{color:#fff5e6;text-shadow:0 0 12px rgba(0,224,192,.6),0 0 24px rgba(255,154,61,.3)}';
   document.head.appendChild(s);
-  const ps=document.querySelectorAll('.sec p:not(.eyebrow):not(.ss):not(.lb)');
+  // VERY restrictive: only top-level p in main sections, NEVER inside buttons/links/cards
+  const ps=Array.from(document.querySelectorAll('.sec > .si > p, .sec > .si > div > p, section.sec > p')).filter(p=>{
+    if(p.closest('a,button,.bh,.faq-a,.faq-item,.wf-step,.dce-item,.pk,.type-card,.proof-card,nav,.contact-cta'))return false;
+    if(p.children.length>0)return false;
+    if(p.textContent.length>200)return false;
+    return true;
+  });
   ps.forEach(p=>{
-    if(p.children.length>0||p.textContent.length>200)return;
     p.classList.add('glow-p');
     const words=p.textContent.split(/(\s+)/);
     p.innerHTML='';
@@ -1116,7 +1121,7 @@ if(!__MOB){(function(){
     });
   });
   document.addEventListener('mousemove',e=>{
-    document.querySelectorAll('.gw').forEach(w=>{
+    document.querySelectorAll('.glow-p .gw').forEach(w=>{
       const r=w.getBoundingClientRect();
       const dx=e.clientX-(r.left+r.width/2),dy=e.clientY-(r.top+r.height/2);
       const d=Math.sqrt(dx*dx+dy*dy);
@@ -1124,7 +1129,6 @@ if(!__MOB){(function(){
     });
   },{passive:true});
 })()}
-
 // 48. WATER RIPPLE on image hover (SVG turbulence)
 (function(){
   const s=document.createElement('style');
