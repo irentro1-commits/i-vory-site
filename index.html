@@ -1137,7 +1137,7 @@ textarea.bk-inp{resize:vertical;min-height:70px;font-family:inherit}
 </div>
 
 <button type="submit" class="bk-submit">Trimite solicitarea &rarr;</button>
-<p class="bk-fine">Primesti confirmare automata pe email. Raspundem intr-o ora in timpul programului.</p>
+<p class="bk-fine">Primesti automat un fisier .ics cu 2 reminder-e (24h + 30min inainte). Adauga-l in calendar. Raspundem in max 2 ore.</p>
 </form>
 </div>
 </div><script>
@@ -1148,6 +1148,27 @@ var cl=document.getElementById("bkClose");
 var fm=document.getElementById("bkForm");
 var dt=document.getElementById("bkDate");
 if(!btn||!ov)return;
+
+// ICS generator with VALARM reminders (24h + 30min)
+function pad(n){return n<10?"0"+n:""+n}
+function toICSDate(d){return d.getUTCFullYear()+pad(d.getUTCMonth()+1)+pad(d.getUTCDate())+"T"+pad(d.getUTCHours())+pad(d.getUTCMinutes())+"00Z"}
+function genICS(data){
+  var start=new Date(data.date+"T"+data.timeStart+":00");
+  var end=new Date(data.date+"T"+data.timeEnd+":00");
+  var now=new Date();
+  var uid="ivory-"+now.getTime()+"@i-vory.ro";
+  var summary="Call i-Vory Ã— "+data.name;
+  var desc="Call de consultanta gratuita 30 min.\\n\\nClient: "+data.name+"\\nEmail: "+data.email+"\\nTelefon: "+(data.phone||"-")+"\\nBusiness: "+(data.business||"-")+"\\n\\nContext: "+(data.msg||"-")+"\\n\\nContact i-Vory: contact@i-vory.ro | +40 775 579 706";
+  var ics=["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//i-Vory Creative//Booking//RO","CALSCALE:GREGORIAN","METHOD:REQUEST","BEGIN:VEVENT","UID:"+uid,"DTSTAMP:"+toICSDate(now),"DTSTART:"+toICSDate(start),"DTEND:"+toICSDate(end),"SUMMARY:"+summary,"DESCRIPTION:"+desc.replace(/\n/g,"\\n"),"LOCATION:WhatsApp / Telefon","ORGANIZER;CN=i-Vory Creative:mailto:contact@i-vory.ro","ATTENDEE;CN="+data.name+";RSVP=TRUE:mailto:"+data.email,"STATUS:CONFIRMED","BEGIN:VALARM","TRIGGER:-PT24H","ACTION:DISPLAY","DESCRIPTION:Reminder: Call i-Vory in 24h","END:VALARM","BEGIN:VALARM","TRIGGER:-PT30M","ACTION:DISPLAY","DESCRIPTION:Reminder: Call i-Vory in 30 min","END:VALARM","END:VEVENT","END:VCALENDAR"].join("\r\n");
+  return ics;
+}
+function downloadICS(content,filename){
+  var blob=new Blob([content],{type:"text/calendar;charset=utf-8"});
+  var url=URL.createObjectURL(blob);
+  var a=document.createElement("a");
+  a.href=url;a.download=filename;document.body.appendChild(a);a.click();
+  setTimeout(function(){document.body.removeChild(a);URL.revokeObjectURL(url)},100);
+}
 // Set min date to today + max to +60 days
 var today=new Date();var minStr=today.toISOString().split("T")[0];
 var max=new Date(today.getTime()+60*86400000);var maxStr=max.toISOString().split("T")[0];
@@ -1158,6 +1179,42 @@ btn.addEventListener("click",function(e){e.preventDefault();open();});
 cl.addEventListener("click",close);
 ov.addEventListener("click",function(e){if(e.target===ov)close();});
 document.addEventListener("keydown",function(e){if(e.key==="Escape"&&ov.classList.contains("open"))close();});
+
+// Form submit: generate ICS + download + submit
+fm.addEventListener("submit",function(e){
+  var fd=new FormData(fm);
+  var interval=(fd.get("Interval")||"").split("-");
+  var data={
+    name:fd.get("Nume"),
+    email:fd.get("Email"),
+    phone:fd.get("Telefon"),
+    business:fd.get("Business"),
+    date:fd.get("Data"),
+    timeStart:interval[0]||"10:00",
+    timeEnd:interval[1]||"11:00",
+    msg:fd.get("Mesaj")
+  };
+  if(!data.name||!data.email||!data.date||!interval[0])return;
+  try{
+    var ics=genICS(data);
+    downloadICS(ics,"call-ivory-"+data.date+".ics");
+    // Add ICS base64 to hidden field so Andy gets it too
+    var b64=btoa(unescape(encodeURIComponent(ics)));
+    var hidden=document.createElement("input");
+    hidden.type="hidden";hidden.name="ICS_base64";hidden.value=b64;
+    fm.appendChild(hidden);
+    var link=document.createElement("input");
+    link.type="hidden";link.name="Link_ICS";
+    link.value="data:text/calendar;base64,"+b64;
+    fm.appendChild(link);
+    // Human readable reminder for Andy in email
+    var reminder=document.createElement("input");
+    reminder.type="hidden";reminder.name="_AUTO_REMINDERS";
+    reminder.value="Reminder 24h inainte + Reminder 30min inainte (incluse in .ics atasat). Salveaza fisierul .ics in calendar pentru notificari automate.";
+    fm.appendChild(reminder);
+  }catch(err){console.error("ICS gen failed:",err);}
+  // Form continues normal submit to formsubmit.co
+});
 // Confirmation banner if ?booking=ok in URL
 if(location.search.indexOf("booking=ok")>-1){
 var b=document.createElement("div");
