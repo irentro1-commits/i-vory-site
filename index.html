@@ -188,6 +188,47 @@ footer{border-top:1px solid var(--br);padding:2.5rem;background:rgba(5,5,5,.5);b
 }.s2-content{padding:4rem 1.2rem}.pf-grid{grid-template-columns:repeat(2,1fr);gap:.6rem}.pf-img{aspect-ratio:1/1}.contact{padding:5rem 1.2rem}.how-item,.dce-item{gap:1.2rem}.how-num{font-size:1.6rem;width:52px;height:52px;min-width:52px}.fi{flex-direction:column;gap:1rem;align-items:center;text-align:center}.types-grid{grid-template-columns:1fr}.price-table .pt-name{min-width:auto;font-size:.88rem}.price-table .pt-detail{display:none}.price-table .pt-price{font-size:1.1rem}.blob{filter:blur(70px)}.pre-logo{font-size:2.4rem}}
 @media(max-width:768px){
   .hero3d{opacity:1}
+  /* === MOBILE POLISH === */
+  body{padding-top:32px}
+  nav{padding:.5rem .9rem !important;min-height:56px !important}
+  nav .nl img{height:38px !important}
+  .nk{display:none !important}
+  /* Nav WhatsApp button */
+  .nc{padding:.55rem 1rem !important;font-size:.72rem !important;gap:.35rem !important;letter-spacing:.01em}
+  /* Hide ham menu visual conflict */
+  .ham{padding:.4rem !important}
+  /* Hero text container */
+  .prob-line{font-size:clamp(1.25rem,5.5vw,2rem) !important;padding:1rem 1.2rem !important;max-width:92vw !important;line-height:1.18 !important;font-weight:800 !important}
+  /* Second hero (s2) â€” center everything cleanly */
+  .s2{padding:4rem 1.2rem !important;text-align:center !important}
+  .s2-wrap{flex-direction:column !important;align-items:center !important;text-align:center !important;padding:0 !important;gap:2rem !important}
+  .s2-content{flex:none !important;max-width:100% !important;text-align:center !important;display:flex;flex-direction:column;align-items:center}
+  .s2-content h2,.s2 h2{font-size:clamp(2rem,8vw,3rem) !important;line-height:1.05 !important;text-align:center !important;color:#fff5e6 !important;margin:0 0 1rem !important;font-weight:800 !important;letter-spacing:-.025em !important;text-shadow:0 4px 24px rgba(0,0,0,.85)}
+  .s2-tag{font-size:.65rem !important;letter-spacing:.25em !important;text-align:center !important;display:inline-block !important;margin:0 auto 1.2rem !important;padding:.4rem 1rem !important;border:1px solid rgba(0,224,192,.25);border-radius:100px;background:rgba(0,224,192,.06)}
+  .s2-desc,.s2 p{font-size:.92rem !important;line-height:1.6 !important;color:#d8d4c8 !important;text-align:center !important;max-width:92vw !important;margin:0 auto 1.5rem !important;text-shadow:0 2px 12px rgba(0,0,0,.85)}
+  .s2-desc strong{color:#fff5e6 !important}
+  .s2-cta{justify-content:center !important;display:flex !important;flex-wrap:wrap !important;gap:.8rem !important;margin:0 auto 1rem !important;width:100%}
+  .s2-cta .bh{font-size:.95rem !important;padding:1rem 1.8rem !important;min-width:210px;justify-content:center}
+  .s2-fineprint,.s2 .fp{font-size:.72rem !important;text-align:center !important;color:#a8b5c0 !important;margin:.8rem auto 0 !important}
+  /* Hero video card mobile */
+  .hero-video{width:280px !important;height:498px !important;margin:1.5rem auto 0 !important;border-radius:20px !important}
+  /* Section padding */
+  .sec{padding:3rem 1rem !important}
+  .sec h2,.sh{font-size:clamp(1.8rem,7vw,2.6rem) !important;text-align:center !important;line-height:1.1 !important}
+  .sec p:not(.eyebrow):not(.s2-desc){text-align:center !important;font-size:.9rem !important;line-height:1.6 !important;color:#d8d4c8 !important}
+  /* Text shadow for readability over starfield */
+  .sec h1,.sec h2,.sec h3,.sec h4,.sh,.contact-h{text-shadow:0 4px 24px rgba(0,0,0,.95) !important}
+  .sec p{text-shadow:0 2px 12px rgba(0,0,0,.85) !important}
+  /* Cards centered */
+  .si{padding:2.2rem 1.3rem !important;border-radius:18px !important}
+  /* Live ticker not too high */
+  body>div[style*="top:60px"]{top:56px !important;font-size:.62rem !important;padding:.35rem 1rem !important}
+  /* Audio button + mute video button repositioned */
+  [aria-label="Sunet ambient"]{bottom:1rem !important;left:1rem !important;width:42px !important;height:42px !important}
+  /* Visitor counter */
+  body>div[style*="left:5.5rem"]{left:4.5rem !important;font-size:.62rem !important;padding:.4rem .7rem !important}
+  /* WhatsApp tooltip "RÄƒspundem in 2 min" */
+  body>div[style*="right:5rem"]{right:4.5rem !important;font-size:.72rem !important}
   .s2-wrap{flex-direction:column !important;align-items:center !important;text-align:center !important;padding:0 1rem !important}
   .s2-content{text-align:center !important;margin:0 auto !important}
   .s2-content h2,.s2-content p,.s2-content .s2-tag,.s2-tag{text-align:center !important;margin-left:auto !important;margin-right:auto !important}
