@@ -1184,4 +1184,3 @@ if(!__MOB){(function(){
     navImg.style.filter=`drop-shadow(0 0 12px rgba(0,224,192,.55)) hue-rotate(${hue}deg)`;
     lastY=y;
   },{passive:true});
-})();
