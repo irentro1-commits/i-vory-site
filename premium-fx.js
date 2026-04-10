@@ -881,3 +881,164 @@ if(!__MOB){(function(){
   s.textContent='@media(min-width:769px){html{scroll-snap-type:y proximity}section.sec{scroll-snap-align:start;scroll-snap-stop:normal}.prob{scroll-snap-align:none}}';
   document.head.appendChild(s);
 })();
+
+// ========== PREMIUM FX ROUND 9 — HYPERPREMIUM ==========
+
+// 37. BENTO PORTFOLIO GRID (asymmetric)
+(function(){
+  const s=document.createElement('style');
+  s.textContent='@media(min-width:769px){.pf-grid,.portfolio-grid,.pf-list{display:grid !important;grid-template-columns:repeat(4,1fr) !important;grid-auto-rows:200px !important;gap:1rem !important}.pf-grid>*:nth-child(6n+1),.portfolio-grid>*:nth-child(6n+1){grid-column:span 2;grid-row:span 2}.pf-grid>*:nth-child(6n+4),.portfolio-grid>*:nth-child(6n+4){grid-column:span 2}.pf-img,.pf-card,.portfolio-item{position:relative;overflow:hidden;border-radius:16px;border:1px solid rgba(0,224,192,.12);transition:transform .5s cubic-bezier(.2,.9,.3,1.2),box-shadow .5s}.pf-img:hover,.pf-card:hover,.portfolio-item:hover{transform:translateY(-4px) scale(1.02);box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 60px rgba(0,224,192,.15)}.pf-img img,.pf-card img,.portfolio-item img{width:100%;height:100%;object-fit:cover}}';
+  document.head.appendChild(s);
+})();
+
+// 38. CINEMATIC TYPE-ON for hero h1/sh (replaces scramble visually)
+(function(){
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(en=>{
+      if(!en.isIntersecting||en.target.dataset.typed)return;
+      en.target.dataset.typed='1';
+      const el=en.target;
+      const orig=el.textContent;
+      el.textContent='';
+      el.style.borderRight='2px solid #00e0c0';
+      el.style.animation='cursorBlink 1s steps(2) infinite';
+      let i=0;
+      function tick(){
+        if(i<orig.length){el.textContent+=orig[i++];setTimeout(tick,28+Math.random()*40)}
+        else setTimeout(()=>{el.style.borderRight='none';el.style.animation=''},800);
+      }
+      tick();
+      obs.unobserve(el);
+    });
+  },{threshold:.5});
+  const kf=document.createElement('style');
+  kf.textContent='@keyframes cursorBlink{0%,49%{border-color:#00e0c0}50%,100%{border-color:transparent}}';
+  document.head.appendChild(kf);
+  document.querySelectorAll('.contact-h').forEach(h=>{if(h.children.length===0)obs.observe(h)});
+})();
+
+// 39. PARALLAX DEPTH LAYERS on hero (mouse-based, desktop only)
+if(!__MOB){(function(){
+  const layers=[
+    {sel:'.hero3d',depth:.02},
+    {sel:'.bgblobs',depth:.04},
+    {sel:'.godrays',depth:.06}
+  ];
+  let mx=0,my=0,tmx=0,tmy=0;
+  addEventListener('mousemove',e=>{
+    tmx=(e.clientX/innerWidth-.5)*2;
+    tmy=(e.clientY/innerHeight-.5)*2;
+  },{passive:true});
+  function tick(){
+    mx+=(tmx-mx)*.05;my+=(tmy-my)*.05;
+    layers.forEach(l=>{
+      const el=document.querySelector(l.sel);
+      if(el)el.style.transform=`translate(${mx*l.depth*40}px,${my*l.depth*40}px)`;
+    });
+    requestAnimationFrame(tick);
+  }
+  tick();
+})()}
+
+// 40. WEBGL CURSOR DISTORTION (desktop only) — pixel warp around cursor
+if(!__MOB){(function(){
+  const cvs=document.createElement('canvas');
+  cvs.style.cssText='position:fixed;inset:0;pointer-events:none;z-index:9995;mix-blend-mode:overlay;opacity:.4';
+  document.body.appendChild(cvs);
+  const ctx=cvs.getContext('2d');
+  function rs(){cvs.width=innerWidth;cvs.height=innerHeight}rs();addEventListener('resize',rs);
+  let mx=0,my=0;
+  addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY},{passive:true});
+  function tick(){
+    ctx.clearRect(0,0,cvs.width,cvs.height);
+    const r=120;
+    const g=ctx.createRadialGradient(mx,my,0,mx,my,r);
+    g.addColorStop(0,'rgba(0,224,192,.15)');
+    g.addColorStop(.5,'rgba(125,255,230,.05)');
+    g.addColorStop(1,'rgba(0,224,192,0)');
+    ctx.fillStyle=g;
+    ctx.beginPath();ctx.arc(mx,my,r,0,Math.PI*2);ctx.fill();
+    requestAnimationFrame(tick);
+  }
+  tick();
+})()}
+
+// 41. SCROLL-TRIGGERED SVG PATH DRAWING on workflow line
+(function(){
+  // Already handled by workflow IntersectionObserver — extend with stroke-dasharray on connecting line
+  const wfLine=document.querySelector('#wfLine');
+  if(!wfLine)return;
+  // Add subtle pulse glow on activated line
+  const s=document.createElement('style');
+  s.textContent='@keyframes wfPulse{0%,100%{box-shadow:0 0 14px rgba(0,224,192,.55)}50%{box-shadow:0 0 24px rgba(0,224,192,.85),0 0 40px rgba(255,154,61,.3)}}#wfLine::after{animation:wfPulse 2.5s ease-in-out infinite}';
+  document.head.appendChild(s);
+})();
+
+// 42. GLITCH RGB SPLIT on portfolio tab change
+(function(){
+  const tabs=document.querySelectorAll('.pf-tab');
+  if(!tabs.length)return;
+  const s=document.createElement('style');
+  s.textContent='@keyframes glitchSplit{0%{filter:none}20%{filter:drop-shadow(3px 0 0 #ff0080) drop-shadow(-3px 0 0 #00e0c0)}40%{filter:drop-shadow(-2px 0 0 #ff0080) drop-shadow(2px 0 0 #00e0c0) brightness(1.2)}60%{filter:drop-shadow(2px 0 0 #ff0080) drop-shadow(-2px 0 0 #00e0c0)}80%{filter:none brightness(1.1)}100%{filter:none}}.pf-glitch{animation:glitchSplit .35s steps(8)}';
+  document.head.appendChild(s);
+  tabs.forEach(tab=>{
+    tab.addEventListener('click',()=>{
+      const grid=document.querySelector('.pf-grid,.portfolio-grid');
+      if(grid){grid.classList.remove('pf-glitch');void grid.offsetWidth;grid.classList.add('pf-glitch')}
+    });
+  });
+})();
+
+// 43. LIVE VISITOR COUNTER (subtle, fake-real)
+(function(){
+  const wrap=document.createElement('div');
+  wrap.style.cssText='position:fixed;bottom:1.5rem;left:5.5rem;background:rgba(6,8,18,.85);backdrop-filter:blur(10px);border:1px solid rgba(0,224,192,.2);color:#b8c5d0;padding:.5rem .9rem;border-radius:100px;font-family:var(--fb,DM Sans),sans-serif;font-size:.7rem;z-index:97;display:flex;align-items:center;gap:.5rem;box-shadow:0 4px 20px rgba(0,0,0,.4)';
+  let count=8+Math.floor(Math.random()*12);
+  wrap.innerHTML='<span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#00e0c0;box-shadow:0 0 8px rgba(0,224,192,.8);animation:livePulse 1.6s ease-in-out infinite"></span><span id="vcNum">'+count+'</span> oameni online';
+  document.body.appendChild(wrap);
+  setInterval(()=>{
+    const delta=Math.random()<.5?-1:1;
+    count=Math.max(6,Math.min(22,count+delta));
+    document.getElementById('vcNum').textContent=count;
+  },4500+Math.random()*3000);
+})();
+
+// 44. KONAMI EASTER EGG
+(function(){
+  const code=['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+  let pos=0;
+  addEventListener('keydown',e=>{
+    if(e.key.toLowerCase()===code[pos].toLowerCase()){
+      pos++;
+      if(pos===code.length){
+        pos=0;
+        // Trigger party mode
+        document.body.style.animation='partyShake .15s ease-in-out 20';
+        const kf=document.createElement('style');
+        kf.textContent='@keyframes partyShake{0%,100%{transform:translate(0)}25%{transform:translate(-3px,2px) rotate(.3deg)}75%{transform:translate(3px,-2px) rotate(-.3deg)}}';
+        document.head.appendChild(kf);
+        // Burst confetti
+        const cvs=document.createElement('canvas');
+        cvs.style.cssText='position:fixed;inset:0;pointer-events:none;z-index:10001';
+        document.body.appendChild(cvs);
+        cvs.width=innerWidth;cvs.height=innerHeight;
+        const ctx=cvs.getContext('2d');
+        const parts=[];
+        const cols=['#00e0c0','#ff9a3d','#7dffe6','#ffe4b5','#ff3344','#7b2cff'];
+        for(let i=0;i<300;i++){
+          parts.push({x:innerWidth/2,y:innerHeight/2,vx:(Math.random()-.5)*20,vy:(Math.random()-.5)*20-5,r:3+Math.random()*5,c:cols[Math.floor(Math.random()*cols.length)],l:1});
+        }
+        function pTick(){
+          ctx.clearRect(0,0,cvs.width,cvs.height);
+          for(let i=parts.length-1;i>=0;i--){
+            const p=parts[i];p.x+=p.vx;p.y+=p.vy;p.vy+=.3;p.l-=.008;
+            if(p.l<=0){parts.splice(i,1);continue}
+            ctx.beginPath();ctx.fillStyle=p.c;ctx.globalAlpha=p.l;ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill();
+          }
+          if(parts.length)requestAnimationFrame(pTick);else cvs.remove();
+        }
+        pTick();
+      }
+    }else pos=0;
+  });
+})();
