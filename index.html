@@ -1086,12 +1086,8 @@ textarea.bk-inp{resize:vertical;min-height:70px;font-family:inherit}
 <h3 class="bk-title">Alege un moment</h3>
 <p class="bk-sub">Discutam concret ce ai nevoie. Primesti confirmare pe email in maxim 2 ore.</p>
 </div>
-<form id="bkForm" action="https://formsubmit.co/contact@i-vory.ro" method="POST" class="bk-form">
-<input type="hidden" name="_subject" value="Solicitare booking i-vory.ro">
-<input type="hidden" name="_captcha" value="false">
-<input type="hidden" name="_template" value="table">
-<input type="hidden" name="_next" value="https://i-vory.ro/?booking=ok">
-<input type="text" name="_honey" style="display:none">
+<form id="bkForm" class="bk-form">
+<input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
 
 <div class="bk-row">
 <label class="bk-lbl">Nume<span>*</span></label>
@@ -1180,50 +1176,56 @@ cl.addEventListener("click",close);
 ov.addEventListener("click",function(e){if(e.target===ov)close();});
 document.addEventListener("keydown",function(e){if(e.key==="Escape"&&ov.classList.contains("open"))close();});
 
-// Form submit: generate ICS + download + submit
-fm.addEventListener("submit",function(e){
+// Worker endpoint - update with real URL after deploy
+var BOOKING_ENDPOINT="https://ivory-booking.YOUR-SUBDOMAIN.workers.dev";
+
+fm.addEventListener("submit",async function(e){
+  e.preventDefault();
   var fd=new FormData(fm);
   var interval=(fd.get("Interval")||"").split("-");
   var data={
     name:fd.get("Nume"),
     email:fd.get("Email"),
-    phone:fd.get("Telefon"),
-    business:fd.get("Business"),
+    phone:fd.get("Telefon")||"",
+    business:fd.get("Business")||"",
     date:fd.get("Data"),
     timeStart:interval[0]||"10:00",
     timeEnd:interval[1]||"11:00",
-    msg:fd.get("Mesaj")
+    msg:fd.get("Mesaj")||"",
+    _honey:fd.get("_honey")||""
   };
-  if(!data.name||!data.email||!data.date||!interval[0])return;
+  if(!data.name||!data.email||!data.date||!interval[0]){return;}
+  var btn=fm.querySelector(".bk-submit");
+  var oldTxt=btn.innerHTML;
+  btn.disabled=true;btn.innerHTML="Se trimite...";
   try{
+    // Download ICS local pentru client (backup)
     var ics=genICS(data);
     downloadICS(ics,"call-ivory-"+data.date+".ics");
-    // Add ICS base64 to hidden field so Andy gets it too
-    var b64=btoa(unescape(encodeURIComponent(ics)));
-    var hidden=document.createElement("input");
-    hidden.type="hidden";hidden.name="ICS_base64";hidden.value=b64;
-    fm.appendChild(hidden);
-    var link=document.createElement("input");
-    link.type="hidden";link.name="Link_ICS";
-    link.value="data:text/calendar;base64,"+b64;
-    fm.appendChild(link);
-    // Human readable reminder for Andy in email
-    var reminder=document.createElement("input");
-    reminder.type="hidden";reminder.name="_AUTO_REMINDERS";
-    reminder.value="Reminder 24h inainte + Reminder 30min inainte (incluse in .ics atasat). Salveaza fisierul .ics in calendar pentru notificari automate.";
-    fm.appendChild(reminder);
-  }catch(err){console.error("ICS gen failed:",err);}
-  // Form continues normal submit to formsubmit.co
+    // POST la worker - trimite email la ambii cu .ics atasat
+    var res=await fetch(BOOKING_ENDPOINT,{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify(data)
+    });
+    if(!res.ok)throw new Error("HTTP "+res.status);
+    // Success
+    close();
+    fm.reset();
+    var b=document.createElement("div");
+    b.style.cssText="position:fixed;top:80px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#00e0c0,#00b89c);color:#04060e;padding:1rem 1.8rem;border-radius:100px;font-family:Syne,sans-serif;font-weight:800;font-size:.88rem;z-index:99998;box-shadow:0 20px 60px rgba(0,224,192,.4);animation:bkOk .5s cubic-bezier(.2,.9,.3,1.2);max-width:90vw;text-align:center";
+    b.innerHTML="&#10003; Call confirmat! Verifica email-ul + calendarul.";
+    document.body.appendChild(b);
+    var sty=document.createElement("style");sty.textContent="@keyframes bkOk{from{opacity:0;transform:translate(-50%,-20px)}to{opacity:1;transform:translate(-50%,0)}}";document.head.appendChild(sty);
+    setTimeout(function(){b.style.transition="opacity .6s";b.style.opacity="0";setTimeout(function(){b.remove()},600);},6000);
+  }catch(err){
+    console.error("Booking failed:",err);
+    btn.innerHTML="Eroare. Incearca din nou.";
+    setTimeout(function(){btn.innerHTML=oldTxt;btn.disabled=false;},3000);
+    return;
+  }
+  btn.disabled=false;btn.innerHTML=oldTxt;
 });
-// Confirmation banner if ?booking=ok in URL
-if(location.search.indexOf("booking=ok")>-1){
-var b=document.createElement("div");
-b.style.cssText="position:fixed;top:80px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#00e0c0,#00b89c);color:#04060e;padding:1rem 1.8rem;border-radius:100px;font-family:Syne,sans-serif;font-weight:800;font-size:.88rem;z-index:99998;box-shadow:0 20px 60px rgba(0,224,192,.4);animation:bkOk .5s cubic-bezier(.2,.9,.3,1.2)";
-b.innerHTML="&#10003; Solicitare trimisa. Iti raspundem in maxim 2 ore.";
-document.body.appendChild(b);
-var sty=document.createElement("style");sty.textContent="@keyframes bkOk{from{opacity:0;transform:translate(-50%,-20px)}to{opacity:1;transform:translate(-50%,0)}}";document.head.appendChild(sty);
-setTimeout(function(){b.style.transition="opacity .6s";b.style.opacity="0";setTimeout(function(){b.remove()},600);},6000);
-history.replaceState({},"",location.pathname);
-}
+
 })();
 </script></body></html>
