@@ -480,3 +480,162 @@ if(!__MOB){(function(){
     if(!v.preload)v.preload='metadata';
   });
 })();
+
+// ========== PREMIUM FX ROUND 6 ==========
+
+// 18. PARTICLE BURST on CTA click
+(function(){
+  const burstCvs=document.createElement('canvas');
+  burstCvs.style.cssText='position:fixed;inset:0;pointer-events:none;z-index:9997;mix-blend-mode:screen';
+  document.body.appendChild(burstCvs);
+  const bctx=burstCvs.getContext('2d');
+  function brResize(){burstCvs.width=innerWidth;burstCvs.height=innerHeight}
+  brResize();addEventListener('resize',brResize);
+  const particles=[];
+  function burst(x,y,palette){
+    for(let i=0;i<32;i++){
+      const angle=Math.random()*Math.PI*2;
+      const speed=2+Math.random()*5;
+      particles.push({
+        x,y,
+        vx:Math.cos(angle)*speed,
+        vy:Math.sin(angle)*speed-2,
+        life:1,
+        size:2+Math.random()*3,
+        col:palette[Math.floor(Math.random()*palette.length)]
+      });
+    }
+  }
+  function tick(){
+    bctx.clearRect(0,0,burstCvs.width,burstCvs.height);
+    for(let i=particles.length-1;i>=0;i--){
+      const p=particles[i];
+      p.x+=p.vx;p.y+=p.vy;p.vy+=.18;p.vx*=.98;p.life-=.018;
+      if(p.life<=0){particles.splice(i,1);continue}
+      bctx.beginPath();
+      bctx.fillStyle=`rgba(${p.col},${p.life})`;
+      bctx.arc(p.x,p.y,p.size*p.life,0,Math.PI*2);
+      bctx.fill();
+    }
+    requestAnimationFrame(tick);
+  }
+  tick();
+  document.addEventListener('click',e=>{
+    const t=e.target.closest('a.bh,button.bh,a.cta,.b-peach');
+    if(!t)return;
+    const r=t.getBoundingClientRect();
+    const isPeach=t.classList.contains('b-peach');
+    const palette=isPeach?['255,154,61','255,184,107','255,228,181']:['0,224,192','125,255,230','180,255,240'];
+    burst(r.left+r.width/2,r.top+r.height/2,palette);
+  });
+})();
+
+// 19. KINETIC TYPOGRAPHY hero - word stagger reveal on slide activation
+(function(){
+  const lines=document.querySelectorAll('.prob-line');
+  lines.forEach(line=>{
+    // Wrap each word in a span (preserving inner spans like .pac/.pdm)
+    function wrapWords(node){
+      const out=document.createDocumentFragment();
+      node.childNodes.forEach(child=>{
+        if(child.nodeType===3){
+          const words=child.textContent.split(/(\s+)/);
+          words.forEach(w=>{
+            if(/^\s+$/.test(w)){out.appendChild(document.createTextNode(w))}
+            else if(w){
+              const sp=document.createElement('span');
+              sp.className='kw';
+              sp.textContent=w;
+              sp.style.cssText='display:inline-block;opacity:0;transform:translateY(20px);transition:opacity .5s,transform .5s';
+              out.appendChild(sp);
+            }
+          });
+        }else if(child.nodeType===1){
+          const clone=child.cloneNode(false);
+          clone.appendChild(wrapWords(child));
+          out.appendChild(clone);
+        }
+      });
+      return out;
+    }
+    const wrapped=wrapWords(line);
+    line.innerHTML='';
+    line.appendChild(wrapped);
+  });
+  // Watch for .act class and stagger reveal
+  const obs=new MutationObserver(muts=>{
+    muts.forEach(m=>{
+      if(m.attributeName==='class'&&m.target.classList.contains('act')){
+        const words=m.target.querySelectorAll('.kw');
+        words.forEach((w,i)=>{
+          setTimeout(()=>{w.style.opacity='1';w.style.transform='translateY(0)'},i*60);
+        });
+      }else if(m.attributeName==='class'&&!m.target.classList.contains('act')){
+        const words=m.target.querySelectorAll('.kw');
+        words.forEach(w=>{w.style.opacity='0';w.style.transform='translateY(20px)'});
+      }
+    });
+  });
+  lines.forEach(l=>obs.observe(l,{attributes:true}));
+})();
+
+// 20. MOUSE SPOTLIGHT (desktop only)
+if(!__MOB){(function(){
+  const sl=document.createElement('div');
+  sl.style.cssText='position:fixed;inset:0;pointer-events:none;z-index:4;background:radial-gradient(circle 320px at 50% 50%,rgba(0,224,192,.06),rgba(255,154,61,.03) 40%,transparent 70%);transition:background .15s linear;mix-blend-mode:screen';
+  document.body.appendChild(sl);
+  addEventListener('mousemove',e=>{
+    sl.style.background=`radial-gradient(circle 320px at ${e.clientX}px ${e.clientY}px,rgba(0,224,192,.08),rgba(255,154,61,.04) 40%,transparent 70%)`;
+  },{passive:true});
+})()}
+
+// 21. HOVER SOUND on cards (subtle micro-tone)
+(function(){
+  let hCtx=null;
+  function init(){if(!hCtx)try{hCtx=new(window.AudioContext||window.webkitAudioContext)()}catch(e){}}
+  function tone(freq){
+    init();if(!hCtx)return;
+    const t=hCtx.currentTime;
+    const o=hCtx.createOscillator(),g=hCtx.createGain();
+    o.frequency.value=freq;o.type='sine';
+    g.gain.setValueAtTime(.015,t);g.gain.exponentialRampToValueAtTime(.001,t+.15);
+    o.connect(g).connect(hCtx.destination);
+    o.start(t);o.stop(t+.15);
+  }
+  if(__MOB)return;
+  const map=[
+    {sel:'.pk',freq:440},
+    {sel:'.type-card',freq:523},
+    {sel:'.dce-item',freq:587},
+    {sel:'.faq-item',freq:392}
+  ];
+  map.forEach(m=>{
+    document.querySelectorAll(m.sel).forEach(el=>{
+      el.addEventListener('mouseenter',()=>tone(m.freq));
+    });
+  });
+})();
+
+// 22. GLASSMORPHISM NAV on scroll
+(function(){
+  const s=document.createElement('style');
+  s.textContent='nav.sc{backdrop-filter:blur(20px) saturate(1.8) !important;-webkit-backdrop-filter:blur(20px) saturate(1.8) !important;background:rgba(6,8,18,.72) !important;border-bottom:1px solid rgba(0,224,192,.18) !important;box-shadow:0 8px 40px rgba(0,0,0,.5),0 0 60px rgba(0,224,192,.05) !important}';
+  document.head.appendChild(s);
+})();
+
+// 23. SOCIAL PROOF BADGES on packages
+(function(){
+  const pks=document.querySelectorAll('.pk');
+  if(!pks.length)return;
+  const counts=[12,24,8];
+  pks.forEach((pk,i)=>{
+    if(i>=counts.length)return;
+    const badge=document.createElement('div');
+    badge.style.cssText='position:absolute;top:.7rem;right:.7rem;background:rgba(0,224,192,.12);border:1px solid rgba(0,224,192,.3);color:#7dffe6;padding:.35rem .7rem;border-radius:100px;font-family:var(--fb,DM Sans),sans-serif;font-size:.65rem;letter-spacing:.05em;backdrop-filter:blur(8px);opacity:0;transform:translateY(-6px);transition:opacity .4s,transform .4s;pointer-events:none;z-index:5;display:flex;align-items:center;gap:.35rem';
+    badge.innerHTML=`<svg width="10" height="10" viewBox="0 0 24 24" fill="#00e0c0"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> ales de ${counts[i]} antreprenori`;
+    if(getComputedStyle(pk).position==='static')pk.style.position='relative';
+    pk.appendChild(badge);
+    pk.addEventListener('mouseenter',()=>{badge.style.opacity='1';badge.style.transform='translateY(0)'});
+    pk.addEventListener('mouseleave',()=>{badge.style.opacity='0';badge.style.transform='translateY(-6px)'});
+  });
+})();
