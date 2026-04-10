@@ -278,7 +278,29 @@ footer{border-top:1px solid var(--br);padding:2.5rem;background:rgba(5,5,5,.5);b
 .proof{padding:5rem 2.5rem;border-bottom:1px solid var(--br);background:rgba(5,5,5,.3);backdrop-filter:none}.proof-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;max-width:900px;margin:0 auto;text-align:center}.proof-num{font-family:var(--fd);font-size:clamp(2.2rem,5vw,3.2rem);font-weight:800;background:linear-gradient(135deg,var(--ac),#7b2cff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-.04em;line-height:1}.proof-label{font-size:.78rem;color:var(--td);margin-top:.4rem}
 .faq-list{max-width:700px;margin:0 auto}.faq-item{border-bottom:1px solid var(--br)}.faq-q{width:100%;background:none;border:none;padding:1.5rem 0;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-family:var(--fd);font-size:1rem;font-weight:600;color:var(--t);text-align:left;letter-spacing:-.02em;transition:color .3s}.faq-q:hover{color:var(--ac)}.faq-icon{width:20px;height:20px;flex-shrink:0;transition:transform .3s var(--e)}.faq-item.open .faq-icon{transform:rotate(45deg)}.faq-a{max-height:0;overflow:hidden;transition:max-height .4s var(--e)}.faq-a-inner{padding:0 0 1.5rem;font-size:.88rem;color:var(--td);line-height:1.65}
 @media(max-width:768px){.proof-grid{grid-template-columns:1fr 1fr;gap:1.5rem}.cookie-bar{flex-direction:column;text-align:center;padding:1.2rem}}
-.s2-wrap{display:flex;align-items:center;justify-content:space-between;gap:3rem;max-width:1400px;margin:0 auto;width:100%}@media(max-width:900px){.s2-wrap{flex-direction:column !important;align-items:center !important;gap:2rem !important}.s2-content{order:1;text-align:center !important;max-width:100% !important;width:100%}.hero-video{order:2;margin:0 auto !important;width:280px !important;height:498px !important}}</style>
+.s2-wrap{display:flex;align-items:center;justify-content:space-between;gap:3rem;max-width:1400px;margin:0 auto;width:100%}@media(max-width:900px){.s2-wrap{flex-direction:column !important;align-items:center !important;gap:2rem !important}.s2-content{order:1;text-align:center !important;max-width:100% !important;width:100%}.hero-video{order:2;margin:0 auto !important;width:280px !important;height:498px !important}}@media(max-width:768px){
+  /* NAV â€” compact */
+  nav{padding:.4rem .7rem !important;min-height:52px !important;gap:.5rem !important}
+  nav .nl img{height:30px !important}
+  nav .nc{padding:.45rem .75rem !important;font-size:.68rem !important;white-space:nowrap !important;gap:.3rem !important;letter-spacing:0 !important}
+  .nc svg{width:12px !important;height:12px !important}
+  /* S2 HERO â€” text container with bg panel so readable */
+  .s2{padding:3rem 1rem 2.5rem !important;text-align:center !important;position:relative;z-index:5}
+  .s2::before{content:"";position:absolute;inset:1rem;background:radial-gradient(ellipse at center,rgba(4,6,14,.82) 0%,rgba(4,6,14,.5) 60%,transparent 100%);z-index:-1;border-radius:24px;backdrop-filter:blur(3px)}
+  .s2 h2,.s2-content h2{font-size:clamp(1.7rem,7vw,2.3rem) !important;line-height:1.08 !important;margin:0 0 1rem !important;word-break:normal !important;hyphens:none !important;max-width:94vw !important;text-align:center !important;color:#fff5e6 !important;font-weight:800 !important;letter-spacing:-.03em !important;text-shadow:0 4px 24px #000,0 0 60px rgba(0,0,0,.95) !important}
+  .s2-tag{font-size:.6rem !important;letter-spacing:.2em !important;padding:.35rem .8rem !important;margin:0 auto 1rem !important;display:inline-block !important}
+  .s2-desc,.s2 p{font-size:.88rem !important;line-height:1.5 !important;margin:0 auto 1.3rem !important;max-width:88vw !important;color:#e8e4d8 !important;text-shadow:0 2px 10px #000 !important}
+  /* CTAs â€” stack, nowrap, full width */
+  .s2-cta{flex-direction:column !important;gap:.7rem !important;width:100% !important;max-width:300px !important;margin:0 auto 1rem !important}
+  .s2-cta .bh{width:100% !important;font-size:.88rem !important;padding:.95rem 1.2rem !important;white-space:nowrap !important;justify-content:center !important}
+  .s2-cta .bh svg{flex-shrink:0}
+  /* Video */
+  .hero-video{width:240px !important;height:427px !important;margin:1rem auto 0 !important}
+  /* Fine print */
+  .s2-fineprint,.s2 .fp{font-size:.65rem !important;text-align:center !important;padding:0 1rem !important;line-height:1.5}
+  /* Reduce hero3d opacity on s2 specifically */
+  body{--s2op:1}
+}</style>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"LocalBusiness","@id":"https://i-vory.ro/#business","name":"i-Vory Creative","image":"https://i-vory.ro/logo-full.svg","url":"https://i-vory.ro","telephone":"+40775579706","priceRange":"50-5000 RON","address":{"@type":"PostalAddress","addressLocality":"București","addressCountry":"RO"},"geo":{"@type":"GeoCoordinates","latitude":44.4268,"longitude":26.1025},"sameAs":["https://www.instagram.com/ivory.creative.social.media","https://www.tiktok.com/@ivory.ro69"],"description":"Agenție de social media din București. Conținut profesional TikTok, Instagram, Reels, carusele și management complet pentru business-ul tău."},{"@type":"Service","serviceType":"Social Media Management","provider":{"@id":"https://i-vory.ro/#business"},"areaServed":{"@type":"Country","name":"România"},"hasOfferCatalog":{"@type":"OfferCatalog","name":"Pachete social media","itemListElement":[{"@type":"Offer","name":"Growing Business","priceCurrency":"RON"},{"@type":"Offer","name":"Accelerator","priceCurrency":"RON"},{"@type":"Offer","name":"Dominator","priceCurrency":"RON"}]}}]}</script></head>
 <body>
 
