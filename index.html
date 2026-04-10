@@ -381,7 +381,58 @@ footer{border-top:1px solid var(--br);padding:2.5rem;background:rgba(5,5,5,.5);b
 }
 ]
 }
-</script></head>
+</script><style>
+/* CALCULATOR */
+.calc-wrap{max-width:780px;margin:3rem auto;padding:2.5rem;background:linear-gradient(180deg,rgba(10,14,30,.8),rgba(6,8,15,.9));border:1.5px solid rgba(0,224,192,.25);border-radius:24px;backdrop-filter:blur(12px);box-shadow:0 30px 80px rgba(0,0,0,.5),0 0 60px rgba(0,224,192,.08)}
+.calc-title{font-family:var(--fd,Syne);font-size:1.6rem;font-weight:800;color:#fff5e6;text-align:center;margin:0 0 .3rem;letter-spacing:-.02em}
+.calc-sub{text-align:center;color:#a8b5c0;font-size:.85rem;margin:0 0 2rem}
+.calc-row{margin-bottom:1.5rem}
+.calc-lbl{display:flex;justify-content:space-between;font-size:.78rem;color:#d8d4c8;margin-bottom:.6rem;font-weight:600;letter-spacing:.02em}
+.calc-lbl b{color:#00e0c0;font-size:.9rem}
+.calc-slider{-webkit-appearance:none;appearance:none;width:100%;height:6px;background:rgba(255,255,255,.1);border-radius:3px;outline:none}
+.calc-slider::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#ff9a3d,#ffb86b);cursor:pointer;box-shadow:0 4px 14px rgba(255,154,61,.5);border:2px solid #fff5e6}
+.calc-slider::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#ff9a3d,#ffb86b);cursor:pointer;border:2px solid #fff5e6}
+.calc-plats{display:grid;grid-template-columns:repeat(5,1fr);gap:.6rem}
+.calc-plat{padding:.7rem .3rem;background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.1);border-radius:10px;text-align:center;cursor:pointer;transition:all .25s;font-size:.72rem;color:#a8b5c0;font-weight:600;user-select:none}
+.calc-plat.on{background:rgba(0,224,192,.12);border-color:#00e0c0;color:#fff5e6;box-shadow:0 0 0 2px rgba(0,224,192,.2)}
+.calc-toggles{display:flex;gap:.8rem;flex-wrap:wrap}
+.calc-tog{flex:1;min-width:140px;padding:.9rem;background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.1);border-radius:12px;cursor:pointer;transition:all .25s;user-select:none;display:flex;align-items:center;gap:.6rem;font-size:.8rem;color:#d8d4c8}
+.calc-tog.on{background:rgba(255,154,61,.1);border-color:#ff9a3d;color:#fff5e6}
+.calc-tog .dot{width:14px;height:14px;border-radius:50%;border:2px solid #5a6572;flex-shrink:0;transition:all .25s}
+.calc-tog.on .dot{background:#ff9a3d;border-color:#ff9a3d;box-shadow:0 0 10px rgba(255,154,61,.6)}
+.calc-result{margin-top:2rem;padding:1.8rem;background:linear-gradient(135deg,rgba(0,224,192,.08),rgba(255,154,61,.08));border:1.5px solid rgba(0,224,192,.3);border-radius:16px;text-align:center}
+.calc-price{font-family:var(--fd,Syne);font-size:3rem;font-weight:900;color:#fff5e6;line-height:1;margin:.3rem 0;letter-spacing:-.04em}
+.calc-price span{color:#ff9a3d}
+.calc-price-sub{color:#a8b5c0;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase}
+.calc-cta{display:inline-block;margin-top:1.2rem;padding:.9rem 2rem;background:linear-gradient(135deg,#ff9a3d,#ffb86b);color:#1a0a00;font-weight:800;border-radius:100px;text-decoration:none;font-family:var(--fd,Syne);font-size:.9rem;box-shadow:0 10px 30px rgba(255,154,61,.3);transition:all .3s}
+.calc-cta:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(255,154,61,.5)}
+/* CLIENT MARQUEE */
+.mq-wrap{overflow:hidden;padding:2.5rem 0;background:linear-gradient(90deg,transparent,rgba(0,224,192,.04),transparent);border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06);margin:2rem 0;position:relative}
+.mq-wrap::before,.mq-wrap::after{content:"";position:absolute;top:0;width:150px;height:100%;z-index:2;pointer-events:none}
+.mq-wrap::before{left:0;background:linear-gradient(90deg,#04060e,transparent)}
+.mq-wrap::after{right:0;background:linear-gradient(270deg,#04060e,transparent)}
+.mq-track{display:flex;gap:4rem;animation:mqScroll 40s linear infinite;width:max-content}
+.mq-item{font-family:var(--fd,Syne);font-size:1.5rem;font-weight:800;color:#fff5e6;opacity:.5;white-space:nowrap;letter-spacing:-.02em;transition:opacity .3s}
+.mq-item:hover{opacity:1;color:#00e0c0}
+@keyframes mqScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+/* CHAT WIDGET */
+.cw{position:fixed;bottom:1.5rem;right:1.5rem;z-index:9998;font-family:var(--fb,DM Sans)}
+.cw-btn{width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#25d366,#128c7e);border:none;cursor:pointer;box-shadow:0 10px 30px rgba(37,211,102,.4),0 0 0 0 rgba(37,211,102,.6);display:flex;align-items:center;justify-content:center;transition:all .3s;animation:cwPulse 2.5s ease-in-out infinite}
+.cw-btn:hover{transform:scale(1.08)}
+@keyframes cwPulse{0%,100%{box-shadow:0 10px 30px rgba(37,211,102,.4),0 0 0 0 rgba(37,211,102,.6)}50%{box-shadow:0 10px 30px rgba(37,211,102,.4),0 0 0 20px rgba(37,211,102,0)}}
+.cw-panel{position:absolute;bottom:75px;right:0;width:320px;background:linear-gradient(180deg,#0a0e1e,#06080f);border:1.5px solid rgba(0,224,192,.3);border-radius:20px;padding:1.5rem;box-shadow:0 30px 80px rgba(0,0,0,.7);opacity:0;visibility:hidden;transform:translateY(10px);transition:all .35s cubic-bezier(.2,.9,.3,1.2)}
+.cw.open .cw-panel{opacity:1;visibility:visible;transform:translateY(0)}
+.cw-hdr{display:flex;align-items:center;gap:.8rem;margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid rgba(255,255,255,.08)}
+.cw-avatar{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#00e0c0,#7b2cff);display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-weight:800;color:#04060e;font-size:1rem}
+.cw-hdr-txt{font-size:.82rem;color:#fff5e6;font-weight:700}
+.cw-hdr-txt small{display:block;color:#25d366;font-size:.68rem;font-weight:600;margin-top:2px}
+.cw-hdr-txt small::before{content:"";display:inline-block;width:6px;height:6px;background:#25d366;border-radius:50%;margin-right:5px;animation:cwDot 1.5s infinite}
+@keyframes cwDot{0%,100%{opacity:1}50%{opacity:.3}}
+.cw-msg{font-size:.82rem;color:#d8d4c8;line-height:1.5;margin-bottom:1rem;padding:.8rem;background:rgba(255,255,255,.04);border-radius:12px}
+.cw-go{display:block;width:100%;padding:.85rem;background:linear-gradient(135deg,#25d366,#128c7e);color:#fff;text-align:center;border-radius:12px;text-decoration:none;font-weight:700;font-size:.82rem;transition:all .3s}
+.cw-go:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(37,211,102,.4)}
+@media(max-width:768px){.cw,.calc-wrap,.mq-wrap{display:none !important}}
+</style></head>
 <body>
 
 <!-- ========== GRADIENT BLOBS BACKGROUND ========== -->
@@ -449,7 +500,70 @@ footer{border-top:1px solid var(--br);padding:2.5rem;background:rgba(5,5,5,.5);b
 
 <section class="sec" id="pachete" style="background:rgba(3,3,9,.82);backdrop-filter:none;border-top:1px solid var(--br);border-bottom:1px solid var(--br)"><div class="si"><div class="rv" style="text-align:center;margin-bottom:1.5rem"><div class="lb" style="justify-content:center">Pachete cu management</div><h2 class="sh">Alege un pachet.<br>Noi facem restul.</h2><p class="ss" style="margin-left:auto;margin-right:auto">Postăm pe toate platformele, în fiecare zi. Management complet, tu te ocupi de business.</p></div>
 <div class="consult-banner rv rd1"><p>Primul call de consultanță de <span>30 minute</span> este gratuit.</p><small>Discutăm ce ai nevoie, fără obligații.</small><br><a href="https://calendly.com/ivorymarketing2/30min" target="_blank" class="bh" style="margin-top:1rem;font-size:.82rem;display:inline-flex">Programează call gratuit →</a></div>
-<div class="pg">
+<div class="calc-wrap rv">
+<h3 class="calc-title">Calculator preÈ› instant</h3>
+<p class="calc-sub">ConfigureazÄƒ pachetul tÄƒu È™i vezi preÈ›ul Ã®n timp real</p>
+<div class="calc-row">
+<div class="calc-lbl"><span>PostÄƒri pe lunÄƒ</span><b id="calcPosts">15</b></div>
+<input type="range" class="calc-slider" id="sldPosts" min="0" max="60" value="15" step="1">
+</div>
+<div class="calc-row">
+<div class="calc-lbl"><span>Videoclipuri pe lunÄƒ</span><b id="calcVids">4</b></div>
+<input type="range" class="calc-slider" id="sldVids" min="0" max="20" value="4" step="1">
+</div>
+<div class="calc-row">
+<div class="calc-lbl"><span>Platforme</span><b id="calcPlatsN">4</b></div>
+<div class="calc-plats" id="calcPlats">
+<div class="calc-plat on" data-p="tt">TikTok</div>
+<div class="calc-plat on" data-p="ig">Instagram</div>
+<div class="calc-plat on" data-p="fb">Facebook</div>
+<div class="calc-plat on" data-p="yt">YouTube</div>
+<div class="calc-plat" data-p="li">LinkedIn</div>
+</div>
+</div>
+<div class="calc-row">
+<div class="calc-lbl"><span>Extra</span></div>
+<div class="calc-toggles">
+<div class="calc-tog" id="togMgmt"><span class="dot"></span>Management complet</div>
+<div class="calc-tog" id="togStrat"><span class="dot"></span>Strategie lunarÄƒ</div>
+</div>
+</div>
+<div class="calc-result">
+<div class="calc-price-sub">Total estimat</div>
+<div class="calc-price"><span id="calcTotal">1.250</span> RON<span style="color:#a8b5c0;font-size:1.2rem">/lunÄƒ</span></div>
+<div class="calc-price-sub" style="color:#a8b5c0">TVA inclus Â· plata lunarÄƒ</div>
+<a href="https://api.whatsapp.com/send/?phone=40775579706&text=Salut%2C%20am%20calculat%20un%20pachet%20pe%20site%20si%20vreau%20oferta." target="_blank" class="calc-cta">Vreau oferta personalizatÄƒ â†’</a>
+</div>
+</div>
+<div class="mq-wrap"><div class="mq-track" id="mqTrack"></div></div>
+<script>
+(function(){
+var mq=document.getElementById("mqTrack");
+if(mq){var items=["Dr. Iorga Â· Dental","Av. Popa-Alexandru","Dr. Ghibu Â· Medical","UrbanCat","Credence","i-Vory Studio","Content Factory","Premium Brands"];var html=items.map(function(i){return '<div class="mq-item">'+i+'</div>'}).join("");mq.innerHTML=html+html;}
+var sp=document.getElementById("sldPosts"),sv=document.getElementById("sldVids"),cp=document.getElementById("calcPosts"),cv=document.getElementById("calcVids"),ct=document.getElementById("calcTotal"),cpn=document.getElementById("calcPlatsN"),tm=document.getElementById("togMgmt"),ts=document.getElementById("togStrat");
+if(!sp)return;
+var state={posts:15,vids:4,plats:4,mgmt:false,strat:false};
+function fmt(n){return n.toLocaleString("ro-RO").replace(/,/g,".")}
+function calc(){
+  var base=state.posts*50+state.vids*400;
+  var platMul=1+(state.plats-1)*.15;
+  base*=platMul;
+  if(state.mgmt)base+=1500;
+  if(state.strat)base+=800;
+  if(state.posts>=30||state.vids>=8)base*=.85;
+  var total=Math.round(base/10)*10;
+  var cur=parseInt((ct.textContent||"0").replace(/\./g,""));
+  var diff=total-cur,steps=20,i=0;
+  var iv=setInterval(function(){i++;var val=cur+Math.round(diff*(i/steps));ct.textContent=fmt(val);if(i>=steps){ct.textContent=fmt(total);clearInterval(iv)}},15);
+}
+sp.addEventListener("input",function(){state.posts=+sp.value;cp.textContent=state.posts;calc()});
+sv.addEventListener("input",function(){state.vids=+sv.value;cv.textContent=state.vids;calc()});
+document.querySelectorAll(".calc-plat").forEach(function(el){el.addEventListener("click",function(){el.classList.toggle("on");state.plats=document.querySelectorAll(".calc-plat.on").length||1;cpn.textContent=state.plats;calc()})});
+tm.addEventListener("click",function(){tm.classList.toggle("on");state.mgmt=tm.classList.contains("on");calc()});
+ts.addEventListener("click",function(){ts.classList.toggle("on");state.strat=ts.classList.contains("on");calc()});
+calc();
+})();
+</script><div class="pg">
 <div class="pk rv rd1"><div class="pk-name">All In</div><div class="pk-tag">Prezență zilnică, efort zero.</div><div class="pk-price">3.000</div><div class="pk-sub">RON pe lună fără TVA</div><div class="pk-eur">~600 EUR</div><div class="pk-save">Economie ~40%</div><div class="pk-sl">Postări</div><ul class="pk-features"><li><strong>1 postare pe zi</strong> (1-2 slides pe diverse teme, carusele)</li><li><strong>1 story pe zi</strong></li></ul><div class="pk-sl">Videoclipuri</div><ul class="pk-features"><li><strong>1 videoclip pe săptămână</strong></li></ul><div class="pk-sl">Management</div><ul class="pk-features"><li><strong>4 platforme:</strong> TikTok, Instagram, Facebook, YouTube</li><li>Management complet cu scheduling</li><li>Calendar editorial lunar</li></ul><div class="pk-consult">Consultanță inclusă</div><a href="https://api.whatsapp.com/send/?phone=40775579706&text=Salut%2C%20m%C4%83%20intereseaz%C4%83%20pachetul%20All%20In." class="pk-btn pk-o" target="_blank">Vreau All In</a></div>
 <div class="pk ft rv rd2"><div class="pk-badge">Recomandat</div><div class="pk-name">Growing Business</div><div class="pk-tag">Tot ce include All In, la alt nivel.</div><div class="pk-price">5.000</div><div class="pk-sub">RON pe lună fără TVA</div><div class="pk-eur">~1.000 EUR</div><div class="pk-save">Economie ~60%</div><div class="pk-sl">Postări</div><ul class="pk-features"><li><strong>2 postări pe zi</strong> (1 video obligatoriu)</li><li><strong>3 stories pe zi</strong></li></ul><div class="pk-sl">Videoclipuri</div><ul class="pk-features"><li><strong>3 videoclipuri pe săptămână</strong></li></ul><div class="pk-sl">Management</div><ul class="pk-features"><li><strong>4 platforme:</strong> TikTok, Instagram, Facebook, YouTube</li><li>Management complet cu scheduling</li><li>Trend tracking</li><li>Raport lunar de performanță</li></ul><div class="pk-consult">Consultanță inclusă</div><a href="https://api.whatsapp.com/send/?phone=40775579706&text=Salut%2C%20m%C4%83%20intereseaz%C4%83%20pachetul%20Growing%20Business." class="pk-btn pk-f" target="_blank">Vreau Growing Business</a></div>
 <div class="pk pk-sc rv rd3"><div class="pk-badge pk-badge-gold">Maximum</div><div class="pk-name">Scale Mode</div><div class="pk-tag">Bulk invader. Imposibil de ignorat.</div><div class="pk-price">10.000</div><div class="pk-sub">RON pe lună fără TVA</div><div class="pk-eur">~2.000 EUR</div><div class="pk-save">Economie ~68%</div><div class="pk-sl">Postări</div><ul class="pk-features"><li><strong>5 postări pe zi</strong> (2 video, 3 static sau carusel)</li><li><strong>5 stories pe zi</strong></li></ul><div class="pk-sl">Videoclipuri</div><ul class="pk-features"><li><strong>1 videoclip pe zi</strong></li></ul><div class="pk-sl">Management</div><ul class="pk-features"><li><strong>4 platforme</strong> cu YouTube Shorts dedicat</li><li>Management complet cu scheduling și analytics</li><li>A/B testing pe hooks</li><li>Raport bi-lunar cu strategie</li></ul><div class="pk-consult">Consultanță inclusă cu strategie lunară</div><a href="https://api.whatsapp.com/send/?phone=40775579706&text=Salut%2C%20m%C4%83%20intereseaz%C4%83%20pachetul%20Scale%20Mode." class="pk-btn pk-gold" target="_blank">Vreau Scale Mode</a></div></div>
@@ -1307,5 +1421,35 @@ fm.addEventListener("submit",async function(e){
   btn.disabled=false;btn.innerHTML=oldTxt;
 });
 
+})();
+</script><div class="cw" id="cw">
+<div class="cw-panel">
+<div class="cw-hdr">
+<div class="cw-avatar">iV</div>
+<div class="cw-hdr-txt">i-vory Creative<small>Online Â· rÄƒspundem Ã®n ~2 min</small></div>
+</div>
+<div class="cw-msg">Salut! ÃŽÈ›i rÄƒspundem direct pe WhatsApp. Spune-ne ce te intereseazÄƒ È™i primeÈ™ti ofertÄƒ Ã®n cÃ¢teva minute.</div>
+<a href="#" class="cw-go" id="cwGo">Deschide WhatsApp â†’</a>
+</div>
+<button class="cw-btn" id="cwBtn" aria-label="Chat"><svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.38 5.07L2 22l5.07-1.38C8.42 21.5 10.15 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.5 14.5c-.25.7-1.4 1.3-2 1.4-.5.1-1.15.15-3.3-.7-2.8-1.1-4.6-4-4.75-4.2-.15-.2-1.15-1.5-1.15-2.85s.7-2 .95-2.3c.25-.3.55-.35.75-.35h.55c.15 0 .4-.05.6.45s.7 1.7.75 1.85c.05.15.1.3 0 .5s-.15.3-.3.45c-.15.15-.3.35-.45.45-.15.15-.3.3-.15.6.15.3.7 1.15 1.5 1.85 1.05.9 1.95 1.2 2.25 1.35.3.15.45.1.65-.05.2-.15.75-.85.95-1.15.2-.3.4-.25.65-.15.25.1 1.65.8 1.95.95.3.15.5.2.55.3.1.15.1.55-.15 1.2z"/></svg></button>
+</div>
+<script>
+(function(){
+var cw=document.getElementById("cw"),btn=document.getElementById("cwBtn"),go=document.getElementById("cwGo");
+if(!cw)return;
+btn.addEventListener("click",function(e){e.stopPropagation();cw.classList.toggle("open")});
+document.addEventListener("click",function(e){if(!cw.contains(e.target))cw.classList.remove("open")});
+go.addEventListener("click",function(e){
+  e.preventDefault();
+  var sec="pagina";
+  var els=document.querySelectorAll("section[id],section.s2,.prob");
+  var mid=window.scrollY+window.innerHeight/2;
+  els.forEach(function(el){var r=el.getBoundingClientRect();var top=r.top+window.scrollY;if(mid>=top&&mid<=top+r.height){sec=el.id||el.className.split(" ")[0]||"pagina"}});
+  var labels={"servicii":"servicii","pachete":"pachete","portofoliu":"portofoliu","faq":"o intrebare din FAQ","contact":"contact","s2":"pagina principala","prob":"inceputul paginii"};
+  var l=labels[sec]||sec;
+  var msg="Salut! Vin din sectiunea "+l+" de pe i-vory.ro si as vrea sa stiu mai multe.";
+  window.open("https://wa.me/40775579706?text="+encodeURIComponent(msg),"_blank");
+  cw.classList.remove("open");
+});
 })();
 </script></body></html>
