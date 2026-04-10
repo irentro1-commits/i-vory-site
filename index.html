@@ -554,7 +554,7 @@ footer{border-top:1px solid var(--br);padding:2.5rem;background:rgba(5,5,5,.5);b
 <div class="consult-banner rv rd1"><p>Primul call de consultanță de <span>30 minute</span> este gratuit.</p><small>Discutăm ce ai nevoie, fără obligații.</small><br><a href="https://calendly.com/ivorymarketing2/30min" target="_blank" class="bh" style="margin-top:1rem;font-size:.82rem;display:inline-flex">Programează call gratuit →</a></div>
 <div class="calc-wrap rv">
 <h3 class="calc-title">Calculator preÈ› instant</h3>
-<p class="calc-sub">ConfigureazÄƒ pachetul tÄƒu È™i vezi preÈ›ul Ã®n timp real</p>
+<p class="calc-sub">ConfigureazÄƒ pachetul tÄƒu. PreÈ›uri promoÈ›ionale Â· volum discount pÃ¢nÄƒ la -22%</p>
 <div class="calc-row">
 <div class="calc-lbl"><span>PostÄƒri pe lunÄƒ</span><b id="calcPosts">15</b></div>
 <input type="range" class="calc-slider" id="sldPosts" min="0" max="60" value="15" step="1">
@@ -576,14 +576,14 @@ footer{border-top:1px solid var(--br);padding:2.5rem;background:rgba(5,5,5,.5);b
 <div class="calc-row">
 <div class="calc-lbl"><span>Extra</span></div>
 <div class="calc-toggles">
-<div class="calc-tog" id="togMgmt"><span class="dot"></span>Management complet</div>
-<div class="calc-tog" id="togStrat"><span class="dot"></span>Strategie lunarÄƒ</div>
+<div class="calc-tog on" id="togStrat"><span class="dot"></span>Strategie + analytics inclus</div>
+<div class="calc-tog" id="togRush"><span class="dot"></span>Livrare prioritarÄƒ 24h</div>
 </div>
 </div>
 <div class="calc-result">
 <div class="calc-price-sub">Total estimat</div>
 <div class="calc-price"><span id="calcTotal">1.250</span> RON<span style="color:#a8b5c0;font-size:1.2rem">/lunÄƒ</span></div>
-<div class="calc-price-sub" style="color:#a8b5c0">TVA inclus Â· plata lunarÄƒ</div>
+<div class="calc-price-sub" style="color:#00e0c0;font-weight:700">âœ“ Economie pÃ¢nÄƒ la 40% vs agenÈ›iile clasice</div><div class="calc-price-sub" style="color:#a8b5c0">preÈ› promoÈ›ional Â· plata lunarÄƒ</div>
 <a href="https://api.whatsapp.com/send/?phone=40775579706&text=Salut%2C%20am%20calculat%20un%20pachet%20pe%20site%20si%20vreau%20oferta." target="_blank" class="calc-cta">Vreau oferta personalizatÄƒ â†’</a>
 </div>
 </div>
@@ -592,18 +592,19 @@ footer{border-top:1px solid var(--br);padding:2.5rem;background:rgba(5,5,5,.5);b
 (function(){
 var mq=document.getElementById("mqTrack");
 if(mq){var items=["Dr. Iorga Â· Dental","Av. Popa-Alexandru","Dr. Ghibu Â· Medical","UrbanCat","Credence","i-Vory Studio","Content Factory","Premium Brands"];var html=items.map(function(i){return '<div class="mq-item">'+i+'</div>'}).join("");mq.innerHTML=html+html;}
-var sp=document.getElementById("sldPosts"),sv=document.getElementById("sldVids"),cp=document.getElementById("calcPosts"),cv=document.getElementById("calcVids"),ct=document.getElementById("calcTotal"),cpn=document.getElementById("calcPlatsN"),tm=document.getElementById("togMgmt"),ts=document.getElementById("togStrat");
+var sp=document.getElementById("sldPosts"),sv=document.getElementById("sldVids"),cp=document.getElementById("calcPosts"),cv=document.getElementById("calcVids"),ct=document.getElementById("calcTotal"),cpn=document.getElementById("calcPlatsN"),ts=document.getElementById("togStrat"),tr=document.getElementById("togRush");
 if(!sp)return;
-var state={posts:15,vids:4,plats:4,mgmt:false,strat:false};
+var state={posts:15,vids:4,plats:4,strat:true,rush:false};
 function fmt(n){return n.toLocaleString("ro-RO").replace(/,/g,".")}
 function calc(){
-  var base=state.posts*50+state.vids*400;
-  var platMul=1+(state.plats-1)*.15;
+  var base=state.posts*35+state.vids*280;
+  var platMul=1+(state.plats-1)*.08;
   base*=platMul;
-  if(state.mgmt)base+=1500;
-  if(state.strat)base+=800;
-  if(state.posts>=30||state.vids>=8)base*=.85;
+  if(state.rush)base*=1.2;
+  if(state.posts>=20||state.vids>=6)base*=.78;
+  if(state.posts>=30||state.vids>=10)base*=.88;
   var total=Math.round(base/10)*10;
+  if(total<450)total=450;
   var cur=parseInt((ct.textContent||"0").replace(/\./g,""));
   var diff=total-cur,steps=20,i=0;
   var iv=setInterval(function(){i++;var val=cur+Math.round(diff*(i/steps));ct.textContent=fmt(val);if(i>=steps){ct.textContent=fmt(total);clearInterval(iv)}},15);
@@ -611,8 +612,8 @@ function calc(){
 sp.addEventListener("input",function(){state.posts=+sp.value;cp.textContent=state.posts;calc()});
 sv.addEventListener("input",function(){state.vids=+sv.value;cv.textContent=state.vids;calc()});
 document.querySelectorAll(".calc-plat").forEach(function(el){el.addEventListener("click",function(){el.classList.toggle("on");state.plats=document.querySelectorAll(".calc-plat.on").length||1;cpn.textContent=state.plats;calc()})});
-tm.addEventListener("click",function(){tm.classList.toggle("on");state.mgmt=tm.classList.contains("on");calc()});
 ts.addEventListener("click",function(){ts.classList.toggle("on");state.strat=ts.classList.contains("on");calc()});
+tr.addEventListener("click",function(){tr.classList.toggle("on");state.rush=tr.classList.contains("on");calc()});
 calc();
 })();
 </script><div class="pg">
@@ -622,7 +623,7 @@ calc();
 <div class="pk-custom rv rd4"><p>Ai nevoie de altceva? <strong>Facem oferte personalizate.</strong><br>Spune-ne ce vrei și construim un pachet pe măsura business-ului tău.</p><a href="https://api.whatsapp.com/send/?phone=40775579706&text=Salut%2C%20vreau%20o%20ofert%C4%83%20personalizat%C4%83." class="bh" target="_blank" style="font-size:.82rem">Cere o ofertă personalizată <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></div></section>
 
 <section class="sec" id="portofoliu"><div class="si"><div class="rv"><div class="lb">Portofoliu</div><h2 class="sh">Ce iese din studio.</h2><p class="ss">Fiecare brand e diferit. Fiecare postare e custom.</p></div>
-<div class="pf-tabs rv rd1"><div class="pf-tab active" data-tab="urbancat">UrbanCat</div><div class="pf-tab" data-tab="ivory">i-Vory Creative</div><div class="pf-tab" data-tab="ghibu">Dr. Nicolae Ghibu</div><div class="pf-tab" data-tab="popa">Av. Andreas Popa</div></div>
+<div class="pf-tabs rv rd1"><div class="pf-tab active" data-tab="urbancat">UrbanCat</div><div class="pf-tab" data-tab="ivory">i-Vory Creative</div><div class="pf-tab" data-tab="ghibu">Dr. Nicolae Ghiba</div><div class="pf-tab" data-tab="popa">Av. Andreas Popa</div></div>
 <div class="pf-panel active" id="pf-urbancat"><div class="pf-sub rv">Carusel</div><div class="pf-grid"><div class="pf-img rv rd1"><img src="portofoliu/urbancat-carousel-1.jpg" alt="UrbanCat carusel slide 1" loading="lazy"></div><div class="pf-img rv rd2"><img src="portofoliu/urbancat-carousel-2.jpg" alt="UrbanCat carusel slide 2" loading="lazy"></div><div class="pf-img rv rd3"><img src="portofoliu/urbancat-carousel-3.jpg" alt="UrbanCat carusel slide 3" loading="lazy"></div><div class="pf-img rv rd4"><img src="portofoliu/urbancat-carousel-4.jpg" alt="UrbanCat carusel slide 4" loading="lazy"></div><div class="pf-img rv rd5"><img src="portofoliu/urbancat-carousel-5.jpg" alt="UrbanCat carusel slide 5" loading="lazy"></div><div class="pf-img rv rd6"><img src="portofoliu/urbancat-carousel-6.jpg" alt="UrbanCat carusel slide 6" loading="lazy"></div></div><div class="pf-sub rv">Postări</div><div class="pf-grid"><div class="pf-img rv rd1"><img src="portofoliu/urbancat-post-1.jpg" alt="UrbanCat postare emotionala" loading="lazy"></div><div class="pf-img rv rd2"><img src="portofoliu/urbancat-post-2.jpg" alt="UrbanCat postare emotionala" loading="lazy"></div></div></div>
 <div class="pf-panel" id="pf-ivory"><div class="pf-sub rv">Carusel</div><div class="pf-grid"><div class="pf-img rv rd1"><img src="portofoliu/ivory-carousel-1.jpg" alt="i-Vory Creative carusel slide 1" loading="lazy"></div><div class="pf-img rv rd2"><img src="portofoliu/ivory-carousel-2.jpg" alt="i-Vory Creative carusel slide 2" loading="lazy"></div><div class="pf-img rv rd3"><img src="portofoliu/ivory-carousel-3.jpg" alt="i-Vory Creative carusel slide 3" loading="lazy"></div><div class="pf-img rv rd4"><img src="portofoliu/ivory-carousel-4.jpg" alt="i-Vory Creative carusel slide 4" loading="lazy"></div><div class="pf-img rv rd5"><img src="portofoliu/ivory-carousel-5.jpg" alt="i-Vory Creative carusel slide 5" loading="lazy"></div><div class="pf-img rv rd6"><img src="portofoliu/ivory-carousel-6.jpg" alt="i-Vory Creative carusel slide 6" loading="lazy"></div><div class="pf-img rv rd1"><img src="portofoliu/ivory-carousel-7.jpg" alt="i-Vory Creative carusel slide 7" loading="lazy"></div></div><div class="pf-sub rv">Postări</div><div class="pf-grid"><div class="pf-img rv rd1"><img src="portofoliu/ivory-post-1.jpg" alt="i-Vory Creative postare 1" loading="lazy"></div><div class="pf-img rv rd2"><img src="portofoliu/ivory-post-2.jpg" alt="i-Vory Creative postare 2" loading="lazy"></div><div class="pf-img rv rd3"><img src="portofoliu/ivory-post-3.jpg" alt="i-Vory Creative postare 3" loading="lazy"></div><div class="pf-img rv rd4"><img src="portofoliu/ivory-post-4.jpg" alt="i-Vory Creative postare 4" loading="lazy"></div><div class="pf-img rv rd5"><img src="portofoliu/ivory-post-5.jpg" alt="i-Vory Creative postare 5" loading="lazy"></div><div class="pf-img rv rd6"><img src="portofoliu/ivory-post-6.jpg" alt="i-Vory Creative postare 6" loading="lazy"></div></div></div>
 <div class="pf-panel" id="pf-ghibu"><div class="pf-sub rv">Carusel</div><div class="pf-grid"><div class="pf-img rv rd1"><img src="portofoliu/ghibu-carousel-2.jpg" alt="Dr Nicolae Ghibu carusel slide 1" loading="lazy"></div><div class="pf-img rv rd2"><img src="portofoliu/ghibu-carousel-3.jpg" alt="Dr Nicolae Ghibu carusel slide 2" loading="lazy"></div><div class="pf-img rv rd3"><img src="portofoliu/ghibu-carousel-4.jpg" alt="Dr Nicolae Ghibu carusel slide 3" loading="lazy"></div><div class="pf-img rv rd4"><img src="portofoliu/ghibu-carousel-5.jpg" alt="Dr Nicolae Ghibu carusel slide 4" loading="lazy"></div><div class="pf-img rv rd5"><img src="portofoliu/ghibu-carousel-6.jpg" alt="Dr Nicolae Ghibu carusel slide 5" loading="lazy"></div><div class="pf-img rv rd6"><img src="portofoliu/ghibu-carousel-7.jpg" alt="Dr Nicolae Ghibu carusel slide 6" loading="lazy"></div><div class="pf-img rv rd1"><img src="portofoliu/ghibu-carousel-1.jpg" alt="Dr Nicolae Ghibu carusel slide 7" loading="lazy"></div></div><div class="pf-sub rv">Postări</div><div class="pf-grid"><div class="pf-img rv rd1"><img src="portofoliu/ghibu-post-1.jpg" alt="Dr Nicolae Ghibu postare" loading="lazy"></div></div></div>
@@ -1589,8 +1590,8 @@ fm.addEventListener("submit",async function(e){
 <div class="tc-wrap rv">
 <div class="tc-head"><div class="tc-eyebrow">Ce spun clientii</div><h3 class="tc-title">Rezultate reale, nu template-uri</h3></div>
 <div class="tc-track">
-<div class="tc-card" data-cs="ghibu"><video muted loop playsinline preload="none" poster="og-image.jpg"></video><div class="tc-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="#04060e"><polygon points="5 3 19 12 5 21"/></svg></div><div class="tc-info"><div class="tc-name">Dr. Nicolae Ghibu</div><div class="tc-role">Medical Educational</div></div></div>
-<div class="tc-card" data-cs="iorga"><video muted loop playsinline preload="none" poster="og-image.jpg"></video><div class="tc-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="#04060e"><polygon points="5 3 19 12 5 21"/></svg></div><div class="tc-info"><div class="tc-name">Dr. Iorga Bogdan</div><div class="tc-role">Dental Clinic</div></div></div>
+<div class="tc-card" data-cs="ghibu"><video muted loop playsinline preload="none" poster="og-image.jpg"></video><div class="tc-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="#04060e"><polygon points="5 3 19 12 5 21"/></svg></div><div class="tc-info"><div class="tc-name">Dr. Nicolae Ghiba</div><div class="tc-role">Medical Educational</div></div></div>
+<div class="tc-card" data-cs="iorga"><video muted loop playsinline preload="none" poster="og-image.jpg"></video><div class="tc-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="#04060e"><polygon points="5 3 19 12 5 21"/></svg></div><div class="tc-info"><div class="tc-name">Dr. Iorga Bogdan Nicolae</div><div class="tc-role">Dental Clinic</div></div></div>
 <div class="tc-card" data-cs="popa"><video muted loop playsinline preload="none" poster="og-image.jpg"></video><div class="tc-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="#04060e"><polygon points="5 3 19 12 5 21"/></svg></div><div class="tc-info"><div class="tc-name">Av. Popa-Alexandru</div><div class="tc-role">Criminal Law</div></div></div>
 </div>
 </div>
@@ -1600,8 +1601,8 @@ fm.addEventListener("submit",async function(e){
 <script>
 (function(){
 var cases={
-"ghibu":{eyebrow:"Case study Â· Medical",title:"Dr. Nicolae Ghibu",sub:"Continut educational medical pe TikTok si Instagram. De la 0 la 25K followers in 4 luni.",stats:[["+24.8K","Followers noi"],["1.2M","Views totale"],["14%","Engagement rate"]],challenge:"Domeniul medical e strict reglementat - zero spatiu pentru clickbait. Dr. Ghibu avea cunostinte valoroase dar zero prezenta online.",solution:"Am construit un sistem de carusele educationale + reels scurte cu explicatii accesibile, pastrand tonul profesional. Fiecare postare raspunde unei intrebari reale a pacientilor.",result:"In 4 luni, contul a devenit referinta in nisa. Pacienti noi mentioneaza direct TikTok-ul la programari.",quote:"Nu credeam ca social media poate sa functioneze pentru cabinetul meu. Acum primesc intrebari de la pacienti din intreaga tara.",author:"Dr. Nicolae Ghibu"},
-"iorga":{eyebrow:"Case study Â· Dental",title:"Dr. Iorga Bogdan",sub:"Rebranding social media pentru clinica stomatologica. Focus pe incredere si transparenta.",stats:[["+18.5K","Followers noi"],["780K","Views totale"],["9.2%","Engagement rate"]],challenge:"Piata dentara e saturata de reclame agresive si before/after fara context. Dr. Iorga voia o abordare educationala, fara presiune de vanzare.",solution:"Strategie bazata pe content educational: mituri despre dinti, ingrijire corecta, explicatii pentru proceduri complexe. Zero clickbait, totul cu tonul unui doctor real.",result:"Programari dublate in 3 luni. Pacientii vin deja informati si increzatori.",quote:"i-vory au inteles ca vreau sa construiesc relatie, nu doar sa umplu agenda. Fiecare pacient nou ne spune ca ne-a vazut pe TikTok.",author:"Dr. Iorga Bogdan"},
+"ghibu":{eyebrow:"Case study Â· Medical",title:"Dr. Nicolae Ghiba",sub:"Continut educational medical pe TikTok si Instagram. De la 0 la 25K followers in 4 luni.",stats:[["+24.8K","Followers noi"],["1.2M","Views totale"],["14%","Engagement rate"]],challenge:"Domeniul medical e strict reglementat - zero spatiu pentru clickbait. Dr. Ghibu avea cunostinte valoroase dar zero prezenta online.",solution:"Am construit un sistem de carusele educationale + reels scurte cu explicatii accesibile, pastrand tonul profesional. Fiecare postare raspunde unei intrebari reale a pacientilor.",result:"In 4 luni, contul a devenit referinta in nisa. Pacienti noi mentioneaza direct TikTok-ul la programari.",quote:"Nu credeam ca social media poate sa functioneze pentru cabinetul meu. Acum primesc intrebari de la pacienti din intreaga tara.",author:"Dr. Nicolae Ghiba"},
+"iorga":{eyebrow:"Case study Â· Dental",title:"Dr. Iorga Bogdan Nicolae",sub:"Rebranding social media pentru clinica stomatologica. Focus pe incredere si transparenta.",stats:[["+18.5K","Followers noi"],["780K","Views totale"],["9.2%","Engagement rate"]],challenge:"Piata dentara e saturata de reclame agresive si before/after fara context. Dr. Iorga voia o abordare educationala, fara presiune de vanzare.",solution:"Strategie bazata pe content educational: mituri despre dinti, ingrijire corecta, explicatii pentru proceduri complexe. Zero clickbait, totul cu tonul unui doctor real.",result:"Programari dublate in 3 luni. Pacientii vin deja informati si increzatori.",quote:"i-vory au inteles ca vreau sa construiesc relatie, nu doar sa umplu agenda. Fiecare pacient nou ne spune ca ne-a vazut pe TikTok.",author:"Dr. Iorga Bogdan Nicolae"},
 "popa":{eyebrow:"Case study Â· Legal",title:"Av. Andreas Popa-Alexandru",sub:"Content juridic accesibil pentru avocat specializat in drept penal. Traffic organic catre site-ul casei de avocatura.",stats:[["+12.3K","Followers noi"],["540K","Views totale"],["+210%","Consultatii noi"]],challenge:"Dreptul penal e un subiect sensibil. Trebuia content educativ fara sa para ca incurajeaza infractiuni sau fara sa banalizeze procese.",solution:"Format Q&A scurt: drepturile tale in fata politiei, ce sa faci la audiere, cum functioneaza un proces penal. Ton calm, profesionist, zero senzationalism.",result:"Devenit una dintre cele mai urmarite pagini juridice din Romania pentru public non-juridic.",quote:"Oamenii vin la mine cu intrebari din TikTok. E primul lucru pe care il mentioneaza dupa 'buna ziua'.",author:"Av. Andreas Popa-Alexandru"}};
 
 function open(k){var c=cases[k];if(!c)return;
