@@ -225,3 +225,152 @@ if(!__MOB){(function(){
   }
   trailTick();
 })()}
+
+// ========== PREMIUM FX ROUND 4 — 2026 ==========
+
+// 7. ANIMATED NUMBER COUNTERS with cinematic easing
+(function(){
+  const nums=document.querySelectorAll('.proof-num,[data-count]');
+  if(!nums.length)return;
+  const obs=new IntersectionObserver((entries)=>{
+    entries.forEach(en=>{
+      if(!en.isIntersecting||en.target.dataset.counted)return;
+      en.target.dataset.counted='1';
+      const el=en.target;
+      const txt=el.textContent.trim();
+      const match=txt.match(/^([^\d]*)(\d+(?:[.,]\d+)?)(.*)$/);
+      if(!match)return;
+      const prefix=match[1],end=parseFloat(match[2].replace(',','.')),suffix=match[3];
+      const dur=1800,start=performance.now();
+      function tick(t){
+        const p=Math.min((t-start)/dur,1);
+        const eased=1-Math.pow(1-p,3.5);
+        const val=end*eased;
+        el.textContent=prefix+(end%1===0?Math.round(val):val.toFixed(1))+suffix;
+        if(p<1)requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+      obs.unobserve(el);
+    });
+  },{threshold:.4});
+  nums.forEach(n=>obs.observe(n));
+})();
+
+// 8. TEXT SCRAMBLE EFFECT on headings
+(function(){
+  const chars='!<>-_\\/[]{}—=+*^?#________';
+  class Scramble{
+    constructor(el){this.el=el;this.original=el.textContent;this.queue=[];this.frame=0;this.frameReq=0}
+    set(newText){
+      const old=this.el.textContent,len=Math.max(old.length,newText.length);
+      this.queue=[];
+      for(let i=0;i<len;i++){
+        const from=old[i]||'',to=newText[i]||'';
+        const start=Math.floor(Math.random()*20),end=start+Math.floor(Math.random()*20);
+        this.queue.push({from,to,start,end,char:''});
+      }
+      cancelAnimationFrame(this.frameReq);
+      this.frame=0;this.update();
+    }
+    update(){
+      let output='',complete=0;
+      for(let i=0;i<this.queue.length;i++){
+        const q=this.queue[i];
+        if(this.frame>=q.end){complete++;output+=q.to}
+        else if(this.frame>=q.start){
+          if(!q.char||Math.random()<.28)q.char=chars[Math.floor(Math.random()*chars.length)];
+          output+=`<span style="color:#00e0c0;opacity:.7">${q.char}</span>`;
+        }else output+=q.from;
+      }
+      this.el.innerHTML=output;
+      if(complete<this.queue.length){this.frameReq=requestAnimationFrame(()=>this.update());this.frame++}
+    }
+  }
+  const obs=new IntersectionObserver((entries)=>{
+    entries.forEach(en=>{
+      if(!en.isIntersecting||en.target.dataset.scrambled)return;
+      en.target.dataset.scrambled='1';
+      const s=new Scramble(en.target);
+      const orig=en.target.textContent;
+      en.target.textContent='';
+      setTimeout(()=>s.set(orig),120);
+      obs.unobserve(en.target);
+    });
+  },{threshold:.5});
+  // Only main section headings - avoid nested spans
+  document.querySelectorAll('.sh,.s2 h2:not(:has(span))').forEach(h=>{
+    if(h.children.length===0)obs.observe(h);
+  });
+})();
+
+// 9. 3D CARD TILT on hover (desktop only)
+if(!__MOB){(function(){
+  const cards=document.querySelectorAll('.pk,.type-card,.dce-item,.how-item,.proof-card,.faq-item');
+  cards.forEach(card=>{
+    card.style.transformStyle='preserve-3d';
+    card.style.transition='transform .4s cubic-bezier(.2,.9,.3,1.2)';
+    card.addEventListener('mousemove',e=>{
+      const r=card.getBoundingClientRect();
+      const x=(e.clientX-r.left)/r.width-.5;
+      const y=(e.clientY-r.top)/r.height-.5;
+      card.style.transform=`perspective(1000px) rotateX(${-y*8}deg) rotateY(${x*10}deg) translateZ(10px)`;
+    });
+    card.addEventListener('mouseleave',()=>{card.style.transform='perspective(1000px) rotateX(0) rotateY(0) translateZ(0)'});
+  });
+})()}
+
+// 10. SCROLL PROGRESS RADIAL (all devices)
+(function(){
+  const wrap=document.createElement('div');
+  wrap.style.cssText='position:fixed;bottom:1.5rem;right:5.5rem;width:44px;height:44px;z-index:99;pointer-events:none';
+  wrap.innerHTML='<svg width="44" height="44" viewBox="0 0 44 44"><circle cx="22" cy="22" r="18" fill="none" stroke="rgba(0,224,192,.15)" stroke-width="2"/><circle id="sp-ring" cx="22" cy="22" r="18" fill="none" stroke="#00e0c0" stroke-width="2.2" stroke-dasharray="113.1" stroke-dashoffset="113.1" stroke-linecap="round" transform="rotate(-90 22 22)" style="filter:drop-shadow(0 0 6px rgba(0,224,192,.6));transition:stroke-dashoffset .15s linear"/></svg>';
+  document.body.appendChild(wrap);
+  const ring=wrap.querySelector('#sp-ring'),C=113.1;
+  function upd(){
+    const h=document.documentElement.scrollHeight-innerHeight;
+    const p=h>0?Math.min(1,scrollY/h):0;
+    ring.style.strokeDashoffset=C*(1-p);
+  }
+  addEventListener('scroll',upd,{passive:true});upd();
+})();
+
+// 11. SOUND DESIGN — soft click on interactive elements (opt-in via existing audio button)
+(function(){
+  let sfxCtx=null;
+  function initSfx(){if(!sfxCtx)sfxCtx=new(window.AudioContext||window.webkitAudioContext)()}
+  function playClick(){
+    initSfx();
+    const t=sfxCtx.currentTime;
+    const osc=sfxCtx.createOscillator(),g=sfxCtx.createGain();
+    osc.frequency.setValueAtTime(800,t);osc.frequency.exponentialRampToValueAtTime(200,t+.08);
+    g.gain.setValueAtTime(.04,t);g.gain.exponentialRampToValueAtTime(.001,t+.08);
+    osc.connect(g).connect(sfxCtx.destination);
+    osc.start(t);osc.stop(t+.1);
+  }
+  function playSwoosh(){
+    initSfx();
+    const t=sfxCtx.currentTime;
+    const noise=sfxCtx.createBufferSource();
+    const buf=sfxCtx.createBuffer(1,sfxCtx.sampleRate*.3,sfxCtx.sampleRate);
+    const d=buf.getChannelData(0);
+    for(let i=0;i<d.length;i++)d[i]=(Math.random()*2-1)*(1-i/d.length);
+    noise.buffer=buf;
+    const f=sfxCtx.createBiquadFilter();f.type='bandpass';f.frequency.setValueAtTime(2000,t);f.frequency.exponentialRampToValueAtTime(500,t+.3);f.Q.value=2;
+    const g=sfxCtx.createGain();g.gain.setValueAtTime(.05,t);g.gain.exponentialRampToValueAtTime(.001,t+.3);
+    noise.connect(f).connect(g).connect(sfxCtx.destination);
+    noise.start(t);
+  }
+  document.querySelectorAll('a.bh,button.bh,.pk,.type-card,.faq-q').forEach(el=>{
+    el.addEventListener('click',()=>{try{playClick()}catch(e){}});
+  });
+  // Swoosh on section transitions
+  const secObs=new IntersectionObserver((entries)=>{
+    entries.forEach(en=>{
+      if(en.isIntersecting&&en.target.dataset.swooshed!=='1'){
+        en.target.dataset.swooshed='1';
+        try{playSwoosh()}catch(e){}
+      }
+    });
+  },{threshold:.3});
+  document.querySelectorAll('section.sec').forEach(s=>secObs.observe(s));
+})();
