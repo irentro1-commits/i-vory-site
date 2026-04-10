@@ -722,43 +722,35 @@ if(!__MOB){(function(){
 (function(){
   const target=document.querySelector('#pachete')||document.querySelector('#servicii');
   if(!target||document.getElementById('workflow'))return;
+  const wfStyle=document.createElement('style');
+  wfStyle.textContent='#workflow{padding:6rem 1.5rem !important}#workflow .si{background:linear-gradient(180deg,rgba(8,10,20,.94),rgba(4,6,14,.97));border:1px solid rgba(0,224,192,.12);border-radius:24px;padding:5rem 3rem !important;box-shadow:0 50px 120px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.05),0 0 0 1px rgba(0,224,192,.05);max-width:1200px;margin:0 auto;position:relative}#workflow .wf-grid{position:relative;display:grid;grid-template-columns:repeat(5,1fr);gap:1.5rem;max-width:1000px;margin:3.5rem auto 0;padding:0}#workflow .wf-line{position:absolute;top:36px;left:10%;right:10%;height:2px;background:rgba(0,224,192,.12);z-index:0;border-radius:2px;overflow:hidden}#workflow .wf-line::after{content:"";display:block;height:100%;width:var(--wfp,0%);background:linear-gradient(90deg,#00e0c0,#7dffe6);box-shadow:0 0 14px rgba(0,224,192,.55);border-radius:2px;transition:width 1.4s cubic-bezier(.2,.9,.3,1)}#workflow .wf-step{position:relative;z-index:1;text-align:center;display:flex;flex-direction:column;align-items:center;padding:0 .3rem}#workflow .wf-num{width:72px;height:72px;border-radius:50%;background:rgba(8,12,22,.98);border:1.5px solid rgba(125,255,230,.3);margin:0 auto 1.4rem;display:flex;align-items:center;justify-content:center;font-family:var(--fd,Syne),sans-serif;font-weight:700;color:#7dffe6;font-size:1.1rem;letter-spacing:.04em;transition:all .5s cubic-bezier(.2,.9,.3,1.2);box-shadow:0 0 0 6px rgba(0,224,192,.04);line-height:1}#workflow .wf-step h4{font-family:var(--fd,Syne),sans-serif;font-weight:700;color:#fff5e6;font-size:1.05rem;margin:0 0 .5rem;letter-spacing:-.01em}#workflow .wf-step p{color:#a8b5c0;font-size:.82rem;line-height:1.5;margin:0;max-width:170px}#workflow .wf-eyebrow{display:inline-block;font-family:var(--fd,Syne),sans-serif;font-size:.72rem;color:#00e0c0;letter-spacing:.32em;text-transform:uppercase;margin-bottom:1rem;padding:.45rem 1rem;border:1px solid rgba(0,224,192,.25);border-radius:100px;background:rgba(0,224,192,.05)}#workflow .wf-title{font-family:var(--fd,Syne),sans-serif;font-size:clamp(2rem,4.5vw,3.4rem);color:#fff5e6;margin:0;font-weight:800;letter-spacing:-.025em;line-height:1.1;text-align:center}@media(max-width:768px){#workflow{padding:3rem 1rem !important}#workflow .si{padding:2.8rem 1.4rem !important}#workflow .wf-grid{grid-template-columns:1fr 1fr !important;gap:2rem 1rem !important;margin-top:2.5rem !important}#workflow .wf-line{display:none}#workflow .wf-num{width:60px;height:60px;font-size:1rem;margin-bottom:1rem}#workflow .wf-step h4{font-size:.95rem}#workflow .wf-step p{font-size:.76rem;max-width:140px}}';
+  document.head.appendChild(wfStyle);
   const sec=document.createElement('section');
   sec.id='workflow';sec.className='sec';
-  sec.innerHTML=`<div class="si" style="background:linear-gradient(180deg,rgba(8,10,20,.92),rgba(4,6,14,.96));border-radius:24px;padding:4rem 3rem;border:1px solid rgba(0,224,192,.1);box-shadow:0 50px 120px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.05);max-width:1200px;margin:0 auto">
-<div style="text-align:center;margin-bottom:3rem"><div style="font-family:var(--fd,Syne),sans-serif;font-size:.72rem;color:#00e0c0;letter-spacing:.32em;text-transform:uppercase;margin-bottom:.8rem">Workflow</div><h2 class="sh" style="font-family:var(--fd,Syne),sans-serif;font-size:clamp(1.8rem,4vw,3rem);color:#fff5e6;margin:0;font-weight:800">Cum lucrăm cu tine</h2></div>
-<div id="wfTrack" style="position:relative;display:grid;grid-template-columns:repeat(5,1fr);gap:1rem">
-<div style="position:absolute;top:32px;left:5%;right:5%;height:2px;background:rgba(0,224,192,.15);z-index:0"><div id="wfFill" style="height:100%;width:0;background:linear-gradient(90deg,#00e0c0,#ff9a3d);box-shadow:0 0 12px rgba(0,224,192,.6);transition:width .8s cubic-bezier(.2,.9,.3,1)"></div></div>
-${['Brief','Research','Producție','Publicare','Analytics'].map((step,i)=>`<div class="wf-step" data-i="${i}" style="position:relative;z-index:1;text-align:center"><div style="width:64px;height:64px;border-radius:50%;background:rgba(8,12,22,.95);border:2px solid rgba(0,224,192,.3);margin:0 auto 1rem;display:flex;align-items:center;justify-content:center;font-family:var(--fd,Syne),sans-serif;font-weight:800;color:#00e0c0;font-size:1.4rem;transition:all .4s">${i+1}</div><div style="font-family:var(--fd,Syne),sans-serif;font-weight:700;color:#fff5e6;font-size:.95rem;margin-bottom:.3rem">${step}</div><div style="color:#a8b5c0;font-size:.78rem;line-height:1.4">${['Înțelegem business-ul tău','Analizăm piață și competiție','Filmăm și edităm conținut','Distribuim pe platforme','Raportăm rezultatele'][i]}</div></div>`).join('')}
-</div></div>`;
+  const steps=[['Brief','Ne spui ce vrei. ÃŽnÈ›elegem business-ul tÄƒu.'],['Research','AnalizÄƒm niÈ™a, audienÈ›a È™i competiÈ›ia.'],['ProducÈ›ie','FilmÄƒm, editÄƒm, creÄƒm conÈ›inutul.'],['Publicare','ProgramÄƒm È™i postÄƒm pe toate platformele.'],['Analytics','RaportÄƒm rezultatele È™i optimizÄƒm.']];
+  sec.innerHTML='<div class="si"><div style="text-align:center"><span class="wf-eyebrow">Workflow</span><h2 class="wf-title">Cum lucrÄƒm cu tine</h2></div><div class="wf-grid"><div class="wf-line" id="wfLine"></div>'+steps.map((s,i)=>'<div class="wf-step"><div class="wf-num" data-i="'+i+'">0'+(i+1)+'</div><h4>'+s[0]+'</h4><p>'+s[1]+'</p></div>').join('')+'</div></div>';
   target.parentNode.insertBefore(sec,target);
-  // Animate fill on scroll into view
-  const fill=sec.querySelector('#wfFill');
-  const steps=sec.querySelectorAll('.wf-step');
+  const line=sec.querySelector('#wfLine');
+  const nums=sec.querySelectorAll('.wf-num');
   const obs=new IntersectionObserver(entries=>{
     entries.forEach(en=>{
       if(en.isIntersecting){
-        fill.style.width='100%';
-        steps.forEach((s,i)=>{
+        line.style.setProperty('--wfp','100%');
+        nums.forEach((n,i)=>{
           setTimeout(()=>{
-            const c=s.querySelector('div');
-            c.style.background='linear-gradient(135deg,#00e0c0,#7dffe6)';
-            c.style.borderColor='#00e0c0';
-            c.style.color='#0a0e16';
-            c.style.boxShadow='0 0 24px rgba(0,224,192,.5)';
-            c.style.transform='scale(1.08)';
-          },i*180);
+            n.style.borderColor='#00e0c0';
+            n.style.color='#fff5e6';
+            n.style.background='rgba(0,224,192,.12)';
+            n.style.boxShadow='0 0 0 6px rgba(0,224,192,.08),0 0 24px rgba(0,224,192,.35)';
+            n.style.transform='scale(1.05)';
+          },i*200);
         });
         obs.unobserve(en.target);
       }
     });
-  },{threshold:.4});
+  },{threshold:.35});
   obs.observe(sec);
-  // Mobile: stack 2 cols
-  const mq=document.createElement('style');
-  mq.textContent='@media(max-width:768px){#wfTrack{grid-template-columns:repeat(2,1fr) !important;gap:1.5rem !important}#workflow .si{padding:2.5rem 1.3rem !important}}';
-  document.head.appendChild(mq);
 })();
-
 // 27. GRADIENT MESH animated background
 (function(){
   const s=document.createElement('style');
