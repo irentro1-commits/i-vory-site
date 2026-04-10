@@ -374,3 +374,109 @@ if(!__MOB){(function(){
   },{threshold:.3});
   document.querySelectorAll('section.sec').forEach(s=>secObs.observe(s));
 })();
+
+// ========== PREMIUM FX ROUND 5 — 2026 ==========
+
+// 12. LIVE TICKER under nav
+(function(){
+  const ticker=document.createElement('div');
+  ticker.style.cssText='position:fixed;top:60px;left:0;right:0;background:linear-gradient(90deg,rgba(6,8,18,.95),rgba(10,20,35,.95),rgba(6,8,18,.95));backdrop-filter:blur(8px);border-bottom:1px solid rgba(0,224,192,.15);padding:.4rem 1.2rem;font-family:var(--fd,Syne),sans-serif;font-size:.72rem;color:#b8c5d0;z-index:99;display:flex;align-items:center;gap:.7rem;overflow:hidden;letter-spacing:.08em;text-transform:uppercase';
+  const dot='<span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#ff3344;box-shadow:0 0 8px rgba(255,51,68,.8);animation:livePulse 1.6s ease-in-out infinite"></span>';
+  const items=[
+    'Filmăm pentru client dental · azi',
+    'Postare programată: TikTok · acum 12 min',
+    'Ședință foto UGC · mâine 10:00',
+    'Carousel live pe Instagram · @client acum 2h',
+    'Editare reel pentru campanie Q4 · in lucru',
+    'Strategie nouă livrată · azi dimineață'
+  ];
+  const track=document.createElement('div');
+  track.style.cssText='display:flex;gap:3rem;animation:tickerScroll 45s linear infinite;white-space:nowrap';
+  const content=items.map(i=>`${dot}<span>LIVE: ${i}</span>`).join('<span style="opacity:.3;margin:0 1rem">·</span>');
+  track.innerHTML=content+'<span style="opacity:.3;margin:0 1rem">·</span>'+content;
+  ticker.appendChild(track);
+  document.body.appendChild(ticker);
+  const kf=document.createElement('style');
+  kf.textContent='@keyframes tickerScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}@keyframes livePulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)}}';
+  document.head.appendChild(kf);
+  // Push nav content down
+  document.body.style.paddingTop='28px';
+})();
+
+// 13. EXIT-INTENT MODAL
+(function(){
+  if(sessionStorage.getItem('exitShown'))return;
+  let shown=false;
+  const modal=document.createElement('div');
+  modal.style.cssText='position:fixed;inset:0;background:rgba(2,4,10,.85);backdrop-filter:blur(12px);z-index:9998;display:none;align-items:center;justify-content:center;padding:1.5rem;opacity:0;transition:opacity .4s';
+  modal.innerHTML='<div style="background:linear-gradient(180deg,rgba(12,16,28,.98),rgba(6,10,22,.98));border:1px solid rgba(0,224,192,.25);border-radius:24px;padding:3rem 2.5rem;max-width:480px;width:100%;text-align:center;box-shadow:0 50px 120px rgba(0,0,0,.8),0 0 80px rgba(0,224,192,.15);position:relative;transform:scale(.92);transition:transform .5s cubic-bezier(.2,.9,.3,1.4)"><button id="emClose" style="position:absolute;top:.8rem;right:.8rem;background:none;border:none;color:#888;font-size:1.6rem;cursor:pointer;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center" aria-label="Închide">×</button><div style="font-family:var(--fd,Syne),sans-serif;font-size:.7rem;color:#00e0c0;letter-spacing:.3em;text-transform:uppercase;margin-bottom:1rem">Stai puțin</div><h3 style="font-family:var(--fd,Syne),sans-serif;font-size:1.8rem;color:#fff5e6;margin:0 0 .8rem;line-height:1.15;font-weight:800">Audit gratuit<br>15 minute</h3><p style="color:#b8c5d0;font-size:.95rem;line-height:1.5;margin:0 0 1.6rem">Îți analizăm gratuit conturile de social media și îți spunem exact ce să schimbi ca să crești.</p><a href="https://calendly.com/ivorymarketing2/30min" target="_blank" style="display:inline-flex;align-items:center;gap:.5rem;background:linear-gradient(135deg,#ff9a3d,#ffb86b);color:#1a0a00;padding:1rem 2rem;border-radius:100px;font-family:var(--fd,Syne),sans-serif;font-weight:700;text-decoration:none;font-size:.92rem;box-shadow:0 10px 30px rgba(255,154,61,.35)">Rezervă acum →</a></div>';
+  document.body.appendChild(modal);
+  function show(){
+    if(shown)return;shown=true;
+    sessionStorage.setItem('exitShown','1');
+    modal.style.display='flex';
+    requestAnimationFrame(()=>{modal.style.opacity='1';modal.firstChild.style.transform='scale(1)'});
+  }
+  function hide(){modal.style.opacity='0';setTimeout(()=>modal.style.display='none',400)}
+  document.getElementById('emClose')?.addEventListener('click',hide);
+  modal.addEventListener('click',e=>{if(e.target===modal)hide()});
+  // Desktop: mouse leave top
+  if(!__MOB){
+    document.addEventListener('mouseleave',e=>{if(e.clientY<10)show()});
+  }else{
+    // Mobile: trigger after 35sec on page if scrolled past hero
+    setTimeout(()=>{if(scrollY>window.innerHeight*1.5)show()},35000);
+  }
+})();
+
+// 14. FAQ SEARCH BAR
+(function(){
+  const faqSec=document.querySelector('#faq');
+  if(!faqSec)return;
+  const items=faqSec.querySelectorAll('.faq-item');
+  if(!items.length)return;
+  const search=document.createElement('div');
+  search.style.cssText='margin:0 auto 2rem;max-width:600px;position:relative';
+  search.innerHTML='<input type="text" id="faqSearch" placeholder="Caută în întrebări..." style="width:100%;padding:1rem 1.2rem 1rem 2.8rem;background:rgba(10,14,24,.7);border:1px solid rgba(0,224,192,.2);border-radius:100px;color:#fff5e6;font-family:var(--fb,DM Sans),sans-serif;font-size:.95rem;outline:none;transition:border-color .3s"><svg style="position:absolute;left:1rem;top:50%;transform:translateY(-50%);opacity:.5" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00e0c0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>';
+  const grid=faqSec.querySelector('.faq-grid')||items[0].parentElement;
+  grid.parentElement.insertBefore(search,grid);
+  const inp=document.getElementById('faqSearch');
+  inp.addEventListener('focus',()=>inp.style.borderColor='rgba(0,224,192,.5)');
+  inp.addEventListener('blur',()=>inp.style.borderColor='rgba(0,224,192,.2)');
+  inp.addEventListener('input',e=>{
+    const q=e.target.value.toLowerCase().trim();
+    items.forEach(item=>{
+      const txt=item.textContent.toLowerCase();
+      const match=!q||txt.includes(q);
+      item.style.display=match?'':'none';
+      item.style.opacity=match?'1':'0';
+    });
+  });
+})();
+
+// 15. REDUCED MOTION SUPPORT
+(function(){
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches){
+    const s=document.createElement('style');
+    s.textContent='*,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;scroll-behavior:auto !important}.hero3d{opacity:.3 !important}';
+    document.head.appendChild(s);
+  }
+})();
+
+// 16. FOCUS RINGS (keyboard polish)
+(function(){
+  const s=document.createElement('style');
+  s.textContent='a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,[tabindex]:focus-visible{outline:2px solid #00e0c0 !important;outline-offset:3px !important;border-radius:4px;box-shadow:0 0 0 4px rgba(0,224,192,.2)}';
+  document.head.appendChild(s);
+})();
+
+// 17. LAZY LOAD IMAGES below fold
+(function(){
+  document.querySelectorAll('img').forEach(img=>{
+    if(!img.loading)img.loading='lazy';
+    if(!img.decoding)img.decoding='async';
+  });
+  document.querySelectorAll('video').forEach(v=>{
+    if(!v.preload)v.preload='metadata';
+  });
+})();
