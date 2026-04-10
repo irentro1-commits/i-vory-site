@@ -798,3 +798,86 @@ if(!__MOB){(function(){
     setTimeout(()=>{tip.style.opacity='0';tip.style.transform='translateX(20px)';setTimeout(()=>tip.remove(),600)},6000);
   },10000);
 })();
+
+// ========== PREMIUM FX ROUND 8 ==========
+
+// 30. FILM GRAIN + CHROMATIC ABERRATION overlay
+(function(){
+  const s=document.createElement('style');
+  s.textContent='@keyframes grainShift{0%,100%{transform:translate(0,0)}10%{transform:translate(-5%,-10%)}20%{transform:translate(-15%,5%)}30%{transform:translate(7%,-25%)}40%{transform:translate(-5%,25%)}50%{transform:translate(-15%,10%)}60%{transform:translate(15%,0)}70%{transform:translate(0,15%)}80%{transform:translate(3%,35%)}90%{transform:translate(-10%,10%)}}html::after{content:"";position:fixed;inset:-100%;width:300%;height:300%;background-image:url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'200\' height=\'200\'><filter id=\'n\'><feTurbulence type=\'fractalNoise\' baseFrequency=\'.9\' numOctaves=\'3\' stitchTiles=\'stitch\'/><feColorMatrix values=\'0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .15 0\'/></filter><rect width=\'200\' height=\'200\' filter=\'url(%23n)\'/></svg>");pointer-events:none;z-index:9994;opacity:.06;animation:grainShift 8s steps(10) infinite;mix-blend-mode:overlay}body{position:relative}body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:9993;background:radial-gradient(ellipse at center,transparent 60%,rgba(0,224,192,.04) 100%);mix-blend-mode:screen;box-shadow:inset 0 0 200px rgba(255,154,61,.04)}';
+  document.head.appendChild(s);
+})();
+
+// 31. CUSTOM SCROLLBAR
+(function(){
+  const s=document.createElement('style');
+  s.textContent='::-webkit-scrollbar{width:12px;height:12px}::-webkit-scrollbar-track{background:rgba(6,8,18,.6);border-left:1px solid rgba(0,224,192,.08)}::-webkit-scrollbar-thumb{background:linear-gradient(180deg,#00e0c0,#ff9a3d);border-radius:100px;border:2px solid rgba(6,8,18,.8);box-shadow:0 0 12px rgba(0,224,192,.4),inset 0 0 4px rgba(255,255,255,.1)}::-webkit-scrollbar-thumb:hover{background:linear-gradient(180deg,#7dffe6,#ffb86b);box-shadow:0 0 18px rgba(0,224,192,.6)}html{scrollbar-color:#00e0c0 rgba(6,8,18,.6);scrollbar-width:thin}';
+  document.head.appendChild(s);
+})();
+
+// 32. PAGE ENTER ANIMATION — sections slide in with mask
+(function(){
+  const s=document.createElement('style');
+  s.textContent='.sec{opacity:0;transform:translateY(40px);transition:opacity 1s cubic-bezier(.2,.9,.3,1),transform 1s cubic-bezier(.2,.9,.3,1)}.sec.entered{opacity:1;transform:translateY(0)}.sec>*{opacity:0;transform:translateX(-20px);transition:opacity .8s cubic-bezier(.2,.9,.3,1) .15s,transform .8s cubic-bezier(.2,.9,.3,1) .15s}.sec.entered>*{opacity:1;transform:translateX(0)}';
+  document.head.appendChild(s);
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(en=>{
+      if(en.isIntersecting){
+        en.target.classList.add('entered');
+        obs.unobserve(en.target);
+      }
+    });
+  },{threshold:.1,rootMargin:'0px 0px -50px 0px'});
+  document.querySelectorAll('section.sec').forEach(s=>obs.observe(s));
+})();
+
+// 33. DYNAMIC FAVICON — animates when tab inactive
+(function(){
+  const link=document.querySelector('link[rel*="icon"]')||document.createElement('link');
+  link.type='image/svg+xml';link.rel='icon';
+  if(!link.parentNode)document.head.appendChild(link);
+  const baseSvg='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#050510" rx="20"/><text x="50" y="68" font-family="Syne,Arial" font-size="60" font-weight="800" fill="#00e0c0" text-anchor="middle">i</text></svg>';
+  const dotSvg='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#050510" rx="20"/><text x="50" y="68" font-family="Syne,Arial" font-size="60" font-weight="800" fill="#00e0c0" text-anchor="middle">i</text><circle cx="80" cy="20" r="14" fill="#ff3344"/></svg>';
+  link.href='data:image/svg+xml;utf8,'+encodeURIComponent(baseSvg);
+  let interval=null,toggle=false;
+  document.addEventListener('visibilitychange',()=>{
+    if(document.hidden){
+      interval=setInterval(()=>{
+        toggle=!toggle;
+        link.href='data:image/svg+xml;utf8,'+encodeURIComponent(toggle?dotSvg:baseSvg);
+        document.title=(toggle?'(1) ':'')+'i-Vory Creative — Te-am așteptat';
+      },1500);
+    }else{
+      clearInterval(interval);
+      link.href='data:image/svg+xml;utf8,'+encodeURIComponent(baseSvg);
+      document.title='i-Vory — Agenție Social Media București';
+    }
+  });
+})();
+
+// 34. SKELETON LOADING for portfolio + blur-up images
+(function(){
+  const s=document.createElement('style');
+  s.textContent='@keyframes skLoad{0%{background-position:-200% 0}100%{background-position:200% 0}}.sk{background:linear-gradient(90deg,rgba(8,12,22,.8) 25%,rgba(0,224,192,.08) 50%,rgba(8,12,22,.8) 75%);background-size:200% 100%;animation:skLoad 1.6s ease-in-out infinite;border-radius:12px}img[data-src]{filter:blur(20px);transform:scale(1.05);transition:filter .8s,transform .8s}img.loaded{filter:blur(0);transform:scale(1)}';
+  document.head.appendChild(s);
+  document.querySelectorAll('img').forEach(img=>{
+    if(img.complete)img.classList.add('loaded');
+    else img.addEventListener('load',()=>img.classList.add('loaded'));
+  });
+})();
+
+// 35. PRINT STYLESHEET
+(function(){
+  const s=document.createElement('style');
+  s.media='print';
+  s.textContent='@page{margin:1.5cm}body::before,body::after,html::after,.hero3d,.bgblobs,.godrays,nav,#pre,.cd,.cr,[aria-label="Sunet ambient"],.cookie-bar,#workflow .wf-line,canvas{display:none !important}body{background:#fff !important;color:#000 !important;font-family:Georgia,serif !important}h1,h2,h3,h4,.sh{color:#000 !important;text-shadow:none !important;page-break-after:avoid}.sec{padding:1rem 0 !important;page-break-inside:avoid;background:#fff !important}.si{background:#fff !important;border:1px solid #ddd !important;box-shadow:none !important;padding:1rem !important}.bh,.b-peach{background:#000 !important;color:#fff !important;box-shadow:none !important}a{color:#000 !important;text-decoration:underline}a[href^="http"]:after{content:" (" attr(href) ")";font-size:.8em;color:#666}';
+  document.head.appendChild(s);
+})();
+
+// 36. SMOOTH SNAP between major sections (gentle, not aggressive)
+(function(){
+  // Soft snap via CSS scroll-snap-stop=normal
+  const s=document.createElement('style');
+  s.textContent='@media(min-width:769px){html{scroll-snap-type:y proximity}section.sec{scroll-snap-align:start;scroll-snap-stop:normal}.prob{scroll-snap-align:none}}';
+  document.head.appendChild(s);
+})();
