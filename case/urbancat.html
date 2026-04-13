@@ -70,7 +70,7 @@ lbCount.textContent=it.title;
 }else{
 const src=`/case/urbancat-assets/${it.prefix}_${cur.slide+1}.jpg`;
 lbContent.innerHTML=`<img class="lb-img" src="${src}">`;
-lbCount.textContent=`${it.title} Â· ${cur.slide+1} / ${it.slides}`;
+lbCount.textContent=`${it.title} · ${cur.slide+1} / ${it.slides}`;
 }
 }
 function prev(){const it=items[cur.item];if(it.slides>1){cur.slide=(cur.slide-1+it.slides)%it.slides;renderLb()}else{cur.item=(cur.item-1+items.length)%items.length;cur.slide=0;renderLb()}}
