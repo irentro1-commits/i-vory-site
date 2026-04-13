@@ -1795,4 +1795,36 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")close()});
   }, 1200);
 })();
 </script>
+<script>
+// FAQ FORCE FIX
+(function(){
+  function init(){
+    document.querySelectorAll('.faq-item').forEach(function(item){
+      var btn = item.querySelector('.faq-q');
+      var ans = item.querySelector('.faq-a');
+      if(!btn || !ans) return;
+      if(btn.dataset.bound) return;
+      btn.dataset.bound = '1';
+      btn.addEventListener('click', function(ev){
+        ev.preventDefault();
+        ev.stopPropagation();
+        var open = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(function(x){
+          x.classList.remove('open');
+          var a = x.querySelector('.faq-a');
+          if(a){ a.style.maxHeight='0'; }
+        });
+        if(!open){
+          item.classList.add('open');
+          ans.style.maxHeight = (ans.scrollHeight || 1500) + 'px';
+        }
+      });
+    });
+  }
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+  setTimeout(init, 500);
+  setTimeout(init, 2000);
+})();
+</script>
 </body></html>
