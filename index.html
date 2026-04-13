@@ -1611,6 +1611,31 @@ go.addEventListener("click",function(e){
   /* allow only very long words to break */
   .proof-label{white-space:nowrap !important;font-size:.62rem !important;letter-spacing:.05em !important}
 }
+
+/* MOBILE PERF BOOST - no animation removed */
+@media(max-width:900px){
+  .sec,section[class*="s"],.cw,footer{
+    content-visibility:auto;
+    contain-intrinsic-size:auto 600px;
+  }
+  /* GPU layers for animated heavy items */
+  .prob-line,.bh,.si,.proof-item,.ft-wrap,.mq,.tc-card{
+    will-change:transform;
+    transform:translateZ(0);
+    backface-visibility:hidden;
+  }
+  /* Reduce star bg repaint cost */
+  body::before{background-size:800px 800px !important;opacity:.4 !important}
+  /* Reduce backdrop-filter blur (expensive on mobile GPU) */
+  nav{backdrop-filter:blur(8px) !important}
+  .ft-social a,.si{backdrop-filter:none !important}
+  /* Disable hover transforms on touch devices - saves composite */
+  .item:hover,.bh:hover,.ft-social a:hover{transform:none !important}
+}
+/* Save CPU on reduced motion users */
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms !important;transition-duration:.01ms !important}
+}
 </style>
 <div class="ei-ov" id="eiOv" role="dialog" aria-hidden="true">
 <div class="ei-box">
