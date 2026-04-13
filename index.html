@@ -1318,7 +1318,7 @@ var counted=false;function animateCounters(){if(counted)return;var nums=document
 window.addEventListener('scroll',animateCounters,{passive:true});
 
 // FAQ
-document.querySelectorAll('.faq-q').forEach(function(btn){btn.addEventListener('click',function(){var item=btn.parentElement;var answer=item.querySelector('.faq-a');if(item.classList.contains('open')){item.classList.remove('open');answer.style.maxHeight='0'}else{document.querySelectorAll('.faq-item.open').forEach(function(i){i.classList.remove('open');i.querySelector('.faq-a').style.maxHeight='0'});item.classList.add('open');answer.style.maxHeight='2000px'}})});
+document.addEventListener('click',function(e){var btn=e.target.closest('.faq-q');if(!btn)return;e.preventDefault();var item=btn.parentElement;var was=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(function(i){i.classList.remove('open')});if(!was)item.classList.add('open')});
 </script>
 <style>
 .bk-overlay{position:fixed;inset:0;background:rgba(4,6,14,.85);backdrop-filter:blur(12px);z-index:99999;display:none;align-items:center;justify-content:center;padding:1rem;opacity:0;transition:opacity .3s}
