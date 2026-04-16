@@ -804,8 +804,8 @@ h3, h4, .pk-name, .how-title, .dce-title {
 
 <div class="cd" id="cd"></div><div class="cr" id="cr"></div>
 
-<nav id="nav"><a class="nl" href="#" style="display:flex;align-items:center;text-decoration:none;padding:.2rem 0"><img loading="lazy" decoding="async" src="logo-nav.svg?v=4" alt="i-Vory Creative" style="height:48px;width:auto;display:block;filter:drop-shadow(0 0 14px rgba(0,224,192,.45))"></a><ul class="nk"><li><a href="#servicii">Servicii</a></li><li><a href="#pachete">Pachete</a></li><li><a href="#portofoliu">Portofoliu</a></li><li><a href="#contact">Contact</a></li><li><a href="/blog/">Blog</a></li></ul><a href="https://api.whatsapp.com/send/?phone=40775579706" class="nc" target="_blank">WhatsApp →</a><button class="ham" id="ham" aria-label="Menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg></button></nav>
-<div class="mm" id="mm"><a href="#servicii">Servicii</a><a href="#pachete">Pachete</a><a href="#portofoliu">Portofoliu</a><a href="#contact">Contact</a><a href="/blog/">Blog</a><a href="https://api.whatsapp.com/send/?phone=40775579706" target="_blank" style="color:var(--ac)">WhatsApp</a></div>
+<nav id="nav"><a class="nl" href="#" style="display:flex;align-items:center;text-decoration:none;padding:.2rem 0"><img loading="lazy" decoding="async" src="logo-nav.svg?v=4" alt="i-Vory Creative" style="height:48px;width:auto;display:block;filter:drop-shadow(0 0 14px rgba(0,224,192,.45))"></a><ul class="nk"><li><a href="#servicii">Servicii</a></li><li><a href="#pachete">Pachete</a></li><li><a href="/portofoliu.html">Portofoliu</a></li><li><a href="#contact">Contact</a></li><li><a href="/blog/">Blog</a></li></ul><a href="https://api.whatsapp.com/send/?phone=40775579706" class="nc" target="_blank">WhatsApp →</a><button class="ham" id="ham" aria-label="Menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg></button></nav>
+<div class="mm" id="mm"><a href="#servicii">Servicii</a><a href="#pachete">Pachete</a><a href="/portofoliu.html">Portofoliu</a><a href="#contact">Contact</a><a href="/blog/">Blog</a><a href="https://api.whatsapp.com/send/?phone=40775579706" target="_blank" style="color:var(--ac)">WhatsApp</a></div>
 <main>
 
 <!-- ========== HERO 3D SECTION ========== -->
@@ -1767,22 +1767,11 @@ go.addEventListener("click",function(e){
 .cmp-yes{color:#00e0c0;font-weight:800}
 .cmp-no{color:#ff4455;font-weight:700}
 .cmp-maybe{color:#ff9a3d;font-weight:600}
-.ei-ov{position:fixed;inset:0;background:rgba(4,6,14,.92);backdrop-filter:blur(14px);z-index:99998;display:none;align-items:center;justify-content:center;padding:1rem;opacity:0;transition:opacity .4s}
 .ei-ov.open{display:flex;opacity:1}
-.ei-box{background:linear-gradient(180deg,#0a0e1e,#06080f);border:1.5px solid #ff9a3d;border-radius:24px;padding:2.5rem;max-width:500px;width:100%;text-align:center;box-shadow:0 30px 100px rgba(0,0,0,.9),0 0 80px rgba(255,154,61,.25);transform:translateY(30px) scale(.96);transition:transform .5s cubic-bezier(.2,.9,.3,1.2);position:relative;font-family:var(--fb)}
-.ei-ov.open .ei-box{transform:translateY(0) scale(1)}
-.ei-close{position:absolute;top:1rem;right:1rem;width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:#fff5e6;font-size:1.3rem;cursor:pointer}
-.ei-badge{display:inline-block;padding:.4rem 1rem;background:rgba(255,154,61,.15);border:1px solid rgba(255,154,61,.4);border-radius:100px;font-size:.68rem;font-weight:800;color:#ff9a3d;letter-spacing:.15em;text-transform:uppercase;margin-bottom:1rem}
-.ei-title{font-family:var(--fd);font-size:1.8rem;font-weight:900;color:#fff5e6;margin:0 0 .5rem;letter-spacing:-.02em;line-height:1.1}
-.ei-title span{color:#ff9a3d}
-.ei-sub{color:#a8b5c0;font-size:.88rem;line-height:1.5;margin:0 0 1.5rem}
-.ei-form{display:flex;flex-direction:column;gap:.7rem}
-.ei-inp{background:rgba(255,255,255,.05);border:1.5px solid rgba(255,255,255,.15);border-radius:12px;padding:.9rem 1.1rem;color:#fff5e6;font-family:inherit;font-size:.88rem;outline:none;transition:all .25s}
+.ei-ov.open .ei-title span{color:#ff9a3d}
 .ei-inp:focus{border-color:#ff9a3d;box-shadow:0 0 0 3px rgba(255,154,61,.15)}
-.ei-sub-btn{background:linear-gradient(135deg,#ff9a3d,#ffb86b);color:#1a0a00;border:none;border-radius:100px;padding:1rem;font-family:var(--fd);font-weight:800;font-size:.92rem;cursor:pointer;margin-top:.3rem;transition:all .3s;box-shadow:0 10px 30px rgba(255,154,61,.35)}
 .ei-sub-btn:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(255,154,61,.5)}
-.ei-fine{font-size:.68rem;color:#5a6572;margin-top:.8rem}
-@media(max-width:768px){.cmp-wrap,.ei-ov{display:none !important}}
+@media(max-width:768px){.cmp-wrap,}
 
 /* === MOBILE CLEAN v2 === */
 @media(max-width:900px){
@@ -1816,7 +1805,7 @@ go.addEventListener("click",function(e){
   .si{padding:2rem 1.2rem !important;border-radius:18px !important}
   
   /* Hide desktop-only features on mobile */
-  .cw,.calc-wrap,.cmp-wrap,.wti-wrap,.tc-wrap,.ei-ov,.cs-ov{display:none !important}
+  .cw,.calc-wrap,.cmp-wrap,.wti-wrap,.tc-wrap,.cs-ov{display:none !important}
   
   /* Portfolio preview cards stack 1 col */
   #portofoliu .si>div>div{grid-template-columns:1fr !important;gap:1rem !important}
@@ -1864,24 +1853,11 @@ go.addEventListener("click",function(e){
 .ft-wrap{padding-top:2.5rem !important}
 #contact,#faq,.sec:last-of-type{padding-bottom:2rem !important}
 </style>
-<div class="ei-ov" id="eiOv" role="dialog" aria-hidden="true">
-<div class="ei-box">
-<button class="ei-close" id="eiClose">&times;</button>
-<div class="ei-badge">Ofertă exclusivă</div>
-<h3 class="ei-title">Stai puțin.<br>Primul carusel <span>-15%</span></h3>
-<p class="ei-sub">Lasă-ne emailul și primești in 2 min un cod de reducere pentru primul tău proiect. Valabil 7 zile.</p>
-<form id="eiForm" class="ei-form">
-<input type="text" name="name" placeholder="Numele tău" required class="ei-inp">
-<input type="email" name="email" placeholder="Email" required class="ei-inp">
-<button type="submit" class="ei-sub-btn">Trimite-mi codul →</button>
-<div class="ei-fine">Zero spam. Doar codul si o singură confirmare.</div>
-</form>
-</div>
-</div>
+
 <script>/*v9-safe*/try{
 (function(){
 if(window.matchMedia("(max-width:768px)").matches)return;
-var ov=document.getElementById("eiOv"),cl=document.getElementById("eiClose"),fm=document.getElementById("eiForm");
+var ov=/* ei removed */
 if(!ov)return;
 var shown=sessionStorage.getItem("ei_shown");
 if(shown)return;
