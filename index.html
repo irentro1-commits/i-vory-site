@@ -823,42 +823,71 @@ h3, h4, .pk-name, .how-title, .dce-title {
 
 
 <style id="picasso-portfolio-cta">
-/* PICASSO PORTFOLIO BUTTON */
-.btn-portfolio {
+/* PORTFOLIO BUTTON — subtle, painterly, brush stroke feel */
+.btn-pf {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  margin-top: 1rem;
-  padding: .75rem 1.8rem;
+  gap: .5rem;
+  padding: .85rem 1.6rem;
   font-family: 'Instrument Serif', serif;
   font-style: italic;
   font-weight: 400;
-  font-size: .95rem;
-  color: #fff5e6;
+  font-size: .92rem;
+  color: #ede9e3;
   text-decoration: none;
+  background: transparent;
+  border: none;
   position: relative;
-  border-radius: 8px 24px 8px 24px;
-  background: linear-gradient(135deg, #7b2cff 0%, #00e0c0 35%, #ff9a3d 65%, #f050b4 100%);
-  background-size: 300% 300%;
-  animation: picasso 5s ease infinite;
-  box-shadow: 0 8px 28px rgba(123,44,255,.25), 0 0 0 1px rgba(255,255,255,.1);
-  transition: transform .4s cubic-bezier(.2,.9,.3,1.2), box-shadow .4s;
-  letter-spacing: .02em;
+  transition: color .3s;
+  letter-spacing: .01em;
 }
-.btn-portfolio:hover {
-  transform: translateY(-3px) rotate(-1deg) scale(1.04);
-  box-shadow: 0 14px 40px rgba(123,44,255,.35), 0 0 40px rgba(0,224,192,.2), 0 0 0 1px rgba(255,255,255,.2);
-  animation-duration: 1.5s;
+/* Brush stroke underline — like a paint stroke */
+.btn-pf::after {
+  content: '';
+  position: absolute;
+  bottom: .55rem;
+  left: .8rem;
+  right: .8rem;
+  height: 3px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(0,224,192,.5) 8%, 
+    rgba(0,224,192,.7) 20%, 
+    rgba(123,44,255,.5) 45%, 
+    rgba(255,154,61,.6) 70%, 
+    rgba(240,80,180,.4) 88%, 
+    transparent 100%
+  );
+  border-radius: 2px;
+  transform: scaleX(.85) skewX(-4deg);
+  transform-origin: left;
+  transition: transform .4s cubic-bezier(.2,.9,.3,1.2), opacity .3s;
+  opacity: .6;
 }
-@keyframes picasso {
-  0% { background-position: 0% 50%; border-radius: 8px 24px 8px 24px; }
-  25% { background-position: 50% 0%; border-radius: 20px 8px 24px 8px; }
-  50% { background-position: 100% 50%; border-radius: 8px 20px 8px 28px; }
-  75% { background-position: 50% 100%; border-radius: 24px 8px 16px 8px; }
-  100% { background-position: 0% 50%; border-radius: 8px 24px 8px 24px; }
+.btn-pf:hover::after {
+  transform: scaleX(1) skewX(-2deg);
+  opacity: 1;
+}
+.btn-pf:hover {
+  color: #fff5e6;
+}
+/* Tiny paint drops — 2 subtle dots */
+.btn-pf::before {
+  content: '';
+  position: absolute;
+  bottom: .3rem;
+  right: 1.2rem;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(0,224,192,.4);
+  box-shadow: 
+    6px -2px 0 1px rgba(123,44,255,.3),
+    -4px 1px 0 0 rgba(255,154,61,.25);
+  pointer-events: none;
 }
 
-/* PRICE TEXT — much more visible */
+/* PRICE TEXT visibility */
 .s2-prices {
   color: #c8c3bb !important;
   font-size: .75rem !important;
@@ -878,10 +907,7 @@ h3, h4, .pk-name, .how-title, .dce-title {
 }
 
 @media(max-width:768px) {
-  .btn-portfolio {
-    width: 100%;
-    max-width: 260px;
-  }
+  .btn-pf { font-size: .85rem; padding: .75rem 1.2rem; }
 }
 </style>
 
@@ -918,7 +944,7 @@ h3, h4, .pk-name, .how-title, .dce-title {
 
 <div class="mq"><div class="mt"><div class="mi"><span class="md"></span>TikTok</div><div class="mi"><span class="md"></span>Instagram</div><div class="mi"><span class="md"></span>Facebook</div><div class="mi"><span class="md"></span>YouTube</div><div class="mi"><span class="md"></span>Reels</div><div class="mi"><span class="md"></span>Stories</div><div class="mi"><span class="md"></span>Carusele</div><div class="mi"><span class="md"></span>ASMR</div><div class="mi"><span class="md"></span>UGC Ads</div><div class="mi"><span class="md"></span>Cinematic</div><div class="mi"><span class="md"></span>TikTok</div><div class="mi"><span class="md"></span>Instagram</div><div class="mi"><span class="md"></span>Facebook</div><div class="mi"><span class="md"></span>YouTube</div><div class="mi"><span class="md"></span>Reels</div><div class="mi"><span class="md"></span>Stories</div><div class="mi"><span class="md"></span>Carusele</div><div class="mi"><span class="md"></span>ASMR</div><div class="mi"><span class="md"></span>UGC Ads</div><div class="mi"><span class="md"></span>Cinematic</div></div></div>
 
-<section class="s2"><div class="s2-wrap"><div class="s2-content rv" style="flex:1;max-width:720px"><div class="s2-tag">Social Media Content Factory · București</div><h2>Social media ta.<br>Făcută <span style="color:var(--ac)">ca la carte.</span></h2><p class="s2-desc">Conținut profesional care oprește scroll-ul.<br><strong>Tu îți vezi de business</strong>, noi ne ocupăm de prezența ta online.</p><div class="s2-actions"><a href="https://api.whatsapp.com/send/?phone=40775579706" class="bh" target="_blank">Scrie-ne pe WhatsApp <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a href="#servicii" class="bg">Vezi serviciile</a><a href="/portofoliu.html" class="btn-portfolio">Vezi portofoliul nostru</a></div><div class="s2-prices">De la <em>50 RON</em> per design · Pachete cu management de la <em>3.000 RON/lună</em> · fără TVA</div></div></div><div class="hero-video" id="heroVideo"><video id="hvVid" src="hero-video-web.mp4?v=2" autoplay muted loop playsinline preload="none"></video><div class="hv-frame"></div><div class="hv-badge">LIVE</div><button class="hv-mute" id="hvMute" aria-label="Sunet"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="1" y1="1" x2="23" y2="23"/><path d="M9 9v3a3 3 0 0 0 5.12 2.12M15 9.34V4a3 3 0 0 0-5.94-.6"/><path d="M17 16.95A7 7 0 0 1 5 12v-2m14 0v2a7 7 0 0 1-.11 1.23"/><line x1="12" y1="19" x2="12" y2="23"/></svg></button></div></div><script>/*v9-safe*/try{(function(){var v=document.getElementById("hvVid"),b=document.getElementById("hvMute");if(!v||!b)return;var off=b.innerHTML;var on='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>';b.addEventListener("click",function(e){e.stopPropagation();v.muted=!v.muted;if(v.muted){b.innerHTML=off;b.classList.remove("on")}else{v.volume=.7;b.innerHTML=on;b.classList.add("on")}});})();}catch(__v9e){console.warn('v9 guard:',__v9e.message)}</script></section>
+<section class="s2"><div class="s2-wrap"><div class="s2-content rv" style="flex:1;max-width:720px"><div class="s2-tag">Social Media Content Factory · București</div><h2>Social media ta.<br>Făcută <span style="color:var(--ac)">ca la carte.</span></h2><p class="s2-desc">Conținut profesional care oprește scroll-ul.<br><strong>Tu îți vezi de business</strong>, noi ne ocupăm de prezența ta online.</p><div class="s2-actions"><a href="https://api.whatsapp.com/send/?phone=40775579706" class="bh" target="_blank">Scrie-ne pe WhatsApp <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a href="/portofoliu.html" class="btn-pf">Vezi portofoliul nostru</a></div><div class="s2-prices">De la <em>50 RON</em> per design · Pachete cu management de la <em>3.000 RON/lună</em> · fără TVA</div></div></div><div class="hero-video" id="heroVideo"><video id="hvVid" src="hero-video-web.mp4?v=2" autoplay muted loop playsinline preload="none"></video><div class="hv-frame"></div><div class="hv-badge">LIVE</div><button class="hv-mute" id="hvMute" aria-label="Sunet"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="1" y1="1" x2="23" y2="23"/><path d="M9 9v3a3 3 0 0 0 5.12 2.12M15 9.34V4a3 3 0 0 0-5.94-.6"/><path d="M17 16.95A7 7 0 0 1 5 12v-2m14 0v2a7 7 0 0 1-.11 1.23"/><line x1="12" y1="19" x2="12" y2="23"/></svg></button></div></div><script>/*v9-safe*/try{(function(){var v=document.getElementById("hvVid"),b=document.getElementById("hvMute");if(!v||!b)return;var off=b.innerHTML;var on='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>';b.addEventListener("click",function(e){e.stopPropagation();v.muted=!v.muted;if(v.muted){b.innerHTML=off;b.classList.remove("on")}else{v.volume=.7;b.innerHTML=on;b.classList.add("on")}});})();}catch(__v9e){console.warn('v9 guard:',__v9e.message)}</script></section>
 
 <div class="dvd-text rv"><p>Lucrăm cu cele mai noi instrumente AI din industrie.<br><span>Viitorul conținutului digital e deja aici.</span></p></div>
 
