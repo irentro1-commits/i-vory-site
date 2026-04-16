@@ -3,304 +3,297 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Portofoliu i-Vory Creative — Ce producem pentru clienții noștri</title>
-<meta name="description" content="Portofoliu i-Vory Creative. Carusele educaționale, storytelling, showcase, conținut pentru profesioniști, fotografii de produs AI, postări emoționale. București.">
-<meta name="robots" content="index, follow">
+<title>Portofoliu i-Vory Creative \u00b7 Ce producem pentru clien\u021bii no\u0219tri</title>
+<meta name="description" content="Portofoliu i-Vory Creative. Carusele educa\u021bionale, storytelling, con\u021binut profesional, fotografii AI. Bucure\u0219ti.">
+<meta name="robots" content="index,follow">
 <link rel="canonical" href="https://i-vory.ro/portofoliu.html">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-
-<meta property="og:type" content="website">
 <meta property="og:title" content="Portofoliu i-Vory Creative">
-<meta property="og:description" content="Ce producem: carusele, storytelling, showcase, conținut profesional, fotografii AI, postări emoționale.">
 <meta property="og:url" content="https://i-vory.ro/portofoliu.html">
 <meta property="og:image" content="https://i-vory.ro/og-image.jpg">
-
 <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#0a0a0a;--bg2:#141414;--text:#e8e8e8;--muted:#888;--accent:#d4a853;--r:8px}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:'Geist',sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased}
-::selection{background:var(--accent);color:var(--bg)}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#050505;--bg2:#0b0b0b;--bg3:#111;--bg4:#181818;--t:#ede9e3;--td:#9e9890;--tm:#5c5750;--ac:#00e0c0;--ac2:rgba(0,224,192,.12);--ac3:rgba(0,224,192,.06);--pu:#7b2cff;--br:rgba(255,255,255,.06);--br2:rgba(255,255,255,.12);--r:12px;--fd:'Geist',-apple-system,sans-serif;--fb:'Geist',-apple-system,sans-serif;--fm:'Geist Mono',monospace;--e:cubic-bezier(.16,1,.3,1)}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--t);font-family:var(--fb);line-height:1.6;overflow-x:clip}
+::selection{background:var(--ac);color:var(--bg)}
 img{max-width:100%;display:block}
-.c{max-width:1200px;margin:0 auto;padding:0 28px}
 
-/* NAV */
-.pf-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;background:rgba(10,10,10,.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.06)}
-.pf-nav a{text-decoration:none;color:var(--text);font-size:.85rem;font-weight:500;transition:color .3s}
-.pf-nav a:hover{color:var(--accent)}
-.pf-nav .nav-logo{display:flex;align-items:center;gap:.6rem}
-.pf-nav .nav-logo img{height:36px}
-.pf-nav .nav-links{display:flex;align-items:center;gap:1.8rem}
-.pf-nav .nav-cta{background:linear-gradient(135deg,#ff9a3d,#ffb86b);color:#1a0a00;padding:.55rem 1.2rem;border-radius:100px;font-weight:700;font-size:.8rem}
+/* NAV — identical to v9 */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.1rem 2.5rem;display:flex;justify-content:space-between;align-items:center;background:rgba(5,5,5,.75);backdrop-filter:blur(20px) saturate(1.5);border-bottom:1px solid var(--br)}
+.nl{text-decoration:none;display:flex;align-items:center;padding:.2rem 0}
+.nl img{height:48px;filter:drop-shadow(0 0 14px rgba(0,224,192,.45))}
+.nk{display:flex;align-items:center;gap:2.2rem;list-style:none}
+.nk a{color:var(--td);text-decoration:none;font-size:.8rem;font-weight:500;letter-spacing:.04em;transition:color .3s;font-family:var(--fd)}
+.nk a:hover{color:var(--t)}
+.nk a.act{color:var(--ac)}
+.nc{display:inline-flex;align-items:center;gap:.5rem;background:linear-gradient(135deg,#ff9a3d,#ffb86b);color:#1a0a00;padding:.7rem 1.4rem;border-radius:100px;font-family:var(--fd);font-weight:700;font-size:.85rem;text-decoration:none;transition:all .3s var(--e);box-shadow:0 8px 24px rgba(255,154,61,.3)}
+.nc:hover{transform:translateY(-2px)}
+.ham{display:none;background:none;border:none;cursor:pointer;padding:6px}
+.ham svg{stroke:var(--t)}
+.mm{position:fixed;inset:0;background:rgba(5,5,5,.98);backdrop-filter:blur(30px);z-index:999;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:2rem;opacity:0;visibility:hidden;transition:opacity .4s,visibility .4s}
+.mm.op{opacity:1;visibility:visible}
+.mm a{font-family:var(--fd);font-size:2rem;font-weight:700;color:var(--t);text-decoration:none;transition:color .3s}
+.mm a:hover{color:var(--ac)}
 
 /* HERO */
-.pf-hero{padding:140px 0 60px;border-bottom:1px solid rgba(255,255,255,.06)}
-.pf-hero h1{font-family:'Geist',sans-serif;font-size:clamp(2.4rem,6vw,4.2rem);font-weight:700;line-height:1.08;margin-bottom:1rem;letter-spacing:-.02em}
-.pf-hero h1 span{color:var(--accent);font-family:'Instrument Serif',serif;font-style:italic}
-.pf-hero .sub{font-size:1.05rem;color:var(--muted);max-width:640px;line-height:1.7}
+.pf-hero{padding:160px 0 80px;max-width:1100px;margin:0 auto;padding-left:2.5rem;padding-right:2.5rem}
+.pf-hero h1{font-family:var(--fd);font-size:clamp(2.6rem,7vw,5rem);font-weight:800;letter-spacing:-.04em;line-height:1.05;margin-bottom:1.2rem}
+.pf-hero h1 span{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;letter-spacing:-.01em;font-size:1.05em}
+.pf-hero .sub{font-size:1.05rem;color:var(--td);max-width:620px;line-height:1.7}
 
-/* SECTIONS */
-.pf-sec{padding:80px 0;border-bottom:1px solid rgba(255,255,255,.04);opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}
-.pf-sec.vis{opacity:1;transform:translateY(0)}
-.sec-num{font-family:'Geist',sans-serif;font-size:clamp(4rem,10vw,7rem);font-weight:700;color:rgba(212,168,83,.12);line-height:1;margin-bottom:-1.5rem;position:relative;z-index:0;letter-spacing:-.04em}
-.sec-title{font-family:'Geist',sans-serif;font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;margin-bottom:.8rem;position:relative;z-index:1;letter-spacing:-.015em}
-.sec-desc{font-size:.95rem;color:#bbb;max-width:640px;line-height:1.75;margin-bottom:2.5rem}
+/* SECTIONS — v9 identical style */
+.sec{padding:6rem 2.5rem;position:relative;border-bottom:1px solid var(--br)}
+.si{max-width:1100px;margin:0 auto}
+.lb{font-family:var(--fm);font-size:.66rem;color:var(--ac);letter-spacing:.14em;text-transform:uppercase;display:flex;align-items:center;gap:.6rem;margin-bottom:1.2rem}
+.lb::before{content:'';width:14px;height:1.5px;background:var(--ac)}
+.sh{font-family:var(--fd);font-size:clamp(1.8rem,4.5vw,3.2rem);font-weight:700;letter-spacing:-.04em;line-height:1.1;margin-bottom:.8rem}
+.sh span{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400}
+.ss{color:var(--td);font-size:1rem;max-width:580px;line-height:1.65;margin-bottom:3rem}
+
+/* SECTION NUMBER — watermark */
+.sec-num{font-family:var(--fd);font-size:clamp(5rem,12vw,9rem);font-weight:900;color:rgba(0,224,192,.06);line-height:1;margin-bottom:-2rem;position:relative;z-index:0;letter-spacing:-.06em;pointer-events:none}
 
 /* CAROUSEL GROUP */
-.car-group{margin-bottom:2.5rem}
-.car-label{font-size:.72rem;text-transform:uppercase;letter-spacing:2.5px;color:var(--accent);margin-bottom:.8rem;font-weight:500}
+.car-group{margin-bottom:3rem}
+.car-label{font-family:var(--fm);font-size:.68rem;text-transform:uppercase;letter-spacing:.12em;color:var(--td);margin-bottom:.8rem;padding-left:.2rem}
 
 /* GRIDS */
-.grid{display:grid;gap:10px}
+.grid{display:grid;gap:8px}
 .g7{grid-template-columns:repeat(7,1fr)}
 .g4{grid-template-columns:repeat(4,1fr)}
 .g3{grid-template-columns:repeat(3,1fr)}
 .g2{grid-template-columns:repeat(2,1fr)}
-.grid img{width:100%;height:auto;border-radius:var(--r);cursor:zoom-in;transition:transform .35s cubic-bezier(.2,.9,.3,1.2),box-shadow .35s;aspect-ratio:4/5;object-fit:cover}
-.grid img:hover{transform:translateY(-6px) scale(1.02);box-shadow:0 20px 50px rgba(0,0,0,.5),0 0 0 1px rgba(212,168,83,.3)}
+.grid img{width:100%;height:auto;border-radius:var(--r);cursor:zoom-in;transition:transform .4s var(--e),box-shadow .4s;aspect-ratio:4/5;object-fit:cover;border:1px solid var(--br)}
+.grid img:hover{transform:translateY(-6px) scale(1.02);box-shadow:0 24px 60px rgba(0,0,0,.55),0 0 0 1px var(--ac);border-color:rgba(0,224,192,.3)}
 
-/* LIGHTBOX */
-.lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.96);z-index:9999;justify-content:center;align-items:center;backdrop-filter:blur(8px)}
-.lb.on{display:flex}
-.lb img{max-width:88vw;max-height:88vh;object-fit:contain;border-radius:10px;box-shadow:0 30px 80px rgba(0,0,0,.6)}
-.lb-arr{position:fixed;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);color:#fff;font-size:28px;width:52px;height:52px;border-radius:50%;cursor:pointer;z-index:10000;transition:background .25s;display:flex;align-items:center;justify-content:center}
-.lb-arr:hover{background:rgba(212,168,83,.3);border-color:var(--accent)}
+/* LIGHTBOX — v9 dark style */
+.lb-ov{display:none;position:fixed;inset:0;background:rgba(5,5,5,.97);z-index:9999;justify-content:center;align-items:center;backdrop-filter:blur(12px)}
+.lb-ov.on{display:flex}
+.lb-ov img{max-width:88vw;max-height:88vh;object-fit:contain;border-radius:12px;box-shadow:0 30px 80px rgba(0,0,0,.7)}
+.lb-arr{position:fixed;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.08);border:1px solid var(--br2);color:var(--t);font-size:24px;width:48px;height:48px;border-radius:50%;cursor:pointer;z-index:10000;transition:all .3s var(--e);display:flex;align-items:center;justify-content:center}
+.lb-arr:hover{background:var(--ac2);border-color:var(--ac);color:var(--ac)}
 .lb-prev{left:20px}
 .lb-next{right:20px}
-.lb-x{position:fixed;top:18px;right:22px;background:none;border:none;color:#fff;font-size:36px;cursor:pointer;z-index:10000;opacity:.7;transition:opacity .2s}
-.lb-x:hover{opacity:1}
-.lb-counter{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);color:var(--muted);font-size:.8rem;z-index:10000;letter-spacing:1px}
+.lb-x{position:fixed;top:16px;right:20px;background:rgba(255,255,255,.08);border:1px solid var(--br2);border-radius:50%;width:44px;height:44px;color:var(--t);font-size:22px;cursor:pointer;z-index:10000;transition:all .3s;display:flex;align-items:center;justify-content:center}
+.lb-x:hover{background:rgba(255,80,80,.2);border-color:rgba(255,80,80,.4)}
+.lb-count{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);color:var(--tm);font-family:var(--fm);font-size:.75rem;z-index:10000;letter-spacing:.1em}
 
-/* CTA FOOTER */
-.pf-cta{padding:100px 0;text-align:center}
-.pf-cta h2{font-family:'Geist',sans-serif;font-size:clamp(2rem,5vw,3.2rem);font-weight:700;margin-bottom:.8rem}
-.pf-cta h2 span{color:var(--accent);font-family:'Instrument Serif',serif;font-style:italic}
-.pf-cta p{color:var(--muted);font-size:1rem;margin-bottom:2rem;max-width:500px;margin-left:auto;margin-right:auto}
-.pf-cta .btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
-.btn-wa{display:inline-flex;align-items:center;gap:.5rem;background:#25D366;color:#fff;padding:.9rem 2rem;border-radius:100px;font-weight:700;font-size:.9rem;text-decoration:none;transition:transform .3s,box-shadow .3s}
-.btn-wa:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(37,211,102,.35)}
-.btn-cal{display:inline-flex;align-items:center;gap:.5rem;background:transparent;border:1.5px solid rgba(212,168,83,.5);color:var(--accent);padding:.85rem 2rem;border-radius:100px;font-weight:600;font-size:.9rem;text-decoration:none;transition:all .3s}
-.btn-cal:hover{background:rgba(212,168,83,.1);border-color:var(--accent)}
+/* CTA SECTION — v9 style */
+.pf-cta{padding:7rem 2.5rem;text-align:center;border-bottom:1px solid var(--br)}
+.pf-cta h2{font-family:var(--fd);font-size:clamp(2rem,5vw,3.2rem);font-weight:800;letter-spacing:-.04em;margin-bottom:.8rem}
+.pf-cta h2 span{color:var(--ac);font-family:'Instrument Serif',serif;font-style:italic;font-weight:400}
+.pf-cta p{color:var(--td);font-size:.95rem;margin-bottom:2rem;max-width:500px;margin-left:auto;margin-right:auto;line-height:1.6}
+.btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.bh{display:inline-flex;align-items:center;gap:.6rem;background:linear-gradient(135deg,#ff9a3d,#ffb86b);color:#1a0a00;padding:.9rem 2rem;border-radius:100px;font-family:var(--fd);font-weight:700;font-size:.88rem;text-decoration:none;transition:transform .3s var(--e),box-shadow .3s}
+.bh:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(255,154,61,.35)}
+.bg{display:inline-flex;align-items:center;color:var(--td);padding:.9rem 1.4rem;font-size:.85rem;font-weight:500;text-decoration:none;border-radius:100px;border:1px solid var(--br2);transition:border-color .3s,color .3s;font-family:var(--fd)}
+.bg:hover{border-color:var(--ac);color:var(--t)}
 
-/* FOOTER */
-.pf-ft{padding:2rem;border-top:1px solid rgba(255,255,255,.06);text-align:center;font-size:.75rem;color:#555}
-.pf-ft a{color:var(--accent);text-decoration:none}
+/* FOOTER — v9 identical */
+.ft-wrap{border-top:1px solid rgba(0,224,192,.15);padding:2.5rem 2rem 1.5rem;font-family:var(--fb)}
+.ft-inner{max-width:1200px;margin:0 auto}
+.ft-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.ft-legal{font-size:.72rem;color:#5a6572}
+.ft-links{display:flex;gap:1.5rem}
+.ft-links a{color:#5a6572;font-size:.75rem;text-decoration:none;transition:color .25s}
+.ft-links a:hover{color:var(--ac)}
+
+/* REVEAL animation */
+.rv{opacity:0;transform:translateY(40px);transition:opacity .8s var(--e),transform .8s var(--e)}
+.rv.vi{opacity:1;transform:translateY(0)}
 
 /* RESPONSIVE */
-@media(max-width:900px){
-  .g7{grid-template-columns:repeat(4,1fr)}
-  .g4{grid-template-columns:repeat(2,1fr)}
-  .pf-nav .nav-links span{display:none}
-}
-@media(max-width:600px){
+@media(max-width:768px){
+  nav{padding:.7rem 1.2rem}
+  .nk{display:none}
+  .ham{display:block}
+  .sec{padding:3.5rem 1rem}
+  .pf-hero{padding:110px 1rem 50px}
+  .pf-hero h1{font-size:clamp(2rem,9vw,3.2rem)}
   .g7{grid-template-columns:repeat(2,1fr)}
+  .g4{grid-template-columns:repeat(2,1fr)}
   .g3{grid-template-columns:repeat(2,1fr)}
   .g2{grid-template-columns:1fr}
-  .pf-hero{padding:110px 0 40px}
-  .pf-sec{padding:50px 0}
-  .sec-num{font-size:clamp(3rem,14vw,5rem)}
-  .pf-nav{padding:.7rem 1rem}
-  .pf-nav .nav-links{gap:1rem}
-  .c{padding:0 16px}
-  .lb img{max-width:96vw;max-height:80vh}
-  .lb-arr{width:42px;height:42px;font-size:22px}
+  .sec-num{font-size:clamp(3.5rem,16vw,6rem)}
+  .pf-cta{padding:4rem 1rem}
+  .lb-ov img{max-width:96vw;max-height:80vh}
+  .lb-arr{width:40px;height:40px;font-size:20px}
   .lb-prev{left:8px}
   .lb-next{right:8px}
+  .ft-bottom{flex-direction:column;text-align:center}
 }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav class="pf-nav">
-  <a href="/" class="nav-logo"><img src="logo-nav.svg" alt="i-Vory Creative"></a>
-  <div class="nav-links">
-    <a href="/#servicii">Servicii</a>
-    <a href="/#pachete">Pachete</a>
-    <span><a href="/portofoliu.html" style="color:var(--accent)">Portofoliu</a></span>
-    <a href="/#contact">Contact</a>
-    <a href="https://api.whatsapp.com/send/?phone=40775579706" class="nav-cta" target="_blank">WhatsApp →</a>
-  </div>
+<nav id="nav">
+  <a class="nl" href="/"><img src="logo-nav.svg?v=4" alt="i-Vory Creative" style="height:48px;filter:drop-shadow(0 0 14px rgba(0,224,192,.45))"></a>
+  <ul class="nk">
+    <li><a href="/#servicii">Servicii</a></li>
+    <li><a href="/#pachete">Pachete</a></li>
+    <li><a href="/portofoliu.html" class="act">Portofoliu</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+  <a href="https://api.whatsapp.com/send/?phone=40775579706" class="nc" target="_blank">WhatsApp →</a>
+  <button class="ham" id="ham" aria-label="Menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg></button>
 </nav>
+<div class="mm" id="mm"><a href="/#servicii">Servicii</a><a href="/#pachete">Pachete</a><a href="/portofoliu.html" style="color:var(--ac)">Portofoliu</a><a href="/#contact">Contact</a><a href="https://api.whatsapp.com/send/?phone=40775579706" target="_blank" style="color:var(--ac)">WhatsApp</a></div>
 
-<!-- HERO -->
-<header class="pf-hero">
-<div class="c">
-  <h1>Ce facem.​ <span>Concret.</span></h1>
+<header class="pf-hero rv">
+  <h1>Ce facem.​<br><span>Concret.</span></h1>
   <p class="sub">Noi producem conținut pentru social media. Asta înseamnă poze, texte, carusele, videoclipuri — tot ce vezi când dai scroll pe Instagram sau TikTok. Mai jos îți arătăm exact ce iese din studioul nostru, explicat simplu.</p>
-</div>
 </header>
 
-<main class="c">
+<main>
 
-<section class="pf-sec">
+<section class="sec">
+<div class="si rv">
   <div class="sec-num">01</div>
-  <h2 class="sec-title">Carusele educaționale</h2>
-  <p class="sec-desc">Postări cu mai multe imagini care educă publicul tău și îl fac să vrea să lucreze cu tine. Omul învăță ceva util, și pe drum află că tu exiști. Fiecare carusel are 7 slide-uri cu text generat direct în imagine — nu e adăugat după.</p>
-  <div class="car-group">
-<div class="car-label">Carusel educațional #1 — De ce social media nu e gratuită</div>
-<div class="grid g7"><img src="portfolio/carousel-ivory-1/1.png" alt="Carusele educaționale slide 1" loading="lazy"><img src="portfolio/carousel-ivory-1/2.png" alt="Carusele educaționale slide 2" loading="lazy"><img src="portfolio/carousel-ivory-1/3.png" alt="Carusele educaționale slide 3" loading="lazy"><img src="portfolio/carousel-ivory-1/4.png" alt="Carusele educaționale slide 4" loading="lazy"><img src="portfolio/carousel-ivory-1/5.png" alt="Carusele educaționale slide 5" loading="lazy"><img src="portfolio/carousel-ivory-1/6.png" alt="Carusele educaționale slide 6" loading="lazy"><img src="portfolio/carousel-ivory-1/7.png" alt="Carusele educaționale slide 7" loading="lazy"></div>
-</div>
-<div class="car-group">
-<div class="car-label">Carusel educațional #2 — Mituri despre social media</div>
-<div class="grid g7"><img src="portfolio/carousel-ivory-2/1.png" alt="Carusele educaționale slide 1" loading="lazy"><img src="portfolio/carousel-ivory-2/2.png" alt="Carusele educaționale slide 2" loading="lazy"><img src="portfolio/carousel-ivory-2/3.png" alt="Carusele educaționale slide 3" loading="lazy"><img src="portfolio/carousel-ivory-2/4.png" alt="Carusele educaționale slide 4" loading="lazy"><img src="portfolio/carousel-ivory-2/5.png" alt="Carusele educaționale slide 5" loading="lazy"><img src="portfolio/carousel-ivory-2/6.png" alt="Carusele educaționale slide 6" loading="lazy"><img src="portfolio/carousel-ivory-2/7.png" alt="Carusele educaționale slide 7" loading="lazy"></div>
-</div>
+  <div class="lb">01. Tip de conținut</div>
+  <h2 class="sh">Carusele educaționale</h2>
+  <p class="ss">Postări cu mai multe imagini care educă publicul tău și îl fac să vrea să lucreze cu tine. Omul învăță ceva util, și pe drum află că tu exiști.</p>
+  <div class="car-group"><div class="car-label">Carusel educațional #1</div><div class="grid g7"><img src="portfolio/carousel-ivory-1/1.png" alt="Slide 1" loading="lazy"><img src="portfolio/carousel-ivory-1/2.png" alt="Slide 2" loading="lazy"><img src="portfolio/carousel-ivory-1/3.png" alt="Slide 3" loading="lazy"><img src="portfolio/carousel-ivory-1/4.png" alt="Slide 4" loading="lazy"><img src="portfolio/carousel-ivory-1/5.png" alt="Slide 5" loading="lazy"><img src="portfolio/carousel-ivory-1/6.png" alt="Slide 6" loading="lazy"><img src="portfolio/carousel-ivory-1/7.png" alt="Slide 7" loading="lazy"></div></div>
+<div class="car-group"><div class="car-label">Carusel educațional #2</div><div class="grid g7"><img src="portfolio/carousel-ivory-2/1.png" alt="Slide 1" loading="lazy"><img src="portfolio/carousel-ivory-2/2.png" alt="Slide 2" loading="lazy"><img src="portfolio/carousel-ivory-2/3.png" alt="Slide 3" loading="lazy"><img src="portfolio/carousel-ivory-2/4.png" alt="Slide 4" loading="lazy"><img src="portfolio/carousel-ivory-2/5.png" alt="Slide 5" loading="lazy"><img src="portfolio/carousel-ivory-2/6.png" alt="Slide 6" loading="lazy"><img src="portfolio/carousel-ivory-2/7.png" alt="Slide 7" loading="lazy"></div></div>
 
+</div>
 </section>
 
-<section class="pf-sec">
+<section class="sec">
+<div class="si rv">
   <div class="sec-num">02</div>
-  <h2 class="sec-title">Carusele de storytelling</h2>
-  <p class="sec-desc">Povestim o poveste vizuală în 7 cadre. Omul dă swipe pentru că vrea să vadă ce urmează — și pe drum absoarbe brandul tău. Gândește-te la ele ca la un mini-film într-o postare.</p>
-  <div class="car-group">
-<div class="car-label">Storytelling vizual — 7 cadre cinematice</div>
-<div class="grid g7"><img src="portfolio/carousel-ivory-storytelling/1.png" alt="Carusele de storytelling slide 1" loading="lazy"><img src="portfolio/carousel-ivory-storytelling/2.png" alt="Carusele de storytelling slide 2" loading="lazy"><img src="portfolio/carousel-ivory-storytelling/3.png" alt="Carusele de storytelling slide 3" loading="lazy"><img src="portfolio/carousel-ivory-storytelling/4.png" alt="Carusele de storytelling slide 4" loading="lazy"><img src="portfolio/carousel-ivory-storytelling/5.png" alt="Carusele de storytelling slide 5" loading="lazy"><img src="portfolio/carousel-ivory-storytelling/6.png" alt="Carusele de storytelling slide 6" loading="lazy"><img src="portfolio/carousel-ivory-storytelling/7.png" alt="Carusele de storytelling slide 7" loading="lazy"></div>
-</div>
+  <div class="lb">02. Tip de conținut</div>
+  <h2 class="sh">Carusele de <span>storytelling</span></h2>
+  <p class="ss">Povestim o poveste vizuală în 7 cadre. Omul dă swipe pentru că vrea să vadă ce urmează — și pe drum absoarbe brandul tău.</p>
+  <div class="car-group"><div class="car-label">Storytelling vizual — 7 cadre cinematice</div><div class="grid g7"><img src="portfolio/carousel-ivory-storytelling/1.png" alt="Slide 1" loading="lazy"><img src="portfolio/carousel-ivory-storytelling/2.png" alt="Slide 2" loading="lazy"><img src="portfolio/carousel-ivory-storytelling/3.png" alt="Slide 3" loading="lazy"><img src="portfolio/carousel-ivory-storytelling/4.png" alt="Slide 4" loading="lazy"><img src="portfolio/carousel-ivory-storytelling/5.png" alt="Slide 5" loading="lazy"><img src="portfolio/carousel-ivory-storytelling/6.png" alt="Slide 6" loading="lazy"><img src="portfolio/carousel-ivory-storytelling/7.png" alt="Slide 7" loading="lazy"></div></div>
 
+</div>
 </section>
 
-<section class="pf-sec">
+<section class="sec">
+<div class="si rv">
   <div class="sec-num">03</div>
-  <h2 class="sec-title">Carusele de showcase</h2>
-  <p class="sec-desc">Arătăm ce știi să faci. Portofoliu vizual în format social media — clientul vede rezultatele tale și te sună. E ca un CV vizual pentru afacerea ta, dar făcut să oprească scroll-ul.</p>
-  <div class="car-group">
-<div class="car-label">Showcase portofoliu vizual</div>
-<div class="grid g7"><img src="portfolio/carousel-ivory-showcase/1.png" alt="Carusele de showcase slide 1" loading="lazy"><img src="portfolio/carousel-ivory-showcase/2.png" alt="Carusele de showcase slide 2" loading="lazy"><img src="portfolio/carousel-ivory-showcase/3.png" alt="Carusele de showcase slide 3" loading="lazy"><img src="portfolio/carousel-ivory-showcase/4.png" alt="Carusele de showcase slide 4" loading="lazy"><img src="portfolio/carousel-ivory-showcase/5.png" alt="Carusele de showcase slide 5" loading="lazy"><img src="portfolio/carousel-ivory-showcase/6.png" alt="Carusele de showcase slide 6" loading="lazy"><img src="portfolio/carousel-ivory-showcase/7.png" alt="Carusele de showcase slide 7" loading="lazy"></div>
-</div>
+  <div class="lb">03. Tip de conținut</div>
+  <h2 class="sh">Carusele de <span>showcase</span></h2>
+  <p class="ss">Arătăm ce știi să faci. Portofoliu vizual în format social media — clientul vede rezultatele tale și te sună.</p>
+  <div class="car-group"><div class="car-label">Showcase portofoliu vizual</div><div class="grid g7"><img src="portfolio/carousel-ivory-showcase/1.png" alt="Slide 1" loading="lazy"><img src="portfolio/carousel-ivory-showcase/2.png" alt="Slide 2" loading="lazy"><img src="portfolio/carousel-ivory-showcase/3.png" alt="Slide 3" loading="lazy"><img src="portfolio/carousel-ivory-showcase/4.png" alt="Slide 4" loading="lazy"><img src="portfolio/carousel-ivory-showcase/5.png" alt="Slide 5" loading="lazy"><img src="portfolio/carousel-ivory-showcase/6.png" alt="Slide 6" loading="lazy"><img src="portfolio/carousel-ivory-showcase/7.png" alt="Slide 7" loading="lazy"></div></div>
 
+</div>
 </section>
 
-<section class="pf-sec">
+<section class="sec">
+<div class="si rv">
   <div class="sec-num">04</div>
-  <h2 class="sec-title">Carusele promoționale de produs</h2>
-  <p class="sec-desc">Caruselul care vinde un produs direct. Fiecare slide aduce clientul mai aproape de butonul de cumpărare. Amăratește-l, arată-i de ce e bun, și fă-l să vrea să-l comande.</p>
-  <div class="car-group">
-<div class="car-label">Carusel promoțional produs — UrbanCat</div>
-<div class="grid g7"><img src="portfolio/carousel-urbancat/1.png" alt="Carusele promoționale de produs slide 1" loading="lazy"><img src="portfolio/carousel-urbancat/2.png" alt="Carusele promoționale de produs slide 2" loading="lazy"><img src="portfolio/carousel-urbancat/3.png" alt="Carusele promoționale de produs slide 3" loading="lazy"><img src="portfolio/carousel-urbancat/4.png" alt="Carusele promoționale de produs slide 4" loading="lazy"><img src="portfolio/carousel-urbancat/5.png" alt="Carusele promoționale de produs slide 5" loading="lazy"><img src="portfolio/carousel-urbancat/6.png" alt="Carusele promoționale de produs slide 6" loading="lazy"><img src="portfolio/carousel-urbancat/7.png" alt="Carusele promoționale de produs slide 7" loading="lazy"></div>
-</div>
+  <div class="lb">04. Tip de conținut</div>
+  <h2 class="sh">Carusele promoționale de <span>produs</span></h2>
+  <p class="ss">Caruselul care vinde un produs direct. Fiecare slide aduce clientul mai aproape de butonul de cumpărare.</p>
+  <div class="car-group"><div class="car-label">Carusel promoțional — UrbanCat</div><div class="grid g7"><img src="portfolio/carousel-urbancat/1.png" alt="Slide 1" loading="lazy"><img src="portfolio/carousel-urbancat/2.png" alt="Slide 2" loading="lazy"><img src="portfolio/carousel-urbancat/3.png" alt="Slide 3" loading="lazy"><img src="portfolio/carousel-urbancat/4.png" alt="Slide 4" loading="lazy"><img src="portfolio/carousel-urbancat/5.png" alt="Slide 5" loading="lazy"><img src="portfolio/carousel-urbancat/6.png" alt="Slide 6" loading="lazy"><img src="portfolio/carousel-urbancat/7.png" alt="Slide 7" loading="lazy"></div></div>
 
+</div>
 </section>
 
-<section class="pf-sec">
+<section class="sec">
+<div class="si rv">
   <div class="sec-num">05</div>
-  <h2 class="sec-title">Conținut pentru profesioniști</h2>
-  <p class="sec-desc">Conținut educativ pentru profesioniști care vor clienți de pe social media dar nu vor să pară neserioși. Ton profesional, informații utile, vizual premium. Pentru avocați, doctori, terapeutți — oricine are nevoie de prezență online fără cringe.</p>
-  <div class="car-group">
-<div class="car-label">Carusel educativ juridic — drept penal</div>
-<div class="grid g7"><img src="portfolio/carousel-lawyer/1.png" alt="Conținut pentru profesioniști slide 1" loading="lazy"><img src="portfolio/carousel-lawyer/2.png" alt="Conținut pentru profesioniști slide 2" loading="lazy"><img src="portfolio/carousel-lawyer/3.png" alt="Conținut pentru profesioniști slide 3" loading="lazy"><img src="portfolio/carousel-lawyer/4.png" alt="Conținut pentru profesioniști slide 4" loading="lazy"><img src="portfolio/carousel-lawyer/5.png" alt="Conținut pentru profesioniști slide 5" loading="lazy"><img src="portfolio/carousel-lawyer/6.png" alt="Conținut pentru profesioniști slide 6" loading="lazy"><img src="portfolio/carousel-lawyer/7.png" alt="Conținut pentru profesioniști slide 7" loading="lazy"></div>
-</div>
+  <div class="lb">05. Tip de conținut</div>
+  <h2 class="sh">Conținut pentru <span>profesioniști</span></h2>
+  <p class="ss">Conținut educativ pentru avocați, doctori, terapeutți — oricine vrea clienți de pe social media fără să pară neserios.</p>
+  <div class="car-group"><div class="car-label">Carusel educativ juridic</div><div class="grid g7"><img src="portfolio/carousel-lawyer/1.png" alt="Slide 1" loading="lazy"><img src="portfolio/carousel-lawyer/2.png" alt="Slide 2" loading="lazy"><img src="portfolio/carousel-lawyer/3.png" alt="Slide 3" loading="lazy"><img src="portfolio/carousel-lawyer/4.png" alt="Slide 4" loading="lazy"><img src="portfolio/carousel-lawyer/5.png" alt="Slide 5" loading="lazy"><img src="portfolio/carousel-lawyer/6.png" alt="Slide 6" loading="lazy"><img src="portfolio/carousel-lawyer/7.png" alt="Slide 7" loading="lazy"></div></div>
 
+</div>
 </section>
 
-<section class="pf-sec">
+<section class="sec">
+<div class="si rv">
   <div class="sec-num">06</div>
-  <h2 class="sec-title">Fotografii de produs generate cu AI</h2>
-  <p class="sec-desc">Poze de produs care arată ca și cum ai fi plătit un fotograf profesionist — dar sunt generate 100% cu inteligență artificială. La o fracțiune din cost și în câteva ore, nu zile.</p>
-  <div class="car-group">
-<div class="car-label">Fotografii AI produs — UrbanCat litieră</div>
-<div class="grid g4"><img src="portfolio/product-urbancat/1.png" alt="Fotografii de produs generate cu AI slide 1" loading="lazy"><img src="portfolio/product-urbancat/2.png" alt="Fotografii de produs generate cu AI slide 2" loading="lazy"><img src="portfolio/product-urbancat/3.png" alt="Fotografii de produs generate cu AI slide 3" loading="lazy"><img src="portfolio/product-urbancat/4.png" alt="Fotografii de produs generate cu AI slide 4" loading="lazy"><img src="portfolio/product-urbancat/5.png" alt="Fotografii de produs generate cu AI slide 5" loading="lazy"><img src="portfolio/product-urbancat/6.png" alt="Fotografii de produs generate cu AI slide 6" loading="lazy"><img src="portfolio/product-urbancat/7.png" alt="Fotografii de produs generate cu AI slide 7" loading="lazy"><img src="portfolio/product-urbancat/8.png" alt="Fotografii de produs generate cu AI slide 8" loading="lazy"></div>
-</div>
+  <div class="lb">06. Tip de conținut</div>
+  <h2 class="sh">Fotografii de produs <span>generate cu AI</span></h2>
+  <p class="ss">Poze de produs care arată ca și cum ai fi plătit un fotograf profesionist — dar sunt generate 100% cu inteligență artificială. La o fracțiune din cost.</p>
+  <div class="car-group"><div class="car-label">Fotografii AI produs — UrbanCat</div><div class="grid g4"><img src="portfolio/product-urbancat/1.png" alt="Slide 1" loading="lazy"><img src="portfolio/product-urbancat/2.png" alt="Slide 2" loading="lazy"><img src="portfolio/product-urbancat/3.png" alt="Slide 3" loading="lazy"><img src="portfolio/product-urbancat/4.png" alt="Slide 4" loading="lazy"><img src="portfolio/product-urbancat/5.png" alt="Slide 5" loading="lazy"><img src="portfolio/product-urbancat/6.png" alt="Slide 6" loading="lazy"><img src="portfolio/product-urbancat/7.png" alt="Slide 7" loading="lazy"><img src="portfolio/product-urbancat/8.png" alt="Slide 8" loading="lazy"></div></div>
 
+</div>
 </section>
 
-<section class="pf-sec">
+<section class="sec">
+<div class="si rv">
   <div class="sec-num">07</div>
-  <h2 class="sec-title">Postări emoționale</h2>
-  <p class="sec-desc">O singură imagine care oprește scroll-ul. Emoție pură, text puternic, vizual cinematografic. Funcționează când vrei să faci lumea să simtă ceva, nu să cumpere.</p>
-  <div class="car-group">
-<div class="car-label">Postări single-image emoționale</div>
-<div class="grid g2"><img src="portfolio/posts-emotional/1.png" alt="Postări emoționale slide 1" loading="lazy"><img src="portfolio/posts-emotional/2.png" alt="Postări emoționale slide 2" loading="lazy"></div>
-</div>
+  <div class="lb">07. Tip de conținut</div>
+  <h2 class="sh">Postări <span>emoționale</span></h2>
+  <p class="ss">O singură imagine care oprește scroll-ul. Emoție pură, text puternic, vizual cinematografic.</p>
+  <div class="car-group"><div class="car-label">Postări single-image</div><div class="grid g2"><img src="portfolio/posts-emotional/1.png" alt="Slide 1" loading="lazy"><img src="portfolio/posts-emotional/2.png" alt="Slide 2" loading="lazy"></div></div>
 
+</div>
 </section>
 
 </main>
 
-<!-- CTA -->
 <section class="pf-cta">
-<div class="c">
+<div class="si rv">
   <h2>Vrei conținut ca asta<br>pentru <span>afacerea ta?</span></h2>
   <p>Scrie-ne un mesaj, răspundem în mai puțin de o oră. Dacă putem ajuta, îți spunem exact cum. Dacă nu, îți spunem direct.</p>
   <div class="btns">
-    <a href="https://api.whatsapp.com/send/?phone=40775579706" class="btn-wa" target="_blank">Scrie-ne pe WhatsApp →</a>
-    <a href="https://calendly.com/ivorymarketing2/30min" class="btn-cal" target="_blank">Programează un call gratuit →</a>
+    <a href="https://api.whatsapp.com/send/?phone=40775579706" class="bh" target="_blank">Scrie-ne pe WhatsApp →</a>
+    <a href="https://calendly.com/ivorymarketing2/30min" class="bg" target="_blank">Programează un call gratuit →</a>
   </div>
 </div>
 </section>
 
-<footer class="pf-ft">
-  <p>© 2026 i-Vory Creative · <a href="/">Acasă</a> · <a href="/#contact">Contact</a> · București, România</p>
-</footer>
+<div class="ft-wrap">
+<div class="ft-inner">
+  <div class="ft-bottom">
+    <div class="ft-legal">© 2026 i-Vory Creative · București, România</div>
+    <div class="ft-links">
+      <a href="/">Acasă</a>
+      <a href="/#contact">Contact</a>
+      <a href="/#faq">FAQ</a>
+    </div>
+  </div>
+</div>
+</div>
 
 <!-- LIGHTBOX -->
-<div class="lb" id="lb">
+<div class="lb-ov" id="lbOv">
   <button class="lb-x" id="lbX">×</button>
   <button class="lb-arr lb-prev" id="lbPrev">‹</button>
   <button class="lb-arr lb-next" id="lbNext">›</button>
   <img id="lbImg" src="" alt="">
-  <div class="lb-counter" id="lbCount"></div>
+  <div class="lb-count" id="lbCount"></div>
 </div>
 
 <script>
 (function(){
-  var imgs = document.querySelectorAll('.grid img');
-  var lb = document.getElementById('lb');
-  var lbImg = document.getElementById('lbImg');
-  var lbCount = document.getElementById('lbCount');
-  var all = Array.from(imgs);
-  var idx = 0;
+  // Mobile menu
+  var ham=document.getElementById('ham'),mm=document.getElementById('mm');
+  if(ham&&mm){ham.addEventListener('click',function(){mm.classList.toggle('op');document.body.style.overflow=mm.classList.contains('op')?'hidden':''})}
+  if(mm)mm.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){mm.classList.remove('op');document.body.style.overflow=''})});
 
-  function show(i){
-    if(i<0) i=all.length-1;
-    if(i>=all.length) i=0;
-    idx=i;
-    lbImg.src=all[i].src;
-    lbCount.textContent=(i+1)+' / '+all.length;
-    lb.classList.add('on');
-    document.body.style.overflow='hidden';
-  }
-  function hide(){
-    lb.classList.remove('on');
-    document.body.style.overflow='';
-  }
+  // Nav scroll
+  window.addEventListener('scroll',function(){var n=document.getElementById('nav');if(n)n.style.borderBottomColor=scrollY>60?'var(--br)':'transparent'},{passive:true});
 
-  all.forEach(function(img,i){
-    img.addEventListener('click',function(){show(i)});
-  });
-
+  // Lightbox
+  var imgs=document.querySelectorAll('.grid img');
+  var lb=document.getElementById('lbOv');
+  var lbImg=document.getElementById('lbImg');
+  var lbCount=document.getElementById('lbCount');
+  var all=Array.from(imgs),idx=0;
+  function show(i){if(i<0)i=all.length-1;if(i>=all.length)i=0;idx=i;lbImg.src=all[i].src;lbCount.textContent=(i+1)+' / '+all.length;lb.classList.add('on');document.body.style.overflow='hidden'}
+  function hide(){lb.classList.remove('on');document.body.style.overflow=''}
+  all.forEach(function(img,i){img.addEventListener('click',function(){show(i)})});
   document.getElementById('lbPrev').addEventListener('click',function(e){e.stopPropagation();show(idx-1)});
   document.getElementById('lbNext').addEventListener('click',function(e){e.stopPropagation();show(idx+1)});
   document.getElementById('lbX').addEventListener('click',hide);
   lb.addEventListener('click',function(e){if(e.target===lb)hide()});
-
-  document.addEventListener('keydown',function(e){
-    if(!lb.classList.contains('on'))return;
-    if(e.key==='Escape')hide();
-    if(e.key==='ArrowLeft')show(idx-1);
-    if(e.key==='ArrowRight')show(idx+1);
-  });
-
-  // Swipe support mobile
+  document.addEventListener('keydown',function(e){if(!lb.classList.contains('on'))return;if(e.key==='Escape')hide();if(e.key==='ArrowLeft')show(idx-1);if(e.key==='ArrowRight')show(idx+1)});
   var tx=0;
   lb.addEventListener('touchstart',function(e){tx=e.changedTouches[0].clientX},{passive:true});
-  lb.addEventListener('touchend',function(e){
-    var dx=e.changedTouches[0].clientX-tx;
-    if(Math.abs(dx)>50){dx>0?show(idx-1):show(idx+1)}
-  },{passive:true});
-})();
+  lb.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>50){dx>0?show(idx-1):show(idx+1)}},{passive:true});
 
-// Fade-in sections on scroll
-(function(){
-  var secs = document.querySelectorAll('.pf-sec');
-  var obs = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target)}
-    });
-  },{threshold:0.08});
-  secs.forEach(function(s){obs.observe(s)});
+  // Reveal on scroll
+  var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vi');obs.unobserve(e.target)}})},{threshold:0.06});
+  document.querySelectorAll('.rv').forEach(function(el){obs.observe(el)});
 })();
 </script>
 
