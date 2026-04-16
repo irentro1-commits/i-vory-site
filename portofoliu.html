@@ -162,12 +162,23 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
 /* Remove car-label heavy weight */
 .car-label{display:none}
 
+
+.pre{position:fixed;inset:0;z-index:10000;display:none}
+.pre.done{display:none;opacity:0;visibility:hidden;pointer-events:none}
+.pre-bar i{display:block;height:100%}
 </style>
 </head>
 <body>
 <!-- GRADIENT BLOBS BACKGROUND — from v9 -->
 <div class="bgblobs"><div class="blob blob1"></div><div class="blob blob2"></div><div class="blob blob3"></div><div class="blob blob4"></div></div>
 <div class="hero3d" id="hero3d"></div>
+<!-- Preloader DOM (needed by Three.js module — hidden instantly) -->
+<div class="pre done" id="pre" style="display:none">
+  <div class="pre-msg" id="preMsg"></div>
+<div id="prob" style="display:none;height:0;overflow:hidden"></div>
+  <div class="pre-bar"><i id="preBar"></i></div>
+</div>
+
 
 
 
