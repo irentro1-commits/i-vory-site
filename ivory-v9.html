@@ -936,6 +936,27 @@ h3, h4, .pk-name, .how-title, .dce-title {
 .hero-video:hover .hv-play-btn{transform:scale(1.12);box-shadow:0 12px 32px rgba(0,0,0,.5),0 0 40px rgba(0,224,192,.5)}
 </style>
 
+
+<style id="cookie-fix">
+.cookie-bar{justify-content:center !important;text-align:center !important;flex-direction:column !important;gap:.8rem !important;padding:1rem 1.5rem !important}
+.cookie-bar p{text-align:center !important}
+.cookie-btns{justify-content:center !important}
+</style>
+
+<style id="mobile-types-fix">
+/* Types grid mobile — stack clean */
+@media(max-width:768px){
+  .types-grid{grid-template-columns:1fr !important;gap:.8rem !important}
+  .type-card{padding:1.2rem !important}
+  .type-card h4{font-size:.85rem !important}
+  .type-list{font-size:.75rem !important;line-height:1.6 !important}
+  .type-tag{font-size:.5rem !important;margin-bottom:.3rem !important}
+}
+/* fara TVA — same row on desktop */
+@media(min-width:769px){
+  .price-table + p{display:inline !important;white-space:nowrap !important}
+}
+</style>
 </head>
 <body>
 
@@ -955,8 +976,8 @@ h3, h4, .pk-name, .how-title, .dce-title {
 
 <div class="cd" id="cd"></div><div class="cr" id="cr"></div>
 
-<nav id="nav"><a class="nl" href="#" style="display:flex;align-items:center;text-decoration:none;padding:.2rem 0"><img loading="lazy" decoding="async" src="logo-nav.svg?v=4" alt="i-Vory Creative" style="height:48px;width:auto;display:block;filter:drop-shadow(0 0 14px rgba(0,224,192,.45))"></a><ul class="nk"><li><a href="#servicii">Servicii</a></li><li><a href="#pachete">Pachete</a></li><li><a href="/portofoliu.html">Portofoliu</a></li><li><a href="#contact">Contact</a></li><li><a href="/blog/">Blog</a></li></ul><a href="https://api.whatsapp.com/send/?phone=40775579706" class="nc" target="_blank">WhatsApp →</a><button class="ham" id="ham" aria-label="Menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg></button></nav>
-<div class="mm" id="mm"><a href="#servicii">Servicii</a><a href="#pachete">Pachete</a><a href="/portofoliu.html">Portofoliu</a><a href="#contact">Contact</a><a href="/blog/">Blog</a><a href="https://api.whatsapp.com/send/?phone=40775579706" target="_blank" style="color:var(--ac)">WhatsApp</a></div>
+<nav id="nav"><a class="nl" href="#" style="display:flex;align-items:center;text-decoration:none;padding:.2rem 0"><img loading="lazy" decoding="async" src="logo-nav.svg?v=4" alt="i-Vory Creative" style="height:48px;width:auto;display:block;filter:drop-shadow(0 0 14px rgba(0,224,192,.45))"></a><ul class="nk"><li><a href="/portofoliu.html" style="color:#ff9a3d;font-weight:800">Portofoliu</a></li><li><a href="#servicii">Servicii</a></li><li><a href="#pachete">Pachete</a></li><li><a href="#contact">Contact</a></li><li><a href="/blog/">Blog</a></li></ul><a href="https://api.whatsapp.com/send/?phone=40775579706" class="nc" target="_blank">WhatsApp →</a><button class="ham" id="ham" aria-label="Menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg></button></nav>
+<div class="mm" id="mm"><a href="/portofoliu.html" style="color:#ff9a3d;font-weight:800">Portofoliu</a><a href="#servicii">Servicii</a><a href="#pachete">Pachete</a><a href="#contact">Contact</a><a href="/blog/">Blog</a><a href="https://api.whatsapp.com/send/?phone=40775579706" target="_blank" style="color:var(--ac)">WhatsApp</a></div>
 <main>
 
 <!-- ========== HERO 3D SECTION ========== -->
