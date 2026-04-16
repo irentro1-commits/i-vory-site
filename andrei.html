@@ -33,10 +33,15 @@ header .bio strong{color:var(--accent);font-weight:500}
 .grid img:hover{transform:scale(1.03)}
 @media(max-width:768px){.grid-7,.grid-4{grid-template-columns:repeat(2,1fr)}.grid-2{grid-template-columns:1fr}}
 @media(max-width:480px){.grid-7,.grid-4{grid-template-columns:repeat(2,1fr)}}
-.lightbox{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.95);z-index:9999;cursor:zoom-out;justify-content:center;align-items:center}
+.lightbox{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.95);z-index:9999;justify-content:center;align-items:center}
 .lightbox.active{display:flex}
-.lightbox img{max-width:90vw;max-height:90vh;object-fit:contain;border-radius:8px}
+.lightbox img{max-width:85vw;max-height:85vh;object-fit:contain;border-radius:8px}
 .grid img{cursor:zoom-in}
+.lb-arrow{position:fixed;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.15);border:none;color:#fff;font-size:36px;width:56px;height:56px;border-radius:50%;cursor:pointer;z-index:10000;transition:background .2s}
+.lb-arrow:hover{background:rgba(255,255,255,.3)}
+.lb-prev{left:24px}
+.lb-next{right:24px}
+.lb-close{position:fixed;top:20px;right:24px;background:none;border:none;color:#fff;font-size:32px;cursor:pointer;z-index:10000}
 </style>
 <style>
 .tools{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:30px}
@@ -189,12 +194,20 @@ footer a{color:var(--accent);text-decoration:none}
 <p style="margin-top:24px;font-size:11px;color:#444">All visuals AI-generated using Nano Banana (Gemini) with iterative prompt refinement. Zero traditional photography.</p>
 </div>
 </footer>
-<div class="lightbox" id="lb" onclick="this.classList.remove('active')"><img id="lb-img" src="" alt=""></div>
+<div class="lightbox" id="lb">
+<button class="lb-close" onclick="closeLb()">&times;</button>
+<button class="lb-arrow lb-prev" onclick="navLb(-1)">&#8249;</button>
+<img id="lb-img" src="" alt="">
+<button class="lb-arrow lb-next" onclick="navLb(1)">&#8250;</button>
+</div>
 <script>
-document.querySelectorAll('.grid img').forEach(img=>{
-img.onclick=()=>{const lb=document.getElementById('lb');document.getElementById('lb-img').src=img.src;lb.classList.add('active');}
-});
-document.addEventListener('keydown',e=>{if(e.key==='Escape')document.getElementById('lb').classList.remove('active');});
+const allImgs=[...document.querySelectorAll('.grid img')];let curIdx=0;
+function openLb(i){curIdx=i;document.getElementById('lb-img').src=allImgs[i].src;document.getElementById('lb').classList.add('active');}
+function closeLb(){document.getElementById('lb').classList.remove('active');}
+function navLb(d){curIdx=(curIdx+d+allImgs.length)%allImgs.length;document.getElementById('lb-img').src=allImgs[curIdx].src;}
+allImgs.forEach((img,i)=>{img.onclick=()=>openLb(i);});
+document.getElementById('lb').addEventListener('click',e=>{if(e.target===e.currentTarget)closeLb();});
+document.addEventListener('keydown',e=>{if(!document.getElementById('lb').classList.contains('active'))return;if(e.key==='Escape')closeLb();if(e.key==='ArrowRight')navLb(1);if(e.key==='ArrowLeft')navLb(-1);});
 </script>
 </body>
 </html>
