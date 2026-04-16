@@ -40,13 +40,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.1rem 2.5rem;displ
 .mm a:hover{color:var(--ac)}
 
 /* HERO */
-.pf-hero{padding:160px 0 80px;max-width:1100px;margin:0 auto;padding-left:2.5rem;padding-right:2.5rem}
+.pf-hero{padding:160px 0 80px;position:relative;z-index:2}/*was*/.pf-hero-old{padding:160px 0 80px;max-width:1100px;margin:0 auto;padding-left:2.5rem;padding-right:2.5rem}
 .pf-hero h1{font-family:var(--fd);font-size:clamp(2.6rem,7vw,5rem);font-weight:800;letter-spacing:-.04em;line-height:1.05;margin-bottom:1.2rem}
 .pf-hero h1 span{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;letter-spacing:-.01em;font-size:1.05em}
 .pf-hero .sub{font-size:1.05rem;color:var(--td);max-width:620px;line-height:1.7}
 
 /* SECTIONS — v9 identical style */
-.sec{padding:6rem 2.5rem;position:relative;border-bottom:1px solid var(--br)}
+.sec{padding:6rem 2.5rem;position:relative;z-index:2;border-bottom:1px solid var(--br)}
 .si{max-width:1100px;margin:0 auto}
 .lb{font-family:var(--fm);font-size:.66rem;color:var(--ac);letter-spacing:.14em;text-transform:uppercase;display:flex;align-items:center;gap:.6rem;margin-bottom:1.2rem}
 .lb::before{content:'';width:14px;height:1.5px;background:var(--ac)}
@@ -62,13 +62,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.1rem 2.5rem;displ
 .car-label{font-family:var(--fm);font-size:.68rem;text-transform:uppercase;letter-spacing:.12em;color:var(--td);margin-bottom:.8rem;padding-left:.2rem}
 
 /* GRIDS */
-.grid{display:grid;gap:8px}
-.g7{grid-template-columns:repeat(7,1fr)}
+.grid{display:grid;gap:12px}
+.g7{grid-template-columns:repeat(4,1fr)}
 .g4{grid-template-columns:repeat(4,1fr)}
 .g3{grid-template-columns:repeat(3,1fr)}
 .g2{grid-template-columns:repeat(2,1fr)}
 .grid img{width:100%;height:auto;border-radius:var(--r);cursor:zoom-in;transition:transform .4s var(--e),box-shadow .4s;aspect-ratio:4/5;object-fit:cover;border:1px solid var(--br)}
-.grid img:hover{transform:translateY(-6px) scale(1.02);box-shadow:0 24px 60px rgba(0,0,0,.55),0 0 0 1px var(--ac);border-color:rgba(0,224,192,.3)}
+.grid img:hover{transform:translateY(-8px) scale(1.03);box-shadow:0 24px 60px rgba(0,0,0,.55),0 0 0 1px var(--ac);border-color:rgba(0,224,192,.3)}
 
 /* LIGHTBOX — v9 dark style */
 .lb-ov{display:none;position:fixed;inset:0;background:rgba(5,5,5,.97);z-index:9999;justify-content:center;align-items:center;backdrop-filter:blur(12px)}
@@ -83,7 +83,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.1rem 2.5rem;displ
 .lb-count{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);color:var(--tm);font-family:var(--fm);font-size:.75rem;z-index:10000;letter-spacing:.1em}
 
 /* CTA SECTION — v9 style */
-.pf-cta{padding:7rem 2.5rem;text-align:center;border-bottom:1px solid var(--br)}
+.pf-cta{padding:7rem 2.5rem;position:relative;z-index:2;text-align:center;border-bottom:1px solid var(--br)}
 .pf-cta h2{font-family:var(--fd);font-size:clamp(2rem,5vw,3.2rem);font-weight:800;letter-spacing:-.04em;margin-bottom:.8rem}
 .pf-cta h2 span{color:var(--ac);font-family:'Instrument Serif',serif;font-style:italic;font-weight:400}
 .pf-cta p{color:var(--td);font-size:.95rem;margin-bottom:2rem;max-width:500px;margin-left:auto;margin-right:auto;line-height:1.6}
@@ -94,7 +94,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.1rem 2.5rem;displ
 .bg:hover{border-color:var(--ac);color:var(--t)}
 
 /* FOOTER — v9 identical */
-.ft-wrap{border-top:1px solid rgba(0,224,192,.15);padding:2.5rem 2rem 1.5rem;font-family:var(--fb)}
+.ft-wrap{position:relative;z-index:2;border-top:1px solid rgba(0,224,192,.15);padding:2.5rem 2rem 1.5rem;font-family:var(--fb)}
 .ft-inner{max-width:1200px;margin:0 auto}
 .ft-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
 .ft-legal{font-size:.72rem;color:#5a6572}
@@ -126,9 +126,28 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.1rem 2.5rem;displ
   .lb-next{right:8px}
   .ft-bottom{flex-direction:column;text-align:center}
 }
+
+/* GRADIENT BLOBS BACKGROUND — from v9 landing */
+.bgblobs{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none;background:radial-gradient(ellipse at 50% 0%,#0a0a12 0%,#050505 70%)}
+.blob{position:absolute;border-radius:50%;filter:blur(100px);opacity:.55;will-change:transform}
+.blob1{width:55vw;height:55vw;background:radial-gradient(circle,rgba(123,44,255,.5),rgba(123,44,255,0) 70%);top:-15vw;left:-10vw;animation:blobMove1 22s ease-in-out infinite}
+.blob2{width:50vw;height:50vw;background:radial-gradient(circle,rgba(0,224,192,.38),rgba(0,224,192,0) 70%);top:30vh;right:-15vw;animation:blobMove2 28s ease-in-out infinite}
+.blob3{width:45vw;height:45vw;background:radial-gradient(circle,rgba(240,80,180,.28),rgba(240,80,180,0) 70%);bottom:-10vw;left:20vw;animation:blobMove3 25s ease-in-out infinite}
+.blob4{width:40vw;height:40vw;background:radial-gradient(circle,rgba(80,120,255,.25),rgba(80,120,255,0) 70%);top:60vh;left:40vw;animation:blobMove4 30s ease-in-out infinite}
+@keyframes blobMove1{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(15vw,10vh) scale(1.1)}66%{transform:translate(-5vw,20vh) scale(.9)}}
+@keyframes blobMove2{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(-10vw,15vh) scale(1.15)}66%{transform:translate(-20vw,-5vh) scale(.95)}}
+@keyframes blobMove3{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-15vw,-20vh) scale(1.1)}}
+@keyframes blobMove4{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(10vw,-15vh) scale(.9)}66%{transform:translate(-10vw,10vh) scale(1.1)}}
+/* Film grain overlay — from v9 */
+body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.02'/%3E%3C/svg%3E");pointer-events:none;z-index:9999}
+@media(max-width:768px){.blob{filter:blur(70px)}.bgblobs{opacity:.7}}
+@media(prefers-reduced-motion:reduce){.blob{animation:none}}
 </style>
 </head>
 <body>
+<!-- GRADIENT BLOBS BACKGROUND — from v9 -->
+<div class="bgblobs"><div class="blob blob1"></div><div class="blob blob2"></div><div class="blob blob3"></div><div class="blob blob4"></div></div>
+
 
 <nav id="nav">
   <a class="nl" href="/"><img src="logo-nav.svg?v=4" alt="i-Vory Creative" style="height:48px;filter:drop-shadow(0 0 14px rgba(0,224,192,.45))"></a>
