@@ -1009,8 +1009,8 @@ textarea.bk-inp{resize:vertical;min-height:70px;font-family:inherit}
     contain-intrinsic-size:auto 600px;
   }
   /* GPU layers for animated heavy items */
-  .prob-line,.bh,.si,.proof-item,.ft-wrap,.mq,/* Reduce star bg repaint cost */
-  body::before{background-size:800px 800px !important;opacity:.4 !important}
+  /* Reduce star bg repaint cost */
+body::before{background-size:800px 800px !important;opacity:.4 !important}
   /* Reduce backdrop-filter blur (expensive on mobile GPU) */
   nav{backdrop-filter:blur(8px) !important}
   .ft-social a,.si{backdrop-filter:none !important}
