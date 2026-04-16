@@ -4,8 +4,6 @@
 <head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-256CM7TGEG"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-256CM7TGEG');</script>
-<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="dns-prefetch" href="https://www.googletagmanager.com">
 <link rel="dns-prefetch" href="https://api.whatsapp.com">
 
@@ -132,41 +130,13 @@
 {"@type":"Question","name":"Ce platforme acoperiți?","acceptedAnswer":{"@type":"Answer","text":"TikTok, Instagram, Facebook, YouTube si LinkedIn."}},
 {"@type":"Question","name":"Pot comanda doar o singură postare?","acceptedAnswer":{"@type":"Answer","text":"Da, poti comanda la bucata."}},
 {"@type":"Question","name":"Ce înseamnă management complet?","acceptedAnswer":{"@type":"Answer","text":"Idei, filmare, editare, programare, postare, răspuns la comentarii."}},
-{"@type":"Question","name":"Prețurile includ TVA?","acceptedAnswer":{"@type":"Answer","text":"Da, toate prețurile afișate includ TVA."}}
+{"@type":"Question","name":"Prețurile includ TVA?","acceptedAnswer":{"@type":"Answer","text":"Nu. Prețurile afișate pe site sunt fără TVA. TVA-ul se adaugă separat."}}
 ]
 }
 ]
 }
 </script><script>try{window.__mx=0;window.__my=0;document.addEventListener("mousemove",function(e){window.__mx=(e.clientX/window.innerWidth)*2-1;window.__my=(e.clientY/window.innerHeight)*2-1},{passive:true});}catch(__v9e){console.warn('v9 guard:',__v9e.message)}</script><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-
-
-
-
-
-
-<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style id="v95-consolidated">
 
@@ -1055,6 +1025,17 @@ textarea.bk-inp{resize:vertical;min-height:70px;font-family:inherit}
 .ft-wrap{padding-top:2.5rem !important}
 #contact,#faq,.sec:last-of-type{padding-bottom:2rem !important}
 
+
+/* SPACE CURSOR — desktop only */
+@media(min-width:769px){
+  *{cursor:none !important}
+  .space-cursor{position:fixed;width:20px;height:20px;pointer-events:none;z-index:99999;mix-blend-mode:screen;transition:transform .15s cubic-bezier(.2,.9,.3,1.2),opacity .3s}
+  .space-cursor::before{content:'';position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle,rgba(0,224,192,.9) 0%,rgba(0,224,192,.3) 40%,transparent 70%);animation:cursorPulse 2s ease-in-out infinite}
+  .space-cursor::after{content:'';position:absolute;top:50%;left:50%;width:4px;height:4px;margin:-2px 0 0 -2px;border-radius:50%;background:#fff;box-shadow:0 0 8px rgba(255,255,255,.8),0 0 20px rgba(0,224,192,.5)}
+  .space-trail{position:fixed;width:6px;height:6px;border-radius:50%;pointer-events:none;z-index:99998;background:radial-gradient(circle,rgba(123,44,255,.6),transparent);opacity:0;transition:opacity .5s}
+  @keyframes cursorPulse{0%,100%{transform:scale(1);opacity:.8}50%{transform:scale(1.3);opacity:1}}
+  a:hover ~ .space-cursor, button:hover ~ .space-cursor{transform:scale(1.8)}
+}
 </style>
 </head>
 <body>
@@ -1193,7 +1174,7 @@ if(mq){var items=["Dr. Iorga · Dental","Av. Popa-Alexandru","Dr. Ghibu · Medic
 <div class="faq-item rv rd3"><button class="faq-q">Pot comanda doar o singură postare?<svg class="faq-icon" viewBox="0 0 20 20" fill="none"><line x1="10" y1="4" x2="10" y2="16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="4" y1="10" x2="16" y2="10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button><div class="faq-a"><div class="faq-a-inner">Da, poți comanda la bucată orice: o postare, un carusel, un reel. Nu trebuie să iei pachet ca să lucrăm cu tine.</div></div></div>
 <div class="faq-item rv rd4"><button class="faq-q">Ce înseamnă management complet?<svg class="faq-icon" viewBox="0 0 20 20" fill="none"><line x1="10" y1="4" x2="10" y2="16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="4" y1="10" x2="16" y2="10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button><div class="faq-a"><div class="faq-a-inner">Tu îți vezi de business, restul facem noi: idei, filmare, editare, programare, postare, răspuns la comentarii. Primești un plan lunar și aprobi doar ce vrei.</div></div></div>
 <div class="faq-item rv rd5"><button class="faq-q">Folositi AI pentru conținut?<svg class="faq-icon" viewBox="0 0 20 20" fill="none"><line x1="10" y1="4" x2="10" y2="16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="4" y1="10" x2="16" y2="10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button><div class="faq-a"><div class="faq-a-inner">Folosim AI ca instrument de lucru pentru research, idei și montaj rapid. Conceptul, scrisul si vocea brandului rămân umane.</div></div></div>
-<div class="faq-item rv rd6"><button class="faq-q">Prețurile includ TVA?<svg class="faq-icon" viewBox="0 0 20 20" fill="none"><line x1="10" y1="4" x2="10" y2="16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="4" y1="10" x2="16" y2="10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button><div class="faq-a"><div class="faq-a-inner">Da, toate prețurile afișate includ TVA.</div></div></div>
+<div class="faq-item rv rd6"><button class="faq-q">Prețurile includ TVA?<svg class="faq-icon" viewBox="0 0 20 20" fill="none"><line x1="10" y1="4" x2="10" y2="16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="4" y1="10" x2="16" y2="10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button><div class="faq-a"><div class="faq-a-inner">Nu. Prețurile afișate pe site sunt fără TVA. TVA-ul se adaugă separat.</div></div></div>
 </div>
 </div></section>
 
@@ -2267,4 +2248,17 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")close()});
 })();
 </script>
 
+
+<script>
+// Space cursor — desktop only
+if(window.innerWidth>768){
+  var sc=document.createElement('div');sc.className='space-cursor';document.body.appendChild(sc);
+  var trails=[];for(var i=0;i<5;i++){var t=document.createElement('div');t.className='space-trail';document.body.appendChild(t);trails.push({el:t,x:0,y:0})}
+  var mx=0,my=0;
+  document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;sc.style.left=(mx-10)+'px';sc.style.top=(my-10)+'px';sc.style.opacity='1'});
+  document.addEventListener('mouseleave',function(){sc.style.opacity='0'});
+  setInterval(function(){for(var i=trails.length-1;i>0;i--){trails[i].x=trails[i-1].x;trails[i].y=trails[i-1].y}trails[0].x=mx;trails[0].y=my;for(var i=0;i<trails.length;i++){var t=trails[i];t.el.style.left=(t.x-3)+'px';t.el.style.top=(t.y-3)+'px';t.el.style.opacity=String(.3-i*.06)}},30);
+  document.addEventListener('click',function(e){for(var i=0;i<4;i++){var p=document.createElement('div');p.style.cssText='position:fixed;width:3px;height:3px;border-radius:50%;background:rgba(0,224,192,.8);pointer-events:none;z-index:99997;left:'+(e.clientX+Math.random()*30-15)+'px;top:'+(e.clientY+Math.random()*30-15)+'px;transition:all .6s;opacity:1';document.body.appendChild(p);setTimeout(function(){p.style.opacity='0';p.style.transform='translateY(-20px) scale(0)'},10);setTimeout(function(){p.remove()},700)}});
+}
+</script>
 </body></html>
