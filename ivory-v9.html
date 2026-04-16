@@ -891,22 +891,39 @@ if(mq){var items=["Dr. Iorga · Dental","Av. Popa-Alexandru","Dr. Ghibu · Medic
 
 <section class="sec" id="portofoliu">
 <div class="si">
-  <div class="rv" style="text-align:center;margin-bottom:2.5rem">
+  <div class="rv" style="text-align:center;margin-bottom:2rem">
     <div class="lb" style="justify-content:center">Portofoliu</div>
     <h2 class="sh">Ce iese din <span style="color:var(--ac)">studio.</span></h2>
-    <p class="ss" style="margin-left:auto;margin-right:auto;text-align:center">Carusele, storytelling vizual, conținut pentru profesioniști, fotografii de produs cu AI. Fiecare brand e diferit. Fiecare postare e custom.</p>
+    <p class="ss" style="margin-left:auto;margin-right:auto;text-align:center">Fiecare brand e diferit. Fiecare postare e custom.</p>
   </div>
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:900px;margin:0 auto" class="rv rd1">
-    <div style="border-radius:var(--r);overflow:hidden;aspect-ratio:4/5;border:1px solid var(--br);transition:transform .4s var(--e),box-shadow .4s"><img src="portfolio/carousel-ivory-1/1.png" alt="Carusel educațional i-Vory" loading="lazy" style="width:100%;height:100%;object-fit:cover"></div>
-    <div style="border-radius:var(--r);overflow:hidden;aspect-ratio:4/5;border:1px solid var(--br);transition:transform .4s var(--e),box-shadow .4s"><img src="portfolio/carousel-ivory-storytelling/1.png" alt="Carusel storytelling" loading="lazy" style="width:100%;height:100%;object-fit:cover"></div>
-    <div style="border-radius:var(--r);overflow:hidden;aspect-ratio:4/5;border:1px solid var(--br);transition:transform .4s var(--e),box-shadow .4s"><img src="portfolio/carousel-urbancat/1.png" alt="Carusel promoțional UrbanCat" loading="lazy" style="width:100%;height:100%;object-fit:cover"></div>
-    <div style="border-radius:var(--r);overflow:hidden;aspect-ratio:4/5;border:1px solid var(--br);transition:transform .4s var(--e),box-shadow .4s"><img src="portfolio/carousel-lawyer/1.png" alt="Conținut avocat" loading="lazy" style="width:100%;height:100%;object-fit:cover"></div>
-    <div style="border-radius:var(--r);overflow:hidden;aspect-ratio:4/5;border:1px solid var(--br);transition:transform .4s var(--e),box-shadow .4s"><img src="portfolio/product-urbancat/1.png" alt="Fotografie AI produs" loading="lazy" style="width:100%;height:100%;object-fit:cover"></div>
-    <div style="border-radius:var(--r);overflow:hidden;aspect-ratio:4/5;border:1px solid var(--br);transition:transform .4s var(--e),box-shadow .4s"><img src="portfolio/carousel-ivory-showcase/1.png" alt="Showcase portofoliu" loading="lazy" style="width:100%;height:100%;object-fit:cover"></div>
+  <div class="pf-tabs rv rd1">
+    <div class="pf-tab active" data-tab="ivory">i-Vory Creative</div>
+    <div class="pf-tab" data-tab="urbancat">UrbanCat</div>
+    <div class="pf-tab" data-tab="popa">Av. Popa-Alexandru</div>
+  </div>
+  <div class="pf-panel active" id="pf-ivory">
+    <div class="pf-grid" style="grid-template-columns:repeat(3,1fr)">
+      <div class="pf-img rv rd1"><img src="portfolio/carousel-ivory-1/1.png" alt="i-Vory carusel educațional" loading="lazy"></div>
+      <div class="pf-img rv rd2"><img src="portfolio/carousel-ivory-storytelling/1.png" alt="i-Vory storytelling" loading="lazy"></div>
+      <div class="pf-img rv rd3"><img src="portfolio/carousel-ivory-showcase/1.png" alt="i-Vory showcase" loading="lazy"></div>
+    </div>
+  </div>
+  <div class="pf-panel" id="pf-urbancat">
+    <div class="pf-grid" style="grid-template-columns:repeat(3,1fr)">
+      <div class="pf-img rv rd1"><img src="portfolio/carousel-urbancat/1.png" alt="UrbanCat carusel" loading="lazy"></div>
+      <div class="pf-img rv rd2"><img src="portfolio/product-urbancat/1.png" alt="UrbanCat produs AI" loading="lazy"></div>
+      <div class="pf-img rv rd3"><img src="portfolio/product-urbancat/3.png" alt="UrbanCat produs AI" loading="lazy"></div>
+    </div>
+  </div>
+  <div class="pf-panel" id="pf-popa">
+    <div class="pf-grid" style="grid-template-columns:repeat(3,1fr)">
+      <div class="pf-img rv rd1"><img src="portfolio/carousel-lawyer/1.png" alt="Av. Popa carusel juridic" loading="lazy"></div>
+      <div class="pf-img rv rd2"><img src="portfolio/carousel-lawyer/3.png" alt="Av. Popa carusel juridic" loading="lazy"></div>
+      <div class="pf-img rv rd3"><img src="portfolio/carousel-lawyer/5.png" alt="Av. Popa carusel juridic" loading="lazy"></div>
+    </div>
   </div>
   <div class="rv rd2" style="text-align:center;margin-top:2.5rem">
     <a href="/portofoliu.html" class="bh" style="font-size:1rem;padding:1.1rem 2.4rem">Vezi tot portofoliul →</a>
-    <p style="margin-top:1rem;font-size:.75rem;color:var(--tm);font-family:var(--fm)">7 tipuri de conținut · 52 exemple · explicate simplu</p>
   </div>
 </div>
 </section>
