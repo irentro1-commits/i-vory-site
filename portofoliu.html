@@ -16,7 +16,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#050505;--bg2:#0b0b0b;--bg3:#111;--bg4:#181818;--t:#ede9e3;--td:#9e9890;--tm:#5c5750;--ac:#00e0c0;--ac2:rgba(0,224,192,.12);--ac3:rgba(0,224,192,.06);--pu:#7b2cff;--br:rgba(255,255,255,.06);--br2:rgba(255,255,255,.12);--r:12px;--fd:'Geist',-apple-system,sans-serif;--fb:'Geist',-apple-system,sans-serif;--fm:'Geist Mono',monospace;--e:cubic-bezier(.16,1,.3,1)}
+:root{--bg:#050505;--bg2:#0b0b0b;--bg3:#111;--bg4:#181818;--t:#ede9e3;--td:#d0cbc3;--tm:#8a857e;--ac:#00e0c0;--ac2:rgba(0,224,192,.12);--ac3:rgba(0,224,192,.06);--pu:#7b2cff;--br:rgba(255,255,255,.06);--br2:rgba(255,255,255,.12);--r:12px;--fd:'Geist',-apple-system,sans-serif;--fb:'Geist',-apple-system,sans-serif;--fm:'Geist Mono',monospace;--e:cubic-bezier(.16,1,.3,1)}
 html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
 body{background:var(--bg);color:var(--t);font-family:var(--fb);line-height:1.6;overflow-x:clip}
 ::selection{background:var(--ac);color:var(--bg)}
@@ -167,6 +167,24 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
 .pre.done{display:none;opacity:0;visibility:hidden;pointer-events:none}
 .pre-bar i{display:block;height:100%}
 </style>
+
+<style id="text-visibility-boost">
+/* TEXT VISIBILITY — readable over 3D + blobs */
+.ss, .sub, p, .pk-tag, .pk-features li, .faq-a-inner,
+.how-desc, .dce-desc, .type-list, .contact-s,
+.s2-desc, .ft-tag, .car-label, .pf-hero .sub {
+  color: #d0cbc3 !important;
+  font-weight: 400 !important;
+  text-shadow: 0 2px 8px rgba(0,0,0,.7) !important;
+}
+.sh, h2, h1, .pf-hero h1, .contact-h, .sec-title, .pf-cta h2 {
+  text-shadow: 0 4px 20px rgba(0,0,0,.85) !important;
+}
+.lb, .car-label, .s2-tag, .s2-prices, .pf-sub {
+  text-shadow: 0 2px 6px rgba(0,0,0,.6) !important;
+}
+</style>
+
 </head>
 <body>
 <!-- GRADIENT BLOBS BACKGROUND — from v9 -->
