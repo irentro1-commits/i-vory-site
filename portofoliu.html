@@ -50,41 +50,25 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.1rem 2.5rem;displ
 @media(max-width:768px){.pf-dir2{margin-top:3rem}.pf-dir2-text{font-size:1rem;line-height:1.65}.pf-dir2-label{margin-bottom:1rem}}
 
 
-/* MINIMAL CHIP NAV */
-.pnav{position:fixed;z-index:60;transition:opacity .4s,transform .4s cubic-bezier(.2,.9,.3,1.1)}
-.pnav-hidden{opacity:0;pointer-events:none;transform:translateY(-12px)}
 
-/* Mobile + tablet: horizontal pill bar under nav */
-@media(max-width:1099px){
-  .pnav{top:60px;left:0;right:0;background:rgba(4,6,14,.82);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.06);padding:.6rem 0}
-  .pnav-hidden{transform:translateY(-100%)}
-  .pnav-inner{display:flex;gap:.4rem;padding:0 1rem;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none;scroll-behavior:smooth}
-  .pnav-inner::-webkit-scrollbar{display:none}
-  .pnav-chip{flex-shrink:0;padding:.48rem 1rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:100px;color:#d0cbc3;font-family:'Geist',sans-serif;font-size:.78rem;font-weight:500;letter-spacing:-.005em;cursor:pointer;white-space:nowrap;transition:all .25s;-webkit-tap-highlight-color:transparent}
-  .pnav-chip:active{transform:scale(.96)}
-  .pnav-chip.active{background:linear-gradient(135deg,rgba(0,224,192,.18),rgba(123,44,255,.1));border-color:rgba(0,224,192,.45);color:#fff5e6;font-weight:600}
-  .pnav-tip{position:absolute;top:100%;left:50%;transform:translate(-50%,8px);max-width:min(92vw,440px);background:rgba(4,6,14,.96);backdrop-filter:blur(24px);border:1px solid rgba(0,224,192,.3);border-radius:12px;padding:.85rem 1.05rem;font-family:'Fraunces',serif;font-size:.82rem;line-height:1.55;color:#fff5e6;font-variation-settings:"opsz" 48,"SOFT" 100;box-shadow:0 12px 40px rgba(0,0,0,.5);opacity:0;pointer-events:none;transition:opacity .3s,transform .3s}
-  .pnav-tip.show{opacity:1;transform:translate(-50%,12px)}
+/* BOTTOM DOCK NAV — identical on all devices */
+.dock{position:fixed;bottom:1.2rem;left:50%;transform:translateX(-50%);z-index:80;transition:opacity .4s,transform .4s cubic-bezier(.2,.9,.3,1.1);max-width:calc(100vw - 1.6rem);pointer-events:auto}
+.dock-hidden{opacity:0;pointer-events:none;transform:translateX(-50%) translateY(16px)}
+.dock-inner{display:flex;gap:.3rem;padding:.4rem;background:rgba(4,6,14,.88);backdrop-filter:blur(24px) saturate(140%);-webkit-backdrop-filter:blur(24px) saturate(140%);border:1px solid rgba(255,255,255,.1);border-radius:100px;box-shadow:0 14px 40px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.04) inset;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.dock-inner::-webkit-scrollbar{display:none}
+.dock-chip{flex-shrink:0;padding:.55rem 1rem;background:transparent;border:none;border-radius:100px;color:rgba(208,203,195,.75);font-family:'Geist',sans-serif;font-size:.78rem;font-weight:500;letter-spacing:-.005em;cursor:pointer;white-space:nowrap;transition:all .25s;-webkit-tap-highlight-color:transparent}
+.dock-chip:hover{color:#fff5e6;background:rgba(255,255,255,.04)}
+.dock-chip:active{transform:scale(.94)}
+.dock-chip.active{background:linear-gradient(135deg,#00e0c0,#7b2cff);color:#04060e;font-weight:700;box-shadow:0 4px 14px rgba(0,224,192,.35)}
+.dock-tip{position:absolute;bottom:calc(100% + 10px);left:50%;transform:translateX(-50%);max-width:min(90vw,380px);background:rgba(4,6,14,.96);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(0,224,192,.3);border-radius:14px;padding:.85rem 1.1rem;font-family:'Fraunces',serif;font-size:.82rem;line-height:1.5;color:#fff5e6;font-variation-settings:"opsz" 48,"SOFT" 100;box-shadow:0 12px 40px rgba(0,0,0,.5);opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;white-space:normal;text-align:center}
+.dock-tip.show{opacity:1;transform:translateX(-50%) translateY(-4px)}
+@media(max-width:560px){
+  .dock{bottom:1rem;width:calc(100vw - 1.6rem)}
+  .dock-chip{padding:.5rem .85rem;font-size:.74rem}
+  .dock-tip{font-size:.78rem;padding:.75rem .95rem}
 }
 
-/* Desktop: vertical minimal dots on the right */
-@media(min-width:1100px){
-  .pnav{right:2rem;top:50%;transform:translateY(-50%)}
-  .pnav-hidden{transform:translateY(-50%) translateX(120%)}
-  .pnav-inner{display:flex;flex-direction:column;gap:.7rem}
-  .pnav-chip{display:flex;align-items:center;gap:.9rem;padding:.55rem .9rem .55rem .55rem;background:transparent;border:none;color:rgba(208,203,195,.55);font-family:'Geist',sans-serif;font-size:.78rem;font-weight:500;letter-spacing:-.005em;cursor:pointer;white-space:nowrap;transition:all .25s;position:relative}
-  .pnav-chip::before{content:"";width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.2);transition:all .3s}
-  .pnav-chip:hover{color:#fff5e6}
-  .pnav-chip:hover::before{background:rgba(0,224,192,.7);box-shadow:0 0 10px rgba(0,224,192,.5)}
-  .pnav-chip.active{color:#fff5e6;font-weight:600}
-  .pnav-chip.active::before{background:#00e0c0;box-shadow:0 0 14px rgba(0,224,192,.8);transform:scale(1.35)}
-  .pnav-tip{position:absolute;right:calc(100% + 16px);top:50%;transform:translateY(-50%);width:280px;background:rgba(4,6,14,.94);backdrop-filter:blur(24px);border:1px solid rgba(0,224,192,.28);border-radius:14px;padding:.95rem 1.1rem;font-family:'Fraunces',serif;font-size:.85rem;line-height:1.55;color:#fff5e6;font-variation-settings:"opsz" 48,"SOFT" 100;box-shadow:0 12px 40px rgba(0,0,0,.5);opacity:0;pointer-events:none;transition:opacity .3s,transform .3s}
-  .pnav-tip.show{opacity:1;transform:translateY(-50%) translateX(-4px)}
-}
-
-html{scroll-behavior:smooth}
-@media(max-width:1099px){html{scroll-padding-top:120px}}
-@media(min-width:1100px){html{scroll-padding-top:80px}}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
 
 /* Section highlight flash when scrolled from legend */
 .pf-section-highlight{animation:pfSectionFlash 2.5s ease-out}
@@ -437,17 +421,17 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
   </div>
 </header>
 
-<!-- PORTFOLIO NAV — minimal sticky chip bar with autoscroll -->
-<nav class="pnav" id="pnav" aria-label="Secțiuni portofoliu">
-  <div class="pnav-inner">
-    <button class="pnav-chip" data-to="design-educational" data-tip="Omul învață ceva util. Valoare pe drum, brand-ul află-l pe parcurs.">Educaționale</button>
-    <button class="pnav-chip" data-to="design-storytelling" data-tip="Spui o poveste. Conexiune emoțională — oamenii țin minte povestile, nu listele.">Storytelling</button>
-    <button class="pnav-chip" data-to="design-showcase" data-tip="Prezinți produsul în format vizual premium. Focus pe estetică și detaliu.">Showcase</button>
-    <button class="pnav-chip" data-to="design-produs" data-tip="Promoțional direct. Ofertă, beneficii, proof, urgență, CTA.">Produs</button>
-    <button class="pnav-chip" data-to="design-professional" data-tip="Pentru avocați, medici, experți. Conținut care construiește autoritate fără ton publicitar.">Profesioniști</button>
+<!-- BOTTOM DOCK NAV — same design all devices -->
+<div class="dock" id="dock" aria-label="Navigare secțiuni">
+  <div class="dock-tip" id="dockTip"></div>
+  <div class="dock-inner">
+    <button class="dock-chip" data-to="design-educational" data-tip="Omul învață ceva util. Valoare clară, brand-ul află-l pe parcurs.">Educațional</button>
+    <button class="dock-chip" data-to="design-storytelling" data-tip="Spui o poveste. Conexiune emoțională, nu listă de features.">Storytelling</button>
+    <button class="dock-chip" data-to="design-showcase" data-tip="Produsul în format vizual premium. Estetică și detaliu.">Showcase</button>
+    <button class="dock-chip" data-to="design-produs" data-tip="Promoțional direct. Ofertă, proof, urgență, CTA.">Produs</button>
+    <button class="dock-chip" data-to="design-professional" data-tip="Pentru avocați, medici, experți. Autoritate fără ton publicitar.">Profesioniști</button>
   </div>
-  <div class="pnav-tip" id="pnavTip"></div>
-</nav>
+</div>
 
 
 </div>
@@ -1337,77 +1321,65 @@ document.addEventListener('click',function(e){
 
 })();
 </script>
-<script id="pnav-js">
+<script id="dock-js">
 (function(){
   function init(){
-    var nav=document.getElementById('pnav');
-    var tip=document.getElementById('pnavTip');
-    var chips=document.querySelectorAll('.pnav-chip');
+    var dock=document.getElementById('dock');
+    var tip=document.getElementById('dockTip');
+    var chips=document.querySelectorAll('.dock-chip');
     var hero=document.querySelector('.pf-hero');
-    if(!nav||!chips.length)return;
+    if(!dock||!chips.length)return;
     var tipTimer=null;
-    // Show nav after hero
-    function toggleNav(){
-      var heroEnd=hero?hero.offsetTop+hero.offsetHeight-200:300;
-      if(window.scrollY>heroEnd){nav.classList.remove('pnav-hidden')}
-      else{nav.classList.add('pnav-hidden')}
+    function toggle(){
+      var heroEnd=hero?hero.offsetTop+hero.offsetHeight-300:200;
+      if(window.scrollY>heroEnd){dock.classList.remove('dock-hidden')}
+      else{dock.classList.add('dock-hidden')}
     }
-    window.addEventListener('scroll',toggleNav,{passive:true});
-    toggleNav();
-    // Active highlight via IntersectionObserver
+    window.addEventListener('scroll',toggle,{passive:true});
+    window.addEventListener('resize',toggle,{passive:true});
+    // Start hidden, toggle will show it when appropriate
+    dock.classList.add('dock-hidden');
+    toggle();
+    // Active highlight
     var sections=[];
-    chips.forEach(function(c){var s=document.getElementById(c.dataset.to);if(s)sections.push(s)});
-    var active=null;
+    chips.forEach(function(c){var el=document.getElementById(c.dataset.to);if(el)sections.push(el)});
     if(sections.length){
       var obs=new IntersectionObserver(function(entries){
         entries.forEach(function(e){
           if(e.isIntersecting){
             chips.forEach(function(c){c.classList.remove('active')});
-            var chip=document.querySelector('.pnav-chip[data-to="'+e.target.id+'"]');
-            if(chip){chip.classList.add('active');active=chip;
-              // Auto-scroll mobile chip into view
-              if(window.innerWidth<1100){
-                var inner=chip.parentElement;
-                var rect=chip.getBoundingClientRect();
-                var innerRect=inner.getBoundingClientRect();
-                if(rect.left<innerRect.left+20||rect.right>innerRect.right-20){
-                  inner.scrollTo({left:chip.offsetLeft-60,behavior:'smooth'});
-                }
-              }
+            var chip=document.querySelector('.dock-chip[data-to="'+e.target.id+'"]');
+            if(chip){
+              chip.classList.add('active');
+              // Center active chip in horizontal scroller
+              var inner=chip.parentElement;
+              var chipCenter=chip.offsetLeft+chip.offsetWidth/2;
+              var innerCenter=inner.offsetWidth/2;
+              inner.scrollTo({left:chipCenter-innerCenter,behavior:'smooth'});
             }
           }
         });
-      },{rootMargin:'-30% 0px -55% 0px',threshold:0});
+      },{rootMargin:'-35% 0px -55% 0px',threshold:0});
       sections.forEach(function(s){obs.observe(s)});
     }
-    // Tap chip: scroll + show tip
+    // Tap chip
     chips.forEach(function(chip){
       chip.addEventListener('click',function(e){
         e.preventDefault();
         var id=chip.dataset.to;
-        var target=document.getElementById(id);
-        if(!target)return;
-        var offset=window.innerWidth<1100?120:80;
-        var top=target.getBoundingClientRect().top+window.pageYOffset-offset;
+        var t=document.getElementById(id);
+        if(!t)return;
+        var top=t.getBoundingClientRect().top+window.pageYOffset-90;
         window.scrollTo({top:top,behavior:'smooth'});
-        target.classList.add('pf-section-highlight');
-        setTimeout(function(){target.classList.remove('pf-section-highlight')},2500);
-        // Show tip
+        t.classList.add('pf-section-highlight');
+        setTimeout(function(){t.classList.remove('pf-section-highlight')},2500);
         if(tip&&chip.dataset.tip){
-          if(window.innerWidth<1100){
-            tip.style.left='50%';
-          }else{
-            // Position tip next to chip vertically
-            var r=chip.getBoundingClientRect();
-            var navRect=nav.getBoundingClientRect();
-            tip.style.top=(r.top-navRect.top+r.height/2)+'px';
-          }
           tip.textContent=chip.dataset.tip;
           tip.classList.add('show');
           if(tipTimer)clearTimeout(tipTimer);
-          tipTimer=setTimeout(function(){tip.classList.remove('show')},3200);
+          tipTimer=setTimeout(function(){tip.classList.remove('show')},2800);
         }
-        if(typeof gtag==='function')gtag('event','pnav_click',{section:id});
+        if(typeof gtag==='function')gtag('event','dock_click',{section:id});
       });
     });
   }
