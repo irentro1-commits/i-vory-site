@@ -1256,7 +1256,7 @@ body::before{background-size:800px 800px !important;opacity:.4 !important}
 @media(max-width:768px){
   video::-webkit-media-controls-fullscreen-button{display:none !important}
   video::-webkit-media-controls{display:none !important}
-  .hero-video video{-webkit-media-controls-fullscreen-button:display:none}
+  .hero-video video{pointer-events:none !important}
   .hero-video{pointer-events:auto !important}
 }
 </style>
@@ -2519,38 +2519,41 @@ document.addEventListener('click',function(e){
 (function(){
   var vid=document.getElementById('hvVid');
   var muteBtn=document.getElementById('hvMute');
-  if(!vid)return;
+  var heroVid=document.getElementById('heroVideo');
+  if(!vid||!heroVid)return;
   
+  // Prevent video from going fullscreen on tap
   vid.setAttribute('playsinline','');
   vid.setAttribute('webkit-playsinline','');
+  vid.removeAttribute('controls');
   
-  // Direct tap on video = toggle mute (counts as user gesture)
-  vid.addEventListener('click',function(e){
+  // Add unmute hint on mobile
+  if(window.__IS_MOBILE){
+    var hint=document.createElement('div');
+    hint.className='hv-unmute-hint';
+    hint.textContent='Apasă pentru sunet';
+    heroVid.appendChild(hint);
+  }
+  
+  // Tap anywhere on video container = toggle mute
+  heroVid.addEventListener('click',function(e){
+    if(e.target===muteBtn||muteBtn.contains(e.target))return;
     e.preventDefault();
+    e.stopPropagation();
     vid.muted=!vid.muted;
-    if(muteBtn)muteBtn.classList.toggle('on',!vid.muted);
-  });
-  vid.addEventListener('touchend',function(e){
-    e.preventDefault();
-    vid.muted=!vid.muted;
-    if(muteBtn)muteBtn.classList.toggle('on',!vid.muted);
+    if(muteBtn){
+      muteBtn.classList.toggle('on',!vid.muted);
+    }
   });
   
-  // Mute button too
+  // Also make mute button work
   if(muteBtn){
     muteBtn.addEventListener('click',function(e){
+      e.preventDefault();
       e.stopPropagation();
       vid.muted=!vid.muted;
       muteBtn.classList.toggle('on',!vid.muted);
     });
-  }
-  
-  // Hint on mobile
-  if(window.__IS_MOBILE){
-    var h=document.createElement('div');
-    h.className='hv-unmute-hint';
-    h.textContent='Apasă pentru sunet';
-    vid.parentElement.appendChild(h);
   }
 })();
 </script>
