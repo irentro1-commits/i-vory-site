@@ -1647,7 +1647,7 @@ mars.position.set(window.__IS_MOBILE?-2.5:10,window.__IS_MOBILE?1.5:-6,window.__
 scene.add(mars);
 
 // ========== SHOOTING STARS ==========
-const shootCount=window.__LOW_PERF?2:3;
+const shootCount=0; // was window.__LOW_PERF?2:3 — disabled shooting stars
 const shootStars=[];
 for(let i=0;i<shootCount;i++){
   const trailLen=40;
@@ -2027,7 +2027,7 @@ function animate(){
     const y=Math.sin(s.angle*.7+s.tilt)*.4;
     s.sprite.position.set(planet.position.x+x,planet.position.y+y,planet.position.z+z);
   });
-  updateShooting(dt,t);
+  // updateShooting(dt,t); // disabled — created linear trails confused as cursor lines
   // Cursor gravity — subtle pull toward mouse for planet & mars
   const pullX=mouseX*.8;
   const pullY=mouseY*.5;
