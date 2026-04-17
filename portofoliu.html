@@ -206,29 +206,56 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
 .pre-bar i{display:block;height:100%}
 
 
-/* ========== PORTFOLIO 3-LEVEL DOCK ========== */
-.pd{position:fixed;top:76px;left:50%;transform:translateX(-50%);z-index:90;max-width:calc(100vw - 1.4rem);display:flex;flex-direction:column;gap:.45rem;align-items:center;transition:opacity .4s,transform .4s cubic-bezier(.2,.9,.3,1.1);pointer-events:auto}
+/* ========== PORTFOLIO 3-LEVEL DOCK (unified pill) ========== */
+.pd{position:fixed;top:76px;left:50%;transform:translateX(-50%);z-index:90;max-width:calc(100vw - 1.4rem);display:flex;flex-direction:column;background:rgba(4,6,14,.94);backdrop-filter:blur(32px) saturate(150%);-webkit-backdrop-filter:blur(32px) saturate(150%);border:1px solid rgba(255,255,255,.08);border-radius:22px;box-shadow:0 20px 50px rgba(0,0,0,.6),0 0 0 1px rgba(255,245,230,.02) inset;overflow:hidden;transition:opacity .4s,transform .4s cubic-bezier(.2,.9,.3,1.1);pointer-events:auto}
 .pd-hidden{opacity:0;pointer-events:none;transform:translateX(-50%) translateY(-16px)}
-.pd-row{background:rgba(4,6,14,.92);backdrop-filter:blur(28px) saturate(140%);-webkit-backdrop-filter:blur(28px) saturate(140%);border:1px solid rgba(255,255,255,.1);border-radius:100px;box-shadow:0 16px 40px rgba(0,0,0,.55);padding:.3rem;max-width:calc(100vw - 1.4rem)}
-.pd-row-1{display:flex;gap:.3rem}
-.pd-row-2{display:flex;overflow:hidden;transition:max-width .35s cubic-bezier(.2,.9,.3,1.1)}
-.pd-tabs{display:flex;gap:.25rem;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.pd-row{padding:.35rem .5rem;display:flex;justify-content:center;align-items:center;position:relative}
+.pd-row + .pd-row{border-top:1px solid rgba(255,245,230,.06)}
+.pd-row-1{padding:.4rem .5rem}
+.pd-row-2{min-height:0}
+.pd-row-3{min-height:0}
+.pd-tabs{display:flex;gap:.15rem;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none;max-width:100%}
 .pd-tabs::-webkit-scrollbar{display:none}
 .pd-tabs-hidden{display:none}
-.pd-l1{padding:.55rem 1.4rem;background:transparent;border:none;border-radius:100px;color:rgba(208,203,195,.7);font-family:'Fraunces',serif;font-size:.86rem;font-weight:500;letter-spacing:-.005em;font-variation-settings:"opsz" 48,"SOFT" 80;cursor:pointer;white-space:nowrap;transition:all .3s cubic-bezier(.2,.9,.3,1.1);-webkit-tap-highlight-color:transparent}
+
+/* LAYER 1 */
+.pd-l1{padding:.48rem 1.4rem;background:transparent;border:none;border-radius:100px;color:rgba(208,203,195,.65);font-family:'Fraunces',serif;font-size:.82rem;font-weight:500;letter-spacing:-.005em;font-variation-settings:"opsz" 48,"SOFT" 80,"WONK" 1;cursor:pointer;white-space:nowrap;transition:all .3s cubic-bezier(.2,.9,.3,1.1);-webkit-tap-highlight-color:transparent}
 .pd-l1:hover{color:#fff5e6}
-.pd-l1.active{background:#fff5e6;color:#0a0b14;font-weight:600;box-shadow:0 2px 14px rgba(255,245,230,.25)}
-.pd-l2{flex-shrink:0;padding:.5rem .95rem;background:transparent;border:none;border-radius:100px;color:rgba(216,212,200,.7);font-family:'Fraunces',serif;font-size:.78rem;font-weight:500;letter-spacing:-.005em;font-variation-settings:"opsz" 48,"SOFT" 80;cursor:pointer;white-space:nowrap;transition:all .25s;-webkit-tap-highlight-color:transparent}
-.pd-l2:hover{color:#fff5e6;background:rgba(255,245,230,.05)}
+.pd-l1.active{background:#fff5e6;color:#0a0b14;font-weight:600;box-shadow:0 2px 12px rgba(255,245,230,.2)}
+
+/* LAYER 2 */
+.pd-l2-group{display:flex;gap:.12rem;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.pd-l2-group::-webkit-scrollbar{display:none}
+.pd-l2{flex-shrink:0;padding:.42rem .85rem;background:transparent;border:none;border-radius:100px;color:rgba(216,212,200,.6);font-family:'Fraunces',serif;font-size:.76rem;font-weight:500;letter-spacing:-.005em;font-variation-settings:"opsz" 48,"SOFT" 80;cursor:pointer;white-space:nowrap;transition:all .25s;-webkit-tap-highlight-color:transparent}
+.pd-l2:hover{color:#fff5e6;background:rgba(255,245,230,.04)}
 .pd-l2:active{transform:scale(.95)}
-.pd-l2.active{background:rgba(255,245,230,.9);color:#0a0b14;font-weight:600}
-.pd-soon-inline{padding:.55rem 1.1rem;font-family:'Fraunces',serif;font-size:.78rem;color:#d0cbc3;font-variation-settings:"opsz" 48,"SOFT" 100;white-space:nowrap;line-height:1}
+.pd-l2.active{background:rgba(255,245,230,.92);color:#0a0b14;font-weight:600}
+
+/* LAYER 3 */
+.pd-l3-group{display:flex;gap:.1rem;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none;width:100%;justify-content:center;padding:0 .2rem}
+.pd-l3-group::-webkit-scrollbar{display:none}
+.pd-l3-hidden{display:none}
+.pd-l3{flex-shrink:0;padding:.34rem .72rem;background:transparent;border:none;border-radius:100px;color:rgba(200,196,188,.55);font-family:'Instrument Serif','Fraunces',serif;font-style:italic;font-size:.78rem;font-weight:400;letter-spacing:0;cursor:pointer;white-space:nowrap;transition:all .25s;-webkit-tap-highlight-color:transparent;position:relative;font-variation-settings:normal}
+.pd-l3:hover{color:#fff5e6}
+.pd-l3:active{transform:scale(.95)}
+.pd-l3.active{color:#00e0c0;font-weight:500}
+.pd-l3.active::after{content:"";position:absolute;bottom:2px;left:20%;right:20%;height:1px;background:rgba(0,224,192,.65);box-shadow:0 0 8px rgba(0,224,192,.5)}
+.pd-l3[data-soon="true"]{opacity:.48;position:relative;padding-right:.9rem}
+.pd-l3[data-soon="true"]::before{content:"";position:absolute;top:50%;right:.35rem;transform:translateY(-50%);width:4px;height:4px;border-radius:50%;background:#ff9a3d;box-shadow:0 0 6px rgba(255,154,61,.6)}
+.pd-l3[data-soon="true"]:hover{opacity:.7}
+
+.pd-soon-inline{padding:.42rem .9rem;font-family:'Fraunces',serif;font-size:.76rem;color:#d0cbc3;font-variation-settings:"opsz" 48,"SOFT" 100;white-space:nowrap;line-height:1}
 .pd-soon-inline em{font-family:'Instrument Serif',serif;font-style:italic;color:#fff5e6;font-variation-settings:normal}
+
 @media(max-width:560px){
-  .pd{top:68px;gap:.35rem}
-  .pd-l1{padding:.48rem 1.1rem;font-size:.8rem}
-  .pd-l2{padding:.45rem .78rem;font-size:.72rem}
-  .pd-soon-inline{font-size:.72rem;padding:.48rem .9rem}
+  .pd{top:68px;max-width:calc(100vw - 1rem);border-radius:18px}
+  .pd-row{padding:.28rem .35rem}
+  .pd-row-1{padding:.32rem .35rem}
+  .pd-l1{padding:.42rem 1rem;font-size:.78rem}
+  .pd-l2{padding:.36rem .68rem;font-size:.72rem}
+  .pd-l3{padding:.28rem .6rem;font-size:.72rem}
+  .pd-soon-inline{font-size:.7rem;padding:.36rem .7rem}
+  .pd-l3-group{justify-content:flex-start}
 }
 
 /* ========== PORTFOLIO BODY ========== */
@@ -486,21 +513,45 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
     <p class="pf-dir2-note">Portofoliul video — în lucru.</p>
   </div>
 </header>
-<!-- STICKY DOCK NAV -->
+<!-- STICKY DOCK NAV 3-LEVEL -->
 <nav class="pd" id="pd" aria-label="Navigare portofoliu">
   <div class="pd-row pd-row-1">
     <button class="pd-l1 active" data-l1="static">Static</button>
     <button class="pd-l1" data-l1="video">Video</button>
   </div>
   <div class="pd-row pd-row-2" id="pdRow2">
-    <div class="pd-tabs" data-for="static">
-      <button class="pd-l2" data-to="sec-carusel">Carusel</button>
-      <button class="pd-l2" data-to="sec-post">Post</button>
-      <button class="pd-l2" data-to="sec-ecommerce">E-commerce</button>
-      <button class="pd-l2" data-to="sec-servicii">Servicii</button>
+    <div class="pd-tabs pd-l2-group" data-for="static">
+      <button class="pd-l2 active" data-l2="carusel" data-to="sec-carusel">Carusel</button>
+      <button class="pd-l2" data-l2="post" data-to="sec-post">Post</button>
+      <button class="pd-l2" data-l2="ecommerce" data-to="sec-ecommerce">E-commerce</button>
+      <button class="pd-l2" data-l2="servicii" data-to="sec-servicii">Servicii</button>
     </div>
     <div class="pd-tabs pd-tabs-hidden" data-for="video">
       <span class="pd-soon-inline">Reels · Cinematic · Showcase · Before&amp;After — <em>în curând</em></span>
+    </div>
+  </div>
+  <div class="pd-row pd-row-3" id="pdRow3">
+    <div class="pd-l3-group pd-l3-carusel" data-l2="carusel">
+      <button class="pd-l3" data-to="car-educational">Educațional</button>
+      <button class="pd-l3" data-to="car-storytelling">Storytelling</button>
+      <button class="pd-l3" data-to="car-showcase">Showcase</button>
+      <button class="pd-l3" data-to="car-produs">Produs</button>
+    </div>
+    <div class="pd-l3-group pd-l3-post pd-l3-hidden" data-l2="post">
+      <button class="pd-l3" data-to="post-emotional">Emoțional</button>
+      <button class="pd-l3" data-soon="true">Anunț</button>
+      <button class="pd-l3" data-soon="true">Duo</button>
+      <button class="pd-l3" data-soon="true">Meme</button>
+    </div>
+    <div class="pd-l3-group pd-l3-ecommerce pd-l3-hidden" data-l2="ecommerce">
+      <button class="pd-l3" data-to="ec-hero">Hero produs</button>
+      <button class="pd-l3" data-soon="true">Ads creative</button>
+      <button class="pd-l3" data-soon="true">Specs</button>
+    </div>
+    <div class="pd-l3-group pd-l3-servicii pd-l3-hidden" data-l2="servicii">
+      <button class="pd-l3" data-to="srv-profesionisti">Profesioniști</button>
+      <button class="pd-l3" data-soon="true">Testimoniale</button>
+      <button class="pd-l3" data-soon="true">Prezentare</button>
     </div>
   </div>
 </nav>
@@ -1465,68 +1516,138 @@ document.addEventListener('click',function(e){
     var pd=document.getElementById('pd');
     var l1s=document.querySelectorAll('.pd-l1');
     var l2s=document.querySelectorAll('.pd-l2');
-    var tabs=document.querySelectorAll('.pd-tabs');
+    var l3s=document.querySelectorAll('.pd-l3');
+    var l2grp=document.querySelectorAll('.pd-l2-group, [data-for]');
+    var l3grps=document.querySelectorAll('.pd-l3-group');
     var secs=document.querySelectorAll('.p-sec');
+    var subs=document.querySelectorAll('.p-sub[id]');
     if(!pd||!l1s.length)return;
     var mode='static';
+    var currentL2='carusel';
+
     function toggleDock(){
       if(window.scrollY>120)pd.classList.remove('pd-hidden');
       else pd.classList.add('pd-hidden');
     }
     window.addEventListener('scroll',toggleDock,{passive:true});
     pd.classList.add('pd-hidden');toggleDock();
-    // Layer 1 tabs
+
+    function setL3Group(l2key){
+      l3grps.forEach(function(g){
+        if(g.dataset.l2===l2key)g.classList.remove('pd-l3-hidden');
+        else g.classList.add('pd-l3-hidden');
+      });
+    }
+
+    // LAYER 1
     l1s.forEach(function(b){
       b.addEventListener('click',function(){
         var m=b.dataset.l1;
         l1s.forEach(function(x){x.classList.remove('active')});
         b.classList.add('active');
-        tabs.forEach(function(t){
+        // Show/hide L2 groups
+        document.querySelectorAll('.pd-row-2 [data-for]').forEach(function(t){
           if(t.dataset.for===m)t.classList.remove('pd-tabs-hidden');
           else t.classList.add('pd-tabs-hidden');
         });
+        // Hide Row 3 if video
+        var r3=document.getElementById('pdRow3');
+        if(r3)r3.style.display=m==='video'?'none':'flex';
         // Show/hide sections
         secs.forEach(function(s){
           if(s.id==='sec-video'){s.style.display=m==='video'?'block':'none'}
           else{s.style.display=m==='static'?'block':'none'}
         });
         mode=m;
-        if(m==='video'){
-          var vs=document.getElementById('sec-video');
-          if(vs){window.scrollTo({top:vs.getBoundingClientRect().top+window.pageYOffset-150,behavior:'smooth'})}
-        }else{
-          var firstStatic=document.getElementById('sec-carusel');
-          if(firstStatic){window.scrollTo({top:firstStatic.getBoundingClientRect().top+window.pageYOffset-150,behavior:'smooth'})}
-        }
+        var target=m==='video'?document.getElementById('sec-video'):document.getElementById('sec-carusel');
+        if(target){window.scrollTo({top:target.getBoundingClientRect().top+window.pageYOffset-200,behavior:'smooth'})}
         if(typeof gtag==='function')gtag('event','pd_l1',{mode:m});
       });
     });
-    // Layer 2 chips
+
+    // LAYER 2
     l2s.forEach(function(b){
       b.addEventListener('click',function(){
         var id=b.dataset.to;
-        var t=document.getElementById(id);
-        if(!t)return;
+        var l2key=b.dataset.l2;
         l2s.forEach(function(x){x.classList.remove('active')});
         b.classList.add('active');
-        var top=t.getBoundingClientRect().top+window.pageYOffset-150;
-        window.scrollTo({top:top,behavior:'smooth'});
+        currentL2=l2key;
+        setL3Group(l2key);
+        // Reset L3 active state
+        l3s.forEach(function(x){x.classList.remove('active')});
+        var firstL3=document.querySelector('.pd-l3-group[data-l2="'+l2key+'"] .pd-l3:not([data-soon])');
+        if(firstL3)firstL3.classList.add('active');
+        var t=document.getElementById(id);
+        if(t){
+          var top=t.getBoundingClientRect().top+window.pageYOffset-200;
+          window.scrollTo({top:top,behavior:'smooth'});
+        }
         if(typeof gtag==='function')gtag('event','pd_l2',{section:id});
       });
     });
-    // Auto-highlight active L2 chip on scroll
-    secs.forEach(function(sec){
-      if(!sec.id||!sec.id.startsWith('sec-'))return;
+
+    // LAYER 3
+    l3s.forEach(function(b){
+      b.addEventListener('click',function(){
+        if(b.dataset.soon==='true'){
+          if(typeof gtag==='function')gtag('event','pd_l3_soon',{label:b.textContent});
+          return;
+        }
+        var id=b.dataset.to;
+        var t=document.getElementById(id);
+        if(!t)return;
+        l3s.forEach(function(x){x.classList.remove('active')});
+        b.classList.add('active');
+        var top=t.getBoundingClientRect().top+window.pageYOffset-215;
+        window.scrollTo({top:top,behavior:'smooth'});
+        if(typeof gtag==='function')gtag('event','pd_l3',{section:id});
+      });
+    });
+
+    // Init: show L3 for carusel (default L2)
+    setL3Group('carusel');
+
+    // Auto-highlight L2 on scroll (section-level)
+    var l2map={
+      'sec-carusel':'carusel','sec-post':'post',
+      'sec-ecommerce':'ecommerce','sec-servicii':'servicii'
+    };
+    Object.keys(l2map).forEach(function(id){
+      var el=document.getElementById(id);if(!el)return;
       var obs=new IntersectionObserver(function(entries){
         entries.forEach(function(e){
           if(e.isIntersecting&&mode==='static'){
             l2s.forEach(function(x){x.classList.remove('active')});
             var chip=document.querySelector('.pd-l2[data-to="'+e.target.id+'"]');
-            if(chip)chip.classList.add('active');
+            if(chip){chip.classList.add('active');
+              var l2key=chip.dataset.l2;
+              if(l2key!==currentL2){currentL2=l2key;setL3Group(l2key)}
+            }
           }
         });
-      },{rootMargin:'-30% 0px -60% 0px',threshold:0});
-      obs.observe(sec);
+      },{rootMargin:'-25% 0px -65% 0px',threshold:0});
+      obs.observe(el);
+    });
+
+    // Auto-highlight L3 on scroll (subsection-level)
+    subs.forEach(function(sub){
+      var obs=new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          if(e.isIntersecting&&mode==='static'){
+            var chip=document.querySelector('.pd-l3[data-to="'+e.target.id+'"]');
+            if(chip){
+              // Only highlight if it's in the currently visible L3 group
+              var group=chip.closest('.pd-l3-group');
+              if(group&&!group.classList.contains('pd-l3-hidden')){
+                l3s.forEach(function(x){x.classList.remove('active')});
+                chip.classList.add('active');
+              }
+            }
+          }
+        });
+      },{rootMargin:'-20% 0px -70% 0px',threshold:0});
+      obs.observe(sub);
     });
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);
