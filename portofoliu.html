@@ -41,13 +41,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.1rem 2.5rem;displ
 
 /* HERO */
 .pf-hero{padding:160px 2.5rem 80px;position:relative;z-index:2;max-width:1100px;margin:0 auto}
-.pf-directions{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:2.5rem}
-.pf-dir{padding:1.8rem 1.5rem;border-radius:16px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.02);transition:all .3s ease}
-.pf-dir-active{border-color:rgba(0,224,192,.3);background:linear-gradient(135deg,rgba(0,224,192,.06),rgba(123,44,255,.04))}
-.pf-dir-num{font-family:var(--fm,monospace);font-size:.7rem;color:#00e0c0;letter-spacing:.25em;margin-bottom:.6rem;opacity:.7}
-.pf-dir-label{font-family:var(--fd);font-size:1.8rem;font-weight:800;letter-spacing:-.02em;margin-bottom:.5rem;line-height:1}
-.pf-dir-desc{font-size:.88rem;color:var(--td);line-height:1.5}
-@media(max-width:768px){.pf-directions{grid-template-columns:1fr;gap:.8rem;margin-top:1.8rem}.pf-dir{padding:1.3rem 1.1rem}.pf-dir-label{font-size:1.4rem}}
+.pf-dir2{margin-top:3.5rem;max-width:720px}
+.pf-dir2-num{font-family:var(--fm,monospace);font-size:.7rem;color:#00e0c0;letter-spacing:.3em;margin-bottom:.8rem;opacity:.75}
+.pf-dir2-label{font-family:var(--fd);font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;letter-spacing:-.025em;margin-bottom:1rem;line-height:1.1}
+.pf-dir2-label span{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--td);font-size:.7em;letter-spacing:0}
+.pf-dir2-text{font-size:1rem;color:var(--td);line-height:1.75;margin:0}
+.pf-dir2-note{font-size:.82rem;color:#00e0c0;margin-top:.9rem;font-family:var(--fm,monospace);letter-spacing:.05em;opacity:.7}
+@media(max-width:768px){.pf-dir2{margin-top:2.5rem}.pf-dir2-text{font-size:.95rem;line-height:1.7}}
 
 /* STICKY TOC NAVIGATION */
 .pf-toc{position:fixed;z-index:50;transition:opacity .3s}
@@ -439,18 +439,19 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
 
 <header class="pf-hero rv">
   <h1>Ce facem.​<br><span>Concret.</span></h1>
-  <p class="sub">Producem două lucruri: <span class="hl">design</span> pentru social media și <span class="hl">video</span>. Mai jos, exemple concrete din ce livrăm.</p>
-  <div class="pf-directions">
-    <div class="pf-dir pf-dir-active">
-      <div class="pf-dir-num">01</div>
-      <div class="pf-dir-label">Design</div>
-      <div class="pf-dir-desc">Carusele educaționale, storytelling, showcase, produs, profesioniști.</div>
-    </div>
-    <div class="pf-dir">
-      <div class="pf-dir-num">02</div>
-      <div class="pf-dir-label">Video</div>
-      <div class="pf-dir-desc">Reels, TikTok, cinematic ads. Portofoliul video se adaugă în curând.</div>
-    </div>
+  <p class="sub">Producem două lucruri: <span class="hl">design</span> și <span class="hl">video</span>.</p>
+  
+  <div class="pf-dir2">
+    <div class="pf-dir2-num">01</div>
+    <div class="pf-dir2-label">Design <span>— tot ce stă pe loc</span></div>
+    <p class="pf-dir2-text">Carusele de toate tipurile: educaționale, storytelling, showcase, promoționale, conținut pentru profesioniști. Imagini hero, postări single, vizuale pentru ads, fotografii de produs. Tot ce e static și trebuie să oprească scroll-ul.</p>
+  </div>
+  
+  <div class="pf-dir2">
+    <div class="pf-dir2-num">02</div>
+    <div class="pf-dir2-label">Video <span>— tot ce se mișcă</span></div>
+    <p class="pf-dir2-text">Reels, TikTok-uri, Shorts. Cinematic ads, showcase de produs, before & after, testimoniale filmate, explainere, voice-over, motion graphics. Tot ce trece dincolo de imaginea fixă.</p>
+    <p class="pf-dir2-note">Portofoliul video se adaugă în curând.</p>
   </div>
 </header>
 
