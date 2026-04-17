@@ -40,7 +40,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.1rem 2.5rem;displ
 .mm a:hover{color:var(--ac)}
 
 /* HERO */
-.pf-hero{padding:160px 2.5rem 80px;position:relative;z-index:2;max-width:1100px;margin:0 auto}
+.pf-hero{padding:140px 2.5rem 30px;position:relative;z-index:2;max-width:1100px;margin:0 auto}
 .pf-dir2{margin-top:4rem;max-width:760px;position:relative}
 .pf-dir2-num{font-family:'Geist Mono',monospace;font-size:.7rem;color:rgba(0,224,192,.75);letter-spacing:.35em;margin-bottom:1.1rem;font-weight:500}
 .pf-dir2-label{font-family:'Fraunces','Times New Roman',serif;font-size:clamp(2.2rem,4.5vw,3.6rem);font-weight:700;font-variation-settings:"opsz" 144,"SOFT" 30,"WONK" 1;letter-spacing:-.035em;line-height:1;margin-bottom:1.4rem;display:flex;flex-direction:column;gap:.4rem}
@@ -51,23 +51,35 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.1rem 2.5rem;displ
 
 
 
-/* BOTTOM DOCK NAV — identical on all devices */
-.dock{position:fixed;bottom:1.2rem;left:50%;transform:translateX(-50%);z-index:80;transition:opacity .4s,transform .4s cubic-bezier(.2,.9,.3,1.1);max-width:calc(100vw - 1.6rem);pointer-events:auto}
+
+/* 2-LEVEL DOCK */
+.dock{position:fixed;bottom:1rem;left:50%;transform:translateX(-50%);z-index:80;transition:opacity .4s,transform .4s cubic-bezier(.2,.9,.3,1.1);max-width:calc(100vw - 1.2rem);pointer-events:auto;display:flex;flex-direction:column;gap:.45rem;align-items:center}
 .dock-hidden{opacity:0;pointer-events:none;transform:translateX(-50%) translateY(16px)}
-.dock-inner{display:flex;gap:.3rem;padding:.4rem;background:rgba(4,6,14,.88);backdrop-filter:blur(24px) saturate(140%);-webkit-backdrop-filter:blur(24px) saturate(140%);border:1px solid rgba(255,255,255,.1);border-radius:100px;box-shadow:0 14px 40px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.04) inset;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none}
-.dock-inner::-webkit-scrollbar{display:none}
-.dock-chip{flex-shrink:0;padding:.6rem 1.15rem;background:transparent;border:none;border-radius:100px;color:rgba(216,212,200,.72);font-family:'Fraunces','Times New Roman',serif;font-size:.82rem;font-weight:500;letter-spacing:-.005em;font-variation-settings:"opsz" 48,"SOFT" 80,"WONK" 0;cursor:pointer;white-space:nowrap;transition:all .3s cubic-bezier(.2,.9,.3,1.1);-webkit-tap-highlight-color:transparent}
+.dock-primary{display:flex;gap:.3rem;padding:.3rem;background:rgba(4,6,14,.92);backdrop-filter:blur(28px) saturate(140%);-webkit-backdrop-filter:blur(28px) saturate(140%);border:1px solid rgba(255,255,255,.12);border-radius:100px;box-shadow:0 16px 40px rgba(0,0,0,.55)}
+.dock-pri{padding:.52rem 1.3rem;background:transparent;border:none;border-radius:100px;color:rgba(208,203,195,.7);font-family:'Fraunces',serif;font-size:.82rem;font-weight:500;letter-spacing:-.005em;font-variation-settings:"opsz" 48,"SOFT" 80;cursor:pointer;white-space:nowrap;transition:all .3s cubic-bezier(.2,.9,.3,1.1);-webkit-tap-highlight-color:transparent}
+.dock-pri:hover{color:#fff5e6}
+.dock-pri.active{background:#fff5e6;color:#0a0b14;font-weight:600;box-shadow:0 2px 14px rgba(255,245,230,.25)}
+.dock-secondary{display:flex;padding:.35rem;background:rgba(4,6,14,.88);backdrop-filter:blur(24px) saturate(140%);-webkit-backdrop-filter:blur(24px) saturate(140%);border:1px solid rgba(255,255,255,.08);border-radius:100px;box-shadow:0 14px 40px rgba(0,0,0,.5);max-width:calc(100vw - 1.2rem);overflow:hidden;transition:all .4s cubic-bezier(.2,.9,.3,1.1)}
+.dock-sec-inner{display:flex;gap:.25rem;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none;transition:opacity .3s}
+.dock-sec-inner::-webkit-scrollbar{display:none}
+.dock-sec-hidden{display:none}
+.dock-chip{flex-shrink:0;padding:.5rem .9rem;background:transparent;border:none;border-radius:100px;color:rgba(216,212,200,.7);font-family:'Fraunces',serif;font-size:.76rem;font-weight:500;letter-spacing:-.005em;font-variation-settings:"opsz" 48,"SOFT" 80;cursor:pointer;white-space:nowrap;transition:all .3s cubic-bezier(.2,.9,.3,1.1);-webkit-tap-highlight-color:transparent;position:relative}
 .dock-chip:hover{color:#fff5e6;background:rgba(255,245,230,.05)}
 .dock-chip:active{transform:scale(.94)}
-.dock-chip.active{background:#fff5e6;color:#0a0b14;font-weight:600;box-shadow:0 2px 18px rgba(255,245,230,.25),0 0 0 1px rgba(255,245,230,.1)}
-.dock-tip{position:absolute;bottom:calc(100% + 10px);left:50%;transform:translateX(-50%);max-width:min(90vw,380px);background:rgba(4,6,14,.96);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(0,224,192,.3);border-radius:14px;padding:.85rem 1.1rem;font-family:'Fraunces',serif;font-size:.82rem;line-height:1.5;color:#fff5e6;font-variation-settings:"opsz" 48,"SOFT" 100;box-shadow:0 12px 40px rgba(0,0,0,.5);opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;white-space:normal;text-align:center}
+.dock-chip.active{background:#fff5e6;color:#0a0b14;font-weight:600}
+.dock-chip[data-soon]::after{content:"";position:absolute;top:6px;right:6px;width:5px;height:5px;border-radius:50%;background:#ff9a3d;box-shadow:0 0 6px rgba(255,154,61,.7)}
+.dock-soon{padding:.7rem 1.2rem;font-family:'Fraunces',serif;font-size:.82rem;color:#d0cbc3;font-variation-settings:"opsz" 48,"SOFT" 100;line-height:1.5}
+.dock-soon em{font-family:'Instrument Serif',serif;font-style:italic;color:#fff5e6;font-variation-settings:normal}
+.dock-soon a{color:#00e0c0;text-decoration:none;font-weight:600;font-family:'Geist',sans-serif;font-style:normal;font-size:.8rem;margin-left:.3rem;white-space:nowrap}
+.dock-tip{position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);max-width:min(90vw,380px);background:rgba(4,6,14,.96);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(0,224,192,.3);border-radius:14px;padding:.8rem 1rem;font-family:'Fraunces',serif;font-size:.8rem;line-height:1.5;color:#fff5e6;font-variation-settings:"opsz" 48,"SOFT" 100;box-shadow:0 12px 40px rgba(0,0,0,.5);opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;white-space:normal;text-align:center}
 .dock-tip.show{opacity:1;transform:translateX(-50%) translateY(-4px)}
 @media(max-width:560px){
-  .dock{bottom:1rem;width:calc(100vw - 1.6rem)}
-  .dock-chip{padding:.5rem .85rem;font-size:.74rem}
-  .dock-tip{font-size:.78rem;padding:.75rem .95rem}
+  .dock{bottom:.8rem;gap:.35rem}
+  .dock-pri{padding:.45rem 1rem;font-size:.78rem}
+  .dock-chip{padding:.45rem .75rem;font-size:.73rem}
+  .dock-soon{font-size:.78rem;padding:.6rem 1rem}
+  .dock-soon a{font-size:.76rem;display:block;margin-left:0;margin-top:.25rem}
 }
-
 html{scroll-behavior:smooth;scroll-padding-top:90px}
 
 /* Section highlight flash when scrolled from legend */
@@ -102,7 +114,7 @@ html{scroll-behavior:smooth;scroll-padding-top:90px}
 .pf-hero .sub em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:#fff5e6;letter-spacing:0;font-variation-settings:normal;font-size:1.08em;background:none;text-shadow:none;border:none;padding:0;text-decoration:none}
 
 /* SECTIONS — v9 identical style */
-.sec{padding:6rem 2.5rem;position:relative;z-index:2;border-bottom:1px solid var(--br)}
+.sec{padding:3rem 2.5rem;position:relative;z-index:2;border-bottom:1px solid var(--br)}
 .si{max-width:1100px;margin:0 auto}
 .lb{font-family:var(--fm);font-size:.66rem;color:var(--ac);letter-spacing:.14em;text-transform:uppercase;display:flex;align-items:center;gap:.6rem;margin-bottom:1.2rem}
 .lb::before{content:'';width:14px;height:1.5px;background:var(--ac)}
@@ -165,10 +177,10 @@ html{scroll-behavior:smooth;scroll-padding-top:90px}
 /* RESPONSIVE */
 @media(max-width:768px){
   nav{padding:.7rem 1.2rem}
-  .nk{display:none}
+  .nk{display:none}.nc{display:none}
   .ham{display:block}
-  .sec{padding:3.5rem 1rem}
-  .pf-hero{padding:110px 1rem 50px}
+  .sec{padding:2rem 1rem}
+  .pf-hero{padding:100px 1rem 20px}
   .pf-hero h1{font-size:clamp(2rem,9vw,3.2rem)}
   .g7{grid-template-columns:repeat(2,1fr)}
   .g4{grid-template-columns:repeat(2,1fr)}
@@ -275,7 +287,7 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
 /* Hero text panel */
 .pf-hero {
   background: linear-gradient(180deg, rgba(8,10,20,.75), rgba(4,6,14,.6), transparent) !important;
-  padding-bottom: 120px !important;
+  padding-bottom: 30px !important;
 }
 .pf-hero h1 {
   color: #fff5e6 !important;
@@ -420,6 +432,29 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
     <p class="pf-dir2-note">Portofoliul video — în lucru.</p>
   </div>
 </header>
+
+<!-- 2-LEVEL DOCK: Design/Video primary + subcategories -->
+<div class="dock" id="dock" aria-label="Navigare portofoliu">
+  <div class="dock-tip" id="dockTip"></div>
+  <div class="dock-primary">
+    <button class="dock-pri active" data-mode="design">Design</button>
+    <button class="dock-pri" data-mode="video">Video</button>
+  </div>
+  <div class="dock-secondary" id="dockSec">
+    <div class="dock-sec-inner" data-for="design">
+      <button class="dock-chip" data-to="design-educational" data-tip="Carusele care învață ceva. Educaționale, storytelling, showcase.">Carusele</button>
+      <button class="dock-chip" data-soon="true" data-tip="Un singur cadru, un singur mesaj. În lucru, întreabă-ne pe WhatsApp.">Post single</button>
+      <button class="dock-chip" data-soon="true" data-tip="Două slide-uri, punch rapid. În lucru, întreabă-ne pe WhatsApp.">Post duo</button>
+      <button class="dock-chip" data-soon="true" data-tip="Meme cu identitate de brand. În lucru.">Meme brand</button>
+      <button class="dock-chip" data-soon="true" data-tip="Fotografii produs, pagini e-commerce, machete ads. În lucru.">E-commerce</button>
+      <button class="dock-chip" data-to="design-professional" data-tip="Avocați, medici, experți. Conținut care construiește autoritate.">Servicii</button>
+    </div>
+    <div class="dock-sec-inner dock-sec-hidden" data-for="video">
+      <div class="dock-soon">Portofoliul video — <em>în curând.</em> <a href="https://wa.me/40775579706" target="_blank">Întreabă-ne pe WhatsApp →</a></div>
+    </div>
+  </div>
+</div>
+
 
 <!-- BOTTOM DOCK NAV — same design all devices -->
 <div class="dock" id="dock" aria-label="Navigare secțiuni">
@@ -1326,61 +1361,85 @@ document.addEventListener('click',function(e){
   function init(){
     var dock=document.getElementById('dock');
     var tip=document.getElementById('dockTip');
-    var chips=document.querySelectorAll('.dock-chip');
+    var prims=document.querySelectorAll('.dock-pri');
+    var secs=document.querySelectorAll('.dock-sec-inner');
     var hero=document.querySelector('.pf-hero');
-    if(!dock||!chips.length)return;
+    if(!dock||!prims.length)return;
     var tipTimer=null;
+    var mode='design';
     function toggle(){
-      var heroEnd=200;
-      if(window.scrollY>heroEnd){dock.classList.remove('dock-hidden')}
+      if(window.scrollY>160){dock.classList.remove('dock-hidden')}
       else{dock.classList.add('dock-hidden')}
     }
     window.addEventListener('scroll',toggle,{passive:true});
     window.addEventListener('resize',toggle,{passive:true});
-    // Start hidden, toggle will show it when appropriate
-    dock.classList.add('dock-hidden');
-    toggle();
-    // Active highlight
-    var sections=[];
-    chips.forEach(function(c){var el=document.getElementById(c.dataset.to);if(el)sections.push(el)});
-    if(sections.length){
-      var obs=new IntersectionObserver(function(entries){
-        entries.forEach(function(e){
-          if(e.isIntersecting){
-            chips.forEach(function(c){c.classList.remove('active')});
-            var chip=document.querySelector('.dock-chip[data-to="'+e.target.id+'"]');
-            if(chip){
-              chip.classList.add('active');
-              // Center active chip in horizontal scroller
-              var inner=chip.parentElement;
-              var chipCenter=chip.offsetLeft+chip.offsetWidth/2;
-              var innerCenter=inner.offsetWidth/2;
-              inner.scrollTo({left:chipCenter-innerCenter,behavior:'smooth'});
-            }
-          }
+    dock.classList.add('dock-hidden');toggle();
+    // Primary tabs
+    prims.forEach(function(p){
+      p.addEventListener('click',function(e){
+        e.preventDefault();
+        var m=p.dataset.mode;
+        prims.forEach(function(x){x.classList.remove('active')});
+        p.classList.add('active');
+        secs.forEach(function(sec){
+          if(sec.dataset.for===m){sec.classList.remove('dock-sec-hidden')}
+          else{sec.classList.add('dock-sec-hidden')}
         });
-      },{rootMargin:'-35% 0px -55% 0px',threshold:0});
-      sections.forEach(function(s){obs.observe(s)});
+        mode=m;
+        if(typeof gtag==='function')gtag('event','dock_mode',{mode:m});
+      });
+    });
+    // Chip clicks
+    function showTip(text){
+      if(!tip)return;
+      tip.textContent=text;
+      tip.classList.add('show');
+      if(tipTimer)clearTimeout(tipTimer);
+      tipTimer=setTimeout(function(){tip.classList.remove('show')},2800);
     }
-    // Tap chip
-    chips.forEach(function(chip){
+    document.querySelectorAll('.dock-chip').forEach(function(chip){
       chip.addEventListener('click',function(e){
         e.preventDefault();
+        if(chip.dataset.soon==='true'){
+          showTip(chip.dataset.tip||'În curând');
+          if(typeof gtag==='function')gtag('event','dock_soon_click',{label:chip.textContent});
+          return;
+        }
         var id=chip.dataset.to;
+        if(!id)return;
         var t=document.getElementById(id);
         if(!t)return;
         var top=t.getBoundingClientRect().top+window.pageYOffset-90;
         window.scrollTo({top:top,behavior:'smooth'});
         t.classList.add('pf-section-highlight');
         setTimeout(function(){t.classList.remove('pf-section-highlight')},2500);
-        if(tip&&chip.dataset.tip){
-          tip.textContent=chip.dataset.tip;
-          tip.classList.add('show');
-          if(tipTimer)clearTimeout(tipTimer);
-          tipTimer=setTimeout(function(){tip.classList.remove('show')},2800);
-        }
+        if(chip.dataset.tip)showTip(chip.dataset.tip);
+        document.querySelectorAll('.dock-chip').forEach(function(c){c.classList.remove('active')});
+        chip.classList.add('active');
         if(typeof gtag==='function')gtag('event','dock_click',{section:id});
       });
+    });
+    // Auto-highlight active section via IntersectionObserver
+    var sectionMap={
+      'design-educational':'design-educational',
+      'design-storytelling':'design-educational',
+      'design-showcase':'design-educational',
+      'design-produs':'design-educational',
+      'design-professional':'design-professional'
+    };
+    Object.keys(sectionMap).forEach(function(id){
+      var el=document.getElementById(id);if(!el)return;
+      var obs=new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          if(e.isIntersecting&&mode==='design'){
+            document.querySelectorAll('.dock-chip').forEach(function(c){c.classList.remove('active')});
+            var targetId=sectionMap[e.target.id];
+            var chip=document.querySelector('.dock-chip[data-to="'+targetId+'"]');
+            if(chip)chip.classList.add('active');
+          }
+        });
+      },{rootMargin:'-35% 0px -55% 0px',threshold:0});
+      obs.observe(el);
     });
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);
