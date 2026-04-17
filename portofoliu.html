@@ -41,6 +41,46 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.1rem 2.5rem;displ
 
 /* HERO */
 .pf-hero{padding:160px 2.5rem 80px;position:relative;z-index:2;max-width:1100px;margin:0 auto}
+.pf-directions{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:2.5rem}
+.pf-dir{padding:1.8rem 1.5rem;border-radius:16px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.02);transition:all .3s ease}
+.pf-dir-active{border-color:rgba(0,224,192,.3);background:linear-gradient(135deg,rgba(0,224,192,.06),rgba(123,44,255,.04))}
+.pf-dir-num{font-family:var(--fm,monospace);font-size:.7rem;color:#00e0c0;letter-spacing:.25em;margin-bottom:.6rem;opacity:.7}
+.pf-dir-label{font-family:var(--fd);font-size:1.8rem;font-weight:800;letter-spacing:-.02em;margin-bottom:.5rem;line-height:1}
+.pf-dir-desc{font-size:.88rem;color:var(--td);line-height:1.5}
+@media(max-width:768px){.pf-directions{grid-template-columns:1fr;gap:.8rem;margin-top:1.8rem}.pf-dir{padding:1.3rem 1.1rem}.pf-dir-label{font-size:1.4rem}}
+
+/* STICKY TOC NAVIGATION */
+.pf-toc{position:fixed;z-index:50;transition:opacity .3s}
+.pf-toc-hidden{opacity:0;pointer-events:none}
+
+/* Desktop: left sidebar */
+@media(min-width:1100px){
+  .pf-toc{left:2rem;top:50%;transform:translateY(-50%);max-width:180px;background:rgba(4,6,14,.7);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:1.2rem 1rem}
+  .pf-toc-title{font-family:var(--fm,monospace);font-size:.62rem;letter-spacing:.25em;color:#00e0c0;text-transform:uppercase;margin-bottom:1rem;padding:0 .2rem}
+  .pf-toc-list{display:flex;flex-direction:column;gap:.15rem}
+  .pf-toc-item{display:flex;gap:.7rem;align-items:baseline;padding:.55rem .6rem;border-radius:8px;cursor:pointer;transition:all .2s;text-decoration:none;color:#d0cbc3}
+  .pf-toc-item:hover{background:rgba(255,255,255,.04);color:#fff5e6}
+  .pf-toc-item.active{background:linear-gradient(90deg,rgba(0,224,192,.14),rgba(123,44,255,.08));color:#fff5e6}
+  .pf-toc-item.active .pf-toc-num{color:#00e0c0}
+  .pf-toc-num{font-family:var(--fm,monospace);font-size:.65rem;opacity:.55;min-width:20px}
+  .pf-toc-text{font-size:.78rem;font-weight:500;line-height:1.35}
+}
+
+/* Mobile & in-between: top horizontal scroll bar */
+@media(max-width:1099px){
+  .pf-toc{top:62px;left:0;right:0;background:rgba(4,6,14,.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.08);padding:.7rem 0;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .pf-toc::-webkit-scrollbar{display:none}
+  .pf-toc-title{display:none}
+  .pf-toc-list{display:flex;gap:.5rem;padding:0 1.2rem;flex-wrap:nowrap;width:max-content}
+  .pf-toc-item{display:flex;gap:.5rem;align-items:center;padding:.55rem 1rem;border-radius:100px;cursor:pointer;transition:all .25s;text-decoration:none;color:#d0cbc3;white-space:nowrap;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.02)}
+  .pf-toc-item.active{background:linear-gradient(135deg,rgba(0,224,192,.14),rgba(123,44,255,.08));border-color:rgba(0,224,192,.35);color:#fff5e6}
+  .pf-toc-item.active .pf-toc-num{color:#00e0c0}
+  .pf-toc-num{font-family:var(--fm,monospace);font-size:.65rem;opacity:.6}
+  .pf-toc-text{font-size:.78rem;font-weight:600}
+}
+
+html{scroll-behavior:smooth;scroll-padding-top:130px}
+@media(min-width:1100px){html{scroll-padding-top:90px}}
 .pf-hero h1{font-family:var(--fd);font-size:clamp(2.6rem,7vw,5rem);font-weight:800;letter-spacing:-.04em;line-height:1.05;margin-bottom:1.2rem}
 .pf-hero h1 span{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;letter-spacing:-.01em;font-size:1.05em}
 .pf-hero .sub{font-size:1.05rem;color:var(--td);max-width:620px;line-height:1.7}
@@ -318,6 +358,57 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
 </style>
 <link rel="alternate" hreflang="ro" href="https://i-vory.ro/portofoliu.html">
 <script>window.scrollTo(0,0);history.scrollRestoration="manual";</script>
+<script id="pf-toc-spy">
+(function(){
+  var toc=document.getElementById('pfToc');
+  var items=document.querySelectorAll('.pf-toc-item');
+  var sections=Array.from(items).map(function(i){return document.getElementById(i.dataset.target)}).filter(Boolean);
+  if(!toc||!sections.length)return;
+  
+  // Show TOC after scrolling past hero
+  var hero=document.querySelector('.pf-hero');
+  function toggleToc(){
+    var heroBottom=hero?hero.offsetTop+hero.offsetHeight:400;
+    if(window.scrollY>heroBottom-200){
+      toc.classList.remove('pf-toc-hidden');
+    }else{
+      toc.classList.add('pf-toc-hidden');
+    }
+  }
+  window.addEventListener('scroll',toggleToc,{passive:true});
+  toggleToc();
+  
+  // Intersection observer for active state
+  var active=null;
+  var obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        if(active)active.classList.remove('active');
+        var item=document.querySelector('[data-target="'+e.target.id+'"]');
+        if(item){item.classList.add('active');active=item;
+          // On mobile, scroll the TOC to keep active item visible
+          if(window.innerWidth<1100){
+            var list=item.parentElement;
+            var rect=item.getBoundingClientRect();
+            var listRect=list.getBoundingClientRect();
+            if(rect.left<listRect.left||rect.right>listRect.right){
+              list.parentElement.scrollTo({left:item.offsetLeft-20,behavior:'smooth'});
+            }
+          }
+        }
+      }
+    });
+  },{rootMargin:'-40% 0px -50% 0px',threshold:0});
+  sections.forEach(function(s){obs.observe(s)});
+  
+  // Smooth scroll with offset handling (already via scroll-padding)
+  items.forEach(function(i){
+    i.addEventListener('click',function(e){
+      if(typeof gtag==='function')gtag('event','toc_click',{section:i.dataset.target});
+    });
+  });
+})();
+</script>
 </head>
 <body>
 <!-- GRADIENT BLOBS BACKGROUND — from v9 -->
@@ -348,12 +439,35 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
 
 <header class="pf-hero rv">
   <h1>Ce facem.​<br><span>Concret.</span></h1>
-  <p class="sub">Carusele, videoclipuri, postări. <span class="hl">Conținut profesional</span> pentru social media.</p>
+  <p class="sub">Producem două lucruri: <span class="hl">design</span> pentru social media și <span class="hl">video</span>. Mai jos, exemple concrete din ce livrăm.</p>
+  <div class="pf-directions">
+    <div class="pf-dir pf-dir-active">
+      <div class="pf-dir-num">01</div>
+      <div class="pf-dir-label">Design</div>
+      <div class="pf-dir-desc">Carusele educaționale, storytelling, showcase, produs, profesioniști.</div>
+    </div>
+    <div class="pf-dir">
+      <div class="pf-dir-num">02</div>
+      <div class="pf-dir-label">Video</div>
+      <div class="pf-dir-desc">Reels, TikTok, cinematic ads. Portofoliul video se adaugă în curând.</div>
+    </div>
+  </div>
 </header>
+
+<nav class="pf-toc pf-toc-hidden" id="pfToc" aria-label="Cuprins portofoliu">
+  <div class="pf-toc-title">Cuprins</div>
+  <div class="pf-toc-list">
+    <a href="#design-educational" class="pf-toc-item" data-target="design-educational"><span class="pf-toc-num">01</span><span class="pf-toc-text">Educaționale</span></a>
+    <a href="#design-storytelling" class="pf-toc-item" data-target="design-storytelling"><span class="pf-toc-num">02</span><span class="pf-toc-text">Storytelling</span></a>
+    <a href="#design-showcase" class="pf-toc-item" data-target="design-showcase"><span class="pf-toc-num">03</span><span class="pf-toc-text">Showcase</span></a>
+    <a href="#design-produs" class="pf-toc-item" data-target="design-produs"><span class="pf-toc-num">04</span><span class="pf-toc-text">Produs</span></a>
+    <a href="#design-professional" class="pf-toc-item" data-target="design-professional"><span class="pf-toc-num">05</span><span class="pf-toc-text">Profesioniști</span></a>
+  </div>
+</nav>
 
 <main>
 
-<section class="sec">
+<section class="sec" id="design-educational">
 <div class="si rv">
   <div class="sec-num">01</div>
   <h2 class="sh">Carusele educaționale</h2>
@@ -364,7 +478,7 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
 </div>
 </section>
 
-<section class="sec">
+<section class="sec" id="design-storytelling">
 <div class="si rv">
   <div class="sec-num">02</div>
   <h2 class="sh">Carusele de <span>storytelling</span></h2>
@@ -374,7 +488,7 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
 </div>
 </section>
 
-<section class="sec">
+<section class="sec" id="design-showcase">
 <div class="si rv">
   <div class="sec-num">03</div>
   <h2 class="sh">Carusele de <span>showcase</span></h2>
@@ -384,7 +498,7 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
 </div>
 </section>
 
-<section class="sec">
+<section class="sec" id="design-produs">
 <div class="si rv">
   <div class="sec-num">04</div>
   <h2 class="sh">Carusele promoționale de <span>produs</span></h2>
@@ -394,7 +508,7 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
 </div>
 </section>
 
-<section class="sec">
+<section class="sec" id="design-professional">
 <div class="si rv">
   <div class="sec-num">05</div>
   <h2 class="sh">Conținut pentru <span>profesioniști</span></h2>
