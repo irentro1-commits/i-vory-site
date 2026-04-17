@@ -836,7 +836,8 @@ h3, h4, .pk-name, .how-title, .dce-title {
 .vid-lb{display:none;position:fixed;inset:0;background:rgba(5,5,5,.96);z-index:99998;justify-content:center;align-items:center;backdrop-filter:blur(12px);cursor:pointer}
 .vid-lb.on{display:flex}
 .vid-lb video{max-width:min(500px,90vw);max-height:85vh;border-radius:20px;box-shadow:0 40px 100px rgba(0,0,0,.8),0 0 80px rgba(0,224,192,.15);cursor:default}
-.vid-lb-x{position:fixed;top:18px;right:22px;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:#fff;font-size:22px;cursor:pointer;z-index:99999;display:flex;align-items:center;justify-content:center;transition:all .3s}
+.vid-lb-x{position:fixed;top:18px;right:22px;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:#fff;font-size:22px;cursor:pointer;z-index:99999;display:none;align-items:center;justify-content:center;transition:all .3s}
+.vid-lb.op .vid-lb-x{display:flex}
 .vid-lb-x:hover{background:rgba(255,80,80,.2);border-color:rgba(255,80,80,.4)}
 /* Play icon overlay pe phone mockup */
 .hv-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:4;cursor:pointer;transition:opacity .3s}
