@@ -354,7 +354,7 @@ footer{border-top:1px solid var(--br);padding:2.5rem;background:rgba(5,5,5,.5);b
 .mq-item:hover{opacity:1;color:#00e0c0}
 @keyframes mqScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 /* CHAT WIDGET */
-.cw{position:fixed;bottom:1.5rem;right:1.5rem;z-index:9998;font-family:var(--fb,Geist)}
+
 
 .cw-btn:hover{transform:scale(1.08)}
 }
@@ -368,7 +368,7 @@ footer{border-top:1px solid var(--br);padding:2.5rem;background:rgba(5,5,5,.5);b
 @keyframes cwDot{0%,100%{opacity:1}50%{opacity:.3}}
 
 
-.cw-go:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(37,211,102,.4)}
+
 @media(max-width:768px){.cw,.calc-wrap{display:none !important}}
 
 
@@ -2172,25 +2172,10 @@ fm.addEventListener("submit",async function(e){
 });
 
 })();
-}catch(__v9e){console.warn('v9 guard:',__v9e.message)}</script><div class="cw" id="cw">
-
-<div class="cw-msg">Salut! Îți răspundem direct pe WhatsApp. Spune-ne ce te interesează și primești ofertă în câteva minute.</div>
-<a href="#" class="cw-go" id="cwGo">Deschide WhatsApp →</a>
-</div>
-
-</div>
+}catch(__v9e){console.warn('v9 guard:',__v9e.message)}</script>
 <script>try{
 (function(){
-var cw=document.getElementById("cw"),btn=document.getElementById("cwBtn"),go=document.getElementById("cwGo");
-if(!cw)return;
-btn.addEventListener("click",function(e){e.stopPropagation();cw.classList.toggle("open")});
-document.addEventListener("click",function(e){if(!cw.contains(e.target))cw.classList.remove("open")});
-go.addEventListener("click",function(e){
-  e.preventDefault();
-  var sec="pagina";
-  var els=document.querySelectorAll("section[id],section.s2,.prob");
-  var mid=window.scrollY+window.innerHeight/2;
-  els.forEach(function(el){var r=el.getBoundingClientRect();var top=r.top+window.scrollY;if(mid>=top&&mid<=top+r.height){sec=el.id||el.className.split(" ")[0]||"pagina"}});
+});
   var labels={"servicii":"servicii","pachete":"pachete","portofoliu":"portofoliu","faq":"o întrebare din FAQ","contact":"contact","s2":"pagina principala","prob":"inceputul paginii"};
   var l=labels[sec]||sec;
   var msg="Salut! Vin din sectiunea "+l+" de pe i-vory.ro si as vrea sa stiu mai multe.";
