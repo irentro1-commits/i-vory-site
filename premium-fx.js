@@ -196,10 +196,18 @@ if(!__MOB){(function(){
       osc1.connect(filter);osc2.connect(filter);osc3.connect(filter);filter.connect(gainNode);
       osc1.start();osc2.start();osc3.start();lfo.start();
     }
+    if(audioCtx.state==='suspended')audioCtx.resume();
     playing=!playing;
     gainNode.gain.cancelScheduledValues(audioCtx.currentTime);
-    gainNode.gain.linearRampToValueAtTime(playing?.06:0,audioCtx.currentTime+1.2);
+    if(playing){
+      gainNode.gain.linearRampToValueAtTime(.06,audioCtx.currentTime+1.2);
+    } else {
+      // Fast mute: instant cut then short ramp for click-free stop
+      gainNode.gain.setValueAtTime(gainNode.gain.value,audioCtx.currentTime);
+      gainNode.gain.linearRampToValueAtTime(0,audioCtx.currentTime+.15);
+    }
     audioBtn.innerHTML=playing?svgOn:svgMute;
+    audioBtn.setAttribute('data-playing',playing?'1':'0');
   };
 })();
 
