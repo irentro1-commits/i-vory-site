@@ -1251,6 +1251,16 @@ body::before{background-size:800px 800px !important;opacity:.4 !important}
 }
 </style>
 
+
+<style id="block-fs-mobile">
+@media(max-width:768px){
+  video::-webkit-media-controls-fullscreen-button{display:none !important}
+  video::-webkit-media-controls{display:none !important}
+  .hero-video video{pointer-events:none !important}
+  .hero-video{pointer-events:auto !important}
+}
+</style>
+
 </head>
 <body>
 
@@ -2545,6 +2555,25 @@ document.addEventListener('click',function(e){
       muteBtn.classList.toggle('on',!vid.muted);
     });
   }
+})();
+</script>
+
+
+<script id="block-mobile-fullscreen">
+(function(){
+  if(!window.__IS_MOBILE)return;
+  var vid=document.getElementById('hvVid');
+  if(!vid)return;
+  // Block all fullscreen attempts on mobile
+  vid.addEventListener('webkitbeginfullscreen',function(e){e.preventDefault();e.stopPropagation()});
+  vid.addEventListener('fullscreenchange',function(){if(document.fullscreenElement)document.exitFullscreen()});
+  vid.addEventListener('webkitfullscreenchange',function(){if(vid.webkitDisplayingFullscreen)vid.webkitExitFullscreen()});
+  // Override requestFullscreen
+  vid.requestFullscreen=function(){return Promise.reject()};
+  vid.webkitRequestFullscreen=function(){};
+  vid.webkitEnterFullscreen=function(){};
+  // Double-tap prevention
+  vid.addEventListener('dblclick',function(e){e.preventDefault();e.stopPropagation()});
 })();
 </script>
 
