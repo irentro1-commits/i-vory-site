@@ -248,8 +248,9 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
 .pd-soon-inline em{font-family:'Instrument Serif',serif;font-style:italic;color:#fff5e6;font-variation-settings:normal}
 
 @media(max-width:560px){
-  .pd{top:0;left:0;right:0;max-width:none;width:100%;transform:none;border-radius:0;border-left:none;border-right:none;border-top:none;transition:transform .3s ease,opacity .3s}
+  .pd{top:64px;left:0;right:0;max-width:none;width:100%;transform:none;border-radius:0;border-left:none;border-right:none;border-top:none;transition:top .3s ease,transform .3s ease,opacity .3s;z-index:90}
   .pd-hidden{transform:translateY(-100%);opacity:0}
+  body.nav-hidden .pd{top:0}
   .pd-row{padding:.2rem .55rem}
   .pd-row-1{padding:.22rem .55rem;gap:.15rem;justify-content:center}
   .pd-row-2{padding:.18rem .4rem}
@@ -260,8 +261,8 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
   .pd-l2-group{padding:0 .12rem;gap:.12rem}
   .pd-l3-group{justify-content:flex-start;padding:0 .2rem;gap:.1rem}
   .pd-soon-inline{font-size:.65rem;padding:.3rem .7rem;white-space:normal;text-align:center;line-height:1.3}
-  /* Navbar auto-hide */
-  nav#nav{transition:transform .3s ease}
+  /* Navbar auto-hide (kept above dock) */
+  nav#nav{transition:transform .3s ease;z-index:100}
   nav#nav.nav-hidden{transform:translateY(-100%)}
 }
 
@@ -1950,9 +1951,9 @@ document.addEventListener('click',function(e){
   var ticking=false;
   function update(){
     var cur=window.scrollY;
-    if(cur<20){nav.classList.remove('nav-hidden')}
-    else if(cur>lastY+3){nav.classList.add('nav-hidden')}
-    else if(cur<lastY-3){nav.classList.remove('nav-hidden')}
+    if(cur<20){nav.classList.remove('nav-hidden');document.body.classList.remove('nav-hidden')}
+    else if(cur>lastY+3){nav.classList.add('nav-hidden');document.body.classList.add('nav-hidden')}
+    else if(cur<lastY-3){nav.classList.remove('nav-hidden');document.body.classList.remove('nav-hidden')}
     lastY=cur;
     ticking=false;
   }
