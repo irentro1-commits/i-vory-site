@@ -1803,28 +1803,36 @@ document.addEventListener('click',function(e){
       });
     }
 
-    // LAYER 1
+    // LAYER 1 — full mode switch with strict isolation
     l1s.forEach(function(b){
       b.addEventListener('click',function(){
         var m=b.dataset.l1;
         l1s.forEach(function(x){x.classList.remove('active')});
         b.classList.add('active');
-        // Show/hide L2 groups
         document.querySelectorAll('.pd-row-2 [data-for]').forEach(function(t){
           if(t.dataset.for===m)t.classList.remove('pd-tabs-hidden');
           else t.classList.add('pd-tabs-hidden');
         });
-        // Hide Row 3 if video
+        var firstL2Key=m==='video'?'vid-cinematic':'carusel';
+        var firstL2Sec=m==='video'?'sec-vid-cinematic':'sec-carusel';
+        l2s.forEach(function(x){x.classList.remove('active')});
+        var firstL2=document.querySelector('.pd-l2[data-l2="'+firstL2Key+'"]');
+        if(firstL2)firstL2.classList.add('active');
+        currentL2=firstL2Key;
+        setL3Group(firstL2Key);
+        l3s.forEach(function(x){x.classList.remove('active')});
+        var firstL3=document.querySelector('.pd-l3-group[data-l2="'+firstL2Key+'"] .pd-l3:not([data-soon])');
+        if(firstL3)firstL3.classList.add('active');
         var r3=document.getElementById('pdRow3');
-        if(r3)r3.style.display=m==='video'?'none':'flex';
-        // Show/hide sections
+        if(r3)r3.style.display='flex';
         secs.forEach(function(sec){
           var isVideo=sec.id.indexOf('sec-vid-')===0;
           if(isVideo){sec.style.display=m==='video'?'block':'none'}
+          else if(sec.className.indexOf('p-cta')>-1){sec.style.display='block'}
           else{sec.style.display=m==='design'?'block':'none'}
         });
         mode=m;
-        var target=m==='video'?document.getElementById('sec-vid-cinematic'):document.getElementById('sec-carusel');
+        var target=document.getElementById(firstL2Sec);
         if(target){window.scrollTo({top:target.getBoundingClientRect().top+window.pageYOffset-200,behavior:'smooth'})}
         if(typeof gtag==='function')gtag('event','pd_l1',{mode:m});
       });
