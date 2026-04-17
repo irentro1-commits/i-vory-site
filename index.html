@@ -2497,49 +2497,59 @@ var ctx=cv.getContext('2d');
 function resize(){cv.width=window.innerWidth;cv.height=window.innerHeight}
 resize();window.addEventListener('resize',resize);
 
-var mx=0,my=0,cx=0,cy=0,speed=.45;
+var mx=0,my=0,cx=0,cy=0;
+var speed=.07; // very lazy follow — zero-gravity floaty feel
+var angleSmooth=0;
 var trail=[];
 var hue=0;
 
 document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;m.style.opacity='1'});
 document.addEventListener('mouseleave',function(){m.style.opacity='0'});
 
-// Color palette matching site
+// Blue-white palette only — no orange/red (user explicitly requested blue arrow wisp)
 var nebColors=[
-  [0,224,192],   // teal
-  [123,44,255],  // purple
-  [255,154,61],  // orange
-  [240,80,180],  // pink
-  [255,100,20],  // deep orange
-  [80,120,255],  // blue
-  [255,220,100], // gold
+  [180,230,255], // light cyan
+  [120,200,255], // sky blue
+  [80,160,240],  // electric blue
+  [60,120,230],  // deeper blue
+  [160,220,255], // pale cyan
+  [200,240,255], // near-white blue
+  [140,180,240], // steel blue
 ];
 
 function tick(){
-  cx+=(mx-cx)*speed;cy+=(my-cy)*speed;
+  // Ultra-smooth lerp — feels like floating in space
+  cx+=(mx-cx)*speed;
+  cy+=(my-cy)*speed;
   m.style.left=cx+'px';m.style.top=cy+'px';
-  var dx=mx-cx,dy=my-cy,angle=Math.atan2(dy,dx)*180/Math.PI;
+  var dx=mx-cx,dy=my-cy;
+  var targetAngle=Math.atan2(dy,dx)*180/Math.PI;
+  // Smooth rotation separately (even lazier)
+  var angleDiff=targetAngle-angleSmooth;
+  while(angleDiff>180)angleDiff-=360;
+  while(angleDiff<-180)angleDiff+=360;
+  angleSmooth+=angleDiff*.12;
   var core=m.querySelector('.meteor-core');
-  core.style.transform='rotate('+(angle-45)+'deg)';
-  var fa='rotate('+angle+'deg)';
+  core.style.transform='rotate('+(angleSmooth-45)+'deg)';
+  var fa='rotate('+angleSmooth+'deg)';
   m.querySelector('.meteor-flame').style.transform=fa;
   m.querySelector('.meteor-flame2').style.transform=fa;
   m.querySelector('.meteor-flame3').style.transform=fa;
 
-  // Add trail points
+  // Add trail points — softer, slower drift
   var vel=Math.sqrt(dx*dx+dy*dy);
-  if(vel>1.5){
-    var numP=Math.min(Math.floor(vel/3),6);
+  if(vel>1.2){
+    var numP=Math.min(Math.floor(vel/4),4);
     for(var i=0;i<numP;i++){
       var col=nebColors[Math.floor(Math.random()*nebColors.length)];
       trail.push({
-        x:cx+Math.random()*20-10,
-        y:cy+Math.random()*20-10,
-        r:Math.random()*25+8,
-        vx:(Math.random()-.5)*1.5,
-        vy:Math.random()*-2-0.5,
+        x:cx+Math.random()*18-9,
+        y:cy+Math.random()*18-9,
+        r:Math.random()*22+10,
+        vx:(Math.random()-.5)*.8,
+        vy:(Math.random()-.5)*.6-.3,
         life:1,
-        decay:Math.random()*.02+.012,
+        decay:Math.random()*.012+.006, // slower decay — trail lingers longer
         col:col,
         blur:Math.random()*15+5
       });
@@ -2551,12 +2561,12 @@ function tick(){
   for(var i=trail.length-1;i>=0;i--){
     var p=trail[i];
     p.x+=p.vx;p.y+=p.vy;
-    p.vx*=.98;p.vy*=.98;
+    p.vx*=.985;p.vy*=.985; // more drift friction = smoother float
     p.life-=p.decay;
-    p.r+=.15;
+    p.r+=.22;
     if(p.life<=0){trail.splice(i,1);continue}
 
-    var alpha=p.life*p.life*p.life*.5;
+    var alpha=p.life*p.life*p.life*.45;
     var grd=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r);
     grd.addColorStop(0,'rgba('+p.col[0]+','+p.col[1]+','+p.col[2]+','+alpha+')');
     grd.addColorStop(.4,'rgba('+p.col[0]+','+p.col[1]+','+p.col[2]+','+(alpha*.5)+')');
@@ -2565,13 +2575,13 @@ function tick(){
     ctx.fillStyle=grd;ctx.fill();
   }
 
-  // Bright core glow at cursor
-  if(vel>2){
-    var coreGrd=ctx.createRadialGradient(cx,cy,0,cx,cy,35);
-    coreGrd.addColorStop(0,'rgba(255,220,150,.3)');
-    coreGrd.addColorStop(.3,'rgba(255,154,61,.15)');
-    coreGrd.addColorStop(1,'rgba(255,100,20,0)');
-    ctx.beginPath();ctx.arc(cx,cy,35,0,Math.PI*2);
+  // Soft blue core glow at cursor position
+  if(vel>1.5){
+    var coreGrd=ctx.createRadialGradient(cx,cy,0,cx,cy,40);
+    coreGrd.addColorStop(0,'rgba(200,240,255,.28)');
+    coreGrd.addColorStop(.4,'rgba(120,200,255,.12)');
+    coreGrd.addColorStop(1,'rgba(60,120,230,0)');
+    ctx.beginPath();ctx.arc(cx,cy,40,0,Math.PI*2);
     ctx.fillStyle=coreGrd;ctx.fill();
   }
 
