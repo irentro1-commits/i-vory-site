@@ -204,6 +204,90 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
 .pre{position:fixed;inset:0;z-index:10000;display:none}
 .pre.done{display:none;opacity:0;visibility:hidden;pointer-events:none}
 .pre-bar i{display:block;height:100%}
+
+
+/* ========== PORTFOLIO 3-LEVEL DOCK ========== */
+.pd{position:fixed;top:76px;left:50%;transform:translateX(-50%);z-index:90;max-width:calc(100vw - 1.4rem);display:flex;flex-direction:column;gap:.45rem;align-items:center;transition:opacity .4s,transform .4s cubic-bezier(.2,.9,.3,1.1);pointer-events:auto}
+.pd-hidden{opacity:0;pointer-events:none;transform:translateX(-50%) translateY(-16px)}
+.pd-row{background:rgba(4,6,14,.92);backdrop-filter:blur(28px) saturate(140%);-webkit-backdrop-filter:blur(28px) saturate(140%);border:1px solid rgba(255,255,255,.1);border-radius:100px;box-shadow:0 16px 40px rgba(0,0,0,.55);padding:.3rem;max-width:calc(100vw - 1.4rem)}
+.pd-row-1{display:flex;gap:.3rem}
+.pd-row-2{display:flex;overflow:hidden;transition:max-width .35s cubic-bezier(.2,.9,.3,1.1)}
+.pd-tabs{display:flex;gap:.25rem;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.pd-tabs::-webkit-scrollbar{display:none}
+.pd-tabs-hidden{display:none}
+.pd-l1{padding:.55rem 1.4rem;background:transparent;border:none;border-radius:100px;color:rgba(208,203,195,.7);font-family:'Fraunces',serif;font-size:.86rem;font-weight:500;letter-spacing:-.005em;font-variation-settings:"opsz" 48,"SOFT" 80;cursor:pointer;white-space:nowrap;transition:all .3s cubic-bezier(.2,.9,.3,1.1);-webkit-tap-highlight-color:transparent}
+.pd-l1:hover{color:#fff5e6}
+.pd-l1.active{background:#fff5e6;color:#0a0b14;font-weight:600;box-shadow:0 2px 14px rgba(255,245,230,.25)}
+.pd-l2{flex-shrink:0;padding:.5rem .95rem;background:transparent;border:none;border-radius:100px;color:rgba(216,212,200,.7);font-family:'Fraunces',serif;font-size:.78rem;font-weight:500;letter-spacing:-.005em;font-variation-settings:"opsz" 48,"SOFT" 80;cursor:pointer;white-space:nowrap;transition:all .25s;-webkit-tap-highlight-color:transparent}
+.pd-l2:hover{color:#fff5e6;background:rgba(255,245,230,.05)}
+.pd-l2:active{transform:scale(.95)}
+.pd-l2.active{background:rgba(255,245,230,.9);color:#0a0b14;font-weight:600}
+.pd-soon-inline{padding:.55rem 1.1rem;font-family:'Fraunces',serif;font-size:.78rem;color:#d0cbc3;font-variation-settings:"opsz" 48,"SOFT" 100;white-space:nowrap;line-height:1}
+.pd-soon-inline em{font-family:'Instrument Serif',serif;font-style:italic;color:#fff5e6;font-variation-settings:normal}
+@media(max-width:560px){
+  .pd{top:68px;gap:.35rem}
+  .pd-l1{padding:.48rem 1.1rem;font-size:.8rem}
+  .pd-l2{padding:.45rem .78rem;font-size:.72rem}
+  .pd-soon-inline{font-size:.72rem;padding:.48rem .9rem}
+}
+
+/* ========== PORTFOLIO BODY ========== */
+.pf-body{padding-top:3rem;position:relative;z-index:2}
+@media(max-width:768px){.pf-body{padding-top:4.5rem}}
+.p-sec{max-width:1200px;margin:0 auto;padding:4rem 2rem 2rem;scroll-margin-top:160px}
+@media(max-width:768px){.p-sec{padding:3rem 1rem 1.5rem;scroll-margin-top:180px}}
+.p-sec-head{margin-bottom:2.5rem}
+.p-sec-crumb{font-family:'Geist Mono',monospace;font-size:.72rem;font-weight:500;letter-spacing:.25em;text-transform:uppercase;color:rgba(0,224,192,.75);margin-bottom:.8rem}
+.p-sec-title{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(2.4rem,5.5vw,4rem);letter-spacing:-.04em;line-height:1;color:#fff5e6;font-variation-settings:"opsz" 144,"SOFT" 20;margin-bottom:.9rem;text-shadow:0 4px 22px rgba(0,0,0,.7)}
+.p-sec-sub{font-family:'Fraunces',serif;font-size:clamp(1rem,1.5vw,1.2rem);color:#d0cbc3;line-height:1.6;max-width:620px;font-variation-settings:"opsz" 48,"SOFT" 100;text-shadow:0 2px 10px rgba(0,0,0,.6)}
+.p-sec-sub em{font-family:'Instrument Serif',serif;font-style:italic;color:#fff5e6;font-variation-settings:normal;font-size:1.08em}
+
+.p-sub{margin-bottom:3.5rem;scroll-margin-top:200px}
+@media(max-width:768px){.p-sub{margin-bottom:2.5rem}}
+.p-sub-head{margin-bottom:1.3rem;padding-bottom:1rem;border-bottom:1px solid rgba(255,255,255,.08);display:flex;flex-wrap:wrap;align-items:baseline;gap:.9rem}
+.p-sub-num{font-family:'Geist Mono',monospace;font-size:.78rem;font-weight:500;letter-spacing:.2em;color:rgba(0,224,192,.7);flex-shrink:0}
+.p-sub-title{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(1.3rem,2.5vw,1.8rem);letter-spacing:-.02em;color:#fff5e6;font-variation-settings:"opsz" 72,"SOFT" 30,"WONK" 1;line-height:1.1;flex-shrink:0}
+.p-sub-desc{font-family:'Fraunces',serif;font-size:.92rem;color:#d0cbc3;line-height:1.55;flex:1;min-width:220px;font-variation-settings:"opsz" 48,"SOFT" 100;opacity:.88;text-shadow:0 2px 8px rgba(0,0,0,.5)}
+
+.p-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.65rem}
+.p-grid img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:12px;background:#0a0b14;cursor:zoom-in;transition:transform .35s cubic-bezier(.2,.9,.3,1.1),box-shadow .35s;border:1px solid rgba(255,255,255,.05)}
+.p-grid img:hover{transform:translateY(-3px) scale(1.01);box-shadow:0 14px 30px rgba(0,0,0,.6),0 0 0 1px rgba(0,224,192,.25)}
+.p-grid-2{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.p-grid-3{grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
+@media(max-width:560px){.p-grid{grid-template-columns:repeat(2,1fr);gap:.45rem}.p-grid-3{grid-template-columns:repeat(2,1fr)}}
+
+/* Soon card */
+.p-soon{background:linear-gradient(135deg,rgba(8,10,20,.7),rgba(4,6,14,.85));border:1px dashed rgba(255,245,230,.12);border-radius:16px;padding:2.2rem 1.8rem;text-align:center;max-width:640px;margin:0 auto}
+.p-soon-label{display:inline-block;font-family:'Geist Mono',monospace;font-size:.68rem;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:#ff9a3d;padding:.3rem .8rem;background:rgba(255,154,61,.08);border:1px solid rgba(255,154,61,.3);border-radius:100px;margin-bottom:1rem}
+.p-soon-title{font-family:'Fraunces',serif;font-weight:700;font-size:1.3rem;color:#fff5e6;font-variation-settings:"opsz" 72,"SOFT" 30;margin-bottom:.5rem;letter-spacing:-.015em}
+.p-soon-hint{font-family:'Fraunces',serif;font-size:.92rem;color:#d0cbc3;font-variation-settings:"opsz" 48,"SOFT" 100;line-height:1.55;margin-bottom:1.3rem;font-style:italic;opacity:.85}
+.p-soon-cta{display:inline-flex;align-items:center;gap:.5rem;font-family:'Geist',sans-serif;font-size:.82rem;font-weight:600;color:#00e0c0;text-decoration:none;padding:.55rem 1.1rem;border:1px solid rgba(0,224,192,.4);border-radius:100px;transition:all .3s;letter-spacing:-.005em}
+.p-soon-cta:hover{background:rgba(0,224,192,.1);border-color:#00e0c0;transform:translateY(-1px)}
+
+/* Video waiting section */
+.p-video-wait{max-width:900px;margin:0 auto;text-align:center}
+.p-vw-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin:2rem 0 2.5rem}
+.p-vw-item{padding:1.6rem 1.2rem;background:linear-gradient(135deg,rgba(8,10,20,.65),rgba(4,6,14,.85));border:1px solid rgba(255,255,255,.08);border-radius:14px;display:flex;flex-direction:column;gap:.6rem;align-items:flex-start;text-align:left;transition:all .3s}
+.p-vw-item:hover{border-color:rgba(0,224,192,.3);transform:translateY(-2px)}
+.p-vw-n{font-family:'Geist Mono',monospace;font-size:.72rem;letter-spacing:.25em;color:rgba(0,224,192,.7);font-weight:500}
+.p-vw-lbl{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:700;color:#fff5e6;letter-spacing:-.015em;font-variation-settings:"opsz" 72,"SOFT" 30,"WONK" 1}
+.p-vw-cta{display:inline-flex;align-items:center;gap:.5rem;padding:.95rem 1.8rem;background:linear-gradient(135deg,#00e0c0,#00b896);color:#041412;font-family:'Geist',sans-serif;font-weight:700;font-size:.95rem;border-radius:100px;text-decoration:none;box-shadow:0 10px 30px rgba(0,224,192,.28);transition:transform .25s;letter-spacing:-.005em}
+.p-vw-cta:hover{transform:translateY(-2px)}
+
+/* Final CTA */
+.p-cta{max-width:900px;margin:4rem auto 6rem;padding:4rem 2.5rem;text-align:center;background:linear-gradient(180deg,rgba(8,10,20,.88),rgba(4,6,14,.92));border:1px solid rgba(0,224,192,.15);border-radius:24px;box-shadow:0 40px 100px rgba(0,0,0,.6)}
+@media(max-width:768px){.p-cta{padding:3rem 1.4rem;margin:2.5rem 1rem 4rem;border-radius:18px}}
+.p-cta-h{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(2rem,5vw,3.2rem);letter-spacing:-.035em;line-height:1.05;color:#fff5e6;font-variation-settings:"opsz" 144,"SOFT" 20;margin-bottom:1rem}
+.p-cta-h em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:#fff5e6;font-variation-settings:normal;letter-spacing:-.01em}
+.p-cta-sub{font-family:'Fraunces',serif;font-size:1.05rem;color:#d0cbc3;line-height:1.6;margin-bottom:2rem;max-width:540px;margin-left:auto;margin-right:auto;font-variation-settings:"opsz" 48,"SOFT" 100}
+.p-cta-btns{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap}
+.p-cta-btn{display:inline-flex;align-items:center;padding:.95rem 1.8rem;border-radius:100px;font-family:'Geist',sans-serif;font-weight:600;font-size:.92rem;text-decoration:none;transition:transform .25s,box-shadow .25s;letter-spacing:-.005em}
+.p-cta-primary{background:#fff5e6;color:#0a0b14;box-shadow:0 10px 30px rgba(255,245,230,.25)}
+.p-cta-primary:hover{transform:translateY(-2px);box-shadow:0 14px 36px rgba(255,245,230,.35)}
+.p-cta-secondary{background:transparent;color:#00e0c0;border:1px solid rgba(0,224,192,.5)}
+.p-cta-secondary:hover{background:rgba(0,224,192,.08);border-color:#00e0c0}
+
+
 </style>
 
 <style id="text-visibility-boost">
@@ -402,6 +486,213 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
     <p class="pf-dir2-note">Portofoliul video — în lucru.</p>
   </div>
 </header>
+<!-- STICKY DOCK NAV -->
+<nav class="pd" id="pd" aria-label="Navigare portofoliu">
+  <div class="pd-row pd-row-1">
+    <button class="pd-l1 active" data-l1="static">Static</button>
+    <button class="pd-l1" data-l1="video">Video</button>
+  </div>
+  <div class="pd-row pd-row-2" id="pdRow2">
+    <div class="pd-tabs" data-for="static">
+      <button class="pd-l2" data-to="sec-carusel">Carusel</button>
+      <button class="pd-l2" data-to="sec-post">Post</button>
+      <button class="pd-l2" data-to="sec-ecommerce">E-commerce</button>
+      <button class="pd-l2" data-to="sec-servicii">Servicii</button>
+    </div>
+    <div class="pd-tabs pd-tabs-hidden" data-for="video">
+      <span class="pd-soon-inline">Reels · Cinematic · Showcase · Before&amp;After — <em>în curând</em></span>
+    </div>
+  </div>
+</nav>
+
+<main class="pf-body">
+
+<!-- ========== STATIC / CARUSEL ========== -->
+<section class="p-sec" id="sec-carusel">
+  <div class="p-sec-head">
+    <div class="p-sec-crumb">Static</div>
+    <h2 class="p-sec-title">Carusel</h2>
+    <p class="p-sec-sub">Format multi-slide. Construim povestea pe 5–10 cadre. <em>Fiecare slide trage următorul</em>.</p>
+  </div>
+
+  <article class="p-sub" id="car-educational">
+    <header class="p-sub-head"><span class="p-sub-num">01</span><h3 class="p-sub-title">Educațional</h3><p class="p-sub-desc">Omul învață ceva util. Brand-ul apare pe parcurs, nu cu fanfare.</p></header>
+    <div class="p-grid"><img loading="lazy" src="/portfolio/carousel-ivory-1/1.png" alt="i-Vory Creative portfoliu carousel-ivory-1 slide 1"><img loading="lazy" src="/portfolio/carousel-ivory-1/2.png" alt="i-Vory Creative portfoliu carousel-ivory-1 slide 2"><img loading="lazy" src="/portfolio/carousel-ivory-1/3.png" alt="i-Vory Creative portfoliu carousel-ivory-1 slide 3"><img loading="lazy" src="/portfolio/carousel-ivory-1/4.png" alt="i-Vory Creative portfoliu carousel-ivory-1 slide 4"><img loading="lazy" src="/portfolio/carousel-ivory-1/5.png" alt="i-Vory Creative portfoliu carousel-ivory-1 slide 5"><img loading="lazy" src="/portfolio/carousel-ivory-1/6.png" alt="i-Vory Creative portfoliu carousel-ivory-1 slide 6"><img loading="lazy" src="/portfolio/carousel-ivory-1/7.png" alt="i-Vory Creative portfoliu carousel-ivory-1 slide 7"></div>
+  </article>
+
+  <article class="p-sub" id="car-storytelling">
+    <header class="p-sub-head"><span class="p-sub-num">02</span><h3 class="p-sub-title">Storytelling</h3><p class="p-sub-desc">O poveste cu arc. Tensiune, decizie, consecință.</p></header>
+    <div class="p-grid"><img loading="lazy" src="/portfolio/carousel-ivory-storytelling/1.png" alt="i-Vory Creative portfoliu carousel-ivory-storytelling slide 1"><img loading="lazy" src="/portfolio/carousel-ivory-storytelling/2.png" alt="i-Vory Creative portfoliu carousel-ivory-storytelling slide 2"><img loading="lazy" src="/portfolio/carousel-ivory-storytelling/3.png" alt="i-Vory Creative portfoliu carousel-ivory-storytelling slide 3"><img loading="lazy" src="/portfolio/carousel-ivory-storytelling/4.png" alt="i-Vory Creative portfoliu carousel-ivory-storytelling slide 4"><img loading="lazy" src="/portfolio/carousel-ivory-storytelling/5.png" alt="i-Vory Creative portfoliu carousel-ivory-storytelling slide 5"><img loading="lazy" src="/portfolio/carousel-ivory-storytelling/6.png" alt="i-Vory Creative portfoliu carousel-ivory-storytelling slide 6"><img loading="lazy" src="/portfolio/carousel-ivory-storytelling/7.png" alt="i-Vory Creative portfoliu carousel-ivory-storytelling slide 7"></div>
+  </article>
+
+  <article class="p-sub" id="car-showcase">
+    <header class="p-sub-head"><span class="p-sub-num">03</span><h3 class="p-sub-title">Showcase</h3><p class="p-sub-desc">Rezultatele la vedere. Cifre, studii de caz, before/after.</p></header>
+    <div class="p-grid"><img loading="lazy" src="/portfolio/carousel-ivory-showcase/1.png" alt="i-Vory Creative portfoliu carousel-ivory-showcase slide 1"><img loading="lazy" src="/portfolio/carousel-ivory-showcase/2.png" alt="i-Vory Creative portfoliu carousel-ivory-showcase slide 2"><img loading="lazy" src="/portfolio/carousel-ivory-showcase/3.png" alt="i-Vory Creative portfoliu carousel-ivory-showcase slide 3"><img loading="lazy" src="/portfolio/carousel-ivory-showcase/5.png" alt="i-Vory Creative portfoliu carousel-ivory-showcase slide 5"><img loading="lazy" src="/portfolio/carousel-ivory-showcase/6.png" alt="i-Vory Creative portfoliu carousel-ivory-showcase slide 6"><img loading="lazy" src="/portfolio/carousel-ivory-showcase/7.png" alt="i-Vory Creative portfoliu carousel-ivory-showcase slide 7"></div>
+  </article>
+
+  <article class="p-sub" id="car-produs">
+    <header class="p-sub-head"><span class="p-sub-num">04</span><h3 class="p-sub-title">Produs</h3><p class="p-sub-desc">Promoțional direct. Beneficiu, proof, CTA.</p></header>
+    <div class="p-grid"><img loading="lazy" src="/portfolio/carousel-urbancat/1.png" alt="i-Vory Creative portfoliu carousel-urbancat slide 1"><img loading="lazy" src="/portfolio/carousel-urbancat/2.png" alt="i-Vory Creative portfoliu carousel-urbancat slide 2"><img loading="lazy" src="/portfolio/carousel-urbancat/3.png" alt="i-Vory Creative portfoliu carousel-urbancat slide 3"><img loading="lazy" src="/portfolio/carousel-urbancat/4.png" alt="i-Vory Creative portfoliu carousel-urbancat slide 4"><img loading="lazy" src="/portfolio/carousel-urbancat/5.png" alt="i-Vory Creative portfoliu carousel-urbancat slide 5"><img loading="lazy" src="/portfolio/carousel-urbancat/6.png" alt="i-Vory Creative portfoliu carousel-urbancat slide 6"><img loading="lazy" src="/portfolio/carousel-urbancat/7.png" alt="i-Vory Creative portfoliu carousel-urbancat slide 7"></div>
+  </article>
+</section>
+
+<!-- ========== STATIC / POST ========== -->
+<section class="p-sec" id="sec-post">
+  <div class="p-sec-head">
+    <div class="p-sec-crumb">Static</div>
+    <h2 class="p-sec-title">Post</h2>
+    <p class="p-sec-sub">Format 1–2 slide-uri. Punch în prima fracțiune.</p>
+  </div>
+
+  <article class="p-sub" id="post-emotional">
+    <header class="p-sub-head"><span class="p-sub-num">01</span><h3 class="p-sub-title">Post emoțional</h3><p class="p-sub-desc">Un cadru, un nod la stomac. Sau la zâmbet.</p></header>
+    <div class="p-grid p-grid-2">
+      <img loading="lazy" src="/portfolio/posts-emotional/Gemini_Generated_Image_cikc69cikc69cikc.png" alt="Post emotional 1">
+      <img loading="lazy" src="/portfolio/posts-emotional/Gemini_Generated_Image_m3kqo7m3kqo7m3kq.png" alt="Post emotional 2">
+    </div>
+  </article>
+
+  <article class="p-sub">
+    <header class="p-sub-head"><span class="p-sub-num">02</span><h3 class="p-sub-title">Post single (anunț)</h3></header>
+    <div class="p-soon">
+  <div class="p-soon-label">În curând</div>
+  <div class="p-soon-title">Anunț-tip, launch, update</div>
+  <div class="p-soon-hint">Un cadru informativ, stil editorial.</div>
+  <a href="https://wa.me/40775579706" target="_blank" class="p-soon-cta">Vezi exemple live pe WhatsApp →</a>
+</div>
+  </article>
+
+  <article class="p-sub">
+    <header class="p-sub-head"><span class="p-sub-num">03</span><h3 class="p-sub-title">Post duo</h3></header>
+    <div class="p-soon">
+  <div class="p-soon-label">În curând</div>
+  <div class="p-soon-title">Două slide-uri care lucrează împreună</div>
+  <div class="p-soon-hint">Setup + punchline, problemă + soluție.</div>
+  <a href="https://wa.me/40775579706" target="_blank" class="p-soon-cta">Vezi exemple live pe WhatsApp →</a>
+</div>
+  </article>
+
+  <article class="p-sub">
+    <header class="p-sub-head"><span class="p-sub-num">04</span><h3 class="p-sub-title">Meme de brand</h3></header>
+    <div class="p-soon">
+  <div class="p-soon-label">În curând</div>
+  <div class="p-soon-title">Umor cu identitate</div>
+  <div class="p-soon-hint">Meme care au tonul și estetica brand-ului.</div>
+  <a href="https://wa.me/40775579706" target="_blank" class="p-soon-cta">Vezi exemple live pe WhatsApp →</a>
+</div>
+  </article>
+</section>
+
+<!-- ========== STATIC / E-COMMERCE ========== -->
+<section class="p-sec" id="sec-ecommerce">
+  <div class="p-sec-head">
+    <div class="p-sec-crumb">Static</div>
+    <h2 class="p-sec-title">E-commerce</h2>
+    <p class="p-sec-sub">Pentru magazine online. Fiecare cadru optimizat pentru conversie.</p>
+  </div>
+
+  <article class="p-sub" id="ec-hero">
+    <header class="p-sub-head"><span class="p-sub-num">01</span><h3 class="p-sub-title">Hero produs</h3><p class="p-sub-desc">Fotografia care duce vizitatorul de la browsing la add-to-cart.</p></header>
+    <div class="p-grid p-grid-3">
+      <img loading="lazy" src="/portfolio/product-urbancat/1.png" alt="Hero produs UrbanCat 1">
+      <img loading="lazy" src="/portfolio/product-urbancat/2.png" alt="Hero produs UrbanCat 2">
+      <img loading="lazy" src="/portfolio/product-urbancat/4.png" alt="Hero produs UrbanCat 3">
+      <img loading="lazy" src="/portfolio/product-urbancat/11.png" alt="Hero produs UrbanCat 4">
+      <img loading="lazy" src="/portfolio/product-urbancat/22.png" alt="Hero produs UrbanCat 5">
+      <img loading="lazy" src="/portfolio/product-urbancat/33.png" alt="Hero produs UrbanCat 6">
+      <img loading="lazy" src="/portfolio/product-urbancat/44.png" alt="Hero produs UrbanCat 7">
+      <img loading="lazy" src="/portfolio/product-urbancat/66.png" alt="Hero produs UrbanCat 8">
+    </div>
+  </article>
+
+  <article class="p-sub">
+    <header class="p-sub-head"><span class="p-sub-num">02</span><h3 class="p-sub-title">Ads creative</h3></header>
+    <div class="p-soon">
+  <div class="p-soon-label">În curând</div>
+  <div class="p-soon-title">Machete pentru campanii plătite</div>
+  <div class="p-soon-hint">Meta, TikTok, Google — fiecare cu formatul ei.</div>
+  <a href="https://wa.me/40775579706" target="_blank" class="p-soon-cta">Vezi exemple live pe WhatsApp →</a>
+</div>
+  </article>
+
+  <article class="p-sub">
+    <header class="p-sub-head"><span class="p-sub-num">03</span><h3 class="p-sub-title">Product specs &amp; detail</h3></header>
+    <div class="p-soon">
+  <div class="p-soon-label">În curând</div>
+  <div class="p-soon-title">Specificații, dimensiuni, comparații</div>
+  <div class="p-soon-hint">Cadrele care răspund la „dar ce are înăuntru?"</div>
+  <a href="https://wa.me/40775579706" target="_blank" class="p-soon-cta">Vezi exemple live pe WhatsApp →</a>
+</div>
+  </article>
+</section>
+
+<!-- ========== STATIC / SERVICII ========== -->
+<section class="p-sec" id="sec-servicii">
+  <div class="p-sec-head">
+    <div class="p-sec-crumb">Static</div>
+    <h2 class="p-sec-title">Servicii</h2>
+    <p class="p-sec-sub">Pentru avocați, medici, consultanți. Autoritate fără ton publicitar.</p>
+  </div>
+
+  <article class="p-sub" id="srv-profesionisti">
+    <header class="p-sub-head"><span class="p-sub-num">01</span><h3 class="p-sub-title">Profesioniști</h3><p class="p-sub-desc">Educație juridică și medicală. Client: Andreas Popa, avocat drept penal.</p></header>
+    <div class="p-grid"><img loading="lazy" src="/portfolio/carousel-lawyer/1.png" alt="i-Vory Creative portfoliu carousel-lawyer slide 1"><img loading="lazy" src="/portfolio/carousel-lawyer/2.png" alt="i-Vory Creative portfoliu carousel-lawyer slide 2"><img loading="lazy" src="/portfolio/carousel-lawyer/3.png" alt="i-Vory Creative portfoliu carousel-lawyer slide 3"><img loading="lazy" src="/portfolio/carousel-lawyer/4.png" alt="i-Vory Creative portfoliu carousel-lawyer slide 4"><img loading="lazy" src="/portfolio/carousel-lawyer/5.png" alt="i-Vory Creative portfoliu carousel-lawyer slide 5"><img loading="lazy" src="/portfolio/carousel-lawyer/6.png" alt="i-Vory Creative portfoliu carousel-lawyer slide 6"><img loading="lazy" src="/portfolio/carousel-lawyer/7.png" alt="i-Vory Creative portfoliu carousel-lawyer slide 7"></div>
+  </article>
+
+  <article class="p-sub">
+    <header class="p-sub-head"><span class="p-sub-num">02</span><h3 class="p-sub-title">Testimoniale clienți</h3></header>
+    <div class="p-soon">
+  <div class="p-soon-label">În curând</div>
+  <div class="p-soon-title">Vocea clienților tăi, nu a ta</div>
+  <div class="p-soon-hint">Format editorial premium, cu context și rezultat.</div>
+  <a href="https://wa.me/40775579706" target="_blank" class="p-soon-cta">Vezi exemple live pe WhatsApp →</a>
+</div>
+  </article>
+
+  <article class="p-sub">
+    <header class="p-sub-head"><span class="p-sub-num">03</span><h3 class="p-sub-title">Prezentare serviciu</h3></header>
+    <div class="p-soon">
+  <div class="p-soon-label">În curând</div>
+  <div class="p-soon-title">Un serviciu = un carusel</div>
+  <div class="p-soon-hint">Probleme, soluție, proof, pași, preț.</div>
+  <a href="https://wa.me/40775579706" target="_blank" class="p-soon-cta">Vezi exemple live pe WhatsApp →</a>
+</div>
+  </article>
+</section>
+
+<!-- ========== VIDEO (COMING SOON) ========== -->
+<section class="p-sec p-sec-video" id="sec-video" style="display:none">
+  <div class="p-sec-head">
+    <div class="p-sec-crumb">Video</div>
+    <h2 class="p-sec-title">Portofoliul video</h2>
+    <p class="p-sec-sub">Cinci formate, același standard de producție. <em>Publicăm în săptămânile următoare.</em></p>
+  </div>
+  <div class="p-video-wait">
+    <div class="p-vw-grid">
+      <div class="p-vw-item"><span class="p-vw-n">01</span><span class="p-vw-lbl">Reels</span></div>
+      <div class="p-vw-item"><span class="p-vw-n">02</span><span class="p-vw-lbl">Cinematic</span></div>
+      <div class="p-vw-item"><span class="p-vw-n">03</span><span class="p-vw-lbl">Showcase produs</span></div>
+      <div class="p-vw-item"><span class="p-vw-n">04</span><span class="p-vw-lbl">Before &amp; After</span></div>
+      <div class="p-vw-item"><span class="p-vw-n">05</span><span class="p-vw-lbl">Explainer / Talking head</span></div>
+    </div>
+    <a href="https://wa.me/40775579706" target="_blank" class="p-vw-cta">Cere sample video pe WhatsApp →</a>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="p-cta">
+  <h2 class="p-cta-h">Ai văzut. <em>Vorbim?</em></h2>
+  <p class="p-cta-sub">Programăm 30 de minute pe Zoom. Nu vindem, întrebăm ce-ți trebuie.</p>
+  <div class="p-cta-btns">
+    <a href="https://calendly.com/ivorymarketing2/30min" target="_blank" class="p-cta-btn p-cta-primary">Rezervă apel — Calendly</a>
+    <a href="https://wa.me/40775579706" target="_blank" class="p-cta-btn p-cta-secondary">WhatsApp direct</a>
+  </div>
+</section>
+
+</main>
+
+
+
 
 <!-- 2-LEVEL DOCK: Design/Video primary + subcategories -->
 <!-- BOTTOM DOCK NAV — same design all devices -->
@@ -1167,5 +1458,81 @@ document.addEventListener('click',function(e){
 
 })();
 </script>
+
+<script id="pf-nav-js">
+(function(){
+  function init(){
+    var pd=document.getElementById('pd');
+    var l1s=document.querySelectorAll('.pd-l1');
+    var l2s=document.querySelectorAll('.pd-l2');
+    var tabs=document.querySelectorAll('.pd-tabs');
+    var secs=document.querySelectorAll('.p-sec');
+    if(!pd||!l1s.length)return;
+    var mode='static';
+    function toggleDock(){
+      if(window.scrollY>120)pd.classList.remove('pd-hidden');
+      else pd.classList.add('pd-hidden');
+    }
+    window.addEventListener('scroll',toggleDock,{passive:true});
+    pd.classList.add('pd-hidden');toggleDock();
+    // Layer 1 tabs
+    l1s.forEach(function(b){
+      b.addEventListener('click',function(){
+        var m=b.dataset.l1;
+        l1s.forEach(function(x){x.classList.remove('active')});
+        b.classList.add('active');
+        tabs.forEach(function(t){
+          if(t.dataset.for===m)t.classList.remove('pd-tabs-hidden');
+          else t.classList.add('pd-tabs-hidden');
+        });
+        // Show/hide sections
+        secs.forEach(function(s){
+          if(s.id==='sec-video'){s.style.display=m==='video'?'block':'none'}
+          else{s.style.display=m==='static'?'block':'none'}
+        });
+        mode=m;
+        if(m==='video'){
+          var vs=document.getElementById('sec-video');
+          if(vs){window.scrollTo({top:vs.getBoundingClientRect().top+window.pageYOffset-150,behavior:'smooth'})}
+        }else{
+          var firstStatic=document.getElementById('sec-carusel');
+          if(firstStatic){window.scrollTo({top:firstStatic.getBoundingClientRect().top+window.pageYOffset-150,behavior:'smooth'})}
+        }
+        if(typeof gtag==='function')gtag('event','pd_l1',{mode:m});
+      });
+    });
+    // Layer 2 chips
+    l2s.forEach(function(b){
+      b.addEventListener('click',function(){
+        var id=b.dataset.to;
+        var t=document.getElementById(id);
+        if(!t)return;
+        l2s.forEach(function(x){x.classList.remove('active')});
+        b.classList.add('active');
+        var top=t.getBoundingClientRect().top+window.pageYOffset-150;
+        window.scrollTo({top:top,behavior:'smooth'});
+        if(typeof gtag==='function')gtag('event','pd_l2',{section:id});
+      });
+    });
+    // Auto-highlight active L2 chip on scroll
+    secs.forEach(function(sec){
+      if(!sec.id||!sec.id.startsWith('sec-'))return;
+      var obs=new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          if(e.isIntersecting&&mode==='static'){
+            l2s.forEach(function(x){x.classList.remove('active')});
+            var chip=document.querySelector('.pd-l2[data-to="'+e.target.id+'"]');
+            if(chip)chip.classList.add('active');
+          }
+        });
+      },{rootMargin:'-30% 0px -60% 0px',threshold:0});
+      obs.observe(sec);
+    });
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);
+  else init();
+})();
+</script>
+
 </body>
 </html>
