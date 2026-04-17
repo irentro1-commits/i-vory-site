@@ -985,7 +985,51 @@ body::before{background-size:800px 800px !important;opacity:.4 !important}
 .ft-wrap{padding-top:2.5rem !important}
 #contact,#faq,.sec:last-of-type{padding-bottom:2rem !important}
 
-nav{transition:transform .3s ease !important}nav.nav-hidden{transform:translateY(-100%) !important}</style>
+nav{transition:transform .3s ease !important}nav.nav-hidden{transform:translateY(-100%) !important}
+/* === LANDING UX FIXES === */
+/* #1 #5 padding on itemized lists */
+.how-item,.dce-item{padding-left:1.5rem!important;padding-right:1.5rem!important;padding-top:2rem!important;padding-bottom:2rem!important;border-radius:12px}
+.how-item:hover,.dce-item:hover{padding-left:2rem!important;background:rgba(0,224,192,.03)}
+.faq-q{padding-left:1.25rem!important;padding-right:1.25rem!important;padding-top:1.4rem!important;padding-bottom:1.4rem!important;border-radius:10px;transition:background .25s,color .3s,padding-left .3s}
+.faq-q:hover{background:rgba(0,224,192,.04);padding-left:1.6rem!important}
+.faq-a-inner{padding-left:1.25rem!important;padding-right:1.25rem!important}
+@media(max-width:560px){
+  .how-item,.dce-item{padding-left:1rem!important;padding-right:1rem!important;padding-top:1.5rem!important;padding-bottom:1.5rem!important}
+  .how-item:hover,.dce-item:hover{padding-left:1.3rem!important}
+  .faq-q{padding-left:.9rem!important;padding-right:.9rem!important;padding-top:1.15rem!important;padding-bottom:1.15rem!important}
+  .faq-a-inner{padding-left:.9rem!important;padding-right:.9rem!important}
+}
+
+/* #6 nav hover feedback */
+.nk a{position:relative;padding:.4rem 0}
+.nk a::after{content:"";position:absolute;bottom:0;left:0;width:0;height:1.5px;background:linear-gradient(90deg,transparent,#00e0c0,transparent);transition:width .3s ease}
+.nk a:hover{color:#fff5e6}
+.nk a:hover::after{width:100%}
+.nk a.act{color:#00e0c0}
+.nk a.act::after{width:100%;background:linear-gradient(90deg,transparent,#00e0c0 40%,#00e0c0 60%,transparent)}
+
+/* #2 Ensure video lightbox truly hidden when not open */
+.vid-lb{display:none;position:fixed;inset:0;z-index:99998;background:rgba(0,0,0,.96);align-items:center;justify-content:center;padding:2rem;backdrop-filter:blur(10px)}
+.vid-lb.op{display:flex}
+.vid-lb video{max-width:100%;max-height:85vh;border-radius:14px;box-shadow:0 40px 100px rgba(0,0,0,.8)}
+/* Hero video never shows controls on desktop */
+#hvVid::-webkit-media-controls,#hvVid::-webkit-media-controls-enclosure,#hvVid::-webkit-media-controls-panel{display:none!important;-webkit-appearance:none!important}
+#hvVid{pointer-events:none}
+
+/* #3 prevent overscroll past footer */
+html,body{overscroll-behavior-y:none}
+body{overflow-x:clip}
+
+/* #7 meteor fade after idle + toggle button */
+.meteor{transition:opacity .6s ease!important}
+.meteor.idle{opacity:0!important;pointer-events:none}
+#nebulaCanvas.idle{opacity:0;transition:opacity .6s}
+.fx-toggle{position:fixed;bottom:1.5rem;right:1.5rem;width:42px;height:42px;border-radius:50%;background:rgba(6,8,18,.88);backdrop-filter:blur(10px);border:1px solid rgba(0,224,192,.25);color:#00e0c0;cursor:pointer;z-index:9999;display:flex;align-items:center;justify-content:center;font-size:18px;line-height:1;transition:all .3s;box-shadow:0 4px 20px rgba(0,0,0,.5)}
+.fx-toggle:hover{transform:scale(1.08);border-color:#00e0c0;box-shadow:0 6px 30px rgba(0,224,192,.3)}
+.fx-toggle.off{border-color:rgba(255,100,100,.4);color:#ff6b6b}
+@media(max-width:768px){.fx-toggle{display:none}}
+body.fx-disabled .meteor,body.fx-disabled #nebulaCanvas{display:none!important}
+</style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -2698,34 +2742,63 @@ document.addEventListener('click',function(e){
   }
 })();
 </script>
+<script id="landing-ux-fixes">
+(function(){
+  // #7 Meteor auto-fade after 5s idle + toggle
+  var meteor=document.querySelector('.meteor');
+  var nebula=document.getElementById('nebulaCanvas');
+  if(meteor&&window.innerWidth>768){
+    var idleTimer=null;
+    function resetIdle(){
+      if(meteor)meteor.classList.remove('idle');
+      if(nebula)nebula.classList.remove('idle');
+      clearTimeout(idleTimer);
+      idleTimer=setTimeout(function(){
+        if(meteor)meteor.classList.add('idle');
+        if(nebula)nebula.classList.add('idle');
+      },5000);
+    }
+    document.addEventListener('mousemove',resetIdle,{passive:true});
+    resetIdle();
+    // FX toggle button (desktop only)
+    var btn=document.createElement('button');
+    btn.className='fx-toggle';
+    btn.setAttribute('aria-label','Dezactivează efecte vizuale');
+    btn.title='Dezactivează efecte vizuale';
+    btn.innerHTML='✦';
+    var off=localStorage.getItem('ivory-fx-off')==='1';
+    if(off){document.body.classList.add('fx-disabled');btn.classList.add('off');btn.innerHTML='✕';btn.title='Activează efecte vizuale'}
+    btn.addEventListener('click',function(){
+      var disabled=document.body.classList.toggle('fx-disabled');
+      btn.classList.toggle('off',disabled);
+      btn.innerHTML=disabled?'✕':'✦';
+      btn.title=disabled?'Activează efecte vizuale':'Dezactivează efecte vizuale';
+      try{localStorage.setItem('ivory-fx-off',disabled?'1':'0')}catch(e){}
+    });
+    document.body.appendChild(btn);
+  }
+})();
+</script>
 <script id="nav-auto-hide">
 (function(){
   var nav=document.getElementById('nav')||document.querySelector('nav');
   if(!nav)return;
   var lastY=window.scrollY;
   var ticking=false;
-  // Landing mode: hidden by default past top, shows only on scroll-up
   function update(){
     var cur=window.scrollY;
-    if(cur<20){
+    if(cur<80){
       nav.classList.remove('nav-hidden');
       document.body.classList.remove('nav-hidden');
-    } else if(cur<lastY-4){
-      // scroll up: show
-      nav.classList.remove('nav-hidden');
-      document.body.classList.remove('nav-hidden');
-    } else if(cur>lastY+4){
-      // scroll down: hide
+    } else if(cur>lastY+5){
       nav.classList.add('nav-hidden');
       document.body.classList.add('nav-hidden');
+    } else if(cur<lastY-5){
+      nav.classList.remove('nav-hidden');
+      document.body.classList.remove('nav-hidden');
     }
     lastY=cur;
     ticking=false;
-  }
-  // Start hidden once past top
-  if(window.scrollY>=20){
-    nav.classList.add('nav-hidden');
-    document.body.classList.add('nav-hidden');
   }
   window.addEventListener('scroll',function(){
     if(!ticking){requestAnimationFrame(update);ticking=true;}
