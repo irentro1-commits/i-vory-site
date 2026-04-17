@@ -1,13 +1,5 @@
-/*
-  X-Content-Type-Options: nosniff
-  X-Frame-Options: DENY
-  Referrer-Policy: strict-origin-when-cross-origin
-  Permissions-Policy: geolocation=(), microphone=(), camera=()
-
-/*.html
-  Cache-Control: public, max-age=600, stale-while-revalidate=3600
-
-/*.css
+# Cloudflare cache rules
+/*.mp4
   Cache-Control: public, max-age=31536000, immutable
 
 /*.js
@@ -17,26 +9,23 @@
   Cache-Control: public, max-age=31536000, immutable
 
 /*.jpg
-  Cache-Control: public, max-age=2592000
-
-/*.jpeg
-  Cache-Control: public, max-age=2592000
+  Cache-Control: public, max-age=31536000, immutable
 
 /*.png
-  Cache-Control: public, max-age=2592000
-
-/*.webp
-  Cache-Control: public, max-age=2592000
-
-/*.mp4
-  Cache-Control: public, max-age=2592000
+  Cache-Control: public, max-age=31536000, immutable
 
 /*.woff2
   Cache-Control: public, max-age=31536000, immutable
-  Access-Control-Allow-Origin: *
 
-/fonts/*
+/*.css
+  Cache-Control: public, max-age=604800
+
+/og-image.jpg
   Cache-Control: public, max-age=31536000, immutable
 
-/case/*
-  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+# Security headers
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
