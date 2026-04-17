@@ -1,7 +1,5 @@
 User-agent: *
 Allow: /
 Disallow: /andrei.html
-Disallow: /deploy/
-Disallow: /.git/
 
 Sitemap: https://i-vory.ro/sitemap.xml
