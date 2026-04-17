@@ -2577,4 +2577,75 @@ document.addEventListener('click',function(e){
 })();
 </script>
 
+
+<script id="ga4-events">
+(function(){
+  if(typeof gtag!=='function')return;
+  
+  // WhatsApp clicks (all buttons)
+  document.querySelectorAll('a[href*="wa.me"],a[href*="whatsapp.com"]').forEach(function(a){
+    a.addEventListener('click',function(){
+      gtag('event','whatsapp_click',{location:a.className||'unknown'});
+    });
+  });
+  
+  // Email clicks
+  document.querySelectorAll('a[href^="mailto:"]').forEach(function(a){
+    a.addEventListener('click',function(){
+      gtag('event','email_click',{location:a.className||'unknown'});
+    });
+  });
+  
+  // Phone clicks
+  document.querySelectorAll('a[href^="tel:"]').forEach(function(a){
+    a.addEventListener('click',function(){
+      gtag('event','phone_click',{location:a.className||'unknown'});
+    });
+  });
+  
+  // Calendly clicks
+  document.querySelectorAll('a[href*="calendly"]').forEach(function(a){
+    a.addEventListener('click',function(){
+      gtag('event','calendly_click',{location:a.className||'unknown'});
+    });
+  });
+  
+  // Portfolio page click
+  document.querySelectorAll('a[href*="portofoliu"]').forEach(function(a){
+    a.addEventListener('click',function(){
+      gtag('event','portfolio_click',{location:a.className||'unknown'});
+    });
+  });
+  
+  // Contact form submit
+  var form=document.querySelector('form[action*="formsubmit"]');
+  if(form){
+    form.addEventListener('submit',function(){
+      gtag('event','contact_form_submit',{location:'contact_section'});
+    });
+  }
+  
+  // Scroll depth tracking (25%, 50%, 75%, 100%)
+  var depths=[25,50,75,100],fired={};
+  window.addEventListener('scroll',function(){
+    var pct=Math.round((window.scrollY+window.innerHeight)/document.body.scrollHeight*100);
+    depths.forEach(function(d){
+      if(pct>=d&&!fired[d]){
+        fired[d]=true;
+        gtag('event','scroll_depth',{percent:d});
+      }
+    });
+  },{passive:true});
+  
+  // Video play/unmute
+  var vid=document.getElementById('hvVid');
+  if(vid){
+    vid.addEventListener('click',function(){
+      if(!vid.muted){
+        gtag('event','video_unmute',{video:'hero'});
+      }
+    });
+  }
+})();
+</script>
 </body></html>
