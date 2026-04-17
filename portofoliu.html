@@ -219,9 +219,20 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
 .pd-tabs.pd-tabs-hidden,.pd-tabs-hidden{display:none !important}
 
 
+
+/* SCROLL ARROWS for mobile L2/L3 rows */
+.pd-arr{display:none;position:absolute;top:50%;transform:translateY(-50%);width:26px;height:26px;border-radius:50%;background:rgba(255,245,230,.95);border:none;color:#0a0b14;font-family:Georgia,serif;font-size:16px;font-weight:700;line-height:1;cursor:pointer;z-index:5;align-items:center;justify-content:center;padding:0 0 2px 0;box-shadow:0 2px 8px rgba(0,0,0,.4);-webkit-tap-highlight-color:transparent}
+.pd-arr:active{transform:translateY(-50%) scale(.88);background:#00e0c0}
+.pd-arr-l{left:2px}
+.pd-arr-r{right:2px}
+@media(max-width:560px){
+  .pd-row-2,.pd-row-3{padding-left:32px!important;padding-right:32px!important}
+  .pd-arr{display:flex}
+}
+
 /* Edge fade hint — shows more content available via swipe */
 .pd-row-2,.pd-row-3{position:relative}
-.pd-row-2::after,.pd-row-3::after{content:"";position:absolute;right:0;top:0;bottom:0;width:28px;background:linear-gradient(90deg,transparent,rgba(4,6,14,.85));pointer-events:none;z-index:2;opacity:.8}
+.pd-row-2::after,.pd-row-3::after{display:none}
 @media(min-width:1100px){.pd-row-2::after,.pd-row-3::after{display:none}}
 
 /* LAYER 1 */
@@ -230,7 +241,7 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
 .pd-l1.active{background:#fff5e6;color:#0a0b14;font-weight:600;box-shadow:0 2px 12px rgba(255,245,230,.2)}
 
 /* LAYER 2 */
-.pd-l2-group{display:flex;gap:.12rem;overflow-x:scroll;overflow-y:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none;scroll-snap-type:x proximity;touch-action:pan-x;overscroll-behavior-x:contain;max-width:100%}
+.pd-l2-group{display:flex;gap:.12rem;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none;touch-action:pan-x;overscroll-behavior-x:contain;max-width:100%;width:100%}
 .pd-l2-group::-webkit-scrollbar{display:none}
 .pd-l2{flex-shrink:0;scroll-snap-align:start;padding:.42rem .85rem;background:transparent;border:none;border-radius:100px;color:rgba(216,212,200,.6);font-family:'Fraunces',serif;font-size:.76rem;font-weight:500;letter-spacing:-.005em;font-variation-settings:"opsz" 48,"SOFT" 80;cursor:pointer;white-space:nowrap;transition:all .25s;-webkit-tap-highlight-color:transparent}
 .pd-l2:hover{color:#fff5e6;background:rgba(255,245,230,.04)}
@@ -238,7 +249,7 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
 .pd-l2.active{background:rgba(255,245,230,.92);color:#0a0b14;font-weight:600}
 
 /* LAYER 3 */
-.pd-l3-group{display:flex;gap:.1rem;overflow-x:scroll;overflow-y:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none;width:100%;justify-content:flex-start;padding:0 .2rem;scroll-snap-type:x proximity;touch-action:pan-x;overscroll-behavior-x:contain}
+.pd-l3-group{display:flex;gap:.1rem;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none;width:100%;justify-content:flex-start;padding:0 .2rem;touch-action:pan-x;overscroll-behavior-x:contain}
 .pd-l3-group::-webkit-scrollbar{display:none}
 .pd-l3-group.pd-l3-hidden,.pd-l3-hidden{display:none !important}
 .pd-l3{flex-shrink:0;scroll-snap-align:start;padding:.34rem .72rem;background:transparent;border:none;border-radius:100px;color:rgba(200,196,188,.55);font-family:'Instrument Serif','Fraunces',serif;font-style:italic;font-size:.78rem;font-weight:400;letter-spacing:0;cursor:pointer;white-space:nowrap;transition:all .25s;-webkit-tap-highlight-color:transparent;position:relative;font-variation-settings:normal}
@@ -605,7 +616,7 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
     <button class="pd-l1" data-l1="video">Video</button>
   </div>
 
-  <div class="pd-row pd-row-2" id="pdRow2">
+  <div class="pd-row pd-row-2" id="pdRow2"><button class="pd-arr pd-arr-l" data-dir="left" data-target="row2" aria-label="scroll stanga">‹</button><button class="pd-arr pd-arr-r" data-dir="right" data-target="row2" aria-label="scroll dreapta">›</button>
     <div class="pd-tabs pd-l2-group" data-for="design">
       <button class="pd-l2 active" data-l2="carusel" data-to="sec-carusel">Carusel</button>
       <button class="pd-l2" data-l2="post" data-to="sec-post">Post</button>
@@ -621,7 +632,7 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
     </div>
   </div>
 
-  <div class="pd-row pd-row-3" id="pdRow3">
+  <div class="pd-row pd-row-3" id="pdRow3"><button class="pd-arr pd-arr-l" data-dir="left" data-target="row3" aria-label="scroll stanga">‹</button><button class="pd-arr pd-arr-r" data-dir="right" data-target="row3" aria-label="scroll dreapta">›</button>
     <!-- DESIGN L3 groups -->
     <div class="pd-l3-group" data-l2="carusel">
       <button class="pd-l3" data-to="car-educational">Educațional</button>
@@ -1887,6 +1898,26 @@ document.addEventListener('click',function(e){
         var top=t.getBoundingClientRect().top+window.pageYOffset-offset;
         window.scrollTo({top:top,behavior:'smooth'});
         if(typeof gtag==='function')gtag('event','pd_l3',{section:id});
+      });
+    });
+
+
+    // Scroll arrows for L2/L3 rows on mobile
+    document.querySelectorAll('.pd-arr').forEach(function(arr){
+      arr.addEventListener('click',function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        var targetRow=arr.dataset.target;
+        var scrollEl;
+        if(targetRow==='row2'){
+          scrollEl=document.querySelector('.pd-row-2 .pd-l2-group:not(.pd-tabs-hidden)');
+        } else {
+          scrollEl=document.querySelector('.pd-row-3 .pd-l3-group:not(.pd-l3-hidden)');
+        }
+        if(!scrollEl)return;
+        var amt=scrollEl.clientWidth*.7;
+        if(arr.dataset.dir==='left')amt=-amt;
+        scrollEl.scrollBy({left:amt,behavior:'smooth'});
       });
     });
 
