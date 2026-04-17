@@ -68,32 +68,7 @@ const __LOW=false; // force full premium
 
 // CONSTELLATION — desktop only (requires hover)
 if(!__MOB){(function(){
-  const cvs=document.createElement('canvas');
-  cvs.style.cssText='position:fixed;inset:0;pointer-events:none;z-index:3;mix-blend-mode:screen';
-  document.body.appendChild(cvs);
-  const ctx=cvs.getContext('2d');
-  function resize(){cvs.width=innerWidth;cvs.height=innerHeight}
-  resize();addEventListener('resize',resize);
-  const stars=[];
-  for(let i=0;i<80;i++){stars.push({x:Math.random()*innerWidth,y:Math.random()*innerHeight,r:Math.random()*1.5+.5})}
-  let mx=-1000,my=-1000;
-  addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY},{passive:true});
-  function draw(){
-    ctx.clearRect(0,0,cvs.width,cvs.height);
-    const near=stars.filter(s=>{const dx=s.x-mx,dy=s.y-my;return dx*dx+dy*dy<40000});
-    if(near.length>1){
-      ctx.strokeStyle='rgba(0,224,192,.35)';ctx.lineWidth=.6;
-      for(let i=0;i<near.length;i++)for(let j=i+1;j<near.length;j++){
-        const dx=near[i].x-near[j].x,dy=near[i].y-near[j].y;
-        const d=Math.sqrt(dx*dx+dy*dy);
-        if(d<110){ctx.globalAlpha=1-d/110;ctx.beginPath();ctx.moveTo(near[i].x,near[i].y);ctx.lineTo(near[j].x,near[j].y);ctx.stroke()}
-      }
-      ctx.globalAlpha=1;ctx.fillStyle='rgba(180,255,240,.9)';
-      near.forEach(s=>{ctx.beginPath();ctx.arc(s.x,s.y,s.r+1,0,Math.PI*2);ctx.fill()});
-    }
-    requestAnimationFrame(draw);
-  }
-  draw();
+  // CONSTELLATION LINES — disabled (was drawing teal lines between stars near the cursor = the visible line user complained about)
 })()}
 
 
