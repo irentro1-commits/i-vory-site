@@ -252,7 +252,7 @@ function tick(){
         vx:(Math.random()-.5)*1.5,
         vy:Math.random()*-2-0.5,
         life:1,
-        decay:Math.random()*.012+.006,
+        decay:Math.random()*.02+.012,
         col:col,
         blur:Math.random()*15+5
       });
@@ -266,10 +266,10 @@ function tick(){
     p.x+=p.vx;p.y+=p.vy;
     p.vx*=.98;p.vy*=.98;
     p.life-=p.decay;
-    p.r+=.3;
+    p.r+=.15;
     if(p.life<=0){trail.splice(i,1);continue}
 
-    var alpha=p.life*p.life*.6;
+    var alpha=p.life*p.life*p.life*.5;
     var grd=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r);
     grd.addColorStop(0,'rgba('+p.col[0]+','+p.col[1]+','+p.col[2]+','+alpha+')');
     grd.addColorStop(.4,'rgba('+p.col[0]+','+p.col[1]+','+p.col[2]+','+(alpha*.5)+')');
