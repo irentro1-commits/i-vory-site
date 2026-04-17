@@ -2042,18 +2042,24 @@ document.addEventListener('click',function(e){
 (function(){
   var nav=document.getElementById('nav')||document.querySelector('nav');
   if(!nav)return;
-  var lastY=window.scrollY;
-  var ticking=false;
+  nav.style.transition='transform .3s ease, opacity .3s ease';
+  var lastY=window.scrollY, ticking=false;
   function update(){
     var cur=window.scrollY;
-    if(cur<20){
-      nav.classList.remove('nav-hidden');
+    if(cur<60){
+      nav.style.transform='translateY(0)';
+      nav.style.opacity='1';
+      nav.style.pointerEvents='auto';
       document.body.classList.remove('nav-hidden');
     } else if(cur>lastY+4){
-      nav.classList.add('nav-hidden');
+      nav.style.transform='translateY(-100%)';
+      nav.style.opacity='0';
+      nav.style.pointerEvents='none';
       document.body.classList.add('nav-hidden');
     } else if(cur<lastY-4){
-      nav.classList.remove('nav-hidden');
+      nav.style.transform='translateY(0)';
+      nav.style.opacity='1';
+      nav.style.pointerEvents='auto';
       document.body.classList.remove('nav-hidden');
     }
     lastY=cur;
@@ -2062,26 +2068,6 @@ document.addEventListener('click',function(e){
   window.addEventListener('scroll',function(){
     if(!ticking){requestAnimationFrame(update);ticking=true;}
   },{passive:true});
-})();
-</script>
-<script id="pf-fx-toggle">
-(function(){
-  if(window.innerWidth<=768)return;
-  var off=localStorage.getItem('ivory-fx-off')==='1';
-  if(off)document.body.classList.add('fx-disabled');
-  var btn=document.createElement('button');
-  btn.setAttribute('aria-label','Dezactiveaza efecte vizuale');
-  btn.title=off?'Activeaza efecte vizuale':'Dezactiveaza efecte vizuale';
-  btn.style.cssText='position:fixed;bottom:1.5rem;right:1.5rem;width:42px;height:42px;border-radius:50%;background:rgba(6,8,18,.88);backdrop-filter:blur(10px);border:1px solid rgba(0,224,192,'+(off?'.25':'.25')+');color:'+(off?'#ff6b6b':'#00e0c0')+';cursor:pointer;z-index:9999;display:flex;align-items:center;justify-content:center;font-size:18px;line-height:1;transition:all .3s;box-shadow:0 4px 20px rgba(0,0,0,.5)';
-  btn.innerHTML=off?'\u2715':'\u2726';
-  btn.addEventListener('click',function(){
-    var d=document.body.classList.toggle('fx-disabled');
-    btn.style.color=d?'#ff6b6b':'#00e0c0';
-    btn.innerHTML=d?'\u2715':'\u2726';
-    btn.title=d?'Activeaza efecte vizuale':'Dezactiveaza efecte vizuale';
-    try{localStorage.setItem('ivory-fx-off',d?'1':'0')}catch(e){}
-  });
-  document.body.appendChild(btn);
 })();
 </script>
 </body>

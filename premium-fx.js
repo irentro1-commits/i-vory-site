@@ -315,7 +315,7 @@ if(!__MOB){(function(){
 
 // 9. 3D CARD TILT on hover (desktop only)
 if(!__MOB){(function(){
-  const cards=document.querySelectorAll('.pk,.type-card,.dce-item,.how-item,.proof-card,.faq-item');
+  const cards=document.querySelectorAll('.pk,.type-card,.proof-card');
   cards.forEach(card=>{
     card.style.transformStyle='preserve-3d';
     card.style.transition='transform .4s cubic-bezier(.2,.9,.3,1.2)';

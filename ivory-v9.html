@@ -995,11 +995,7 @@ body{overflow-x:clip}
 .meteor{transition:opacity .6s ease!important}
 .meteor.idle{opacity:0!important;pointer-events:none}
 #nebulaCanvas.idle{opacity:0;transition:opacity .6s}
-.fx-toggle{position:fixed;bottom:1.5rem;right:1.5rem;width:42px;height:42px;border-radius:50%;background:rgba(6,8,18,.88);backdrop-filter:blur(10px);border:1px solid rgba(0,224,192,.25);color:#00e0c0;cursor:pointer;z-index:9999;display:flex;align-items:center;justify-content:center;font-size:18px;line-height:1;transition:all .3s;box-shadow:0 4px 20px rgba(0,0,0,.5)}
-.fx-toggle:hover{transform:scale(1.08);border-color:#00e0c0;box-shadow:0 6px 30px rgba(0,224,192,.3)}
-.fx-toggle.off{border-color:rgba(255,100,100,.4);color:#ff6b6b}
-@media(max-width:768px){.fx-toggle{display:none}}
-body.fx-disabled .meteor,body.fx-disabled #nebulaCanvas{display:none!important}
+
 </style>
 <script type="application/ld+json">
 {
@@ -2710,22 +2706,6 @@ document.addEventListener('click',function(e){
     }
     document.addEventListener('mousemove',resetIdle,{passive:true});
     resetIdle();
-    // FX toggle button (desktop only)
-    var btn=document.createElement('button');
-    btn.className='fx-toggle';
-    btn.setAttribute('aria-label','Dezactivează efecte vizuale');
-    btn.title='Dezactivează efecte vizuale';
-    btn.innerHTML='✦';
-    var off=localStorage.getItem('ivory-fx-off')==='1';
-    if(off){document.body.classList.add('fx-disabled');btn.classList.add('off');btn.innerHTML='✕';btn.title='Activează efecte vizuale'}
-    btn.addEventListener('click',function(){
-      var disabled=document.body.classList.toggle('fx-disabled');
-      btn.classList.toggle('off',disabled);
-      btn.innerHTML=disabled?'✕':'✦';
-      btn.title=disabled?'Activează efecte vizuale':'Dezactivează efecte vizuale';
-      try{localStorage.setItem('ivory-fx-off',disabled?'1':'0')}catch(e){}
-    });
-    document.body.appendChild(btn);
   }
 })();
 </script>
