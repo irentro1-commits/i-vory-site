@@ -2704,20 +2704,28 @@ document.addEventListener('click',function(e){
   if(!nav)return;
   var lastY=window.scrollY;
   var ticking=false;
+  // Landing mode: hidden by default past top, shows only on scroll-up
   function update(){
     var cur=window.scrollY;
     if(cur<20){
       nav.classList.remove('nav-hidden');
       document.body.classList.remove('nav-hidden');
-    } else if(cur>lastY+4){
-      nav.classList.add('nav-hidden');
-      document.body.classList.add('nav-hidden');
     } else if(cur<lastY-4){
+      // scroll up: show
       nav.classList.remove('nav-hidden');
       document.body.classList.remove('nav-hidden');
+    } else if(cur>lastY+4){
+      // scroll down: hide
+      nav.classList.add('nav-hidden');
+      document.body.classList.add('nav-hidden');
     }
     lastY=cur;
     ticking=false;
+  }
+  // Start hidden once past top
+  if(window.scrollY>=20){
+    nav.classList.add('nav-hidden');
+    document.body.classList.add('nav-hidden');
   }
   window.addEventListener('scroll',function(){
     if(!ticking){requestAnimationFrame(update);ticking=true;}
