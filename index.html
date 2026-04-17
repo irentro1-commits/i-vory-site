@@ -1254,7 +1254,7 @@ body::before{background-size:800px 800px !important;opacity:.4 !important}
 @media(max-width:768px){
   video::-webkit-media-controls-fullscreen-button{display:none !important}
   video::-webkit-media-controls{display:none !important}
-  .hero-video video{pointer-events:none !important}
+  .hero-video video{-webkit-media-controls-fullscreen-button{display:none}}
   .hero-video{pointer-events:auto !important}
 }
 </style>
@@ -2533,15 +2533,16 @@ document.addEventListener('click',function(e){
     heroVid.appendChild(hint);
   }
   
-  // Tap anywhere on video container = toggle mute
-  heroVid.addEventListener('click',function(e){
-    if(e.target===muteBtn||muteBtn.contains(e.target))return;
+  // Tap anywhere on video = toggle mute (direct user gesture)
+  vid.addEventListener('click',function(e){
     e.preventDefault();
-    e.stopPropagation();
     vid.muted=!vid.muted;
-    if(muteBtn){
-      muteBtn.classList.toggle('on',!vid.muted);
-    }
+    if(muteBtn) muteBtn.classList.toggle('on',!vid.muted);
+  });
+  vid.addEventListener('touchend',function(e){
+    e.preventDefault();
+    vid.muted=!vid.muted;
+    if(muteBtn) muteBtn.classList.toggle('on',!vid.muted);
   });
   
   // Also make mute button work
