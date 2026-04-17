@@ -289,21 +289,48 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
 
 
 
-/* 4-AXIS BREADCRUMB (I Static · 1 Carusele · A Educational · α Variant) */
-.p-axis{display:flex;flex-direction:column;gap:.18rem;margin-bottom:1.3rem;padding:.85rem 1.1rem;background:linear-gradient(135deg,rgba(0,224,192,.04),rgba(123,44,255,.03));border:1px solid rgba(255,245,230,.06);border-left:2px solid rgba(0,224,192,.55);border-radius:10px;max-width:360px}
-.p-axis-row{display:flex;align-items:baseline;gap:.8rem;font-family:'Geist Mono',monospace;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(208,203,195,.55);transition:color .25s}
-.p-axis-sym{display:inline-flex;align-items:center;justify-content:center;min-width:1.4rem;font-weight:600;color:rgba(255,245,230,.7)}
-.p-axis-name{font-weight:500;letter-spacing:.16em}
-.p-axis-active{color:#00e0c0}
-.p-axis-active .p-axis-sym{color:#00e0c0;font-weight:700}
-.p-axis-active .p-axis-name{color:#fff5e6;font-weight:600}
+/* 4-AXIS BREADCRUMB — distinct typographic voices per level */
+.p-axis{display:flex;flex-direction:column;gap:.32rem;margin-bottom:1.4rem;padding:1rem 1.15rem .95rem;background:linear-gradient(135deg,rgba(0,224,192,.05),rgba(123,44,255,.025) 70%,transparent);border:1px solid rgba(255,245,230,.06);border-left:2px solid rgba(0,224,192,.55);border-radius:10px;max-width:380px}
+.p-axis-row{display:flex;align-items:baseline;gap:.9rem;transition:all .25s;position:relative}
+.p-axis-sym{display:inline-flex;align-items:center;justify-content:flex-start;min-width:1.55rem;line-height:1}
+.p-axis-name{line-height:1}
+
+/* L1 BOSS — I (Roman) Fraunces 900 WONK monumental */
+.p-axis-row.axis-l1 .p-axis-sym{font-family:'Fraunces','Times New Roman',serif;font-weight:900;font-size:1.25rem;font-variation-settings:"opsz" 144,"SOFT" 0,"WONK" 1;letter-spacing:-.02em;color:#fff5e6}
+.p-axis-row.axis-l1 .p-axis-name{font-family:'Fraunces',serif;font-weight:800;font-size:.72rem;letter-spacing:.26em;text-transform:uppercase;font-variation-settings:"opsz" 144,"SOFT" 0,"WONK" 1;color:rgba(255,245,230,.85)}
+
+/* L2 SMART — 1 (Arabic) Geist Mono 600 technical */
+.p-axis-row.axis-l2 .p-axis-sym{font-family:'Geist Mono',ui-monospace,monospace;font-weight:600;font-size:.95rem;color:rgba(255,245,230,.72);letter-spacing:0}
+.p-axis-row.axis-l2 .p-axis-name{font-family:'Geist Mono',monospace;font-weight:500;font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(216,212,200,.6)}
+
+/* L3 ELEGANT — A (Latin) Instrument Serif editorial */
+.p-axis-row.axis-l3 .p-axis-sym{font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:1.08rem;font-style:normal;color:rgba(255,245,230,.7);letter-spacing:0}
+.p-axis-row.axis-l3 .p-axis-name{font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:.88rem;font-style:italic;letter-spacing:.01em;text-transform:none;color:rgba(208,203,195,.65)}
+
+/* L4 DELICATE — α (Greek) Fraunces italic SOFT 100 */
+.p-axis-row.axis-l4 .p-axis-sym{font-family:'Fraunces',serif;font-weight:400;font-style:italic;font-size:1.1rem;font-variation-settings:"opsz" 48,"SOFT" 100,"WONK" 1;letter-spacing:-.01em;color:rgba(255,245,230,.55)}
+.p-axis-row.axis-l4 .p-axis-name{font-family:'Fraunces',serif;font-weight:400;font-style:italic;font-size:.78rem;font-variation-settings:"opsz" 48,"SOFT" 100;letter-spacing:.02em;color:rgba(200,196,188,.55)}
+
+/* ACTIVE state — teal highlight */
+.p-axis-row.p-axis-active .p-axis-sym{color:#00e0c0!important}
+.p-axis-row.p-axis-active .p-axis-name{color:#fff5e6!important}
+.p-axis-row.p-axis-active::after{content:"";position:absolute;left:-1.15rem;top:50%;transform:translateY(-50%);width:2px;height:70%;background:#00e0c0;border-radius:2px;box-shadow:0 0 8px rgba(0,224,192,.6)}
+
 @media(max-width:560px){
-  .p-axis{padding:.7rem .9rem;margin-bottom:1rem;max-width:100%}
-  .p-axis-row{font-size:.62rem;gap:.6rem}
+  .p-axis{padding:.8rem 1rem .75rem;margin-bottom:1.1rem;max-width:100%;gap:.28rem}
+  .p-axis-row{gap:.75rem}
+  .p-axis-row.axis-l1 .p-axis-sym{font-size:1.1rem}
+  .p-axis-row.axis-l1 .p-axis-name{font-size:.68rem}
+  .p-axis-row.axis-l2 .p-axis-sym{font-size:.88rem}
+  .p-axis-row.axis-l2 .p-axis-name{font-size:.62rem}
+  .p-axis-row.axis-l3 .p-axis-sym{font-size:1rem}
+  .p-axis-row.axis-l3 .p-axis-name{font-size:.82rem}
+  .p-axis-row.axis-l4 .p-axis-sym{font-size:1rem}
+  .p-axis-row.axis-l4 .p-axis-name{font-size:.74rem}
 }
 
-/* Greek letter in variant tag */
-.p-variant-greek{font-family:'Fraunces',serif;font-style:italic;font-weight:500;font-size:1.05em;margin-right:.35em;color:#00e0c0;font-variation-settings:"opsz" 48}
+/* Greek letter in variant tag — delicate italic Fraunces */
+.p-variant-greek{font-family:'Fraunces',serif;font-style:italic;font-weight:400;font-size:1.25em;margin-right:.4em;color:#00e0c0;font-variation-settings:"opsz" 48,"SOFT" 100,"WONK" 1;letter-spacing:-.02em;vertical-align:-.02em;text-shadow:0 0 10px rgba(0,224,192,.35)}
 
 /* Variant block within single sub-article */
 .p-variant{margin-bottom:2rem}
@@ -598,9 +625,9 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
 
   <article class="p-sub" id="car-educational">
     <div class="p-axis">
-      <div class="p-axis-row"><span class="p-axis-sym">I</span><span class="p-axis-name">Static</span></div>
-      <div class="p-axis-row"><span class="p-axis-sym">1</span><span class="p-axis-name">Carusele</span></div>
-      <div class="p-axis-row p-axis-active"><span class="p-axis-sym">A</span><span class="p-axis-name">Educațional</span></div>
+      <div class="p-axis-row axis-l1"><span class="p-axis-sym">I</span><span class="p-axis-name">Static</span></div>
+      <div class="p-axis-row axis-l2"><span class="p-axis-sym">1</span><span class="p-axis-name">Carusele</span></div>
+      <div class="p-axis-row axis-l3 p-axis-active"><span class="p-axis-sym">A</span><span class="p-axis-name">Educațional</span></div>
     </div>
     <header class="p-sub-head"><span class="p-sub-num">01</span><h3 class="p-sub-title">Carusel Educațional</h3><p class="p-sub-desc">Omul învață ceva util. <em>Același tip de conținut, două abordări vizuale</em> — arătăm cât de flexibil lucrăm stilul.</p></header>
     <div class="p-variant">
@@ -615,9 +642,9 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
 
   <article class="p-sub" id="car-storytelling">
     <div class="p-axis">
-      <div class="p-axis-row"><span class="p-axis-sym">I</span><span class="p-axis-name">Static</span></div>
-      <div class="p-axis-row"><span class="p-axis-sym">1</span><span class="p-axis-name">Carusele</span></div>
-      <div class="p-axis-row p-axis-active"><span class="p-axis-sym">B</span><span class="p-axis-name">Storytelling</span></div>
+      <div class="p-axis-row axis-l1"><span class="p-axis-sym">I</span><span class="p-axis-name">Static</span></div>
+      <div class="p-axis-row axis-l2"><span class="p-axis-sym">1</span><span class="p-axis-name">Carusele</span></div>
+      <div class="p-axis-row axis-l3 p-axis-active"><span class="p-axis-sym">B</span><span class="p-axis-name">Storytelling</span></div>
     </div>
     <header class="p-sub-head"><span class="p-sub-num">02</span><h3 class="p-sub-title">Carusel Storytelling</h3><p class="p-sub-desc">O poveste cu arc: tensiune, decizie, consecință. <em>Brand-ul intră la final</em>, legat de un eveniment real sau sărbătoare.</p></header>
     <div class="p-grid"><img loading="lazy" src="/portfolio/carousel-ivory-storytelling/1.png" alt="i-Vory Creative carousel-ivory-storytelling slide 1"><img loading="lazy" src="/portfolio/carousel-ivory-storytelling/2.png" alt="i-Vory Creative carousel-ivory-storytelling slide 2"><img loading="lazy" src="/portfolio/carousel-ivory-storytelling/3.png" alt="i-Vory Creative carousel-ivory-storytelling slide 3"><img loading="lazy" src="/portfolio/carousel-ivory-storytelling/4.png" alt="i-Vory Creative carousel-ivory-storytelling slide 4"><img loading="lazy" src="/portfolio/carousel-ivory-storytelling/5.png" alt="i-Vory Creative carousel-ivory-storytelling slide 5"><img loading="lazy" src="/portfolio/carousel-ivory-storytelling/6.png" alt="i-Vory Creative carousel-ivory-storytelling slide 6"><img loading="lazy" src="/portfolio/carousel-ivory-storytelling/7.png" alt="i-Vory Creative carousel-ivory-storytelling slide 7"></div>
@@ -625,9 +652,9 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
 
   <article class="p-sub" id="car-showcase">
     <div class="p-axis">
-      <div class="p-axis-row"><span class="p-axis-sym">I</span><span class="p-axis-name">Static</span></div>
-      <div class="p-axis-row"><span class="p-axis-sym">1</span><span class="p-axis-name">Carusele</span></div>
-      <div class="p-axis-row p-axis-active"><span class="p-axis-sym">C</span><span class="p-axis-name">Showcase</span></div>
+      <div class="p-axis-row axis-l1"><span class="p-axis-sym">I</span><span class="p-axis-name">Static</span></div>
+      <div class="p-axis-row axis-l2"><span class="p-axis-sym">1</span><span class="p-axis-name">Carusele</span></div>
+      <div class="p-axis-row axis-l3 p-axis-active"><span class="p-axis-sym">C</span><span class="p-axis-name">Showcase</span></div>
     </div>
     <header class="p-sub-head"><span class="p-sub-num">03</span><h3 class="p-sub-title">Carusel Showcase</h3><p class="p-sub-desc">Rezultatele la vedere. Cifre, studii de caz, before/after.</p></header>
     <div class="p-grid"><img loading="lazy" src="/portfolio/carousel-ivory-showcase/1.png" alt="i-Vory Creative carousel-ivory-showcase slide 1"><img loading="lazy" src="/portfolio/carousel-ivory-showcase/2.png" alt="i-Vory Creative carousel-ivory-showcase slide 2"><img loading="lazy" src="/portfolio/carousel-ivory-showcase/3.png" alt="i-Vory Creative carousel-ivory-showcase slide 3"><img loading="lazy" src="/portfolio/carousel-ivory-showcase/5.png" alt="i-Vory Creative carousel-ivory-showcase slide 5"><img loading="lazy" src="/portfolio/carousel-ivory-showcase/6.png" alt="i-Vory Creative carousel-ivory-showcase slide 6"><img loading="lazy" src="/portfolio/carousel-ivory-showcase/7.png" alt="i-Vory Creative carousel-ivory-showcase slide 7"></div>
@@ -635,9 +662,9 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
 
   <article class="p-sub" id="car-promotional">
     <div class="p-axis">
-      <div class="p-axis-row"><span class="p-axis-sym">I</span><span class="p-axis-name">Static</span></div>
-      <div class="p-axis-row"><span class="p-axis-sym">1</span><span class="p-axis-name">Carusele</span></div>
-      <div class="p-axis-row p-axis-active"><span class="p-axis-sym">D</span><span class="p-axis-name">Promoțional</span></div>
+      <div class="p-axis-row axis-l1"><span class="p-axis-sym">I</span><span class="p-axis-name">Static</span></div>
+      <div class="p-axis-row axis-l2"><span class="p-axis-sym">1</span><span class="p-axis-name">Carusele</span></div>
+      <div class="p-axis-row axis-l3 p-axis-active"><span class="p-axis-sym">D</span><span class="p-axis-name">Promoțional</span></div>
     </div>
     <header class="p-sub-head"><span class="p-sub-num">04</span><h3 class="p-sub-title">Carusel Promoțional</h3><p class="p-sub-desc">Promoțional direct. Beneficiu, proof, CTA clar.</p></header>
     <div class="p-grid"><img loading="lazy" src="/portfolio/carousel-urbancat/1.png" alt="i-Vory Creative carousel-urbancat slide 1"><img loading="lazy" src="/portfolio/carousel-urbancat/2.png" alt="i-Vory Creative carousel-urbancat slide 2"><img loading="lazy" src="/portfolio/carousel-urbancat/3.png" alt="i-Vory Creative carousel-urbancat slide 3"><img loading="lazy" src="/portfolio/carousel-urbancat/4.png" alt="i-Vory Creative carousel-urbancat slide 4"><img loading="lazy" src="/portfolio/carousel-urbancat/5.png" alt="i-Vory Creative carousel-urbancat slide 5"><img loading="lazy" src="/portfolio/carousel-urbancat/6.png" alt="i-Vory Creative carousel-urbancat slide 6"><img loading="lazy" src="/portfolio/carousel-urbancat/7.png" alt="i-Vory Creative carousel-urbancat slide 7"></div>
@@ -654,9 +681,9 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
 
   <article class="p-sub" id="post-emotional">
     <div class="p-axis">
-      <div class="p-axis-row"><span class="p-axis-sym">I</span><span class="p-axis-name">Static</span></div>
-      <div class="p-axis-row"><span class="p-axis-sym">2</span><span class="p-axis-name">Post</span></div>
-      <div class="p-axis-row p-axis-active"><span class="p-axis-sym">A</span><span class="p-axis-name">Emoțional</span></div>
+      <div class="p-axis-row axis-l1"><span class="p-axis-sym">I</span><span class="p-axis-name">Static</span></div>
+      <div class="p-axis-row axis-l2"><span class="p-axis-sym">2</span><span class="p-axis-name">Post</span></div>
+      <div class="p-axis-row axis-l3 p-axis-active"><span class="p-axis-sym">A</span><span class="p-axis-name">Emoțional</span></div>
     </div>
     <header class="p-sub-head"><span class="p-sub-num">01</span><h3 class="p-sub-title">Post emoțional</h3><p class="p-sub-desc">Un cadru, un nod la stomac. Sau la zâmbet.</p></header>
     <div class="p-grid p-grid-2">
@@ -706,9 +733,9 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
 
   <article class="p-sub" id="ec-hero">
     <div class="p-axis">
-      <div class="p-axis-row"><span class="p-axis-sym">I</span><span class="p-axis-name">Static</span></div>
-      <div class="p-axis-row"><span class="p-axis-sym">3</span><span class="p-axis-name">E-commerce</span></div>
-      <div class="p-axis-row p-axis-active"><span class="p-axis-sym">A</span><span class="p-axis-name">Hero produs</span></div>
+      <div class="p-axis-row axis-l1"><span class="p-axis-sym">I</span><span class="p-axis-name">Static</span></div>
+      <div class="p-axis-row axis-l2"><span class="p-axis-sym">3</span><span class="p-axis-name">E-commerce</span></div>
+      <div class="p-axis-row axis-l3 p-axis-active"><span class="p-axis-sym">A</span><span class="p-axis-name">Hero produs</span></div>
     </div>
     <header class="p-sub-head"><span class="p-sub-num">01</span><h3 class="p-sub-title">Hero produs</h3><p class="p-sub-desc">Fotografia care duce vizitatorul de la browsing la add-to-cart.</p></header>
     <div class="p-grid p-grid-3">
@@ -754,9 +781,9 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
 
   <article class="p-sub" id="srv-profesionisti">
     <div class="p-axis">
-      <div class="p-axis-row"><span class="p-axis-sym">I</span><span class="p-axis-name">Static</span></div>
-      <div class="p-axis-row"><span class="p-axis-sym">4</span><span class="p-axis-name">Servicii</span></div>
-      <div class="p-axis-row p-axis-active"><span class="p-axis-sym">A</span><span class="p-axis-name">Profesioniști</span></div>
+      <div class="p-axis-row axis-l1"><span class="p-axis-sym">I</span><span class="p-axis-name">Static</span></div>
+      <div class="p-axis-row axis-l2"><span class="p-axis-sym">4</span><span class="p-axis-name">Servicii</span></div>
+      <div class="p-axis-row axis-l3 p-axis-active"><span class="p-axis-sym">A</span><span class="p-axis-name">Profesioniști</span></div>
     </div>
     <header class="p-sub-head"><span class="p-sub-num">01</span><h3 class="p-sub-title">Servicii Profesionale</h3><p class="p-sub-desc">Educație juridică și medicală. Client: Andreas Popa, avocat drept penal.</p></header>
     <div class="p-grid"><img loading="lazy" src="/portfolio/carousel-lawyer/1.png" alt="i-Vory Creative portfoliu carousel-lawyer slide 1"><img loading="lazy" src="/portfolio/carousel-lawyer/2.png" alt="i-Vory Creative portfoliu carousel-lawyer slide 2"><img loading="lazy" src="/portfolio/carousel-lawyer/3.png" alt="i-Vory Creative portfoliu carousel-lawyer slide 3"><img loading="lazy" src="/portfolio/carousel-lawyer/4.png" alt="i-Vory Creative portfoliu carousel-lawyer slide 4"><img loading="lazy" src="/portfolio/carousel-lawyer/5.png" alt="i-Vory Creative portfoliu carousel-lawyer slide 5"><img loading="lazy" src="/portfolio/carousel-lawyer/6.png" alt="i-Vory Creative portfoliu carousel-lawyer slide 6"><img loading="lazy" src="/portfolio/carousel-lawyer/7.png" alt="i-Vory Creative portfoliu carousel-lawyer slide 7"></div>
