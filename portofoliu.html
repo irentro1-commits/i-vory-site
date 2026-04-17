@@ -58,14 +58,17 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.1rem 2.5rem;displ
 .pf-legend-close:hover{opacity:1}
 .pf-legend-intro{font-size:.78rem;color:var(--td);margin-bottom:1.1rem;line-height:1.5;opacity:.75}
 .pf-legend-list{display:flex;flex-direction:column;gap:.25rem}
-.pf-legend-item{display:flex;align-items:center;gap:.7rem;padding:.65rem .7rem;border-radius:10px;background:transparent;border:1px solid transparent;color:#d0cbc3;font-family:inherit;font-size:.82rem;font-weight:500;cursor:pointer;text-align:left;transition:all .2s;width:100%}
+.pf-legend-group{display:flex;flex-direction:column}
+.pf-legend-item{display:flex;align-items:center;gap:.7rem;padding:.75rem .8rem;border-radius:10px;background:transparent;border:1px solid transparent;color:#d0cbc3;font-family:inherit;font-size:.85rem;font-weight:500;cursor:pointer;text-align:left;transition:all .2s;width:100%}
 .pf-legend-item:hover{background:rgba(255,255,255,.04);color:#fff5e6}
 .pf-legend-item.active{background:linear-gradient(90deg,rgba(0,224,192,.14),rgba(123,44,255,.06));border-color:rgba(0,224,192,.35);color:#fff5e6}
 .pf-legend-item.active .pf-legend-dot{background:#00e0c0;box-shadow:0 0 10px rgba(0,224,192,.7)}
+.pf-legend-item.active .pf-legend-chev{transform:rotate(45deg);color:#00e0c0}
 .pf-legend-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.25);flex-shrink:0;transition:all .2s}
-.pf-legend-def{margin-top:1rem;padding:1rem;background:linear-gradient(135deg,rgba(0,224,192,.06),rgba(123,44,255,.04));border:1px solid rgba(0,224,192,.2);border-radius:12px;font-size:.82rem;line-height:1.6;color:var(--tl);min-height:0;max-height:0;overflow:hidden;opacity:0;transition:all .35s}
-.pf-legend-def.show{max-height:400px;opacity:1;padding:1rem}
-.pf-legend-def-title{font-family:var(--fd);font-weight:700;color:#fff5e6;font-size:.95rem;margin-bottom:.5rem;letter-spacing:-.01em}
+.pf-legend-text{flex:1}
+.pf-legend-chev{font-family:var(--fm,monospace);font-size:1.1rem;font-weight:300;opacity:.5;transition:all .35s cubic-bezier(.2,.9,.3,1.1);line-height:1}
+.pf-legend-def{margin:.25rem .5rem .6rem;padding:0;background:linear-gradient(135deg,rgba(0,224,192,.06),rgba(123,44,255,.04));border-left:2px solid rgba(0,224,192,.35);border-radius:0 8px 8px 0;font-size:.82rem;line-height:1.65;color:var(--tl);max-height:0;overflow:hidden;opacity:0;transition:all .4s cubic-bezier(.2,.9,.3,1.1)}
+.pf-legend-def.show{max-height:340px;opacity:1;padding:.9rem 1rem;margin:.4rem .5rem .7rem}
 
 /* FAB button */
 .pf-legend-fab{position:fixed;z-index:89;background:linear-gradient(135deg,#00e0c0,#7b2cff);color:#04060e;border:none;padding:.8rem 1.2rem;border-radius:100px;font-family:var(--fd);font-weight:700;font-size:.82rem;cursor:pointer;display:flex;align-items:center;gap:.5rem;box-shadow:0 8px 24px rgba(0,224,192,.35),0 0 0 1px rgba(255,255,255,.08);transition:all .3s;letter-spacing:-.005em}
@@ -372,7 +375,6 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
   var legend=document.getElementById('pfLegend');
   var fab=document.getElementById('pfLegendFab');
   var closeBtn=document.getElementById('pfLegendClose');
-  var defBox=document.getElementById('pfLegendDef');
   var items=document.querySelectorAll('.pf-legend-item');
   if(!legend||!fab)return;
   
@@ -412,22 +414,27 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
   });
   
   items.forEach(function(item){
-    item.addEventListener('click',function(){
+    item.addEventListener('click',function(e){
+      e.stopPropagation();
       var term=item.dataset.term;
       var def=DEFS[term];
       if(!def)return;
       
-      items.forEach(function(i){i.classList.remove('active')});
+      var thisDef=document.querySelector('.pf-legend-def[data-for="'+term+'"]');
+      var wasActive=item.classList.contains('active');
       
-      if(currentTerm===term){
-        defBox.classList.remove('show');
-        currentTerm=null;
-      }else{
+      // Close all others
+      items.forEach(function(i){i.classList.remove('active')});
+      document.querySelectorAll('.pf-legend-def').forEach(function(d){d.classList.remove('show')});
+      
+      if(!wasActive){
         item.classList.add('active');
-        defBox.innerHTML='<div class="pf-legend-def-title">'+def.title+'</div>'+def.text;
-        defBox.classList.add('show');
+        thisDef.textContent=def.text;
+        thisDef.classList.add('show');
         currentTerm=term;
         if(typeof gtag==='function')gtag('event','legend_term_click',{term:term});
+      }else{
+        currentTerm=null;
       }
     });
   });
@@ -490,16 +497,39 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
   </div>
   <p class="pf-legend-intro">Click pe un termen ca să afli ce înseamnă.</p>
   <div class="pf-legend-list">
-    <button class="pf-legend-item" data-term="educational"><span class="pf-legend-dot"></span>Carusel educațional</button>
-    <button class="pf-legend-item" data-term="storytelling"><span class="pf-legend-dot"></span>Carusel storytelling</button>
-    <button class="pf-legend-item" data-term="showcase"><span class="pf-legend-dot"></span>Carusel showcase</button>
-    <button class="pf-legend-item" data-term="produs"><span class="pf-legend-dot"></span>Carusel produs</button>
-    <button class="pf-legend-item" data-term="professional"><span class="pf-legend-dot"></span>Profesioniști</button>
-    <button class="pf-legend-item" data-term="hero"><span class="pf-legend-dot"></span>Imagine hero</button>
-    <button class="pf-legend-item" data-term="post"><span class="pf-legend-dot"></span>Post single-image</button>
-    <button class="pf-legend-item" data-term="ads"><span class="pf-legend-dot"></span>Vizual pentru ads</button>
+    <div class="pf-legend-group">
+      <button class="pf-legend-item" data-term="educational"><span class="pf-legend-dot"></span><span class="pf-legend-text">Carusel educațional</span><span class="pf-legend-chev">+</span></button>
+      <div class="pf-legend-def" data-for="educational"></div>
+    </div>
+    <div class="pf-legend-group">
+      <button class="pf-legend-item" data-term="storytelling"><span class="pf-legend-dot"></span><span class="pf-legend-text">Carusel storytelling</span><span class="pf-legend-chev">+</span></button>
+      <div class="pf-legend-def" data-for="storytelling"></div>
+    </div>
+    <div class="pf-legend-group">
+      <button class="pf-legend-item" data-term="showcase"><span class="pf-legend-dot"></span><span class="pf-legend-text">Carusel showcase</span><span class="pf-legend-chev">+</span></button>
+      <div class="pf-legend-def" data-for="showcase"></div>
+    </div>
+    <div class="pf-legend-group">
+      <button class="pf-legend-item" data-term="produs"><span class="pf-legend-dot"></span><span class="pf-legend-text">Carusel produs</span><span class="pf-legend-chev">+</span></button>
+      <div class="pf-legend-def" data-for="produs"></div>
+    </div>
+    <div class="pf-legend-group">
+      <button class="pf-legend-item" data-term="professional"><span class="pf-legend-dot"></span><span class="pf-legend-text">Profesioniști</span><span class="pf-legend-chev">+</span></button>
+      <div class="pf-legend-def" data-for="professional"></div>
+    </div>
+    <div class="pf-legend-group">
+      <button class="pf-legend-item" data-term="hero"><span class="pf-legend-dot"></span><span class="pf-legend-text">Imagine hero</span><span class="pf-legend-chev">+</span></button>
+      <div class="pf-legend-def" data-for="hero"></div>
+    </div>
+    <div class="pf-legend-group">
+      <button class="pf-legend-item" data-term="post"><span class="pf-legend-dot"></span><span class="pf-legend-text">Post single-image</span><span class="pf-legend-chev">+</span></button>
+      <div class="pf-legend-def" data-for="post"></div>
+    </div>
+    <div class="pf-legend-group">
+      <button class="pf-legend-item" data-term="ads"><span class="pf-legend-dot"></span><span class="pf-legend-text">Vizual pentru ads</span><span class="pf-legend-chev">+</span></button>
+      <div class="pf-legend-def" data-for="ads"></div>
+    </div>
   </div>
-  <div class="pf-legend-def" id="pfLegendDef"></div>
 </aside>
 
 <!-- Floating trigger button (mobile + desktop when closed) -->
