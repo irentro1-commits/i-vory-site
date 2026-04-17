@@ -207,7 +207,7 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
 
 
 /* ========== PORTFOLIO 3-LEVEL DOCK (unified pill) ========== */
-.pd{position:fixed;top:76px;left:50%;transform:translateX(-50%);z-index:90;max-width:calc(100vw - 1.4rem);display:flex;flex-direction:column;background:rgba(4,6,14,.94);backdrop-filter:blur(32px) saturate(150%);-webkit-backdrop-filter:blur(32px) saturate(150%);border:1px solid rgba(255,255,255,.08);border-radius:22px;box-shadow:0 20px 50px rgba(0,0,0,.6),0 0 0 1px rgba(255,245,230,.02) inset;overflow:hidden;transition:opacity .4s,transform .4s cubic-bezier(.2,.9,.3,1.1);pointer-events:auto}
+.pd{position:fixed;top:76px;left:50%;transform:translateX(-50%);z-index:90;max-width:calc(100vw - 1.4rem);display:flex;flex-direction:column;background:rgba(4,6,14,.94);backdrop-filter:blur(32px) saturate(150%);-webkit-backdrop-filter:blur(32px) saturate(150%);border:1px solid rgba(255,255,255,.08);border-radius:22px;box-shadow:0 20px 50px rgba(0,0,0,.6),0 0 0 1px rgba(255,245,230,.02) inset;transition:opacity .4s,transform .4s cubic-bezier(.2,.9,.3,1.1);pointer-events:auto}
 .pd-hidden{opacity:0;pointer-events:none;transform:translateX(-50%) translateY(-16px)}
 .pd-row{padding:.35rem .5rem;display:flex;justify-content:center;align-items:center;position:relative}
 .pd-row + .pd-row{border-top:1px solid rgba(255,245,230,.06)}
@@ -224,18 +224,18 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
 .pd-l1.active{background:#fff5e6;color:#0a0b14;font-weight:600;box-shadow:0 2px 12px rgba(255,245,230,.2)}
 
 /* LAYER 2 */
-.pd-l2-group{display:flex;gap:.12rem;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.pd-l2-group{display:flex;gap:.12rem;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none;scroll-snap-type:x proximity}
 .pd-l2-group::-webkit-scrollbar{display:none}
-.pd-l2{flex-shrink:0;padding:.42rem .85rem;background:transparent;border:none;border-radius:100px;color:rgba(216,212,200,.6);font-family:'Fraunces',serif;font-size:.76rem;font-weight:500;letter-spacing:-.005em;font-variation-settings:"opsz" 48,"SOFT" 80;cursor:pointer;white-space:nowrap;transition:all .25s;-webkit-tap-highlight-color:transparent}
+.pd-l2{flex-shrink:0;scroll-snap-align:start;padding:.42rem .85rem;background:transparent;border:none;border-radius:100px;color:rgba(216,212,200,.6);font-family:'Fraunces',serif;font-size:.76rem;font-weight:500;letter-spacing:-.005em;font-variation-settings:"opsz" 48,"SOFT" 80;cursor:pointer;white-space:nowrap;transition:all .25s;-webkit-tap-highlight-color:transparent}
 .pd-l2:hover{color:#fff5e6;background:rgba(255,245,230,.04)}
 .pd-l2:active{transform:scale(.95)}
 .pd-l2.active{background:rgba(255,245,230,.92);color:#0a0b14;font-weight:600}
 
 /* LAYER 3 */
-.pd-l3-group{display:flex;gap:.1rem;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none;width:100%;justify-content:center;padding:0 .2rem}
+.pd-l3-group{display:flex;gap:.1rem;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none;width:100%;justify-content:flex-start;padding:0 .2rem;scroll-snap-type:x proximity}
 .pd-l3-group::-webkit-scrollbar{display:none}
 .pd-l3-group.pd-l3-hidden,.pd-l3-hidden{display:none !important}
-.pd-l3{flex-shrink:0;padding:.34rem .72rem;background:transparent;border:none;border-radius:100px;color:rgba(200,196,188,.55);font-family:'Instrument Serif','Fraunces',serif;font-style:italic;font-size:.78rem;font-weight:400;letter-spacing:0;cursor:pointer;white-space:nowrap;transition:all .25s;-webkit-tap-highlight-color:transparent;position:relative;font-variation-settings:normal}
+.pd-l3{flex-shrink:0;scroll-snap-align:start;padding:.34rem .72rem;background:transparent;border:none;border-radius:100px;color:rgba(200,196,188,.55);font-family:'Instrument Serif','Fraunces',serif;font-style:italic;font-size:.78rem;font-weight:400;letter-spacing:0;cursor:pointer;white-space:nowrap;transition:all .25s;-webkit-tap-highlight-color:transparent;position:relative;font-variation-settings:normal}
 .pd-l3:hover{color:#fff5e6}
 .pd-l3:active{transform:scale(.95)}
 .pd-l3.active{color:#00e0c0;font-weight:500}
