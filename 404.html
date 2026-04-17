@@ -14,7 +14,7 @@ h1{font-family:'Syne',sans-serif;font-size:clamp(4rem,15vw,10rem);font-weight:80
 p{font-size:1rem;color:#9e9890;margin:1rem 0 2rem;max-width:400px}
 a{display:inline-block;background:#00e0c0;color:#050505;padding:.8rem 2rem;border-radius:100px;font-family:'Syne',sans-serif;font-weight:700;font-size:.88rem;text-decoration:none;transition:transform .3s,box-shadow .3s}
 a:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,224,192,.25)}
-</style>
+nav{transition:transform .3s ease !important}nav.nav-hidden{transform:translateY(-100%) !important}</style>
 <style>
 .ft-wrap{position:relative;z-index:2;margin-top:0;background:linear-gradient(180deg,rgba(4,6,14,0) 0%,rgba(6,8,18,.95) 20%,rgba(4,6,14,1) 100%);border-top:1px solid rgba(0,224,192,.15);padding:2.5rem 2rem 1.5rem;font-family:var(--fb,DM Sans),sans-serif}
 .ft-inner{max-width:1200px;margin:0 auto}
@@ -241,6 +241,32 @@ document.addEventListener('click',function(e){
   });
 });
 
+})();
+</script>
+<script id="nav-auto-hide">
+(function(){
+  var nav=document.getElementById('nav')||document.querySelector('nav');
+  if(!nav)return;
+  var lastY=window.scrollY;
+  var ticking=false;
+  function update(){
+    var cur=window.scrollY;
+    if(cur<20){
+      nav.classList.remove('nav-hidden');
+      document.body.classList.remove('nav-hidden');
+    } else if(cur>lastY+4){
+      nav.classList.add('nav-hidden');
+      document.body.classList.add('nav-hidden');
+    } else if(cur<lastY-4){
+      nav.classList.remove('nav-hidden');
+      document.body.classList.remove('nav-hidden');
+    }
+    lastY=cur;
+    ticking=false;
+  }
+  window.addEventListener('scroll',function(){
+    if(!ticking){requestAnimationFrame(update);ticking=true;}
+  },{passive:true});
 })();
 </script>
 </body>

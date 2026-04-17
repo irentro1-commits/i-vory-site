@@ -1981,16 +1981,22 @@ document.addEventListener('click',function(e){
 
 <script id="nav-auto-hide">
 (function(){
-  if(window.innerWidth>560)return;
-  var nav=document.getElementById('nav');
+  var nav=document.getElementById('nav')||document.querySelector('nav');
   if(!nav)return;
   var lastY=window.scrollY;
   var ticking=false;
   function update(){
     var cur=window.scrollY;
-    if(cur<20){nav.classList.remove('nav-hidden');document.body.classList.remove('nav-hidden')}
-    else if(cur>lastY+3){nav.classList.add('nav-hidden');document.body.classList.add('nav-hidden')}
-    else if(cur<lastY-3){nav.classList.remove('nav-hidden');document.body.classList.remove('nav-hidden')}
+    if(cur<20){
+      nav.classList.remove('nav-hidden');
+      document.body.classList.remove('nav-hidden');
+    } else if(cur>lastY+4){
+      nav.classList.add('nav-hidden');
+      document.body.classList.add('nav-hidden');
+    } else if(cur<lastY-4){
+      nav.classList.remove('nav-hidden');
+      document.body.classList.remove('nav-hidden');
+    }
     lastY=cur;
     ticking=false;
   }

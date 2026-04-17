@@ -985,7 +985,7 @@ body::before{background-size:800px 800px !important;opacity:.4 !important}
 .ft-wrap{padding-top:2.5rem !important}
 #contact,#faq,.sec:last-of-type{padding-bottom:2rem !important}
 
-</style>
+nav{transition:transform .3s ease !important}nav.nav-hidden{transform:translateY(-100%) !important}</style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -2696,6 +2696,32 @@ document.addEventListener('click',function(e){
       }
     });
   }
+})();
+</script>
+<script id="nav-auto-hide">
+(function(){
+  var nav=document.getElementById('nav')||document.querySelector('nav');
+  if(!nav)return;
+  var lastY=window.scrollY;
+  var ticking=false;
+  function update(){
+    var cur=window.scrollY;
+    if(cur<20){
+      nav.classList.remove('nav-hidden');
+      document.body.classList.remove('nav-hidden');
+    } else if(cur>lastY+4){
+      nav.classList.add('nav-hidden');
+      document.body.classList.add('nav-hidden');
+    } else if(cur<lastY-4){
+      nav.classList.remove('nav-hidden');
+      document.body.classList.remove('nav-hidden');
+    }
+    lastY=cur;
+    ticking=false;
+  }
+  window.addEventListener('scroll',function(){
+    if(!ticking){requestAnimationFrame(update);ticking=true;}
+  },{passive:true});
 })();
 </script>
 </body></html>

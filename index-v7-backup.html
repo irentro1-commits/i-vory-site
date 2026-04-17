@@ -312,7 +312,7 @@ footer{border-top:1px solid var(--br);padding:2.5rem;background:rgba(5,5,5,.5);b
   .s2-fineprint,.s2 .fp{font-size:.65rem !important;text-align:center !important;padding:0 1rem !important;line-height:1.5}
   /* Reduce hero3d opacity on s2 specifically */
   body{--s2op:1}
-}@media(max-width:900px){.s2-wrap{flex-direction:column !important;align-items:center !important;gap:1.5rem !important;width:100% !important}.s2-content{order:1 !important;flex:none !important;max-width:100% !important;width:100% !important}.hero-video{order:2 !important;position:relative !important;top:auto !important;right:auto !important;left:auto !important;transform:none !important;margin:0 auto !important;width:260px !important;height:462px !important;animation:none !important;opacity:1 !important;flex-shrink:0 !important}.hero-video:hover{transform:scale(1.02) !important}}@media(max-width:900px){section.s2,.s2{display:block !important;min-height:0 !important;text-align:center !important}.s2 .s2-wrap{display:block !important;width:100% !important}.s2 .hero-video{display:block !important;position:relative !important;top:auto !important;right:auto !important;left:auto !important;transform:none !important;margin:1.5rem auto 0 !important;width:260px !important;height:462px !important;animation:none !important;opacity:1 !important;float:none !important;clear:both !important}}@media(max-width:900px){.hero-video{display:none !important}}</style>
+}@media(max-width:900px){.s2-wrap{flex-direction:column !important;align-items:center !important;gap:1.5rem !important;width:100% !important}.s2-content{order:1 !important;flex:none !important;max-width:100% !important;width:100% !important}.hero-video{order:2 !important;position:relative !important;top:auto !important;right:auto !important;left:auto !important;transform:none !important;margin:0 auto !important;width:260px !important;height:462px !important;animation:none !important;opacity:1 !important;flex-shrink:0 !important}.hero-video:hover{transform:scale(1.02) !important}}@media(max-width:900px){section.s2,.s2{display:block !important;min-height:0 !important;text-align:center !important}.s2 .s2-wrap{display:block !important;width:100% !important}.s2 .hero-video{display:block !important;position:relative !important;top:auto !important;right:auto !important;left:auto !important;transform:none !important;margin:1.5rem auto 0 !important;width:260px !important;height:462px !important;animation:none !important;opacity:1 !important;float:none !important;clear:both !important}}@media(max-width:900px){.hero-video{display:none !important}}nav{transition:transform .3s ease !important}nav.nav-hidden{transform:translateY(-100%) !important}</style>
 <script type="application/ld+json">
 {
 "@context":"https://schema.org",
@@ -1828,6 +1828,32 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")close()});
   else init();
   setTimeout(init, 500);
   setTimeout(init, 2000);
+})();
+</script>
+<script id="nav-auto-hide">
+(function(){
+  var nav=document.getElementById('nav')||document.querySelector('nav');
+  if(!nav)return;
+  var lastY=window.scrollY;
+  var ticking=false;
+  function update(){
+    var cur=window.scrollY;
+    if(cur<20){
+      nav.classList.remove('nav-hidden');
+      document.body.classList.remove('nav-hidden');
+    } else if(cur>lastY+4){
+      nav.classList.add('nav-hidden');
+      document.body.classList.add('nav-hidden');
+    } else if(cur<lastY-4){
+      nav.classList.remove('nav-hidden');
+      document.body.classList.remove('nav-hidden');
+    }
+    lastY=cur;
+    ticking=false;
+  }
+  window.addEventListener('scroll',function(){
+    if(!ticking){requestAnimationFrame(update);ticking=true;}
+  },{passive:true});
 })();
 </script>
 </body></html>
