@@ -211,30 +211,7 @@ if(!__MOB){(function(){
   };
 })();
 
-// CURSOR TRAIL (desktop only)
-if(!__MOB){(function(){
-  const trailCvs=document.createElement('canvas');
-  trailCvs.style.cssText='position:fixed;inset:0;pointer-events:none;z-index:99;mix-blend-mode:screen';
-  document.body.appendChild(trailCvs);
-  const trailCtx=trailCvs.getContext('2d');
-  function trResize(){trailCvs.width=innerWidth;trailCvs.height=innerHeight}
-  trResize();addEventListener('resize',trResize);
-  const trail=[];
-  addEventListener('mousemove',e=>{trail.push({x:e.clientX,y:e.clientY,life:1});if(trail.length>40)trail.shift()},{passive:true});
-  function trailTick(){
-    trailCtx.clearRect(0,0,trailCvs.width,trailCvs.height);
-    for(let i=0;i<trail.length;i++){
-      const p=trail[i];p.life-=.025;if(p.life<=0)continue;
-      const r=p.life*6;
-      const g=trailCtx.createRadialGradient(p.x,p.y,0,p.x,p.y,r);
-      g.addColorStop(0,`rgba(0,224,192,${p.life*.6})`);g.addColorStop(1,'rgba(0,224,192,0)');
-      trailCtx.fillStyle=g;trailCtx.beginPath();trailCtx.arc(p.x,p.y,r,0,Math.PI*2);trailCtx.fill();
-    }
-    while(trail.length&&trail[0].life<=0)trail.shift();
-    requestAnimationFrame(trailTick);
-  }
-  trailTick();
-})()}
+// CURSOR TRAIL (disabled — replaced by ethereal meteor-cursor.js at root)
 
 // ========== PREMIUM FX ROUND 4 — 2026 ==========
 
