@@ -237,14 +237,14 @@ body.nav-hidden .pd{top:16px}
 @media(min-width:1100px){.pd-row-2::after,.pd-row-3::after{display:none}}
 
 /* LAYER 1 */
-.pd-l1{padding:.22rem .82rem;background:transparent;border:none;border-radius:100px;color:rgba(208,203,195,.65);font-family:'Fraunces',serif;font-size:.7rem;font-weight:500;letter-spacing:-.005em;font-variation-settings:"opsz" 48,"SOFT" 80,"WONK" 1;cursor:pointer;white-space:nowrap;transition:all .3s cubic-bezier(.2,.9,.3,1.1);-webkit-tap-highlight-color:transparent}
+.pd-l1{padding:.22rem .82rem;background:transparent;border:none;border-radius:100px;color:rgba(208,203,195,.65);font-family:'Fraunces',serif;font-size:1.05rem;font-weight:500;letter-spacing:-.005em;font-variation-settings:"opsz" 48,"SOFT" 80,"WONK" 1;cursor:pointer;white-space:nowrap;transition:all .3s cubic-bezier(.2,.9,.3,1.1);-webkit-tap-highlight-color:transparent}
 .pd-l1:hover{color:#fff5e6}
 .pd-l1.active{background:#fff5e6;color:#0a0b14;font-weight:600;box-shadow:0 2px 12px rgba(255,245,230,.2)}
 
 /* LAYER 2 */
 .pd-l2-group{display:flex;gap:.12rem;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none;touch-action:pan-x pan-y;overscroll-behavior-x:contain;overscroll-behavior-y:auto;max-width:100%;width:100%}
 .pd-l2-group::-webkit-scrollbar{display:none}
-.pd-l2{flex-shrink:0;scroll-snap-align:start;padding:.2rem .55rem;background:transparent;border:none;border-radius:100px;color:rgba(216,212,200,.6);font-family:'Fraunces',serif;font-size:.64rem;font-weight:500;letter-spacing:-.005em;font-variation-settings:"opsz" 48,"SOFT" 80;cursor:pointer;white-space:nowrap;transition:all .25s;-webkit-tap-highlight-color:transparent}
+.pd-l2{flex-shrink:0;scroll-snap-align:start;padding:.2rem .55rem;background:transparent;border:none;border-radius:100px;color:rgba(216,212,200,.6);font-family:'Fraunces',serif;font-size:.98rem;font-weight:500;letter-spacing:-.005em;font-variation-settings:"opsz" 48,"SOFT" 80;cursor:pointer;white-space:nowrap;transition:all .25s;-webkit-tap-highlight-color:transparent}
 .pd-l2:hover{color:#fff5e6;background:rgba(255,245,230,.04)}
 .pd-l2:active{transform:scale(.95)}
 .pd-l2.active{background:rgba(255,245,230,.92);color:#0a0b14;font-weight:600}
@@ -253,7 +253,7 @@ body.nav-hidden .pd{top:16px}
 .pd-l3-group{display:flex;gap:.1rem;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none;width:100%;justify-content:flex-start;padding:0 .2rem;touch-action:pan-x pan-y;overscroll-behavior-x:contain;overscroll-behavior-y:auto}
 .pd-l3-group::-webkit-scrollbar{display:none}
 .pd-l3-group.pd-l3-hidden,.pd-l3-hidden{display:none !important}
-.pd-l3{flex-shrink:0;scroll-snap-align:start;padding:.18rem .5rem;background:transparent;border:none;border-radius:100px;color:rgba(200,196,188,.55);font-family:'Instrument Serif','Fraunces',serif;font-style:italic;font-size:.64rem;font-weight:400;letter-spacing:0;cursor:pointer;white-space:nowrap;transition:all .25s;-webkit-tap-highlight-color:transparent;position:relative;font-variation-settings:normal}
+.pd-l3{flex-shrink:0;scroll-snap-align:start;padding:.18rem .5rem;background:transparent;border:none;border-radius:100px;color:rgba(200,196,188,.55);font-family:'Instrument Serif','Fraunces',serif;font-style:italic;font-size:.92rem;font-weight:400;letter-spacing:0;cursor:pointer;white-space:nowrap;transition:all .25s;-webkit-tap-highlight-color:transparent;position:relative;font-variation-settings:normal}
 .pd-l3:hover{color:#fff5e6}
 .pd-l3:active{transform:scale(.95)}
 .pd-l3.active{color:#00e0c0;font-weight:500}
@@ -459,14 +459,14 @@ body.fx-disabled .p-sec::before,body.fx-disabled .p-sec::after{display:none}
 
 
 /* === COSMIC SMOKE on each P-SUB (subvariant card) === */
-.p-sub{position:relative;z-index:2;isolation:isolate;padding:2.2rem 1.6rem 2.4rem;border-radius:24px;margin-bottom:2.5rem}
+.p-sub{position:relative;z-index:2;isolation:isolate;padding:2.5rem 2rem 3rem;border-radius:24px;margin-bottom:3.5rem}
 .p-sub::before{
   content:"";
   position:absolute;
-  inset:-.8rem -.5rem;
-  background:radial-gradient(ellipse 75% 80% at 40% 45%,rgba(4,6,14,.78) 0%,rgba(4,6,14,.62) 40%,rgba(4,6,14,.35) 75%,transparent 100%);
-  border-radius:58% 42% 53% 47% / 50% 54% 46% 50%;
-  filter:blur(22px) saturate(1.08);
+  inset:-2.2rem -1.8rem;
+  background:radial-gradient(ellipse 85% 90% at 50% 50%,rgba(4,6,14,.88) 0%,rgba(4,6,14,.78) 45%,rgba(4,6,14,.55) 75%,rgba(4,6,14,.25) 92%,transparent 100%);
+  border-radius:55% 45% 58% 42% / 48% 52% 50% 52%;
+  filter:blur(38px) saturate(1.1);
   z-index:-2;
   pointer-events:none;
   animation:subBreath 22s ease-in-out infinite alternate;
@@ -474,10 +474,10 @@ body.fx-disabled .p-sec::before,body.fx-disabled .p-sec::after{display:none}
 .p-sub::after{
   content:"";
   position:absolute;
-  inset:-1.5rem -1rem;
-  background:radial-gradient(ellipse 65% 65% at 60% 55%,rgba(0,80,100,.2) 0%,rgba(4,6,14,.12) 55%,transparent 90%);
+  inset:-3rem -2.4rem;
+  background:radial-gradient(ellipse 70% 75% at 55% 55%,rgba(0,120,140,.22) 0%,rgba(4,6,14,.15) 55%,transparent 90%);
   border-radius:65% 35% 48% 52% / 52% 48% 52% 48%;
-  filter:blur(36px);
+  filter:blur(60px);
   z-index:-3;
   pointer-events:none;
   animation:subDrift 50s linear infinite;
@@ -497,9 +497,9 @@ body.fx-disabled .p-sec::before,body.fx-disabled .p-sec::after{display:none}
   100%{transform:rotate(360deg) scale(1)}
 }
 @media(max-width:768px){
-  .p-sub{padding:1.6rem 1rem 2rem;margin-bottom:1.8rem}
-  .p-sub::before{inset:-.4rem -.3rem;filter:blur(16px)}
-  .p-sub::after{inset:-.8rem -.5rem;filter:blur(24px)}
+  .p-sub{padding:1.8rem 1rem 2.4rem;margin-bottom:2.4rem}
+  .p-sub::before{inset:-1.4rem -.8rem;filter:blur(28px)}
+  .p-sub::after{inset:-2rem -1.2rem;filter:blur(42px)}
 }
 body.fx-disabled .p-sub::before,body.fx-disabled .p-sub::after{display:none}
 
