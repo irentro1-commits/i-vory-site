@@ -410,6 +410,65 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
 .p-cta-secondary:hover{background:rgba(0,224,192,.08);border-color:#00e0c0}
 
 
+
+/* === COSMIC SMOKE PANELS (picasso blobs behind each section) === */
+.p-sec{position:relative;z-index:2;isolation:isolate}
+.p-sec::before{
+  content:"";
+  position:absolute;
+  inset:-2rem -1.5rem;
+  background:radial-gradient(ellipse 70% 85% at 35% 40%,rgba(4,6,14,.72) 0%,rgba(4,6,14,.55) 45%,rgba(4,6,14,.28) 75%,transparent 100%);
+  border-radius:55% 45% 60% 40% / 48% 56% 44% 52%;
+  filter:blur(32px) saturate(1.1);
+  z-index:-2;
+  pointer-events:none;
+  animation:smokeBreath 18s ease-in-out infinite alternate;
+}
+.p-sec::after{
+  content:"";
+  position:absolute;
+  inset:-3rem -2.5rem;
+  background:radial-gradient(ellipse 60% 70% at 65% 60%,rgba(0,60,80,.22) 0%,rgba(4,6,14,.15) 50%,transparent 85%);
+  border-radius:62% 38% 47% 53% / 55% 42% 58% 45%;
+  filter:blur(50px);
+  z-index:-3;
+  pointer-events:none;
+  animation:smokeRotate 40s linear infinite;
+}
+.p-sec:nth-child(2n)::before{border-radius:62% 38% 47% 53% / 55% 42% 58% 45%;animation-duration:22s;animation-delay:-4s}
+.p-sec:nth-child(3n)::before{border-radius:40% 60% 55% 45% / 52% 48% 52% 48%;animation-duration:26s;animation-delay:-9s}
+.p-sec:nth-child(2n)::after{border-radius:58% 42% 53% 47% / 45% 55% 45% 55%;animation-duration:50s;animation-direction:reverse}
+.p-sec:nth-child(3n)::after{border-radius:48% 52% 40% 60% / 58% 42% 58% 42%;animation-duration:60s}
+@keyframes smokeBreath{
+  0%{transform:scale(1) translate(0,0)}
+  50%{transform:scale(1.06) translate(1%,-1%)}
+  100%{transform:scale(.97) translate(-1%,1%)}
+}
+@keyframes smokeRotate{
+  0%{transform:rotate(0deg) scale(1)}
+  50%{transform:rotate(180deg) scale(1.05)}
+  100%{transform:rotate(360deg) scale(1)}
+}
+@media(max-width:768px){
+  .p-sec::before{inset:-1rem -.6rem;filter:blur(24px)}
+  .p-sec::after{inset:-1.5rem -1rem;filter:blur(36px)}
+}
+/* Disabled when user turns FX off */
+body.fx-disabled .p-sec::before,body.fx-disabled .p-sec::after{display:none}
+
+/* === TRIM FINAL: hide servicii section (2 logos, clutters the end) === */
+#sec-servicii{display:none!important}
+/* Remove the Servicii L2 dock button too, since section is hidden */
+.pd-l2[data-l2="servicii"]{display:none!important}
+
+/* === Simplify p-cta final === */
+.p-cta{padding:4rem 1.5rem 5rem;text-align:center;position:relative;z-index:2}
+.p-cta-h{font-family:'Fraunces',serif;font-size:clamp(1.8rem,5vw,2.6rem);font-weight:600;font-variation-settings:"SOFT" 60,"WONK" 1;margin:0 0 .6rem;line-height:1.1;color:#fff5e6}
+.p-cta-h em{font-family:'Instrument Serif',serif;font-style:italic;color:#00e0c0;font-weight:400}
+.p-cta-sub{font-size:.95rem;color:#b8beca;max-width:480px;margin:0 auto 1.8rem;line-height:1.5}
+.p-cta-btns{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap}
+@media(max-width:560px){.p-cta{padding:3rem 1.2rem 4rem}}
+
 </style>
 
 <style id="text-visibility-boost">
@@ -2003,6 +2062,26 @@ document.addEventListener('click',function(e){
   window.addEventListener('scroll',function(){
     if(!ticking){requestAnimationFrame(update);ticking=true;}
   },{passive:true});
+})();
+</script>
+<script id="pf-fx-toggle">
+(function(){
+  if(window.innerWidth<=768)return;
+  var off=localStorage.getItem('ivory-fx-off')==='1';
+  if(off)document.body.classList.add('fx-disabled');
+  var btn=document.createElement('button');
+  btn.setAttribute('aria-label','Dezactiveaza efecte vizuale');
+  btn.title=off?'Activeaza efecte vizuale':'Dezactiveaza efecte vizuale';
+  btn.style.cssText='position:fixed;bottom:1.5rem;right:1.5rem;width:42px;height:42px;border-radius:50%;background:rgba(6,8,18,.88);backdrop-filter:blur(10px);border:1px solid rgba(0,224,192,'+(off?'.25':'.25')+');color:'+(off?'#ff6b6b':'#00e0c0')+';cursor:pointer;z-index:9999;display:flex;align-items:center;justify-content:center;font-size:18px;line-height:1;transition:all .3s;box-shadow:0 4px 20px rgba(0,0,0,.5)';
+  btn.innerHTML=off?'\u2715':'\u2726';
+  btn.addEventListener('click',function(){
+    var d=document.body.classList.toggle('fx-disabled');
+    btn.style.color=d?'#ff6b6b':'#00e0c0';
+    btn.innerHTML=d?'\u2715':'\u2726';
+    btn.title=d?'Activeaza efecte vizuale':'Dezactiveaza efecte vizuale';
+    try{localStorage.setItem('ivory-fx-off',d?'1':'0')}catch(e){}
+  });
+  document.body.appendChild(btn);
 })();
 </script>
 </body>
