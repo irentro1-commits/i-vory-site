@@ -358,6 +358,23 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
 .p-vw-cta{display:inline-flex;align-items:center;gap:.5rem;padding:.95rem 1.8rem;background:linear-gradient(135deg,#00e0c0,#00b896);color:#041412;font-family:'Geist',sans-serif;font-weight:700;font-size:.95rem;border-radius:100px;text-decoration:none;box-shadow:0 10px 30px rgba(0,224,192,.28);transition:transform .25s;letter-spacing:-.005em}
 .p-vw-cta:hover{transform:translateY(-2px)}
 
+
+/* VIDEO PLAYER */
+.p-video{margin:1.5rem 0;border-radius:14px;overflow:hidden;background:#0a0b14;box-shadow:0 20px 50px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.04) inset;position:relative;max-width:480px;margin-left:auto;margin-right:auto}
+.p-video video{width:100%;display:block;max-height:80vh;background:#000}
+.p-video-caption{padding:.9rem 1.1rem;font-family:'Fraunces',serif;font-size:.88rem;color:#d0cbc3;font-variation-settings:"opsz" 48,"SOFT" 100;line-height:1.4;border-top:1px solid rgba(255,255,255,.06)}
+@media(max-width:560px){.p-video{margin:1rem 0;max-width:100%}.p-video-caption{font-size:.82rem;padding:.75rem .9rem}}
+
+/* p-grid-1 single image centered */
+.p-grid-1{display:grid;grid-template-columns:1fr;max-width:720px;margin:0 auto}
+.p-grid-1 img{aspect-ratio:auto;max-height:560px;object-fit:contain;width:100%;background:#0a0b14}
+
+/* p-grid-3 wider for landscape hero */
+.p-grid .p-grid-3{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+
+/* Video section is hidden by default (only shown via JS) */
+.p-sec-video{scroll-margin-top:200px}
+
 /* Final CTA */
 .p-cta{max-width:900px;margin:4rem auto 6rem;padding:4rem 2.5rem;text-align:center;background:linear-gradient(180deg,rgba(8,10,20,.88),rgba(4,6,14,.92));border:1px solid rgba(0,224,192,.15);border-radius:24px;box-shadow:0 40px 100px rgba(0,0,0,.6)}
 @media(max-width:768px){.p-cta{padding:3rem 1.4rem;margin:2.5rem 1rem 4rem;border-radius:18px}}
@@ -571,51 +588,70 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
   </div>
 </header>
 <!-- STICKY DOCK NAV 3-LEVEL -->
+<!-- STICKY DOCK NAV — 3 level taxonomy -->
 <nav class="pd" id="pd" aria-label="Navigare portofoliu">
   <div class="pd-row pd-row-1">
-    <button class="pd-l1 active" data-l1="static">Design</button>
+    <button class="pd-l1 active" data-l1="design">Design</button>
     <button class="pd-l1" data-l1="video">Video</button>
   </div>
+
   <div class="pd-row pd-row-2" id="pdRow2">
-    <div class="pd-tabs pd-l2-group" data-for="static">
+    <div class="pd-tabs pd-l2-group" data-for="design">
       <button class="pd-l2 active" data-l2="carusel" data-to="sec-carusel">Carusel</button>
       <button class="pd-l2" data-l2="post" data-to="sec-post">Post</button>
       <button class="pd-l2" data-l2="ecommerce" data-to="sec-ecommerce">E-commerce</button>
       <button class="pd-l2" data-l2="servicii" data-to="sec-servicii">Servicii</button>
     </div>
-    <div class="pd-tabs pd-tabs-hidden" data-for="video">
-      <span class="pd-soon-inline">Reels · Cinematic · Showcase · Before&amp;After — <em>în curând</em></span>
+    <div class="pd-tabs pd-l2-group pd-tabs-hidden" data-for="video">
+      <button class="pd-l2" data-l2="vid-cinematic" data-to="sec-vid-cinematic">Cinematic</button>
+      <button class="pd-l2" data-l2="vid-animat" data-to="sec-vid-animat">Animat</button>
+      <button class="pd-l2" data-l2="vid-tiktok" data-to="sec-vid-tiktok">TikTok</button>
+      <button class="pd-l2" data-l2="vid-asmr" data-to="sec-vid-asmr">ASMR</button>
+      <button class="pd-l2" data-l2="vid-medical" data-to="sec-vid-medical">Medical B/A</button>
     </div>
   </div>
+
   <div class="pd-row pd-row-3" id="pdRow3">
-    <div class="pd-l3-group pd-l3-carusel" data-l2="carusel">
+    <!-- DESIGN L3 groups -->
+    <div class="pd-l3-group" data-l2="carusel">
       <button class="pd-l3" data-to="car-educational">Educațional</button>
       <button class="pd-l3" data-to="car-storytelling">Storytelling</button>
       <button class="pd-l3" data-to="car-showcase">Showcase</button>
       <button class="pd-l3" data-to="car-promotional">Promoțional</button>
     </div>
-    <div class="pd-l3-group pd-l3-post pd-l3-hidden" data-l2="post">
+    <div class="pd-l3-group pd-l3-hidden" data-l2="post">
       <button class="pd-l3" data-to="post-emotional">Emoțional</button>
+      <button class="pd-l3" data-soon="true">Meme brand</button>
       <button class="pd-l3" data-soon="true">Anunț</button>
-      <button class="pd-l3" data-soon="true">Duo</button>
-      <button class="pd-l3" data-soon="true">Meme</button>
     </div>
-    <div class="pd-l3-group pd-l3-ecommerce pd-l3-hidden" data-l2="ecommerce">
-      <button class="pd-l3" data-to="ec-hero">Hero produs</button>
-      <button class="pd-l3" data-soon="true">Ads creative</button>
-      <button class="pd-l3" data-soon="true">Specs</button>
+    <div class="pd-l3-group pd-l3-hidden" data-l2="ecommerce">
+      <button class="pd-l3" data-to="ec-product-hero">Product hero</button>
+      <button class="pd-l3" data-to="ec-landing">Landing</button>
+      <button class="pd-l3" data-to="ec-categorii">Categorii</button>
+      <button class="pd-l3" data-to="ec-emag">Emag style</button>
+      <button class="pd-l3" data-to="ec-cozy">Cozy</button>
+      <button class="pd-l3" data-to="ec-studio">Studio</button>
+      <button class="pd-l3" data-to="ec-medical-light">Lumină spital</button>
+      <button class="pd-l3" data-to="ec-ugc">UGC</button>
+      <button class="pd-l3" data-to="ec-editorial">Editorial</button>
     </div>
-    <div class="pd-l3-group pd-l3-servicii pd-l3-hidden" data-l2="servicii">
-      <button class="pd-l3" data-to="srv-profesionisti">Profesioniști</button>
+    <div class="pd-l3-group pd-l3-hidden" data-l2="servicii">
+      <button class="pd-l3" data-to="srv-logo">Logo &amp; brand</button>
       <button class="pd-l3" data-soon="true">Testimoniale</button>
       <button class="pd-l3" data-soon="true">Prezentare</button>
     </div>
+    <!-- VIDEO L3 groups (each video = own section, no L3 needed) -->
+    <div class="pd-l3-group pd-l3-hidden" data-l2="vid-cinematic"><span class="pd-soon-inline">Urbancat · <em>Orașul e al lor</em></span></div>
+    <div class="pd-l3-group pd-l3-hidden" data-l2="vid-animat"><span class="pd-soon-inline">Urbancat · <em>CatNip</em></span></div>
+    <div class="pd-l3-group pd-l3-hidden" data-l2="vid-tiktok"><span class="pd-soon-inline">Urbancat · <em>Apă proaspătă</em></span></div>
+    <div class="pd-l3-group pd-l3-hidden" data-l2="vid-asmr"><span class="pd-soon-inline">Urbancat · <em>Ascultă pisicile</em></span></div>
+    <div class="pd-l3-group pd-l3-hidden" data-l2="vid-medical"><span class="pd-soon-inline">Dr. Iorga · <em>Caz Vali — before/after</em></span></div>
   </div>
 </nav>
 
 <main class="pf-body">
 
-<!-- ========== STATIC / CARUSEL ========== -->
+<!-- ========== DESIGN / CARUSEL ========== -->
 <section class="p-sec" id="sec-carusel">
   <div class="p-sec-head">
     <div class="p-sec-crumb">Design · Carusel</div>
@@ -629,14 +665,14 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
       <div class="p-axis-row axis-l2"><span class="p-axis-sym">1</span><span class="p-axis-name">Carusel</span></div>
       <div class="p-axis-row axis-l3 p-axis-active"><span class="p-axis-sym">A</span><span class="p-axis-name">Educațional</span></div>
     </div>
-    <p class="p-sub-desc">Omul învață ceva util. <em>Același tip de conținut, două abordări vizuale</em> — arătăm cât de flexibil lucrăm stilul.</p>
+    <p class="p-sub-desc">Omul învață ceva util. <em>Două registre diferite</em> — unul pentru avocat (juridic, dens), unul pentru medic (cald, calm).</p>
     <div class="p-variant">
-      <div class="p-variant-head"><span class="p-variant-tag">Variantă <span class="p-variant-greek">𝛼</span></span><span class="p-variant-note">Register editorial, serif condens, layout aerat</span></div>
-      <div class="p-grid"><img loading="lazy" src="/portfolio/carousel-ivory-1/1.png" alt="i-Vory Creative carousel-ivory-1 slide 1"><img loading="lazy" src="/portfolio/carousel-ivory-1/2.png" alt="i-Vory Creative carousel-ivory-1 slide 2"><img loading="lazy" src="/portfolio/carousel-ivory-1/3.png" alt="i-Vory Creative carousel-ivory-1 slide 3"><img loading="lazy" src="/portfolio/carousel-ivory-1/4.png" alt="i-Vory Creative carousel-ivory-1 slide 4"><img loading="lazy" src="/portfolio/carousel-ivory-1/5.png" alt="i-Vory Creative carousel-ivory-1 slide 5"><img loading="lazy" src="/portfolio/carousel-ivory-1/6.png" alt="i-Vory Creative carousel-ivory-1 slide 6"><img loading="lazy" src="/portfolio/carousel-ivory-1/7.png" alt="i-Vory Creative carousel-ivory-1 slide 7"></div>
+      <div class="p-variant-head"><span class="p-variant-tag">Variantă <span class="p-variant-greek">𝛼</span></span><span class="p-variant-note">Register juridic, palete graphite, tipografie serif autoritară</span></div>
+      <div class="p-grid"><img loading="lazy" src="/portfolio2/design/carusel/educational/avocat/1.webp" alt="i-Vory avocat"><img loading="lazy" src="/portfolio2/design/carusel/educational/avocat/2.webp" alt="i-Vory avocat"><img loading="lazy" src="/portfolio2/design/carusel/educational/avocat/3.webp" alt="i-Vory avocat"><img loading="lazy" src="/portfolio2/design/carusel/educational/avocat/4.webp" alt="i-Vory avocat"><img loading="lazy" src="/portfolio2/design/carusel/educational/avocat/5.webp" alt="i-Vory avocat"><img loading="lazy" src="/portfolio2/design/carusel/educational/avocat/6.webp" alt="i-Vory avocat"><img loading="lazy" src="/portfolio2/design/carusel/educational/avocat/7.webp" alt="i-Vory avocat"></div>
     </div>
     <div class="p-variant">
-      <div class="p-variant-head"><span class="p-variant-tag">Variantă <span class="p-variant-greek">𝛽</span></span><span class="p-variant-note">Register dens, paletă albastru electric, tipografie grotesc</span></div>
-      <div class="p-grid"><img loading="lazy" src="/portfolio/carousel-ivory-2/1.png" alt="i-Vory Creative carousel-ivory-2 slide 1"><img loading="lazy" src="/portfolio/carousel-ivory-2/2.png" alt="i-Vory Creative carousel-ivory-2 slide 2"><img loading="lazy" src="/portfolio/carousel-ivory-2/3.png" alt="i-Vory Creative carousel-ivory-2 slide 3"><img loading="lazy" src="/portfolio/carousel-ivory-2/4.png" alt="i-Vory Creative carousel-ivory-2 slide 4"><img loading="lazy" src="/portfolio/carousel-ivory-2/5.png" alt="i-Vory Creative carousel-ivory-2 slide 5"><img loading="lazy" src="/portfolio/carousel-ivory-2/6.png" alt="i-Vory Creative carousel-ivory-2 slide 6"><img loading="lazy" src="/portfolio/carousel-ivory-2/7.png" alt="i-Vory Creative carousel-ivory-2 slide 7"></div>
+      <div class="p-variant-head"><span class="p-variant-tag">Variantă <span class="p-variant-greek">𝛽</span></span><span class="p-variant-note">Register calm, paletă albastru spital, ton blând pentru pacienți</span></div>
+      <div class="p-grid"><img loading="lazy" src="/portfolio2/design/carusel/educational/medical/1.webp" alt="i-Vory medical"><img loading="lazy" src="/portfolio2/design/carusel/educational/medical/2.webp" alt="i-Vory medical"><img loading="lazy" src="/portfolio2/design/carusel/educational/medical/3.webp" alt="i-Vory medical"><img loading="lazy" src="/portfolio2/design/carusel/educational/medical/4.webp" alt="i-Vory medical"><img loading="lazy" src="/portfolio2/design/carusel/educational/medical/5.webp" alt="i-Vory medical"><img loading="lazy" src="/portfolio2/design/carusel/educational/medical/6.webp" alt="i-Vory medical"><img loading="lazy" src="/portfolio2/design/carusel/educational/medical/7.webp" alt="i-Vory medical"></div>
     </div>
   </article>
 
@@ -647,7 +683,7 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
       <div class="p-axis-row axis-l3 p-axis-active"><span class="p-axis-sym">B</span><span class="p-axis-name">Storytelling</span></div>
     </div>
     <p class="p-sub-desc">O poveste cu arc: tensiune, decizie, consecință. <em>Brand-ul intră la final</em>, legat de un eveniment real sau sărbătoare.</p>
-    <div class="p-grid"><img loading="lazy" src="/portfolio/carousel-ivory-storytelling/1.png" alt="i-Vory Creative carousel-ivory-storytelling slide 1"><img loading="lazy" src="/portfolio/carousel-ivory-storytelling/2.png" alt="i-Vory Creative carousel-ivory-storytelling slide 2"><img loading="lazy" src="/portfolio/carousel-ivory-storytelling/3.png" alt="i-Vory Creative carousel-ivory-storytelling slide 3"><img loading="lazy" src="/portfolio/carousel-ivory-storytelling/4.png" alt="i-Vory Creative carousel-ivory-storytelling slide 4"><img loading="lazy" src="/portfolio/carousel-ivory-storytelling/5.png" alt="i-Vory Creative carousel-ivory-storytelling slide 5"><img loading="lazy" src="/portfolio/carousel-ivory-storytelling/6.png" alt="i-Vory Creative carousel-ivory-storytelling slide 6"><img loading="lazy" src="/portfolio/carousel-ivory-storytelling/7.png" alt="i-Vory Creative carousel-ivory-storytelling slide 7"></div>
+    <div class="p-grid"><img loading="lazy" src="/portfolio2/design/carusel/storytelling/1.webp" alt="i-Vory Storytelling"><img loading="lazy" src="/portfolio2/design/carusel/storytelling/2.webp" alt="i-Vory Storytelling"><img loading="lazy" src="/portfolio2/design/carusel/storytelling/3.webp" alt="i-Vory Storytelling"><img loading="lazy" src="/portfolio2/design/carusel/storytelling/4.webp" alt="i-Vory Storytelling"><img loading="lazy" src="/portfolio2/design/carusel/storytelling/5.webp" alt="i-Vory Storytelling"><img loading="lazy" src="/portfolio2/design/carusel/storytelling/6.webp" alt="i-Vory Storytelling"><img loading="lazy" src="/portfolio2/design/carusel/storytelling/7.webp" alt="i-Vory Storytelling"></div>
   </article>
 
   <article class="p-sub" id="car-showcase">
@@ -657,7 +693,7 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
       <div class="p-axis-row axis-l3 p-axis-active"><span class="p-axis-sym">C</span><span class="p-axis-name">Showcase</span></div>
     </div>
     <p class="p-sub-desc">Rezultatele la vedere. Cifre, studii de caz, before/after.</p>
-    <div class="p-grid"><img loading="lazy" src="/portfolio/carousel-ivory-showcase/1.png" alt="i-Vory Creative carousel-ivory-showcase slide 1"><img loading="lazy" src="/portfolio/carousel-ivory-showcase/2.png" alt="i-Vory Creative carousel-ivory-showcase slide 2"><img loading="lazy" src="/portfolio/carousel-ivory-showcase/3.png" alt="i-Vory Creative carousel-ivory-showcase slide 3"><img loading="lazy" src="/portfolio/carousel-ivory-showcase/5.png" alt="i-Vory Creative carousel-ivory-showcase slide 5"><img loading="lazy" src="/portfolio/carousel-ivory-showcase/6.png" alt="i-Vory Creative carousel-ivory-showcase slide 6"><img loading="lazy" src="/portfolio/carousel-ivory-showcase/7.png" alt="i-Vory Creative carousel-ivory-showcase slide 7"></div>
+    <div class="p-grid"><img loading="lazy" src="/portfolio2/design/carusel/showcase/1.webp" alt="i-Vory Showcase"><img loading="lazy" src="/portfolio2/design/carusel/showcase/2.webp" alt="i-Vory Showcase"><img loading="lazy" src="/portfolio2/design/carusel/showcase/3.webp" alt="i-Vory Showcase"><img loading="lazy" src="/portfolio2/design/carusel/showcase/4.webp" alt="i-Vory Showcase"><img loading="lazy" src="/portfolio2/design/carusel/showcase/5.webp" alt="i-Vory Showcase"><img loading="lazy" src="/portfolio2/design/carusel/showcase/6.webp" alt="i-Vory Showcase"><img loading="lazy" src="/portfolio2/design/carusel/showcase/7.webp" alt="i-Vory Showcase"></div>
   </article>
 
   <article class="p-sub" id="car-promotional">
@@ -666,12 +702,23 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
       <div class="p-axis-row axis-l2"><span class="p-axis-sym">1</span><span class="p-axis-name">Carusel</span></div>
       <div class="p-axis-row axis-l3 p-axis-active"><span class="p-axis-sym">D</span><span class="p-axis-name">Promoțional</span></div>
     </div>
-    <p class="p-sub-desc">Promoțional direct. Beneficiu, proof, CTA clar.</p>
-    <div class="p-grid"><img loading="lazy" src="/portfolio/carousel-urbancat/1.png" alt="i-Vory Creative carousel-urbancat slide 1"><img loading="lazy" src="/portfolio/carousel-urbancat/2.png" alt="i-Vory Creative carousel-urbancat slide 2"><img loading="lazy" src="/portfolio/carousel-urbancat/3.png" alt="i-Vory Creative carousel-urbancat slide 3"><img loading="lazy" src="/portfolio/carousel-urbancat/4.png" alt="i-Vory Creative carousel-urbancat slide 4"><img loading="lazy" src="/portfolio/carousel-urbancat/5.png" alt="i-Vory Creative carousel-urbancat slide 5"><img loading="lazy" src="/portfolio/carousel-urbancat/6.png" alt="i-Vory Creative carousel-urbancat slide 6"><img loading="lazy" src="/portfolio/carousel-urbancat/7.png" alt="i-Vory Creative carousel-urbancat slide 7"></div>
+    <p class="p-sub-desc">Promoțional direct. <em>Trei abordări</em> — editorial premium, comercial direct și e-commerce.</p>
+    <div class="p-variant">
+      <div class="p-variant-head"><span class="p-variant-tag">Variantă <span class="p-variant-greek">𝛼</span></span><span class="p-variant-note">Register editorial, tipografie condensă, spațiu negativ</span></div>
+      <div class="p-grid"><img loading="lazy" src="/portfolio2/design/carusel/promotional/ivory-1/1.webp" alt="i-Vory i-vory-1"><img loading="lazy" src="/portfolio2/design/carusel/promotional/ivory-1/2.webp" alt="i-Vory i-vory-1"><img loading="lazy" src="/portfolio2/design/carusel/promotional/ivory-1/3.webp" alt="i-Vory i-vory-1"><img loading="lazy" src="/portfolio2/design/carusel/promotional/ivory-1/4.webp" alt="i-Vory i-vory-1"><img loading="lazy" src="/portfolio2/design/carusel/promotional/ivory-1/5.webp" alt="i-Vory i-vory-1"><img loading="lazy" src="/portfolio2/design/carusel/promotional/ivory-1/6.webp" alt="i-Vory i-vory-1"><img loading="lazy" src="/portfolio2/design/carusel/promotional/ivory-1/7.webp" alt="i-Vory i-vory-1"></div>
+    </div>
+    <div class="p-variant">
+      <div class="p-variant-head"><span class="p-variant-tag">Variantă <span class="p-variant-greek">𝛽</span></span><span class="p-variant-note">Register comercial direct, beneficii evidente, CTA vizibil</span></div>
+      <div class="p-grid"><img loading="lazy" src="/portfolio2/design/carusel/promotional/ivory-2/1.webp" alt="i-Vory i-vory-2"><img loading="lazy" src="/portfolio2/design/carusel/promotional/ivory-2/2.webp" alt="i-Vory i-vory-2"><img loading="lazy" src="/portfolio2/design/carusel/promotional/ivory-2/3.webp" alt="i-Vory i-vory-2"><img loading="lazy" src="/portfolio2/design/carusel/promotional/ivory-2/4.webp" alt="i-Vory i-vory-2"><img loading="lazy" src="/portfolio2/design/carusel/promotional/ivory-2/5.webp" alt="i-Vory i-vory-2"><img loading="lazy" src="/portfolio2/design/carusel/promotional/ivory-2/6.webp" alt="i-Vory i-vory-2"><img loading="lazy" src="/portfolio2/design/carusel/promotional/ivory-2/7.webp" alt="i-Vory i-vory-2"></div>
+    </div>
+    <div class="p-variant">
+      <div class="p-variant-head"><span class="p-variant-tag">Variantă <span class="p-variant-greek">𝛾</span></span><span class="p-variant-note">Register e-commerce, produs în prim-plan, preț + proof</span></div>
+      <div class="p-grid"><img loading="lazy" src="/portfolio2/design/carusel/promotional/urbancat/1.webp" alt="i-Vory urbancat"><img loading="lazy" src="/portfolio2/design/carusel/promotional/urbancat/2.webp" alt="i-Vory urbancat"><img loading="lazy" src="/portfolio2/design/carusel/promotional/urbancat/3.webp" alt="i-Vory urbancat"><img loading="lazy" src="/portfolio2/design/carusel/promotional/urbancat/4.webp" alt="i-Vory urbancat"><img loading="lazy" src="/portfolio2/design/carusel/promotional/urbancat/5.webp" alt="i-Vory urbancat"><img loading="lazy" src="/portfolio2/design/carusel/promotional/urbancat/6.webp" alt="i-Vory urbancat"><img loading="lazy" src="/portfolio2/design/carusel/promotional/urbancat/7.webp" alt="i-Vory urbancat"></div>
+    </div>
   </article>
 </section>
 
-<!-- ========== STATIC / POST ========== -->
+<!-- ========== DESIGN / POST ========== -->
 <section class="p-sec" id="sec-post">
   <div class="p-sec-head">
     <div class="p-sec-crumb">Design · Post</div>
@@ -687,145 +734,263 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
     </div>
     <p class="p-sub-desc">Un cadru, un nod la stomac. Sau la zâmbet.</p>
     <div class="p-grid p-grid-2">
-      <img loading="lazy" src="/portfolio/posts-emotional/Gemini_Generated_Image_cikc69cikc69cikc.png" alt="Post emotional 1">
-      <img loading="lazy" src="/portfolio/posts-emotional/Gemini_Generated_Image_m3kqo7m3kqo7m3kq.png" alt="Post emotional 2">
+      <img loading="lazy" src="/portfolio2/design/post/emotional/gemini-generated-image-cikc69cikc69cikc.webp" alt="Post emotional 1">
+      <img loading="lazy" src="/portfolio2/design/post/emotional/gemini-generated-image-m3kqo7m3kqo7m3kq.webp" alt="Post emotional 2">
     </div>
-  </article>
-
-  <article class="p-sub">
-    
-    <div class="p-soon">
-  <div class="p-soon-label">În curând</div>
-  <div class="p-soon-title">Anunț-tip, launch, update</div>
-  <div class="p-soon-hint">Un cadru informativ, stil editorial.</div>
-  <a href="https://wa.me/40775579706" target="_blank" class="p-soon-cta">Vezi exemple live pe WhatsApp →</a>
-</div>
-  </article>
-
-  <article class="p-sub">
-    
-    <div class="p-soon">
-  <div class="p-soon-label">În curând</div>
-  <div class="p-soon-title">Două slide-uri care lucrează împreună</div>
-  <div class="p-soon-hint">Setup + punchline, problemă + soluție.</div>
-  <a href="https://wa.me/40775579706" target="_blank" class="p-soon-cta">Vezi exemple live pe WhatsApp →</a>
-</div>
-  </article>
-
-  <article class="p-sub">
-    
-    <div class="p-soon">
-  <div class="p-soon-label">În curând</div>
-  <div class="p-soon-title">Umor cu identitate</div>
-  <div class="p-soon-hint">Meme care au tonul și estetica brand-ului.</div>
-  <a href="https://wa.me/40775579706" target="_blank" class="p-soon-cta">Vezi exemple live pe WhatsApp →</a>
-</div>
   </article>
 </section>
 
-<!-- ========== STATIC / E-COMMERCE ========== -->
+<!-- ========== DESIGN / E-COMMERCE ========== -->
 <section class="p-sec" id="sec-ecommerce">
   <div class="p-sec-head">
     <div class="p-sec-crumb">Design · E-commerce</div>
     <h2 class="p-sec-title">E-commerce</h2>
-    <p class="p-sec-sub">Pentru magazine online. Fiecare cadru optimizat pentru conversie.</p>
+    <p class="p-sec-sub">Pentru magazine online. Fiecare cadru optimizat pentru conversie — de la landing page la feed produs.</p>
   </div>
 
-  <article class="p-sub" id="ec-hero">
+  <article class="p-sub" id="ec-product-hero">
     <div class="p-axis">
       <div class="p-axis-row axis-l1"><span class="p-axis-sym">I</span><span class="p-axis-name">Design</span></div>
       <div class="p-axis-row axis-l2"><span class="p-axis-sym">3</span><span class="p-axis-name">E-commerce</span></div>
-      <div class="p-axis-row axis-l3 p-axis-active"><span class="p-axis-sym">A</span><span class="p-axis-name">Hero produs</span></div>
+      <div class="p-axis-row axis-l3 p-axis-active"><span class="p-axis-sym">A</span><span class="p-axis-name">Product Hero</span></div>
     </div>
-    <p class="p-sub-desc">Fotografia care duce vizitatorul de la browsing la add-to-cart.</p>
-    <div class="p-grid p-grid-3">
-      <img loading="lazy" src="/portfolio/product-urbancat/1.png" alt="Hero produs UrbanCat 1">
-      <img loading="lazy" src="/portfolio/product-urbancat/2.png" alt="Hero produs UrbanCat 2">
-      <img loading="lazy" src="/portfolio/product-urbancat/4.png" alt="Hero produs UrbanCat 3">
-      <img loading="lazy" src="/portfolio/product-urbancat/11.png" alt="Hero produs UrbanCat 4">
-      <img loading="lazy" src="/portfolio/product-urbancat/22.png" alt="Hero produs UrbanCat 5">
-      <img loading="lazy" src="/portfolio/product-urbancat/33.png" alt="Hero produs UrbanCat 6">
-      <img loading="lazy" src="/portfolio/product-urbancat/44.png" alt="Hero produs UrbanCat 7">
-      <img loading="lazy" src="/portfolio/product-urbancat/66.png" alt="Hero produs UrbanCat 8">
+    <p class="p-sub-desc">Fotografia care duce vizitatorul de la browsing la add-to-cart. <em>Două abordări</em> — una editorial, una chirurgical-curată pentru Google Shopping.</p>
+    <div class="p-variant">
+      <div class="p-variant-head"><span class="p-variant-tag">Variantă <span class="p-variant-greek">𝛼</span></span><span class="p-variant-note">Editorial, cu pisică reală, product hero pentru pagina de produs</span></div>
+      <div class="p-grid"><img loading="lazy" src="/portfolio2/design/ecommerce/product-hero/litiera/1.webp" alt="Litiera Urbancat hero"><img loading="lazy" src="/portfolio2/design/ecommerce/product-hero/litiera/2.webp" alt="Litiera Urbancat hero"><img loading="lazy" src="/portfolio2/design/ecommerce/product-hero/litiera/22.webp" alt="Litiera Urbancat hero"><img loading="lazy" src="/portfolio2/design/ecommerce/product-hero/litiera/11.webp" alt="Litiera Urbancat hero"><img loading="lazy" src="/portfolio2/design/ecommerce/product-hero/litiera/33.webp" alt="Litiera Urbancat hero"><img loading="lazy" src="/portfolio2/design/ecommerce/product-hero/litiera/4.webp" alt="Litiera Urbancat hero"><img loading="lazy" src="/portfolio2/design/ecommerce/product-hero/litiera/44.webp" alt="Litiera Urbancat hero"><img loading="lazy" src="/portfolio2/design/ecommerce/product-hero/litiera/66.webp" alt="Litiera Urbancat hero"></div>
+    </div>
+    <div class="p-variant">
+      <div class="p-variant-head"><span class="p-variant-tag">Variantă <span class="p-variant-greek">𝛽</span></span><span class="p-variant-note">Google Shopping — fundal neutru, produs izolat, zero distrageri</span></div>
+      <div class="p-grid p-grid-3">
+        <img loading="lazy" src="/portfolio2/design/ecommerce/product-hero/google/fantana-urbancat-05.webp" alt="Fantana Urbancat Google Shopping">
+      </div>
     </div>
   </article>
 
-  <article class="p-sub">
-    
-    <div class="p-soon">
-  <div class="p-soon-label">În curând</div>
-  <div class="p-soon-title">Machete pentru campanii plătite</div>
-  <div class="p-soon-hint">Meta, TikTok, Google — fiecare cu formatul ei.</div>
-  <a href="https://wa.me/40775579706" target="_blank" class="p-soon-cta">Vezi exemple live pe WhatsApp →</a>
-</div>
+  <article class="p-sub" id="ec-landing">
+    <div class="p-axis">
+      <div class="p-axis-row axis-l1"><span class="p-axis-sym">I</span><span class="p-axis-name">Design</span></div>
+      <div class="p-axis-row axis-l2"><span class="p-axis-sym">3</span><span class="p-axis-name">E-commerce</span></div>
+      <div class="p-axis-row axis-l3 p-axis-active"><span class="p-axis-sym">B</span><span class="p-axis-name">Landing Page</span></div>
+    </div>
+    <p class="p-sub-desc">Hero section pentru landing page complet. Prima impresie, tot mesajul într-un singur cadru.</p>
+    <div class="p-grid p-grid-1">
+      <img loading="lazy" src="/portfolio2/design/ecommerce/landing-page/urbancatsssss.webp" alt="UrbanCat landing page hero">
+    </div>
   </article>
 
-  <article class="p-sub">
-    
-    <div class="p-soon">
-  <div class="p-soon-label">În curând</div>
-  <div class="p-soon-title">Specificații, dimensiuni, comparații</div>
-  <div class="p-soon-hint">Cadrele care răspund la „dar ce are înăuntru?"</div>
-  <a href="https://wa.me/40775579706" target="_blank" class="p-soon-cta">Vezi exemple live pe WhatsApp →</a>
-</div>
+  <article class="p-sub" id="ec-categorii">
+    <div class="p-axis">
+      <div class="p-axis-row axis-l1"><span class="p-axis-sym">I</span><span class="p-axis-name">Design</span></div>
+      <div class="p-axis-row axis-l2"><span class="p-axis-sym">3</span><span class="p-axis-name">E-commerce</span></div>
+      <div class="p-axis-row axis-l3 p-axis-active"><span class="p-axis-sym">C</span><span class="p-axis-name">Hero Categorii</span></div>
+    </div>
+    <p class="p-sub-desc">Banere categorie pentru meniu principal. Fiecare categorie — propria ei imagine-ancoră.</p>
+    <div class="p-grid"><img loading="lazy" src="/portfolio2/design/ecommerce/hero-categorii/123d.webp" alt="Hero categorie UrbanCat"><img loading="lazy" src="/portfolio2/design/ecommerce/hero-categorii/cvvc.webp" alt="Hero categorie UrbanCat"><img loading="lazy" src="/portfolio2/design/ecommerce/hero-categorii/famrinaurbancat.webp" alt="Hero categorie UrbanCat"></div>
+  </article>
+
+  <article class="p-sub" id="ec-emag">
+    <div class="p-axis">
+      <div class="p-axis-row axis-l1"><span class="p-axis-sym">I</span><span class="p-axis-name">Design</span></div>
+      <div class="p-axis-row axis-l2"><span class="p-axis-sym">3</span><span class="p-axis-name">E-commerce</span></div>
+      <div class="p-axis-row axis-l3 p-axis-active"><span class="p-axis-sym">D</span><span class="p-axis-name">Emag/Apple Style</span></div>
+    </div>
+    <p class="p-sub-desc">Poze comerciale în stilul eMAG/Apple — produs izolat, lumină curată, detalii chirurgicale.</p>
+    <div class="p-grid"><img loading="lazy" src="/portfolio2/design/ecommerce/emag-style/fantana-urbancat-01.webp" alt="Fantana Emag style"><img loading="lazy" src="/portfolio2/design/ecommerce/emag-style/fantana-urbancat-02.webp" alt="Fantana Emag style"><img loading="lazy" src="/portfolio2/design/ecommerce/emag-style/fantana-urbancat-03.webp" alt="Fantana Emag style"></div>
+  </article>
+
+  <article class="p-sub" id="ec-cozy">
+    <div class="p-axis">
+      <div class="p-axis-row axis-l1"><span class="p-axis-sym">I</span><span class="p-axis-name">Design</span></div>
+      <div class="p-axis-row axis-l2"><span class="p-axis-sym">3</span><span class="p-axis-name">E-commerce</span></div>
+      <div class="p-axis-row axis-l3 p-axis-active"><span class="p-axis-sym">E</span><span class="p-axis-name">Cozy Apartment</span></div>
+    </div>
+    <p class="p-sub-desc">Produsul în contextul real — apartament, pisică, lumină caldă. Vizitatorul se vede pe el acolo.</p>
+    <div class="p-grid"><img loading="lazy" src="/portfolio2/design/ecommerce/cozy-apartment/11.webp" alt="Produs UrbanCat cozy apartment"><img loading="lazy" src="/portfolio2/design/ecommerce/cozy-apartment/minge-interactiva-03.webp" alt="Produs UrbanCat cozy apartment"><img loading="lazy" src="/portfolio2/design/ecommerce/cozy-apartment/fantana-automata-pentru-pisici-55l-inox-uv-c-8059760.webp" alt="Produs UrbanCat cozy apartment"></div>
+  </article>
+
+  <article class="p-sub" id="ec-studio">
+    <div class="p-axis">
+      <div class="p-axis-row axis-l1"><span class="p-axis-sym">I</span><span class="p-axis-name">Design</span></div>
+      <div class="p-axis-row axis-l2"><span class="p-axis-sym">3</span><span class="p-axis-name">E-commerce</span></div>
+      <div class="p-axis-row axis-l3 p-axis-active"><span class="p-axis-sym">F</span><span class="p-axis-name">Studio Photography</span></div>
+    </div>
+    <p class="p-sub-desc">Fotografie tip studio — fundal infinit, iluminat profesional, pentru specs și comparații.</p>
+    <div class="p-grid p-grid-1">
+      <img loading="lazy" src="/portfolio2/design/ecommerce/studio/fantana-automata-pentru-pisici-2l-2132569.webp" alt="Fantana studio photography">
+    </div>
+  </article>
+
+  <article class="p-sub" id="ec-medical-light">
+    <div class="p-axis">
+      <div class="p-axis-row axis-l1"><span class="p-axis-sym">I</span><span class="p-axis-name">Design</span></div>
+      <div class="p-axis-row axis-l2"><span class="p-axis-sym">3</span><span class="p-axis-name">E-commerce</span></div>
+      <div class="p-axis-row axis-l3 p-axis-active"><span class="p-axis-sym">G</span><span class="p-axis-name">Lumină Spital</span></div>
+    </div>
+    <p class="p-sub-desc">Produs în lumină de spital — alb curat, clinic, pentru showcase premium de igienă.</p>
+    <div class="p-grid p-grid-1">
+      <img loading="lazy" src="/portfolio2/design/ecommerce/showcase-medical/fantana-urbancat-04.webp" alt="Fantana Urbancat medical light showcase">
+    </div>
+  </article>
+
+  <article class="p-sub" id="ec-ugc">
+    <div class="p-axis">
+      <div class="p-axis-row axis-l1"><span class="p-axis-sym">I</span><span class="p-axis-name">Design</span></div>
+      <div class="p-axis-row axis-l2"><span class="p-axis-sym">3</span><span class="p-axis-name">E-commerce</span></div>
+      <div class="p-axis-row axis-l3 p-axis-active"><span class="p-axis-sym">H</span><span class="p-axis-name">UGC</span></div>
+    </div>
+    <p class="p-sub-desc">Persoană reală folosind produsul — înlocuiește 100 de review-uri scrise. <em>Încrederea se vede</em>.</p>
+    <div class="p-grid p-grid-1">
+      <img loading="lazy" src="/portfolio2/design/ecommerce/ugc/fantana-automata-pentru-pisici-55l-inox-uv-c-4913024.webp" alt="UGC persoana reala fantana Urbancat">
+    </div>
+  </article>
+
+  <article class="p-sub" id="ec-editorial">
+    <div class="p-axis">
+      <div class="p-axis-row axis-l1"><span class="p-axis-sym">I</span><span class="p-axis-name">Design</span></div>
+      <div class="p-axis-row axis-l2"><span class="p-axis-sym">3</span><span class="p-axis-name">E-commerce</span></div>
+      <div class="p-axis-row axis-l3 p-axis-active"><span class="p-axis-sym">I</span><span class="p-axis-name">Editorial Website</span></div>
+    </div>
+    <p class="p-sub-desc">Format editorial pentru blog/magazine — lifestyle, nu catalog.</p>
+    <div class="p-grid p-grid-1">
+      <img loading="lazy" src="/portfolio2/design/ecommerce/editorial/123123123.webp" alt="Editorial website UrbanCat">
+    </div>
   </article>
 </section>
 
-<!-- ========== STATIC / SERVICII ========== -->
+<!-- ========== DESIGN / SERVICII ========== -->
 <section class="p-sec" id="sec-servicii">
   <div class="p-sec-head">
     <div class="p-sec-crumb">Design · Servicii</div>
     <h2 class="p-sec-title">Servicii</h2>
-    <p class="p-sec-sub">Pentru avocați, medici, consultanți. Autoritate fără ton publicitar.</p>
+    <p class="p-sec-sub">Creare brand identity — de la logo la sistem vizual complet.</p>
   </div>
 
-  <article class="p-sub" id="srv-profesionisti">
+  <article class="p-sub" id="srv-logo">
     <div class="p-axis">
       <div class="p-axis-row axis-l1"><span class="p-axis-sym">I</span><span class="p-axis-name">Design</span></div>
       <div class="p-axis-row axis-l2"><span class="p-axis-sym">4</span><span class="p-axis-name">Servicii</span></div>
-      <div class="p-axis-row axis-l3 p-axis-active"><span class="p-axis-sym">A</span><span class="p-axis-name">Profesioniști</span></div>
+      <div class="p-axis-row axis-l3 p-axis-active"><span class="p-axis-sym">A</span><span class="p-axis-name">Logo &amp; Brand</span></div>
     </div>
-    <p class="p-sub-desc">Educație juridică și medicală. Client: Andreas Popa, avocat drept penal.</p>
-    <div class="p-grid"><img loading="lazy" src="/portfolio/carousel-lawyer/1.png" alt="i-Vory Creative portfoliu carousel-lawyer slide 1"><img loading="lazy" src="/portfolio/carousel-lawyer/2.png" alt="i-Vory Creative portfoliu carousel-lawyer slide 2"><img loading="lazy" src="/portfolio/carousel-lawyer/3.png" alt="i-Vory Creative portfoliu carousel-lawyer slide 3"><img loading="lazy" src="/portfolio/carousel-lawyer/4.png" alt="i-Vory Creative portfoliu carousel-lawyer slide 4"><img loading="lazy" src="/portfolio/carousel-lawyer/5.png" alt="i-Vory Creative portfoliu carousel-lawyer slide 5"><img loading="lazy" src="/portfolio/carousel-lawyer/6.png" alt="i-Vory Creative portfoliu carousel-lawyer slide 6"><img loading="lazy" src="/portfolio/carousel-lawyer/7.png" alt="i-Vory Creative portfoliu carousel-lawyer slide 7"></div>
-  </article>
-
-  <article class="p-sub">
-    
-    <div class="p-soon">
-  <div class="p-soon-label">În curând</div>
-  <div class="p-soon-title">Vocea clienților tăi, nu a ta</div>
-  <div class="p-soon-hint">Format editorial premium, cu context și rezultat.</div>
-  <a href="https://wa.me/40775579706" target="_blank" class="p-soon-cta">Vezi exemple live pe WhatsApp →</a>
-</div>
-  </article>
-
-  <article class="p-sub">
-    
-    <div class="p-soon">
-  <div class="p-soon-label">În curând</div>
-  <div class="p-soon-title">Un serviciu = un carusel</div>
-  <div class="p-soon-hint">Probleme, soluție, proof, pași, preț.</div>
-  <a href="https://wa.me/40775579706" target="_blank" class="p-soon-cta">Vezi exemple live pe WhatsApp →</a>
-</div>
+    <p class="p-sub-desc">Logo-uri construite pe concept, nu pe trend. <em>Două abordări</em> — una medicală sobră, una retail energică.</p>
+    <div class="p-variant">
+      <div class="p-variant-head"><span class="p-variant-tag">Variantă <span class="p-variant-greek">𝛼</span></span><span class="p-variant-note">Dr. Ghibu — medical, premium, încredere absolută</span></div>
+      <div class="p-grid p-grid-2">
+        <img loading="lazy" src="/portfolio2/design/servicii/logo/ghibu/ghibu-logo.webp" alt="Logo Dr. Ghibu">
+      </div>
+    </div>
+    <div class="p-variant">
+      <div class="p-variant-head"><span class="p-variant-tag">Variantă <span class="p-variant-greek">𝛽</span></span><span class="p-variant-note">UrbanCat — retail, energic, prietenos cu pisicile</span></div>
+      <div class="p-grid p-grid-2">
+        <img loading="lazy" src="/portfolio2/design/servicii/logo/urbancat/urbancvatlogo.webp" alt="Logo UrbanCat">
+      </div>
+    </div>
   </article>
 </section>
 
-<!-- ========== VIDEO (COMING SOON) ========== -->
-<section class="p-sec p-sec-video" id="sec-video" style="display:none">
+<!-- ========== VIDEO — 5 sections, one per video ========== -->
+<section class="p-sec p-sec-video" id="sec-vid-cinematic" style="display:none">
   <div class="p-sec-head">
-    <div class="p-sec-crumb">Video</div>
-    <h2 class="p-sec-title">Portofoliul video</h2>
-    <p class="p-sec-sub">Cinci formate, același standard de producție. <em>Publicăm în săptămânile următoare.</em></p>
+    <div class="p-sec-crumb">Video · Cinematic</div>
+    <h2 class="p-sec-title">Cinematic de Prezentare</h2>
+    <p class="p-sec-sub"><em>UrbanCat — Orașul e al lor.</em> Cadru larg, lumină poetică, brand care se insinuează.</p>
   </div>
-  <div class="p-video-wait">
-    <div class="p-vw-grid">
-      <div class="p-vw-item"><span class="p-vw-n">01</span><span class="p-vw-lbl">Reels</span></div>
-      <div class="p-vw-item"><span class="p-vw-n">02</span><span class="p-vw-lbl">Cinematic</span></div>
-      <div class="p-vw-item"><span class="p-vw-n">03</span><span class="p-vw-lbl">Showcase produs</span></div>
-      <div class="p-vw-item"><span class="p-vw-n">04</span><span class="p-vw-lbl">Before &amp; After</span></div>
-      <div class="p-vw-item"><span class="p-vw-n">05</span><span class="p-vw-lbl">Explainer / Talking head</span></div>
+  <div class="p-sub">
+    <div class="p-axis">
+      <div class="p-axis-row axis-l1"><span class="p-axis-sym">II</span><span class="p-axis-name">Video</span></div>
+      <div class="p-axis-row axis-l2"><span class="p-axis-sym">1</span><span class="p-axis-name">Cinematic</span></div>
+      <div class="p-axis-row axis-l3 p-axis-active"><span class="p-axis-sym">A</span><span class="p-axis-name">Urbancat</span></div>
     </div>
-    <a href="https://wa.me/40775579706" target="_blank" class="p-vw-cta">Cere sample video pe WhatsApp →</a>
+    <div class="p-video">
+      <video controls preload="metadata" playsinline muted>
+        <source src="/portfolio2/video/cinematic/ora-ul-e-al-lor.urbancat.ro-2.mp4" type="video/mp4">
+      </video>
+      <div class="p-video-caption">UrbanCat — Orașul e al lor</div>
+    </div>
+  </div>
+</section>
+
+<section class="p-sec p-sec-video" id="sec-vid-animat" style="display:none">
+  <div class="p-sec-head">
+    <div class="p-sec-crumb">Video · Animat Promoțional</div>
+    <h2 class="p-sec-title">Animat Promoțional</h2>
+    <p class="p-sec-sub"><em>CatNip acum pe UrbanCat.ro.</em> Motion graphics, ritm direct, CTA clar.</p>
+  </div>
+  <div class="p-sub">
+    <div class="p-axis">
+      <div class="p-axis-row axis-l1"><span class="p-axis-sym">II</span><span class="p-axis-name">Video</span></div>
+      <div class="p-axis-row axis-l2"><span class="p-axis-sym">2</span><span class="p-axis-name">Animat</span></div>
+      <div class="p-axis-row axis-l3 p-axis-active"><span class="p-axis-sym">A</span><span class="p-axis-name">CatNip</span></div>
+    </div>
+    <div class="p-video">
+      <video controls preload="metadata" playsinline muted>
+        <source src="/portfolio2/video/animat/catnip-acum-pe-urbancat.ro.mp4" type="video/mp4">
+      </video>
+      <div class="p-video-caption">UrbanCat — CatNip lansare</div>
+    </div>
+  </div>
+</section>
+
+<section class="p-sec p-sec-video" id="sec-vid-tiktok" style="display:none">
+  <div class="p-sec-head">
+    <div class="p-sec-crumb">Video · TikTok Multi-effects</div>
+    <h2 class="p-sec-title">TikTok Style</h2>
+    <p class="p-sec-sub"><em>Apă proaspătă, filtrată continuu.</em> Taiere rapidă, multi-efecte, hook în primele 2 secunde.</p>
+  </div>
+  <div class="p-sub">
+    <div class="p-axis">
+      <div class="p-axis-row axis-l1"><span class="p-axis-sym">II</span><span class="p-axis-name">Video</span></div>
+      <div class="p-axis-row axis-l2"><span class="p-axis-sym">3</span><span class="p-axis-name">TikTok</span></div>
+      <div class="p-axis-row axis-l3 p-axis-active"><span class="p-axis-sym">A</span><span class="p-axis-name">Fântână</span></div>
+    </div>
+    <div class="p-video">
+      <video controls preload="metadata" playsinline muted>
+        <source src="/portfolio2/video/tiktok/ap-proasp-t-filtrat-continuu-exact-cum-ar-trebui-s-fie.-f-nt-nile-urbancat-sunt-construite.mp4" type="video/mp4">
+      </video>
+      <div class="p-video-caption">UrbanCat — Apă proaspătă filtrată</div>
+    </div>
+  </div>
+</section>
+
+<section class="p-sec p-sec-video" id="sec-vid-asmr" style="display:none">
+  <div class="p-sec-head">
+    <div class="p-sec-crumb">Video · ASMR</div>
+    <h2 class="p-sec-title">ASMR</h2>
+    <p class="p-sec-sub"><em>Ascultă. #asmr #pisici.</em> Zero voiceover, sunet natural amplificat, algoritm-friendly.</p>
+  </div>
+  <div class="p-sub">
+    <div class="p-axis">
+      <div class="p-axis-row axis-l1"><span class="p-axis-sym">II</span><span class="p-axis-name">Video</span></div>
+      <div class="p-axis-row axis-l2"><span class="p-axis-sym">4</span><span class="p-axis-name">ASMR</span></div>
+      <div class="p-axis-row axis-l3 p-axis-active"><span class="p-axis-sym">A</span><span class="p-axis-name">Pisici</span></div>
+    </div>
+    <div class="p-video">
+      <video controls preload="metadata" playsinline muted>
+        <source src="/portfolio2/video/asmr/ascult-.-asmr-pisici-1.mp4" type="video/mp4">
+      </video>
+      <div class="p-video-caption">UrbanCat — ASMR pisici</div>
+    </div>
+  </div>
+</section>
+
+<section class="p-sec p-sec-video" id="sec-vid-medical" style="display:none">
+  <div class="p-sec-head">
+    <div class="p-sec-crumb">Video · Medical Before/After</div>
+    <h2 class="p-sec-title">Medical Before/After</h2>
+    <p class="p-sec-sub"><em>Dr. Bogdan Iorga — Caz Vali.</em> Showcase rezultat medical real, ton profesional, proof absolut.</p>
+  </div>
+  <div class="p-sub">
+    <div class="p-axis">
+      <div class="p-axis-row axis-l1"><span class="p-axis-sym">II</span><span class="p-axis-name">Video</span></div>
+      <div class="p-axis-row axis-l2"><span class="p-axis-sym">5</span><span class="p-axis-name">Medical B/A</span></div>
+      <div class="p-axis-row axis-l3 p-axis-active"><span class="p-axis-sym">A</span><span class="p-axis-name">Dr. Iorga</span></div>
+    </div>
+    <div class="p-video">
+      <video controls preload="metadata" playsinline muted>
+        <source src="/portfolio2/video/medical-ba/dr-bogdan-iorga-caz-vali.mp4" type="video/mp4">
+      </video>
+      <div class="p-video-caption">Dr. Bogdan Iorga — before/after Vali</div>
+    </div>
   </div>
 </section>
 
@@ -1621,7 +1786,7 @@ document.addEventListener('click',function(e){
     var secs=document.querySelectorAll('.p-sec');
     var subs=document.querySelectorAll('.p-sub[id]');
     if(!pd||!l1s.length)return;
-    var mode='static';
+    var mode='design';
     var currentL2='carusel';
 
     function toggleDock(){
@@ -1653,12 +1818,13 @@ document.addEventListener('click',function(e){
         var r3=document.getElementById('pdRow3');
         if(r3)r3.style.display=m==='video'?'none':'flex';
         // Show/hide sections
-        secs.forEach(function(s){
-          if(s.id==='sec-video'){s.style.display=m==='video'?'block':'none'}
-          else{s.style.display=m==='static'?'block':'none'}
+        secs.forEach(function(sec){
+          var isVideo=sec.id.indexOf('sec-vid-')===0;
+          if(isVideo){sec.style.display=m==='video'?'block':'none'}
+          else{sec.style.display=m==='design'?'block':'none'}
         });
         mode=m;
-        var target=m==='video'?document.getElementById('sec-video'):document.getElementById('sec-carusel');
+        var target=m==='video'?document.getElementById('sec-vid-cinematic'):document.getElementById('sec-carusel');
         if(target){window.scrollTo({top:target.getBoundingClientRect().top+window.pageYOffset-200,behavior:'smooth'})}
         if(typeof gtag==='function')gtag('event','pd_l1',{mode:m});
       });
@@ -1712,7 +1878,10 @@ document.addEventListener('click',function(e){
     // Auto-highlight L2 on scroll (section-level)
     var l2map={
       'sec-carusel':'carusel','sec-post':'post',
-      'sec-ecommerce':'ecommerce','sec-servicii':'servicii'
+      'sec-ecommerce':'ecommerce','sec-servicii':'servicii',
+      'sec-vid-cinematic':'vid-cinematic','sec-vid-animat':'vid-animat',
+      'sec-vid-tiktok':'vid-tiktok','sec-vid-asmr':'vid-asmr',
+      'sec-vid-medical':'vid-medical'
     };
     var l3ToL2={
       'car-educational':'carusel','car-storytelling':'carusel',
@@ -1723,7 +1892,7 @@ document.addEventListener('click',function(e){
       var el=document.getElementById(id);if(!el)return;
       var obs=new IntersectionObserver(function(entries){
         entries.forEach(function(e){
-          if(e.isIntersecting&&mode==='static'){
+          if(e.isIntersecting&&mode==='design'){
             l2s.forEach(function(x){x.classList.remove('active')});
             var chip=document.querySelector('.pd-l2[data-to="'+e.target.id+'"]');
             if(chip){chip.classList.add('active');
@@ -1740,7 +1909,7 @@ document.addEventListener('click',function(e){
     subs.forEach(function(sub){
       var obs=new IntersectionObserver(function(entries){
         entries.forEach(function(e){
-          if(e.isIntersecting&&mode==='static'){
+          if(e.isIntersecting&&mode==='design'){
             var chip=document.querySelector('.pd-l3[data-to="'+e.target.id+'"]');
             if(chip){
               // Only highlight if it's in the currently visible L3 group
