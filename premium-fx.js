@@ -631,35 +631,7 @@ if(!__MOB){(function(){
 
 // 24. LIQUID BLOB CURSOR (desktop only)
 if(!__MOB){(function(){
-  const cvs=document.createElement('canvas');
-  cvs.style.cssText='position:fixed;inset:0;pointer-events:none;z-index:9996;mix-blend-mode:screen';
-  document.body.appendChild(cvs);
-  const ctx=cvs.getContext('2d');
-  function rs(){cvs.width=innerWidth;cvs.height=innerHeight}rs();addEventListener('resize',rs);
-  let mx=0,my=0,bx=0,by=0,vx=0,vy=0,lastX=0,lastY=0;
-  addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY},{passive:true});
-  function tick(){
-    bx+=(mx-bx)*.18;by+=(my-by)*.18;
-    vx=bx-lastX;vy=by-lastY;lastX=bx;lastY=by;
-    const speed=Math.min(Math.sqrt(vx*vx+vy*vy),40);
-    const stretch=1+speed*.04;
-    const angle=Math.atan2(vy,vx);
-    ctx.clearRect(0,0,cvs.width,cvs.height);
-    ctx.save();
-    ctx.translate(bx,by);
-    ctx.rotate(angle);
-    const grad=ctx.createRadialGradient(0,0,0,0,0,18);
-    grad.addColorStop(0,'rgba(0,224,192,.55)');
-    grad.addColorStop(.5,'rgba(0,224,192,.2)');
-    grad.addColorStop(1,'rgba(0,224,192,0)');
-    ctx.fillStyle=grad;
-    ctx.beginPath();
-    ctx.ellipse(0,0,18*stretch,18/Math.max(stretch,1),0,0,Math.PI*2);
-    ctx.fill();
-    ctx.restore();
-    requestAnimationFrame(tick);
-  }
-  tick();
+  // CURSOR STRETCH ELLIPSE — disabled (was creating a teal line following mouse)
 })()}
 
 // 25. CONFETTI on form submit success
@@ -932,25 +904,7 @@ if(!__MOB){(function(){
 
 // 40. WEBGL CURSOR DISTORTION (desktop only) — pixel warp around cursor
 if(!__MOB){(function(){
-  const cvs=document.createElement('canvas');
-  cvs.style.cssText='position:fixed;inset:0;pointer-events:none;z-index:9995;mix-blend-mode:overlay;opacity:.4';
-  document.body.appendChild(cvs);
-  const ctx=cvs.getContext('2d');
-  function rs(){cvs.width=innerWidth;cvs.height=innerHeight}rs();addEventListener('resize',rs);
-  let mx=0,my=0;
-  addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY},{passive:true});
-  function tick(){
-    ctx.clearRect(0,0,cvs.width,cvs.height);
-    const r=120;
-    const g=ctx.createRadialGradient(mx,my,0,mx,my,r);
-    g.addColorStop(0,'rgba(0,224,192,.15)');
-    g.addColorStop(.5,'rgba(125,255,230,.05)');
-    g.addColorStop(1,'rgba(0,224,192,0)');
-    ctx.fillStyle=g;
-    ctx.beginPath();ctx.arc(mx,my,r,0,Math.PI*2);ctx.fill();
-    requestAnimationFrame(tick);
-  }
-  tick();
+  // CURSOR AMBIENT GLOW — disabled (conflicts with meteor-cursor.js)
 })()}
 
 // 41. SCROLL-TRIGGERED SVG PATH DRAWING on workflow line
