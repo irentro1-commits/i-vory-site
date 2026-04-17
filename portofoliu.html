@@ -283,6 +283,15 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
 .p-grid-3{grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
 @media(max-width:560px){.p-grid{grid-template-columns:repeat(2,1fr);gap:.45rem}.p-grid-3{grid-template-columns:repeat(2,1fr)}}
 
+
+/* Variant block within single sub-article */
+.p-variant{margin-bottom:2rem}
+.p-variant:last-child{margin-bottom:0}
+.p-variant-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:.8rem;margin-bottom:1rem;padding-left:.2rem}
+.p-variant-tag{display:inline-block;font-family:'Geist Mono',monospace;font-size:.68rem;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:#00e0c0;padding:.28rem .7rem;background:rgba(0,224,192,.08);border:1px solid rgba(0,224,192,.3);border-radius:100px}
+.p-variant-note{font-family:'Instrument Serif','Fraunces',serif;font-style:italic;font-size:.88rem;color:#d0cbc3;opacity:.85;letter-spacing:-.005em}
+@media(max-width:560px){.p-variant-note{font-size:.82rem}}
+
 /* Soon card */
 .p-soon{background:linear-gradient(135deg,rgba(8,10,20,.7),rgba(4,6,14,.85));border:1px dashed rgba(255,245,230,.12);border-radius:16px;padding:2.2rem 1.8rem;text-align:center;max-width:640px;margin:0 auto}
 .p-soon-label{display:inline-block;font-family:'Geist Mono',monospace;font-size:.68rem;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:#ff9a3d;padding:.3rem .8rem;background:rgba(255,154,61,.08);border:1px solid rgba(255,154,61,.3);border-radius:100px;margin-bottom:1rem}
@@ -533,7 +542,6 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
   <div class="pd-row pd-row-3" id="pdRow3">
     <div class="pd-l3-group pd-l3-carusel" data-l2="carusel">
       <button class="pd-l3" data-to="car-educational">Educațional</button>
-      <button class="pd-l3" data-to="car-storytelling">Storytelling</button>
       <button class="pd-l3" data-to="car-showcase">Showcase</button>
       <button class="pd-l3" data-to="car-produs">Produs</button>
     </div>
@@ -567,22 +575,24 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
   </div>
 
   <article class="p-sub" id="car-educational">
-    <header class="p-sub-head"><span class="p-sub-num">01</span><h3 class="p-sub-title">Educațional</h3><p class="p-sub-desc">Omul învață ceva util. Brand-ul apare pe parcurs, nu cu fanfare.</p></header>
-    <div class="p-grid"><img loading="lazy" src="/portfolio/carousel-ivory-1/1.png" alt="i-Vory Creative portfoliu carousel-ivory-1 slide 1"><img loading="lazy" src="/portfolio/carousel-ivory-1/2.png" alt="i-Vory Creative portfoliu carousel-ivory-1 slide 2"><img loading="lazy" src="/portfolio/carousel-ivory-1/3.png" alt="i-Vory Creative portfoliu carousel-ivory-1 slide 3"><img loading="lazy" src="/portfolio/carousel-ivory-1/4.png" alt="i-Vory Creative portfoliu carousel-ivory-1 slide 4"><img loading="lazy" src="/portfolio/carousel-ivory-1/5.png" alt="i-Vory Creative portfoliu carousel-ivory-1 slide 5"><img loading="lazy" src="/portfolio/carousel-ivory-1/6.png" alt="i-Vory Creative portfoliu carousel-ivory-1 slide 6"><img loading="lazy" src="/portfolio/carousel-ivory-1/7.png" alt="i-Vory Creative portfoliu carousel-ivory-1 slide 7"></div>
-  </article>
-
-  <article class="p-sub" id="car-storytelling">
-    <header class="p-sub-head"><span class="p-sub-num">02</span><h3 class="p-sub-title">Storytelling</h3><p class="p-sub-desc">O poveste cu arc. Tensiune, decizie, consecință.</p></header>
-    <div class="p-grid"><img loading="lazy" src="/portfolio/carousel-ivory-storytelling/1.png" alt="i-Vory Creative portfoliu carousel-ivory-storytelling slide 1"><img loading="lazy" src="/portfolio/carousel-ivory-storytelling/2.png" alt="i-Vory Creative portfoliu carousel-ivory-storytelling slide 2"><img loading="lazy" src="/portfolio/carousel-ivory-storytelling/3.png" alt="i-Vory Creative portfoliu carousel-ivory-storytelling slide 3"><img loading="lazy" src="/portfolio/carousel-ivory-storytelling/4.png" alt="i-Vory Creative portfoliu carousel-ivory-storytelling slide 4"><img loading="lazy" src="/portfolio/carousel-ivory-storytelling/5.png" alt="i-Vory Creative portfoliu carousel-ivory-storytelling slide 5"><img loading="lazy" src="/portfolio/carousel-ivory-storytelling/6.png" alt="i-Vory Creative portfoliu carousel-ivory-storytelling slide 6"><img loading="lazy" src="/portfolio/carousel-ivory-storytelling/7.png" alt="i-Vory Creative portfoliu carousel-ivory-storytelling slide 7"></div>
+    <header class="p-sub-head"><span class="p-sub-num">01</span><h3 class="p-sub-title">Educațional</h3><p class="p-sub-desc">Omul învață ceva util. <em>Același tip de conținut, două abordări vizuale</em> — arătăm cât de flexibil lucrăm stilul.</p></header>
+    <div class="p-variant">
+      <div class="p-variant-head"><span class="p-variant-tag">Variantă A</span><span class="p-variant-note">Register editorial, serif condens, layout aerat</span></div>
+      <div class="p-grid"><img loading="lazy" src="/portfolio/carousel-ivory-1/1.png" alt="i-Vory carusel educational design A slide 1"><img loading="lazy" src="/portfolio/carousel-ivory-1/2.png" alt="i-Vory carusel educational design A slide 2"><img loading="lazy" src="/portfolio/carousel-ivory-1/3.png" alt="i-Vory carusel educational design A slide 3"><img loading="lazy" src="/portfolio/carousel-ivory-1/4.png" alt="i-Vory carusel educational design A slide 4"><img loading="lazy" src="/portfolio/carousel-ivory-1/5.png" alt="i-Vory carusel educational design A slide 5"><img loading="lazy" src="/portfolio/carousel-ivory-1/6.png" alt="i-Vory carusel educational design A slide 6"><img loading="lazy" src="/portfolio/carousel-ivory-1/7.png" alt="i-Vory carusel educational design A slide 7"></div>
+    </div>
+    <div class="p-variant">
+      <div class="p-variant-head"><span class="p-variant-tag">Variantă B</span><span class="p-variant-note">Register narativ, tipografie dramatică, arc de poveste</span></div>
+      <div class="p-grid"><img loading="lazy" src="/portfolio/carousel-ivory-storytelling/1.png" alt="i-Vory carusel educational design B slide 1"><img loading="lazy" src="/portfolio/carousel-ivory-storytelling/2.png" alt="i-Vory carusel educational design B slide 2"><img loading="lazy" src="/portfolio/carousel-ivory-storytelling/3.png" alt="i-Vory carusel educational design B slide 3"><img loading="lazy" src="/portfolio/carousel-ivory-storytelling/4.png" alt="i-Vory carusel educational design B slide 4"><img loading="lazy" src="/portfolio/carousel-ivory-storytelling/5.png" alt="i-Vory carusel educational design B slide 5"><img loading="lazy" src="/portfolio/carousel-ivory-storytelling/6.png" alt="i-Vory carusel educational design B slide 6"><img loading="lazy" src="/portfolio/carousel-ivory-storytelling/7.png" alt="i-Vory carusel educational design B slide 7"></div>
+    </div>
   </article>
 
   <article class="p-sub" id="car-showcase">
-    <header class="p-sub-head"><span class="p-sub-num">03</span><h3 class="p-sub-title">Showcase</h3><p class="p-sub-desc">Rezultatele la vedere. Cifre, studii de caz, before/after.</p></header>
+    <header class="p-sub-head"><span class="p-sub-num">02</span><h3 class="p-sub-title">Showcase</h3><p class="p-sub-desc">Rezultatele la vedere. Cifre, studii de caz, before/after.</p></header>
     <div class="p-grid"><img loading="lazy" src="/portfolio/carousel-ivory-showcase/1.png" alt="i-Vory Creative portfoliu carousel-ivory-showcase slide 1"><img loading="lazy" src="/portfolio/carousel-ivory-showcase/2.png" alt="i-Vory Creative portfoliu carousel-ivory-showcase slide 2"><img loading="lazy" src="/portfolio/carousel-ivory-showcase/3.png" alt="i-Vory Creative portfoliu carousel-ivory-showcase slide 3"><img loading="lazy" src="/portfolio/carousel-ivory-showcase/5.png" alt="i-Vory Creative portfoliu carousel-ivory-showcase slide 5"><img loading="lazy" src="/portfolio/carousel-ivory-showcase/6.png" alt="i-Vory Creative portfoliu carousel-ivory-showcase slide 6"><img loading="lazy" src="/portfolio/carousel-ivory-showcase/7.png" alt="i-Vory Creative portfoliu carousel-ivory-showcase slide 7"></div>
   </article>
 
   <article class="p-sub" id="car-produs">
-    <header class="p-sub-head"><span class="p-sub-num">04</span><h3 class="p-sub-title">Produs</h3><p class="p-sub-desc">Promoțional direct. Beneficiu, proof, CTA.</p></header>
+    <header class="p-sub-head"><span class="p-sub-num">03</span><h3 class="p-sub-title">Produs</h3><p class="p-sub-desc">Promoțional direct. Beneficiu, proof, CTA.</p></header>
     <div class="p-grid"><img loading="lazy" src="/portfolio/carousel-urbancat/1.png" alt="i-Vory Creative portfoliu carousel-urbancat slide 1"><img loading="lazy" src="/portfolio/carousel-urbancat/2.png" alt="i-Vory Creative portfoliu carousel-urbancat slide 2"><img loading="lazy" src="/portfolio/carousel-urbancat/3.png" alt="i-Vory Creative portfoliu carousel-urbancat slide 3"><img loading="lazy" src="/portfolio/carousel-urbancat/4.png" alt="i-Vory Creative portfoliu carousel-urbancat slide 4"><img loading="lazy" src="/portfolio/carousel-urbancat/5.png" alt="i-Vory Creative portfoliu carousel-urbancat slide 5"><img loading="lazy" src="/portfolio/carousel-urbancat/6.png" alt="i-Vory Creative portfoliu carousel-urbancat slide 6"><img loading="lazy" src="/portfolio/carousel-urbancat/7.png" alt="i-Vory Creative portfoliu carousel-urbancat slide 7"></div>
   </article>
 </section>
