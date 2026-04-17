@@ -279,8 +279,8 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
   .pd-l3-group{justify-content:flex-start;padding:0 .2rem;gap:.1rem}
   .pd-soon-inline{font-size:.65rem;padding:.3rem .7rem;white-space:normal;text-align:center;line-height:1.3}
   /* Navbar auto-hide (kept above dock) */
-  nav#nav{transition:transform .3s ease;z-index:100}
-  nav#nav.nav-hidden{transform:translateY(-100%)}
+  nav#nav{transition:transform .3s ease,opacity .3s ease;z-index:100}
+  nav#nav.nav-hidden{transform:translateY(-100%)!important;opacity:0!important;pointer-events:none!important}
 }
 
 /* ========== PORTFOLIO BODY ========== */
