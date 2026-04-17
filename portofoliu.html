@@ -292,7 +292,7 @@ body.nav-hidden .pd{top:16px}
 .p-sec-head{margin-bottom:2.5rem}
 .p-sec-crumb{font-family:'Geist Mono',monospace;font-size:.72rem;font-weight:500;letter-spacing:.25em;text-transform:uppercase;color:rgba(0,224,192,.75);margin-bottom:.8rem}
 .p-sec-title{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(2.4rem,5.5vw,4rem);letter-spacing:-.04em;line-height:1;color:#fff5e6;font-variation-settings:"opsz" 144,"SOFT" 20;margin-bottom:.9rem;text-shadow:0 4px 22px rgba(0,0,0,.7)}
-.p-sec-sub{font-family:'Fraunces',serif;font-size:clamp(1rem,1.5vw,1.2rem);color:#d0cbc3;line-height:1.6;max-width:620px;font-variation-settings:"opsz" 48,"SOFT" 100;text-shadow:0 2px 10px rgba(0,0,0,.6)}
+.p-sec-sub{font-family:'Fraunces',serif;font-size:clamp(1.15rem,1.8vw,1.4rem);color:#d8d2c6;line-height:1.55;max-width:720px;font-variation-settings:"opsz" 48,"SOFT" 100;text-shadow:0 2px 10px rgba(0,0,0,.6)}
 .p-sec-sub em{font-family:'Instrument Serif',serif;font-style:italic;color:#fff5e6;font-variation-settings:normal;font-size:1.08em}
 
 .p-sub{margin-bottom:3.5rem;scroll-margin-top:200px}
@@ -312,8 +312,9 @@ body.nav-hidden .pd{top:16px}
 
 
 /* 4-AXIS BREADCRUMB — distinct typographic voices per level */
-.p-axis{display:flex;flex-direction:column;gap:.32rem;margin-bottom:1.4rem;padding:1rem 1.15rem .95rem;background:linear-gradient(135deg,rgba(0,224,192,.05),rgba(123,44,255,.025) 70%,transparent);border:1px solid rgba(255,245,230,.06);border-left:2px solid rgba(0,224,192,.55);border-radius:10px;max-width:380px}
-.p-axis-row{display:flex;align-items:baseline;gap:.9rem;transition:all .25s;position:relative}
+.p-axis{display:flex;flex-direction:row;flex-wrap:wrap;align-items:baseline;gap:.4rem 1rem;margin:1.2rem 0 1.6rem;padding:0;background:none;border:none;border-radius:0;position:relative}
+.p-axis-row{display:inline-flex;align-items:baseline;gap:.5rem;transition:all .25s;position:relative}
+.p-axis-row:not(:last-child)::before{content:"·";margin-left:-.5rem;margin-right:.5rem;color:rgba(255,245,230,.3);font-size:.9rem;align-self:center}
 .p-axis-sym{display:inline-flex;align-items:center;justify-content:flex-start;min-width:1.55rem;line-height:1}
 .p-axis-name{line-height:1}
 
@@ -336,11 +337,11 @@ body.nav-hidden .pd{top:16px}
 /* ACTIVE state — teal highlight */
 .p-axis-row.p-axis-active .p-axis-sym{color:#00e0c0!important}
 .p-axis-row.p-axis-active .p-axis-name{color:#fff5e6!important}
-.p-axis-row.p-axis-active::after{content:"";position:absolute;left:-1.15rem;top:50%;transform:translateY(-50%);width:2px;height:70%;background:#00e0c0;border-radius:2px;box-shadow:0 0 8px rgba(0,224,192,.6)}
+.p-axis-row.p-axis-active::after{display:none}
 
 @media(max-width:560px){
-  .p-axis{padding:.8rem 1rem .75rem;margin-bottom:1.1rem;max-width:100%;gap:.28rem}
-  .p-axis-row{gap:.75rem}
+  .p-axis{padding:0;margin:.8rem 0 1.2rem;gap:.3rem .7rem;max-width:100%}
+  .p-axis-row{gap:.4rem}
   .p-axis-row.axis-l1 .p-axis-sym{font-size:1.1rem}
   .p-axis-row.axis-l1 .p-axis-name{font-size:.68rem}
   .p-axis-row.axis-l2 .p-axis-sym{font-size:.88rem}
@@ -359,8 +360,8 @@ body.nav-hidden .pd{top:16px}
 .p-variant:last-child{margin-bottom:0}
 .p-variant-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:.8rem;margin-bottom:1rem;padding-left:.2rem}
 .p-variant-tag{display:inline-block;font-family:'Geist Mono',monospace;font-size:.68rem;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:#00e0c0;padding:.28rem .7rem;background:rgba(0,224,192,.08);border:1px solid rgba(0,224,192,.3);border-radius:100px}
-.p-variant-note{font-family:'Instrument Serif','Fraunces',serif;font-style:italic;font-size:.88rem;color:#d0cbc3;opacity:.85;letter-spacing:-.005em}
-@media(max-width:560px){.p-variant-note{font-size:.82rem}}
+.p-variant-note{font-family:'Instrument Serif','Fraunces',serif;font-style:italic;font-size:1.1rem;color:#d0cbc3;opacity:.95;letter-spacing:-.005em}
+@media(max-width:560px){.p-variant-note{font-size:.98rem}}
 
 /* Soon card */
 .p-soon{background:linear-gradient(135deg,rgba(8,10,20,.7),rgba(4,6,14,.85));border:1px dashed rgba(255,245,230,.12);border-radius:16px;padding:2.2rem 1.8rem;text-align:center;max-width:640px;margin:0 auto}
@@ -459,7 +460,7 @@ body.fx-disabled .p-sec::before,body.fx-disabled .p-sec::after{display:none}
 
 
 /* === COSMIC SMOKE on each P-SUB (subvariant card) === */
-.p-sub{position:relative;z-index:2;isolation:isolate;padding:2.5rem 2rem 3rem;border-radius:24px;margin-bottom:3.5rem}
+.p-sub{position:relative;z-index:2;isolation:isolate;padding:2.5rem 2rem 3rem;border-radius:24px;margin-bottom:3.5rem;display:flex;flex-direction:column}
 .p-sub::before{
   content:"";
   position:absolute;
