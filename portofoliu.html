@@ -248,21 +248,25 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
 .pd-soon-inline em{font-family:'Instrument Serif',serif;font-style:italic;color:#fff5e6;font-variation-settings:normal}
 
 @media(max-width:560px){
-  .pd{top:68px;max-width:calc(100vw - 1rem);border-radius:18px}
-  .pd-row{padding:.28rem .35rem}
-  .pd-row-1{padding:.32rem .35rem}
-  .pd-l1{padding:.42rem 1rem;font-size:.78rem}
-  .pd-l2{padding:.36rem .68rem;font-size:.72rem}
-  .pd-l3{padding:.28rem .6rem;font-size:.72rem}
-  .pd-soon-inline{font-size:.7rem;padding:.36rem .7rem}
-  .pd-l3-group{justify-content:flex-start}
+  .pd{top:62px;left:0;right:0;max-width:none;width:100%;transform:none;border-radius:0;border-left:none;border-right:none;border-top:none}
+  .pd-hidden{transform:translateY(-100%)}
+  .pd-row{padding:.55rem .75rem}
+  .pd-row-1{padding:.5rem .75rem;gap:.25rem;justify-content:center}
+  .pd-row-2{padding:.5rem .5rem}
+  .pd-row-3{padding:.45rem .5rem}
+  .pd-l1{padding:.62rem 1.35rem;font-size:.92rem;min-height:44px;display:inline-flex;align-items:center}
+  .pd-l2{padding:.58rem 1.05rem;font-size:.86rem;min-height:42px;display:inline-flex;align-items:center}
+  .pd-l3{padding:.48rem .9rem;font-size:.85rem;min-height:38px;display:inline-flex;align-items:center}
+  .pd-l2-group{padding:0 .15rem;gap:.2rem}
+  .pd-l3-group{justify-content:flex-start;padding:0 .3rem;gap:.15rem}
+  .pd-soon-inline{font-size:.82rem;padding:.5rem .9rem;white-space:normal;text-align:center;line-height:1.4}
 }
 
 /* ========== PORTFOLIO BODY ========== */
 .pf-body{padding-top:3rem;position:relative;z-index:2}
 @media(max-width:768px){.pf-body{padding-top:4.5rem}}
 .p-sec{max-width:1200px;margin:0 auto;padding:4rem 2rem 2rem;scroll-margin-top:160px}
-@media(max-width:768px){.p-sec{padding:3rem 1rem 1.5rem;scroll-margin-top:180px}}
+@media(max-width:768px){.p-sec{padding:3rem 1rem 1.5rem;scroll-margin-top:240px}}
 .p-sec-head{margin-bottom:2.5rem}
 .p-sec-crumb{font-family:'Geist Mono',monospace;font-size:.72rem;font-weight:500;letter-spacing:.25em;text-transform:uppercase;color:rgba(0,224,192,.75);margin-bottom:.8rem}
 .p-sec-title{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(2.4rem,5.5vw,4rem);letter-spacing:-.04em;line-height:1;color:#fff5e6;font-variation-settings:"opsz" 144,"SOFT" 20;margin-bottom:.9rem;text-shadow:0 4px 22px rgba(0,0,0,.7)}
@@ -270,7 +274,7 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
 .p-sec-sub em{font-family:'Instrument Serif',serif;font-style:italic;color:#fff5e6;font-variation-settings:normal;font-size:1.08em}
 
 .p-sub{margin-bottom:3.5rem;scroll-margin-top:200px}
-@media(max-width:768px){.p-sub{margin-bottom:2.5rem}}
+@media(max-width:768px){.p-sub{margin-bottom:2.5rem;scroll-margin-top:260px}}
 .p-sub-head{margin-bottom:1.3rem;padding-bottom:1rem;border-bottom:1px solid rgba(255,255,255,.08);display:flex;flex-wrap:wrap;align-items:baseline;gap:.9rem}
 .p-sub-num{font-family:'Geist Mono',monospace;font-size:.78rem;font-weight:500;letter-spacing:.2em;color:rgba(0,224,192,.7);flex-shrink:0}
 .p-sub-title{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(1.3rem,2.5vw,1.8rem);letter-spacing:-.02em;color:#fff5e6;font-variation-settings:"opsz" 72,"SOFT" 30,"WONK" 1;line-height:1.1;flex-shrink:0}
@@ -1590,7 +1594,8 @@ document.addEventListener('click',function(e){
         if(firstL3)firstL3.classList.add('active');
         var t=document.getElementById(id);
         if(t){
-          var top=t.getBoundingClientRect().top+window.pageYOffset-200;
+          var offset=window.innerWidth<560?230:200;
+        var top=t.getBoundingClientRect().top+window.pageYOffset-offset;
           window.scrollTo({top:top,behavior:'smooth'});
         }
         if(typeof gtag==='function')gtag('event','pd_l2',{section:id});
@@ -1609,7 +1614,8 @@ document.addEventListener('click',function(e){
         if(!t)return;
         l3s.forEach(function(x){x.classList.remove('active')});
         b.classList.add('active');
-        var top=t.getBoundingClientRect().top+window.pageYOffset-215;
+        var offset=window.innerWidth<560?245:215;
+        var top=t.getBoundingClientRect().top+window.pageYOffset-offset;
         window.scrollTo({top:top,behavior:'smooth'});
         if(typeof gtag==='function')gtag('event','pd_l3',{section:id});
       });
