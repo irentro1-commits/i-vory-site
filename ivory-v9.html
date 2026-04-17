@@ -2044,65 +2044,7 @@ window.addEventListener('scroll',animateCounters,{passive:true});
 document.addEventListener('click',function(e){var btn=e.target.closest('.faq-q');if(!btn)return;e.preventDefault();var item=btn.parentElement;var was=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(function(i){i.classList.remove('open')});if(!was)item.classList.add('open')});
 }catch(__v9e){console.warn('v9 guard:',__v9e.message)}</script>
 <!-- BOOKING MODAL -->
-<div id="bkOverlay" class="bk-overlay" role="dialog" aria-modal="true" aria-hidden="true">
-<div class="bk-modal">
-<button class="bk-close" id="bkClose" aria-label="Inchide">&times;</button>
-<div class="bk-hdr">
-<div class="bk-eyebrow">Call gratuit &middot; 30 minute</div>
-<h3 class="bk-title">Alege un moment</h3>
-<p class="bk-sub">Discutăm concret ce ai nevoie. Primesti confirmare pe email in maxim 2 ore.</p>
-</div>
-<form id="bkForm" class="bk-form">
-<input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
-
-<div class="bk-row">
-<label class="bk-lbl">Nume<span>*</span></label>
-<input type="text" name="Nume" required placeholder="Popescu Andrei" class="bk-inp">
-</div>
-
-<div class="bk-row">
-<label class="bk-lbl">Email<span>*</span></label>
-<input type="email" name="Email" required placeholder="andrei@firmata.ro" class="bk-inp">
-</div>
-
-<div class="bk-row">
-<label class="bk-lbl">Telefon</label>
-<input type="tel" name="Telefon" placeholder="0700 000 000" class="bk-inp">
-</div>
-
-<div class="bk-row">
-<label class="bk-lbl">Business / Instagram</label>
-<input type="text" name="Business" placeholder="@firmata_ro sau firmata.ro" class="bk-inp">
-</div>
-
-<div class="bk-row bk-row2">
-<div>
-<label class="bk-lbl">Data preferata<span>*</span></label>
-<input type="date" name="Data" required class="bk-inp" id="bkDate">
-</div>
-<div>
-<label class="bk-lbl">Interval<span>*</span></label>
-<select name="Interval" required class="bk-inp">
-<option value="">Alege...</option>
-<option value="09:00-11:00">09:00 - 11:00</option>
-<option value="11:00-13:00">11:00 - 13:00</option>
-<option value="14:00-16:00">14:00 - 16:00</option>
-<option value="16:00-18:00">16:00 - 18:00</option>
-<option value="18:00-20:00">18:00 - 20:00</option>
-</select>
-</div>
-</div>
-
-<div class="bk-row">
-<label class="bk-lbl">Ce te intereseaza</label>
-<textarea name="Mesaj" rows="3" placeholder="Scurt: ce vrei sa rezolvi, ce ai incercat deja." class="bk-inp"></textarea>
-</div>
-
-<button type="submit" class="bk-submit">Trimite solicitarea &rarr;</button>
-<p class="bk-fine">Primesti automat un fisier .ics cu 2 reminder-e (24h + 30min inainte). Adauga-l in calendar. Răspundem in max 2 ore.</p>
-</form>
-</div>
-</div><script>try{
+<script>try{
 (function(){
 var btn=document.getElementById("openBooking");
 var ov=document.getElementById("bkOverlay");
@@ -2232,25 +2174,9 @@ fm.addEventListener("submit",async function(e){
   setTimeout(close,2000);
 });
 })();
-}catch(__v9e){console.warn('v9 guard:',__v9e.message)}</script><div class="wti-wrap rv">
-<div class="wti-head"><div class="tc-eyebrow">Cum lucram</div><h3 class="tc-title">De la brief la rezultate</h3></div>
-<div class="wti-track">
-<div class="wti-step"><div class="wti-num">1</div><div class="wti-t">Brief</div><p class="wti-d">Call 30 min pentru a intelege brandul, publicul si obiectivele</p><span class="wti-dur">Ziua 1</span></div>
-<div class="wti-step"><div class="wti-num">2</div><div class="wti-t">Research</div><p class="wti-d">Analiză competitie, audienta, tone of voice si referinte vizuale</p><span class="wti-dur">Ziua 2-3</span></div>
-<div class="wti-step"><div class="wti-num">3</div><div class="wti-t">Producție</div><p class="wti-d">Copywriting, design, filmare, editare - tot in-house</p><span class="wti-dur">48-72h</span></div>
-<div class="wti-step"><div class="wti-num">4</div><div class="wti-t">Publicare</div><p class="wti-d">Programare pe toate platformele cu ore optime de engagement</p><span class="wti-dur">Automat</span></div>
-<div class="wti-step"><div class="wti-num">5</div><div class="wti-t">Analytics</div><p class="wti-d">Raport lunar cu views, engagement, follower growth si recomandari</p><span class="wti-dur">Lunar</span></div>
-</div>
-</div>
+}catch(__v9e){console.warn('v9 guard:',__v9e.message)}</script>
 
-<div class="tc-wrap rv">
-<div class="tc-head"><div class="tc-eyebrow">Ce spun clientii</div><h3 class="tc-title">Rezultate reale, nu template-uri</h3></div>
-<div class="tc-track">
-<div class="tc-card" data-cs="ghibu"><video muted loop playsinline preload="none" poster="og-image.jpg"></video><div class="tc-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="#04060e"><polygon points="5 3 19 12 5 21"/></svg></div><div class="tc-info"><div class="tc-name">Dr. Nicolae Ghibu</div><div class="tc-role">Medical Educațional</div></div></div>
-<div class="tc-card" data-cs="iorga"><video muted loop playsinline preload="none" poster="og-image.jpg"></video><div class="tc-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="#04060e"><polygon points="5 3 19 12 5 21"/></svg></div><div class="tc-info"><div class="tc-name">Dr. Iorga Bogdan Nicolae</div><div class="tc-role">Dental Clinic</div></div></div>
-<div class="tc-card" data-cs="popa"><video muted loop playsinline preload="none" poster="og-image.jpg"></video><div class="tc-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="#04060e"><polygon points="5 3 19 12 5 21"/></svg></div><div class="tc-info"><div class="tc-name">Av. Popa-Alexandru</div><div class="tc-role">Criminal Law</div></div></div>
-</div>
-</div>
+
 
 </div>
 
@@ -2262,7 +2188,7 @@ var cases={
 "popa":{eyebrow:"Caz · Legal",title:"Av. Andreas Popa-Alexandru",sub:"Content juridic accesibil pentru avocat specializat in drept penal. Traffic organic catre site-ul casei de avocatura.",challenge:"Dreptul penal e un subiect sensibil. Trebuia content educativ fara sa para ca incurajeaza infractiuni sau fara sa banalizeze procese.",solution:"Format Q&A scurt: drepturile tale in fata politiei, ce sa faci la audiere, cum funcționează un proces penal. Ton calm, profesionist, zero senzationalism.",result:"Devenit una dintre cele mai urmarite pagini juridice din România pentru public non-juridic.",quote:"",author:""}};
 
 function open(k){var c=cases[k];if(!c)return;
-var html='<div class="cs-hdr"><div class="cs-eyebrow">'+c.eyebrow+'</div><h2 class="cs-title">'+c.title+'</h2><p class="cs-sub">'+c.sub+'</p></div><div class="cs-section"><div class="cs-h">Provocarea</div><p class="cs-p">'+c.challenge+'</p></div><div class="cs-section"><div class="cs-h">Solutia</div><p class="cs-p">'+c.solution+'</p></div><div class="cs-section"><div class="cs-h">Rezultat</div><p class="cs-p">'+c.result+'</p></div>';
+var html='';
 document.getElementById("csContent").innerHTML=html;
 document.getElementById("csOv").classList.add("open");
 document.body.style.overflow="hidden";
