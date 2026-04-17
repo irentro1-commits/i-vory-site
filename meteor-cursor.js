@@ -13,14 +13,10 @@
 @media(min-width:769px){
   *,a,button,input,textarea,select{cursor:none !important}
   .meteor{position:fixed;pointer-events:none;z-index:99999;width:14px;height:14px;margin:-7px 0 0 -7px;transition:opacity .3s;mix-blend-mode:screen}
-  .meteor-core{position:absolute;top:50%;left:50%;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.95) 0%,rgba(180,230,255,.65) 40%,rgba(100,180,240,.15) 70%,transparent 100%);box-shadow:0 0 12px 3px rgba(150,220,255,.7),0 0 24px 6px rgba(80,160,230,.35);animation:wispPulse 1.8s ease-in-out infinite}
-  .meteor-flame{position:absolute;width:78px;height:3px;top:5.5px;right:-72px;background:linear-gradient(90deg,rgba(255,255,255,.95) 0%,rgba(180,230,255,.9) 12%,rgba(100,180,240,.75) 35%,rgba(80,140,220,.45) 60%,rgba(60,100,200,.2) 85%,transparent 100%);border-radius:0 2px 2px 0;filter:blur(1.5px);transform-origin:left center;animation:wispFade .4s ease-in-out infinite alternate}
-  .meteor-flame2{position:absolute;width:110px;height:7px;top:3.5px;right:-104px;background:linear-gradient(90deg,rgba(200,240,255,.55) 0%,rgba(120,190,240,.35) 25%,rgba(80,140,220,.2) 55%,transparent 90%);border-radius:0 6px 6px 0;filter:blur(4px);transform-origin:left center;animation:wispFade .6s ease-in-out infinite alternate-reverse}
-  .meteor-flame3{position:absolute;width:140px;height:14px;top:0;right:-130px;background:linear-gradient(90deg,rgba(160,220,255,.35) 0%,rgba(100,170,230,.18) 35%,transparent 80%);border-radius:0 10px 10px 0;filter:blur(10px);transform-origin:left center;animation:wispDrift 1s ease-in-out infinite alternate}
+  .meteor-core{position:absolute;top:50%;left:50%;width:12px;height:12px;margin:-6px 0 0 -6px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,1) 0%,rgba(200,240,255,.9) 25%,rgba(140,210,255,.55) 55%,rgba(80,160,240,.15) 80%,transparent 100%);box-shadow:0 0 14px 4px rgba(180,230,255,.7),0 0 30px 8px rgba(100,180,240,.35),0 0 60px 12px rgba(60,120,230,.15);animation:wispPulse 2s ease-in-out infinite}
+  .meteor-flame,.meteor-flame2,.meteor-flame3{display:none !important}
   #nebulaCanvas{position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:99990;mix-blend-mode:screen}
-  @keyframes wispPulse{0%,100%{transform:scale(1);opacity:.85}50%{transform:scale(1.25);opacity:1}}
-  @keyframes wispFade{0%{opacity:.75;transform:scaleX(.95)}100%{opacity:1;transform:scaleX(1.08)}}
-  @keyframes wispDrift{0%{opacity:.5;transform:scaleX(.92) translateY(-1px)}100%{opacity:.75;transform:scaleX(1.05) translateY(1px)}}
+  @keyframes wispPulse{0%,100%{transform:scale(1);opacity:.9}50%{transform:scale(1.2);opacity:1}}
   .meteor.idle{opacity:0 !important;pointer-events:none}
   #nebulaCanvas.idle{opacity:0;transition:opacity .6s}
 }
