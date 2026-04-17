@@ -13,7 +13,7 @@
 <meta property="og:image" content="https://i-vory.ro/og-image.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{--bg:#050505;--bg2:#0b0b0b;--bg3:#111;--bg4:#181818;--t:#ede9e3;--td:#d0cbc3;--tm:#8a857e;--ac:#00e0c0;--ac2:rgba(0,224,192,.12);--ac3:rgba(0,224,192,.06);--pu:#7b2cff;--br:rgba(255,255,255,.06);--br2:rgba(255,255,255,.12);--r:12px;--fd:'Geist',-apple-system,sans-serif;--fb:'Geist',-apple-system,sans-serif;--fm:'Geist Mono',monospace;--e:cubic-bezier(.16,1,.3,1)}
@@ -41,13 +41,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.1rem 2.5rem;displ
 
 /* HERO */
 .pf-hero{padding:160px 2.5rem 80px;position:relative;z-index:2;max-width:1100px;margin:0 auto}
-.pf-dir2{margin-top:3.5rem;max-width:720px}
-.pf-dir2-num{font-family:var(--fm,monospace);font-size:.7rem;color:#00e0c0;letter-spacing:.3em;margin-bottom:.8rem;opacity:.75}
-.pf-dir2-label{font-family:var(--fd);font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;letter-spacing:-.025em;margin-bottom:1rem;line-height:1.1}
-.pf-dir2-label span{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--td);font-size:.7em;letter-spacing:0}
-.pf-dir2-text{font-size:1rem;color:var(--td);line-height:1.75;margin:0}
-.pf-dir2-note{font-size:.82rem;color:#00e0c0;margin-top:.9rem;font-family:var(--fm,monospace);letter-spacing:.05em;opacity:.7}
-@media(max-width:768px){.pf-dir2{margin-top:2.5rem}.pf-dir2-text{font-size:.95rem;line-height:1.7}}
+.pf-dir2{margin-top:4rem;max-width:760px;position:relative}
+.pf-dir2-num{font-family:'Geist Mono',monospace;font-size:.7rem;color:rgba(0,224,192,.75);letter-spacing:.35em;margin-bottom:1.1rem;font-weight:500}
+.pf-dir2-label{font-family:'Fraunces','Times New Roman',serif;font-size:clamp(2.2rem,4.5vw,3.6rem);font-weight:700;font-variation-settings:"opsz" 144,"SOFT" 30,"WONK" 1;letter-spacing:-.035em;line-height:1;margin-bottom:1.4rem;display:flex;flex-direction:column;gap:.4rem}
+.pf-dir2-label span{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:rgba(216,212,200,.7);font-size:.4em;letter-spacing:-.005em;line-height:1.4;font-variation-settings:normal}
+.pf-dir2-text{font-family:'Fraunces','Times New Roman',serif;font-size:1.08rem;color:#d8d4c8;line-height:1.7;margin:0;max-width:620px;letter-spacing:-.005em;font-weight:400;font-variation-settings:"opsz" 48,"SOFT" 100}
+.pf-dir2-note{font-family:'Geist Mono',monospace;font-size:.72rem;color:rgba(0,224,192,.85);margin-top:1.2rem;letter-spacing:.18em;text-transform:uppercase;font-weight:500}
+@media(max-width:768px){.pf-dir2{margin-top:3rem}.pf-dir2-text{font-size:1rem;line-height:1.65}.pf-dir2-label{margin-bottom:1rem}}
 
 /* LEGEND PANEL */
 .pf-legend{position:fixed;z-index:90;background:rgba(6,8,18,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.08);transition:transform .35s cubic-bezier(.2,.9,.3,1.1),opacity .3s}
@@ -93,9 +93,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.1rem 2.5rem;displ
   .pf-legend-head{padding-top:.3rem}
   .pf-legend-fab{right:1.2rem;bottom:1.2rem;padding:.7rem 1.1rem;font-size:.78rem}
 }
-.pf-hero h1{font-family:var(--fd);font-size:clamp(2.6rem,7vw,5rem);font-weight:800;letter-spacing:-.04em;line-height:1.05;margin-bottom:1.2rem}
-.pf-hero h1 span{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;letter-spacing:-.01em;font-size:1.05em}
-.pf-hero .sub{font-size:1.05rem;color:var(--td);max-width:620px;line-height:1.7}
+.pf-hero h1{font-family:'Fraunces','Times New Roman',serif;font-size:clamp(3rem,8vw,6rem);font-weight:900;font-variation-settings:"opsz" 144,"SOFT" 0,"WONK" 0;letter-spacing:-.045em;line-height:.95;margin-bottom:1.5rem}
+.pf-hero h1 span{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;letter-spacing:-.015em;font-size:1em;font-variation-settings:normal}
+.pf-hero .sub{font-family:'Fraunces','Times New Roman',serif;font-weight:400;font-size:clamp(1.05rem,1.8vw,1.35rem);color:#d8d4c8;max-width:640px;line-height:1.55;letter-spacing:-.01em;font-variation-settings:"opsz" 48,"SOFT" 100}
+.pf-hero .sub .hl{font-style:italic;font-family:'Instrument Serif',serif;font-weight:400;color:#fff5e6;letter-spacing:0;font-variation-settings:normal}
 
 /* SECTIONS — v9 identical style */
 .sec{padding:6rem 2.5rem;position:relative;z-index:2;border-bottom:1px solid var(--br)}
@@ -477,15 +478,15 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
   
   <div class="pf-dir2">
     <div class="pf-dir2-num">01</div>
-    <div class="pf-dir2-label">Design <span>— arta cadrului fix</span></div>
-    <p class="pf-dir2-text">Un singur cadru. Zecimea de secundă în care cineva decide dacă rămâne sau pleacă. Carusele care nu plictisesc de la slide-ul doi, imagini care opresc scroll-ul fără să țipe, vizuale de campanie care fac reclama să nu mai arate a reclamă.</p>
+    <div class="pf-dir2-label">Design<span>Tot ce stă și vorbește.</span></div>
+    <p class="pf-dir2-text">Carusele, postări, vizuale pentru campanii plătite. Construim fiecare cadru ca un artefact de brand.</p>
   </div>
   
   <div class="pf-dir2">
     <div class="pf-dir2-num">02</div>
-    <div class="pf-dir2-label">Video <span>— arta mișcării</span></div>
-    <p class="pf-dir2-text">Pentru momentele când un cadru fix nu mai spune tot. Reels cinematice, showcase de produs cu ritm de clip, before &amp; after care taie respirația, explainere care nu se uită la ceas. Fiecare secvență are un motiv — nu punem cadre pentru că avem loc pe timeline.</p>
-    <p class="pf-dir2-note">Portofoliul video se adaugă în curând.</p>
+    <div class="pf-dir2-label">Video<span>Tot ce se mișcă și convinge.</span></div>
+    <p class="pf-dir2-text">Reels, cinematice, showcase, before &amp; after, explainere. Cinci formate, același standard de producție.</p>
+    <p class="pf-dir2-note">Portofoliul video — în lucru.</p>
   </div>
 </header>
 
