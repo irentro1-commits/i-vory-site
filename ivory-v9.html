@@ -1241,6 +1241,16 @@ body::before{background-size:800px 800px !important;opacity:.4 !important}
 <script type="application/ld+json">
 {"@context": "https://schema.org", "@type": "WebPage", "speakable": {"@type": "SpeakableSpecification", "cssSelector": [".s2 h2", ".s2 .s2-desc", ".faq-a", ".sh", ".ss"]}, "url": "https://i-vory.ro"}
 </script>
+
+<style id="mobile-mute-fix">
+@media(max-width:768px){
+  .hv-mute{width:52px !important;height:52px !important;bottom:1.2rem !important;right:1.2rem !important;z-index:10 !important}
+  .hero-video{cursor:pointer}
+  .hv-unmute-hint{position:absolute;bottom:4.5rem;right:.5rem;background:rgba(0,0,0,.7);color:#fff;padding:.4rem .8rem;border-radius:8px;font-size:.65rem;font-family:var(--fm);pointer-events:none;opacity:1;animation:hintFade 3s ease-in-out forwards;z-index:10}
+  @keyframes hintFade{0%{opacity:1}70%{opacity:1}100%{opacity:0}}
+}
+</style>
+
 </head>
 <body>
 
@@ -2494,4 +2504,48 @@ document.addEventListener('click',function(e){
 
 })();
 </script>
+
+<script id="mobile-video-sound">
+(function(){
+  var vid=document.getElementById('hvVid');
+  var muteBtn=document.getElementById('hvMute');
+  var heroVid=document.getElementById('heroVideo');
+  if(!vid||!heroVid)return;
+  
+  // Prevent video from going fullscreen on tap
+  vid.setAttribute('playsinline','');
+  vid.setAttribute('webkit-playsinline','');
+  vid.removeAttribute('controls');
+  
+  // Add unmute hint on mobile
+  if(window.__IS_MOBILE){
+    var hint=document.createElement('div');
+    hint.className='hv-unmute-hint';
+    hint.textContent='Apasă pentru sunet';
+    heroVid.appendChild(hint);
+  }
+  
+  // Tap anywhere on video container = toggle mute
+  heroVid.addEventListener('click',function(e){
+    if(e.target===muteBtn||muteBtn.contains(e.target))return;
+    e.preventDefault();
+    e.stopPropagation();
+    vid.muted=!vid.muted;
+    if(muteBtn){
+      muteBtn.classList.toggle('on',!vid.muted);
+    }
+  });
+  
+  // Also make mute button work
+  if(muteBtn){
+    muteBtn.addEventListener('click',function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      vid.muted=!vid.muted;
+      muteBtn.classList.toggle('on',!vid.muted);
+    });
+  }
+})();
+</script>
+
 </body></html>
