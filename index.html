@@ -799,7 +799,17 @@ h3, h4, .pk-name, .how-title, .dce-title {
 }
 
 @media(max-width:768px) {
-  .btn-pf { font-size: .85rem; padding: .75rem 1.2rem; }
+  .btn-pf { font-size: .88rem; padding: .9rem 1.6rem; width:80%; justify-content:center; animation: btnPfBreathe 3s ease-in-out infinite; }
+  .btn-pf::after { opacity: .8; animation: btnPfUnderline 2.5s ease-in-out infinite; }
+}
+@keyframes btnPfBreathe {
+  0%,100% { box-shadow: 0 4px 16px rgba(0,0,0,.3), 0 0 0 0 rgba(0,224,192,0), inset 0 1px 0 rgba(255,255,255,.06); }
+  50% { box-shadow: 0 6px 20px rgba(0,0,0,.35), 0 0 22px rgba(0,224,192,.18), inset 0 1px 0 rgba(255,255,255,.1); }
+}
+@keyframes btnPfUnderline {
+  0%,100% { transform: scaleX(.85) skewX(-4deg); opacity: .7; }
+  50% { transform: scaleX(.95) skewX(-3deg); opacity: 1; }
+}
 }
 
 /* VIDEO LIGHTBOX */
