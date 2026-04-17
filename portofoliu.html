@@ -56,10 +56,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.1rem 2.5rem;displ
 .dock-hidden{opacity:0;pointer-events:none;transform:translateX(-50%) translateY(16px)}
 .dock-inner{display:flex;gap:.3rem;padding:.4rem;background:rgba(4,6,14,.88);backdrop-filter:blur(24px) saturate(140%);-webkit-backdrop-filter:blur(24px) saturate(140%);border:1px solid rgba(255,255,255,.1);border-radius:100px;box-shadow:0 14px 40px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.04) inset;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none}
 .dock-inner::-webkit-scrollbar{display:none}
-.dock-chip{flex-shrink:0;padding:.55rem 1rem;background:transparent;border:none;border-radius:100px;color:rgba(208,203,195,.75);font-family:'Geist',sans-serif;font-size:.78rem;font-weight:500;letter-spacing:-.005em;cursor:pointer;white-space:nowrap;transition:all .25s;-webkit-tap-highlight-color:transparent}
-.dock-chip:hover{color:#fff5e6;background:rgba(255,255,255,.04)}
+.dock-chip{flex-shrink:0;padding:.6rem 1.15rem;background:transparent;border:none;border-radius:100px;color:rgba(216,212,200,.72);font-family:'Fraunces','Times New Roman',serif;font-size:.82rem;font-weight:500;letter-spacing:-.005em;font-variation-settings:"opsz" 48,"SOFT" 80,"WONK" 0;cursor:pointer;white-space:nowrap;transition:all .3s cubic-bezier(.2,.9,.3,1.1);-webkit-tap-highlight-color:transparent}
+.dock-chip:hover{color:#fff5e6;background:rgba(255,245,230,.05)}
 .dock-chip:active{transform:scale(.94)}
-.dock-chip.active{background:linear-gradient(135deg,#00e0c0,#7b2cff);color:#04060e;font-weight:700;box-shadow:0 4px 14px rgba(0,224,192,.35)}
+.dock-chip.active{background:#fff5e6;color:#0a0b14;font-weight:600;box-shadow:0 2px 18px rgba(255,245,230,.25),0 0 0 1px rgba(255,245,230,.1)}
 .dock-tip{position:absolute;bottom:calc(100% + 10px);left:50%;transform:translateX(-50%);max-width:min(90vw,380px);background:rgba(4,6,14,.96);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(0,224,192,.3);border-radius:14px;padding:.85rem 1.1rem;font-family:'Fraunces',serif;font-size:.82rem;line-height:1.5;color:#fff5e6;font-variation-settings:"opsz" 48,"SOFT" 100;box-shadow:0 12px 40px rgba(0,0,0,.5);opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;white-space:normal;text-align:center}
 .dock-tip.show{opacity:1;transform:translateX(-50%) translateY(-4px)}
 @media(max-width:560px){
@@ -1331,7 +1331,7 @@ document.addEventListener('click',function(e){
     if(!dock||!chips.length)return;
     var tipTimer=null;
     function toggle(){
-      var heroEnd=hero?hero.offsetTop+hero.offsetHeight-300:200;
+      var heroEnd=200;
       if(window.scrollY>heroEnd){dock.classList.remove('dock-hidden')}
       else{dock.classList.add('dock-hidden')}
     }
