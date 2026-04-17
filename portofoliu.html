@@ -604,10 +604,10 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
     </div>
     <div class="pd-tabs pd-l2-group pd-tabs-hidden" data-for="video">
       <button class="pd-l2" data-l2="vid-cinematic" data-to="sec-vid-cinematic">Cinematic</button>
-      <button class="pd-l2" data-l2="vid-animat" data-to="sec-vid-animat">Animat</button>
-      <button class="pd-l2" data-l2="vid-tiktok" data-to="sec-vid-tiktok">TikTok</button>
+      <button class="pd-l2" data-l2="vid-animat" data-to="sec-vid-animat">Animație</button>
+      <button class="pd-l2" data-l2="vid-tiktok" data-to="sec-vid-tiktok">Promoțional</button>
       <button class="pd-l2" data-l2="vid-asmr" data-to="sec-vid-asmr">ASMR</button>
-      <button class="pd-l2" data-l2="vid-medical" data-to="sec-vid-medical">Medical B/A</button>
+      <button class="pd-l2" data-l2="vid-medical" data-to="sec-vid-medical">Before/After</button>
     </div>
   </div>
 
@@ -641,11 +641,11 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
       <button class="pd-l3" data-soon="true">Prezentare</button>
     </div>
     <!-- VIDEO L3 groups (each video = own section, no L3 needed) -->
-    <div class="pd-l3-group pd-l3-hidden" data-l2="vid-cinematic"><span class="pd-soon-inline">Urbancat · <em>Orașul e al lor</em></span></div>
-    <div class="pd-l3-group pd-l3-hidden" data-l2="vid-animat"><span class="pd-soon-inline">Urbancat · <em>CatNip</em></span></div>
-    <div class="pd-l3-group pd-l3-hidden" data-l2="vid-tiktok"><span class="pd-soon-inline">Urbancat · <em>Apă proaspătă</em></span></div>
-    <div class="pd-l3-group pd-l3-hidden" data-l2="vid-asmr"><span class="pd-soon-inline">Urbancat · <em>Ascultă pisicile</em></span></div>
-    <div class="pd-l3-group pd-l3-hidden" data-l2="vid-medical"><span class="pd-soon-inline">Dr. Iorga · <em>Caz Vali — before/after</em></span></div>
+    <div class="pd-l3-group pd-l3-hidden" data-l2="vid-cinematic"><button class="pd-l3 active" data-to="sec-vid-cinematic">Prezentare</button></div>
+    <div class="pd-l3-group pd-l3-hidden" data-l2="vid-animat"><button class="pd-l3 active" data-to="sec-vid-animat">Spot lansare produs</button></div>
+    <div class="pd-l3-group pd-l3-hidden" data-l2="vid-tiktok"><button class="pd-l3 active" data-to="sec-vid-tiktok">TikTok style</button></div>
+    <div class="pd-l3-group pd-l3-hidden" data-l2="vid-asmr"><button class="pd-l3 active" data-to="sec-vid-asmr">Produs fântână apă</button></div>
+    <div class="pd-l3-group pd-l3-hidden" data-l2="vid-medical"><button class="pd-l3 active" data-to="sec-vid-medical">Medical</button></div>
   </div>
 </nav>
 
@@ -892,62 +892,62 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
 <section class="p-sec p-sec-video" id="sec-vid-cinematic" style="display:none">
   <div class="p-sec-head">
     <div class="p-sec-crumb">Video · Cinematic</div>
-    <h2 class="p-sec-title">Cinematic de Prezentare</h2>
+    <h2 class="p-sec-title">Cinematic</h2>
     <p class="p-sec-sub"><em>UrbanCat — Orașul e al lor.</em> Cadru larg, lumină poetică, brand care se insinuează.</p>
   </div>
   <div class="p-sub">
     <div class="p-axis">
       <div class="p-axis-row axis-l1"><span class="p-axis-sym">II</span><span class="p-axis-name">Video</span></div>
       <div class="p-axis-row axis-l2"><span class="p-axis-sym">1</span><span class="p-axis-name">Cinematic</span></div>
-      <div class="p-axis-row axis-l3 p-axis-active"><span class="p-axis-sym">A</span><span class="p-axis-name">Urbancat</span></div>
+      <div class="p-axis-row axis-l3 p-axis-active"><span class="p-axis-sym">A</span><span class="p-axis-name">Prezentare</span></div>
     </div>
     <div class="p-video">
       <video controls preload="metadata" playsinline muted>
         <source src="/portfolio2/video/cinematic/ora-ul-e-al-lor.urbancat.ro-2.mp4" type="video/mp4">
       </video>
-      <div class="p-video-caption">UrbanCat — Orașul e al lor</div>
+      <div class="p-video-caption">Spot cinematic de prezentare brand</div>
     </div>
   </div>
 </section>
 
 <section class="p-sec p-sec-video" id="sec-vid-animat" style="display:none">
   <div class="p-sec-head">
-    <div class="p-sec-crumb">Video · Animat Promoțional</div>
-    <h2 class="p-sec-title">Animat Promoțional</h2>
+    <div class="p-sec-crumb">Video · Animație</div>
+    <h2 class="p-sec-title">Animație</h2>
     <p class="p-sec-sub"><em>CatNip acum pe UrbanCat.ro.</em> Motion graphics, ritm direct, CTA clar.</p>
   </div>
   <div class="p-sub">
     <div class="p-axis">
       <div class="p-axis-row axis-l1"><span class="p-axis-sym">II</span><span class="p-axis-name">Video</span></div>
-      <div class="p-axis-row axis-l2"><span class="p-axis-sym">2</span><span class="p-axis-name">Animat</span></div>
-      <div class="p-axis-row axis-l3 p-axis-active"><span class="p-axis-sym">A</span><span class="p-axis-name">CatNip</span></div>
+      <div class="p-axis-row axis-l2"><span class="p-axis-sym">2</span><span class="p-axis-name">Animație</span></div>
+      <div class="p-axis-row axis-l3 p-axis-active"><span class="p-axis-sym">A</span><span class="p-axis-name">Spot lansare produs</span></div>
     </div>
     <div class="p-video">
       <video controls preload="metadata" playsinline muted>
         <source src="/portfolio2/video/animat/catnip-acum-pe-urbancat.ro.mp4" type="video/mp4">
       </video>
-      <div class="p-video-caption">UrbanCat — CatNip lansare</div>
+      <div class="p-video-caption">Spot animat pentru lansare produs</div>
     </div>
   </div>
 </section>
 
 <section class="p-sec p-sec-video" id="sec-vid-tiktok" style="display:none">
   <div class="p-sec-head">
-    <div class="p-sec-crumb">Video · TikTok Multi-effects</div>
-    <h2 class="p-sec-title">TikTok Style</h2>
+    <div class="p-sec-crumb">Video · Promoțional</div>
+    <h2 class="p-sec-title">Promoțional</h2>
     <p class="p-sec-sub"><em>Apă proaspătă, filtrată continuu.</em> Taiere rapidă, multi-efecte, hook în primele 2 secunde.</p>
   </div>
   <div class="p-sub">
     <div class="p-axis">
       <div class="p-axis-row axis-l1"><span class="p-axis-sym">II</span><span class="p-axis-name">Video</span></div>
-      <div class="p-axis-row axis-l2"><span class="p-axis-sym">3</span><span class="p-axis-name">TikTok</span></div>
-      <div class="p-axis-row axis-l3 p-axis-active"><span class="p-axis-sym">A</span><span class="p-axis-name">Fântână</span></div>
+      <div class="p-axis-row axis-l2"><span class="p-axis-sym">3</span><span class="p-axis-name">Promoțional</span></div>
+      <div class="p-axis-row axis-l3 p-axis-active"><span class="p-axis-sym">A</span><span class="p-axis-name">TikTok style</span></div>
     </div>
     <div class="p-video">
       <video controls preload="metadata" playsinline muted>
         <source src="/portfolio2/video/tiktok/ap-proasp-t-filtrat-continuu-exact-cum-ar-trebui-s-fie.-f-nt-nile-urbancat-sunt-construite.mp4" type="video/mp4">
       </video>
-      <div class="p-video-caption">UrbanCat — Apă proaspătă filtrată</div>
+      <div class="p-video-caption">Spot promoțional TikTok multi-efecte</div>
     </div>
   </div>
 </section>
@@ -962,34 +962,34 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
     <div class="p-axis">
       <div class="p-axis-row axis-l1"><span class="p-axis-sym">II</span><span class="p-axis-name">Video</span></div>
       <div class="p-axis-row axis-l2"><span class="p-axis-sym">4</span><span class="p-axis-name">ASMR</span></div>
-      <div class="p-axis-row axis-l3 p-axis-active"><span class="p-axis-sym">A</span><span class="p-axis-name">Pisici</span></div>
+      <div class="p-axis-row axis-l3 p-axis-active"><span class="p-axis-sym">A</span><span class="p-axis-name">Produs fântână apă</span></div>
     </div>
     <div class="p-video">
       <video controls preload="metadata" playsinline muted>
         <source src="/portfolio2/video/asmr/ascult-.-asmr-pisici-1.mp4" type="video/mp4">
       </video>
-      <div class="p-video-caption">UrbanCat — ASMR pisici</div>
+      <div class="p-video-caption">ASMR pentru produs fântână de apă</div>
     </div>
   </div>
 </section>
 
 <section class="p-sec p-sec-video" id="sec-vid-medical" style="display:none">
   <div class="p-sec-head">
-    <div class="p-sec-crumb">Video · Medical Before/After</div>
-    <h2 class="p-sec-title">Medical Before/After</h2>
+    <div class="p-sec-crumb">Video · Before/After</div>
+    <h2 class="p-sec-title">Before/After</h2>
     <p class="p-sec-sub"><em>Dr. Bogdan Iorga — Caz Vali.</em> Showcase rezultat medical real, ton profesional, proof absolut.</p>
   </div>
   <div class="p-sub">
     <div class="p-axis">
       <div class="p-axis-row axis-l1"><span class="p-axis-sym">II</span><span class="p-axis-name">Video</span></div>
-      <div class="p-axis-row axis-l2"><span class="p-axis-sym">5</span><span class="p-axis-name">Medical B/A</span></div>
-      <div class="p-axis-row axis-l3 p-axis-active"><span class="p-axis-sym">A</span><span class="p-axis-name">Dr. Iorga</span></div>
+      <div class="p-axis-row axis-l2"><span class="p-axis-sym">5</span><span class="p-axis-name">Before/After</span></div>
+      <div class="p-axis-row axis-l3 p-axis-active"><span class="p-axis-sym">A</span><span class="p-axis-name">Medical</span></div>
     </div>
     <div class="p-video">
       <video controls preload="metadata" playsinline muted>
         <source src="/portfolio2/video/medical-ba/dr-bogdan-iorga-caz-vali.mp4" type="video/mp4">
       </video>
-      <div class="p-video-caption">Dr. Bogdan Iorga — before/after Vali</div>
+      <div class="p-video-caption">Before/after — showcase rezultat medical</div>
     </div>
   </div>
 </section>
