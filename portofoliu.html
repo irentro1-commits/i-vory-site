@@ -2,2013 +2,1472 @@
 <html lang="ro">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Portofoliu i-Vory Creative · Ce producem pentru clienții noștri</title>
-<meta name="description" content="Portofoliu i-Vory Creative. Carusele educaționale, storytelling, conținut profesional social media. Agenție Marketing and Advertising București.">
-<meta name="robots" content="index,follow">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+
+<title>Portofoliu — i-Vory Creative</title>
+<meta name="description" content="Carusele, postări, video și identitate vizuală pentru branduri care vor să arate ca fiind făcute cu intenție.">
 <link rel="canonical" href="https://i-vory.ro/portofoliu.html">
-<link rel="icon" type="image/svg+xml" href="/favicon.svg">
-<meta property="og:title" content="Portofoliu i-Vory Creative">
-<meta property="og:url" content="https://i-vory.ro/portofoliu.html">
-<meta property="og:image" content="https://i-vory.ro/og-image.jpg">
-<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+
+<link rel="icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=Cormorant+Garamond:ital,wght@1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..900,0..100,0..1;1,9..144,300..900,0..100,0..1&family=Instrument+Serif:ital@0;1&family=Geist+Mono:wght@400;500;600&family=Cormorant+Garamond:ital,wght@1,500&display=swap" rel="stylesheet">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Portofoliu — i-Vory Creative">
+<meta property="og:description" content="Carusele, postări, video și identitate vizuală pentru branduri.">
+<meta property="og:image" content="https://i-vory.ro/og-image.jpg">
+<meta property="og:type" content="website">
+
 <style>
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#050505;--bg2:#0b0b0b;--bg3:#111;--bg4:#181818;--t:#ede9e3;--td:#d0cbc3;--tm:#8a857e;--ac:#00e0c0;--ac2:rgba(0,224,192,.12);--ac3:rgba(0,224,192,.06);--pu:#7b2cff;--br:rgba(255,255,255,.06);--br2:rgba(255,255,255,.12);--r:12px;--fd:'Geist',-apple-system,sans-serif;--fb:'Geist',-apple-system,sans-serif;--fm:'Geist Mono',monospace;--e:cubic-bezier(.16,1,.3,1)}
-html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
-body{background:var(--bg);color:var(--t);font-family:var(--fb);line-height:1.6;overflow-x:clip}
-::selection{background:var(--ac);color:var(--bg)}
-img{max-width:100%;display:block}
+/* =============================================================================
+   PORTOFOLIU v10.0 — i-Vory Creative
+   Clean rebuild: semantic HTML, organized CSS, single source of truth.
 
-/* NAV — identical to v9 */
-nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.1rem 2.5rem;display:flex;justify-content:space-between;align-items:center;background:rgba(5,5,5,.75);backdrop-filter:blur(20px) saturate(1.5);border-bottom:1px solid var(--br)}
-.nl{text-decoration:none;display:flex;align-items:center;padding:.2rem 0}
-.nl img{height:48px;filter:drop-shadow(0 0 14px rgba(0,224,192,.45))}
-.nk{display:flex;align-items:center;gap:2.2rem;list-style:none}
-.nk a{color:var(--td);text-decoration:none;font-size:.8rem;font-weight:500;letter-spacing:.04em;transition:color .3s;font-family:var(--fd)}
-.nk a:hover{color:var(--t)}
-.nk a.act{color:var(--ac)}
-.nc{display:inline-flex;align-items:center;gap:.5rem;background:linear-gradient(135deg,#ff9a3d,#ffb86b);color:#1a0a00;padding:.7rem 1.4rem;border-radius:100px;font-family:var(--fd);font-weight:700;font-size:.85rem;text-decoration:none;transition:all .3s var(--e);box-shadow:0 8px 24px rgba(255,154,61,.3)}
-.nc:hover{transform:translateY(-2px)}
-.ham{display:none;background:none;border:none;cursor:pointer;padding:6px}
-.ham svg{stroke:var(--t)}
-.mm{position:fixed;inset:0;background:rgba(5,5,5,.98);backdrop-filter:blur(30px);z-index:999;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:2rem;opacity:0;visibility:hidden;transition:opacity .4s,visibility .4s}
-.mm.op{opacity:1;visibility:visible}
-.mm a{font-family:var(--fd);font-size:2rem;font-weight:700;color:var(--t);text-decoration:none;transition:color .3s}
-.mm a:hover{color:var(--ac)}
-
-/* HERO */
-.pf-hero{padding:140px 2.5rem 30px;position:relative;z-index:2;max-width:1100px;margin:0 auto}
-.pf-dir2{margin-top:4rem;max-width:760px;position:relative}
-.pf-dir2-num{font-family:'Geist Mono',monospace;font-size:.7rem;color:rgba(0,224,192,.75);letter-spacing:.35em;margin-bottom:1.1rem;font-weight:500}
-.pf-dir2-label{font-family:'Fraunces','Times New Roman',serif;font-size:clamp(2.2rem,4.5vw,3.6rem);font-weight:700;font-variation-settings:"opsz" 144,"SOFT" 30,"WONK" 1;letter-spacing:-.035em;line-height:1;margin-bottom:1.4rem;display:flex;flex-direction:column;gap:.4rem}
-.pf-dir2-label span{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:rgba(216,212,200,.7);font-size:.4em;letter-spacing:-.005em;line-height:1.4;font-variation-settings:normal}
-.pf-dir2-text{font-family:'Fraunces','Times New Roman',serif;font-size:1.08rem;color:#d8d4c8;line-height:1.7;margin:0;max-width:620px;letter-spacing:-.005em;font-weight:400;font-variation-settings:"opsz" 48,"SOFT" 100}
-.pf-dir2-note{font-family:'Geist Mono',monospace;font-size:.72rem;color:rgba(0,224,192,.85);margin-top:1.2rem;letter-spacing:.18em;text-transform:uppercase;font-weight:500}
-@media(max-width:768px){.pf-dir2{margin-top:3rem}.pf-dir2-text{font-size:1rem;line-height:1.65}.pf-dir2-label{margin-bottom:1rem}}
+   STRUCTURE:
+   1. TOKENS          — CSS variables
+   2. RESET           — minimal
+   3. LAYOUT          — body, main
+   4. NAVBAR          — top nav (auto-hide)
+   5. DOCK            — 3-level taxonomy (top sticky)
+   6. HERO            — page intro
+   7. SECTIONS        — p-sec + p-sec-head
+   8. SUBVARIANTS     — p-sub + axis breadcrumb
+   9. PHOTO GRID      — p-grid
+   10. VIDEO          — p-video
+   11. VARIANTS       — p-variant (greek α/β/γ)
+   12. COSMIC PANELS  — blur blobs behind content
+   13. LIGHTBOX       — image viewer
+   14. FOOTER CTA     — final call-to-action
+   15. RESPONSIVE     — all @media queries
+   ============================================================================= */
 
 
+/* ─── 1. TOKENS ─────────────────────────────────────────────────────────────── */
+:root {
+  /* colors */
+  --bg:           #040610;
+  --bg-soft:      rgba(4, 6, 14, 0.88);
+  --text:         #fff5e6;
+  --text-mute:    #b8beca;
+  --text-dim:     #8a92a0;
+  --accent:       #00e0c0;
+  --accent-soft:  rgba(0, 224, 192, 0.15);
+  --border:       rgba(255, 255, 255, 0.08);
+  --border-hi:    rgba(0, 224, 192, 0.28);
 
+  /* fonts */
+  --font-serif:   'Fraunces', Georgia, serif;
+  --font-italic:  'Instrument Serif', Georgia, serif;
+  --font-mono:    'Geist Mono', ui-monospace, 'Cascadia Code', monospace;
+  --font-greek:   'Cormorant Garamond', 'STIX Two Math', 'Cambria Math', Georgia, serif;
 
-/* Section highlight flash when scrolled from legend */
-.pf-section-highlight{animation:pfSectionFlash 2.5s ease-out}
-@keyframes pfSectionFlash{
-  0%{box-shadow:inset 0 0 0 0 rgba(0,224,192,0)}
-  15%{box-shadow:inset 0 0 60px 8px rgba(0,224,192,.25)}
-  100%{box-shadow:inset 0 0 0 0 rgba(0,224,192,0)}
+  /* scale */
+  --radius-sm:    10px;
+  --radius-md:    16px;
+  --radius-lg:    24px;
+
+  /* motion */
+  --ease:         cubic-bezier(0.2, 0.9, 0.3, 1.1);
+  --t-fast:       0.2s;
+  --t-med:        0.35s;
+  --t-slow:       0.6s;
 }
 
-/* Desktop: sticky right sidebar */
-@media(min-width:1100px){
-  .pf-legend{right:2rem;top:50%;transform:translateY(-50%);width:280px;padding:1.4rem 1.2rem;border-radius:18px;max-height:calc(100vh - 100px);overflow-y:auto}
-  .pf-legend::-webkit-scrollbar{width:4px}
-  .pf-legend::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1);border-radius:2px}
-  .pf-legend-hidden{transform:translateY(-50%) translateX(110%)}
-  .pf-legend-close{display:none}
-  .pf-legend-fab{right:2rem;bottom:2rem}
+
+/* ─── 2. RESET ──────────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
-/* Mobile + tablet: bottom sheet */
-@media(max-width:1099px){
-  .pf-legend{left:0;right:0;bottom:0;border-radius:24px 24px 0 0;padding:1.5rem 1.3rem 2rem;max-height:75vh;overflow-y:auto;border-bottom:none;box-shadow:0 -20px 60px rgba(0,0,0,.5)}
-  .pf-legend-hidden{transform:translateY(100%)}
-  .pf-legend::before{content:"";position:absolute;top:.55rem;left:50%;transform:translateX(-50%);width:40px;height:4px;background:rgba(255,255,255,.25);border-radius:2px}
-  .pf-legend-head{padding-top:.3rem}
-  .pf-legend-fab{right:1.2rem;bottom:1.2rem;padding:.7rem 1.1rem;font-size:.78rem}
-}
-.pf-hero h1{font-family:'Fraunces','Times New Roman',serif;font-size:clamp(3rem,8vw,6rem);font-weight:900;font-variation-settings:"opsz" 144,"SOFT" 0,"WONK" 0;letter-spacing:-.045em;line-height:.95;margin-bottom:1.5rem}
-.pf-hero h1 span{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;letter-spacing:-.015em;font-size:1em;font-variation-settings:normal}
-.pf-hero .sub{font-family:'Fraunces','Times New Roman',serif;font-weight:400;font-size:clamp(1.05rem,1.8vw,1.35rem);color:#d8d4c8;max-width:640px;line-height:1.55;letter-spacing:-.01em;font-variation-settings:"opsz" 48,"SOFT" 100}
-.pf-hero .sub em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:#fff5e6;letter-spacing:0;font-variation-settings:normal;font-size:1.08em;background:none;text-shadow:none;border:none;padding:0;text-decoration:none}
-
-/* SECTIONS — v9 identical style */
-.sec{padding:3rem 2.5rem;position:relative;z-index:2;border-bottom:1px solid var(--br)}
-.si{max-width:1100px;margin:0 auto}
-.lb{font-family:var(--fm);font-size:.66rem;color:var(--ac);letter-spacing:.14em;text-transform:uppercase;display:flex;align-items:center;gap:.6rem;margin-bottom:1.2rem}
-.lb::before{content:'';width:14px;height:1.5px;background:var(--ac)}
-.sh{font-family:var(--fd);font-size:clamp(1.8rem,4.5vw,3.2rem);font-weight:700;letter-spacing:-.04em;line-height:1.1;margin-bottom:.8rem}
-.sh span{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400}
-.ss{color:var(--td);font-size:1rem;max-width:580px;line-height:1.65;margin-bottom:3rem}
-
-/* SECTION NUMBER — watermark */
-.sec-num{font-family:var(--fd);font-size:clamp(5rem,12vw,9rem);font-weight:900;color:rgba(0,224,192,.06);line-height:1;margin-bottom:-2rem;position:relative;z-index:0;letter-spacing:-.06em;pointer-events:none}
-
-/* CAROUSEL GROUP */
-.car-group{margin-bottom:3rem}
-.car-label{font-family:var(--fm);font-size:.68rem;text-transform:uppercase;letter-spacing:.12em;color:var(--td);margin-bottom:.8rem;padding-left:.2rem}
-
-/* GRIDS */
-.grid{display:grid;gap:12px}
-.g7{grid-template-columns:repeat(4,1fr)}
-.g4{grid-template-columns:repeat(4,1fr)}
-.g3{grid-template-columns:repeat(3,1fr)}
-.g2{grid-template-columns:repeat(2,1fr)}
-.grid img{width:100%;height:auto;border-radius:var(--r);cursor:zoom-in;transition:transform .4s var(--e),box-shadow .4s;aspect-ratio:4/5;object-fit:cover;border:1px solid var(--br)}
-.grid img:hover{transform:translateY(-8px) scale(1.03);box-shadow:0 24px 60px rgba(0,0,0,.55),0 0 0 1px var(--ac);border-color:rgba(0,224,192,.3)}
-
-/* LIGHTBOX — v9 dark style */
-.lb-ov{display:none;position:fixed;inset:0;background:rgba(5,5,5,.97);z-index:9999;justify-content:center;align-items:center;backdrop-filter:blur(12px)}
-.lb-ov.on{display:flex}
-.lb-ov img{max-width:88vw;max-height:88vh;object-fit:contain;border-radius:12px;box-shadow:0 30px 80px rgba(0,0,0,.7)}
-.lb-arr{position:fixed;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.08);border:1px solid var(--br2);color:var(--t);font-size:24px;width:48px;height:48px;border-radius:50%;cursor:pointer;z-index:10000;transition:all .3s var(--e);display:flex;align-items:center;justify-content:center}
-.lb-arr:hover{background:var(--ac2);border-color:var(--ac);color:var(--ac)}
-.lb-prev{left:20px}
-.lb-next{right:20px}
-.lb-x{position:fixed;top:16px;right:20px;background:rgba(255,255,255,.08);border:1px solid var(--br2);border-radius:50%;width:44px;height:44px;color:var(--t);font-size:22px;cursor:pointer;z-index:10000;transition:all .3s;display:flex;align-items:center;justify-content:center}
-.lb-x:hover{background:rgba(255,80,80,.2);border-color:rgba(255,80,80,.4)}
-.lb-count{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);color:var(--tm);font-family:var(--fm);font-size:.75rem;z-index:10000;letter-spacing:.1em}
-
-/* CTA SECTION — v9 style */
-.pf-cta{padding:7rem 2.5rem;position:relative;z-index:2;text-align:center;border-bottom:1px solid var(--br)}
-.pf-cta h2{font-family:var(--fd);font-size:clamp(2rem,5vw,3.2rem);font-weight:800;letter-spacing:-.04em;margin-bottom:.8rem}
-.pf-cta h2 span{color:var(--ac);font-family:'Instrument Serif',serif;font-style:italic;font-weight:400}
-.pf-cta p{color:var(--td);font-size:.95rem;margin-bottom:2rem;max-width:500px;margin-left:auto;margin-right:auto;line-height:1.6}
-.btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
-.bh{display:inline-flex;align-items:center;gap:.6rem;background:linear-gradient(135deg,#ff9a3d,#ffb86b);color:#1a0a00;padding:.9rem 2rem;border-radius:100px;font-family:var(--fd);font-weight:700;font-size:.88rem;text-decoration:none;transition:transform .3s var(--e),box-shadow .3s}
-.bh:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(255,154,61,.35)}
-.bg{display:inline-flex;align-items:center;color:var(--td);padding:.9rem 1.4rem;font-size:.85rem;font-weight:500;text-decoration:none;border-radius:100px;border:1px solid var(--br2);transition:border-color .3s,color .3s;font-family:var(--fd)}
-.bg:hover{border-color:var(--ac);color:var(--t)}
-
-/* FOOTER — v9 identical */
-.ft-wrap{position:relative;z-index:2;border-top:1px solid rgba(0,224,192,.15);padding:2.5rem 2rem 1.5rem;font-family:var(--fb)}
-.ft-inner{max-width:1200px;margin:0 auto}
-.ft-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
-.ft-legal{font-size:.72rem;color:#5a6572}
-.ft-links{display:flex;gap:1.5rem}
-.ft-links a{color:#5a6572;font-size:.75rem;text-decoration:none;transition:color .25s}
-.ft-links a:hover{color:var(--ac)}
-
-/* REVEAL animation */
-.rv{opacity:0;transform:translateY(40px);transition:opacity .8s var(--e),transform .8s var(--e)}
-.rv.vi{opacity:1;transform:translateY(0)}
-
-/* RESPONSIVE */
-@media(max-width:768px){
-  nav{padding:.7rem 1.2rem}
-  .nk{display:none}.nc{display:none}
-  .ham{display:block}
-  .sec{padding:2rem 1rem}
-  .pf-hero{padding:100px 1rem 20px}
-  .pf-hero h1{font-size:clamp(2rem,9vw,3.2rem)}
-  .g7{grid-template-columns:repeat(2,1fr)}
-  .g4{grid-template-columns:repeat(2,1fr)}
-  .g3{grid-template-columns:repeat(2,1fr)}
-  .g2{grid-template-columns:1fr}
-  .sec-num{font-size:clamp(3.5rem,16vw,6rem)}
-  .pf-cta{padding:4rem 1rem}
-  .lb-ov img{max-width:96vw;max-height:80vh}
-  .lb-arr{width:40px;height:40px;font-size:20px}
-  .lb-prev{left:8px}
-  .lb-next{right:8px}
-  .ft-bottom{flex-direction:column;text-align:center}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-serif);
+  line-height: 1.6;
+  overflow-x: clip;
+  overscroll-behavior-y: none;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
-/* GRADIENT BLOBS BACKGROUND — from v9 landing */
-.bgblobs{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none;background:radial-gradient(ellipse at 50% 0%,#0a0a12 0%,#050505 70%)}
-.blob{position:absolute;border-radius:50%;filter:blur(100px);opacity:.55;will-change:transform}
-.blob1{width:55vw;height:55vw;background:radial-gradient(circle,rgba(123,44,255,.5),rgba(123,44,255,0) 70%);top:-15vw;left:-10vw;animation:blobMove1 22s ease-in-out infinite}
-.blob2{width:50vw;height:50vw;background:radial-gradient(circle,rgba(0,224,192,.38),rgba(0,224,192,0) 70%);top:30vh;right:-15vw;animation:blobMove2 28s ease-in-out infinite}
-.blob3{width:45vw;height:45vw;background:radial-gradient(circle,rgba(240,80,180,.28),rgba(240,80,180,0) 70%);bottom:-10vw;left:20vw;animation:blobMove3 25s ease-in-out infinite}
-.blob4{width:40vw;height:40vw;background:radial-gradient(circle,rgba(80,120,255,.25),rgba(80,120,255,0) 70%);top:60vh;left:40vw;animation:blobMove4 30s ease-in-out infinite}
-@keyframes blobMove1{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(15vw,10vh) scale(1.1)}66%{transform:translate(-5vw,20vh) scale(.9)}}
-@keyframes blobMove2{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(-10vw,15vh) scale(1.15)}66%{transform:translate(-20vw,-5vh) scale(.95)}}
-@keyframes blobMove3{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-15vw,-20vh) scale(1.1)}}
-@keyframes blobMove4{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(10vw,-15vh) scale(.9)}66%{transform:translate(-10vw,10vh) scale(1.1)}}
-/* Film grain overlay — from v9 */
-body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.02'/%3E%3C/svg%3E");pointer-events:none;z-index:9999}
-@media(max-width:768px){.blob{filter:blur(70px)}.bgblobs{opacity:.7}}
-@media(prefers-reduced-motion:reduce){.blob{animation:none}}
-
-.hero3d{position:fixed;inset:0;width:100vw;height:100vh;z-index:0;pointer-events:none}
-.hero3d canvas{display:block;width:100%!important;height:100%!important}
-
-/* HIGHLIGHT WORDS — animated underline */
-.hl{color:var(--ac);font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;font-size:1.08em;position:relative;display:inline;background-image:linear-gradient(var(--ac),var(--ac));background-size:0% 1.5px;background-position:0 95%;background-repeat:no-repeat;transition:background-size .5s var(--e);padding-bottom:2px}
-.vi .hl,.hl:hover{background-size:100% 1.5px}
-
-/* DESCRIPTION — lighter, more refined */
-.ss{color:var(--td);font-size:.95rem;max-width:520px;line-height:1.65;margin-bottom:2.5rem;font-weight:300;letter-spacing:.005em}
-
-/* SECTION NUMBER — slightly more subtle */
-.sec-num{font-family:var(--fd);font-size:clamp(5rem,12vw,9rem);font-weight:900;color:rgba(0,224,192,.04);line-height:1;margin-bottom:-1.8rem;letter-spacing:-.06em;pointer-events:none}
-
-/* SECTION TITLE — refined */
-.sh{font-family:var(--fd);font-size:clamp(1.6rem,3.5vw,2.2rem);font-weight:600;letter-spacing:-.03em;line-height:1.15;margin-bottom:.6rem}
-
-/* Remove car-label heavy weight */
-.car-label{display:none}
+img, video { max-width: 100%; display: block; }
+button { font: inherit; cursor: pointer; }
+a { color: inherit; }
 
 
-.pre{position:fixed;inset:0;z-index:10000;display:none}
-.pre.done{display:none;opacity:0;visibility:hidden;pointer-events:none}
-.pre-bar i{display:block;height:100%}
-
-
-/* ========== PORTFOLIO 3-LEVEL DOCK (unified pill) ========== */
-.pd{position:fixed;top:76px;left:50%;transform:translateX(-50%);z-index:90;max-width:calc(100vw - 1.4rem);display:flex;flex-direction:column;background:rgba(4,6,14,.94);backdrop-filter:blur(32px) saturate(150%);-webkit-backdrop-filter:blur(32px) saturate(150%);border:1px solid rgba(255,255,255,.08);border-radius:22px;box-shadow:0 20px 50px rgba(0,0,0,.6),0 0 0 1px rgba(255,245,230,.02) inset;transition:opacity .4s,transform .4s cubic-bezier(.2,.9,.3,1.1),top .3s ease;pointer-events:auto;touch-action:auto}
-body.nav-hidden .pd{top:16px}
-.pd-hidden{opacity:0;pointer-events:none;transform:translateX(-50%) translateY(-16px)}
-.pd-row{padding:.18rem .4rem;display:flex;justify-content:center;align-items:center;position:relative;touch-action:auto}
-.pd-row + .pd-row{border-top:1px solid rgba(255,245,230,.06)}
-.pd-row-1{padding:.2rem .4rem}
-.pd-row-2{min-height:0}
-.pd-row-3{min-height:0}
-.pd-tabs{display:flex;flex-wrap:wrap;gap:.25rem;max-width:100%;justify-content:center;align-items:center}
-.pd-tabs::-webkit-scrollbar{display:none}
-.pd-tabs.pd-tabs-hidden,.pd-tabs-hidden{display:none !important}
-
-
-
-/* SCROLL ARROWS for mobile L2/L3 rows */
-.pd-arr{display:none;position:absolute;top:50%;transform:translateY(-50%);width:20px;height:20px;border-radius:50%;background:rgba(255,245,230,.95);border:none;color:#0a0b14;font-family:Georgia,serif;font-size:12px;font-weight:700;line-height:1;cursor:pointer;z-index:5;align-items:center;justify-content:center;padding:0 0 2px 0;box-shadow:0 2px 8px rgba(0,0,0,.4);-webkit-tap-highlight-color:transparent}
-.pd-arr:active{transform:translateY(-50%) scale(.88);background:#00e0c0}
-.pd-arr-l{left:2px}
-.pd-arr-r{right:2px}
-@media(max-width:560px){
-  .pd-row-2,.pd-row-3{padding-left:24px!important;padding-right:24px!important}
-  .pd-arr{display:none !important}
+/* ─── 3. LAYOUT ─────────────────────────────────────────────────────────────── */
+main.pf-body {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 2rem 4rem;
+  position: relative;
+  z-index: 1;
 }
 
-/* Edge fade hint — shows more content available via swipe */
-.pd-row-2,.pd-row-3{position:relative}
-.pd-row-2::after,.pd-row-3::after{display:none}
-@media(min-width:1100px){.pd-row-2::after,.pd-row-3::after{display:none}}
 
-/* LAYER 1 */
-.pd-l1{padding:.22rem .82rem;background:transparent;border:none;border-radius:100px;color:rgba(208,203,195,.65);font-family:'Fraunces',serif;font-size:1.05rem;font-weight:500;letter-spacing:-.005em;font-variation-settings:"opsz" 48,"SOFT" 80,"WONK" 1;cursor:pointer;white-space:nowrap;transition:all .3s cubic-bezier(.2,.9,.3,1.1);-webkit-tap-highlight-color:transparent}
-.pd-l1:hover{color:#fff5e6}
-.pd-l1.active{background:#fff5e6;color:#0a0b14;font-weight:600;box-shadow:0 2px 12px rgba(255,245,230,.2)}
-
-/* LAYER 2 */
-.pd-l2-group{display:flex;flex-wrap:wrap;gap:.28rem;max-width:100%;width:100%;justify-content:center;align-items:center}
-.pd-l2-group::-webkit-scrollbar{display:none}
-.pd-l2{flex-shrink:0;scroll-snap-align:start;padding:.2rem .55rem;background:transparent;border:none;border-radius:100px;color:rgba(216,212,200,.6);font-family:'Fraunces',serif;font-size:.98rem;font-weight:500;letter-spacing:-.005em;font-variation-settings:"opsz" 48,"SOFT" 80;cursor:pointer;white-space:nowrap;transition:all .25s;-webkit-tap-highlight-color:transparent}
-.pd-l2:hover{color:#fff5e6;background:rgba(255,245,230,.04)}
-.pd-l2:active{transform:scale(.95)}
-.pd-l2.active{background:rgba(255,245,230,.92);color:#0a0b14;font-weight:600}
-
-/* LAYER 3 */
-.pd-l3-group{display:flex;flex-wrap:wrap;gap:.24rem;width:100%;justify-content:center;align-items:center;padding:0 .2rem}
-.pd-l3-group::-webkit-scrollbar{display:none}
-.pd-l3-group.pd-l3-hidden,.pd-l3-hidden{display:none !important}
-.pd-l3{flex-shrink:0;scroll-snap-align:start;padding:.18rem .5rem;background:transparent;border:none;border-radius:100px;color:rgba(200,196,188,.55);font-family:'Instrument Serif','Fraunces',serif;font-style:italic;font-size:.92rem;font-weight:400;letter-spacing:0;cursor:pointer;white-space:nowrap;transition:all .25s;-webkit-tap-highlight-color:transparent;position:relative;font-variation-settings:normal}
-.pd-l3:hover{color:#fff5e6}
-.pd-l3:active{transform:scale(.95)}
-.pd-l3.active{color:#00e0c0;font-weight:500}
-.pd-l3.active::after{content:"";position:absolute;bottom:2px;left:20%;right:20%;height:1px;background:rgba(0,224,192,.65);box-shadow:0 0 8px rgba(0,224,192,.5)}
-.pd-l3[data-soon="true"]{opacity:.48;position:relative;padding-right:.9rem}
-.pd-l3[data-soon="true"]::before{content:"";position:absolute;top:50%;right:.35rem;transform:translateY(-50%);width:4px;height:4px;border-radius:50%;background:#ff9a3d;box-shadow:0 0 6px rgba(255,154,61,.6)}
-.pd-l3[data-soon="true"]:hover{opacity:.7}
-
-.pd-soon-inline{padding:.42rem .9rem;font-family:'Fraunces',serif;font-size:.76rem;color:#d0cbc3;font-variation-settings:"opsz" 48,"SOFT" 100;white-space:nowrap;line-height:1}
-.pd-soon-inline em{font-family:'Instrument Serif',serif;font-style:italic;color:#fff5e6;font-variation-settings:normal}
-
-@media(max-width:560px){
-  .pd{top:64px;left:0;right:0;max-width:none;width:100%;transform:none;border-radius:0;border-left:none;border-right:none;border-top:none;transition:top .3s ease,transform .3s ease,opacity .3s;z-index:90}
-  .pd-hidden{transform:translateY(-100%);opacity:0}
-  body.nav-hidden .pd{top:0}
-  .pd-row{padding:.1rem .35rem}
-  .pd-row-1{padding:.12rem .35rem;gap:.1rem;justify-content:center}
-  .pd-row-2{padding:.08rem .3rem}
-  .pd-row-3{padding:.08rem .3rem}
-  .pd-l1{padding:.18rem .7rem;font-size:.62rem;min-height:22px;display:inline-flex;align-items:center}
-  .pd-l2{padding:.16rem .55rem;font-size:.56rem;min-height:20px;display:inline-flex;align-items:center}
-  .pd-l3{padding:.14rem .5rem;font-size:.56rem;min-height:18px;display:inline-flex;align-items:center}
-  .pd-l2-group{padding:0 .15rem;gap:.25rem;justify-content:center}
-  .pd-l3-group{justify-content:center;padding:0 .2rem;gap:.22rem}
-  .pd-soon-inline{font-size:.65rem;padding:.3rem .7rem;white-space:normal;text-align:center;line-height:1.3}
-  /* Navbar auto-hide (kept above dock) */
-  nav#nav{transition:transform .3s ease,opacity .3s ease;z-index:100}
-  nav#nav.nav-hidden{transform:translateY(-100%)!important;opacity:0!important;pointer-events:none!important}
+/* ─── 4. NAVBAR ─────────────────────────────────────────────────────────────── */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: rgba(4, 6, 14, 0.85);
+  backdrop-filter: blur(20px) saturate(1.3);
+  -webkit-backdrop-filter: blur(20px) saturate(1.3);
+  border-bottom: 1px solid var(--border);
+  transition: transform var(--t-med) ease, opacity var(--t-med) ease;
+}
+.nav.nav-hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
 }
 
-/* ========== PORTFOLIO BODY ========== */
-.pf-body{padding-top:3rem;position:relative;z-index:2}
-@media(max-width:768px){.pf-body{padding-top:4.5rem}}
-.p-sec{max-width:1200px;margin:0 auto;padding:4rem 2rem 2rem;scroll-margin-top:160px}
-@media(max-width:768px){.p-sec{padding:3rem 1rem 1.5rem;scroll-margin-top:110px}}
-.p-sec-head{margin-bottom:2.5rem}
-.p-sec-crumb{font-family:'Geist Mono',monospace;font-size:.72rem;font-weight:500;letter-spacing:.25em;text-transform:uppercase;color:rgba(0,224,192,.75);margin-bottom:.8rem}
-.p-sec-title{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(2.4rem,5.5vw,4rem);letter-spacing:-.04em;line-height:1;color:#fff5e6;font-variation-settings:"opsz" 144,"SOFT" 20;margin-bottom:.9rem;text-shadow:0 4px 22px rgba(0,0,0,.7)}
-.p-sec-sub{font-family:'Fraunces',serif;font-size:clamp(1.15rem,1.8vw,1.4rem);color:#d8d2c6;line-height:1.55;max-width:720px;font-variation-settings:"opsz" 48,"SOFT" 100;text-shadow:0 2px 10px rgba(0,0,0,.6)}
-.p-sec-sub em{font-family:'Instrument Serif',serif;font-style:italic;color:#fff5e6;font-variation-settings:normal;font-size:1.08em}
+.nav__logo img { height: 42px; filter: drop-shadow(0 0 12px rgba(0, 224, 192, 0.4)); }
 
-.p-sub{margin-bottom:3.5rem;scroll-margin-top:200px}
-@media(max-width:768px){.p-sub{margin-bottom:2.5rem;scroll-margin-top:125px}}
-.p-sub-head{display:none}
-.p-sub-num{font-family:'Geist Mono',monospace;font-size:.78rem;font-weight:500;letter-spacing:.2em;color:rgba(0,224,192,.7);flex-shrink:0}
-.p-sub-title{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(1.3rem,2.5vw,1.8rem);letter-spacing:-.02em;color:#fff5e6;font-variation-settings:"opsz" 72,"SOFT" 30,"WONK" 1;line-height:1.1;flex-shrink:0}
-.p-sub-desc{font-family:'Fraunces',serif;font-size:1rem;color:#d0cbc3;line-height:1.6;font-variation-settings:"opsz" 48,"SOFT" 100;opacity:.88;text-shadow:0 2px 8px rgba(0,0,0,.5);margin-bottom:1.5rem;max-width:640px}
+.nav__links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 1.8rem;
+}
+.nav__links a {
+  color: var(--text-mute);
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color var(--t-fast);
+}
+.nav__links a:hover,
+.nav__links a.is-active { color: var(--accent); }
 
-.p-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.65rem}
-.p-grid img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:12px;background:#0a0b14;cursor:zoom-in;transition:transform .35s cubic-bezier(.2,.9,.3,1.1),box-shadow .35s;border:1px solid rgba(255,255,255,.05)}
-.p-grid img:hover{transform:translateY(-3px) scale(1.01);box-shadow:0 14px 30px rgba(0,0,0,.6),0 0 0 1px rgba(0,224,192,.25)}
-.p-grid-2{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
-.p-grid-3{grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
-@media(max-width:560px){.p-grid{grid-template-columns:repeat(2,1fr);gap:.45rem}.p-grid-3{grid-template-columns:repeat(2,1fr)}}
-
-
-
-/* 4-AXIS BREADCRUMB — distinct typographic voices per level */
-.p-axis{display:flex;flex-direction:row;flex-wrap:wrap;align-items:baseline;gap:.4rem 1rem;margin:1.2rem 0 1.6rem;padding:0;background:none;border:none;border-radius:0;position:relative}
-.p-axis-row{display:inline-flex;align-items:baseline;gap:.5rem;transition:all .25s;position:relative}
-.p-axis-row:not(:last-child)::before{content:"·";margin-left:-.5rem;margin-right:.5rem;color:rgba(255,245,230,.3);font-size:.9rem;align-self:center}
-.p-axis-sym{display:inline-flex;align-items:center;justify-content:flex-start;min-width:1.55rem;line-height:1}
-.p-axis-name{line-height:1}
-
-/* L1 BOSS — I (Roman) Fraunces 900 WONK monumental */
-.p-axis-row.axis-l1 .p-axis-sym{font-family:'Fraunces','Times New Roman',serif;font-weight:900;font-size:1.25rem;font-variation-settings:"opsz" 144,"SOFT" 0,"WONK" 1;letter-spacing:-.02em;color:#fff5e6}
-.p-axis-row.axis-l1 .p-axis-name{font-family:'Fraunces',serif;font-weight:800;font-size:.72rem;letter-spacing:.26em;text-transform:uppercase;font-variation-settings:"opsz" 144,"SOFT" 0,"WONK" 1;color:rgba(255,245,230,.85)}
-
-/* L2 SMART — 1 (Arabic) Geist Mono 600 technical */
-.p-axis-row.axis-l2 .p-axis-sym{font-family:'Geist Mono',ui-monospace,monospace;font-weight:600;font-size:.95rem;color:rgba(255,245,230,.72);letter-spacing:0}
-.p-axis-row.axis-l2 .p-axis-name{font-family:'Geist Mono',monospace;font-weight:500;font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(216,212,200,.6)}
-
-/* L3 ELEGANT — A (Latin) Instrument Serif editorial */
-.p-axis-row.axis-l3 .p-axis-sym{font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:1.08rem;font-style:normal;color:rgba(255,245,230,.7);letter-spacing:0}
-.p-axis-row.axis-l3 .p-axis-name{font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:.88rem;font-style:italic;letter-spacing:.01em;text-transform:none;color:rgba(208,203,195,.65)}
-
-/* L4 DELICATE — α (Greek) Fraunces italic SOFT 100 */
-.p-axis-row.axis-l4 .p-axis-sym{font-family:'Fraunces',serif;font-weight:400;font-style:italic;font-size:1.1rem;font-variation-settings:"opsz" 48,"SOFT" 100,"WONK" 1;letter-spacing:-.01em;color:rgba(255,245,230,.55)}
-.p-axis-row.axis-l4 .p-axis-name{font-family:'Fraunces',serif;font-weight:400;font-style:italic;font-size:.78rem;font-variation-settings:"opsz" 48,"SOFT" 100;letter-spacing:.02em;color:rgba(200,196,188,.55)}
-
-/* ACTIVE state — teal highlight */
-.p-axis-row.p-axis-active .p-axis-sym{color:#00e0c0!important}
-.p-axis-row.p-axis-active .p-axis-name{color:#fff5e6!important}
-.p-axis-row.p-axis-active::after{display:none}
-
-@media(max-width:560px){
-  .p-axis{padding:0;margin:.8rem 0 1.2rem;gap:.3rem .7rem;max-width:100%}
-  .p-axis-row{gap:.4rem}
-  .p-axis-row.axis-l1 .p-axis-sym{font-size:1.1rem}
-  .p-axis-row.axis-l1 .p-axis-name{font-size:.68rem}
-  .p-axis-row.axis-l2 .p-axis-sym{font-size:.88rem}
-  .p-axis-row.axis-l2 .p-axis-name{font-size:.62rem}
-  .p-axis-row.axis-l3 .p-axis-sym{font-size:1rem}
-  .p-axis-row.axis-l3 .p-axis-name{font-size:.82rem}
-  .p-axis-row.axis-l4 .p-axis-sym{font-size:1rem}
-  .p-axis-row.axis-l4 .p-axis-name{font-size:.74rem}
+.nav__cta {
+  background: var(--accent);
+  color: var(--bg);
+  padding: 0.55rem 1.1rem;
+  border-radius: 100px;
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  transition: transform var(--t-fast), box-shadow var(--t-fast);
+}
+.nav__cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(0, 224, 192, 0.35);
 }
 
-/* Greek letter in variant tag — delicate italic Fraunces */
-.p-variant-greek{font-family:"Cormorant Garamond","STIX Two Math","Cambria Math","GFS Didot",Georgia,serif;font-style:italic;font-weight:500;font-size:1.65em;margin-right:.5em;color:#00e0c0;letter-spacing:-.02em;vertical-align:-.08em;line-height:1;text-shadow:0 0 12px rgba(0,224,192,.45);display:inline-block;transform:translateY(.02em)}
 
-/* Variant block within single sub-article */
-.p-variant{margin-bottom:2rem}
-.p-variant:last-child{margin-bottom:0}
-.p-variant-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:.8rem;margin-bottom:1rem;padding-left:.2rem}
-.p-variant-tag{display:inline-block;font-family:'Geist Mono',monospace;font-size:.68rem;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:#00e0c0;padding:.28rem .7rem;background:rgba(0,224,192,.08);border:1px solid rgba(0,224,192,.3);border-radius:100px}
-.p-variant-note{font-family:'Instrument Serif','Fraunces',serif;font-style:italic;font-size:1.1rem;color:#d0cbc3;opacity:.95;letter-spacing:-.005em}
-@media(max-width:560px){.p-variant-note{font-size:.98rem}}
+/* ─── 5. DOCK ───────────────────────────────────────────────────────────────── */
+/* 3-level taxonomy: L1 (Design/Video) → L2 (Carusel/Post/...) → L3 (Variants)
+   Sticky below nav. When nav auto-hides, dock moves up to take its place. */
 
-/* Soon card */
-.p-soon{background:linear-gradient(135deg,rgba(8,10,20,.7),rgba(4,6,14,.85));border:1px dashed rgba(255,245,230,.12);border-radius:16px;padding:2.2rem 1.8rem;text-align:center;max-width:640px;margin:0 auto}
-.p-soon-label{display:inline-block;font-family:'Geist Mono',monospace;font-size:.68rem;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:#ff9a3d;padding:.3rem .8rem;background:rgba(255,154,61,.08);border:1px solid rgba(255,154,61,.3);border-radius:100px;margin-bottom:1rem}
-.p-soon-title{font-family:'Fraunces',serif;font-weight:700;font-size:1.3rem;color:#fff5e6;font-variation-settings:"opsz" 72,"SOFT" 30;margin-bottom:.5rem;letter-spacing:-.015em}
-.p-soon-hint{font-family:'Fraunces',serif;font-size:.92rem;color:#d0cbc3;font-variation-settings:"opsz" 48,"SOFT" 100;line-height:1.55;margin-bottom:1.3rem;font-style:italic;opacity:.85}
-.p-soon-cta{display:inline-flex;align-items:center;gap:.5rem;font-family:'Geist',sans-serif;font-size:.82rem;font-weight:600;color:#00e0c0;text-decoration:none;padding:.55rem 1.1rem;border:1px solid rgba(0,224,192,.4);border-radius:100px;transition:all .3s;letter-spacing:-.005em}
-.p-soon-cta:hover{background:rgba(0,224,192,.1);border-color:#00e0c0;transform:translateY(-1px)}
-
-/* Video waiting section */
-.p-video-wait{max-width:900px;margin:0 auto;text-align:center}
-.p-vw-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin:2rem 0 2.5rem}
-.p-vw-item{padding:1.6rem 1.2rem;background:linear-gradient(135deg,rgba(8,10,20,.65),rgba(4,6,14,.85));border:1px solid rgba(255,255,255,.08);border-radius:14px;display:flex;flex-direction:column;gap:.6rem;align-items:flex-start;text-align:left;transition:all .3s}
-.p-vw-item:hover{border-color:rgba(0,224,192,.3);transform:translateY(-2px)}
-.p-vw-n{font-family:'Geist Mono',monospace;font-size:.72rem;letter-spacing:.25em;color:rgba(0,224,192,.7);font-weight:500}
-.p-vw-lbl{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:700;color:#fff5e6;letter-spacing:-.015em;font-variation-settings:"opsz" 72,"SOFT" 30,"WONK" 1}
-.p-vw-cta{display:inline-flex;align-items:center;gap:.5rem;padding:.95rem 1.8rem;background:linear-gradient(135deg,#00e0c0,#00b896);color:#041412;font-family:'Geist',sans-serif;font-weight:700;font-size:.95rem;border-radius:100px;text-decoration:none;box-shadow:0 10px 30px rgba(0,224,192,.28);transition:transform .25s;letter-spacing:-.005em}
-.p-vw-cta:hover{transform:translateY(-2px)}
-
-
-/* VIDEO PLAYER */
-.p-video{margin:1.5rem 0;border-radius:14px;overflow:hidden;background:#0a0b14;box-shadow:0 20px 50px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.04) inset;position:relative;max-width:480px;margin-left:auto;margin-right:auto}
-.p-video video{width:100%;display:block;max-height:80vh;background:#000}
-.p-video-caption{padding:.9rem 1.1rem;font-family:'Fraunces',serif;font-size:.88rem;color:#d0cbc3;font-variation-settings:"opsz" 48,"SOFT" 100;line-height:1.4;border-top:1px solid rgba(255,255,255,.06)}
-@media(max-width:560px){.p-video{margin:1rem 0;max-width:100%}.p-video-caption{font-size:.82rem;padding:.75rem .9rem}}
-
-/* p-grid-1 single image centered */
-.p-grid-1{display:grid;grid-template-columns:1fr;max-width:720px;margin:0 auto}
-.p-grid-1 img{aspect-ratio:auto;max-height:560px;object-fit:contain;width:100%;background:#0a0b14}
-
-/* p-grid-3 wider for landscape hero */
-.p-grid .p-grid-3{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
-
-/* Video section is hidden by default (only shown via JS) */
-.p-sec-video{scroll-margin-top:200px}
-
-/* Final CTA */
-.p-cta{max-width:900px;margin:4rem auto 6rem;padding:4rem 2.5rem;text-align:center;background:linear-gradient(180deg,rgba(8,10,20,.88),rgba(4,6,14,.92));border:1px solid rgba(0,224,192,.15);border-radius:24px;box-shadow:0 40px 100px rgba(0,0,0,.6)}
-@media(max-width:768px){.p-cta{padding:3rem 1.4rem;margin:2.5rem 1rem 4rem;border-radius:18px}}
-.p-cta-h{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(2rem,5vw,3.2rem);letter-spacing:-.035em;line-height:1.05;color:#fff5e6;font-variation-settings:"opsz" 144,"SOFT" 20;margin-bottom:1rem}
-.p-cta-h em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:#fff5e6;font-variation-settings:normal;letter-spacing:-.01em}
-.p-cta-sub{font-family:'Fraunces',serif;font-size:1.05rem;color:#d0cbc3;line-height:1.6;margin-bottom:2rem;max-width:540px;margin-left:auto;margin-right:auto;font-variation-settings:"opsz" 48,"SOFT" 100}
-.p-cta-btns{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap}
-.p-cta-btn{display:inline-flex;align-items:center;padding:.95rem 1.8rem;border-radius:100px;font-family:'Geist',sans-serif;font-weight:600;font-size:.92rem;text-decoration:none;transition:transform .25s,box-shadow .25s;letter-spacing:-.005em}
-.p-cta-primary{background:#fff5e6;color:#0a0b14;box-shadow:0 10px 30px rgba(255,245,230,.25)}
-.p-cta-primary:hover{transform:translateY(-2px);box-shadow:0 14px 36px rgba(255,245,230,.35)}
-.p-cta-secondary{background:transparent;color:#00e0c0;border:1px solid rgba(0,224,192,.5)}
-.p-cta-secondary:hover{background:rgba(0,224,192,.08);border-color:#00e0c0}
-
-
-
-/* === COSMIC SMOKE PANELS (picasso blobs behind each section) === */
-.p-sec{position:relative;z-index:2;isolation:isolate}
-.p-sec::before{
-  content:"";
-  position:absolute;
-  inset:-2rem -1.5rem;
-  background:radial-gradient(ellipse 70% 85% at 35% 40%,rgba(4,6,14,.72) 0%,rgba(4,6,14,.55) 45%,rgba(4,6,14,.28) 75%,transparent 100%);
-  border-radius:55% 45% 60% 40% / 48% 56% 44% 52%;
-  filter:blur(32px) saturate(1.1);
-  z-index:-2;
-  pointer-events:none;
-  animation:smokeBreath 18s ease-in-out infinite alternate;
+.dock {
+  position: fixed;
+  top: 72px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 90;
+  width: calc(100vw - 2rem);
+  max-width: 920px;
+  background: rgba(4, 6, 14, 0.94);
+  backdrop-filter: blur(32px) saturate(1.5);
+  -webkit-backdrop-filter: blur(32px) saturate(1.5);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55);
+  transition: top var(--t-med) ease, opacity var(--t-fast);
 }
-.p-sec::after{
-  content:"";
-  position:absolute;
-  inset:-3rem -2.5rem;
-  background:radial-gradient(ellipse 60% 70% at 65% 60%,rgba(0,60,80,.22) 0%,rgba(4,6,14,.15) 50%,transparent 85%);
-  border-radius:62% 38% 47% 53% / 55% 42% 58% 45%;
-  filter:blur(50px);
-  z-index:-3;
-  pointer-events:none;
-  animation:smokeRotate 40s linear infinite;
-}
-.p-sec:nth-child(2n)::before{border-radius:62% 38% 47% 53% / 55% 42% 58% 45%;animation-duration:22s;animation-delay:-4s}
-.p-sec:nth-child(3n)::before{border-radius:40% 60% 55% 45% / 52% 48% 52% 48%;animation-duration:26s;animation-delay:-9s}
-.p-sec:nth-child(2n)::after{border-radius:58% 42% 53% 47% / 45% 55% 45% 55%;animation-duration:50s;animation-direction:reverse}
-.p-sec:nth-child(3n)::after{border-radius:48% 52% 40% 60% / 58% 42% 58% 42%;animation-duration:60s}
-@keyframes smokeBreath{
-  0%{transform:scale(1) translate(0,0)}
-  50%{transform:scale(1.06) translate(1%,-1%)}
-  100%{transform:scale(.97) translate(-1%,1%)}
-}
-@keyframes smokeRotate{
-  0%{transform:rotate(0deg) scale(1)}
-  50%{transform:rotate(180deg) scale(1.05)}
-  100%{transform:rotate(360deg) scale(1)}
-}
-@media(max-width:768px){
-  .p-sec::before{inset:-1rem -.6rem;filter:blur(24px)}
-  .p-sec::after{inset:-1.5rem -1rem;filter:blur(36px)}
-}
-/* Disabled when user turns FX off */
-body.fx-disabled .p-sec::before,body.fx-disabled .p-sec::after{display:none}
+body.nav-hidden .dock { top: 16px; }
 
+.dock__row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.8rem;
+}
+.dock__row + .dock__row { border-top: 1px solid rgba(255, 255, 255, 0.05); }
 
-/* === COSMIC SMOKE on each P-SUB (subvariant card) === */
-.p-sub{position:relative;z-index:2;isolation:isolate;padding:2.5rem 2rem 3rem;border-radius:24px;margin-bottom:3.5rem;display:flex;flex-direction:column}
-.p-sub::before{
-  content:"";
-  position:absolute;
-  inset:-3.5rem -2.8rem;background:radial-gradient(ellipse 95% 98% at 50% 50%,rgba(4,6,14,.92) 0%,rgba(4,6,14,.82) 45%,rgba(4,6,14,.6) 75%,rgba(4,6,14,.3) 92%,transparent 100%);border-radius:55% 45% 58% 42% / 48% 52% 50% 52%;filter:blur(48px) saturate(1.1);
-  z-index:-2;
-  pointer-events:none;
-  animation:subBreath 22s ease-in-out infinite alternate;
+.dock__chip {
+  flex-shrink: 0;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 100px;
+  padding: 0.5rem 1rem;
+  color: var(--text-mute);
+  font-family: var(--font-serif);
+  font-size: 0.92rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  transition: all var(--t-fast);
+  white-space: nowrap;
+  -webkit-tap-highlight-color: transparent;
 }
-.p-sub::after{
-  content:"";
-  position:absolute;
-  inset:-5rem -3.5rem;background:radial-gradient(ellipse 85% 80% at 55% 55%,rgba(0,120,140,.26) 0%,rgba(4,6,14,.18) 55%,transparent 90%);border-radius:65% 35% 48% 52% / 52% 48% 52% 48%;filter:blur(80px);
-  z-index:-3;
-  pointer-events:none;
-  animation:subDrift 50s linear infinite;
+.dock__chip:hover {
+  color: var(--text);
+  border-color: var(--border);
 }
-.p-sub:nth-child(even)::before{border-radius:48% 52% 60% 40% / 55% 45% 55% 45%;animation-duration:26s;animation-delay:-6s}
-.p-sub:nth-child(3n)::before{border-radius:62% 38% 45% 55% / 48% 52% 48% 52%;animation-duration:19s;animation-delay:-11s}
-.p-sub:nth-child(even)::after{border-radius:50% 50% 65% 35% / 45% 55% 45% 55%;animation-direction:reverse}
-.p-sub:nth-child(3n)::after{border-radius:45% 55% 52% 48% / 58% 42% 58% 42%}
-@keyframes subBreath{
-  0%{transform:scale(1) translate(0,0)}
-  50%{transform:scale(1.04) translate(.5%,-.5%)}
-  100%{transform:scale(.98) translate(-.5%,.5%)}
-}
-@keyframes subDrift{
-  0%{transform:rotate(0deg) scale(1)}
-  50%{transform:rotate(180deg) scale(1.03)}
-  100%{transform:rotate(360deg) scale(1)}
-}
-@media(max-width:768px){
-  .p-sub{padding:1.8rem 1rem 2.4rem;margin-bottom:2.4rem}
-  .p-sub::before{inset:-1.4rem -.8rem;filter:blur(28px)}
-  .p-sub::after{inset:-2rem -1.2rem;filter:blur(42px)}
-}
-body.fx-disabled .p-sub::before,body.fx-disabled .p-sub::after{display:none}
-
-
-/* === Extend cosmic smoke to p-sec-head (title + description area) === */
-.p-sec-head{position:relative;z-index:2;padding:2rem 1.5rem 1.5rem;margin-bottom:.5rem;border-radius:20px;isolation:isolate}
-.p-sec-head::before{
-  content:"";
-  position:absolute;
-  inset:-2rem -2rem -1rem;
-  background:radial-gradient(ellipse 90% 95% at 50% 55%,rgba(4,6,14,.85) 0%,rgba(4,6,14,.7) 50%,rgba(4,6,14,.35) 80%,transparent 100%);
-  border-radius:62% 38% 55% 45% / 52% 48% 52% 48%;
-  filter:blur(42px) saturate(1.08);
-  z-index:-2;
-  pointer-events:none;
-  animation:subBreath 26s ease-in-out infinite alternate;
-  animation-delay:-3s;
-}
-.p-sec-head::after{
-  content:"";
-  position:absolute;
-  inset:-3.5rem -3rem -2rem;
-  background:radial-gradient(ellipse 75% 70% at 45% 60%,rgba(0,100,120,.2) 0%,rgba(4,6,14,.12) 55%,transparent 90%);
-  border-radius:55% 45% 60% 40% / 48% 52% 50% 52%;
-  filter:blur(70px);
-  z-index:-3;
-  pointer-events:none;
-  animation:subDrift 55s linear infinite reverse;
-}
-@media(max-width:768px){
-  .p-sec-head{padding:1.2rem 1rem 1rem}
-  .p-sec-head::before{inset:-1rem -.8rem -.5rem;filter:blur(30px)}
-  .p-sec-head::after{inset:-2rem -1.5rem -1rem;filter:blur(50px)}
-}
-body.fx-disabled .p-sec-head::before,body.fx-disabled .p-sec-head::after{display:none}
-
-/* === TRIM FINAL: hide servicii section (2 logos, clutters the end) === */
-#sec-servicii{display:none!important}
-/* Remove the Servicii L2 dock button too, since section is hidden */
-.pd-l2[data-l2="servicii"]{display:none!important}
-
-/* === Simplify p-cta final === */
-.p-cta{padding:4rem 1.5rem 5rem;text-align:center;position:relative;z-index:2}
-.p-cta-h{font-family:'Fraunces',serif;font-size:clamp(1.8rem,5vw,2.6rem);font-weight:600;font-variation-settings:"SOFT" 60,"WONK" 1;margin:0 0 .6rem;line-height:1.1;color:#fff5e6}
-.p-cta-h em{font-family:'Instrument Serif',serif;font-style:italic;color:#00e0c0;font-weight:400}
-.p-cta-sub{font-size:.95rem;color:#b8beca;max-width:480px;margin:0 auto 1.8rem;line-height:1.5}
-.p-cta-btns{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap}
-@media(max-width:560px){.p-cta{padding:3rem 1.2rem 4rem}}
-
-</style>
-
-<style id="text-visibility-boost">
-/* TEXT VISIBILITY — readable over 3D + blobs */
-.ss, .sub, p, .pk-tag, .pk-features li, .faq-a-inner,
-.how-desc, .dce-desc, .type-list, .contact-s,
-.s2-desc, .ft-tag, .car-label, .pf-hero .sub {
-  color: #d0cbc3 !important;
-  font-weight: 400 !important;
-  text-shadow: 0 2px 8px rgba(0,0,0,.7) !important;
-}
-.sh, h2, h1, .pf-hero h1, .contact-h, .sec-title, .pf-cta h2 {
-  text-shadow: 0 4px 20px rgba(0,0,0,.85) !important;
-}
-.lb, .car-label, .s2-tag, .s2-prices, .pf-sub {
-  text-shadow: 0 2px 6px rgba(0,0,0,.6) !important;
-}
-</style>
-
-
-<style id="visibility-fix-v2">
-/* DARK BACKDROP PANELS behind sections — readable over 3D */
-.sec .si {
-  background: linear-gradient(180deg, rgba(8,10,20,.88), rgba(4,6,14,.92)) !important;
-  border-radius: 20px !important;
-  padding: 4rem 3rem !important;
-  border: 1px solid rgba(0,224,192,.08) !important;
-  box-shadow: 0 40px 100px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.04) !important;
+.dock__chip.is-active {
+  background: var(--accent-soft);
+  color: var(--accent);
+  border-color: var(--border-hi);
 }
 
-/* Section numbers — visible teal glow */
-.sec-num {
-  color: rgba(0,224,192,.15) !important;
-  text-shadow: 0 0 60px rgba(0,224,192,.2), 0 0 120px rgba(0,224,192,.1) !important;
+/* L1 chips are bolder */
+.dock__chip--l1 {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 1.02rem;
+  font-variation-settings: "opsz" 72, "SOFT" 30, "WONK" 1;
+}
+/* L2 chips */
+.dock__chip--l2 {
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+/* L3 chips - smallest, italic serif */
+.dock__chip--l3 {
+  font-family: var(--font-italic);
+  font-size: 0.9rem;
+  font-style: italic;
+  font-weight: 400;
+  padding: 0.4rem 0.85rem;
 }
 
-/* Description text — cream white, bold enough */
-.ss {
-  color: #e0dbd4 !important;
-  font-weight: 400 !important;
-  font-size: 1rem !important;
-  text-shadow: 0 2px 8px rgba(0,0,0,.5) !important;
+.dock__row[hidden] { display: none; }
+
+
+/* ─── 6. HERO ───────────────────────────────────────────────────────────────── */
+.hero {
+  text-align: center;
+  padding: 11rem 2rem 3rem;
+  max-width: 860px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+.hero__kicker {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.2rem;
+}
+.hero__title {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-variation-settings: "opsz" 144, "SOFT" 30, "WONK" 1;
+  font-size: clamp(2.4rem, 6vw, 4.2rem);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  margin: 0 0 1rem;
+  color: var(--text);
+}
+.hero__title em {
+  font-family: var(--font-italic);
+  font-style: italic;
+  color: var(--accent);
+  font-weight: 400;
+}
+.hero__lead {
+  font-family: var(--font-serif);
+  font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+  color: var(--text-mute);
+  line-height: 1.55;
+  max-width: 620px;
+  margin: 0 auto;
+  font-variation-settings: "opsz" 48, "SOFT" 80;
 }
 
-/* Headlines — white with shadow */
-.sh {
-  color: #fff5e6 !important;
-  text-shadow: 0 4px 16px rgba(0,0,0,.7) !important;
+
+/* ─── 7. SECTIONS ───────────────────────────────────────────────────────────── */
+.p-sec {
+  position: relative;
+  margin: 3rem 0 5rem;
+  scroll-margin-top: 200px;
+  isolation: isolate;
+}
+.p-sec[hidden] { display: none; }
+
+.p-sec-head {
+  position: relative;
+  z-index: 2;
+  padding: 1.5rem 1.5rem 0.5rem;
+  margin-bottom: 1.5rem;
+  isolation: isolate;
+}
+.p-sec-head__crumb {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  opacity: 0.85;
+  margin-bottom: 0.7rem;
+}
+.p-sec-head__title {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-variation-settings: "opsz" 144, "SOFT" 30, "WONK" 1;
+  font-size: clamp(2rem, 4vw, 3rem);
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  margin: 0 0 0.8rem;
+  color: var(--text);
+}
+.p-sec-head__lead {
+  font-family: var(--font-serif);
+  font-size: clamp(1.1rem, 1.6vw, 1.3rem);
+  color: var(--text-mute);
+  line-height: 1.55;
+  max-width: 720px;
+  margin: 0;
+  font-variation-settings: "opsz" 48, "SOFT" 80;
+}
+.p-sec-head__lead em {
+  font-family: var(--font-italic);
+  font-style: italic;
+  color: var(--text);
+  font-size: 1.06em;
 }
 
-/* Hero text panel */
-.pf-hero {
-  background: linear-gradient(180deg, rgba(8,10,20,.75), rgba(4,6,14,.6), transparent) !important;
-  padding-bottom: 30px !important;
+
+/* ─── 8. SUBVARIANTS (p-sub) ────────────────────────────────────────────────── */
+.p-sub {
+  position: relative;
+  z-index: 2;
+  padding: 2rem 1.5rem 2.5rem;
+  margin-bottom: 3rem;
+  border-radius: var(--radius-lg);
+  isolation: isolate;
+  display: block;
+  scroll-margin-top: 200px;
 }
-.pf-hero h1 {
-  color: #fff5e6 !important;
-  text-shadow: 0 4px 24px rgba(0,0,0,.8) !important;
+.p-sub:last-child { margin-bottom: 1rem; }
+
+/* Axis breadcrumb: inline horizontal under description */
+.p-axis {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.3rem 0.7rem;
+  margin: 1.2rem 0 1.6rem;
 }
-.pf-hero .sub {
-  color: #e0dbd4 !important;
-  font-size: 1.05rem !important;
-  font-weight: 400 !important;
-  text-shadow: 0 2px 10px rgba(0,0,0,.6) !important;
+.p-axis-row {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.45rem;
+  transition: color var(--t-fast);
+}
+.p-axis-row:not(:last-child)::after {
+  content: "·";
+  margin-left: 0.7rem;
+  color: rgba(255, 245, 230, 0.3);
+  font-size: 1rem;
+  align-self: center;
+}
+.p-axis-sym,
+.p-axis-name { line-height: 1; }
+
+/* L1 — bold serif display */
+.p-axis-row.axis-l1 .p-axis-sym {
+  font-family: var(--font-serif);
+  font-weight: 900;
+  font-variation-settings: "opsz" 144, "WONK" 1;
+  font-size: 1.15rem;
+  color: var(--text);
+}
+.p-axis-row.axis-l1 .p-axis-name {
+  font-family: var(--font-serif);
+  font-weight: 800;
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 245, 230, 0.85);
 }
 
-/* CTA section panel */
-.pf-cta .si {
-  background: linear-gradient(180deg, rgba(8,10,20,.88), rgba(4,6,14,.92)) !important;
-  border-radius: 20px !important;
-  padding: 4rem 3rem !important;
-  border: 1px solid rgba(0,224,192,.08) !important;
-  box-shadow: 0 40px 100px rgba(0,0,0,.6) !important;
+/* L2 — mono technical */
+.p-axis-row.axis-l2 .p-axis-sym {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: rgba(255, 245, 230, 0.72);
 }
-.pf-cta h2 {
-  color: #fff5e6 !important;
-  text-shadow: 0 4px 16px rgba(0,0,0,.7) !important;
-}
-.pf-cta p {
-  color: #e0dbd4 !important;
-  text-shadow: 0 2px 8px rgba(0,0,0,.5) !important;
-}
-
-/* Highlight words — brighter */
-.hl {
-  color: #00e0c0 !important;
-  text-shadow: 0 0 12px rgba(0,224,192,.3) !important;
+.p-axis-row.axis-l2 .p-axis-name {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(216, 212, 200, 0.6);
 }
 
-/* Mobile adjustments */
-@media(max-width:768px) {
-  .sec .si {
-    padding: 2.5rem 1.5rem !important;
-    border-radius: 16px !important;
+/* L3 — italic serif */
+.p-axis-row.axis-l3 .p-axis-sym {
+  font-family: var(--font-italic);
+  font-size: 1.05rem;
+  color: rgba(255, 245, 230, 0.7);
+}
+.p-axis-row.axis-l3 .p-axis-name {
+  font-family: var(--font-italic);
+  font-style: italic;
+  font-size: 0.92rem;
+  color: rgba(208, 203, 195, 0.75);
+}
+
+/* Active row highlight */
+.p-axis-row.is-active .p-axis-sym { color: var(--accent); }
+.p-axis-row.is-active .p-axis-name { color: var(--text); }
+
+/* Sub description */
+.p-sub-desc {
+  font-family: var(--font-serif);
+  font-size: 1.08rem;
+  color: var(--text-mute);
+  line-height: 1.55;
+  max-width: 680px;
+  margin: 0 0 1rem;
+  font-variation-settings: "opsz" 48, "SOFT" 80;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+.p-sub-desc em {
+  font-family: var(--font-italic);
+  font-style: italic;
+  color: var(--text);
+  font-size: 1.06em;
+}
+
+
+/* ─── 9. PHOTO GRID ─────────────────────────────────────────────────────────── */
+.p-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.65rem;
+}
+.p-grid--wide    { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+.p-grid--narrow  { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
+
+.p-grid img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 12px;
+  background: #0a0b14;
+  cursor: zoom-in;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: transform var(--t-med) var(--ease), box-shadow var(--t-med);
+}
+.p-grid img:hover {
+  transform: translateY(-3px) scale(1.01);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.55), 0 0 0 1px var(--border-hi);
+}
+
+
+/* ─── 10. VIDEO ─────────────────────────────────────────────────────────────── */
+.p-video {
+  max-width: 680px;
+  margin: 0 auto;
+}
+.p-video video {
+  width: 100%;
+  border-radius: var(--radius-md);
+  background: #0a0b14;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55);
+}
+.p-video__caption {
+  font-family: var(--font-italic);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--text-mute);
+  text-align: center;
+  margin-top: 0.9rem;
+}
+
+
+/* ─── 11. VARIANTS (greek α/β/γ) ────────────────────────────────────────────── */
+.p-variant { margin-bottom: 2rem; }
+.p-variant:last-child { margin-bottom: 0; }
+
+.p-variant__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.6rem 1rem;
+  margin-bottom: 1rem;
+}
+.p-variant__tag {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  padding: 0.3rem 0.8rem;
+  background: var(--accent-soft);
+  border: 1px solid var(--border-hi);
+  border-radius: 100px;
+}
+.p-variant__greek {
+  font-family: var(--font-greek);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.7em;
+  color: var(--accent);
+  letter-spacing: -0.02em;
+  text-shadow: 0 0 12px rgba(0, 224, 192, 0.5);
+  line-height: 1;
+}
+.p-variant__note {
+  font-family: var(--font-italic);
+  font-style: italic;
+  font-size: 1.08rem;
+  color: var(--text-mute);
+  letter-spacing: -0.005em;
+  line-height: 1.4;
+  flex: 1;
+  min-width: 240px;
+}
+
+
+/* ─── 12. COSMIC PANELS (picasso blur blobs behind content) ─────────────────── */
+/* Two-layer organic glow: dark radial + teal aura, with subtle breathing motion. */
+
+.p-sub::before,
+.p-sec-head::before {
+  content: "";
+  position: absolute;
+  inset: -2.5rem -2rem;
+  background: radial-gradient(
+    ellipse 90% 95% at 50% 50%,
+    rgba(4, 6, 14, 0.9) 0%,
+    rgba(4, 6, 14, 0.75) 50%,
+    rgba(4, 6, 14, 0.35) 85%,
+    transparent 100%
+  );
+  border-radius: 55% 45% 58% 42% / 48% 52% 50% 52%;
+  filter: blur(42px) saturate(1.1);
+  z-index: -2;
+  pointer-events: none;
+  animation: cosmic-breath 22s ease-in-out infinite alternate;
+}
+.p-sub::after,
+.p-sec-head::after {
+  content: "";
+  position: absolute;
+  inset: -4rem -3rem;
+  background: radial-gradient(
+    ellipse 80% 80% at 55% 55%,
+    rgba(0, 120, 140, 0.22) 0%,
+    rgba(4, 6, 14, 0.15) 55%,
+    transparent 90%
+  );
+  border-radius: 65% 35% 48% 52% / 52% 48% 52% 48%;
+  filter: blur(70px);
+  z-index: -3;
+  pointer-events: none;
+  animation: cosmic-drift 50s linear infinite;
+}
+
+/* Variation — each nth-child gets unique blob shape + timing */
+.p-sub:nth-child(2n)::before { border-radius: 48% 52% 60% 40% / 55% 45% 55% 45%; animation-duration: 26s; }
+.p-sub:nth-child(3n)::before { border-radius: 62% 38% 45% 55% / 48% 52% 48% 52%; animation-duration: 19s; animation-delay: -7s; }
+.p-sub:nth-child(2n)::after  { animation-direction: reverse; }
+.p-sub:nth-child(3n)::after  { border-radius: 45% 55% 52% 48% / 58% 42% 58% 42%; }
+
+.p-sec-head::before { animation-delay: -3s; }
+.p-sec-head::after  { animation-direction: reverse; animation-duration: 55s; }
+
+@keyframes cosmic-breath {
+  0%   { transform: scale(1.00) translate( 0%,  0%); }
+  50%  { transform: scale(1.05) translate( 0.8%, -0.8%); }
+  100% { transform: scale(0.97) translate(-0.8%,  0.8%); }
+}
+@keyframes cosmic-drift {
+  0%   { transform: rotate(  0deg) scale(1.00); }
+  50%  { transform: rotate(180deg) scale(1.04); }
+  100% { transform: rotate(360deg) scale(1.00); }
+}
+
+
+/* ─── 13. LIGHTBOX ──────────────────────────────────────────────────────────── */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(4, 6, 14, 0.96);
+  backdrop-filter: blur(20px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+.lightbox.is-open { display: flex; }
+.lightbox img {
+  max-width: 92vw;
+  max-height: 88vh;
+  border-radius: var(--radius-md);
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.7);
+}
+.lightbox__close,
+.lightbox__nav {
+  position: fixed;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--text);
+  font-size: 1.6rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--t-fast), transform var(--t-fast);
+}
+.lightbox__close:hover { background: rgba(255, 80, 80, 0.2); transform: rotate(90deg); }
+.lightbox__nav:hover   { background: var(--accent-soft); }
+.lightbox__close { top: 18px; right: 22px; }
+.lightbox__nav--prev { left: 22px; top: 50%; transform: translateY(-50%); }
+.lightbox__nav--next { right: 22px; top: 50%; transform: translateY(-50%); }
+.lightbox__count {
+  position: fixed;
+  bottom: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.15em;
+  color: var(--text-dim);
+}
+
+
+/* ─── 14. FOOTER CTA ────────────────────────────────────────────────────────── */
+.cta {
+  text-align: center;
+  padding: 5rem 1.5rem 6rem;
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+  margin: 4rem auto 0;
+}
+.cta__title {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-variation-settings: "opsz" 144, "SOFT" 60, "WONK" 1;
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 1.08;
+  margin: 0 0 0.8rem;
+  color: var(--text);
+}
+.cta__title em {
+  font-family: var(--font-italic);
+  font-style: italic;
+  color: var(--accent);
+  font-weight: 400;
+}
+.cta__lead {
+  font-size: 1.05rem;
+  color: var(--text-mute);
+  max-width: 480px;
+  margin: 0 auto 2rem;
+  line-height: 1.5;
+}
+.cta__buttons {
+  display: flex;
+  gap: 0.8rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.cta__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.95rem 1.8rem;
+  border-radius: 100px;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  transition: transform var(--t-fast), box-shadow var(--t-fast);
+}
+.cta__btn--primary {
+  background: var(--accent);
+  color: var(--bg);
+}
+.cta__btn--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 36px rgba(0, 224, 192, 0.4);
+}
+.cta__btn--secondary {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+.cta__btn--secondary:hover {
+  border-color: var(--border-hi);
+  background: var(--accent-soft);
+}
+
+
+/* ─── 15. RESPONSIVE ────────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  main.pf-body { padding: 0 1.25rem 3rem; }
+  .nav { padding: 0.8rem 1.25rem; }
+  .nav__links, .nav__cta { display: none; }
+  .hero { padding: 9rem 1rem 2rem; }
+  .p-sec-head { padding: 1rem 1rem 0.5rem; }
+  .p-sub { padding: 1.6rem 1rem 2rem; margin-bottom: 2.4rem; }
+  .p-sub-desc { font-size: 1rem; }
+  .p-variant__note { font-size: 1rem; }
+  .p-grid { gap: 0.5rem; }
+}
+
+@media (max-width: 560px) {
+  .dock {
+    top: 64px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-width: none;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    border-radius: 0;
   }
-  .pf-cta .si {
-    padding: 2.5rem 1.5rem !important;
+  body.nav-hidden .dock { top: 0; }
+
+  .dock__row { padding: 0.35rem 0.5rem; gap: 0.3rem; }
+  .dock__chip { padding: 0.35rem 0.75rem; font-size: 0.82rem; }
+  .dock__chip--l1 { font-size: 0.92rem; padding: 0.38rem 0.9rem; }
+  .dock__chip--l2 { font-size: 0.78rem; }
+  .dock__chip--l3 { font-size: 0.82rem; padding: 0.3rem 0.7rem; }
+
+  .hero { padding: 7.5rem 1rem 2rem; }
+  .p-sub::before, .p-sec-head::before { inset: -1.5rem -1rem; filter: blur(28px); }
+  .p-sub::after,  .p-sec-head::after  { inset: -2.5rem -1.5rem; filter: blur(50px); }
+  .p-grid { grid-template-columns: repeat(2, 1fr); gap: 0.4rem; }
+  .p-grid--narrow { grid-template-columns: repeat(2, 1fr); }
+  .cta { padding: 3.5rem 1rem 4.5rem; }
+}
+
+
+/* ─── REDUCED MOTION ────────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
 </style>
-
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-256CM7TGEG"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-256CM7TGEG');</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "CollectionPage",
-  "name": "Portofoliu i-Vory Creative",
-  "description": "Exemple de conținut social media produs de i-Vory Creative: carusele, postari, videoclipuri, fotografii AI.",
-  "url": "https://i-vory.ro/portofoliu.html",
-  "isPartOf": {
-    "@id": "https://i-vory.ro/#website"
-  },
-  "about": {
-    "@id": "https://i-vory.ro/#organization"
-  },
-  "inLanguage": "ro-RO",
-  "breadcrumb": {
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Acasă",
-        "item": "https://i-vory.ro"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Portofoliu",
-        "item": "https://i-vory.ro/portofoliu.html"
-      }
-    ]
-  }
-}
-</script>
-
-
-<link rel="alternate" hreflang="ro" href="https://i-vory.ro/portofoliu.html">
-<script>window.scrollTo(0,0);history.scrollRestoration="manual";</script>
-
 </head>
 <body>
-<!-- GRADIENT BLOBS BACKGROUND — from v9 -->
-<div class="bgblobs"><div class="blob blob1"></div><div class="blob blob2"></div><div class="blob blob3"></div><div class="blob blob4"></div></div>
-<div class="hero3d" id="hero3d"></div>
-<!-- Preloader DOM (needed by Three.js module — hidden instantly) -->
-<div class="pre done" id="pre" style="display:none">
-  <div class="pre-msg" id="preMsg"></div>
-<div id="prob" style="display:none;height:0;overflow:hidden"></div>
-  <div class="pre-bar"><i id="preBar"></i></div>
-</div>
 
 
-
-
-<nav id="nav">
-  <a class="nl" href="/"><img src="logo-nav.svg?v=4" alt="i-Vory Creative" style="height:48px;filter:drop-shadow(0 0 14px rgba(0,224,192,.45))"></a>
-  <ul class="nk">
+<!-- ─── NAVBAR ─────────────────────────────────────────────────────────────── -->
+<nav class="nav" id="nav">
+  <a href="/" class="nav__logo" aria-label="i-Vory Creative">
+    <img src="logo-nav.svg?v=4" alt="i-Vory Creative">
+  </a>
+  <ul class="nav__links">
+    <li><a href="/portofoliu.html" class="is-active">Portofoliu</a></li>
     <li><a href="/#servicii">Servicii</a></li>
     <li><a href="/#pachete">Pachete</a></li>
-    <li><a href="/portofoliu.html" class="act">Portofoliu</a></li>
     <li><a href="/#contact">Contact</a></li>
+    <li><a href="/blog/">Blog</a></li>
   </ul>
-  <a href="https://api.whatsapp.com/send/?phone=40775579706" class="nc" target="_blank">WhatsApp →</a>
-  <button class="ham" id="ham" aria-label="Menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg></button>
+  <a href="https://api.whatsapp.com/send/?phone=40775579706" target="_blank" rel="noopener" class="nav__cta">WhatsApp →</a>
 </nav>
-<div class="mm" id="mm"><a href="/#servicii">Servicii</a><a href="/#pachete">Pachete</a><a href="/portofoliu.html" style="color:var(--ac)">Portofoliu</a><a href="/#contact">Contact</a><a href="https://api.whatsapp.com/send/?phone=40775579706" target="_blank" style="color:var(--ac)">WhatsApp</a></div>
 
-<header class="pf-hero rv">
-  <h1>Ce facem.​<br><span>Concret.</span></h1>
-  <p class="sub">Producem două lucruri: <em>design</em> și <em>video</em>.</p>
-  
-  <div class="pf-dir2">
-    <div class="pf-dir2-num">01</div>
-    <div class="pf-dir2-label">Design<span>Tot ce stă și vorbește.</span></div>
-    <p class="pf-dir2-text">Carusele, postări, vizuale pentru campanii plătite. Construim fiecare cadru ca un artefact de brand.</p>
+
+<!-- ─── DOCK (3-level taxonomy) ──────────────────────────────────────────── -->
+<nav class="dock" id="dock" aria-label="Navigare portofoliu">
+  <!-- L1: Design / Video -->
+  <div class="dock__row dock__row--l1">
+    <button class="dock__chip dock__chip--l1 is-active" data-l1="design">Design</button>
+    <button class="dock__chip dock__chip--l1" data-l1="video">Video</button>
   </div>
-  
-  <div class="pf-dir2">
-    <div class="pf-dir2-num">02</div>
-    <div class="pf-dir2-label">Video<span>Tot ce se mișcă și convinge.</span></div>
-    <p class="pf-dir2-text">Reels, cinematice, showcase, before &amp; after, explainere. Cinci formate, același standard de producție.</p>
-    <p class="pf-dir2-note">Portofoliul video — în lucru.</p>
+
+  <!-- L2: depends on L1 selection -->
+  <div class="dock__row dock__row--l2" data-mode="design">
+    <button class="dock__chip dock__chip--l2 is-active" data-l2="carusel">Carusel</button>
+    <button class="dock__chip dock__chip--l2" data-l2="post">Post</button>
+    <button class="dock__chip dock__chip--l2" data-l2="ecommerce">E-commerce</button>
   </div>
+  <div class="dock__row dock__row--l2" data-mode="video" hidden>
+    <button class="dock__chip dock__chip--l2 is-active" data-l2="vid-cinematic">Cinematic</button>
+    <button class="dock__chip dock__chip--l2" data-l2="vid-animat">Animație</button>
+    <button class="dock__chip dock__chip--l2" data-l2="vid-tiktok">Promoțional</button>
+    <button class="dock__chip dock__chip--l2" data-l2="vid-asmr">ASMR</button>
+    <button class="dock__chip dock__chip--l2" data-l2="vid-medical">Before/After</button>
+  </div>
+
+  <!-- L3: depends on L2 selection -->
+  <div class="dock__row dock__row--l3" data-for="carusel">
+    <button class="dock__chip dock__chip--l3 is-active" data-target="car-educational">Educațional</button>
+    <button class="dock__chip dock__chip--l3" data-target="car-storytelling">Storytelling</button>
+    <button class="dock__chip dock__chip--l3" data-target="car-showcase">Showcase</button>
+    <button class="dock__chip dock__chip--l3" data-target="car-promotional">Promoțional</button>
+  </div>
+  <div class="dock__row dock__row--l3" data-for="post" hidden>
+    <button class="dock__chip dock__chip--l3 is-active" data-target="post-emotional">Emoțional</button>
+  </div>
+  <div class="dock__row dock__row--l3" data-for="ecommerce" hidden>
+    <button class="dock__chip dock__chip--l3 is-active" data-target="ec-product-hero">Product hero</button>
+    <button class="dock__chip dock__chip--l3" data-target="ec-landing">Landing</button>
+    <button class="dock__chip dock__chip--l3" data-target="ec-categorii">Categorii</button>
+    <button class="dock__chip dock__chip--l3" data-target="ec-emag">Emag style</button>
+    <button class="dock__chip dock__chip--l3" data-target="ec-cozy">Cozy</button>
+    <button class="dock__chip dock__chip--l3" data-target="ec-studio">Studio</button>
+    <button class="dock__chip dock__chip--l3" data-target="ec-medical-light">Lumină spital</button>
+    <button class="dock__chip dock__chip--l3" data-target="ec-ugc">UGC</button>
+    <button class="dock__chip dock__chip--l3" data-target="ec-editorial">Editorial</button>
+  </div>
+</nav>
+
+
+<!-- ─── HERO ─────────────────────────────────────────────────────────────── -->
+<header class="hero">
+  <div class="hero__kicker">Portofoliu</div>
+  <h1 class="hero__title">Ce iese din <em>studio.</em></h1>
+  <p class="hero__lead">Carusele, postări, video și identitate vizuală. Trei branduri, trei voci diferite, toate făcute cu intenție.</p>
 </header>
-<!-- STICKY DOCK NAV 3-LEVEL -->
-<!-- STICKY DOCK NAV — 3 level taxonomy -->
-<nav class="pd" id="pd" aria-label="Navigare portofoliu">
-  <div class="pd-row pd-row-1">
-    <button class="pd-l1 active" data-l1="design">Design</button>
-    <button class="pd-l1" data-l1="video">Video</button>
-  </div>
-
-  <div class="pd-row pd-row-2" id="pdRow2"><button class="pd-arr pd-arr-l" data-dir="left" data-target="row2" aria-label="scroll stanga">‹</button><button class="pd-arr pd-arr-r" data-dir="right" data-target="row2" aria-label="scroll dreapta">›</button>
-    <div class="pd-tabs pd-l2-group" data-for="design">
-      <button class="pd-l2 active" data-l2="carusel" data-to="sec-carusel">Carusel</button>
-      <button class="pd-l2" data-l2="post" data-to="sec-post">Post</button>
-      <button class="pd-l2" data-l2="ecommerce" data-to="sec-ecommerce">E-commerce</button>
-      <button class="pd-l2" data-l2="servicii" data-to="sec-servicii">Servicii</button>
-    </div>
-    <div class="pd-tabs pd-l2-group pd-tabs-hidden" data-for="video">
-      <button class="pd-l2" data-l2="vid-cinematic" data-to="sec-vid-cinematic">Cinematic</button>
-      <button class="pd-l2" data-l2="vid-animat" data-to="sec-vid-animat">Animație</button>
-      <button class="pd-l2" data-l2="vid-tiktok" data-to="sec-vid-tiktok">Promoțional</button>
-      <button class="pd-l2" data-l2="vid-asmr" data-to="sec-vid-asmr">ASMR</button>
-      <button class="pd-l2" data-l2="vid-medical" data-to="sec-vid-medical">Before/After</button>
-    </div>
-  </div>
-
-  <div class="pd-row pd-row-3" id="pdRow3"><button class="pd-arr pd-arr-l" data-dir="left" data-target="row3" aria-label="scroll stanga">‹</button><button class="pd-arr pd-arr-r" data-dir="right" data-target="row3" aria-label="scroll dreapta">›</button>
-    <!-- DESIGN L3 groups -->
-    <div class="pd-l3-group" data-l2="carusel">
-      <button class="pd-l3" data-to="car-educational">Educațional</button>
-      <button class="pd-l3" data-to="car-storytelling">Storytelling</button>
-      <button class="pd-l3" data-to="car-showcase">Showcase</button>
-      <button class="pd-l3" data-to="car-promotional">Promoțional</button>
-    </div>
-    <div class="pd-l3-group pd-l3-hidden" data-l2="post">
-      <button class="pd-l3" data-to="post-emotional">Emoțional</button>
-      <button class="pd-l3" data-soon="true">Meme brand</button>
-      <button class="pd-l3" data-soon="true">Anunț</button>
-    </div>
-    <div class="pd-l3-group pd-l3-hidden" data-l2="ecommerce">
-      <button class="pd-l3" data-to="ec-product-hero">Product hero</button>
-      <button class="pd-l3" data-to="ec-landing">Landing</button>
-      <button class="pd-l3" data-to="ec-categorii">Categorii</button>
-      <button class="pd-l3" data-to="ec-emag">Emag style</button>
-      <button class="pd-l3" data-to="ec-cozy">Cozy</button>
-      <button class="pd-l3" data-to="ec-studio">Studio</button>
-      <button class="pd-l3" data-to="ec-medical-light">Lumină spital</button>
-      <button class="pd-l3" data-to="ec-ugc">UGC</button>
-      <button class="pd-l3" data-to="ec-editorial">Editorial</button>
-    </div>
-    <div class="pd-l3-group pd-l3-hidden" data-l2="servicii">
-      <button class="pd-l3" data-to="srv-logo">Logo &amp; brand</button>
-      <button class="pd-l3" data-soon="true">Testimoniale</button>
-      <button class="pd-l3" data-soon="true">Prezentare</button>
-    </div>
-    <!-- VIDEO L3 groups (each video = own section, no L3 needed) -->
-    <div class="pd-l3-group pd-l3-hidden" data-l2="vid-cinematic"><button class="pd-l3 active" data-to="sec-vid-cinematic">Prezentare</button></div>
-    <div class="pd-l3-group pd-l3-hidden" data-l2="vid-animat"><button class="pd-l3 active" data-to="sec-vid-animat">Spot lansare produs</button></div>
-    <div class="pd-l3-group pd-l3-hidden" data-l2="vid-tiktok"><button class="pd-l3 active" data-to="sec-vid-tiktok">TikTok style</button></div>
-    <div class="pd-l3-group pd-l3-hidden" data-l2="vid-asmr"><button class="pd-l3 active" data-to="sec-vid-asmr">Produs fântână apă</button></div>
-    <div class="pd-l3-group pd-l3-hidden" data-l2="vid-medical"><button class="pd-l3 active" data-to="sec-vid-medical">Medical</button></div>
-  </div>
-</nav>
 
 <main class="pf-body">
 
-<!-- ========== DESIGN / CARUSEL ========== -->
-<section class="p-sec" id="sec-carusel">
-  <div class="p-sec-head">
-    <div class="p-sec-crumb">Design · Carusel</div>
-    <h2 class="p-sec-title">Carusel</h2>
-    <p class="p-sec-sub"><em>Povestea curge pe șapte cadre.</em> Primul te prinde. Ultimul te ține.</p>
-  </div>
+<!-- ─── SECTIONS: DESIGN ─────────────────────────────────────────────────── -->
+  <section class="p-sec" id="sec-carusel">
+    <div class="p-sec-head">
+      <div class="p-sec-head__crumb">Design · Carusel</div>
+      <h2 class="p-sec-head__title">Carusel</h2>
+      <p class="p-sec-head__lead"><em>Povestea curge pe șapte cadre.</em> Primul te prinde. Ultimul te ține.</p>
+    </div>
+      <article class="p-sub" id="car-educational">
+        <div class="p-axis">
+          <div class="p-axis-row axis-l1"><span class="p-axis-sym">I</span><span class="p-axis-name">Design</span></div>
+          <div class="p-axis-row axis-l2"><span class="p-axis-sym">1</span><span class="p-axis-name">Carusel</span></div>
+          <div class="p-axis-row axis-l3 is-active"><span class="p-axis-sym">A</span><span class="p-axis-name">Educațional</span></div>
+        </div>
+        <p class="p-sub-desc">Omul învață ceva util. <em>Două registre diferite</em> — unul pentru avocat (juridic, dens), unul pentru medic (cald, calm).</p>
+        <div class="p-variant">
+          <div class="p-variant__head">
+            <span class="p-variant__tag">Variantă <span class="p-variant__greek">𝛼</span></span>
+            <span class="p-variant__note">Ton juridic. Graphite și serif grav. Un birou care nu zâmbește.</span>
+          </div>
+          <div class="p-grid">
+            <img loading="lazy" src="/portfolio2/design/carusel/educational/avocat/1.webp" alt="">
+            <img loading="lazy" src="/portfolio2/design/carusel/educational/avocat/2.webp" alt="">
+            <img loading="lazy" src="/portfolio2/design/carusel/educational/avocat/3.webp" alt="">
+            <img loading="lazy" src="/portfolio2/design/carusel/educational/avocat/4.webp" alt="">
+            <img loading="lazy" src="/portfolio2/design/carusel/educational/avocat/5.webp" alt="">
+            <img loading="lazy" src="/portfolio2/design/carusel/educational/avocat/6.webp" alt="">
+            <img loading="lazy" src="/portfolio2/design/carusel/educational/avocat/7.webp" alt="">
+          </div>
+        </div>
+        <div class="p-variant">
+          <div class="p-variant__head">
+            <span class="p-variant__tag">Variantă <span class="p-variant__greek">𝛽</span></span>
+            <span class="p-variant__note">Ton blând. Albastru de spital, spațiu de respirat. Pacientul nu vrea să fie convins.</span>
+          </div>
+          <div class="p-grid">
+            <img loading="lazy" src="/portfolio2/design/carusel/educational/medical/1.webp" alt="">
+            <img loading="lazy" src="/portfolio2/design/carusel/educational/medical/2.webp" alt="">
+            <img loading="lazy" src="/portfolio2/design/carusel/educational/medical/3.webp" alt="">
+            <img loading="lazy" src="/portfolio2/design/carusel/educational/medical/4.webp" alt="">
+            <img loading="lazy" src="/portfolio2/design/carusel/educational/medical/5.webp" alt="">
+            <img loading="lazy" src="/portfolio2/design/carusel/educational/medical/6.webp" alt="">
+            <img loading="lazy" src="/portfolio2/design/carusel/educational/medical/7.webp" alt="">
+          </div>
+        </div>
+      </article>
+      <article class="p-sub" id="car-storytelling">
+        <div class="p-axis">
+          <div class="p-axis-row axis-l1"><span class="p-axis-sym">I</span><span class="p-axis-name">Design</span></div>
+          <div class="p-axis-row axis-l2"><span class="p-axis-sym">1</span><span class="p-axis-name">Carusel</span></div>
+          <div class="p-axis-row axis-l3 is-active"><span class="p-axis-sym">B</span><span class="p-axis-name">Storytelling</span></div>
+        </div>
+        <p class="p-sub-desc">O poveste cu arc: tensiune, decizie, consecință. <em>Brand-ul intră la final</em>, legat de un eveniment real sau sărbătoare.</p>
+        <div class="p-grid">
+          <img loading="lazy" src="/portfolio2/design/carusel/storytelling/1.webp" alt="">
+          <img loading="lazy" src="/portfolio2/design/carusel/storytelling/2.webp" alt="">
+          <img loading="lazy" src="/portfolio2/design/carusel/storytelling/3.webp" alt="">
+          <img loading="lazy" src="/portfolio2/design/carusel/storytelling/4.webp" alt="">
+          <img loading="lazy" src="/portfolio2/design/carusel/storytelling/5.webp" alt="">
+          <img loading="lazy" src="/portfolio2/design/carusel/storytelling/6.webp" alt="">
+          <img loading="lazy" src="/portfolio2/design/carusel/storytelling/7.webp" alt="">
+        </div>
+      </article>
+      <article class="p-sub" id="car-showcase">
+        <div class="p-axis">
+          <div class="p-axis-row axis-l1"><span class="p-axis-sym">I</span><span class="p-axis-name">Design</span></div>
+          <div class="p-axis-row axis-l2"><span class="p-axis-sym">1</span><span class="p-axis-name">Carusel</span></div>
+          <div class="p-axis-row axis-l3 is-active"><span class="p-axis-sym">C</span><span class="p-axis-name">Showcase</span></div>
+        </div>
+        <p class="p-sub-desc">Rezultatele la vedere. Cifre, studii de caz, before/after.</p>
+        <div class="p-grid">
+          <img loading="lazy" src="/portfolio2/design/carusel/showcase/1.webp" alt="">
+          <img loading="lazy" src="/portfolio2/design/carusel/showcase/2.webp" alt="">
+          <img loading="lazy" src="/portfolio2/design/carusel/showcase/3.webp" alt="">
+          <img loading="lazy" src="/portfolio2/design/carusel/showcase/4.webp" alt="">
+          <img loading="lazy" src="/portfolio2/design/carusel/showcase/5.webp" alt="">
+          <img loading="lazy" src="/portfolio2/design/carusel/showcase/6.webp" alt="">
+          <img loading="lazy" src="/portfolio2/design/carusel/showcase/7.webp" alt="">
+        </div>
+      </article>
+      <article class="p-sub" id="car-promotional">
+        <div class="p-axis">
+          <div class="p-axis-row axis-l1"><span class="p-axis-sym">I</span><span class="p-axis-name">Design</span></div>
+          <div class="p-axis-row axis-l2"><span class="p-axis-sym">1</span><span class="p-axis-name">Carusel</span></div>
+          <div class="p-axis-row axis-l3 is-active"><span class="p-axis-sym">D</span><span class="p-axis-name">Promoțional</span></div>
+        </div>
+        <p class="p-sub-desc">Promoțional direct. <em>Trei abordări</em> — editorial premium, comercial direct și e-commerce.</p>
+        <div class="p-variant">
+          <div class="p-variant__head">
+            <span class="p-variant__tag">Variantă <span class="p-variant__greek">𝛼</span></span>
+            <span class="p-variant__note">Ton editorial. Condens pe litere, aer pe pagină. Revista, nu reclama.</span>
+          </div>
+          <div class="p-grid">
+            <img loading="lazy" src="/portfolio2/design/carusel/promotional/ivory-1/1.webp" alt="">
+            <img loading="lazy" src="/portfolio2/design/carusel/promotional/ivory-1/2.webp" alt="">
+            <img loading="lazy" src="/portfolio2/design/carusel/promotional/ivory-1/3.webp" alt="">
+            <img loading="lazy" src="/portfolio2/design/carusel/promotional/ivory-1/4.webp" alt="">
+            <img loading="lazy" src="/portfolio2/design/carusel/promotional/ivory-1/5.webp" alt="">
+            <img loading="lazy" src="/portfolio2/design/carusel/promotional/ivory-1/6.webp" alt="">
+            <img loading="lazy" src="/portfolio2/design/carusel/promotional/ivory-1/7.webp" alt="">
+          </div>
+        </div>
+        <div class="p-variant">
+          <div class="p-variant__head">
+            <span class="p-variant__tag">Variantă <span class="p-variant__greek">𝛽</span></span>
+            <span class="p-variant__note">Ton direct. Ce faci, ce primești, unde dai click.</span>
+          </div>
+          <div class="p-grid">
+            <img loading="lazy" src="/portfolio2/design/carusel/promotional/ivory-2/1.webp" alt="">
+            <img loading="lazy" src="/portfolio2/design/carusel/promotional/ivory-2/2.webp" alt="">
+            <img loading="lazy" src="/portfolio2/design/carusel/promotional/ivory-2/3.webp" alt="">
+            <img loading="lazy" src="/portfolio2/design/carusel/promotional/ivory-2/4.webp" alt="">
+            <img loading="lazy" src="/portfolio2/design/carusel/promotional/ivory-2/5.webp" alt="">
+            <img loading="lazy" src="/portfolio2/design/carusel/promotional/ivory-2/6.webp" alt="">
+            <img loading="lazy" src="/portfolio2/design/carusel/promotional/ivory-2/7.webp" alt="">
+          </div>
+        </div>
+        <div class="p-variant">
+          <div class="p-variant__head">
+            <span class="p-variant__tag">Variantă <span class="p-variant__greek">𝛾</span></span>
+            <span class="p-variant__note">Produsul în prim-plan. Prețul la vedere. Restul, tăcere.</span>
+          </div>
+          <div class="p-grid">
+            <img loading="lazy" src="/portfolio2/design/carusel/promotional/urbancat/1.webp" alt="">
+            <img loading="lazy" src="/portfolio2/design/carusel/promotional/urbancat/2.webp" alt="">
+            <img loading="lazy" src="/portfolio2/design/carusel/promotional/urbancat/3.webp" alt="">
+            <img loading="lazy" src="/portfolio2/design/carusel/promotional/urbancat/4.webp" alt="">
+            <img loading="lazy" src="/portfolio2/design/carusel/promotional/urbancat/5.webp" alt="">
+            <img loading="lazy" src="/portfolio2/design/carusel/promotional/urbancat/6.webp" alt="">
+            <img loading="lazy" src="/portfolio2/design/carusel/promotional/urbancat/7.webp" alt="">
+          </div>
+        </div>
+      </article>
+  </section>
+  <section class="p-sec" id="sec-post">
+    <div class="p-sec-head">
+      <div class="p-sec-head__crumb">Design · Post</div>
+      <h2 class="p-sec-head__title">Post</h2>
+      <p class="p-sec-head__lead"><em>Un cadru. Poate două.</em> Nu ai timp să spui mai mult și nici el nu are timp să asculte.</p>
+    </div>
+      <article class="p-sub" id="post-emotional">
+        <div class="p-axis">
+          <div class="p-axis-row axis-l1"><span class="p-axis-sym">I</span><span class="p-axis-name">Design</span></div>
+          <div class="p-axis-row axis-l2"><span class="p-axis-sym">2</span><span class="p-axis-name">Post</span></div>
+          <div class="p-axis-row axis-l3 is-active"><span class="p-axis-sym">A</span><span class="p-axis-name">Emoțional</span></div>
+        </div>
+        <p class="p-sub-desc">Un cadru, un nod la stomac. Sau la zâmbet.</p>
+        <div class="p-grid">
+          <img loading="lazy" src="/portfolio2/design/post/emotional/gemini-generated-image-cikc69cikc69cikc.webp" alt="">
+          <img loading="lazy" src="/portfolio2/design/post/emotional/gemini-generated-image-m3kqo7m3kqo7m3kq.webp" alt="">
+        </div>
+      </article>
+  </section>
+  <section class="p-sec" id="sec-ecommerce">
+    <div class="p-sec-head">
+      <div class="p-sec-head__crumb">Design · E-commerce</div>
+      <h2 class="p-sec-head__title">E-commerce</h2>
+      <p class="p-sec-head__lead"><em>De la landing la raft.</em> Fiecare imagine știe unde duce clicul.</p>
+    </div>
+      <article class="p-sub" id="ec-product-hero">
+        <div class="p-axis">
+          <div class="p-axis-row axis-l1"><span class="p-axis-sym">I</span><span class="p-axis-name">Design</span></div>
+          <div class="p-axis-row axis-l2"><span class="p-axis-sym">3</span><span class="p-axis-name">E-commerce</span></div>
+          <div class="p-axis-row axis-l3 is-active"><span class="p-axis-sym">A</span><span class="p-axis-name">Product Hero</span></div>
+        </div>
+        <p class="p-sub-desc">Fotografia care duce vizitatorul de la browsing la add-to-cart. <em>Două abordări</em> — una editorial, una chirurgical-curată pentru Google Shopping.</p>
+        <div class="p-variant">
+          <div class="p-variant__head">
+            <span class="p-variant__tag">Variantă <span class="p-variant__greek">𝛼</span></span>
+            <span class="p-variant__note">Pisica e reală. Pagina de produs o imită pe cea de revistă.</span>
+          </div>
+          <div class="p-grid">
+            <img loading="lazy" src="/portfolio2/design/ecommerce/product-hero/litiera/1.webp" alt="">
+            <img loading="lazy" src="/portfolio2/design/ecommerce/product-hero/litiera/2.webp" alt="">
+            <img loading="lazy" src="/portfolio2/design/ecommerce/product-hero/litiera/22.webp" alt="">
+            <img loading="lazy" src="/portfolio2/design/ecommerce/product-hero/litiera/11.webp" alt="">
+            <img loading="lazy" src="/portfolio2/design/ecommerce/product-hero/litiera/33.webp" alt="">
+            <img loading="lazy" src="/portfolio2/design/ecommerce/product-hero/litiera/4.webp" alt="">
+            <img loading="lazy" src="/portfolio2/design/ecommerce/product-hero/litiera/44.webp" alt="">
+            <img loading="lazy" src="/portfolio2/design/ecommerce/product-hero/litiera/66.webp" alt="">
+          </div>
+        </div>
+        <div class="p-variant">
+          <div class="p-variant__head">
+            <span class="p-variant__tag">Variantă <span class="p-variant__greek">𝛽</span></span>
+            <span class="p-variant__note">Fundal curat, produsul singur. Google caută, utilizatorul vede.</span>
+          </div>
+          <div class="p-grid">
+            <img loading="lazy" src="/portfolio2/design/ecommerce/product-hero/google/fantana-urbancat-05.webp" alt="">
+          </div>
+        </div>
+      </article>
+      <article class="p-sub" id="ec-landing">
+        <div class="p-axis">
+          <div class="p-axis-row axis-l1"><span class="p-axis-sym">I</span><span class="p-axis-name">Design</span></div>
+          <div class="p-axis-row axis-l2"><span class="p-axis-sym">3</span><span class="p-axis-name">E-commerce</span></div>
+          <div class="p-axis-row axis-l3 is-active"><span class="p-axis-sym">B</span><span class="p-axis-name">Landing Page</span></div>
+        </div>
+        <p class="p-sub-desc">Hero section pentru landing page complet. Prima impresie, tot mesajul într-un singur cadru.</p>
+        <div class="p-grid">
+          <img loading="lazy" src="/portfolio2/design/ecommerce/landing-page/urbancatsssss.webp" alt="">
+        </div>
+      </article>
+      <article class="p-sub" id="ec-categorii">
+        <div class="p-axis">
+          <div class="p-axis-row axis-l1"><span class="p-axis-sym">I</span><span class="p-axis-name">Design</span></div>
+          <div class="p-axis-row axis-l2"><span class="p-axis-sym">3</span><span class="p-axis-name">E-commerce</span></div>
+          <div class="p-axis-row axis-l3 is-active"><span class="p-axis-sym">C</span><span class="p-axis-name">Hero Categorii</span></div>
+        </div>
+        <p class="p-sub-desc">Banere categorie pentru meniu principal. Fiecare categorie — propria ei imagine-ancoră.</p>
+        <div class="p-grid">
+          <img loading="lazy" src="/portfolio2/design/ecommerce/hero-categorii/123d.webp" alt="">
+          <img loading="lazy" src="/portfolio2/design/ecommerce/hero-categorii/cvvc.webp" alt="">
+          <img loading="lazy" src="/portfolio2/design/ecommerce/hero-categorii/famrinaurbancat.webp" alt="">
+        </div>
+      </article>
+      <article class="p-sub" id="ec-emag">
+        <div class="p-axis">
+          <div class="p-axis-row axis-l1"><span class="p-axis-sym">I</span><span class="p-axis-name">Design</span></div>
+          <div class="p-axis-row axis-l2"><span class="p-axis-sym">3</span><span class="p-axis-name">E-commerce</span></div>
+          <div class="p-axis-row axis-l3 is-active"><span class="p-axis-sym">D</span><span class="p-axis-name">Emag/Apple Style</span></div>
+        </div>
+        <p class="p-sub-desc">Poze comerciale în stilul eMAG/Apple — produs izolat, lumină curată, detalii chirurgicale.</p>
+        <div class="p-grid">
+          <img loading="lazy" src="/portfolio2/design/ecommerce/emag-style/fantana-urbancat-01.webp" alt="">
+          <img loading="lazy" src="/portfolio2/design/ecommerce/emag-style/fantana-urbancat-02.webp" alt="">
+          <img loading="lazy" src="/portfolio2/design/ecommerce/emag-style/fantana-urbancat-03.webp" alt="">
+        </div>
+      </article>
+      <article class="p-sub" id="ec-cozy">
+        <div class="p-axis">
+          <div class="p-axis-row axis-l1"><span class="p-axis-sym">I</span><span class="p-axis-name">Design</span></div>
+          <div class="p-axis-row axis-l2"><span class="p-axis-sym">3</span><span class="p-axis-name">E-commerce</span></div>
+          <div class="p-axis-row axis-l3 is-active"><span class="p-axis-sym">E</span><span class="p-axis-name">Cozy Apartment</span></div>
+        </div>
+        <p class="p-sub-desc">Produsul în contextul real — apartament, pisică, lumină caldă. Vizitatorul se vede pe el acolo.</p>
+        <div class="p-grid">
+          <img loading="lazy" src="/portfolio2/design/ecommerce/cozy-apartment/11.webp" alt="">
+          <img loading="lazy" src="/portfolio2/design/ecommerce/cozy-apartment/minge-interactiva-03.webp" alt="">
+          <img loading="lazy" src="/portfolio2/design/ecommerce/cozy-apartment/fantana-automata-pentru-pisici-55l-inox-uv-c-8059760.webp" alt="">
+        </div>
+      </article>
+      <article class="p-sub" id="ec-studio">
+        <div class="p-axis">
+          <div class="p-axis-row axis-l1"><span class="p-axis-sym">I</span><span class="p-axis-name">Design</span></div>
+          <div class="p-axis-row axis-l2"><span class="p-axis-sym">3</span><span class="p-axis-name">E-commerce</span></div>
+          <div class="p-axis-row axis-l3 is-active"><span class="p-axis-sym">F</span><span class="p-axis-name">Studio Photography</span></div>
+        </div>
+        <p class="p-sub-desc">Fotografie tip studio — fundal infinit, iluminat profesional, pentru specs și comparații.</p>
+        <div class="p-grid">
+          <img loading="lazy" src="/portfolio2/design/ecommerce/studio/fantana-automata-pentru-pisici-2l-2132569.webp" alt="">
+        </div>
+      </article>
+      <article class="p-sub" id="ec-medical-light">
+        <div class="p-axis">
+          <div class="p-axis-row axis-l1"><span class="p-axis-sym">I</span><span class="p-axis-name">Design</span></div>
+          <div class="p-axis-row axis-l2"><span class="p-axis-sym">3</span><span class="p-axis-name">E-commerce</span></div>
+          <div class="p-axis-row axis-l3 is-active"><span class="p-axis-sym">G</span><span class="p-axis-name">Lumină Spital</span></div>
+        </div>
+        <p class="p-sub-desc">Produs în lumină de spital — alb curat, clinic, pentru showcase premium de igienă.</p>
+        <div class="p-grid">
+          <img loading="lazy" src="/portfolio2/design/ecommerce/showcase-medical/fantana-urbancat-04.webp" alt="">
+        </div>
+      </article>
+      <article class="p-sub" id="ec-ugc">
+        <div class="p-axis">
+          <div class="p-axis-row axis-l1"><span class="p-axis-sym">I</span><span class="p-axis-name">Design</span></div>
+          <div class="p-axis-row axis-l2"><span class="p-axis-sym">3</span><span class="p-axis-name">E-commerce</span></div>
+          <div class="p-axis-row axis-l3 is-active"><span class="p-axis-sym">H</span><span class="p-axis-name">UGC</span></div>
+        </div>
+        <p class="p-sub-desc">Persoană reală folosind produsul — înlocuiește 100 de review-uri scrise. <em>Încrederea se vede</em>.</p>
+        <div class="p-grid">
+          <img loading="lazy" src="/portfolio2/design/ecommerce/ugc/fantana-automata-pentru-pisici-55l-inox-uv-c-4913024.webp" alt="">
+        </div>
+      </article>
+      <article class="p-sub" id="ec-editorial">
+        <div class="p-axis">
+          <div class="p-axis-row axis-l1"><span class="p-axis-sym">I</span><span class="p-axis-name">Design</span></div>
+          <div class="p-axis-row axis-l2"><span class="p-axis-sym">3</span><span class="p-axis-name">E-commerce</span></div>
+          <div class="p-axis-row axis-l3 is-active"><span class="p-axis-sym">I</span><span class="p-axis-name">Editorial Website</span></div>
+        </div>
+        <p class="p-sub-desc">Format editorial pentru blog/magazine — lifestyle, nu catalog.</p>
+        <div class="p-grid">
+          <img loading="lazy" src="/portfolio2/design/ecommerce/editorial/123123123.webp" alt="">
+        </div>
+      </article>
+  </section>
 
-  <article class="p-sub" id="car-educational">
-    <div class="p-axis">
-      <div class="p-axis-row axis-l1"><span class="p-axis-sym">I</span><span class="p-axis-name">Design</span></div>
-      <div class="p-axis-row axis-l2"><span class="p-axis-sym">1</span><span class="p-axis-name">Carusel</span></div>
-      <div class="p-axis-row axis-l3 p-axis-active"><span class="p-axis-sym">A</span><span class="p-axis-name">Educațional</span></div>
+<!-- ─── SECTIONS: VIDEO (hidden until Video mode) ───────────────────────── -->
+  <section class="p-sec" id="sec-vid-cinematic" hidden>
+    <div class="p-sec-head">
+      <div class="p-sec-head__crumb">Video · Cinematic</div>
+      <h2 class="p-sec-head__title">Cinematic</h2>
+      <p class="p-sec-head__lead"><em>Orașul e al lor.</em> Filmăm felul în care îl ocupă. Brandul apare fără să anunțe.</p>
     </div>
-    <p class="p-sub-desc">Omul învață ceva util. <em>Două registre diferite</em> — unul pentru avocat (juridic, dens), unul pentru medic (cald, calm).</p>
-    <div class="p-variant">
-      <div class="p-variant-head"><span class="p-variant-tag">Variantă <span class="p-variant-greek">𝛼</span></span><span class="p-variant-note">Ton juridic. Graphite și serif grav. Un birou care nu zâmbește.</span></div>
-      <div class="p-grid"><img loading="lazy" src="/portfolio2/design/carusel/educational/avocat/1.webp" alt="i-Vory avocat"><img loading="lazy" src="/portfolio2/design/carusel/educational/avocat/2.webp" alt="i-Vory avocat"><img loading="lazy" src="/portfolio2/design/carusel/educational/avocat/3.webp" alt="i-Vory avocat"><img loading="lazy" src="/portfolio2/design/carusel/educational/avocat/4.webp" alt="i-Vory avocat"><img loading="lazy" src="/portfolio2/design/carusel/educational/avocat/5.webp" alt="i-Vory avocat"><img loading="lazy" src="/portfolio2/design/carusel/educational/avocat/6.webp" alt="i-Vory avocat"><img loading="lazy" src="/portfolio2/design/carusel/educational/avocat/7.webp" alt="i-Vory avocat"></div>
-    </div>
-    <div class="p-variant">
-      <div class="p-variant-head"><span class="p-variant-tag">Variantă <span class="p-variant-greek">𝛽</span></span><span class="p-variant-note">Ton blând. Albastru de spital, spațiu de respirat. Pacientul nu vrea să fie convins.</span></div>
-      <div class="p-grid"><img loading="lazy" src="/portfolio2/design/carusel/educational/medical/1.webp" alt="i-Vory medical"><img loading="lazy" src="/portfolio2/design/carusel/educational/medical/2.webp" alt="i-Vory medical"><img loading="lazy" src="/portfolio2/design/carusel/educational/medical/3.webp" alt="i-Vory medical"><img loading="lazy" src="/portfolio2/design/carusel/educational/medical/4.webp" alt="i-Vory medical"><img loading="lazy" src="/portfolio2/design/carusel/educational/medical/5.webp" alt="i-Vory medical"><img loading="lazy" src="/portfolio2/design/carusel/educational/medical/6.webp" alt="i-Vory medical"><img loading="lazy" src="/portfolio2/design/carusel/educational/medical/7.webp" alt="i-Vory medical"></div>
-    </div>
-  </article>
-
-  <article class="p-sub" id="car-storytelling">
-    <div class="p-axis">
-      <div class="p-axis-row axis-l1"><span class="p-axis-sym">I</span><span class="p-axis-name">Design</span></div>
-      <div class="p-axis-row axis-l2"><span class="p-axis-sym">1</span><span class="p-axis-name">Carusel</span></div>
-      <div class="p-axis-row axis-l3 p-axis-active"><span class="p-axis-sym">B</span><span class="p-axis-name">Storytelling</span></div>
-    </div>
-    <p class="p-sub-desc">O poveste cu arc: tensiune, decizie, consecință. <em>Brand-ul intră la final</em>, legat de un eveniment real sau sărbătoare.</p>
-    <div class="p-grid"><img loading="lazy" src="/portfolio2/design/carusel/storytelling/1.webp" alt="i-Vory Storytelling"><img loading="lazy" src="/portfolio2/design/carusel/storytelling/2.webp" alt="i-Vory Storytelling"><img loading="lazy" src="/portfolio2/design/carusel/storytelling/3.webp" alt="i-Vory Storytelling"><img loading="lazy" src="/portfolio2/design/carusel/storytelling/4.webp" alt="i-Vory Storytelling"><img loading="lazy" src="/portfolio2/design/carusel/storytelling/5.webp" alt="i-Vory Storytelling"><img loading="lazy" src="/portfolio2/design/carusel/storytelling/6.webp" alt="i-Vory Storytelling"><img loading="lazy" src="/portfolio2/design/carusel/storytelling/7.webp" alt="i-Vory Storytelling"></div>
-  </article>
-
-  <article class="p-sub" id="car-showcase">
-    <div class="p-axis">
-      <div class="p-axis-row axis-l1"><span class="p-axis-sym">I</span><span class="p-axis-name">Design</span></div>
-      <div class="p-axis-row axis-l2"><span class="p-axis-sym">1</span><span class="p-axis-name">Carusel</span></div>
-      <div class="p-axis-row axis-l3 p-axis-active"><span class="p-axis-sym">C</span><span class="p-axis-name">Showcase</span></div>
-    </div>
-    <p class="p-sub-desc">Rezultatele la vedere. Cifre, studii de caz, before/after.</p>
-    <div class="p-grid"><img loading="lazy" src="/portfolio2/design/carusel/showcase/1.webp" alt="i-Vory Showcase"><img loading="lazy" src="/portfolio2/design/carusel/showcase/2.webp" alt="i-Vory Showcase"><img loading="lazy" src="/portfolio2/design/carusel/showcase/3.webp" alt="i-Vory Showcase"><img loading="lazy" src="/portfolio2/design/carusel/showcase/4.webp" alt="i-Vory Showcase"><img loading="lazy" src="/portfolio2/design/carusel/showcase/5.webp" alt="i-Vory Showcase"><img loading="lazy" src="/portfolio2/design/carusel/showcase/6.webp" alt="i-Vory Showcase"><img loading="lazy" src="/portfolio2/design/carusel/showcase/7.webp" alt="i-Vory Showcase"></div>
-  </article>
-
-  <article class="p-sub" id="car-promotional">
-    <div class="p-axis">
-      <div class="p-axis-row axis-l1"><span class="p-axis-sym">I</span><span class="p-axis-name">Design</span></div>
-      <div class="p-axis-row axis-l2"><span class="p-axis-sym">1</span><span class="p-axis-name">Carusel</span></div>
-      <div class="p-axis-row axis-l3 p-axis-active"><span class="p-axis-sym">D</span><span class="p-axis-name">Promoțional</span></div>
-    </div>
-    <p class="p-sub-desc">Promoțional direct. <em>Trei abordări</em> — editorial premium, comercial direct și e-commerce.</p>
-    <div class="p-variant">
-      <div class="p-variant-head"><span class="p-variant-tag">Variantă <span class="p-variant-greek">𝛼</span></span><span class="p-variant-note">Ton editorial. Condens pe litere, aer pe pagină. Revista, nu reclama.</span></div>
-      <div class="p-grid"><img loading="lazy" src="/portfolio2/design/carusel/promotional/ivory-1/1.webp" alt="i-Vory i-vory-1"><img loading="lazy" src="/portfolio2/design/carusel/promotional/ivory-1/2.webp" alt="i-Vory i-vory-1"><img loading="lazy" src="/portfolio2/design/carusel/promotional/ivory-1/3.webp" alt="i-Vory i-vory-1"><img loading="lazy" src="/portfolio2/design/carusel/promotional/ivory-1/4.webp" alt="i-Vory i-vory-1"><img loading="lazy" src="/portfolio2/design/carusel/promotional/ivory-1/5.webp" alt="i-Vory i-vory-1"><img loading="lazy" src="/portfolio2/design/carusel/promotional/ivory-1/6.webp" alt="i-Vory i-vory-1"><img loading="lazy" src="/portfolio2/design/carusel/promotional/ivory-1/7.webp" alt="i-Vory i-vory-1"></div>
-    </div>
-    <div class="p-variant">
-      <div class="p-variant-head"><span class="p-variant-tag">Variantă <span class="p-variant-greek">𝛽</span></span><span class="p-variant-note">Ton direct. Ce faci, ce primești, unde dai click.</span></div>
-      <div class="p-grid"><img loading="lazy" src="/portfolio2/design/carusel/promotional/ivory-2/1.webp" alt="i-Vory i-vory-2"><img loading="lazy" src="/portfolio2/design/carusel/promotional/ivory-2/2.webp" alt="i-Vory i-vory-2"><img loading="lazy" src="/portfolio2/design/carusel/promotional/ivory-2/3.webp" alt="i-Vory i-vory-2"><img loading="lazy" src="/portfolio2/design/carusel/promotional/ivory-2/4.webp" alt="i-Vory i-vory-2"><img loading="lazy" src="/portfolio2/design/carusel/promotional/ivory-2/5.webp" alt="i-Vory i-vory-2"><img loading="lazy" src="/portfolio2/design/carusel/promotional/ivory-2/6.webp" alt="i-Vory i-vory-2"><img loading="lazy" src="/portfolio2/design/carusel/promotional/ivory-2/7.webp" alt="i-Vory i-vory-2"></div>
-    </div>
-    <div class="p-variant">
-      <div class="p-variant-head"><span class="p-variant-tag">Variantă <span class="p-variant-greek">𝛾</span></span><span class="p-variant-note">Produsul în prim-plan. Prețul la vedere. Restul, tăcere.</span></div>
-      <div class="p-grid"><img loading="lazy" src="/portfolio2/design/carusel/promotional/urbancat/1.webp" alt="i-Vory urbancat"><img loading="lazy" src="/portfolio2/design/carusel/promotional/urbancat/2.webp" alt="i-Vory urbancat"><img loading="lazy" src="/portfolio2/design/carusel/promotional/urbancat/3.webp" alt="i-Vory urbancat"><img loading="lazy" src="/portfolio2/design/carusel/promotional/urbancat/4.webp" alt="i-Vory urbancat"><img loading="lazy" src="/portfolio2/design/carusel/promotional/urbancat/5.webp" alt="i-Vory urbancat"><img loading="lazy" src="/portfolio2/design/carusel/promotional/urbancat/6.webp" alt="i-Vory urbancat"><img loading="lazy" src="/portfolio2/design/carusel/promotional/urbancat/7.webp" alt="i-Vory urbancat"></div>
-    </div>
-  </article>
-</section>
-
-<!-- ========== DESIGN / POST ========== -->
-<section class="p-sec" id="sec-post">
-  <div class="p-sec-head">
-    <div class="p-sec-crumb">Design · Post</div>
-    <h2 class="p-sec-title">Post</h2>
-    <p class="p-sec-sub"><em>Un cadru. Poate două.</em> Nu ai timp să spui mai mult și nici el nu are timp să asculte.</p>
-  </div>
-
-  <article class="p-sub" id="post-emotional">
-    <div class="p-axis">
-      <div class="p-axis-row axis-l1"><span class="p-axis-sym">I</span><span class="p-axis-name">Design</span></div>
-      <div class="p-axis-row axis-l2"><span class="p-axis-sym">2</span><span class="p-axis-name">Post</span></div>
-      <div class="p-axis-row axis-l3 p-axis-active"><span class="p-axis-sym">A</span><span class="p-axis-name">Emoțional</span></div>
-    </div>
-    <p class="p-sub-desc">Un cadru, un nod la stomac. Sau la zâmbet.</p>
-    <div class="p-grid p-grid-2">
-      <img loading="lazy" src="/portfolio2/design/post/emotional/gemini-generated-image-cikc69cikc69cikc.webp" alt="Post emotional 1">
-      <img loading="lazy" src="/portfolio2/design/post/emotional/gemini-generated-image-m3kqo7m3kqo7m3kq.webp" alt="Post emotional 2">
-    </div>
-  </article>
-</section>
-
-<!-- ========== DESIGN / E-COMMERCE ========== -->
-<section class="p-sec" id="sec-ecommerce">
-  <div class="p-sec-head">
-    <div class="p-sec-crumb">Design · E-commerce</div>
-    <h2 class="p-sec-title">E-commerce</h2>
-    <p class="p-sec-sub"><em>De la landing la raft.</em> Fiecare imagine știe unde duce clicul.</p>
-  </div>
-
-  <article class="p-sub" id="ec-product-hero">
-    <div class="p-axis">
-      <div class="p-axis-row axis-l1"><span class="p-axis-sym">I</span><span class="p-axis-name">Design</span></div>
-      <div class="p-axis-row axis-l2"><span class="p-axis-sym">3</span><span class="p-axis-name">E-commerce</span></div>
-      <div class="p-axis-row axis-l3 p-axis-active"><span class="p-axis-sym">A</span><span class="p-axis-name">Product Hero</span></div>
-    </div>
-    <p class="p-sub-desc">Fotografia care duce vizitatorul de la browsing la add-to-cart. <em>Două abordări</em> — una editorial, una chirurgical-curată pentru Google Shopping.</p>
-    <div class="p-variant">
-      <div class="p-variant-head"><span class="p-variant-tag">Variantă <span class="p-variant-greek">𝛼</span></span><span class="p-variant-note">Pisica e reală. Pagina de produs o imită pe cea de revistă.</span></div>
-      <div class="p-grid"><img loading="lazy" src="/portfolio2/design/ecommerce/product-hero/litiera/1.webp" alt="Litiera Urbancat hero"><img loading="lazy" src="/portfolio2/design/ecommerce/product-hero/litiera/2.webp" alt="Litiera Urbancat hero"><img loading="lazy" src="/portfolio2/design/ecommerce/product-hero/litiera/22.webp" alt="Litiera Urbancat hero"><img loading="lazy" src="/portfolio2/design/ecommerce/product-hero/litiera/11.webp" alt="Litiera Urbancat hero"><img loading="lazy" src="/portfolio2/design/ecommerce/product-hero/litiera/33.webp" alt="Litiera Urbancat hero"><img loading="lazy" src="/portfolio2/design/ecommerce/product-hero/litiera/4.webp" alt="Litiera Urbancat hero"><img loading="lazy" src="/portfolio2/design/ecommerce/product-hero/litiera/44.webp" alt="Litiera Urbancat hero"><img loading="lazy" src="/portfolio2/design/ecommerce/product-hero/litiera/66.webp" alt="Litiera Urbancat hero"></div>
-    </div>
-    <div class="p-variant">
-      <div class="p-variant-head"><span class="p-variant-tag">Variantă <span class="p-variant-greek">𝛽</span></span><span class="p-variant-note">Fundal curat, produsul singur. Google caută, utilizatorul vede.</span></div>
-      <div class="p-grid p-grid-3">
-        <img loading="lazy" src="/portfolio2/design/ecommerce/product-hero/google/fantana-urbancat-05.webp" alt="Fantana Urbancat Google Shopping">
+      <div class="p-sub">
+        <div class="p-axis">
+          <div class="p-axis-row axis-l1"><span class="p-axis-sym">II</span><span class="p-axis-name">Video</span></div>
+          <div class="p-axis-row axis-l2"><span class="p-axis-sym">1</span><span class="p-axis-name">Cinematic</span></div>
+          <div class="p-axis-row axis-l3 is-active"><span class="p-axis-sym">A</span><span class="p-axis-name">Prezentare</span></div>
+        </div>
+        <div class="p-video">
+          <video controls preload="metadata" playsinline muted>
+            <source src="/portfolio2/video/cinematic/ora-ul-e-al-lor.urbancat.ro-2.mp4" type="video/mp4">
+          </video>
+          <div class="p-video__caption">Cinematic. Brand la ocazie.</div>
+        </div>
       </div>
+  </section>
+  <section class="p-sec" id="sec-vid-animat" hidden>
+    <div class="p-sec-head">
+      <div class="p-sec-head__crumb">Video · Animație</div>
+      <h2 class="p-sec-head__title">Animație</h2>
+      <p class="p-sec-head__lead"><em>Liniile dansează singure.</em> Cadru după cadru, fără pauze, până înțelegi unde dai click.</p>
     </div>
-  </article>
-
-  <article class="p-sub" id="ec-landing">
-    <div class="p-axis">
-      <div class="p-axis-row axis-l1"><span class="p-axis-sym">I</span><span class="p-axis-name">Design</span></div>
-      <div class="p-axis-row axis-l2"><span class="p-axis-sym">3</span><span class="p-axis-name">E-commerce</span></div>
-      <div class="p-axis-row axis-l3 p-axis-active"><span class="p-axis-sym">B</span><span class="p-axis-name">Landing Page</span></div>
-    </div>
-    <p class="p-sub-desc">Hero section pentru landing page complet. Prima impresie, tot mesajul într-un singur cadru.</p>
-    <div class="p-grid p-grid-1">
-      <img loading="lazy" src="/portfolio2/design/ecommerce/landing-page/urbancatsssss.webp" alt="UrbanCat landing page hero">
-    </div>
-  </article>
-
-  <article class="p-sub" id="ec-categorii">
-    <div class="p-axis">
-      <div class="p-axis-row axis-l1"><span class="p-axis-sym">I</span><span class="p-axis-name">Design</span></div>
-      <div class="p-axis-row axis-l2"><span class="p-axis-sym">3</span><span class="p-axis-name">E-commerce</span></div>
-      <div class="p-axis-row axis-l3 p-axis-active"><span class="p-axis-sym">C</span><span class="p-axis-name">Hero Categorii</span></div>
-    </div>
-    <p class="p-sub-desc">Banere categorie pentru meniu principal. Fiecare categorie — propria ei imagine-ancoră.</p>
-    <div class="p-grid"><img loading="lazy" src="/portfolio2/design/ecommerce/hero-categorii/123d.webp" alt="Hero categorie UrbanCat"><img loading="lazy" src="/portfolio2/design/ecommerce/hero-categorii/cvvc.webp" alt="Hero categorie UrbanCat"><img loading="lazy" src="/portfolio2/design/ecommerce/hero-categorii/famrinaurbancat.webp" alt="Hero categorie UrbanCat"></div>
-  </article>
-
-  <article class="p-sub" id="ec-emag">
-    <div class="p-axis">
-      <div class="p-axis-row axis-l1"><span class="p-axis-sym">I</span><span class="p-axis-name">Design</span></div>
-      <div class="p-axis-row axis-l2"><span class="p-axis-sym">3</span><span class="p-axis-name">E-commerce</span></div>
-      <div class="p-axis-row axis-l3 p-axis-active"><span class="p-axis-sym">D</span><span class="p-axis-name">Emag/Apple Style</span></div>
-    </div>
-    <p class="p-sub-desc">Poze comerciale în stilul eMAG/Apple — produs izolat, lumină curată, detalii chirurgicale.</p>
-    <div class="p-grid"><img loading="lazy" src="/portfolio2/design/ecommerce/emag-style/fantana-urbancat-01.webp" alt="Fantana Emag style"><img loading="lazy" src="/portfolio2/design/ecommerce/emag-style/fantana-urbancat-02.webp" alt="Fantana Emag style"><img loading="lazy" src="/portfolio2/design/ecommerce/emag-style/fantana-urbancat-03.webp" alt="Fantana Emag style"></div>
-  </article>
-
-  <article class="p-sub" id="ec-cozy">
-    <div class="p-axis">
-      <div class="p-axis-row axis-l1"><span class="p-axis-sym">I</span><span class="p-axis-name">Design</span></div>
-      <div class="p-axis-row axis-l2"><span class="p-axis-sym">3</span><span class="p-axis-name">E-commerce</span></div>
-      <div class="p-axis-row axis-l3 p-axis-active"><span class="p-axis-sym">E</span><span class="p-axis-name">Cozy Apartment</span></div>
-    </div>
-    <p class="p-sub-desc">Produsul în contextul real — apartament, pisică, lumină caldă. Vizitatorul se vede pe el acolo.</p>
-    <div class="p-grid"><img loading="lazy" src="/portfolio2/design/ecommerce/cozy-apartment/11.webp" alt="Produs UrbanCat cozy apartment"><img loading="lazy" src="/portfolio2/design/ecommerce/cozy-apartment/minge-interactiva-03.webp" alt="Produs UrbanCat cozy apartment"><img loading="lazy" src="/portfolio2/design/ecommerce/cozy-apartment/fantana-automata-pentru-pisici-55l-inox-uv-c-8059760.webp" alt="Produs UrbanCat cozy apartment"></div>
-  </article>
-
-  <article class="p-sub" id="ec-studio">
-    <div class="p-axis">
-      <div class="p-axis-row axis-l1"><span class="p-axis-sym">I</span><span class="p-axis-name">Design</span></div>
-      <div class="p-axis-row axis-l2"><span class="p-axis-sym">3</span><span class="p-axis-name">E-commerce</span></div>
-      <div class="p-axis-row axis-l3 p-axis-active"><span class="p-axis-sym">F</span><span class="p-axis-name">Studio Photography</span></div>
-    </div>
-    <p class="p-sub-desc">Fotografie tip studio — fundal infinit, iluminat profesional, pentru specs și comparații.</p>
-    <div class="p-grid p-grid-1">
-      <img loading="lazy" src="/portfolio2/design/ecommerce/studio/fantana-automata-pentru-pisici-2l-2132569.webp" alt="Fantana studio photography">
-    </div>
-  </article>
-
-  <article class="p-sub" id="ec-medical-light">
-    <div class="p-axis">
-      <div class="p-axis-row axis-l1"><span class="p-axis-sym">I</span><span class="p-axis-name">Design</span></div>
-      <div class="p-axis-row axis-l2"><span class="p-axis-sym">3</span><span class="p-axis-name">E-commerce</span></div>
-      <div class="p-axis-row axis-l3 p-axis-active"><span class="p-axis-sym">G</span><span class="p-axis-name">Lumină Spital</span></div>
-    </div>
-    <p class="p-sub-desc">Produs în lumină de spital — alb curat, clinic, pentru showcase premium de igienă.</p>
-    <div class="p-grid p-grid-1">
-      <img loading="lazy" src="/portfolio2/design/ecommerce/showcase-medical/fantana-urbancat-04.webp" alt="Fantana Urbancat medical light showcase">
-    </div>
-  </article>
-
-  <article class="p-sub" id="ec-ugc">
-    <div class="p-axis">
-      <div class="p-axis-row axis-l1"><span class="p-axis-sym">I</span><span class="p-axis-name">Design</span></div>
-      <div class="p-axis-row axis-l2"><span class="p-axis-sym">3</span><span class="p-axis-name">E-commerce</span></div>
-      <div class="p-axis-row axis-l3 p-axis-active"><span class="p-axis-sym">H</span><span class="p-axis-name">UGC</span></div>
-    </div>
-    <p class="p-sub-desc">Persoană reală folosind produsul — înlocuiește 100 de review-uri scrise. <em>Încrederea se vede</em>.</p>
-    <div class="p-grid p-grid-1">
-      <img loading="lazy" src="/portfolio2/design/ecommerce/ugc/fantana-automata-pentru-pisici-55l-inox-uv-c-4913024.webp" alt="UGC persoana reala fantana Urbancat">
-    </div>
-  </article>
-
-  <article class="p-sub" id="ec-editorial">
-    <div class="p-axis">
-      <div class="p-axis-row axis-l1"><span class="p-axis-sym">I</span><span class="p-axis-name">Design</span></div>
-      <div class="p-axis-row axis-l2"><span class="p-axis-sym">3</span><span class="p-axis-name">E-commerce</span></div>
-      <div class="p-axis-row axis-l3 p-axis-active"><span class="p-axis-sym">I</span><span class="p-axis-name">Editorial Website</span></div>
-    </div>
-    <p class="p-sub-desc">Format editorial pentru blog/magazine — lifestyle, nu catalog.</p>
-    <div class="p-grid p-grid-1">
-      <img loading="lazy" src="/portfolio2/design/ecommerce/editorial/123123123.webp" alt="Editorial website UrbanCat">
-    </div>
-  </article>
-</section>
-
-<!-- ========== DESIGN / SERVICII ========== -->
-<section class="p-sec" id="sec-servicii">
-  <div class="p-sec-head">
-    <div class="p-sec-crumb">Design · Servicii</div>
-    <h2 class="p-sec-title">Servicii</h2>
-    <p class="p-sec-sub"><em>Logo, culoare, glas.</em> Tot ce are nevoie un brand ca să fie recunoscut din mers.</p>
-  </div>
-
-  <article class="p-sub" id="srv-logo">
-    <div class="p-axis">
-      <div class="p-axis-row axis-l1"><span class="p-axis-sym">I</span><span class="p-axis-name">Design</span></div>
-      <div class="p-axis-row axis-l2"><span class="p-axis-sym">4</span><span class="p-axis-name">Servicii</span></div>
-      <div class="p-axis-row axis-l3 p-axis-active"><span class="p-axis-sym">A</span><span class="p-axis-name">Logo &amp; Brand</span></div>
-    </div>
-    <p class="p-sub-desc">Logo-uri construite pe concept, nu pe trend. <em>Două abordări</em> — una medicală sobră, una retail energică.</p>
-    <div class="p-variant">
-      <div class="p-variant-head"><span class="p-variant-tag">Variantă <span class="p-variant-greek">𝛼</span></span><span class="p-variant-note">Medical și premium. Pacienții caută un om în care să aibă încredere.</span></div>
-      <div class="p-grid p-grid-2">
-        <img loading="lazy" src="/portfolio2/design/servicii/logo/ghibu/ghibu-logo.webp" alt="Logo Dr. Ghibu">
+      <div class="p-sub">
+        <div class="p-axis">
+          <div class="p-axis-row axis-l1"><span class="p-axis-sym">II</span><span class="p-axis-name">Video</span></div>
+          <div class="p-axis-row axis-l2"><span class="p-axis-sym">2</span><span class="p-axis-name">Animație</span></div>
+          <div class="p-axis-row axis-l3 is-active"><span class="p-axis-sym">A</span><span class="p-axis-name">Spot lansare produs</span></div>
+        </div>
+        <div class="p-video">
+          <video controls preload="metadata" playsinline muted>
+            <source src="/portfolio2/video/animat/catnip-acum-pe-urbancat.ro.mp4" type="video/mp4">
+          </video>
+          <div class="p-video__caption">Animat. Pentru lansare.</div>
+        </div>
       </div>
+  </section>
+  <section class="p-sec" id="sec-vid-tiktok" hidden>
+    <div class="p-sec-head">
+      <div class="p-sec-head__crumb">Video · Promoțional</div>
+      <h2 class="p-sec-head__title">Promoțional</h2>
+      <p class="p-sec-head__lead"><em>Apa curge. Pisica bea. Tu te uiți.</em> Primele două secunde decid restul.</p>
     </div>
-    <div class="p-variant">
-      <div class="p-variant-head"><span class="p-variant-tag">Variantă <span class="p-variant-greek">𝛽</span></span><span class="p-variant-note">Energic, dar cald. Pisicile conduc, noi le urmăm cadrele.</span></div>
-      <div class="p-grid p-grid-2">
-        <img loading="lazy" src="/portfolio2/design/servicii/logo/urbancat/urbancvatlogo.webp" alt="Logo UrbanCat">
+      <div class="p-sub">
+        <div class="p-axis">
+          <div class="p-axis-row axis-l1"><span class="p-axis-sym">II</span><span class="p-axis-name">Video</span></div>
+          <div class="p-axis-row axis-l2"><span class="p-axis-sym">3</span><span class="p-axis-name">Promoțional</span></div>
+          <div class="p-axis-row axis-l3 is-active"><span class="p-axis-sym">A</span><span class="p-axis-name">TikTok style</span></div>
+        </div>
+        <div class="p-video">
+          <video controls preload="metadata" playsinline muted>
+            <source src="/portfolio2/video/tiktok/ap-proasp-t-filtrat-continuu-exact-cum-ar-trebui-s-fie.-f-nt-nile-urbancat-sunt-construite.mp4" type="video/mp4">
+          </video>
+          <div class="p-video__caption">TikTok. Ritm direct.</div>
+        </div>
       </div>
+  </section>
+  <section class="p-sec" id="sec-vid-asmr" hidden>
+    <div class="p-sec-head">
+      <div class="p-sec-head__crumb">Video · ASMR</div>
+      <h2 class="p-sec-head__title">ASMR</h2>
+      <p class="p-sec-head__lead"><em>Doar sunete reale.</em> Pisica, apa, blana pe podea. Nimic peste, nimic sub.</p>
     </div>
-  </article>
-</section>
-
-<!-- ========== VIDEO — 5 sections, one per video ========== -->
-<section class="p-sec p-sec-video" id="sec-vid-cinematic" style="display:none">
-  <div class="p-sec-head">
-    <div class="p-sec-crumb">Video · Cinematic</div>
-    <h2 class="p-sec-title">Cinematic</h2>
-    <p class="p-sec-sub"><em>Orașul e al lor.</em> Filmăm felul în care îl ocupă. Brandul apare fără să anunțe.</p>
-  </div>
-  <div class="p-sub">
-    <div class="p-axis">
-      <div class="p-axis-row axis-l1"><span class="p-axis-sym">II</span><span class="p-axis-name">Video</span></div>
-      <div class="p-axis-row axis-l2"><span class="p-axis-sym">1</span><span class="p-axis-name">Cinematic</span></div>
-      <div class="p-axis-row axis-l3 p-axis-active"><span class="p-axis-sym">A</span><span class="p-axis-name">Prezentare</span></div>
+      <div class="p-sub">
+        <div class="p-axis">
+          <div class="p-axis-row axis-l1"><span class="p-axis-sym">II</span><span class="p-axis-name">Video</span></div>
+          <div class="p-axis-row axis-l2"><span class="p-axis-sym">4</span><span class="p-axis-name">ASMR</span></div>
+          <div class="p-axis-row axis-l3 is-active"><span class="p-axis-sym">A</span><span class="p-axis-name">Produs fântână apă</span></div>
+        </div>
+        <div class="p-video">
+          <video controls preload="metadata" playsinline muted>
+            <source src="/portfolio2/video/asmr/ascult-.-asmr-pisici-1.mp4" type="video/mp4">
+          </video>
+          <div class="p-video__caption">ASMR. Doar sunete de apă.</div>
+        </div>
+      </div>
+  </section>
+  <section class="p-sec" id="sec-vid-medical" hidden>
+    <div class="p-sec-head">
+      <div class="p-sec-head__crumb">Video · Before/After</div>
+      <h2 class="p-sec-head__title">Before/After</h2>
+      <p class="p-sec-head__lead"><em>Ce era. Ce a devenit.</em> Fotografiat onest, fără efecte, fără promisiuni. Doar pacientul și timpul.</p>
     </div>
-    <div class="p-video">
-      <video controls preload="metadata" playsinline muted>
-        <source src="/portfolio2/video/cinematic/ora-ul-e-al-lor.urbancat.ro-2.mp4" type="video/mp4">
-      </video>
-      <div class="p-video-caption">Cinematic. Brand la ocazie.</div>
-    </div>
-  </div>
-</section>
-
-<section class="p-sec p-sec-video" id="sec-vid-animat" style="display:none">
-  <div class="p-sec-head">
-    <div class="p-sec-crumb">Video · Animație</div>
-    <h2 class="p-sec-title">Animație</h2>
-    <p class="p-sec-sub"><em>Liniile dansează singure.</em> Cadru după cadru, fără pauze, până înțelegi unde dai click.</p>
-  </div>
-  <div class="p-sub">
-    <div class="p-axis">
-      <div class="p-axis-row axis-l1"><span class="p-axis-sym">II</span><span class="p-axis-name">Video</span></div>
-      <div class="p-axis-row axis-l2"><span class="p-axis-sym">2</span><span class="p-axis-name">Animație</span></div>
-      <div class="p-axis-row axis-l3 p-axis-active"><span class="p-axis-sym">A</span><span class="p-axis-name">Spot lansare produs</span></div>
-    </div>
-    <div class="p-video">
-      <video controls preload="metadata" playsinline muted>
-        <source src="/portfolio2/video/animat/catnip-acum-pe-urbancat.ro.mp4" type="video/mp4">
-      </video>
-      <div class="p-video-caption">Animat. Pentru lansare.</div>
-    </div>
-  </div>
-</section>
-
-<section class="p-sec p-sec-video" id="sec-vid-tiktok" style="display:none">
-  <div class="p-sec-head">
-    <div class="p-sec-crumb">Video · Promoțional</div>
-    <h2 class="p-sec-title">Promoțional</h2>
-    <p class="p-sec-sub"><em>Apa curge. Pisica bea. Tu te uiți.</em> Primele două secunde decid restul.</p>
-  </div>
-  <div class="p-sub">
-    <div class="p-axis">
-      <div class="p-axis-row axis-l1"><span class="p-axis-sym">II</span><span class="p-axis-name">Video</span></div>
-      <div class="p-axis-row axis-l2"><span class="p-axis-sym">3</span><span class="p-axis-name">Promoțional</span></div>
-      <div class="p-axis-row axis-l3 p-axis-active"><span class="p-axis-sym">A</span><span class="p-axis-name">TikTok style</span></div>
-    </div>
-    <div class="p-video">
-      <video controls preload="metadata" playsinline muted>
-        <source src="/portfolio2/video/tiktok/ap-proasp-t-filtrat-continuu-exact-cum-ar-trebui-s-fie.-f-nt-nile-urbancat-sunt-construite.mp4" type="video/mp4">
-      </video>
-      <div class="p-video-caption">TikTok. Ritm direct.</div>
-    </div>
-  </div>
-</section>
-
-<section class="p-sec p-sec-video" id="sec-vid-asmr" style="display:none">
-  <div class="p-sec-head">
-    <div class="p-sec-crumb">Video · ASMR</div>
-    <h2 class="p-sec-title">ASMR</h2>
-    <p class="p-sec-sub"><em>Doar sunete reale.</em> Pisica, apa, blana pe podea. Nimic peste, nimic sub.</p>
-  </div>
-  <div class="p-sub">
-    <div class="p-axis">
-      <div class="p-axis-row axis-l1"><span class="p-axis-sym">II</span><span class="p-axis-name">Video</span></div>
-      <div class="p-axis-row axis-l2"><span class="p-axis-sym">4</span><span class="p-axis-name">ASMR</span></div>
-      <div class="p-axis-row axis-l3 p-axis-active"><span class="p-axis-sym">A</span><span class="p-axis-name">Produs fântână apă</span></div>
-    </div>
-    <div class="p-video">
-      <video controls preload="metadata" playsinline muted>
-        <source src="/portfolio2/video/asmr/ascult-.-asmr-pisici-1.mp4" type="video/mp4">
-      </video>
-      <div class="p-video-caption">ASMR. Doar sunete de apă.</div>
-    </div>
-  </div>
-</section>
-
-<section class="p-sec p-sec-video" id="sec-vid-medical" style="display:none">
-  <div class="p-sec-head">
-    <div class="p-sec-crumb">Video · Before/After</div>
-    <h2 class="p-sec-title">Before/After</h2>
-    <p class="p-sec-sub"><em>Ce era. Ce a devenit.</em> Fotografiat onest, fără efecte, fără promisiuni. Doar pacientul și timpul.</p>
-  </div>
-  <div class="p-sub">
-    <div class="p-axis">
-      <div class="p-axis-row axis-l1"><span class="p-axis-sym">II</span><span class="p-axis-name">Video</span></div>
-      <div class="p-axis-row axis-l2"><span class="p-axis-sym">5</span><span class="p-axis-name">Before/After</span></div>
-      <div class="p-axis-row axis-l3 p-axis-active"><span class="p-axis-sym">A</span><span class="p-axis-name">Medical</span></div>
-    </div>
-    <div class="p-video">
-      <video controls preload="metadata" playsinline muted>
-        <source src="/portfolio2/video/medical-ba/dr-bogdan-iorga-caz-vali.mp4" type="video/mp4">
-      </video>
-      <div class="p-video-caption">Ce era. Ce a devenit. Fără aranjamente.</div>
-    </div>
-  </div>
-</section>
-
-<!-- FINAL CTA -->
-<section class="p-cta">
-  <h2 class="p-cta-h">Ai văzut. <em>Vorbim?</em></h2>
-  <p class="p-cta-sub">Programăm 30 de minute pe Zoom. Nu vindem, întrebăm ce-ți trebuie.</p>
-  <div class="p-cta-btns">
-    <a href="https://calendly.com/ivorymarketing2/30min" target="_blank" class="p-cta-btn p-cta-primary">Rezervă apel — Calendly</a>
-    <a href="https://wa.me/40775579706" target="_blank" class="p-cta-btn p-cta-secondary">WhatsApp direct</a>
-  </div>
-</section>
+      <div class="p-sub">
+        <div class="p-axis">
+          <div class="p-axis-row axis-l1"><span class="p-axis-sym">II</span><span class="p-axis-name">Video</span></div>
+          <div class="p-axis-row axis-l2"><span class="p-axis-sym">5</span><span class="p-axis-name">Before/After</span></div>
+          <div class="p-axis-row axis-l3 is-active"><span class="p-axis-sym">A</span><span class="p-axis-name">Medical</span></div>
+        </div>
+        <div class="p-video">
+          <video controls preload="metadata" playsinline muted>
+            <source src="/portfolio2/video/medical-ba/dr-bogdan-iorga-caz-vali.mp4" type="video/mp4">
+          </video>
+          <div class="p-video__caption">Ce era. Ce a devenit. Fără aranjamente.</div>
+        </div>
+      </div>
+  </section>
 
 </main>
 
 
+<!-- ─── FOOTER CTA ─────────────────────────────────────────────────────────── -->
+<section class="cta">
+  <h2 class="cta__title">Ai văzut. <em>Vorbim?</em></h2>
+  <p class="cta__lead">Treizeci de minute pe Zoom. Nu vindem, întrebăm ce-ți trebuie.</p>
+  <div class="cta__buttons">
+    <a href="https://calendly.com/ivorymarketing2/30min" target="_blank" rel="noopener" class="cta__btn cta__btn--primary">Rezervă pe Calendly</a>
+    <a href="https://wa.me/40775579706" target="_blank" rel="noopener" class="cta__btn cta__btn--secondary">WhatsApp direct</a>
+  </div>
+</section>
 
 
-<!-- 2-LEVEL DOCK: Design/Video primary + subcategories -->
-<!-- BOTTOM DOCK NAV — same design all devices -->
-<!-- LIGHTBOX -->
-<div class="lb-ov" id="lbOv">
-  <button class="lb-x" id="lbX">×</button>
-  <button class="lb-arr lb-prev" id="lbPrev">‹</button>
-  <button class="lb-arr lb-next" id="lbNext">›</button>
+<!-- ─── LIGHTBOX ───────────────────────────────────────────────────────────── -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
+  <button class="lightbox__close" id="lbClose" aria-label="Închide">×</button>
+  <button class="lightbox__nav lightbox__nav--prev" id="lbPrev" aria-label="Imagine anterioară">‹</button>
+  <button class="lightbox__nav lightbox__nav--next" id="lbNext" aria-label="Imagine următoare">›</button>
   <img id="lbImg" src="" alt="">
-  <div class="lb-count" id="lbCount"></div>
+  <div class="lightbox__count" id="lbCount"></div>
 </div>
 
+
+<!-- ─── SCRIPTS ────────────────────────────────────────────────────────────── -->
 <script>
-(function(){
-  // Mobile menu
-  var ham=document.getElementById('ham'),mm=document.getElementById('mm');
-  if(ham&&mm){ham.addEventListener('click',function(){mm.classList.toggle('op');document.body.style.overflow=mm.classList.contains('op')?'hidden':''})}
-  if(mm)mm.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){mm.classList.remove('op');document.body.style.overflow=''})});
+/* =============================================================================
+   DOCK NAVIGATION — 3-level taxonomy
+   L1 mode switch: design/video sections toggle visibility
+   L2: switches L3 row + scrolls to first L3 target
+   L3: scrolls to specific subvariant
+   ============================================================================= */
+(function () {
+  var dock = document.getElementById('dock');
+  if (!dock) return;
 
-  // Nav scroll
-  window.addEventListener('scroll',function(){var n=document.getElementById('nav');if(n)n.style.borderBottomColor=scrollY>60?'var(--br)':'transparent'},{passive:true});
+  var chipsL1 = dock.querySelectorAll('.dock__chip--l1');
+  var rowsL2  = dock.querySelectorAll('.dock__row--l2');
+  var rowsL3  = dock.querySelectorAll('.dock__row--l3');
 
-  // Lightbox
-  var imgs=document.querySelectorAll('.grid img, .p-grid img');
-  var lb=document.getElementById('lbOv');
-  var lbImg=document.getElementById('lbImg');
-  var lbCount=document.getElementById('lbCount');
-  var all=Array.from(imgs),idx=0;
-  function show(i){if(i<0)i=all.length-1;if(i>=all.length)i=0;idx=i;lbImg.src=all[i].src;lbCount.textContent=(i+1)+' / '+all.length;lb.classList.add('on');document.body.style.overflow='hidden'}
-  function hide(){lb.classList.remove('on');document.body.style.overflow=''}
-  all.forEach(function(img,i){img.addEventListener('click',function(){show(i)})});
-  document.getElementById('lbPrev').addEventListener('click',function(e){e.stopPropagation();show(idx-1)});
-  document.getElementById('lbNext').addEventListener('click',function(e){e.stopPropagation();show(idx+1)});
-  document.getElementById('lbX').addEventListener('click',hide);
-  lb.addEventListener('click',function(e){if(e.target===lb)hide()});
-  document.addEventListener('keydown',function(e){if(!lb.classList.contains('on'))return;if(e.key==='Escape')hide();if(e.key==='ArrowLeft')show(idx-1);if(e.key==='ArrowRight')show(idx+1)});
-  var tx=0;
-  lb.addEventListener('touchstart',function(e){tx=e.changedTouches[0].clientX},{passive:true});
-  lb.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>50){dx>0?show(idx-1):show(idx+1)}},{passive:true});
+  // Scroll offset accounting for fixed dock
+  function scrollTo(id) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    var dockRect = dock.getBoundingClientRect();
+    var offset = dockRect.height + 16;
+    var top = el.getBoundingClientRect().top + window.pageYOffset - offset;
+    window.scrollTo({ top: top, behavior: 'smooth' });
+  }
 
-  // Reveal on scroll
-  var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vi');obs.unobserve(e.target)}})},{threshold:0.06});
-  document.querySelectorAll('.rv').forEach(function(el){obs.observe(el)});
-})();
-</script>
+  // Activate L1 mode (design/video) — show correct L2 row, hide others
+  function setMode(mode) {
+    chipsL1.forEach(function (c) {
+      c.classList.toggle('is-active', c.dataset.l1 === mode);
+    });
+    rowsL2.forEach(function (r) {
+      r.hidden = r.dataset.mode !== mode;
+    });
 
+    // Show sections for this mode
+    var isDesign = mode === 'design';
+    document.querySelectorAll('.p-sec').forEach(function (sec) {
+      var isVideo = sec.id.indexOf('sec-vid-') === 0;
+      sec.hidden = isDesign ? isVideo : !isVideo;
+    });
 
-<!-- THREE.JS 3D SCENE — from v9 -->
-<script src="logo-svg.js" defer></script>
-<script src="earth-tex.js" defer></script>
-<script defer src="premium-fx.js"></script>
-<script>window.__mx=0;window.__my=0;document.addEventListener("mousemove",function(e){window.__mx=(e.clientX/window.innerWidth)*2-1;window.__my=(e.clientY/window.innerHeight)*2-1},{passive:true});</script>
-<script type="importmap">
-{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}
-</script>
-<script>/*v9-safe*/try{window.__IS_MOBILE=window.matchMedia("(max-width:768px)").matches||("ontouchstart" in window);window.__LOW_PERF=window.__IS_MOBILE||navigator.hardwareConcurrency<=4;}catch(__v9e){console.warn('v9 guard:',__v9e.message)}</script>
-<script type="module">
-let heroReady=false;
-const preMsgEl=document.getElementById('preMsg');
-const preBarEl=document.getElementById('preBar');
-const preEl=document.getElementById('pre');
-const msgs=['Încărcăm experiența','Pregătim animații','Adăugăm efecte','Construim particulele','Finalizăm'];
-let msgIdx=0,progress=0;
-function stepPre(p,idx){progress=Math.max(progress,p);preBarEl.style.transform='scaleX('+progress+')';if(idx!==undefined&&idx!==msgIdx){msgIdx=idx;preMsgEl.style.opacity='0';setTimeout(()=>{preMsgEl.textContent=msgs[idx];preMsgEl.style.opacity='.85'},200)}}
-stepPre(.15,0);
-setTimeout(()=>stepPre(.3,1),400);
+    // Pick first visible L2 in new mode as active
+    var visibleL2Row = document.querySelector('.dock__row--l2[data-mode="' + mode + '"]');
+    if (visibleL2Row) {
+      var firstL2 = visibleL2Row.querySelector('.dock__chip--l2');
+      if (firstL2) selectL2(firstL2.dataset.l2);
+    }
+  }
 
-try{
-const THREE=await import('three');
-stepPre(.55,2);
-
-const container=document.getElementById('hero3d');
-const scene=new THREE.Scene();
-const camera=new THREE.PerspectiveCamera(window.__IS_MOBILE?90:60,container.clientWidth/container.clientHeight,.1,100);
-camera.position.z=8;
-const renderer=new THREE.WebGLRenderer({antialias:true,alpha:true,powerPreference:'high-performance'});
-renderer.setPixelRatio(Math.min(window.devicePixelRatio,__IS_MOBILE?1.25:2));
-renderer.setSize(container.clientWidth,container.clientHeight);
-renderer.setClearColor(0x000000,0);
-renderer.toneMapping=THREE.ACESFilmicToneMapping;
-renderer.toneMappingExposure=1.15;
-container.appendChild(renderer.domElement);
-
-// Post-processing bloom
-const {EffectComposer}=await import('three/addons/postprocessing/EffectComposer.js');
-const {RenderPass}=await import('three/addons/postprocessing/RenderPass.js');
-const {UnrealBloomPass}=await import('three/addons/postprocessing/UnrealBloomPass.js');
-const composer=new EffectComposer(renderer);
-composer.setPixelRatio(Math.min(window.devicePixelRatio,__IS_MOBILE?1.25:2));
-composer.setSize(container.clientWidth,container.clientHeight);
-
-stepPre(.7,3);
-
-// ========== DISTANT GALAXY SPIRAL ==========
-const galaxyGeo=new THREE.PlaneGeometry(80,80);
-const galaxyMat=new THREE.ShaderMaterial({
-  uniforms:{time:{value:0}},
-  vertexShader:'varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}',
-  fragmentShader:`varying vec2 vUv;uniform float time;
-    float hash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
-    float noise(vec2 p){vec2 i=floor(p);vec2 f=fract(p);vec2 u=f*f*(3.-2.*f);
-      return mix(mix(hash(i),hash(i+vec2(1,0)),u.x),mix(hash(i+vec2(0,1)),hash(i+vec2(1,1)),u.x),u.y);}
-    void main(){
-      vec2 uv=vUv-vec2(.5);
-      float r=length(uv);
-      float a=atan(uv.y,uv.x);
-      // Spiral arms
-      float spiral=sin(a*2.+r*12.-time*.08)*.5+.5;
-      spiral*=smoothstep(.5,.05,r);
-      float core=smoothstep(.15,0.,r);
-      float dust=noise(uv*8.+time*.02)*spiral;
-      vec3 armCol=mix(vec3(.15,.25,.6),vec3(.8,.4,.9),spiral);
-      vec3 coreCol=vec3(1.,.85,.6);
-      vec3 col=mix(armCol*dust,coreCol,core);
-      float alpha=(spiral*.35+core*.9)*smoothstep(.5,.1,r);
-      gl_FragColor=vec4(col,alpha*.55);
-    }`,
-  transparent:true,depthWrite:false,blending:THREE.AdditiveBlending
-});
-const galaxy=new THREE.Mesh(galaxyGeo,galaxyMat);
-galaxy.position.set(28,14,-40);
-galaxy.rotation.z=.3;
-scene.add(galaxy);
-
-// ========== RED NEBULA (Eagle/Carina style) ==========
-const redNebGeo=new THREE.PlaneGeometry(60,60);
-const redNebMat=new THREE.ShaderMaterial({
-  uniforms:{time:{value:0}},
-  vertexShader:'varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}',
-  fragmentShader:`varying vec2 vUv;uniform float time;
-    float hash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
-    float noise(vec2 p){vec2 i=floor(p);vec2 f=fract(p);vec2 u=f*f*(3.-2.*f);
-      return mix(mix(hash(i),hash(i+vec2(1,0)),u.x),mix(hash(i+vec2(0,1)),hash(i+vec2(1,1)),u.x),u.y);}
-    float fbm(vec2 p){float v=0.;float a=.5;for(int i=0;i<6;i++){v+=a*noise(p);p=p*2.+vec2(1.);a*=.5;}return v;}
-    void main(){
-      vec2 uv=vUv*2.;
-      float t=time*.015;
-      float n=fbm(uv+vec2(t,-t*.3));
-      float n2=fbm(uv*2.+vec2(-t,t*.5));
-      vec3 deepRed=vec3(.45,.05,.08);
-      vec3 hotRed=vec3(.95,.25,.15);
-      vec3 pink=vec3(.85,.35,.55);
-      vec3 col=mix(deepRed,hotRed,smoothstep(.35,.75,n));
-      col=mix(col,pink,smoothstep(.5,.85,n2)*.6);
-      vec2 c=vUv-vec2(.5);
-      float vignette=smoothstep(.55,.05,length(c));
-      float alpha=smoothstep(.3,.75,n)*vignette*.55;
-      gl_FragColor=vec4(col*1.2,alpha);
-    }`,
-  transparent:true,depthWrite:false,blending:THREE.AdditiveBlending
-});
-const redNeb=new THREE.Mesh(redNebGeo,redNebMat);
-redNeb.position.set(-22,-12,-35);
-redNeb.rotation.z=-.4;
-scene.add(redNeb);
-
-// ========== ANDROMEDA-STYLE DISTANT GALAXY ==========
-const androGeo=new THREE.PlaneGeometry(50,25);
-const androMat=new THREE.ShaderMaterial({
-  uniforms:{time:{value:0}},
-  vertexShader:'varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}',
-  fragmentShader:`varying vec2 vUv;uniform float time;
-    float hash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
-    float noise(vec2 p){vec2 i=floor(p);vec2 f=fract(p);vec2 u=f*f*(3.-2.*f);
-      return mix(mix(hash(i),hash(i+vec2(1,0)),u.x),mix(hash(i+vec2(0,1)),hash(i+vec2(1,1)),u.x),u.y);}
-    void main(){
-      vec2 uv=vUv-vec2(.5);
-      uv.y*=2.;
-      float r=length(uv);
-      float a=atan(uv.y,uv.x);
-      float arms=sin(a*2.+r*8.-time*.05)*.5+.5;
-      arms*=smoothstep(.5,.05,r);
-      float core=smoothstep(.15,0.,r);
-      float dust=noise(uv*12.)*arms;
-      vec3 armCol=mix(vec3(.4,.5,.85),vec3(.75,.55,.95),arms);
-      vec3 coreCol=vec3(1.,.92,.75);
-      vec3 col=mix(armCol*dust,coreCol,core);
-      float alpha=(arms*.3+core*.85)*smoothstep(.5,.1,r)*.65;
-      gl_FragColor=vec4(col,alpha);
-    }`,
-  transparent:true,depthWrite:false,blending:THREE.AdditiveBlending
-});
-const andromeda=new THREE.Mesh(androGeo,androMat);
-andromeda.position.set(-35,18,-50);
-andromeda.rotation.z=.6;
-scene.add(andromeda);
-
-// ========== MARS (bottom-right, small) ==========
-const marsGeo=new THREE.SphereGeometry(.6,32,32);
-const marsMat=new THREE.MeshStandardMaterial({
-  color:0xc2603a,
-  roughness:.95,
-  metalness:.05,
-  emissive:0x2a0d05,
-  emissiveIntensity:.2
-});
-const mars=new THREE.Mesh(marsGeo,marsMat);
-mars.position.set(window.__IS_MOBILE?-2.5:10,window.__IS_MOBILE?1.5:-6,window.__IS_MOBILE?-5:-14);
-scene.add(mars);
-
-// ========== SHOOTING STARS ==========
-const shootCount=window.__LOW_PERF?2:3;
-const shootStars=[];
-for(let i=0;i<shootCount;i++){
-  const trailLen=40;
-  const positions=new Float32Array(trailLen*3);
-  const opacities=new Float32Array(trailLen);
-  for(let j=0;j<trailLen;j++){opacities[j]=1-j/trailLen}
-  const geo=new THREE.BufferGeometry();
-  geo.setAttribute('position',new THREE.BufferAttribute(positions,3));
-  geo.setAttribute('alpha',new THREE.BufferAttribute(opacities,1));
-  const mat=new THREE.ShaderMaterial({
-    uniforms:{},
-    vertexShader:`attribute float alpha;varying float vA;
-void main(){vA=alpha;vec4 mv=modelViewMatrix*vec4(position,1.);gl_PointSize=(6./-mv.z)*alpha*8.;gl_Position=projectionMatrix*mv;}`,
-    fragmentShader:`varying float vA;
-void main(){vec2 c=gl_PointCoord-vec2(.5);float d=length(c);if(d>.5)discard;gl_FragColor=vec4(1.,.95,.8,vA*(1.-d*2.));}`,
-    transparent:true,depthWrite:false,blending:THREE.AdditiveBlending
-  });
-  const points=new THREE.Points(geo,mat);
-  scene.add(points);
-  shootStars.push({points,trail:Array(trailLen).fill(null),active:false,delay:Math.random()*15,vel:new THREE.Vector3(),life:0});
-}
-
-function updateShooting(dt,t){
-  for(const s of shootStars){
-    if(!s.active){
-      s.delay-=dt;
-      if(s.delay<=0){
-        const startX=-30+Math.random()*10;
-        const startY=15+Math.random()*10;
-        const startZ=-15-Math.random()*10;
-        s.trail=s.trail.map(()=>new THREE.Vector3(startX,startY,startZ));
-        s.vel.set(8+Math.random()*4,-3-Math.random()*2,2+Math.random()*2);
-        s.active=true;s.life=0;
+  function selectL2(l2key) {
+    document.querySelectorAll('.dock__chip--l2').forEach(function (c) {
+      c.classList.toggle('is-active', c.dataset.l2 === l2key);
+    });
+    // Show matching L3 row
+    rowsL3.forEach(function (r) {
+      r.hidden = r.dataset.for !== l2key;
+    });
+    // For video mode, L2 chip targets section directly
+    if (l2key.indexOf('vid-') === 0) {
+      scrollTo('sec-' + l2key);
+      return;
+    }
+    // For design, L3 exists — pick first chip + scroll
+    var l3row = document.querySelector('.dock__row--l3[data-for="' + l2key + '"]');
+    if (l3row) {
+      var firstL3 = l3row.querySelector('.dock__chip--l3');
+      if (firstL3) {
+        l3row.querySelectorAll('.dock__chip--l3').forEach(function (c) { c.classList.remove('is-active'); });
+        firstL3.classList.add('is-active');
+        scrollTo(firstL3.dataset.target);
       }
-    }else{
-      s.life+=dt;
-      // Shift trail
-      for(let i=s.trail.length-1;i>0;i--)s.trail[i].copy(s.trail[i-1]);
-      s.trail[0].addScaledVector(s.vel,dt);
-      const pos=s.points.geometry.attributes.position.array;
-      for(let i=0;i<s.trail.length;i++){
-        pos[i*3]=s.trail[i].x;pos[i*3+1]=s.trail[i].y;pos[i*3+2]=s.trail[i].z;
-      }
-      s.points.geometry.attributes.position.needsUpdate=true;
-      if(s.life>3){s.active=false;s.delay=4+Math.random()*8;}
     }
   }
-}
 
-// ========== PLANET EARTH (NASA texture) ==========
-const earthTex=new THREE.TextureLoader().load(window.__EARTH_TEX);
-earthTex.colorSpace=THREE.SRGBColorSpace;
-const planetGeo=new THREE.SphereGeometry(window.__IS_MOBILE?1.4:1.1,64,64);
-const planetMat=new THREE.MeshBasicMaterial({
-  map:earthTex,
-  color:0xffffff,
-  transparent:false
-});
-// Add point light stuck to planet for glow on desktop
-const planetLight=new THREE.PointLight(0x6ab5ff,1.5,10);
-// Dummy uniforms object for animate loop compatibility
-planetMat.uniforms={time:{value:0}};
-const planet=new THREE.Mesh(planetGeo,planetMat);
-planet.position.set(window.__IS_MOBILE?0:-12,window.__IS_MOBILE?2.8:7,window.__IS_MOBILE?-3:-15);
-scene.add(planet);
-
-// ========== SOCIAL MEDIA SATELLITES ==========
-function makeLogoTexture(bg,draw){
-  const cvs=document.createElement('canvas');
-  cvs.width=128;cvs.height=128;
-  const ctx=cvs.getContext('2d');
-  // Rounded square background
-  ctx.fillStyle=bg;
-  const r=28;
-  ctx.beginPath();
-  ctx.moveTo(r,0);ctx.lineTo(128-r,0);ctx.quadraticCurveTo(128,0,128,r);
-  ctx.lineTo(128,128-r);ctx.quadraticCurveTo(128,128,128-r,128);
-  ctx.lineTo(r,128);ctx.quadraticCurveTo(0,128,0,128-r);
-  ctx.lineTo(0,r);ctx.quadraticCurveTo(0,0,r,0);
-  ctx.closePath();ctx.fill();
-  ctx.fillStyle='#fff';ctx.strokeStyle='#fff';
-  draw(ctx);
-  const tex=new THREE.CanvasTexture(cvs);
-  tex.colorSpace=THREE.SRGBColorSpace;
-  return tex;
-}
-
-const logos=[
-  // Facebook - blue with f
-  {tex:makeLogoTexture('#1877F2',c=>{c.font='bold 92px -apple-system,Arial';c.textAlign='center';c.textBaseline='middle';c.fillText('f',64,68);})},
-  // Instagram - gradient-ish with camera square
-  {tex:(()=>{const cvs=document.createElement('canvas');cvs.width=128;cvs.height=128;const ctx=cvs.getContext('2d');const grad=ctx.createLinearGradient(0,0,128,128);grad.addColorStop(0,'#F58529');grad.addColorStop(.5,'#DD2A7B');grad.addColorStop(1,'#8134AF');ctx.fillStyle=grad;const r=28;ctx.beginPath();ctx.moveTo(r,0);ctx.lineTo(128-r,0);ctx.quadraticCurveTo(128,0,128,r);ctx.lineTo(128,128-r);ctx.quadraticCurveTo(128,128,128-r,128);ctx.lineTo(r,128);ctx.quadraticCurveTo(0,128,0,128-r);ctx.lineTo(0,r);ctx.quadraticCurveTo(0,0,r,0);ctx.closePath();ctx.fill();ctx.strokeStyle='#fff';ctx.lineWidth=7;ctx.beginPath();ctx.roundRect(28,28,72,72,16);ctx.stroke();ctx.beginPath();ctx.arc(64,64,18,0,Math.PI*2);ctx.stroke();ctx.fillStyle='#fff';ctx.beginPath();ctx.arc(86,42,5,0,Math.PI*2);ctx.fill();const t=new THREE.CanvasTexture(cvs);t.colorSpace=THREE.SRGBColorSpace;return t})()},
-  // TikTok - black with musical note
-  {tex:makeLogoTexture('#000000',c=>{c.fillStyle='#25F4EE';c.font='bold 78px -apple-system,Arial';c.textAlign='center';c.textBaseline='middle';c.fillText('♪',58,66);c.fillStyle='#FE2C55';c.fillText('♪',70,72);c.fillStyle='#fff';c.fillText('♪',64,68);})},
-  // YouTube - red with play triangle
-  {tex:makeLogoTexture('#FF0000',c=>{c.beginPath();c.moveTo(48,38);c.lineTo(48,90);c.lineTo(92,64);c.closePath();c.fill();})},
-  // Pinterest - red P
-  {tex:makeLogoTexture('#E60023',c=>{c.font='bold 92px -apple-system,Arial';c.textAlign='center';c.textBaseline='middle';c.fillText('P',64,68);})},
-  // LinkedIn - blue with "in"
-  {tex:makeLogoTexture('#0A66C2',c=>{c.font='bold 64px -apple-system,Arial';c.textAlign='center';c.textBaseline='middle';c.fillText('in',64,70);})},
-  // Threads - black with @
-  {tex:makeLogoTexture('#000000',c=>{c.font='bold 86px -apple-system,Arial';c.textAlign='center';c.textBaseline='middle';c.fillText('@',64,68);})},
-  // X (Twitter) - black with X
-  {tex:makeLogoTexture('#000000',c=>{c.font='bold 84px -apple-system,Arial';c.textAlign='center';c.textBaseline='middle';c.fillText('X',64,68);})},
-  // Reddit - orange with alien
-  {tex:makeLogoTexture('#FF4500',c=>{c.font='bold 84px -apple-system,Arial';c.textAlign='center';c.textBaseline='middle';c.fillText('r',64,70);})}
-];
-
-const satellites=[];
-logos.forEach((l,i)=>{
-  const mat=new THREE.SpriteMaterial({map:l.tex,transparent:true,depthWrite:false});
-  const sprite=new THREE.Sprite(mat);
-  sprite.scale.set(window.__IS_MOBILE?.55:.7,window.__IS_MOBILE?.55:.7,window.__IS_MOBILE?.55:.7);
-  satellites.push({sprite,angle:(i/logos.length)*Math.PI*2,radius:window.__IS_MOBILE?2.1:2.4,speed:.35+i*.04,tilt:i*.12});
-  scene.add(sprite);
-});
-
-// Planet glow halo DISABLED
-const _haloGeoUnused=new THREE.SphereGeometry(1.3,32,32);
-const haloMat=new THREE.ShaderMaterial({
-  uniforms:{},
-  vertexShader:'varying vec3 vNormal;varying vec3 vPos;void main(){vNormal=normalize(normalMatrix*normal);vPos=position;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}',
-  fragmentShader:'varying vec3 vNormal;varying vec3 vPos;void main(){vec3 viewDir=normalize(-vPos);float f=pow(1.-max(dot(vNormal,viewDir),0.),2.5);gl_FragColor=vec4(vec3(.2,.6,1.)*f,f*.8);}',
-  transparent:true,side:THREE.BackSide,depthWrite:false,blending:THREE.AdditiveBlending
-});
-const halo=new THREE.Mesh(_haloGeoUnused,haloMat);halo.visible=false;
-halo.position.copy(planet.position);
-scene.add(halo);
-
-// ========== NEBULA BACKDROP ==========
-const nebulaGeo=new THREE.PlaneGeometry(120,120);
-const nebulaMat=new THREE.ShaderMaterial({
-  uniforms:{time:{value:0}},
-  vertexShader:'varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}',
-  fragmentShader:`varying vec2 vUv;uniform float time;
-    // Simple value noise
-    float hash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
-    float noise(vec2 p){vec2 i=floor(p);vec2 f=fract(p);vec2 u=f*f*(3.-2.*f);
-      return mix(mix(hash(i+vec2(0,0)),hash(i+vec2(1,0)),u.x),mix(hash(i+vec2(0,1)),hash(i+vec2(1,1)),u.x),u.y);}
-    float fbm(vec2 p){float v=0.;float a=.5;for(int i=0;i<6;i++){v+=a*noise(p);p*=2.;a*=.5;}return v;}
-    void main(){
-      vec2 uv=vUv*3.;
-      float t=time*.03;
-      float n1=fbm(uv+vec2(t,-t*.5));
-      float n2=fbm(uv*1.6+vec2(-t*.7,t));
-      float n3=fbm(uv*.8+vec2(t*.3,t*.6));
-      vec3 teal=vec3(.0,.55,.48);
-      vec3 purple=vec3(.32,.05,.48);
-      vec3 pink=vec3(.48,.08,.32);
-      vec3 deep=vec3(.02,.02,.08);
-      vec3 col=mix(deep,purple*.35,smoothstep(.55,.85,n1));
-      col=mix(col,teal*.25,smoothstep(.65,.92,n2)*.5);
-      col=mix(col,pink*.2,smoothstep(.7,.95,n3)*.3);
-      vec2 c=vUv-vec2(.5);
-      float vignette=smoothstep(.8,.05,length(c));
-      col*=mix(.1,1.,vignette);
-      gl_FragColor=vec4(col,.35);
-    }`,
-  transparent:true,depthWrite:false
-});
-const nebula=new THREE.Mesh(nebulaGeo,nebulaMat);
-nebula.position.z=-30;
-scene.add(nebula);
-
-// Particle field — 4000 particles forming a cloud
-const particleCount=4000;
-const positions=new Float32Array(particleCount*3);
-const colors=new Float32Array(particleCount*3);
-const sizes=new Float32Array(particleCount);
-const basePositions=new Float32Array(particleCount*3);
-const col1=new THREE.Color(0x00e0c0);
-const col2=new THREE.Color(0x7b2cff);
-const col3=new THREE.Color(0xff4da6);
-for(let i=0;i<particleCount;i++){
-  const r=3+Math.random()*8;
-  const theta=Math.random()*Math.PI*2;
-  const phi=Math.acos(2*Math.random()-1);
-  const x=r*Math.sin(phi)*Math.cos(theta);
-  const y=r*Math.sin(phi)*Math.sin(theta);
-  const z=r*Math.cos(phi);
-  positions[i*3]=x;positions[i*3+1]=y;positions[i*3+2]=z;
-  basePositions[i*3]=x;basePositions[i*3+1]=y;basePositions[i*3+2]=z;
-  const mix=Math.random();
-  const c=mix<.5?col1.clone().lerp(col2,mix*2):col2.clone().lerp(col3,(mix-.5)*2);
-  colors[i*3]=c.r;colors[i*3+1]=c.g;colors[i*3+2]=c.b;
-  sizes[i]=Math.random()*.08+.02;
-}
-const geometry=new THREE.BufferGeometry();
-geometry.setAttribute('position',new THREE.BufferAttribute(positions,3));
-geometry.setAttribute('color',new THREE.BufferAttribute(colors,3));
-geometry.setAttribute('size',new THREE.BufferAttribute(sizes,1));
-
-const particleMaterial=new THREE.ShaderMaterial({
-  uniforms:{time:{value:0},pixelRatio:{value:renderer.getPixelRatio()}},
-  vertexShader:`
-    attribute float size;
-    varying vec3 vColor;
-    uniform float time;
-    uniform float pixelRatio;
-    void main(){
-      vColor=color;
-      vec3 pos=position;
-      pos.y+=sin(time*.5+position.x*.3)*.15;
-      pos.x+=cos(time*.4+position.y*.3)*.12;
-      vec4 mvPosition=modelViewMatrix*vec4(pos,1.);
-      gl_PointSize=size*pixelRatio*(300./-mvPosition.z);
-      gl_Position=projectionMatrix*mvPosition;
-    }`,
-  fragmentShader:`
-    varying vec3 vColor;
-    void main(){
-      vec2 c=gl_PointCoord-vec2(.5);
-      float d=length(c);
-      if(d>.5)discard;
-      float a=smoothstep(.5,0.,d);
-      gl_FragColor=vec4(vColor,a*.85);
-    }`,
-  vertexColors:true,
-  transparent:true,
-  depthWrite:false,
-  blending:THREE.AdditiveBlending
-});
-const particles=new THREE.Points(geometry,particleMaterial);
-scene.add(particles);
-
-// ========== DEEP SPACE STARFIELD ==========
-const starCount=window.__LOW_PERF?4500:5500;
-const starPos=new Float32Array(starCount*3);
-const starCol=new Float32Array(starCount*3);
-const starSize=new Float32Array(starCount);
-for(let i=0;i<starCount;i++){
-  // 3 parallax shells: near (12-22), mid (22-38), far (38-60)
-  const shell=Math.random();
-  let r;
-  if(shell<.35)r=12+Math.random()*10;
-  else if(shell<.75)r=22+Math.random()*16;
-  else r=38+Math.random()*22;
-  const theta=Math.random()*Math.PI*2;
-  const phi=Math.acos(2*Math.random()-1);
-  starPos[i*3]=r*Math.sin(phi)*Math.cos(theta);
-  starPos[i*3+1]=r*Math.sin(phi)*Math.sin(theta);
-  starPos[i*3+2]=r*Math.cos(phi);
-  // Rich color palette: white, blue-white, teal, pink-purple, orange (rare)
-  const t=Math.random();
-  if(t<.55){starCol[i*3]=.92;starCol[i*3+1]=.96;starCol[i*3+2]=1;}
-  else if(t<.72){starCol[i*3]=.65;starCol[i*3+1]=.8;starCol[i*3+2]=1;}
-  else if(t<.85){starCol[i*3]=.35;starCol[i*3+1]=.95;starCol[i*3+2]=.88;}
-  else if(t<.95){starCol[i*3]=.85;starCol[i*3+1]=.4;starCol[i*3+2]=.95;}
-  else{starCol[i*3]=1;starCol[i*3+1]=.55;starCol[i*3+2]=.35;}
-  starSize[i]=Math.random()*.08+.012;
-}
-const starGeo=new THREE.BufferGeometry();
-starGeo.setAttribute('position',new THREE.BufferAttribute(starPos,3));
-starGeo.setAttribute('color',new THREE.BufferAttribute(starCol,3));
-starGeo.setAttribute('size',new THREE.BufferAttribute(starSize,1));
-const starMat=new THREE.ShaderMaterial({
-  uniforms:{time:{value:0},pixelRatio:{value:renderer.getPixelRatio()},warp:{value:0}},
-  vertexShader:`attribute float size;varying vec3 vCol;varying float vWarp;uniform float time;uniform float pixelRatio;uniform float warp;
-void main(){vCol=color;vWarp=warp;vec4 mv=modelViewMatrix*vec4(position,1.);float twinkle=.7+.3*sin(time*2.+position.x*5.+position.y*5.);gl_PointSize=size*pixelRatio*(400./-mv.z)*twinkle*(1.+warp*8.);gl_Position=projectionMatrix*mv;}`,
-  fragmentShader:`varying vec3 vCol;
-void main(){vec2 c=gl_PointCoord-vec2(.5);float d=length(c);if(d>.5)discard;float a=smoothstep(.5,0.,d);gl_FragColor=vec4(vCol,a);}`,
-  vertexColors:true,transparent:true,depthWrite:false,blending:THREE.AdditiveBlending
-});
-const stars=new THREE.Points(starGeo,starMat);window.__starMat=starMat;
-scene.add(stars);
-
-stepPre(.85,4);
-
-// ========== ELEPHANT 3D EXTRUDED FROM SVG ==========
-const {SVGLoader}=await import('three/addons/loaders/SVGLoader.js');
-const svgText=window.__LOGO_SVG_B64?atob(window.__LOGO_SVG_B64):'';
-const svgLoader=new SVGLoader();
-const svgData=svgLoader.parse(svgText);
-
-const elephantGroup=new THREE.Group();
-const extrudeSettings={depth:40,bevelEnabled:true,bevelThickness:2,bevelSize:1,bevelSegments:2,steps:1};
-
-// Metallic teal material with emissive glow for bloom to catch
-const elephantMat=new THREE.MeshStandardMaterial({
-  color:0x00e0c0,
-  metalness:.85,
-  roughness:.15,
-  emissive:0x00a890,
-  emissiveIntensity:.55,
-  transparent:true,
-  opacity:.82
-});
-
-for(const path of svgData.paths){
-  const shapes=SVGLoader.createShapes(path);
-  for(const shape of shapes){
-    const geo=new THREE.ExtrudeGeometry(shape,extrudeSettings);
-    const mesh=new THREE.Mesh(geo,elephantMat);
-    elephantGroup.add(mesh);
-    // Sharp bright edges that bloom will catch
-    const edges=new THREE.EdgesGeometry(geo,15);
-    const edgeMat=new THREE.LineBasicMaterial({color:0x7dffe6,transparent:true,opacity:.85,linewidth:2});
-    const edgeLines=new THREE.LineSegments(edges,edgeMat);
-    elephantGroup.add(edgeLines);
+  function selectL3(chip) {
+    var row = chip.closest('.dock__row--l3');
+    if (row) {
+      row.querySelectorAll('.dock__chip--l3').forEach(function (c) { c.classList.remove('is-active'); });
+    }
+    chip.classList.add('is-active');
+    scrollTo(chip.dataset.target);
   }
-}
 
-// Lights for the standard material
-const keyLight=new THREE.DirectionalLight(0x00ffdd,1.2);
-keyLight.position.set(5,8,10);
-scene.add(keyLight);
-const fillLight=new THREE.DirectionalLight(0x4dccff,.6);
-fillLight.position.set(-8,-3,6);
-scene.add(fillLight);
-const rimLight=new THREE.DirectionalLight(0xe8734a,.8);
-rimLight.position.set(0,-5,-8);
-scene.add(rimLight);
-const ambient=new THREE.AmbientLight(0x224455,.4);
-scene.add(ambient);
-
-// Center and scale the group
-const box=new THREE.Box3().setFromObject(elephantGroup);
-const center=box.getCenter(new THREE.Vector3());
-const size=box.getSize(new THREE.Vector3());
-const maxDim=Math.max(size.x,size.y);
-const targetSize=window.__IS_MOBILE?2.8:2.3;
-const scaleF=targetSize/maxDim;
-elephantGroup.children.forEach(m=>{
-  m.geometry.translate(-center.x,-center.y,-20);
-  m.position.z=-1;
-});
-elephantGroup.scale.set(scaleF,-scaleF,scaleF);
-// SVG Y flip handled via scale.y=-1
-scene.add(elephantGroup);
-
-// Glow backdrop
-const glowGeo=new THREE.CircleGeometry(4.5,64);
-const glowMat=new THREE.ShaderMaterial({
-  uniforms:{time:{value:0}},
-  vertexShader:'varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}',
-  fragmentShader:'varying vec2 vUv;uniform float time;void main(){vec2 c=vUv-vec2(.5);float d=length(c);float pulse=.5+.5*sin(time*1.2);float a=smoothstep(.5,0.,d)*(.12+pulse*.08);gl_FragColor=vec4(0.,.88,.75,a);}',
-  transparent:true,depthWrite:false,blending:THREE.AdditiveBlending
-});
-const glowMesh=new THREE.Mesh(glowGeo,glowMat);
-glowMesh.position.z=-3;
-scene.add(glowMesh);
-
-// Mouse + scroll state
-let mouseX=0,mouseY=0,targetMouseX=0,targetMouseY=0,scrollProg=0;
-window.addEventListener('mousemove',e=>{targetMouseX=(e.clientX/window.innerWidth-.5)*2;targetMouseY=(e.clientY/window.innerHeight-.5)*2},{passive:true});
-window.addEventListener('scroll',()=>{const pr=document.getElementById('prob');if(!pr)return;const r=pr.getBoundingClientRect();const tot=pr.offsetHeight-window.innerHeight;scrollProg=Math.max(0,Math.min(1,-r.top/tot))},{passive:true});
-
-// Add render + bloom passes now that scene has content
-composer.addPass(new RenderPass(scene,camera));
-const bloomPass=new UnrealBloomPass(new THREE.Vector2(container.clientWidth,container.clientHeight),0.7,0.9,0.2);
-bloomPass.threshold=0;
-bloomPass.strength=0.55;
-bloomPass.radius=0.85;
-composer.addPass(bloomPass);
-
-const clock=new THREE.Clock();
-let _lastT=0;
-function animate(){
-  const t=clock.getElapsedTime();
-  const dt=Math.min(t-_lastT,.1);_lastT=t;
-  mouseX+=(targetMouseX-mouseX)*.05;
-  mouseY+=(targetMouseY-mouseY)*.05;
-  particleMaterial.uniforms.time.value=t;
-  nebulaMat.uniforms.time.value=t;
-  starMat.uniforms.time.value=t;
-  galaxyMat.uniforms.time.value=t;
-  redNebMat.uniforms.time.value=t;
-  androMat.uniforms.time.value=t;
-  planetMat.uniforms.time.value=t;
-  planet.rotation.y=t*.05;
-  mars.rotation.y=t*.08;
-  // Orbit satellites around Earth
-  satellites.forEach(s=>{
-    s.angle+=s.speed*.01;
-    const x=Math.cos(s.angle)*s.radius;
-    const z=Math.sin(s.angle)*s.radius;
-    const y=Math.sin(s.angle*.7+s.tilt)*.4;
-    s.sprite.position.set(planet.position.x+x,planet.position.y+y,planet.position.z+z);
+  // Wire up click handlers
+  chipsL1.forEach(function (c) {
+    c.addEventListener('click', function () { setMode(c.dataset.l1); });
   });
-  updateShooting(dt,t);
-  // Cursor gravity — subtle pull toward mouse for planet & mars
-  const pullX=mouseX*.8;
-  const pullY=mouseY*.5;
-  const _pbx=window.__IS_MOBILE?0:-12,_pby=window.__IS_MOBILE?2.8:7,_mbx=window.__IS_MOBILE?-2.5:10,_mby=window.__IS_MOBILE?1.5:-6;
-  planet.position.x=_pbx+pullX*.6;
-  planet.position.y=_pby+pullY*.4;
-  mars.position.x=_mbx+pullX*.5;
-  mars.position.y=_mby+pullY*.3;
-  // Scroll camera — zoom out & pitch as you scroll
-  // Cinematic multi-stage camera path
-  const _sP=scrollProg;
-  const _stage=_sP*4; // 4 stages
-  const _baseZ=window.__IS_MOBILE?7:8;
-  camera.position.z=_baseZ+Math.sin(_stage*Math.PI*.5)*(window.__IS_MOBILE?2.5:5)+_sP*(window.__IS_MOBILE?2:3);
-  camera.position.x=Math.sin(_stage*.8)*(window.__IS_MOBILE?.8:2.2);
-  camera.position.y=Math.sin(_stage*.6)*(window.__IS_MOBILE?.6:1.3)+_sP*.3;
-  camera.rotation.x=-_sP*.12+Math.sin(_stage*.4)*.05;
-  camera.rotation.y=Math.sin(_stage*.5)*(window.__IS_MOBILE?.04:.08);
-  particles.rotation.y=t*.05+mouseX*.3+scrollProg*.8;
-  particles.rotation.x=mouseY*.2+scrollProg*.3;
-  // Gravitational drift — orbits slowly in XY plane with bobbing
-  elephantGroup.rotation.y=t*.15+mouseX*.9;
-  elephantGroup.rotation.x=Math.sin(t*.4)*.08-mouseY*.3;
-  elephantGroup.rotation.z=Math.cos(t*.25)*.12;
-  elephantGroup.position.x=Math.sin(t*.18)*4.5+mouseX*1.8;
-  elephantGroup.position.y=Math.cos(t*.23)*2.8+Math.sin(t*.5)*.4-mouseY*1.2;
-  elephantGroup.position.z=Math.sin(t*.14)*2.5;
-  const eScale=scaleF*(1+Math.sin(t*.8)*.05);
-  elephantGroup.scale.set(eScale,-eScale,eScale);
-  glowMat.uniforms.time.value=t;
-  glowMesh.position.x=elephantGroup.position.x;
-  glowMesh.position.y=elephantGroup.position.y;
-  glowMesh.position.z=elephantGroup.position.z-1;
-  
-  composer.render();
-  requestAnimationFrame(animate);
-}
-animate();
-
-window.addEventListener('resize',()=>{
-  camera.aspect=container.clientWidth/container.clientHeight;
-  camera.updateProjectionMatrix();
-  renderer.setSize(container.clientWidth,container.clientHeight);
-  composer.setSize(container.clientWidth,container.clientHeight);
-  bloomPass.setSize(container.clientWidth,container.clientHeight);
-},{passive:true});
-
-heroReady=true;
-stepPre(1);
-setTimeout(()=>preEl.classList.add('done'),600);
-}catch(err){
-  console.warn('Three.js fail, using fallback',err);
-  stepPre(1);
-  setTimeout(()=>preEl.classList.add('done'),400);
-}
-</script>
-
-
-
-
-<script id="pf-nav-js">
-(function(){
-  function init(){
-    var pd=document.getElementById('pd');
-    var l1s=document.querySelectorAll('.pd-l1');
-    var l2s=document.querySelectorAll('.pd-l2');
-    var l3s=document.querySelectorAll('.pd-l3');
-    var l2grp=document.querySelectorAll('.pd-l2-group, [data-for]');
-    var l3grps=document.querySelectorAll('.pd-l3-group');
-    var secs=document.querySelectorAll('.p-sec');
-    var subs=document.querySelectorAll('.p-sub[id]');
-    if(!pd||!l1s.length)return;
-    var mode='design';
-    var currentL2='carusel';
-
-    function toggleDock(){
-      if(window.scrollY>120)pd.classList.remove('pd-hidden');
-      else pd.classList.add('pd-hidden');
-    }
-    window.addEventListener('scroll',toggleDock,{passive:true});
-    pd.classList.add('pd-hidden');toggleDock();
-
-    function setL3Group(l2key){
-      l3grps.forEach(function(g){
-        if(g.dataset.l2===l2key)g.classList.remove('pd-l3-hidden');
-        else g.classList.add('pd-l3-hidden');
-      });
-    }
-
-    // LAYER 1 — full mode switch with strict isolation
-    l1s.forEach(function(b){
-      b.addEventListener('click',function(){
-        var m=b.dataset.l1;
-        l1s.forEach(function(x){x.classList.remove('active')});
-        b.classList.add('active');
-        document.querySelectorAll('.pd-row-2 [data-for]').forEach(function(t){
-          if(t.dataset.for===m)t.classList.remove('pd-tabs-hidden');
-          else t.classList.add('pd-tabs-hidden');
-        });
-        var firstL2Key=m==='video'?'vid-cinematic':'carusel';
-        var firstL2Sec=m==='video'?'sec-vid-cinematic':'sec-carusel';
-        l2s.forEach(function(x){x.classList.remove('active')});
-        var firstL2=document.querySelector('.pd-l2[data-l2="'+firstL2Key+'"]');
-        if(firstL2)firstL2.classList.add('active');
-        currentL2=firstL2Key;
-        setL3Group(firstL2Key);
-        l3s.forEach(function(x){x.classList.remove('active')});
-        var firstL3=document.querySelector('.pd-l3-group[data-l2="'+firstL2Key+'"] .pd-l3:not([data-soon])');
-        if(firstL3)firstL3.classList.add('active');
-        var r3=document.getElementById('pdRow3');
-        if(r3)r3.style.display='flex';
-        secs.forEach(function(sec){
-          var isVideo=sec.id.indexOf('sec-vid-')===0;
-          if(isVideo){sec.style.display=m==='video'?'block':'none'}
-          else if(sec.className.indexOf('p-cta')>-1){sec.style.display='block'}
-          else{sec.style.display=m==='design'?'block':'none'}
-        });
-        mode=m;
-        var target=document.getElementById(firstL2Sec);
-        if(target){window.scrollTo({top:target.getBoundingClientRect().top+window.pageYOffset-(window.innerWidth<560?100:155),behavior:'smooth'})}
-        if(typeof gtag==='function')gtag('event','pd_l1',{mode:m});
-      });
-    });
-
-    // LAYER 2
-    l2s.forEach(function(b){
-      b.addEventListener('click',function(){
-        var id=b.dataset.to;
-        var l2key=b.dataset.l2;
-        l2s.forEach(function(x){x.classList.remove('active')});
-        b.classList.add('active');
-        currentL2=l2key;
-        setL3Group(l2key);
-        // Reset L3 active state
-        l3s.forEach(function(x){x.classList.remove('active')});
-        var firstL3=document.querySelector('.pd-l3-group[data-l2="'+l2key+'"] .pd-l3:not([data-soon])');
-        if(firstL3)firstL3.classList.add('active');
-        var t=document.getElementById(id);
-        if(t){
-          var offset=window.innerWidth<560?100:155;
-        var top=t.getBoundingClientRect().top+window.pageYOffset-offset;
-          window.scrollTo({top:top,behavior:'smooth'});
-        }
-        if(typeof gtag==='function')gtag('event','pd_l2',{section:id});
-      });
-    });
-
-    // LAYER 3
-    l3s.forEach(function(b){
-      b.addEventListener('click',function(){
-        if(b.dataset.soon==='true'){
-          if(typeof gtag==='function')gtag('event','pd_l3_soon',{label:b.textContent});
-          return;
-        }
-        var id=b.dataset.to;
-        var t=document.getElementById(id);
-        if(!t)return;
-        l3s.forEach(function(x){x.classList.remove('active')});
-        b.classList.add('active');
-        var offset=window.innerWidth<560?115:165;
-        var top=t.getBoundingClientRect().top+window.pageYOffset-offset;
-        window.scrollTo({top:top,behavior:'smooth'});
-        if(typeof gtag==='function')gtag('event','pd_l3',{section:id});
-      });
-    });
-
-
-    // Scroll arrows for L2/L3 rows on mobile
-    document.querySelectorAll('.pd-arr').forEach(function(arr){
-      arr.addEventListener('click',function(e){
-        e.preventDefault();
-        e.stopPropagation();
-        var targetRow=arr.dataset.target;
-        var scrollEl;
-        if(targetRow==='row2'){
-          scrollEl=document.querySelector('.pd-row-2 .pd-l2-group:not(.pd-tabs-hidden)');
-        } else {
-          scrollEl=document.querySelector('.pd-row-3 .pd-l3-group:not(.pd-l3-hidden)');
-        }
-        if(!scrollEl)return;
-        var amt=scrollEl.clientWidth*.7;
-        if(arr.dataset.dir==='left')amt=-amt;
-        scrollEl.scrollBy({left:amt,behavior:'smooth'});
-      });
-    });
-
-    // Init: show L3 for carusel (default L2)
-    setL3Group('carusel');
-
-    // Auto-highlight L2 on scroll (section-level)
-    var l2map={
-      'sec-carusel':'carusel','sec-post':'post',
-      'sec-ecommerce':'ecommerce','sec-servicii':'servicii',
-      'sec-vid-cinematic':'vid-cinematic','sec-vid-animat':'vid-animat',
-      'sec-vid-tiktok':'vid-tiktok','sec-vid-asmr':'vid-asmr',
-      'sec-vid-medical':'vid-medical'
-    };
-    var l3ToL2={
-      'car-educational':'carusel','car-storytelling':'carusel',
-      'car-showcase':'carusel','car-promotional':'carusel',
-      'post-emotional':'post','ec-hero':'ecommerce','srv-profesionisti':'servicii'
-    };
-    Object.keys(l2map).forEach(function(id){
-      var el=document.getElementById(id);if(!el)return;
-      var obs=new IntersectionObserver(function(entries){
-        entries.forEach(function(e){
-          if(e.isIntersecting&&mode==='design'){
-            l2s.forEach(function(x){x.classList.remove('active')});
-            var chip=document.querySelector('.pd-l2[data-to="'+e.target.id+'"]');
-            if(chip){chip.classList.add('active');
-              var l2key=chip.dataset.l2;
-              if(l2key!==currentL2){currentL2=l2key;setL3Group(l2key)}
-            }
-          }
-        });
-      },{rootMargin:'-25% 0px -65% 0px',threshold:0});
-      obs.observe(el);
-    });
-
-    // Auto-highlight L3 on scroll (subsection-level)
-    subs.forEach(function(sub){
-      var obs=new IntersectionObserver(function(entries){
-        entries.forEach(function(e){
-          if(e.isIntersecting&&mode==='design'){
-            var chip=document.querySelector('.pd-l3[data-to="'+e.target.id+'"]');
-            if(chip){
-              // Only highlight if it's in the currently visible L3 group
-              var group=chip.closest('.pd-l3-group');
-              if(group&&!group.classList.contains('pd-l3-hidden')){
-                l3s.forEach(function(x){x.classList.remove('active')});
-                chip.classList.add('active');
-              }
-            }
-          }
-        });
-      },{rootMargin:'-20% 0px -70% 0px',threshold:0});
-      obs.observe(sub);
-    });
-  }
-  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);
-  else init();
+  document.querySelectorAll('.dock__chip--l2').forEach(function (c) {
+    c.addEventListener('click', function () { selectL2(c.dataset.l2); });
+  });
+  document.querySelectorAll('.dock__chip--l3').forEach(function (c) {
+    c.addEventListener('click', function () { selectL3(c); });
+  });
 })();
-</script>
 
-<script id="nav-auto-hide">
-(function(){
-  var nav=document.getElementById('nav')||document.querySelector('nav');
-  if(!nav)return;
-  nav.style.transition='transform .3s ease, opacity .3s ease';
-  var lastY=window.scrollY, ticking=false;
-  function update(){
-    var cur=window.scrollY;
-    if(cur<60){
-      nav.style.transform='translateY(0)';
-      nav.style.opacity='1';
-      nav.style.pointerEvents='auto';
+
+/* =============================================================================
+   NAV AUTO-HIDE — scroll down hides, scroll up shows, top always visible.
+   Syncs body.nav-hidden so dock can move up to fill space.
+   ============================================================================= */
+(function () {
+  var nav = document.getElementById('nav');
+  if (!nav) return;
+  var lastY = window.scrollY;
+  var ticking = false;
+
+  function update() {
+    var cur = window.scrollY;
+    var hide = cur > lastY + 4 && cur > 60;
+    var show = cur < lastY - 4 || cur < 60;
+
+    if (show) {
+      nav.classList.remove('nav-hidden');
       document.body.classList.remove('nav-hidden');
-    } else if(cur>lastY+4){
-      nav.style.transform='translateY(-100%)';
-      nav.style.opacity='0';
-      nav.style.pointerEvents='none';
+    } else if (hide) {
+      nav.classList.add('nav-hidden');
       document.body.classList.add('nav-hidden');
-    } else if(cur<lastY-4){
-      nav.style.transform='translateY(0)';
-      nav.style.opacity='1';
-      nav.style.pointerEvents='auto';
-      document.body.classList.remove('nav-hidden');
     }
-    lastY=cur;
-    ticking=false;
+    lastY = cur;
+    ticking = false;
   }
-  window.addEventListener('scroll',function(){
-    if(!ticking){requestAnimationFrame(update);ticking=true;}
-  },{passive:true});
+
+  window.addEventListener('scroll', function () {
+    if (!ticking) {
+      requestAnimationFrame(update);
+      ticking = true;
+    }
+  }, { passive: true });
+})();
+
+
+/* =============================================================================
+   LIGHTBOX — click on any .p-grid img to enlarge
+   ============================================================================= */
+(function () {
+  var lb      = document.getElementById('lightbox');
+  var lbImg   = document.getElementById('lbImg');
+  var lbClose = document.getElementById('lbClose');
+  var lbPrev  = document.getElementById('lbPrev');
+  var lbNext  = document.getElementById('lbNext');
+  var lbCount = document.getElementById('lbCount');
+  if (!lb || !lbImg) return;
+
+  var currentGroup = [];
+  var currentIdx = 0;
+
+  function show(idx) {
+    if (idx < 0) idx = currentGroup.length - 1;
+    if (idx >= currentGroup.length) idx = 0;
+    currentIdx = idx;
+    lbImg.src = currentGroup[idx];
+    lbImg.alt = '';
+    lbCount.textContent = (idx + 1) + ' / ' + currentGroup.length;
+    lb.classList.add('is-open');
+    lb.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function hide() {
+    lb.classList.remove('is-open');
+    lb.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  // Click on any p-grid img opens lightbox scoped to that grid
+  document.querySelectorAll('.p-grid').forEach(function (grid) {
+    var imgs = Array.from(grid.querySelectorAll('img'));
+    imgs.forEach(function (img, idx) {
+      img.addEventListener('click', function () {
+        currentGroup = imgs.map(function (i) { return i.src; });
+        show(idx);
+      });
+    });
+  });
+
+  lbClose.addEventListener('click', hide);
+  lbPrev.addEventListener('click', function () { show(currentIdx - 1); });
+  lbNext.addEventListener('click', function () { show(currentIdx + 1); });
+  lb.addEventListener('click', function (e) { if (e.target === lb) hide(); });
+  document.addEventListener('keydown', function (e) {
+    if (!lb.classList.contains('is-open')) return;
+    if (e.key === 'Escape')     hide();
+    if (e.key === 'ArrowLeft')  show(currentIdx - 1);
+    if (e.key === 'ArrowRight') show(currentIdx + 1);
+  });
 })();
 </script>
+
+<!-- Meteor cursor (shared across all pages) -->
 <script src="/meteor-cursor.js" defer></script>
+
 </body>
 </html>
