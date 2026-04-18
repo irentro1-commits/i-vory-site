@@ -34,157 +34,55 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
 
 
-<!-- MOBILE PERFORMANCE PATCH v2 — kill ALL scroll jank on phones -->
+
+<!-- MOBILE PERFORMANCE PATCH v3 — tune lag without killing design -->
 <style id="mobile-perf-patch">
 @media (max-width: 900px), (pointer: coarse) {
-  /* 1. KILL ALL backdrop-filter, ALL filter blur */
+  /* KILL backdrop-filter only (the #1 scroll lag cause) */
   *, *::before, *::after {
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
-    filter: none !important;
   }
 
-  /* Solid bg on navs/docks/floats */
-  nav, .nav, #nav, .dock, .wa-float, .footer-nav, header, footer {
+  /* Solid bg on fixed elements */
+  nav, .nav, #nav, .dock, .wa-float {
     background: rgba(5, 5, 5, 0.96) !important;
   }
 
-  /* 2. HIDE ALL decorative blur/animated layers */
-  [class*="cosmic"]::before, [class*="cosmic"]::after,
-  .p-sub::before, .p-sub::after,
-  .p-sec-head::before, .p-sec-head::after,
-  .ambient, .ambient-bg, body::before, body::after, html::before, html::after,
-  [class*="blur-bg"], [class*="glow-bg"], [class*="nebula"],
-  [class*="particle"], [class*="star-"], .stars,
-  [class*="orbit-ring"], [class*="halo"], [class*="aura"] {
-    display: none !important;
+  /* Reduce huge box-shadow blur to 15px max */
+  .pk, .type-card, .proof-card, .faq-item, .contact-alt,
+  .card, .testim, button, .nc, .dock__chip.is-active {
+    box-shadow: 0 3px 15px rgba(0,0,0,0.45) !important;
   }
 
-  /* 3. FLAT body bg */
-  body, html {
-    background: #040610 !important;
-    background-attachment: scroll !important;
-    background-image: none !important;
-  }
-
-  /* 4. CUT box-shadow to minimum */
-  *, .pk, .type-card, .proof-card, .faq-item, .contact-alt,
-  .card, .testim, button, .nc, .dock__chip.is-active, .hero-video {
-    box-shadow: 0 2px 8px rgba(0,0,0,0.4) !important;
-  }
-
-  /* 5. KILL ALL animations on non-interactive elements */
-  body *:not(:hover):not(:focus):not(:active) {
-    animation-play-state: paused !important;
-  }
-  [class*="float-"], [class*="orbit"], [class*="pulse"], [class*="spin"],
-  [class*="shimmer"], [class*="breathe"], [class*="wave"], [class*="drift"],
-  [class*="marquee"], [class*="ticker"], [class*="scroll-"],
-  [class*="rotate-"], [class*="bounce"] {
-    animation: none !important;
-  }
-
-  /* 6. HIDE meteor cursor + premium effects */
+  /* Hide meteor cursor (irrelevant on touch) */
   #meteor-cursor, #meteor-flame, #meteor-flame2, #meteor-flame3,
-  .meteor-cursor, [id^="meteor"], [class^="meteor"],
-  canvas[class*="particle"], canvas[class*="constellation"] {
+  .meteor-cursor, [id^="meteor"], [class^="meteor"] {
     display: none !important;
   }
 
-  /* 7. CONTENT-VISIBILITY — let browser skip below-fold rendering */
-  section:not(:first-of-type), .p-sec, .blog-card, .case-card,
-  .pk, .type-card, .proof-card, .testim {
-    content-visibility: auto;
-    contain-intrinsic-size: 1px 600px;
-  }
-
-  /* 8. CUT transitions to minimum */
+  /* Reduce transitions (snappy response) */
   * {
-    transition-duration: 0.15s !important;
-    transition-delay: 0s !important;
+    transition-duration: 0.2s !important;
   }
-
-  /* 9. No will-change abuse */
-  [style*="will-change"] { will-change: auto !important; }
-
-  /* 10. Disable video autoplay on mobile - saves CPU massively */
-  video[autoplay] {
-    display: none !important;
-  }
-
-  /* 11. Optimize images for GPU compositing */
-  img {
-    image-rendering: auto;
-  }
-
-  /* 12. No text-shadow on mobile (they are cheap but multiply) */
-  * { text-shadow: none !important; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
-    backdrop-filter: none !important;
   }
 }
 </style>
 <script id="mobile-perf-js">
-/* Aggressive mobile optimization: disable heavy scripts, pause videos */
+/* Block ONLY meteor-cursor + premium-fx on mobile, nothing else */
 (function(){
   var isMobile = window.matchMedia('(pointer: coarse)').matches || window.innerWidth <= 900;
   if (!isMobile) return;
-
   window.MOBILE_DEVICE = true;
-
-  // Block premium-fx.js and earth-tex.js from running
-  var blockedScripts = ['premium-fx.js', 'earth-tex.js', 'meteor-cursor.js'];
-  var origCreateEl = document.createElement.bind(document);
-  document.createElement = function(tag){
-    var el = origCreateEl(tag);
-    if (tag.toLowerCase() === 'script') {
-      var origSetAttr = el.setAttribute.bind(el);
-      el.setAttribute = function(name, val){
-        if (name === 'src' && blockedScripts.some(function(s){return val.indexOf(s)>=0;})) {
-          return; // silently drop
-        }
-        return origSetAttr(name, val);
-      };
-      Object.defineProperty(el, 'src', {
-        set: function(v){
-          if (blockedScripts.some(function(s){return v.indexOf(s)>=0;})) return;
-          el.setAttribute('src', v);
-        },
-        get: function(){return el.getAttribute('src');}
-      });
-    }
-    return el;
-  };
-
   document.addEventListener('DOMContentLoaded', function(){
-    // Remove meteor cursor elements
     document.querySelectorAll('[id^="meteor"], [class^="meteor"]').forEach(function(el){el.remove();});
-    
-    // Pause all autoplay videos
-    document.querySelectorAll('video[autoplay]').forEach(function(v){
-      v.pause();
-      v.removeAttribute('autoplay');
-      v.removeAttribute('loop');
-      v.style.display = 'none';
-    });
-
-    // Disable continuous animations (requestAnimationFrame loops are the worst)
-    // Find & stop typical particle/canvas animations
-    document.querySelectorAll('canvas').forEach(function(c){
-      var cls = c.className || '';
-      if (cls.match(/particle|constellation|star|meteor|trail/i)) {
-        c.style.display = 'none';
-      }
-    });
   });
-
-  // Throttle scroll listeners - many sites attach expensive scroll handlers
-  // Don't touch user listeners; just set passive defaults
 })();
 </script>
 </head><body>
