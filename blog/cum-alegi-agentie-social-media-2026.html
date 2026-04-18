@@ -101,72 +101,94 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-ND5ZF7NB');</script>
 <!-- End Google Tag Manager -->
 
-<!-- MOBILE PERFORMANCE PATCH — disables heavy GPU effects on phones to kill scroll jank -->
+
+<!-- MOBILE PERFORMANCE PATCH v2 — kill ALL scroll jank on phones -->
 <style id="mobile-perf-patch">
 @media (max-width: 900px), (pointer: coarse) {
-  /* 1. KILL backdrop-filter — #1 scroll lag culprit on mobile */
+  /* 1. KILL ALL backdrop-filter, ALL filter blur */
   *, *::before, *::after {
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
+    filter: none !important;
   }
 
-  /* Replace glass/blur backgrounds with solid dark */
-  nav, .nav, header nav, #nav, .dock, .wa-float, .footer-nav {
+  /* Solid bg on navs/docks/floats */
+  nav, .nav, #nav, .dock, .wa-float, .footer-nav, header, footer {
     background: rgba(5, 5, 5, 0.96) !important;
   }
 
-  /* 2. KILL filter: blur() on decorative layers — cosmic panels, ambients, etc. */
+  /* 2. HIDE ALL decorative blur/animated layers */
   [class*="cosmic"]::before, [class*="cosmic"]::after,
   .p-sub::before, .p-sub::after,
   .p-sec-head::before, .p-sec-head::after,
-  .ambient, .ambient-bg, body::before, body::after,
-  [class*="blur-bg"], [class*="glow"] {
-    filter: none !important;
-    animation: none !important;
+  .ambient, .ambient-bg, body::before, body::after, html::before, html::after,
+  [class*="blur-bg"], [class*="glow-bg"], [class*="nebula"],
+  [class*="particle"], [class*="star-"], .stars,
+  [class*="orbit-ring"], [class*="halo"], [class*="aura"] {
     display: none !important;
   }
 
-  /* 3. TAME body background — remove multiple gradients, flat dark only */
-  body {
+  /* 3. FLAT body bg */
+  body, html {
     background: #040610 !important;
     background-attachment: scroll !important;
+    background-image: none !important;
   }
 
-  /* 4. REDUCE box-shadow blur radius — cut GPU cost ~50% */
-  .pk, .type-card, .proof-card, .faq-item, .contact-alt,
-  .card, .testim, button, .nc, .dock__chip.is-active {
-    box-shadow: 0 4px 12px rgba(0,0,0,0.4) !important;
+  /* 4. CUT box-shadow to minimum */
+  *, .pk, .type-card, .proof-card, .faq-item, .contact-alt,
+  .card, .testim, button, .nc, .dock__chip.is-active, .hero-video {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.4) !important;
   }
 
-  /* 5. DISABLE non-essential animations on mobile */
-  [class*="float-"], [class*="orbit"], [class*="pulse"],
-  [class*="spin"], [class*="shimmer"], [class*="breathe"] {
+  /* 5. KILL ALL animations on non-interactive elements */
+  body *:not(:hover):not(:focus):not(:active) {
+    animation-play-state: paused !important;
+  }
+  [class*="float-"], [class*="orbit"], [class*="pulse"], [class*="spin"],
+  [class*="shimmer"], [class*="breathe"], [class*="wave"], [class*="drift"],
+  [class*="marquee"], [class*="ticker"], [class*="scroll-"],
+  [class*="rotate-"], [class*="bounce"] {
     animation: none !important;
   }
 
-  /* 6. HIDE meteor cursor on mobile — irrelevant, wastes JS */
+  /* 6. HIDE meteor cursor + premium effects */
   #meteor-cursor, #meteor-flame, #meteor-flame2, #meteor-flame3,
-  .meteor-cursor, [id^="meteor"] {
+  .meteor-cursor, [id^="meteor"], [class^="meteor"],
+  canvas[class*="particle"], canvas[class*="constellation"] {
     display: none !important;
   }
 
-  /* 7. content-visibility for below-fold sections — browser skips rendering until scrolled into view */
-  section:not(#hero):not(.hero):not(:first-of-type),
-  .p-sec, .blog-card, .case-card {
+  /* 7. CONTENT-VISIBILITY — let browser skip below-fold rendering */
+  section:not(:first-of-type), .p-sec, .blog-card, .case-card,
+  .pk, .type-card, .proof-card, .testim {
     content-visibility: auto;
-    contain-intrinsic-size: 800px;
+    contain-intrinsic-size: 1px 600px;
   }
 
-  /* 8. Reduce transitions (keep only hover essentials) */
+  /* 8. CUT transitions to minimum */
   * {
     transition-duration: 0.15s !important;
+    transition-delay: 0s !important;
   }
 
-  /* 9. Kill will-change abuse */
+  /* 9. No will-change abuse */
   [style*="will-change"] { will-change: auto !important; }
+
+  /* 10. Disable video autoplay on mobile - saves CPU massively */
+  video[autoplay] {
+    display: none !important;
+  }
+
+  /* 11. Optimize images for GPU compositing */
+  img {
+    image-rendering: auto;
+  }
+
+  /* 12. No text-shadow on mobile (they are cheap but multiply) */
+  * { text-shadow: none !important; }
 }
 
-/* Respect reduced motion - if user has it on, kill EVERYTHING animated */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
@@ -176,15 +198,61 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 }
 </style>
 <script id="mobile-perf-js">
-/* Disable meteor cursor + premium-fx on touch devices */
+/* Aggressive mobile optimization: disable heavy scripts, pause videos */
 (function(){
-  if (window.matchMedia('(pointer: coarse)').matches || window.innerWidth <= 900) {
-    window.MOBILE_DEVICE = true;
-    // Remove meteor cursor script tag before it runs
-    document.addEventListener('DOMContentLoaded', function(){
-      document.querySelectorAll('[id^="meteor"]').forEach(function(el){el.remove();});
+  var isMobile = window.matchMedia('(pointer: coarse)').matches || window.innerWidth <= 900;
+  if (!isMobile) return;
+
+  window.MOBILE_DEVICE = true;
+
+  // Block premium-fx.js and earth-tex.js from running
+  var blockedScripts = ['premium-fx.js', 'earth-tex.js', 'meteor-cursor.js'];
+  var origCreateEl = document.createElement.bind(document);
+  document.createElement = function(tag){
+    var el = origCreateEl(tag);
+    if (tag.toLowerCase() === 'script') {
+      var origSetAttr = el.setAttribute.bind(el);
+      el.setAttribute = function(name, val){
+        if (name === 'src' && blockedScripts.some(function(s){return val.indexOf(s)>=0;})) {
+          return; // silently drop
+        }
+        return origSetAttr(name, val);
+      };
+      Object.defineProperty(el, 'src', {
+        set: function(v){
+          if (blockedScripts.some(function(s){return v.indexOf(s)>=0;})) return;
+          el.setAttribute('src', v);
+        },
+        get: function(){return el.getAttribute('src');}
+      });
+    }
+    return el;
+  };
+
+  document.addEventListener('DOMContentLoaded', function(){
+    // Remove meteor cursor elements
+    document.querySelectorAll('[id^="meteor"], [class^="meteor"]').forEach(function(el){el.remove();});
+    
+    // Pause all autoplay videos
+    document.querySelectorAll('video[autoplay]').forEach(function(v){
+      v.pause();
+      v.removeAttribute('autoplay');
+      v.removeAttribute('loop');
+      v.style.display = 'none';
     });
-  }
+
+    // Disable continuous animations (requestAnimationFrame loops are the worst)
+    // Find & stop typical particle/canvas animations
+    document.querySelectorAll('canvas').forEach(function(c){
+      var cls = c.className || '';
+      if (cls.match(/particle|constellation|star|meteor|trail/i)) {
+        c.style.display = 'none';
+      }
+    });
+  });
+
+  // Throttle scroll listeners - many sites attach expensive scroll handlers
+  // Don't touch user listeners; just set passive defaults
 })();
 </script>
 </head>
