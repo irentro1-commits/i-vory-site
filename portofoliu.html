@@ -87,10 +87,14 @@
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
+  max-width: 100vw;
 }
 
 body {
   margin: 0;
+  max-width: 100vw;
+  overflow-x: hidden;
   background:
     radial-gradient(ellipse 1200px 800px at 15% 10%, rgba(0, 80, 110, 0.22), transparent 60%),
     radial-gradient(ellipse 900px 700px at 85% 40%, rgba(60, 30, 120, 0.18), transparent 60%),
@@ -101,8 +105,8 @@ body {
   color: var(--text);
   font-family: var(--font-serif);
   line-height: 1.6;
-  overflow-x: clip;
   overscroll-behavior-y: none;
+  overscroll-behavior-x: none;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -803,43 +807,45 @@ body.nav-hidden .dock { top: 14px; }
 
 /* ═════ MOBILE (<=900px): dock wrapped, no horizontal scroll, L3 hidden ═════ */
 @media (max-width: 900px) {
-  /* Nav NEVER hides on mobile - kills scroll jank + keeps orientation clear */
+  /* Nav NEVER hides on mobile */
   nav.nav-hidden {
     transform: none !important;
     opacity: 1 !important;
     pointer-events: auto !important;
   }
 
-  /* Dock: full-width, attached to top edge, wrap chips on multiple rows */
+  /* Dock: attached to edges, NO transform (transform breaks width on mobile) */
   .dock {
-    top: 60px !important;
-    left: 0;
-    right: 0;
-    width: 100%;
-    max-width: none;
+    top: 56px !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
     border-left: none;
     border-right: none;
     border-top: none;
     border-radius: 0;
-    transform: none;
+    transform: none !important;
     padding: 0;
   }
-  body.nav-hidden .dock { top: 60px !important; }
+  body.nav-hidden .dock { top: 56px !important; }
 
-  /* Each row wraps instead of scrolling horizontally */
+  /* Each row wraps */
   .dock__row {
     flex-wrap: wrap !important;
     overflow-x: visible !important;
+    overflow-y: visible !important;
     justify-content: center;
     gap: 0.3rem;
     padding: 0.4rem 0.4rem;
+    max-width: 100%;
   }
 
-  /* Chips compact but readable */
   .dock__chip {
     padding: 0.38rem 0.7rem;
     font-size: 0.76rem;
     border-radius: 6px;
+    max-width: 100%;
   }
   .dock__chip--l1 {
     font-size: 0.86rem;
@@ -851,37 +857,56 @@ body.nav-hidden .dock { top: 14px; }
     padding: 0.35rem 0.6rem;
   }
 
-  /* L3 row HIDDEN on mobile — user scrolls to section and sees variants inline */
   .dock__row--l3 { display: none !important; }
 
-  /* Main content needs top padding so dock doesn't cover it */
+  /* CRITICAL: main needs ENOUGH padding-top for nav(56) + dock(80) = 136+ padding */
   main.pf-body {
-    padding-top: 7rem;
+    padding: 10rem 1rem 3rem !important;
+    max-width: 100vw;
+    overflow-x: hidden;
   }
   .hero {
-    padding: 8rem 1rem 1.5rem;
+    padding: 11rem 1rem 1.5rem !important;
   }
   .p-sec {
-    scroll-margin-top: 180px;
+    scroll-margin-top: 170px;
     margin: 1.5rem 0 2rem;
+    max-width: 100%;
   }
   .p-sub {
-    scroll-margin-top: 180px;
+    scroll-margin-top: 170px;
+    max-width: 100%;
+  }
+  .p-sec-head {
+    max-width: 100%;
+    padding: 1rem 0 0.5rem !important;
   }
 
-  /* Cosmic panels smaller on mobile */
-  .p-sub::before, .p-sec-head::before { inset: -1.5rem -1rem; filter: blur(28px); }
-  .p-sub::after,  .p-sec-head::after  { inset: -2.5rem -1.5rem; filter: blur(50px); }
+  /* Cosmic panels — constrain to prevent horizontal overflow */
+  .p-sub::before, .p-sec-head::before {
+    inset: -1rem -0.5rem !important;
+    filter: blur(28px);
+  }
+  .p-sub::after, .p-sec-head::after {
+    inset: -1.5rem -0.8rem !important;
+    filter: blur(40px);
+  }
 
-  /* Grid ALWAYS 2 cols mobile */
+  /* Grid 2 cols mobile */
   .p-grid,
   .p-grid--narrow,
   .p-grid--wide {
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 0.4rem;
+    max-width: 100%;
   }
 
-  .cta { padding: 3rem 1rem 4rem; }
+  .cta { padding: 3rem 1rem 4rem; max-width: 100%; }
+
+  /* Force ALL children not to overflow */
+  .p-sub, .p-sec, .p-sec-head, .p-grid, .p-explainer, .p-video {
+    max-width: 100% !important;
+  }
 }
 
 /* ═════ SMALL PHONES (<=480px) ═════ */
@@ -894,8 +919,8 @@ body.nav-hidden .dock { top: 14px; }
   .dock__chip--l1 { font-size: 0.8rem; padding: 0.35rem 0.7rem; }
   .dock__chip--l2 { font-size: 0.62rem; padding: 0.3rem 0.5rem; letter-spacing: 0.03em; }
 
-  main.pf-body { padding-top: 6.5rem; }
-  .hero { padding: 7.5rem 0.75rem 1.5rem; }
+  main.pf-body { padding: 9.5rem 0.75rem 3rem !important; }
+  .hero { padding: 10rem 0.75rem 1.5rem !important; }
 }
 
 
