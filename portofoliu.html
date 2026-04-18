@@ -91,7 +91,13 @@ html {
 
 body {
   margin: 0;
-  background: var(--bg);
+  background:
+    radial-gradient(ellipse 1200px 800px at 15% 10%, rgba(0, 80, 110, 0.22), transparent 60%),
+    radial-gradient(ellipse 900px 700px at 85% 40%, rgba(60, 30, 120, 0.18), transparent 60%),
+    radial-gradient(ellipse 1100px 900px at 40% 80%, rgba(0, 120, 100, 0.15), transparent 65%),
+    radial-gradient(ellipse 800px 600px at 90% 95%, rgba(120, 40, 80, 0.12), transparent 60%),
+    var(--bg);
+  background-attachment: fixed;
   color: var(--text);
   font-family: var(--font-serif);
   line-height: 1.6;
@@ -99,6 +105,21 @@ body {
   overscroll-behavior-y: none;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(0, 224, 192, 0.04), transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(255, 154, 61, 0.03), transparent 45%);
+  pointer-events: none;
+  z-index: 0;
+  animation: ambient-shift 40s ease-in-out infinite alternate;
+}
+@keyframes ambient-shift {
+  0%   { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(-2%, 1%) scale(1.05); }
 }
 
 img, video { max-width: 100%; display: block; }
@@ -189,8 +210,8 @@ nav.nav-hidden {
 
 
 /* ─── 5. DOCK ───────────────────────────────────────────────────────────────── */
-/* 3-level taxonomy: L1 (Design/Video) → L2 (Carusel/Post/...) → L3 (Variants)
-   Sticky below nav. When nav auto-hides, dock moves up to take its place. */
+/* 3-level taxonomy compact: L1 (Design/Video) | L2 | L3 inline rails.
+   Each row is a single line, no wrap, chips compact and visually coherent. */
 
 .dock {
   position: fixed;
@@ -198,74 +219,85 @@ nav.nav-hidden {
   left: 50%;
   transform: translateX(-50%);
   z-index: 90;
-  width: calc(100vw - 2rem);
-  max-width: 920px;
-  background: rgba(4, 6, 14, 0.94);
-  backdrop-filter: blur(32px) saturate(1.5);
-  -webkit-backdrop-filter: blur(32px) saturate(1.5);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55);
+  width: calc(100vw - 3rem);
+  max-width: 1100px;
+  background: rgba(6, 8, 18, 0.92);
+  backdrop-filter: blur(28px) saturate(1.4);
+  -webkit-backdrop-filter: blur(28px) saturate(1.4);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
+  box-shadow: 0 16px 44px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  overflow: hidden;
   transition: top var(--t-med) ease, opacity var(--t-fast);
 }
-body.nav-hidden .dock { top: 16px; }
+body.nav-hidden .dock { top: 14px; }
 
 .dock__row {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-wrap: nowrap;
   align-items: center;
-  gap: 0.4rem;
-  padding: 0.5rem 0.8rem;
+  justify-content: center;
+  gap: 0.3rem;
+  padding: 0.45rem 0.7rem;
+  overflow-x: auto;
+  scrollbar-width: none;
 }
-.dock__row + .dock__row { border-top: 1px solid rgba(255, 255, 255, 0.05); }
+.dock__row::-webkit-scrollbar { display: none; }
+.dock__row + .dock__row { border-top: 1px solid rgba(255, 255, 255, 0.04); }
 
 .dock__chip {
   flex-shrink: 0;
   background: transparent;
   border: 1px solid transparent;
-  border-radius: 100px;
-  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  padding: 0.45rem 0.9rem;
   color: var(--text-mute);
-  font-family: var(--font-serif);
-  font-size: 0.92rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
   font-weight: 500;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.04em;
   transition: all var(--t-fast);
   white-space: nowrap;
+  line-height: 1;
   -webkit-tap-highlight-color: transparent;
 }
 .dock__chip:hover {
   color: var(--text);
-  border-color: var(--border);
+  background: rgba(255, 255, 255, 0.04);
 }
 .dock__chip.is-active {
-  background: var(--accent-soft);
+  background: rgba(0, 224, 192, 0.12);
   color: var(--accent);
-  border-color: var(--border-hi);
+  border-color: rgba(0, 224, 192, 0.35);
+  box-shadow: 0 0 16px rgba(0, 224, 192, 0.15);
 }
 
-/* L1 chips are bolder */
 .dock__chip--l1 {
   font-family: var(--font-serif);
   font-weight: 700;
-  font-size: 1.02rem;
-  font-variation-settings: "opsz" 72, "SOFT" 30, "WONK" 1;
+  font-size: 0.92rem;
+  letter-spacing: -0.01em;
+  padding: 0.5rem 1.1rem;
 }
-/* L2 chips */
 .dock__chip--l2 {
   font-family: var(--font-mono);
-  font-size: 0.88rem;
+  font-size: 0.76rem;
   font-weight: 500;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
-/* L3 chips - smallest, italic serif */
 .dock__chip--l3 {
   font-family: var(--font-italic);
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   font-style: italic;
   font-weight: 400;
   padding: 0.4rem 0.85rem;
+  color: var(--text-dim);
+}
+.dock__chip--l3.is-active {
+  background: rgba(0, 224, 192, 0.1);
+  color: var(--accent);
+  border-color: rgba(0, 224, 192, 0.3);
 }
 
 .dock__row[hidden] { display: none; }
@@ -318,7 +350,7 @@ body.nav-hidden .dock { top: 16px; }
 /* ─── 7. SECTIONS ───────────────────────────────────────────────────────────── */
 .p-sec {
   position: relative;
-  margin: 3rem 0 5rem;
+  margin: 2rem 0 2.5rem;
   scroll-margin-top: 200px;
   isolation: isolate;
 }
@@ -371,14 +403,14 @@ body.nav-hidden .dock { top: 16px; }
 .p-sub {
   position: relative;
   z-index: 2;
-  padding: 2rem 1.5rem 2.5rem;
-  margin-bottom: 3rem;
+  padding: 1.5rem 1.5rem 2rem;
+  margin-bottom: 1.5rem;
   border-radius: var(--radius-lg);
   isolation: isolate;
   display: block;
   scroll-margin-top: 200px;
 }
-.p-sub:last-child { margin-bottom: 1rem; }
+.p-sub:last-child { margin-bottom: 0.5rem; }
 
 /* Axis breadcrumb: inline horizontal under description */
 .p-axis {
@@ -595,9 +627,9 @@ body.nav-hidden .dock { top: 16px; }
   inset: -4rem -3rem;
   background: radial-gradient(
     ellipse 80% 80% at 55% 55%,
-    rgba(0, 120, 140, 0.22) 0%,
-    rgba(4, 6, 14, 0.15) 55%,
-    transparent 90%
+    rgba(0, 180, 200, 0.35) 0%,
+    rgba(40, 60, 140, 0.18) 45%,
+    transparent 80%
   );
   border-radius: 65% 35% 48% 52% / 52% 48% 52% 48%;
   filter: blur(70px);
@@ -980,7 +1012,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <p class="p-explainer__text">Pe Instagram, Facebook, LinkedIn, TikTok. Oriunde postezi, încape.</p>
         </div>
       </div>
-        </div>
       <article class="p-sub" id="car-educational">
         <div class="p-axis">
           <div class="p-axis-row axis-l1"><span class="p-axis-sym">I</span><span class="p-axis-name">Design</span></div>
@@ -1126,7 +1157,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <p class="p-explainer__text">Pe Instagram, Facebook sau LinkedIn. Apare pe pagina ta și la oamenii care te urmăresc atunci când deschid aplicația.</p>
         </div>
       </div>
-        </div>
       <article class="p-sub" id="post-emotional">
         <div class="p-axis">
           <div class="p-axis-row axis-l1"><span class="p-axis-sym">I</span><span class="p-axis-name">Design</span></div>
@@ -1159,7 +1189,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <p class="p-explainer__text">Pe site-ul tău, pe eMAG, în Google când caută cineva produsul.</p>
         </div>
       </div>
-        </div>
       <article class="p-sub" id="ec-product-hero">
         <div class="p-axis">
           <div class="p-axis-row axis-l1"><span class="p-axis-sym">I</span><span class="p-axis-name">Design</span></div>
@@ -1309,7 +1338,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <p class="p-explainer__text">Pe YouTube, pe prima pagină a site-ului, sau în reclame plătite pe Facebook și Instagram.</p>
         </div>
       </div>
-        </div>
       <div class="p-sub">
         <div class="p-axis">
           <div class="p-axis-row axis-l1"><span class="p-axis-sym">II</span><span class="p-axis-name">Video</span></div>
@@ -1343,7 +1371,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <p class="p-explainer__text">Pe Instagram, pe TikTok, sau pe pagina produsului tău când cineva vrea să vadă cum funcționează.</p>
         </div>
       </div>
-        </div>
       <div class="p-sub">
         <div class="p-axis">
           <div class="p-axis-row axis-l1"><span class="p-axis-sym">II</span><span class="p-axis-name">Video</span></div>
@@ -1377,7 +1404,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <p class="p-explainer__text">Pe TikTok, pe Instagram (la secțiunea de filmulețe scurte) și pe YouTube (la Shorts).</p>
         </div>
       </div>
-        </div>
       <div class="p-sub">
         <div class="p-axis">
           <div class="p-axis-row axis-l1"><span class="p-axis-sym">II</span><span class="p-axis-name">Video</span></div>
@@ -1411,7 +1437,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <p class="p-explainer__text">Pe TikTok și pe Instagram. Astfel de filmulețe sunt arătate la mai mulți oameni automat.</p>
         </div>
       </div>
-        </div>
       <div class="p-sub">
         <div class="p-axis">
           <div class="p-axis-row axis-l1"><span class="p-axis-sym">II</span><span class="p-axis-name">Video</span></div>
@@ -1445,7 +1470,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <p class="p-explainer__text">Pe site, pe Instagram, sau le arăți oamenilor când vin la tine. Dovada cea mai puternică că funcționează ce faci.</p>
         </div>
       </div>
-        </div>
       <div class="p-sub">
         <div class="p-axis">
           <div class="p-axis-row axis-l1"><span class="p-axis-sym">II</span><span class="p-axis-name">Video</span></div>
