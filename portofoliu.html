@@ -794,46 +794,66 @@ body.nav-hidden .dock { top: 16px; }
 .p-explainer {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 0.8rem;
+  gap: 1rem;
   margin: 1.5rem 0 0;
-  padding: 1.2rem;
-  background: rgba(8, 12, 22, 0.75);
-  border: 1px solid rgba(0, 224, 192, 0.15);
+  padding: 1.4rem;
+  background: rgba(8, 12, 22, 0.88);
+  border: 1px solid rgba(0, 224, 192, 0.22);
   border-radius: var(--radius-md);
   position: relative;
-  z-index: 2;
+  z-index: 5;
 }
 .p-explainer__col {
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
+  gap: 0.5rem;
 }
 .p-explainer__label {
   font-family: var(--font-mono);
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.18em;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--accent);
-  opacity: 0.9;
 }
 .p-explainer__text {
   font-family: var(--font-serif);
-  font-size: 1rem;
+  font-size: 1.05rem;
   color: var(--text);
-  line-height: 1.45;
+  line-height: 1.55;
   margin: 0;
   font-variation-settings: "opsz" 48, "SOFT" 60;
 }
-@media (max-width: 700px) {
+@media (max-width: 900px) {
   .p-explainer {
     grid-template-columns: 1fr;
-    gap: 1rem;
-    padding: 1.1rem 1.2rem;
+    gap: 1.4rem;
+    padding: 1.3rem 1.3rem 1.4rem;
+    background: rgba(8, 12, 22, 0.92);
+    border: 1px solid rgba(0, 224, 192, 0.3);
   }
-  .p-explainer__text { font-size: 1.02rem; }
-  .p-explainer__col { padding-left: 0.8rem; border-left: 2px solid rgba(0, 224, 192, 0.25); }
+  .p-explainer__col {
+    padding: 0.2rem 0 0.2rem 1rem;
+    border-left: 3px solid rgba(0, 224, 192, 0.45);
+    gap: 0.45rem;
+  }
+  .p-explainer__label {
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    color: #00e0c0;
+  }
+  .p-explainer__text {
+    font-size: 1.15rem;
+    line-height: 1.55;
+    color: #fff5e6;
+  }
 }
+@media (max-width: 480px) {
+  .p-explainer { padding: 1.1rem; }
+  .p-explainer__text { font-size: 1.1rem; }
+}
+
 
 
 /* ─── REDUCED MOTION ────────────────────────────────────────────────────────── */
