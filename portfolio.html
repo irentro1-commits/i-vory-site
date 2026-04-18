@@ -19,7 +19,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
 
-<!-- MOBILE PERFORMANCE PATCH v3 — tune lag without killing design -->
+
+<!-- MOBILE PERFORMANCE PATCH v4 — tune lag without killing design -->
 <style id="mobile-perf-patch">
 @media (max-width: 900px), (pointer: coarse) {
   /* KILL backdrop-filter only (the #1 scroll lag cause) */
@@ -32,6 +33,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   nav, .nav, #nav, .dock, .wa-float {
     background: rgba(5, 5, 5, 0.96) !important;
   }
+
+  /* HIDE hero video on mobile (empty black rectangle killer) */
+  .hero-video, #heroVideo, #hvVid, .hv-play, #hvPlay {
+    display: none !important;
+  }
+
+  /* Hide section s2 that only contained the hero video */
+  section.s2 .hero-video { display: none !important; }
 
   /* Reduce huge box-shadow blur to 15px max */
   .pk, .type-card, .proof-card, .faq-item, .contact-alt,
@@ -66,6 +75,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   window.MOBILE_DEVICE = true;
   document.addEventListener('DOMContentLoaded', function(){
     document.querySelectorAll('[id^="meteor"], [class^="meteor"]').forEach(function(el){el.remove();});
+    /* Also remove hero-video element entirely to free memory */
+    var hv = document.getElementById('heroVideo') || document.querySelector('.hero-video');
+    if (hv) hv.remove();
+    var hvVid = document.getElementById('hvVid');
+    if (hvVid) { hvVid.pause(); hvVid.remove(); }
   });
 })();
 </script>
