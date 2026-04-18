@@ -2,7 +2,7 @@
 <html lang="ro">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="format-detection" content="telephone=no">
 
 <title>Portofoliu — i-Vory Creative</title>
@@ -131,7 +131,7 @@ a { color: inherit; }
 main.pf-body {
   max-width: 1240px;
   margin: 0 auto;
-  padding: 0 2rem 4rem;
+  padding: 6.5rem 2rem 4rem;
   position: relative;
   z-index: 1;
 }
@@ -508,11 +508,18 @@ body.nav-hidden .dock { top: 14px; }
 /* ─── 9. PHOTO GRID ─────────────────────────────────────────────────────────── */
 .p-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 0.65rem;
 }
-.p-grid--wide    { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
-.p-grid--narrow  { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
+.p-grid--wide    { grid-template-columns: repeat(3, 1fr); }
+.p-grid--narrow  { grid-template-columns: repeat(5, 1fr); }
+
+/* On medium screens, fall to 3 cols */
+@media (max-width: 1100px) {
+  .p-grid { grid-template-columns: repeat(3, 1fr); }
+  .p-grid--wide { grid-template-columns: repeat(2, 1fr); }
+  .p-grid--narrow { grid-template-columns: repeat(4, 1fr); }
+}
 
 .p-grid img {
   width: 100%;
@@ -793,9 +800,11 @@ body.nav-hidden .dock { top: 14px; }
   .p-grid { gap: 0.5rem; }
 }
 
-@media (max-width: 560px) {
+/* ═════ MOBILE (<=900px): dock wrapped, no horizontal scroll, L3 hidden ═════ */
+@media (max-width: 900px) {
+  /* Dock: full-width, attached to top edge, wrap chips on multiple rows */
   .dock {
-    top: 64px;
+    top: 60px;
     left: 0;
     right: 0;
     width: 100%;
@@ -804,21 +813,77 @@ body.nav-hidden .dock { top: 14px; }
     border-right: none;
     border-top: none;
     border-radius: 0;
+    transform: none;
+    padding: 0;
   }
   body.nav-hidden .dock { top: 0; }
 
-  .dock__row { padding: 0.35rem 0.5rem; gap: 0.3rem; }
-  .dock__chip { padding: 0.35rem 0.75rem; font-size: 0.82rem; }
-  .dock__chip--l1 { font-size: 0.92rem; padding: 0.38rem 0.9rem; }
-  .dock__chip--l2 { font-size: 0.78rem; }
-  .dock__chip--l3 { font-size: 0.82rem; padding: 0.3rem 0.7rem; }
+  /* Each row wraps instead of scrolling horizontally */
+  .dock__row {
+    flex-wrap: wrap !important;
+    overflow-x: visible !important;
+    justify-content: center;
+    gap: 0.35rem;
+    padding: 0.4rem 0.5rem;
+  }
 
-  .hero { padding: 7.5rem 1rem 2rem; }
+  /* Chips compact but readable */
+  .dock__chip {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.78rem;
+    border-radius: 6px;
+  }
+  .dock__chip--l1 {
+    font-size: 0.88rem;
+    padding: 0.42rem 0.9rem;
+  }
+  .dock__chip--l2 {
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
+    padding: 0.38rem 0.7rem;
+  }
+
+  /* L3 row HIDDEN on mobile — user scrolls to section and sees variants inline */
+  .dock__row--l3 { display: none !important; }
+
+  /* Main content needs top padding so dock doesn't cover it */
+  main.pf-body {
+    padding-top: 6rem;
+  }
+  .hero {
+    padding: 8rem 1rem 1.5rem;
+  }
+  .p-sec {
+    scroll-margin-top: 180px;
+    margin: 1.5rem 0 2rem;
+  }
+  .p-sub {
+    scroll-margin-top: 180px;
+  }
+
+  /* Cosmic panels smaller on mobile */
   .p-sub::before, .p-sec-head::before { inset: -1.5rem -1rem; filter: blur(28px); }
   .p-sub::after,  .p-sec-head::after  { inset: -2.5rem -1.5rem; filter: blur(50px); }
-  .p-grid { grid-template-columns: repeat(2, 1fr); gap: 0.4rem; }
-  .p-grid--narrow { grid-template-columns: repeat(2, 1fr); }
-  .cta { padding: 3.5rem 1rem 4.5rem; }
+
+  /* Grid ALWAYS 2 cols mobile */
+  .p-grid,
+  .p-grid--narrow,
+  .p-grid--wide {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.4rem;
+  }
+
+  .cta { padding: 3rem 1rem 4rem; }
+}
+
+/* ═════ SMALL PHONES (<=480px) ═════ */
+@media (max-width: 480px) {
+  .dock__chip { font-size: 0.74rem; padding: 0.35rem 0.65rem; }
+  .dock__chip--l1 { font-size: 0.82rem; padding: 0.4rem 0.8rem; }
+  .dock__chip--l2 { font-size: 0.66rem; padding: 0.35rem 0.6rem; }
+
+  main.pf-body { padding-top: 5.5rem; }
+  .hero { padding: 7.5rem 0.75rem 1.5rem; }
 }
 
 
