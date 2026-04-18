@@ -780,6 +780,52 @@ body.nav-hidden .dock { top: 16px; }
 }
 
 
+/* ─── EXPLAINER (what-is-this-format, for non-technical users) ───────────── */
+.p-explainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.8rem;
+  margin: 1.5rem 0 0;
+  padding: 1.2rem;
+  background: rgba(8, 12, 22, 0.75);
+  border: 1px solid rgba(0, 224, 192, 0.15);
+  border-radius: var(--radius-md);
+  position: relative;
+  z-index: 2;
+}
+.p-explainer__col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.p-explainer__label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  opacity: 0.9;
+}
+.p-explainer__text {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  color: var(--text);
+  line-height: 1.45;
+  margin: 0;
+  font-variation-settings: "opsz" 48, "SOFT" 60;
+}
+@media (max-width: 700px) {
+  .p-explainer {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 1.1rem 1.2rem;
+  }
+  .p-explainer__text { font-size: 1.02rem; }
+  .p-explainer__col { padding-left: 0.8rem; border-left: 2px solid rgba(0, 224, 192, 0.25); }
+}
+
+
 /* ─── REDUCED MOTION ────────────────────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
@@ -870,7 +916,21 @@ body.nav-hidden .dock { top: 16px; }
       <div class="p-sec-head__crumb">Design · Carusel</div>
       <h2 class="p-sec-head__title">Carusel</h2>
       <p class="p-sec-head__lead"><em>Povestea curge pe șapte cadre.</em> Primul te prinde. Ultimul te ține.</p>
-    </div>
+      <div class="p-explainer" role="region" aria-label="Explicație format">
+        <div class="p-explainer__col">
+          <span class="p-explainer__label">Ce e</span>
+          <p class="p-explainer__text">Carusel = mai multe imagini în aceeași postare. Dai swipe să le vezi.</p>
+        </div>
+        <div class="p-explainer__col">
+          <span class="p-explainer__label">Când folosești</span>
+          <p class="p-explainer__text">Când ai o poveste sau o explicație care nu încape într-o singură poză.</p>
+        </div>
+        <div class="p-explainer__col">
+          <span class="p-explainer__label">Unde apare</span>
+          <p class="p-explainer__text">Instagram, Facebook, LinkedIn, TikTok. Oriunde.</p>
+        </div>
+      </div>
+        </div>
       <article class="p-sub" id="car-educational">
         <div class="p-axis">
           <div class="p-axis-row axis-l1"><span class="p-axis-sym">I</span><span class="p-axis-name">Design</span></div>
@@ -1002,7 +1062,21 @@ body.nav-hidden .dock { top: 16px; }
       <div class="p-sec-head__crumb">Design · Post</div>
       <h2 class="p-sec-head__title">Post</h2>
       <p class="p-sec-head__lead"><em>Un cadru. Poate două.</em> Nu ai timp să spui mai mult și nici el nu are timp să asculte.</p>
-    </div>
+      <div class="p-explainer" role="region" aria-label="Explicație format">
+        <div class="p-explainer__col">
+          <span class="p-explainer__label">Ce e</span>
+          <p class="p-explainer__text">Post = o singură imagine. Cea care apare în feed.</p>
+        </div>
+        <div class="p-explainer__col">
+          <span class="p-explainer__label">Când folosești</span>
+          <p class="p-explainer__text">Când ai un singur mesaj și vrei să-l spui direct, fără explicații lungi.</p>
+        </div>
+        <div class="p-explainer__col">
+          <span class="p-explainer__label">Unde apare</span>
+          <p class="p-explainer__text">Instagram, Facebook, LinkedIn.</p>
+        </div>
+      </div>
+        </div>
       <article class="p-sub" id="post-emotional">
         <div class="p-axis">
           <div class="p-axis-row axis-l1"><span class="p-axis-sym">I</span><span class="p-axis-name">Design</span></div>
@@ -1021,7 +1095,21 @@ body.nav-hidden .dock { top: 16px; }
       <div class="p-sec-head__crumb">Design · E-commerce</div>
       <h2 class="p-sec-head__title">E-commerce</h2>
       <p class="p-sec-head__lead"><em>De la landing la raft.</em> Fiecare imagine știe unde duce clicul.</p>
-    </div>
+      <div class="p-explainer" role="region" aria-label="Explicație format">
+        <div class="p-explainer__col">
+          <span class="p-explainer__label">Ce e</span>
+          <p class="p-explainer__text">Poze de produs pentru magazin online.</p>
+        </div>
+        <div class="p-explainer__col">
+          <span class="p-explainer__label">Când folosești</span>
+          <p class="p-explainer__text">Când vinzi ceva și omul trebuie să vadă produsul înainte să cumpere.</p>
+        </div>
+        <div class="p-explainer__col">
+          <span class="p-explainer__label">Unde apare</span>
+          <p class="p-explainer__text">Site-ul tău, eMAG, Shopify, Google Shopping, landing pages.</p>
+        </div>
+      </div>
+        </div>
       <article class="p-sub" id="ec-product-hero">
         <div class="p-axis">
           <div class="p-axis-row axis-l1"><span class="p-axis-sym">I</span><span class="p-axis-name">Design</span></div>
@@ -1157,7 +1245,21 @@ body.nav-hidden .dock { top: 16px; }
       <div class="p-sec-head__crumb">Video · Cinematic</div>
       <h2 class="p-sec-head__title">Cinematic</h2>
       <p class="p-sec-head__lead"><em>Orașul e al lor.</em> Filmăm felul în care îl ocupă. Brandul apare fără să anunțe.</p>
-    </div>
+      <div class="p-explainer" role="region" aria-label="Explicație format">
+        <div class="p-explainer__col">
+          <span class="p-explainer__label">Ce e</span>
+          <p class="p-explainer__text">Video lung și elegant, ca un clip de brand.</p>
+        </div>
+        <div class="p-explainer__col">
+          <span class="p-explainer__label">Când folosești</span>
+          <p class="p-explainer__text">Când vrei ca oamenii să simtă atmosfera, nu doar să vadă produsul.</p>
+        </div>
+        <div class="p-explainer__col">
+          <span class="p-explainer__label">Unde apare</span>
+          <p class="p-explainer__text">YouTube, pagina principală a site-ului, reclame premium.</p>
+        </div>
+      </div>
+        </div>
       <div class="p-sub">
         <div class="p-axis">
           <div class="p-axis-row axis-l1"><span class="p-axis-sym">II</span><span class="p-axis-name">Video</span></div>
@@ -1177,7 +1279,21 @@ body.nav-hidden .dock { top: 16px; }
       <div class="p-sec-head__crumb">Video · Animație</div>
       <h2 class="p-sec-head__title">Animație</h2>
       <p class="p-sec-head__lead"><em>Liniile dansează singure.</em> Cadru după cadru, fără pauze, până înțelegi unde dai click.</p>
-    </div>
+      <div class="p-explainer" role="region" aria-label="Explicație format">
+        <div class="p-explainer__col">
+          <span class="p-explainer__label">Ce e</span>
+          <p class="p-explainer__text">Video făcut din desene și grafică mișcătoare (motion graphics).</p>
+        </div>
+        <div class="p-explainer__col">
+          <span class="p-explainer__label">Când folosești</span>
+          <p class="p-explainer__text">Când ai un produs nou și vrei să-l explici simplu, cu elemente vizuale clare.</p>
+        </div>
+        <div class="p-explainer__col">
+          <span class="p-explainer__label">Unde apare</span>
+          <p class="p-explainer__text">Instagram Reels, TikTok, pagini de produs.</p>
+        </div>
+      </div>
+        </div>
       <div class="p-sub">
         <div class="p-axis">
           <div class="p-axis-row axis-l1"><span class="p-axis-sym">II</span><span class="p-axis-name">Video</span></div>
@@ -1197,7 +1313,21 @@ body.nav-hidden .dock { top: 16px; }
       <div class="p-sec-head__crumb">Video · Promoțional</div>
       <h2 class="p-sec-head__title">Promoțional</h2>
       <p class="p-sec-head__lead"><em>Apa curge. Pisica bea. Tu te uiți.</em> Primele două secunde decid restul.</p>
-    </div>
+      <div class="p-explainer" role="region" aria-label="Explicație format">
+        <div class="p-explainer__col">
+          <span class="p-explainer__label">Ce e</span>
+          <p class="p-explainer__text">Video scurt (15–30 secunde), ritm rapid, primele 2 secunde te prind.</p>
+        </div>
+        <div class="p-explainer__col">
+          <span class="p-explainer__label">Când folosești</span>
+          <p class="p-explainer__text">Când vrei ajungere rapidă la mulți oameni și engagement direct.</p>
+        </div>
+        <div class="p-explainer__col">
+          <span class="p-explainer__label">Unde apare</span>
+          <p class="p-explainer__text">TikTok, Instagram Reels, YouTube Shorts.</p>
+        </div>
+      </div>
+        </div>
       <div class="p-sub">
         <div class="p-axis">
           <div class="p-axis-row axis-l1"><span class="p-axis-sym">II</span><span class="p-axis-name">Video</span></div>
@@ -1217,7 +1347,21 @@ body.nav-hidden .dock { top: 16px; }
       <div class="p-sec-head__crumb">Video · ASMR</div>
       <h2 class="p-sec-head__title">ASMR</h2>
       <p class="p-sec-head__lead"><em>Doar sunete reale.</em> Pisica, apa, blana pe podea. Nimic peste, nimic sub.</p>
-    </div>
+      <div class="p-explainer" role="region" aria-label="Explicație format">
+        <div class="p-explainer__col">
+          <span class="p-explainer__label">Ce e</span>
+          <p class="p-explainer__text">Video cu sunete reale amplificate (apa, materialele, produsul în uz).</p>
+        </div>
+        <div class="p-explainer__col">
+          <span class="p-explainer__label">Când folosești</span>
+          <p class="p-explainer__text">Când produsul tău are o calitate senzorială — sunet, textură, mișcare.</p>
+        </div>
+        <div class="p-explainer__col">
+          <span class="p-explainer__label">Unde apare</span>
+          <p class="p-explainer__text">TikTok, Instagram Reels. Algoritmul le iubește.</p>
+        </div>
+      </div>
+        </div>
       <div class="p-sub">
         <div class="p-axis">
           <div class="p-axis-row axis-l1"><span class="p-axis-sym">II</span><span class="p-axis-name">Video</span></div>
@@ -1237,7 +1381,21 @@ body.nav-hidden .dock { top: 16px; }
       <div class="p-sec-head__crumb">Video · Before/After</div>
       <h2 class="p-sec-head__title">Before/After</h2>
       <p class="p-sec-head__lead"><em>Ce era. Ce a devenit.</em> Fotografiat onest, fără efecte, fără promisiuni. Doar pacientul și timpul.</p>
-    </div>
+      <div class="p-explainer" role="region" aria-label="Explicație format">
+        <div class="p-explainer__col">
+          <span class="p-explainer__label">Ce e</span>
+          <p class="p-explainer__text">Video cu rezultatul înainte și după. Fotografiat onest, fără filtre.</p>
+        </div>
+        <div class="p-explainer__col">
+          <span class="p-explainer__label">Când folosești</span>
+          <p class="p-explainer__text">Când vinzi un serviciu care dă rezultate vizibile (medical, estetic, renovări).</p>
+        </div>
+        <div class="p-explainer__col">
+          <span class="p-explainer__label">Unde apare</span>
+          <p class="p-explainer__text">Site, Instagram, consultații. Funcționează ca proof absolut.</p>
+        </div>
+      </div>
+        </div>
       <div class="p-sub">
         <div class="p-axis">
           <div class="p-axis-row axis-l1"><span class="p-axis-sym">II</span><span class="p-axis-name">Video</span></div>
