@@ -32,6 +32,93 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-ND5ZF7NB');</script>
 <!-- End Google Tag Manager -->
+
+<!-- MOBILE PERFORMANCE PATCH — disables heavy GPU effects on phones to kill scroll jank -->
+<style id="mobile-perf-patch">
+@media (max-width: 900px), (pointer: coarse) {
+  /* 1. KILL backdrop-filter — #1 scroll lag culprit on mobile */
+  *, *::before, *::after {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  /* Replace glass/blur backgrounds with solid dark */
+  nav, .nav, header nav, #nav, .dock, .wa-float, .footer-nav {
+    background: rgba(5, 5, 5, 0.96) !important;
+  }
+
+  /* 2. KILL filter: blur() on decorative layers — cosmic panels, ambients, etc. */
+  [class*="cosmic"]::before, [class*="cosmic"]::after,
+  .p-sub::before, .p-sub::after,
+  .p-sec-head::before, .p-sec-head::after,
+  .ambient, .ambient-bg, body::before, body::after,
+  [class*="blur-bg"], [class*="glow"] {
+    filter: none !important;
+    animation: none !important;
+    display: none !important;
+  }
+
+  /* 3. TAME body background — remove multiple gradients, flat dark only */
+  body {
+    background: #040610 !important;
+    background-attachment: scroll !important;
+  }
+
+  /* 4. REDUCE box-shadow blur radius — cut GPU cost ~50% */
+  .pk, .type-card, .proof-card, .faq-item, .contact-alt,
+  .card, .testim, button, .nc, .dock__chip.is-active {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4) !important;
+  }
+
+  /* 5. DISABLE non-essential animations on mobile */
+  [class*="float-"], [class*="orbit"], [class*="pulse"],
+  [class*="spin"], [class*="shimmer"], [class*="breathe"] {
+    animation: none !important;
+  }
+
+  /* 6. HIDE meteor cursor on mobile — irrelevant, wastes JS */
+  #meteor-cursor, #meteor-flame, #meteor-flame2, #meteor-flame3,
+  .meteor-cursor, [id^="meteor"] {
+    display: none !important;
+  }
+
+  /* 7. content-visibility for below-fold sections — browser skips rendering until scrolled into view */
+  section:not(#hero):not(.hero):not(:first-of-type),
+  .p-sec, .blog-card, .case-card {
+    content-visibility: auto;
+    contain-intrinsic-size: 800px;
+  }
+
+  /* 8. Reduce transitions (keep only hover essentials) */
+  * {
+    transition-duration: 0.15s !important;
+  }
+
+  /* 9. Kill will-change abuse */
+  [style*="will-change"] { will-change: auto !important; }
+}
+
+/* Respect reduced motion - if user has it on, kill EVERYTHING animated */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    backdrop-filter: none !important;
+  }
+}
+</style>
+<script id="mobile-perf-js">
+/* Disable meteor cursor + premium-fx on touch devices */
+(function(){
+  if (window.matchMedia('(pointer: coarse)').matches || window.innerWidth <= 900) {
+    window.MOBILE_DEVICE = true;
+    // Remove meteor cursor script tag before it runs
+    document.addEventListener('DOMContentLoaded', function(){
+      document.querySelectorAll('[id^="meteor"]').forEach(function(el){el.remove();});
+    });
+  }
+})();
+</script>
 </head><body>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-ND5ZF7NB"
