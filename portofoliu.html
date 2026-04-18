@@ -116,39 +116,39 @@ main.pf-body {
 }
 
 
-/* ─── 4. NAVBAR ─────────────────────────────────────────────────────────────── */
-.nav {
+/* ─── 4. NAVBAR (aligned with index.html — .nl .nk .nc .ham) ──────────────── */
+nav {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 100;
+  padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
-  background: rgba(4, 6, 14, 0.85);
-  backdrop-filter: blur(20px) saturate(1.3);
-  -webkit-backdrop-filter: blur(20px) saturate(1.3);
+  background: rgba(5, 5, 5, 0.75);
+  backdrop-filter: blur(20px) saturate(1.5);
+  -webkit-backdrop-filter: blur(20px) saturate(1.5);
   border-bottom: 1px solid var(--border);
   transition: transform var(--t-med) ease, opacity var(--t-med) ease;
 }
-.nav.nav-hidden {
+nav.nav-hidden {
   transform: translateY(-100%);
   opacity: 0;
   pointer-events: none;
 }
-
-.nav__logo img { height: 42px; filter: drop-shadow(0 0 12px rgba(0, 224, 192, 0.4)); }
-
-.nav__links {
+.nl { display: flex; align-items: center; text-decoration: none; }
+.nl img { height: 42px; filter: drop-shadow(0 0 12px rgba(0, 224, 192, 0.4)); }
+.nk {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
   list-style: none;
   margin: 0;
   padding: 0;
-  display: flex;
-  gap: 1.8rem;
 }
-.nav__links a {
+.nk a {
   color: var(--text-mute);
   text-decoration: none;
   font-family: var(--font-mono);
@@ -158,25 +158,34 @@ main.pf-body {
   text-transform: uppercase;
   transition: color var(--t-fast);
 }
-.nav__links a:hover,
-.nav__links a.is-active { color: var(--accent); }
-
-.nav__cta {
-  background: var(--accent);
-  color: var(--bg);
-  padding: 0.55rem 1.1rem;
+.nk a:hover { color: var(--text); }
+.nc {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: linear-gradient(135deg, #ff9a3d, #ffb86b);
+  color: #1a0a00;
+  padding: 0.7rem 1.3rem;
   border-radius: 100px;
-  text-decoration: none;
   font-family: var(--font-mono);
-  font-weight: 600;
-  font-size: 0.78rem;
-  letter-spacing: 0.06em;
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+  text-decoration: none;
   transition: transform var(--t-fast), box-shadow var(--t-fast);
+  box-shadow: 0 8px 24px rgba(255, 154, 61, 0.25);
 }
-.nav__cta:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 8px 24px rgba(0, 224, 192, 0.35);
+.nc:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(255, 154, 61, 0.4);
 }
+.ham {
+  display: none;
+  background: none;
+  border: none;
+  padding: 6px;
+}
+.ham svg { stroke: var(--text); }
 
 
 /* ─── 5. DOCK ───────────────────────────────────────────────────────────────── */
@@ -741,8 +750,9 @@ body.nav-hidden .dock { top: 16px; }
 /* ─── 15. RESPONSIVE ────────────────────────────────────────────────────────── */
 @media (max-width: 900px) {
   main.pf-body { padding: 0 1.25rem 3rem; }
-  .nav { padding: 0.8rem 1.25rem; }
-  .nav__links, .nav__cta { display: none; }
+  nav { padding: 0.7rem 1.2rem; }
+  .nk, .nc { display: none !important; }
+  .ham { display: block; }
   .hero { padding: 9rem 1rem 2rem; }
   .p-sec-head { padding: 1rem 1rem 0.5rem; }
   .p-sub { padding: 1.6rem 1rem 2rem; margin-bottom: 2.4rem; }
@@ -840,18 +850,25 @@ body.nav-hidden .dock { top: 16px; }
 
 
 <!-- ─── NAVBAR ─────────────────────────────────────────────────────────────── -->
-<nav class="nav" id="nav">
-  <a href="/" class="nav__logo" aria-label="i-Vory Creative">
-    <img src="logo-nav.svg?v=4" alt="i-Vory Creative">
+<nav id="nav">
+  <a class="nl" href="/" style="display:flex;align-items:center;text-decoration:none;padding:.2rem 0">
+    <img src="logo-nav.svg?v=4" alt="i-Vory Creative" style="height:48px;width:auto;display:block;filter:drop-shadow(0 0 14px rgba(0,224,192,.45))">
   </a>
-  <ul class="nav__links">
-    <li><a href="/portofoliu.html" class="is-active">Portofoliu</a></li>
+  <ul class="nk">
+    <li><a href="/portofoliu.html" style="color:#ff9a3d;font-weight:800">Portofoliu</a></li>
     <li><a href="/#servicii">Servicii</a></li>
     <li><a href="/#pachete">Pachete</a></li>
     <li><a href="/#contact">Contact</a></li>
     <li><a href="/blog/">Blog</a></li>
   </ul>
-  <a href="https://api.whatsapp.com/send/?phone=40775579706" target="_blank" rel="noopener" class="nav__cta">WhatsApp →</a>
+  <a href="https://api.whatsapp.com/send/?phone=40775579706" class="nc" target="_blank" rel="noopener">WhatsApp →</a>
+  <button class="ham" id="ham" aria-label="Menu">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round">
+      <line x1="3" y1="7" x2="21" y2="7"/>
+      <line x1="3" y1="12" x2="21" y2="12"/>
+      <line x1="3" y1="17" x2="21" y2="17"/>
+    </svg>
+  </button>
 </nav>
 
 
@@ -919,15 +936,15 @@ body.nav-hidden .dock { top: 16px; }
       <div class="p-explainer" role="region" aria-label="Explicație format">
         <div class="p-explainer__col">
           <span class="p-explainer__label">Ce e</span>
-          <p class="p-explainer__text">Carusel = mai multe imagini în aceeași postare. Dai swipe să le vezi.</p>
+          <p class="p-explainer__text">Mai multe imagini puse una după alta într-o singură postare. Oamenii dau pe ele cu degetul să le vadă pe rând, ca la un diafilm.</p>
         </div>
         <div class="p-explainer__col">
           <span class="p-explainer__label">Când folosești</span>
-          <p class="p-explainer__text">Când ai o poveste sau o explicație care nu încape într-o singură poză.</p>
+          <p class="p-explainer__text">Când ai mai multe lucruri de spus și nu încap într-o singură poză.</p>
         </div>
         <div class="p-explainer__col">
           <span class="p-explainer__label">Unde apare</span>
-          <p class="p-explainer__text">Instagram, Facebook, LinkedIn, TikTok. Oriunde.</p>
+          <p class="p-explainer__text">Pe Instagram, Facebook, LinkedIn, TikTok. Oriunde postezi, încape.</p>
         </div>
       </div>
         </div>
@@ -1065,15 +1082,15 @@ body.nav-hidden .dock { top: 16px; }
       <div class="p-explainer" role="region" aria-label="Explicație format">
         <div class="p-explainer__col">
           <span class="p-explainer__label">Ce e</span>
-          <p class="p-explainer__text">Post = o singură imagine. Cea care apare în feed.</p>
+          <p class="p-explainer__text">O singură imagine pe care omul o vede când îți deschide pagina sau derulează pe telefon.</p>
         </div>
         <div class="p-explainer__col">
           <span class="p-explainer__label">Când folosești</span>
-          <p class="p-explainer__text">Când ai un singur mesaj și vrei să-l spui direct, fără explicații lungi.</p>
+          <p class="p-explainer__text">Când ai un singur lucru de spus și vrei să-l spui direct, fără poveste lungă.</p>
         </div>
         <div class="p-explainer__col">
           <span class="p-explainer__label">Unde apare</span>
-          <p class="p-explainer__text">Instagram, Facebook, LinkedIn.</p>
+          <p class="p-explainer__text">Pe Instagram, Facebook sau LinkedIn. Apare pe pagina ta și la oamenii care te urmăresc atunci când deschid aplicația.</p>
         </div>
       </div>
         </div>
@@ -1098,15 +1115,15 @@ body.nav-hidden .dock { top: 16px; }
       <div class="p-explainer" role="region" aria-label="Explicație format">
         <div class="p-explainer__col">
           <span class="p-explainer__label">Ce e</span>
-          <p class="p-explainer__text">Poze de produs pentru magazin online.</p>
+          <p class="p-explainer__text">Poze cu produsul tău pentru magazinul online.</p>
         </div>
         <div class="p-explainer__col">
           <span class="p-explainer__label">Când folosești</span>
-          <p class="p-explainer__text">Când vinzi ceva și omul trebuie să vadă produsul înainte să cumpere.</p>
+          <p class="p-explainer__text">Când vinzi ceva pe internet. Omul vrea să vadă bine produsul înainte să plătească.</p>
         </div>
         <div class="p-explainer__col">
           <span class="p-explainer__label">Unde apare</span>
-          <p class="p-explainer__text">Site-ul tău, eMAG, Shopify, Google Shopping, landing pages.</p>
+          <p class="p-explainer__text">Pe site-ul tău, pe eMAG, în Google când caută cineva produsul.</p>
         </div>
       </div>
         </div>
@@ -1248,15 +1265,15 @@ body.nav-hidden .dock { top: 16px; }
       <div class="p-explainer" role="region" aria-label="Explicație format">
         <div class="p-explainer__col">
           <span class="p-explainer__label">Ce e</span>
-          <p class="p-explainer__text">Video lung și elegant, ca un clip de brand.</p>
+          <p class="p-explainer__text">Un filmuleț cu atmosferă, făcut frumos, ca o mică reclamă de televizor.</p>
         </div>
         <div class="p-explainer__col">
           <span class="p-explainer__label">Când folosești</span>
-          <p class="p-explainer__text">Când vrei ca oamenii să simtă atmosfera, nu doar să vadă produsul.</p>
+          <p class="p-explainer__text">Când vrei ca oamenii să simtă ceva, nu doar să vadă produsul. Funcționează la branduri care vor imagine premium.</p>
         </div>
         <div class="p-explainer__col">
           <span class="p-explainer__label">Unde apare</span>
-          <p class="p-explainer__text">YouTube, pagina principală a site-ului, reclame premium.</p>
+          <p class="p-explainer__text">Pe YouTube, pe prima pagină a site-ului, sau în reclame plătite pe Facebook și Instagram.</p>
         </div>
       </div>
         </div>
@@ -1282,15 +1299,15 @@ body.nav-hidden .dock { top: 16px; }
       <div class="p-explainer" role="region" aria-label="Explicație format">
         <div class="p-explainer__col">
           <span class="p-explainer__label">Ce e</span>
-          <p class="p-explainer__text">Video făcut din desene și grafică mișcătoare (motion graphics).</p>
+          <p class="p-explainer__text">Un filmuleț făcut din desene care se mișcă. Ca un mic desen animat care explică ceva.</p>
         </div>
         <div class="p-explainer__col">
           <span class="p-explainer__label">Când folosești</span>
-          <p class="p-explainer__text">Când ai un produs nou și vrei să-l explici simplu, cu elemente vizuale clare.</p>
+          <p class="p-explainer__text">Când ai ceva nou de explicat și vrei ca oamenii să înțeleagă rapid, fără text mult.</p>
         </div>
         <div class="p-explainer__col">
           <span class="p-explainer__label">Unde apare</span>
-          <p class="p-explainer__text">Instagram Reels, TikTok, pagini de produs.</p>
+          <p class="p-explainer__text">Pe Instagram, pe TikTok, sau pe pagina produsului tău când cineva vrea să vadă cum funcționează.</p>
         </div>
       </div>
         </div>
@@ -1316,15 +1333,15 @@ body.nav-hidden .dock { top: 16px; }
       <div class="p-explainer" role="region" aria-label="Explicație format">
         <div class="p-explainer__col">
           <span class="p-explainer__label">Ce e</span>
-          <p class="p-explainer__text">Video scurt (15–30 secunde), ritm rapid, primele 2 secunde te prind.</p>
+          <p class="p-explainer__text">Un filmuleț scurt de 15 până la 30 de secunde. Trebuie să prindă omul din primele 2 secunde, altfel îl trece.</p>
         </div>
         <div class="p-explainer__col">
           <span class="p-explainer__label">Când folosești</span>
-          <p class="p-explainer__text">Când vrei ajungere rapidă la mulți oameni și engagement direct.</p>
+          <p class="p-explainer__text">Când vrei să ajungi repede la mulți oameni. Bun pentru oferte, reduceri, anunțuri rapide.</p>
         </div>
         <div class="p-explainer__col">
           <span class="p-explainer__label">Unde apare</span>
-          <p class="p-explainer__text">TikTok, Instagram Reels, YouTube Shorts.</p>
+          <p class="p-explainer__text">Pe TikTok, pe Instagram (la secțiunea de filmulețe scurte) și pe YouTube (la Shorts).</p>
         </div>
       </div>
         </div>
@@ -1350,15 +1367,15 @@ body.nav-hidden .dock { top: 16px; }
       <div class="p-explainer" role="region" aria-label="Explicație format">
         <div class="p-explainer__col">
           <span class="p-explainer__label">Ce e</span>
-          <p class="p-explainer__text">Video cu sunete reale amplificate (apa, materialele, produsul în uz).</p>
+          <p class="p-explainer__text">Un filmuleț în care se aud foarte clar sunetele reale — apa care curge, materialul care se mișcă, produsul folosit. Fără muzică, fără voce.</p>
         </div>
         <div class="p-explainer__col">
           <span class="p-explainer__label">Când folosești</span>
-          <p class="p-explainer__text">Când produsul tău are o calitate senzorială — sunet, textură, mișcare.</p>
+          <p class="p-explainer__text">Când produsul tău are ceva plăcut de ascultat sau de privit în detaliu. Oamenii se uită la astfel de filmulețe ore întregi.</p>
         </div>
         <div class="p-explainer__col">
           <span class="p-explainer__label">Unde apare</span>
-          <p class="p-explainer__text">TikTok, Instagram Reels. Algoritmul le iubește.</p>
+          <p class="p-explainer__text">Pe TikTok și pe Instagram. Astfel de filmulețe sunt arătate la mai mulți oameni automat.</p>
         </div>
       </div>
         </div>
@@ -1384,15 +1401,15 @@ body.nav-hidden .dock { top: 16px; }
       <div class="p-explainer" role="region" aria-label="Explicație format">
         <div class="p-explainer__col">
           <span class="p-explainer__label">Ce e</span>
-          <p class="p-explainer__text">Video cu rezultatul înainte și după. Fotografiat onest, fără filtre.</p>
+          <p class="p-explainer__text">Un filmuleț care arată cum era ceva înainte și cum a devenit după. Făcut cinstit, fără să umflăm realitatea.</p>
         </div>
         <div class="p-explainer__col">
           <span class="p-explainer__label">Când folosești</span>
-          <p class="p-explainer__text">Când vinzi un serviciu care dă rezultate vizibile (medical, estetic, renovări).</p>
+          <p class="p-explainer__text">Când faci un serviciu care schimbă ceva vizibil — un tratament medical, o estetică, o renovare, o reparație.</p>
         </div>
         <div class="p-explainer__col">
           <span class="p-explainer__label">Unde apare</span>
-          <p class="p-explainer__text">Site, Instagram, consultații. Funcționează ca proof absolut.</p>
+          <p class="p-explainer__text">Pe site, pe Instagram, sau le arăți oamenilor când vin la tine. Dovada cea mai puternică că funcționează ce faci.</p>
         </div>
       </div>
         </div>
