@@ -99,7 +99,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   });
 })();
 </script>
+<!-- U4: View Transitions API (cross-document fade) -->
+<meta name="view-transition" content="same-origin">
+<style id="u4-vt-css">@view-transition{navigation:auto}::view-transition-old(root),::view-transition-new(root){animation-duration:.35s}</style>
+<!-- U6: Brand loader (first-paint FOUC guard, session-scoped) -->
+<style id="u6-loader-css">#u6-loader{position:fixed;inset:0;z-index:99999;background:#04060e;display:flex;align-items:center;justify-content:center;transition:opacity .42s cubic-bezier(.4,0,.2,1);pointer-events:none}#u6-loader.u6-out{opacity:0}#u6-loader .u6-dot{width:14px;height:14px;border-radius:50%;background:#00e0c0;box-shadow:0 0 24px 4px rgba(0,224,192,.6),0 0 60px 12px rgba(0,224,192,.25);animation:u6-p 1.4s cubic-bezier(.4,0,.6,1) infinite}@keyframes u6-p{0%,100%{opacity:.55;transform:scale(.92)}50%{opacity:1;transform:scale(1.08)}}@media (prefers-reduced-motion:reduce){#u6-loader .u6-dot{animation:none;opacity:.85}}</style>
 </head><body>
+<!-- U6: Brand loader (first body element — paints before everything else) -->
+<div id="u6-loader" aria-hidden="true"><span class="u6-dot"></span></div>
+<script>(function(){var ld=document.getElementById("u6-loader");if(!ld)return;if(sessionStorage.getItem("__u6")){ld.parentNode&&ld.parentNode.removeChild(ld);return}sessionStorage.setItem("__u6","1");var hide=function(){if(!ld.parentNode)return;ld.classList.add("u6-out");setTimeout(function(){ld.parentNode&&ld.parentNode.removeChild(ld)},440)};Promise.all([new Promise(function(r){if(document.readyState==="complete")r();else window.addEventListener("load",r,{once:true})}),(document.fonts&&document.fonts.ready)?document.fonts.ready:Promise.resolve()]).then(function(){setTimeout(hide,150)});setTimeout(hide,3500)})();</script>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-ND5ZF7NB"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -163,5 +171,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 
 <script>(function(){if(window.matchMedia("(pointer:coarse)").matches||window.innerWidth<=900)return;var s=document.createElement("script");s.src="/meteor-cursor.js";s.defer=true;document.head.appendChild(s);})();</script><!-- was: meteor-cursor.js -->
+<script src="/u4-transitions.js" defer></script>
 <script src="/gtm-events.js" defer></script>
 </body></html>
