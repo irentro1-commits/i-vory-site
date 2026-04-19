@@ -1703,7 +1703,7 @@ const galaxyMat=new THREE.ShaderMaterial({
 const galaxy=new THREE.Mesh(galaxyGeo,galaxyMat);
 galaxy.position.set(28,14,-40);
 galaxy.rotation.z=.3;
-scene.add(galaxy);
+if(!window.__IS_MOBILE)scene.add(galaxy);
 
 // ========== RED NEBULA (Eagle/Carina style) ==========
 const redNebGeo=new THREE.PlaneGeometry(60,60);
@@ -1735,7 +1735,7 @@ const redNebMat=new THREE.ShaderMaterial({
 const redNeb=new THREE.Mesh(redNebGeo,redNebMat);
 redNeb.position.set(-22,-12,-35);
 redNeb.rotation.z=-.4;
-scene.add(redNeb);
+if(!window.__IS_MOBILE)scene.add(redNeb);
 
 // ========== ANDROMEDA-STYLE DISTANT GALAXY ==========
 const androGeo=new THREE.PlaneGeometry(50,25);
@@ -1766,7 +1766,7 @@ const androMat=new THREE.ShaderMaterial({
 const andromeda=new THREE.Mesh(androGeo,androMat);
 andromeda.position.set(-35,18,-50);
 andromeda.rotation.z=.6;
-scene.add(andromeda);
+if(!window.__IS_MOBILE)scene.add(andromeda);
 
 // ========== MARS (bottom-right, small) ==========
 const marsGeo=new THREE.SphereGeometry(.6,32,32);
@@ -1945,10 +1945,10 @@ const nebulaMat=new THREE.ShaderMaterial({
 });
 const nebula=new THREE.Mesh(nebulaGeo,nebulaMat);
 nebula.position.z=-30;
-scene.add(nebula);
+if(!window.__IS_MOBILE)scene.add(nebula);
 
-// Particle field — 4000 particles forming a cloud
-const particleCount=4000;
+// Particle field — 4000 particles forming a cloud (U12b: 1200 on mobile)
+const particleCount=window.__IS_MOBILE?1200:4000;
 const positions=new Float32Array(particleCount*3);
 const colors=new Float32Array(particleCount*3);
 const sizes=new Float32Array(particleCount);
@@ -2009,7 +2009,7 @@ const particles=new THREE.Points(geometry,particleMaterial);
 scene.add(particles);
 
 // ========== DEEP SPACE STARFIELD ==========
-const starCount=window.__LOW_PERF?4500:5500;
+const starCount=window.__IS_MOBILE?1500:(window.__LOW_PERF?4500:5500);
 const starPos=new Float32Array(starCount*3);
 const starCol=new Float32Array(starCount*3);
 const starSize=new Float32Array(starCount);
@@ -2051,13 +2051,16 @@ scene.add(stars);
 
 stepPre(.85,4);
 
+// U12b mobile-lite: skip elephant + glow + bloom on mobile
+let elephantGroup=null,scaleF=1,glowMat=null,glowMesh=null;
+if(!window.__IS_MOBILE){
 // ========== ELEPHANT 3D EXTRUDED FROM SVG ==========
 const {SVGLoader}=await import('three/addons/loaders/SVGLoader.js');
 const svgText=window.__LOGO_SVG_B64?atob(window.__LOGO_SVG_B64):'';
 const svgLoader=new SVGLoader();
 const svgData=svgLoader.parse(svgText);
 
-const elephantGroup=new THREE.Group();
+elephantGroup=new THREE.Group();
 const extrudeSettings={depth:40,bevelEnabled:true,bevelThickness:2,bevelSize:1,bevelSegments:2,steps:1};
 
 // Metallic teal material with emissive glow for bloom to catch
@@ -2104,7 +2107,7 @@ const center=box.getCenter(new THREE.Vector3());
 const size=box.getSize(new THREE.Vector3());
 const maxDim=Math.max(size.x,size.y);
 const targetSize=window.__IS_MOBILE?2.8:2.3;
-const scaleF=targetSize/maxDim;
+scaleF=targetSize/maxDim;
 elephantGroup.children.forEach(m=>{
   m.geometry.translate(-center.x,-center.y,-20);
   m.position.z=-1;
@@ -2115,28 +2118,32 @@ scene.add(elephantGroup);
 
 // Glow backdrop
 const glowGeo=new THREE.CircleGeometry(4.5,64);
-const glowMat=new THREE.ShaderMaterial({
+glowMat=new THREE.ShaderMaterial({
   uniforms:{time:{value:0}},
   vertexShader:'varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}',
   fragmentShader:'varying vec2 vUv;uniform float time;void main(){vec2 c=vUv-vec2(.5);float d=length(c);float pulse=.5+.5*sin(time*1.2);float a=smoothstep(.5,0.,d)*(.12+pulse*.08);gl_FragColor=vec4(0.,.88,.75,a);}',
   transparent:true,depthWrite:false,blending:THREE.AdditiveBlending
 });
-const glowMesh=new THREE.Mesh(glowGeo,glowMat);
+glowMesh=new THREE.Mesh(glowGeo,glowMat);
 glowMesh.position.z=-3;
 scene.add(glowMesh);
+} // end U12b !MOB elephant+glow block
 
 // Mouse + scroll state
 let mouseX=0,mouseY=0,targetMouseX=0,targetMouseY=0,scrollProg=0;
 window.addEventListener('mousemove',e=>{targetMouseX=(e.clientX/window.innerWidth-.5)*2;targetMouseY=(e.clientY/window.innerHeight-.5)*2},{passive:true});
 window.addEventListener('scroll',()=>{const pr=document.getElementById('prob');if(!pr)return;const r=pr.getBoundingClientRect();const tot=pr.offsetHeight-window.innerHeight;scrollProg=Math.max(0,Math.min(1,-r.top/tot))},{passive:true});
 
-// Add render + bloom passes now that scene has content
+// Add render + bloom passes now that scene has content (U12b: skip on mobile)
+let bloomPass=null;
+if(!window.__IS_MOBILE){
 composer.addPass(new RenderPass(scene,camera));
-const bloomPass=new UnrealBloomPass(new THREE.Vector2(container.clientWidth,container.clientHeight),0.7,0.9,0.2);
+bloomPass=new UnrealBloomPass(new THREE.Vector2(container.clientWidth,container.clientHeight),0.7,0.9,0.2);
 bloomPass.threshold=0;
 bloomPass.strength=0.55;
 bloomPass.radius=0.85;
 composer.addPass(bloomPass);
+}
 
 const clock=new THREE.Clock();
 let _lastT=0;
@@ -2184,6 +2191,7 @@ function animate(){
   particles.rotation.y=t*.05+mouseX*.3+scrollProg*.8;
   particles.rotation.x=mouseY*.2+scrollProg*.3;
   // Gravitational drift — orbits slowly in XY plane with bobbing
+  if(elephantGroup){
   elephantGroup.rotation.y=t*.15+mouseX*.9;
   elephantGroup.rotation.x=Math.sin(t*.4)*.08-mouseY*.3;
   elephantGroup.rotation.z=Math.cos(t*.25)*.12;
@@ -2196,8 +2204,9 @@ function animate(){
   glowMesh.position.x=elephantGroup.position.x;
   glowMesh.position.y=elephantGroup.position.y;
   glowMesh.position.z=elephantGroup.position.z-1;
+  }
   
-  composer.render();
+  if(window.__IS_MOBILE)renderer.render(scene,camera);else composer.render();
   requestAnimationFrame(animate);
 }
 animate();
@@ -2206,8 +2215,7 @@ window.addEventListener('resize',()=>{
   camera.aspect=container.clientWidth/container.clientHeight;
   camera.updateProjectionMatrix();
   renderer.setSize(container.clientWidth,container.clientHeight);
-  composer.setSize(container.clientWidth,container.clientHeight);
-  bloomPass.setSize(container.clientWidth,container.clientHeight);
+  if(!window.__IS_MOBILE){composer.setSize(container.clientWidth,container.clientHeight);if(bloomPass)bloomPass.setSize(container.clientWidth,container.clientHeight);}
 },{passive:true});
 
 heroReady=true;
