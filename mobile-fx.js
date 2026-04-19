@@ -12,7 +12,7 @@
   try{
     var dbg=document.createElement('div');
     dbg.id='mfx-debug';
-    dbg.textContent='MFX22 E='+(window.__EARTH_TEX?'Y':'N')+' L='+(window.__LOGO_SVG_B64?'Y':'N');
+    dbg.textContent='MFX27 E='+(window.__EARTH_TEX?'Y':'N')+' L='+(window.__LOGO_SVG_B64?'Y':'N');
     dbg.style.cssText='position:fixed;top:env(safe-area-inset-top,12px);right:12px;z-index:99999;background:#ff0066;color:#fff;padding:4px 8px;font-size:11px;font-family:monospace;border-radius:4px;pointer-events:none;box-shadow:0 0 12px rgba(255,0,102,.6)';
     document.body.appendChild(dbg);
   }catch(_){}
@@ -28,39 +28,21 @@
   root.style.cssText='position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;';
   document.body.appendChild(root);
 
-  // ===== GALAXY AURA (U24: SATURAT, OBVIOUS) =====
+  // ===== GALAXY AURA (U27: single layer, blur mic, ZERO blend = text clar) =====
   var aura=document.createElement('div');
   aura.style.cssText=[
     'position:absolute',
-    'left:50%','top:30%',
-    'width:'+Math.min(W*1.8,800)+'px',
-    'height:'+Math.min(W*1.8,800)+'px',
+    'left:50%','top:28%',
+    'width:'+Math.min(W*1.4,600)+'px',
+    'height:'+Math.min(W*1.4,600)+'px',
     'transform:translate(-50%,-50%)',
-    'background:radial-gradient(circle, rgba(186,85,211,.95) 0%, rgba(123,44,255,.7) 22%, rgba(255,77,166,.5) 45%, rgba(86,0,180,.25) 65%, rgba(4,6,16,0) 82%)',
-    'filter:blur(40px)',
+    'background:radial-gradient(circle, rgba(186,85,211,.55) 0%, rgba(123,44,255,.35) 30%, rgba(255,77,166,.2) 55%, rgba(4,6,16,0) 80%)',
     'opacity:1',
-    'mix-blend-mode:screen',
     'pointer-events:none',
-    'animation: mfxAura 6s ease-in-out infinite alternate'
+    'animation: mfxAura 8s ease-in-out infinite alternate',
+    'will-change:opacity,transform'
   ].join(';');
   root.appendChild(aura);
-
-  // Al 2-lea layer aura (pink warm, offset)
-  var aura2=document.createElement('div');
-  aura2.style.cssText=[
-    'position:absolute',
-    'left:35%','top:45%',
-    'width:'+Math.min(W*1.2,520)+'px',
-    'height:'+Math.min(W*1.2,520)+'px',
-    'transform:translate(-50%,-50%)',
-    'background:radial-gradient(circle, rgba(255,77,166,.7) 0%, rgba(255,140,200,.35) 40%, rgba(4,6,16,0) 75%)',
-    'filter:blur(60px)',
-    'opacity:.85',
-    'mix-blend-mode:screen',
-    'pointer-events:none',
-    'animation: mfxAura 10s ease-in-out infinite alternate-reverse'
-  ].join(';');
-  root.appendChild(aura2);
 
   // ===== STYLE KEYFRAMES =====
   var style=document.createElement('style');
@@ -85,17 +67,19 @@
     sctx.setTransform(DPR,0,0,DPR,0,0);
   }
   sizeStars();
-  var COUNT=140;
+  // U27: 140→80 stele + drift lent (universul se misca) + single-pass paint = text clar, zero crash
+  var COUNT=80;
   var stars=[];
   for(var i=0;i<COUNT;i++){
     var sizeBucket=Math.random();
-    var starR=sizeBucket<.15?(Math.random()*2+3.5):(sizeBucket<.5?(Math.random()*1.5+2):(Math.random()*1.2+1.3));
+    var starR=sizeBucket<.15?(Math.random()*1.4+2.6):(sizeBucket<.5?(Math.random()*1.2+1.6):(Math.random()*1+1.2));
     stars.push({
       x:Math.random()*W,
       y:Math.random()*H,
       r:starR,
       tw:Math.random()*Math.PI*2,
       tws:.015+Math.random()*.035,
+      drift:.08+Math.random()*.22,
       hue:Math.random()<.22?260:(Math.random()<.5?320:(Math.random()<.75?200:45))
     });
   }
@@ -258,7 +242,7 @@
   };
   root.appendChild(logoImg);
 
-  // ===== STARFIELD ANIMATION =====
+  // ===== STARFIELD ANIMATION (U27: single-pass + drift lent stanga) =====
   var running=true;
   function tickStars(){
     if(!running)return;
@@ -266,21 +250,17 @@
     for(var i=0;i<stars.length;i++){
       var s=stars[i];
       s.tw+=s.tws;
-      var a=.7+Math.sin(s.tw)*.3;
-      // Halo mare
-      sctx.shadowBlur=s.r*3;
-      sctx.shadowColor='hsla('+s.hue+',95%,75%,'+a+')';
+      s.x-=s.drift;
+      if(s.x<-8){s.x=W+8;s.y=Math.random()*H;}
+      var a=.65+Math.sin(s.tw)*.35;
+      sctx.shadowBlur=s.r*2;
+      sctx.shadowColor='hsla('+s.hue+',95%,78%,'+a+')';
       sctx.beginPath();
       sctx.arc(s.x,s.y,s.r,0,Math.PI*2);
-      sctx.fillStyle='hsla('+s.hue+',90%,88%,'+a+')';
-      sctx.fill();
-      // Nucleu alb
-      sctx.shadowBlur=0;
-      sctx.beginPath();
-      sctx.arc(s.x,s.y,s.r*.45,0,Math.PI*2);
-      sctx.fillStyle='rgba(255,255,255,'+(a*.9)+')';
+      sctx.fillStyle='hsla('+s.hue+',90%,90%,'+a+')';
       sctx.fill();
     }
+    sctx.shadowBlur=0;
     requestAnimationFrame(tickStars);
   }
   if(!REDUCED)requestAnimationFrame(tickStars);
