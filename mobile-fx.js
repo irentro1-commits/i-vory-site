@@ -12,7 +12,7 @@
   try{
     var dbg=document.createElement('div');
     dbg.id='mfx-debug';
-    dbg.textContent='MFX '+(window.__EARTH_TEX?'E':'.')+(window.__LOGO_SVG_B64?'L':'.');
+    dbg.textContent='MFX22 E='+(window.__EARTH_TEX?'Y':'N')+' L='+(window.__LOGO_SVG_B64?'Y':'N');
     dbg.style.cssText='position:fixed;top:env(safe-area-inset-top,12px);right:12px;z-index:99999;background:#ff0066;color:#fff;padding:4px 8px;font-size:11px;font-family:monospace;border-radius:4px;pointer-events:none;box-shadow:0 0 12px rgba(255,0,102,.6)';
     document.body.appendChild(dbg);
   }catch(_){}
@@ -60,16 +60,16 @@
     sctx.setTransform(DPR,0,0,DPR,0,0);
   }
   sizeStars();
-  var COUNT=50;
+  var COUNT=90;
   var stars=[];
   for(var i=0;i<COUNT;i++){
     stars.push({
       x:Math.random()*W,
       y:Math.random()*H,
-      r:Math.random()*1.4+.3,
+      r:Math.random()*2.2+1.2,
       tw:Math.random()*Math.PI*2,
-      tws:.02+Math.random()*.03,
-      hue:Math.random()<.3?260:(Math.random()<.5?320:200)
+      tws:.015+Math.random()*.025,
+      hue:Math.random()<.25?260:(Math.random()<.5?320:(Math.random()<.7?200:0))
     });
   }
 
@@ -119,39 +119,49 @@
   paintEarth();
 
   // ===== DRAGON/LOGO (floating, top-right of hero) =====
+  // FIX U22: window.__LOGO_SVG_B64 contine doar base64, trebuie prefix data URL
   var logoB64=window.__LOGO_SVG_B64;
+  var logoSrc=null;
   if(logoB64){
-    var logoImg=document.createElement('img');
-    logoImg.src=logoB64;
-    logoImg.alt='';
-    logoImg.setAttribute('aria-hidden','true');
-    logoImg.style.cssText=[
-      'position:absolute',
-      'right:8%','top:18%',
-      'width:'+Math.min(W*.22,100)+'px',
-      'height:auto',
-      'opacity:.85',
-      'filter:drop-shadow(0 0 20px rgba(123,44,255,.6))',
-      'animation: mfxDragonFloat 6s ease-in-out infinite',
-      'pointer-events:none'
-    ].join(';');
-    root.appendChild(logoImg);
+    // Daca deja are prefix data: lasa-l, altfel adauga prefixul SVG
+    logoSrc=(logoB64.indexOf('data:')===0)?logoB64:('data:image/svg+xml;base64,'+logoB64);
+  }else{
+    // Fallback: incarca direct logo-nav.svg
+    logoSrc='logo-nav.svg';
   }
+  var logoImg=document.createElement('img');
+  logoImg.src=logoSrc;
+  logoImg.alt='';
+  logoImg.setAttribute('aria-hidden','true');
+  logoImg.style.cssText=[
+    'position:absolute',
+    'right:6%','top:14%',
+    'width:'+Math.min(W*.26,120)+'px',
+    'height:auto',
+    'opacity:.92',
+    'filter:drop-shadow(0 0 24px rgba(186,85,211,.7)) drop-shadow(0 0 12px rgba(123,44,255,.5))',
+    'animation: mfxDragonFloat 6s ease-in-out infinite',
+    'pointer-events:none'
+  ].join(';');
+  root.appendChild(logoImg);
 
   // ===== STARFIELD ANIMATION =====
   var running=true;
   function tickStars(){
     if(!running)return;
     sctx.clearRect(0,0,W,H);
+    sctx.shadowBlur=6;
     for(var i=0;i<stars.length;i++){
       var s=stars[i];
       s.tw+=s.tws;
-      var a=.4+Math.sin(s.tw)*.4;
+      var a=.65+Math.sin(s.tw)*.35;
+      sctx.shadowColor='hsla('+s.hue+',90%,80%,'+(a*.8)+')';
       sctx.beginPath();
       sctx.arc(s.x,s.y,s.r,0,Math.PI*2);
-      sctx.fillStyle='hsla('+s.hue+',80%,75%,'+a+')';
+      sctx.fillStyle='hsla('+s.hue+',85%,85%,'+a+')';
       sctx.fill();
     }
+    sctx.shadowBlur=0;
     requestAnimationFrame(tickStars);
   }
   if(!REDUCED)requestAnimationFrame(tickStars);
