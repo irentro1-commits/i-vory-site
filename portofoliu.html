@@ -1257,6 +1257,25 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .case__title { font-size: 1.3rem; }
   .case__brief { font-size: 0.95rem; }
 }
+
+/* POLISH v12.0 — breadcrumb natural + SVG icons + mini CTA per sectiune */
+.p-axis-sym{display:none}
+.p-axis{display:flex;flex-wrap:wrap;gap:.35rem .7rem;align-items:center;margin-bottom:.9rem;background:transparent;padding:0;border:none}
+.p-axis-row{display:inline-flex;align-items:center;gap:.35rem;padding:0;background:transparent;border:none;position:relative}
+.p-axis-row::after{content:"\203A";margin-left:.55rem;opacity:.4;color:var(--muted,#a8b5c0);font-weight:600}
+.p-axis-row:last-child::after{content:""}
+.p-axis-name{font-family:var(--mono,'Geist Mono',monospace);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted,#a8b5c0);font-weight:600;padding:0}
+.p-axis-row.is-active .p-axis-name{color:var(--accent,#00e0c0)}
+
+.p-sec-icon{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,rgba(0,224,192,.12),rgba(0,224,192,.03));border:1px solid rgba(0,224,192,.25);margin-bottom:1rem;color:var(--accent,#00e0c0)}
+.p-sec-icon svg{width:22px;height:22px;display:block}
+
+.p-sec-cta{margin:2.75rem 0 0;padding:1.45rem 1.75rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;background:linear-gradient(135deg,rgba(0,224,192,.06),rgba(0,224,192,.01));border:1px solid rgba(0,224,192,.2);border-radius:14px}
+.p-sec-cta__text{font-size:.95rem;color:var(--text,#fff5e6);margin:0;line-height:1.5}
+.p-sec-cta__text strong{color:var(--accent,#00e0c0)}
+.p-sec-cta__btn{display:inline-flex;align-items:center;gap:.45rem;padding:.8rem 1.4rem;background:linear-gradient(135deg,#ff9a3d,#ffb86b);color:#1a0a00;border-radius:100px;text-decoration:none;font-weight:700;font-size:.85rem;transition:transform .2s,box-shadow .2s;white-space:nowrap}
+.p-sec-cta__btn:hover{transform:translateY(-1px);box-shadow:0 12px 28px rgba(255,154,61,.35)}
+@media(max-width:600px){.p-sec-cta{flex-direction:column;align-items:flex-start;padding:1.2rem 1.3rem}.p-sec-cta__btn{width:100%;justify-content:center}}
 </style>
 </head>
 <body>
@@ -1359,6 +1378,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <section class="p-sec" id="sec-carusel">
     <div class="p-sec-head">
       <div class="p-sec-head__crumb">Design · Carusel</div>
+      <div class="p-sec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="13" height="14" rx="2"/><path d="M19 7v12a2 2 0 0 1-2 2H7"/></svg></div>
       <h2 class="p-sec-head__title">Carusel</h2>
       <p class="p-sec-head__lead"><em>Povestea curge pe șapte cadre.</em> Primul te prinde. Ultimul te ține.</p>
       <div class="p-explainer" role="region" aria-label="Explicație format">
@@ -1500,10 +1520,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
         </div>
       </article>
+      <div class="p-sec-cta" role="complementary">
+      <p class="p-sec-cta__text">Vrei <strong>un carusel</strong> pentru brandul tău? Discutăm 30 de minute gratuit.</p>
+      <a href="https://wa.me/40775579706" class="p-sec-cta__btn" target="_blank" rel="noopener">WhatsApp &rarr;</a>
+    </div>
   </section>
   <section class="p-sec" id="sec-post">
     <div class="p-sec-head">
       <div class="p-sec-head__crumb">Design · Post</div>
+      <div class="p-sec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2.5"/><circle cx="9.5" cy="10" r="1.5"/><path d="M20 15l-4-4-8 8"/></svg></div>
       <h2 class="p-sec-head__title">Post</h2>
       <p class="p-sec-head__lead"><em>Un cadru. Poate două.</em> Nu ai timp să spui mai mult și nici el nu are timp să asculte.</p>
       <div class="p-explainer" role="region" aria-label="Explicație format">
@@ -1532,10 +1557,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <img loading="lazy" src="/portfolio2/design/post/emotional/gemini-generated-image-m3kqo7m3kqo7m3kq.webp" alt="">
         </div>
       </article>
+      <div class="p-sec-cta" role="complementary">
+      <p class="p-sec-cta__text">Vrei <strong>un post</strong> pentru brandul tău? Discutăm 30 de minute gratuit.</p>
+      <a href="https://wa.me/40775579706" class="p-sec-cta__btn" target="_blank" rel="noopener">WhatsApp &rarr;</a>
+    </div>
   </section>
   <section class="p-sec" id="sec-ecommerce">
     <div class="p-sec-head">
       <div class="p-sec-head__crumb">Design · E-commerce</div>
+      <div class="p-sec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h2.5l2.6 10.7a2 2 0 0 0 2 1.5h7a2 2 0 0 0 2-1.5L21.2 8H6.5"/><circle cx="9.5" cy="20" r="1.3"/><circle cx="17" cy="20" r="1.3"/></svg></div>
       <h2 class="p-sec-head__title">E-commerce</h2>
       <p class="p-sec-head__lead"><em>De la landing la raft.</em> Fiecare imagine știe unde duce clicul.</p>
       <div class="p-explainer" role="region" aria-label="Explicație format">
@@ -1593,12 +1623,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <img loading="lazy" src="/portfolio2/design/ecommerce/editorial/123123123.webp" alt="Editorial website — format blog lifestyle">
         </div>
       </article>
+      <div class="p-sec-cta" role="complementary">
+      <p class="p-sec-cta__text">Vrei <strong>vizuale pentru magazinul tău</strong> pentru brandul tău? Discutăm 30 de minute gratuit.</p>
+      <a href="https://wa.me/40775579706" class="p-sec-cta__btn" target="_blank" rel="noopener">WhatsApp &rarr;</a>
+    </div>
   </section>
 
 <!-- ─── SECTIONS: VIDEO (hidden until Video mode) ───────────────────────── -->
   <section class="p-sec" id="sec-vid-cinematic" hidden>
     <div class="p-sec-head">
       <div class="p-sec-head__crumb">Video · Cinematic</div>
+      <div class="p-sec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><polygon points="10,9 16,12 10,15" fill="currentColor" stroke="none"/></svg></div>
       <h2 class="p-sec-head__title">Cinematic</h2>
       <p class="p-sec-head__lead"><em>Orașul e al lor.</em> Filmăm felul în care îl ocupă. Brandul apare fără să anunțe.</p>
       <div class="p-explainer" role="region" aria-label="Explicație format">
@@ -1628,10 +1663,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="p-video__caption">Cinematic. Brand la ocazie.</div>
         </div>
       </div>
+      <div class="p-sec-cta" role="complementary">
+      <p class="p-sec-cta__text">Vrei <strong>un video cinematic</strong> pentru brandul tău? Discutăm 30 de minute gratuit.</p>
+      <a href="https://wa.me/40775579706" class="p-sec-cta__btn" target="_blank" rel="noopener">WhatsApp &rarr;</a>
+    </div>
   </section>
   <section class="p-sec" id="sec-vid-animat" hidden>
     <div class="p-sec-head">
       <div class="p-sec-head__crumb">Video · Animație</div>
+      <div class="p-sec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><polygon points="10,9 16,12 10,15" fill="currentColor" stroke="none"/></svg></div>
       <h2 class="p-sec-head__title">Animație</h2>
       <p class="p-sec-head__lead"><em>Liniile dansează singure.</em> Cadru după cadru, fără pauze, până înțelegi unde dai click.</p>
       <div class="p-explainer" role="region" aria-label="Explicație format">
@@ -1661,10 +1701,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="p-video__caption">Animat. Pentru lansare.</div>
         </div>
       </div>
+      <div class="p-sec-cta" role="complementary">
+      <p class="p-sec-cta__text">Vrei <strong>o animație</strong> pentru brandul tău? Discutăm 30 de minute gratuit.</p>
+      <a href="https://wa.me/40775579706" class="p-sec-cta__btn" target="_blank" rel="noopener">WhatsApp &rarr;</a>
+    </div>
   </section>
   <section class="p-sec" id="sec-vid-tiktok" hidden>
     <div class="p-sec-head">
       <div class="p-sec-head__crumb">Video · Promoțional</div>
+      <div class="p-sec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><polygon points="10,9 16,12 10,15" fill="currentColor" stroke="none"/></svg></div>
       <h2 class="p-sec-head__title">Promoțional</h2>
       <p class="p-sec-head__lead"><em>Apa curge. Pisica bea. Tu te uiți.</em> Primele două secunde decid restul.</p>
       <div class="p-explainer" role="region" aria-label="Explicație format">
@@ -1694,10 +1739,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="p-video__caption">TikTok. Ritm direct.</div>
         </div>
       </div>
+      <div class="p-sec-cta" role="complementary">
+      <p class="p-sec-cta__text">Vrei <strong>un video promoțional</strong> pentru brandul tău? Discutăm 30 de minute gratuit.</p>
+      <a href="https://wa.me/40775579706" class="p-sec-cta__btn" target="_blank" rel="noopener">WhatsApp &rarr;</a>
+    </div>
   </section>
   <section class="p-sec" id="sec-vid-asmr" hidden>
     <div class="p-sec-head">
       <div class="p-sec-head__crumb">Video · ASMR</div>
+      <div class="p-sec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><polygon points="10,9 16,12 10,15" fill="currentColor" stroke="none"/></svg></div>
       <h2 class="p-sec-head__title">ASMR</h2>
       <p class="p-sec-head__lead"><em>Doar sunete reale.</em> Pisica, apa, blana pe podea. Nimic peste, nimic sub.</p>
       <div class="p-explainer" role="region" aria-label="Explicație format">
@@ -1727,10 +1777,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="p-video__caption">ASMR. Doar sunete de apă.</div>
         </div>
       </div>
+      <div class="p-sec-cta" role="complementary">
+      <p class="p-sec-cta__text">Vrei <strong>un video ASMR</strong> pentru brandul tău? Discutăm 30 de minute gratuit.</p>
+      <a href="https://wa.me/40775579706" class="p-sec-cta__btn" target="_blank" rel="noopener">WhatsApp &rarr;</a>
+    </div>
   </section>
   <section class="p-sec" id="sec-vid-medical" hidden>
     <div class="p-sec-head">
       <div class="p-sec-head__crumb">Video · Before/After</div>
+      <div class="p-sec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><polygon points="10,9 16,12 10,15" fill="currentColor" stroke="none"/></svg></div>
       <h2 class="p-sec-head__title">Before/After</h2>
       <p class="p-sec-head__lead"><em>Ce era. Ce a devenit.</em> Fotografiat onest, fără efecte, fără promisiuni. Doar pacientul și timpul.</p>
       <div class="p-explainer" role="region" aria-label="Explicație format">
@@ -1760,6 +1815,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="p-video__caption">Ce era. Ce a devenit. Fără aranjamente.</div>
         </div>
       </div>
+      <div class="p-sec-cta" role="complementary">
+      <p class="p-sec-cta__text">Vrei <strong>un video before/after</strong> pentru brandul tău? Discutăm 30 de minute gratuit.</p>
+      <a href="https://wa.me/40775579706" class="p-sec-cta__btn" target="_blank" rel="noopener">WhatsApp &rarr;</a>
+    </div>
   </section>
 
 </main>
