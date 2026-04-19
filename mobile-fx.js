@@ -28,21 +28,39 @@
   root.style.cssText='position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;';
   document.body.appendChild(root);
 
-  // ===== GALAXY AURA (radial gradient vizibil) =====
+  // ===== GALAXY AURA (U24: SATURAT, OBVIOUS) =====
   var aura=document.createElement('div');
   aura.style.cssText=[
     'position:absolute',
-    'left:50%','top:35%',
-    'width:'+Math.min(W*1.4,640)+'px',
-    'height:'+Math.min(W*1.4,640)+'px',
+    'left:50%','top:30%',
+    'width:'+Math.min(W*1.8,800)+'px',
+    'height:'+Math.min(W*1.8,800)+'px',
     'transform:translate(-50%,-50%)',
-    'background:radial-gradient(circle, rgba(186,85,211,.7) 0%, rgba(123,44,255,.45) 30%, rgba(255,77,166,.22) 55%, rgba(4,6,16,0) 78%)',
-    'filter:blur(50px)',
-    'opacity:.75',
+    'background:radial-gradient(circle, rgba(186,85,211,.95) 0%, rgba(123,44,255,.7) 22%, rgba(255,77,166,.5) 45%, rgba(86,0,180,.25) 65%, rgba(4,6,16,0) 82%)',
+    'filter:blur(40px)',
+    'opacity:1',
+    'mix-blend-mode:screen',
     'pointer-events:none',
-    'animation: mfxAura 8s ease-in-out infinite alternate'
+    'animation: mfxAura 6s ease-in-out infinite alternate'
   ].join(';');
   root.appendChild(aura);
+
+  // Al 2-lea layer aura (pink warm, offset)
+  var aura2=document.createElement('div');
+  aura2.style.cssText=[
+    'position:absolute',
+    'left:35%','top:45%',
+    'width:'+Math.min(W*1.2,520)+'px',
+    'height:'+Math.min(W*1.2,520)+'px',
+    'transform:translate(-50%,-50%)',
+    'background:radial-gradient(circle, rgba(255,77,166,.7) 0%, rgba(255,140,200,.35) 40%, rgba(4,6,16,0) 75%)',
+    'filter:blur(60px)',
+    'opacity:.85',
+    'mix-blend-mode:screen',
+    'pointer-events:none',
+    'animation: mfxAura 10s ease-in-out infinite alternate-reverse'
+  ].join(';');
+  root.appendChild(aura2);
 
   // ===== STYLE KEYFRAMES =====
   var style=document.createElement('style');
@@ -58,7 +76,7 @@
 
   // ===== STARFIELD CANVAS =====
   var starCvs=document.createElement('canvas');
-  starCvs.style.cssText='position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:.9;';
+  starCvs.style.cssText='position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:1;';
   root.appendChild(starCvs);
   var sctx=starCvs.getContext('2d',{alpha:true});
   function sizeStars(){
@@ -67,16 +85,18 @@
     sctx.setTransform(DPR,0,0,DPR,0,0);
   }
   sizeStars();
-  var COUNT=90;
+  var COUNT=140;
   var stars=[];
   for(var i=0;i<COUNT;i++){
+    var sizeBucket=Math.random();
+    var starR=sizeBucket<.15?(Math.random()*2+3.5):(sizeBucket<.5?(Math.random()*1.5+2):(Math.random()*1.2+1.3));
     stars.push({
       x:Math.random()*W,
       y:Math.random()*H,
-      r:Math.random()*2.2+1.2,
+      r:starR,
       tw:Math.random()*Math.PI*2,
-      tws:.015+Math.random()*.025,
-      hue:Math.random()<.25?260:(Math.random()<.5?320:(Math.random()<.7?200:0))
+      tws:.015+Math.random()*.035,
+      hue:Math.random()<.22?260:(Math.random()<.5?320:(Math.random()<.75?200:45))
     });
   }
 
@@ -125,9 +145,16 @@
   }
   paintEarth();
 
-  // ===== ORBITS + SATELLITES (U23: 4 sateliti pe 3 orbite in jurul Pamantului) =====
-  // Strategie: ringuri invizibile centrate pe Pamant, cu puncte luminoase animate prin CSS rotate.
-  // Sateliti = absolute positioned pe rim-ul ringului, glow cu box-shadow, pulse in paralel.
+  // ===== ORBITS + SOCIAL MEDIA SATELLITES (U24) =====
+  // 5 iconite sociale pe 3 orbite: IG, TT, YT, FB, LI cu culori brand reale.
+  // Inline SVG in badge rotund, counter-rotate inner ca sa ramana drept cand ring-ul se invarte.
+  var SOCIAL_ICONS={
+    ig:{bg:'linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)',svg:'<svg viewBox="0 0 24 24" fill="#fff" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.2c3.2 0 3.58 0 4.85.07 1.17.05 1.8.25 2.22.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.05.41 2.22.07 1.27.07 1.65.07 4.85s0 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.22a3.72 3.72 0 0 1-.9 1.38 3.72 3.72 0 0 1-1.38.9c-.42.16-1.05.36-2.22.41-1.27.07-1.65.07-4.85.07s-3.58 0-4.85-.07c-1.17-.05-1.8-.25-2.22-.41a3.72 3.72 0 0 1-1.38-.9 3.72 3.72 0 0 1-.9-1.38c-.16-.42-.36-1.05-.41-2.22C2.2 15.58 2.2 15.2 2.2 12s0-3.58.07-4.85c.05-1.17.25-1.8.41-2.22.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.05-.36 2.22-.41C8.42 2.2 8.8 2.2 12 2.2M12 0C8.74 0 8.33 0 7.05.07c-1.28.06-2.15.26-2.91.56a5.87 5.87 0 0 0-2.12 1.38A5.87 5.87 0 0 0 .63 4.13c-.3.76-.5 1.63-.56 2.91C0 8.33 0 8.74 0 12s0 3.67.07 4.95c.06 1.28.26 2.15.56 2.91.3.79.71 1.46 1.38 2.12.66.67 1.33 1.08 2.12 1.38.76.3 1.63.5 2.91.56C8.33 24 8.74 24 12 24s3.67 0 4.95-.07c1.28-.06 2.15-.26 2.91-.56a5.87 5.87 0 0 0 2.12-1.38 5.87 5.87 0 0 0 1.38-2.12c.3-.76.5-1.63.56-2.91.07-1.28.07-1.69.07-4.95s0-3.67-.07-4.95c-.06-1.28-.26-2.15-.56-2.91a5.87 5.87 0 0 0-1.38-2.12A5.87 5.87 0 0 0 19.87.63c-.76-.3-1.63-.5-2.91-.56C15.67 0 15.26 0 12 0zm0 5.84A6.16 6.16 0 1 0 18.16 12 6.16 6.16 0 0 0 12 5.84zm0 10.16A4 4 0 1 1 16 12a4 4 0 0 1-4 4zm6.4-11.85a1.44 1.44 0 1 0 1.44 1.44 1.44 1.44 0 0 0-1.44-1.44z"/></svg>'},
+    tt:{bg:'#000',svg:'<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="#25F4EE" d="M16.5 2h3.3v2.4c0 2.3-1.9 4.2-4.2 4.2v3.1c-1.7 0-3.2-.7-4.3-1.8v6.8c0 3.3-2.7 6-6 6s-6-2.7-6-6 2.7-6 6-6v3.1c-1.6 0-2.9 1.3-2.9 2.9s1.3 2.9 2.9 2.9 2.9-1.3 2.9-2.9V2h2.5c.2 2.2 2 4 4.3 4V2z"/><path fill="#fff" d="M17.5 3h3.3v2.4c0 2.3-1.9 4.2-4.2 4.2v3.1c-1.7 0-3.2-.7-4.3-1.8v6.8c0 3.3-2.7 6-6 6s-6-2.7-6-6 2.7-6 6-6v3.1c-1.6 0-2.9 1.3-2.9 2.9s1.3 2.9 2.9 2.9 2.9-1.3 2.9-2.9V3h2.5c.2 2.2 2 4 4.3 4V3z"/></svg>'},
+    yt:{bg:'#FF0000',svg:'<svg viewBox="0 0 24 24" fill="#fff" xmlns="http://www.w3.org/2000/svg"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></svg>'},
+    fb:{bg:'#1877F2',svg:'<svg viewBox="0 0 24 24" fill="#fff" xmlns="http://www.w3.org/2000/svg"><path d="M24 12c0-6.6-5.4-12-12-12S0 5.4 0 12c0 6 4.4 10.9 10.1 11.8v-8.4H7.1V12h3.1V9.4c0-3 1.8-4.7 4.5-4.7 1.3 0 2.7.2 2.7.2v3h-1.5c-1.5 0-2 .9-2 1.9V12h3.3l-.5 3.5h-2.8v8.4C19.6 22.9 24 18 24 12z"/></svg>'},
+    li:{bg:'#0A66C2',svg:'<svg viewBox="0 0 24 24" fill="#fff" xmlns="http://www.w3.org/2000/svg"><path d="M20.4 20.5h-3.6v-5.6c0-1.3 0-3-1.9-3s-2.1 1.5-2.1 2.9v5.7H9.2v-11h3.4v1.5h.1c.5-.9 1.7-1.9 3.4-1.9 3.6 0 4.3 2.4 4.3 5.5v5.9zM5.2 8a2.1 2.1 0 1 1 2.1-2.1A2.1 2.1 0 0 1 5.2 8zm1.8 12.5H3.3v-11H7v11zM22.2 0H1.8C.8 0 0 .8 0 1.7v20.5c0 1 .8 1.7 1.8 1.7h20.4c1 0 1.8-.8 1.8-1.7V1.7C24 .8 23.2 0 22.2 0z"/></svg>'}
+  };
   function makeOrbit(ringSize, dur, dir, sats){
     var ring=document.createElement('div');
     ring.style.cssText=[
@@ -138,60 +165,75 @@
       'pointer-events:none',
       'animation: '+(dir==='cw'?'mfxOrbitCW':'mfxOrbitCCW')+' '+dur+'s linear infinite'
     ].join(';');
-    // Inel subtil vizibil (orbital trace, super discret)
     var trace=document.createElement('div');
     trace.style.cssText=[
       'position:absolute','inset:0',
       'border-radius:50%',
-      'border:1px dashed rgba(186,85,211,.12)',
+      'border:1px dashed rgba(186,85,211,.18)',
       'box-sizing:border-box'
     ].join(';');
     ring.appendChild(trace);
-    // Sateliti pe rim la unghiuri diferite
     for(var s=0;s<sats.length;s++){
       var sat=sats[s];
+      var ic=SOCIAL_ICONS[sat.type];
       var deg=sat.angle*Math.PI/180;
       var cx=ringSize/2+Math.cos(deg)*ringSize/2;
       var cy=ringSize/2+Math.sin(deg)*ringSize/2;
-      var dot=document.createElement('div');
-      dot.style.cssText=[
+      // Counter-rotate ca iconita sa ramana orientata corect
+      var counter=document.createElement('div');
+      counter.style.cssText=[
         'position:absolute',
         'left:'+cx+'px','top:'+cy+'px',
         'width:'+sat.size+'px','height:'+sat.size+'px',
         'transform:translate(-50%,-50%)',
-        'border-radius:50%',
-        'background:'+sat.color,
-        'box-shadow:0 0 '+(sat.size*2)+'px '+sat.glow+', 0 0 '+(sat.size*4)+'px '+sat.glow,
-        'animation: mfxSatPulse '+(2+s*.7)+'s ease-in-out infinite'
+        'animation: '+(dir==='cw'?'mfxOrbitCCW':'mfxOrbitCW')+' '+dur+'s linear infinite',
+        'transform-origin:center'
       ].join(';');
-      ring.appendChild(dot);
+      var badge=document.createElement('div');
+      badge.style.cssText=[
+        'width:100%','height:100%',
+        'border-radius:22%',
+        'background:'+ic.bg,
+        'box-shadow:0 0 '+(sat.size*.6)+'px rgba(186,85,211,.9), 0 0 '+(sat.size*1.2)+'px rgba(123,44,255,.7), 0 4px 12px rgba(0,0,0,.4)',
+        'display:flex','align-items:center','justify-content:center',
+        'padding:'+(sat.size*.18)+'px',
+        'box-sizing:border-box',
+        'animation: mfxSatPulse '+(2.5+s*.6)+'s ease-in-out infinite'
+      ].join(';');
+      badge.innerHTML=ic.svg;
+      var svgEl=badge.querySelector('svg');
+      if(svgEl){
+        svgEl.setAttribute('width','100%');
+        svgEl.setAttribute('height','100%');
+        svgEl.style.display='block';
+      }
+      counter.appendChild(badge);
+      ring.appendChild(counter);
     }
     root.appendChild(ring);
   }
-  var ringBase=earthSize*1.15;
-  // Orbita 1 (interioara, rapida, 1 satelit cyan)
-  makeOrbit(ringBase*0.95, 9, 'cw', [
-    {angle:0, size:8, color:'#7ef5ff', glow:'rgba(126,245,255,.9)'}
+  var ringBase=earthSize*1.2;
+  // Orbita interioara rapida: IG (brand mare)
+  makeOrbit(ringBase*1.0, 11, 'cw', [
+    {angle:30, type:'ig', size:32}
   ]);
-  // Orbita 2 (mijloc, contra-sens, 2 sateliti mov+roz)
-  makeOrbit(ringBase*1.2, 16, 'ccw', [
-    {angle:45, size:7, color:'#d98cff', glow:'rgba(186,85,211,.9)'},
-    {angle:220, size:6, color:'#ff5fa8', glow:'rgba(255,95,168,.85)'}
+  // Orbita mijloc contra-sens: TT + YT
+  makeOrbit(ringBase*1.3, 18, 'ccw', [
+    {angle:60, type:'tt', size:30},
+    {angle:230, type:'yt', size:30}
   ]);
-  // Orbita 3 (exterioara, lenta, 1 satelit alb mare = semnal, prin sus)
-  makeOrbit(ringBase*1.5, 24, 'cw', [
-    {angle:135, size:10, color:'#fff7d6', glow:'rgba(255,247,214,.95)'}
+  // Orbita exterioara lenta: FB + LI
+  makeOrbit(ringBase*1.6, 26, 'cw', [
+    {angle:150, type:'fb', size:28},
+    {angle:330, type:'li', size:28}
   ]);
 
-  // ===== DRAGON/LOGO (floating, top-right of hero) =====
-  // FIX U22: window.__LOGO_SVG_B64 contine doar base64, trebuie prefix data URL
+  // ===== DRAGON/LOGO (U24: 2x mai mare, glow triplu, onerror fallback) =====
   var logoB64=window.__LOGO_SVG_B64;
   var logoSrc=null;
   if(logoB64){
-    // Daca deja are prefix data: lasa-l, altfel adauga prefixul SVG
     logoSrc=(logoB64.indexOf('data:')===0)?logoB64:('data:image/svg+xml;base64,'+logoB64);
   }else{
-    // Fallback: incarca direct logo-nav.svg
     logoSrc='logo-nav.svg';
   }
   var logoImg=document.createElement('img');
@@ -200,14 +242,20 @@
   logoImg.setAttribute('aria-hidden','true');
   logoImg.style.cssText=[
     'position:absolute',
-    'right:6%','top:14%',
-    'width:'+Math.min(W*.26,120)+'px',
+    'right:5%','top:10%',
+    'width:'+Math.min(W*.4,180)+'px',
     'height:auto',
-    'opacity:.92',
-    'filter:drop-shadow(0 0 24px rgba(186,85,211,.7)) drop-shadow(0 0 12px rgba(123,44,255,.5))',
+    'opacity:1',
+    'filter:drop-shadow(0 0 30px rgba(186,85,211,.95)) drop-shadow(0 0 60px rgba(123,44,255,.7)) drop-shadow(0 0 10px rgba(255,77,166,.8))',
     'animation: mfxDragonFloat 6s ease-in-out infinite',
     'pointer-events:none'
   ].join(';');
+  // Fallback sa nu ramana gol daca src-ul principal eseueaza
+  logoImg.onerror=function(){
+    if(logoImg.src.indexOf('logo-nav.svg')===-1){
+      logoImg.src='logo-nav.svg';
+    }
+  };
   root.appendChild(logoImg);
 
   // ===== STARFIELD ANIMATION =====
@@ -215,18 +263,24 @@
   function tickStars(){
     if(!running)return;
     sctx.clearRect(0,0,W,H);
-    sctx.shadowBlur=6;
     for(var i=0;i<stars.length;i++){
       var s=stars[i];
       s.tw+=s.tws;
-      var a=.65+Math.sin(s.tw)*.35;
-      sctx.shadowColor='hsla('+s.hue+',90%,80%,'+(a*.8)+')';
+      var a=.7+Math.sin(s.tw)*.3;
+      // Halo mare
+      sctx.shadowBlur=s.r*3;
+      sctx.shadowColor='hsla('+s.hue+',95%,75%,'+a+')';
       sctx.beginPath();
       sctx.arc(s.x,s.y,s.r,0,Math.PI*2);
-      sctx.fillStyle='hsla('+s.hue+',85%,85%,'+a+')';
+      sctx.fillStyle='hsla('+s.hue+',90%,88%,'+a+')';
+      sctx.fill();
+      // Nucleu alb
+      sctx.shadowBlur=0;
+      sctx.beginPath();
+      sctx.arc(s.x,s.y,s.r*.45,0,Math.PI*2);
+      sctx.fillStyle='rgba(255,255,255,'+(a*.9)+')';
       sctx.fill();
     }
-    sctx.shadowBlur=0;
     requestAnimationFrame(tickStars);
   }
   if(!REDUCED)requestAnimationFrame(tickStars);
