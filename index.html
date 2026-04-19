@@ -1597,7 +1597,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script>try{
 (function(){
 var mq=document.getElementById("mqTrack");
-if(mq){var items=["Dr. Iorga · Dental","Av. Popa-Alexandru","Dr. Ghibu · Medical","Kinetoterapeut A. Zevedei","UrbanCat"];var html=items.map(function(i){return '<div class="mq-item">'+i+'</div>'}).join("");mq.innerHTML=html+html;}
+if(mq){var items=["Av. Popa-Alexandru","Dr. Ghibu · Medical","Kinetoterapeut A. Zevedei","UrbanCat"];var html=items.map(function(i){return '<div class="mq-item">'+i+'</div>'}).join("");mq.innerHTML=html+html;}
 })();
 }catch(__v9e){console.warn('v9 guard:',__v9e.message)}</script>
 </section>
@@ -1648,12 +1648,14 @@ if(mq){var items=["Dr. Iorga · Dental","Av. Popa-Alexandru","Dr. Ghibu · Medic
   </div>
   <div class="rv rd2" style="text-align:center;margin-top:2rem;padding:1.5rem 1rem;border-top:1px solid var(--br)">
     <div class="lb" style="justify-content:center;margin-bottom:.75rem">Studii de caz</div>
-    <p class="ss" style="margin:0 auto 1.2rem;max-width:620px;text-align:center;font-size:.85rem">Patru branduri, patru contexte diferite. Vezi cum am lucrat cu fiecare.</p>
+    <p class="ss" style="margin:0 auto 1.2rem;max-width:620px;text-align:center;font-size:.85rem">Trei branduri, trei contexte diferite. Vezi cum am lucrat cu fiecare.</p>
     <div style="display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center;max-width:720px;margin:0 auto 2rem">
       <a href="/case/urbancat.html" class="bh" style="font-size:.78rem;padding:.6rem 1rem" data-cta="home_case_urbancat">Urbancat →</a>
       <a href="/case/popa.html" class="bh" style="font-size:.78rem;padding:.6rem 1rem" data-cta="home_case_popa">Av. Popa →</a>
       <a href="/case/ghibu.html" class="bh" style="font-size:.78rem;padding:.6rem 1rem" data-cta="home_case_ghibu">Dr. Ghibu →</a>
-      <a href="/case/iorga.html" class="bh" style="font-size:.78rem;padding:.6rem 1rem" data-cta="home_case_iorga">Dr. Iorga →</a>
+      <!-- HIDE_IORGA_START (pending client accept — re-enable: uncomment + change "Trei" back to "Patru") -->
+      <!-- <a href="/case/iorga.html" class="bh" style="font-size:.78rem;padding:.6rem 1rem" data-cta="home_case_iorga">Dr. Iorga →</a> -->
+      <!-- HIDE_IORGA_END -->
     </div>
     <a href="/portofoliu.html" class="bh" style="font-size:1rem;padding:1.1rem 2.4rem" data-cta="home_portofoliu_full">Vezi tot portofoliul →</a>
   </div>
@@ -1929,7 +1931,9 @@ fm.addEventListener("submit",async function(e){
 (function(){
 var cases={
 "ghibu":{eyebrow:"Caz · Medical",title:"Dr. Nicolae Ghibu",sub:"Conținut educațional medical pe TikTok si Instagram. De la 0 la 25K followers in 4 luni.",challenge:"Domeniul medical e strict reglementat - zero spatiu pentru clickbait. Dr. Ghibu avea cunostinte valoroase dar zero prezență online.",solution:"Am construit un sistem de carusele educationale + reels scurte cu explicatii accesibile, pastrand tonul profesional. Fiecare postare răspunde unei întrebări reale a pacientilor.",result:"In 4 luni, contul a devenit referinta in nisa. Pacienti noi mentioneaza direct TikTok-ul la programari.",quote:"",author:""},
+/* HIDE_IORGA_START (modal data pending client accept — re-enable: remove comment wrappers)
 "iorga":{eyebrow:"Caz · Dental",title:"Dr. Iorga Bogdan Nicolae",sub:"Rebranding social media pentru clinica stomatologică. Focus pe incredere si transparenta.",challenge:"Piata dentara e saturata de reclame agresive si before/after fara context. Dr. Iorga voia o abordare educationala, fara presiune de vânzare.",solution:"Strategie bazata pe content educațional: mituri despre dinti, ingrijire corecta, explicatii pentru proceduri complexe. Zero clickbait, totul cu tonul unui doctor real.",result:"Programari dublate in 3 luni. Pacientii vin deja informați si încrezători.",quote:"",author:""},
+HIDE_IORGA_END */
 "popa":{eyebrow:"Caz · Legal",title:"Av. Andreas Popa-Alexandru",sub:"Content juridic accesibil pentru avocat specializat in drept penal. Traffic organic catre site-ul casei de avocatura.",challenge:"Dreptul penal e un subiect sensibil. Trebuia content educativ fara sa para ca incurajeaza infractiuni sau fara sa banalizeze procese.",solution:"Format Q&A scurt: drepturile tale in fata politiei, ce sa faci la audiere, cum funcționează un proces penal. Ton calm, profesionist, zero senzationalism.",result:"Devenit una dintre cele mai urmarite pagini juridice din România pentru public non-juridic.",quote:"",author:""}};
 
 function open(k){var c=cases[k];if(!c)return;
