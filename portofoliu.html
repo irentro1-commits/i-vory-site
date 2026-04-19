@@ -23,6 +23,10 @@
 <meta property="og:image" content="https://i-vory.ro/og-image.jpg">
 <meta property="og:type" content="website">
 
+<!-- U4: View Transitions API (cross-document fade) -->
+<meta name="view-transition" content="same-origin">
+<style id="u4-vt-css">@view-transition{navigation:auto}::view-transition-old(root),::view-transition-new(root){animation-duration:.35s;animation-timing-function:cubic-bezier(.4,0,.2,1)}</style>
+
 <style>
 /* =============================================================================
    PORTOFOLIU v10.0 — i-Vory Creative
@@ -2026,5 +2030,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script src="/logo-svg.js" defer></script>
 <script src="/earth-tex.js" defer></script>
 <script src="/portofoliu-bg.js" defer></script>
+<script>(function(){if(window.matchMedia("(pointer:coarse)").matches||window.innerWidth<=900)return;var s=document.createElement("script");s.src="/u4-transitions.js";s.defer=true;document.head.appendChild(s);})();</script><!-- U4: Lenis smooth scroll (View Transitions via CSS in head) -->
 </body>
 </html>

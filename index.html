@@ -59,6 +59,10 @@
 <meta name="twitter:image" content="https://i-vory.ro/og-image.jpg">
 <meta name="twitter:image:alt" content="i-vory Creative - Agenție social media București">
 
+<!-- U4: View Transitions API (cross-document fade) -->
+<meta name="view-transition" content="same-origin">
+<style id="u4-vt-css">@view-transition{navigation:auto}::view-transition-old(root),::view-transition-new(root){animation-duration:.35s;animation-timing-function:cubic-bezier(.4,0,.2,1)}</style>
+
 <!-- AEO / LLM optimization -->
 <meta name="description:llm" content="i-vory Creative is a social media agency in Bucharest, România, offering professional content creation for TikTok, Instagram, Facebook, YouTube including posts, carousels, reels and full management. Starting at 50 RON per design, management packages from 3.000 RON per month.">
 
@@ -2776,5 +2780,6 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")close()});
 </script>
 <script>(function(){if(window.matchMedia("(pointer:coarse)").matches||window.innerWidth<=900)return;var s=document.createElement("script");s.src="/meteor-cursor.js";s.defer=true;document.head.appendChild(s);})();</script><!-- was: meteor-cursor.js -->
 <script>(function(){if(window.matchMedia("(pointer:coarse)").matches||window.innerWidth<=900)return;var s=document.createElement("script");s.src="/gsap-kinetic.js";s.defer=true;document.head.appendChild(s);})();</script><!-- U3: GSAP kinetic hero + magnetic buttons -->
+<script>(function(){if(window.matchMedia("(pointer:coarse)").matches||window.innerWidth<=900)return;var s=document.createElement("script");s.src="/u4-transitions.js";s.defer=true;document.head.appendChild(s);})();</script><!-- U4: Lenis smooth scroll (View Transitions handled via CSS above) -->
 <script src="/gtm-events.js" defer></script>
 </body></html>
