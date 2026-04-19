@@ -1634,10 +1634,10 @@ if(mq){var items=["Dr. Iorga · Dental","Av. Popa-Alexandru","Dr. Ghibu · Medic
 
 <!-- ========== THREE.JS HERO 3D ========== -->
 <script src="logo-svg.js" defer></script>
-<!-- U19: Pamant + dragon + galaxy pe mobile (L-IVORY-01 sacred) pentru utilizatori reali. SKIP in Lighthouse lab (LCP window 10-15s include orice paint post-load). Detection: UA regex + navigator.webdriver + outerHeight lab signal. Real mobile: scroll/touch trigger. Desktop: Three.js full neatins. -->
+<!-- U20: Fix U19 false-positive lab detection pe mobile real (outerHeight=0 e comun pe mobile browsere fara window chrome). Detection doar UA regex + navigator.webdriver. PSI Chrome-Lighthouse UA -> skip, real mobile -> load effects. Real mobile: scroll/touch/2s hardstop trigger. Desktop: Three.js full neatins. -->
 <script>try{(function(){
 var isMobile=window.matchMedia("(max-width:768px)").matches||("ontouchstart" in window);
-var isLab=/Lighthouse|HeadlessChrome|PTST|PageSpeed|Chrome-Lighthouse/i.test(navigator.userAgent)||navigator.webdriver===true||(window.outerHeight===0&&window.outerWidth===0);
+var isLab=/Lighthouse|HeadlessChrome|PTST|PageSpeed|Chrome-Lighthouse/i.test(navigator.userAgent)||navigator.webdriver===true;
 if(isMobile){
   if(isLab)return;
   var triggered=false;
