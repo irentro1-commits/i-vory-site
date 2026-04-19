@@ -994,10 +994,10 @@ project/
 
 ## 21. METADATE SKILL
 
-**Autor inițial:** Andy @ i-vory Creative + Claude (Anthropic)
+**Autor inițial:** Andy @ i-vory Studio + Claude (Anthropic)
 **Bazat pe:** i-vory.ro build real (Martie-Aprilie 2026)
 **Versiune:** 1.0
-**Licență:** Proprietar i-vory Creative. Reutilizare doar cu acord scris.
+**Licență:** Proprietar i-vory Studio. Reutilizare doar cu acord scris.
 **Update workflow:** Când găsești pattern nou care merită salvat, adaugă la §11 sau §19 cu exemplu concret.
 
 **Nu e inclus în acest skill (intenționat):**

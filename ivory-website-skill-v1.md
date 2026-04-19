@@ -133,7 +133,7 @@ Dacă `.s2{display:flex}` și ai `.s2-wrap` + `.hero-video` ca SIBLINGS direct �
 $json = Get-Content "faqdata.json" -Raw -Encoding UTF8 | ConvertFrom-Json
 ```
 
-**Alternativ pentru content user-facing:** scrie fără diacritice deloc (i-Vory final FAQ așa). Mai sigur decât să rupi encoding-ul iar și iar.
+**Alternativ pentru content user-facing:** scrie fără diacritice deloc (i-vory Studio final FAQ așa). Mai sigur decât să rupi encoding-ul iar și iar.
 
 **Save fișier UTF-8 fără BOM obligatoriu:**
 ```powershell
@@ -223,7 +223,7 @@ button.addEventListener("click", e=>{ e.stopPropagation(); manual=true; v.muted=
 Inner SVG transforms (translate + scale + flip Y) **modifică range-ul Y**. Original `<g transform="translate(-10,685) scale(0.1,-0.1)">` mapează content în y range 105-685.
 
 **Greșeala mea inițială:** viewBox 0 0 1700 520 → elefantul tăiat sus și jos.
-**Soluție:** viewBox **2700×700** include tot Y range 0-700 + lățime pentru text "i-vory Creative" lângă.
+**Soluție:** viewBox **2700×700** include tot Y range 0-700 + lățime pentru text "i-vory Studio" lângă.
 
 ```svg
 <svg viewBox="0 0 2700 700" preserveAspectRatio="xMidYMid meet">
@@ -233,7 +233,7 @@ Inner SVG transforms (translate + scale + flip Y) **modifică range-ul Y**. Orig
 </svg>
 ```
 
-**Casing exact = "i-vory Creative"** (lowercase i-vory, capital C în Creative). Andy prinde imediat dacă e altfel.
+**Casing exact = "i-vory Studio"** (lowercase i-vory, capital C în Creative). Andy prinde imediat dacă e altfel.
 
 **Cache busting după update logo:** add `?v=N` query param în `<img src>` (Cloudflare cache 4h default).
 
@@ -359,7 +359,7 @@ C:\Users\USER\Documents\i-vory\
 │   ├── premium-fx.js     ← ~1500 lines FX bank
 │   ├── earth-tex.js      ← 269KB NASA texture base64
 │   ├── logo.svg          ← elephant only (28 paths teal)
-│   ├── logo-nav.svg      ← elephant + "i-vory Creative" (viewBox 2700×700)
+│   ├── logo-nav.svg      ← elephant + "i-vory Studio" (viewBox 2700×700)
 │   ├── logo-svg.js       ← base64 fallback
 │   ├── favicon.svg
 │   ├── logo-full.svg

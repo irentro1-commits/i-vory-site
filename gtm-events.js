@@ -1,5 +1,5 @@
 /* =============================================================================
-   i-Vory GTM Event Tracking
+   i-vory Studio GTM Event Tracking
    Universal dataLayer pushes for key conversion events.
    Works with any GTM container - configure tags/triggers in GTM UI.
    ============================================================================= */

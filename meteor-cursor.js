@@ -1,4 +1,4 @@
-/* meteor-cursor.js — universal ethereal blue wisp cursor for all i-Vory pages
+/* meteor-cursor.js — universal ethereal blue wisp cursor for all i-vory Studio pages
  * Self-contained: injects CSS + creates meteor/nebula elements + runs physics loop
  * Disabled on mobile (<=768px)
  */

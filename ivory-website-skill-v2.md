@@ -190,7 +190,7 @@ total = Math.max(450, Math.round(base/10)*10);
 ```
 [Brand + tagline + 4 social icons] [Servicii] [Companie] [Contact + WhatsApp CTA]
 ----------------------------------------------------------------
-© 2026 i-vory Creative · CUI 51276958 | Termeni · Privacy · Cookies · GDPR
+© 2026 i-vory Studio · CUI 51276958 | Termeni · Privacy · Cookies · GDPR
 ```
 
 ---
@@ -302,7 +302,7 @@ total = Math.max(450, Math.round(base/10)*10);
 
 ### Meta obligatorii
 ```html
-<title>i-vory Creative - Agenție Social Media București | TikTok Instagram Facebook</title>
+<title>i-vory Studio - Agenție Social Media București | TikTok Instagram Facebook</title>
 <meta name="description" content="...maxim 155 char, include prețuri + platforme">
 <link rel="canonical" href="https://i-vory.ro/">
 <meta property="og:title" content="...">

@@ -779,12 +779,12 @@ if(!__MOB){(function(){
       interval=setInterval(()=>{
         toggle=!toggle;
         link.href='data:image/svg+xml;utf8,'+encodeURIComponent(toggle?dotSvg:baseSvg);
-        document.title=(toggle?'(1) ':'')+'i-Vory Creative — Te-am așteptat';
+        document.title=(toggle?'(1) ':'')+'i-vory Studio — Te-am așteptat';
       },1500);
     }else{
       clearInterval(interval);
       link.href='data:image/svg+xml;utf8,'+encodeURIComponent(baseSvg);
-      document.title='i-Vory — Agenție Social Media București';
+      document.title='i-vory Studio — Agenție Social Media București';
     }
   });
 })();
@@ -1072,7 +1072,7 @@ if(!__MOB){(function(){
       fps=Math.round(frames*1000/(now-lastT));
       frames=0;lastT=now;
       const mem=performance.memory?Math.round(performance.memory.usedJSHeapSize/1048576):0;
-      hud.innerHTML='<b style="color:#00e0c0">FPS</b> '+fps+'<br><b style="color:#00e0c0">MEM</b> '+mem+' MB<br><b style="color:#00e0c0">DPR</b> '+window.devicePixelRatio.toFixed(1)+'<br><b style="color:#ff9a3d">i-Vory v7</b>';
+      hud.innerHTML='<b style="color:#00e0c0">FPS</b> '+fps+'<br><b style="color:#00e0c0">MEM</b> '+mem+' MB<br><b style="color:#00e0c0">DPR</b> '+window.devicePixelRatio.toFixed(1)+'<br><b style="color:#ff9a3d">i-vory Studio v7</b>';
     }
     requestAnimationFrame(tick);
   }
