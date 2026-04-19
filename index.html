@@ -2207,8 +2207,11 @@ function animate(){
   }
   
   if(window.__IS_MOBILE)renderer.render(scene,camera);else composer.render();
-  requestAnimationFrame(animate);
+  if(window.__HERO_VISIBLE!==false)__rafId=requestAnimationFrame(animate);
 }
+// U12c: pause rAF Three.js cand hero iese din viewport (Chrome mobile scroll fix)
+var __rafId=null;window.__HERO_VISIBLE=true;
+try{var __heroObs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){if(!window.__HERO_VISIBLE){window.__HERO_VISIBLE=true;animate()}}else{window.__HERO_VISIBLE=false;if(__rafId)cancelAnimationFrame(__rafId)}})},{threshold:0.01});__heroObs.observe(container);}catch(_){}
 animate();
 
 window.addEventListener('resize',()=>{
@@ -2255,7 +2258,8 @@ document.querySelectorAll('.rv').forEach(function(el){obs.observe(el)});
 // Hero scroll storytelling
 var prob=document.getElementById('prob'),lines=prob.querySelectorAll('.prob-line'),pBar=document.getElementById('probBar');
 function updateProb(){var probRect=prob.getBoundingClientRect(),probTopDoc=probRect.top+window.scrollY,probH=prob.offsetHeight,vh=window.innerHeight,scrolled=window.scrollY-probTopDoc,total=probH-vh;if(total<=0)total=probH;var progress=Math.max(0,Math.min(1,scrolled/total));pBar.style.width=(progress*100)+'%';var segment=1/lines.length,activeIndex=Math.min(Math.floor(progress/segment),lines.length-1);if(progress>=.999)activeIndex=lines.length-1;lines.forEach(function(l,i){l.classList.remove('act','past');if(i===activeIndex)l.classList.add('act');else if(i<activeIndex)l.classList.add('past')})}
-window.addEventListener('scroll',updateProb,{passive:true});(function rafLoop(){updateProb();requestAnimationFrame(rafLoop)})();
+// U12c scroll-jank fix: elimina rAF loop infinit, trigger doar pe scroll cu ticking guard
+var __probTick=false;function __onScrollProb(){if(!__probTick){requestAnimationFrame(function(){updateProb();__probTick=false});__probTick=true}}window.addEventListener('scroll',__onScrollProb,{passive:true});updateProb();
 
 // Portfolio tabs
 document.querySelectorAll('.pf-tab').forEach(function(tab){tab.addEventListener('click',function(){document.querySelectorAll('.pf-tab').forEach(function(t){t.classList.remove('active')});document.querySelectorAll('.pf-panel').forEach(function(p){p.classList.remove('active')});tab.classList.add('active');var panel=document.getElementById('pf-'+tab.dataset.tab);if(panel){panel.classList.add('active');panel.querySelectorAll('.rv').forEach(function(el){obs.observe(el)})}})});
