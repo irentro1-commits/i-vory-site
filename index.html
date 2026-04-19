@@ -1634,7 +1634,7 @@ if(mq){var items=["Dr. Iorga · Dental","Av. Popa-Alexandru","Dr. Ghibu · Medic
 
 <!-- ========== THREE.JS HERO 3D ========== -->
 <script src="logo-svg.js" defer></script>
-<!-- U20: Fix U19 false-positive lab detection pe mobile real (outerHeight=0 e comun pe mobile browsere fara window chrome). Detection doar UA regex + navigator.webdriver. PSI Chrome-Lighthouse UA -> skip, real mobile -> load effects. Real mobile: scroll/touch/2s hardstop trigger. Desktop: Three.js full neatins. -->
+<!-- U21: mobile-fx.js dedicat pentru hero mobile brand identity (Pamant + dragon + galaxia + starfield). Inlocuieste portofoliu-bg.js (care avea TINY skip <500px = nimic vizibil pe telefoane sub 500px). Gate pastrat: UA regex + webdriver (U20). Real mobile: scroll/touch/2s hardstop trigger. Desktop: Three.js full neatins. -->
 <script>try{(function(){
 var isMobile=window.matchMedia("(max-width:768px)").matches||("ontouchstart" in window);
 var isLab=/Lighthouse|HeadlessChrome|PTST|PageSpeed|Chrome-Lighthouse/i.test(navigator.userAgent)||navigator.webdriver===true;
@@ -1647,7 +1647,7 @@ if(isMobile){
     et.src='earth-tex.js';
     et.onload=function(){
       var bg=document.createElement('script');
-      bg.src='portofoliu-bg.js';
+      bg.src='mobile-fx.js';
       document.head.appendChild(bg);
     };
     document.head.appendChild(et);
