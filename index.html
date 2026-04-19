@@ -984,6 +984,11 @@ body::before{background-size:800px 800px !important;opacity:.4 !important}
   /* Reduce backdrop-filter blur (expensive on mobile GPU) */
   nav{backdrop-filter:blur(8px) !important}
   .ft-social a,.si{backdrop-filter:none !important}
+  /* U28: fix lag scroll intre "Continut social media" si "4 branduri active"
+     backdrop-filter pe prob-line::before + s2::before sampleaza canvas mobile-fx (Pamant+80 stele+aura)
+     la fiecare frame de scroll = GPU overload. Text-shadow existent asigura lizibilitate fara blur. */
+  .prob-line::before{backdrop-filter:none !important;-webkit-backdrop-filter:none !important}
+  .s2::before{backdrop-filter:none !important;-webkit-backdrop-filter:none !important}
   /* Disable hover transforms on touch devices - saves composite */
   .item:hover,.bh:hover,.ft-social a:hover{transform:none !important}
 }
