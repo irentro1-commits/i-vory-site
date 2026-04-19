@@ -8,6 +8,15 @@
   'use strict';
   if(window.__MOBILE_FX_LOADED)return;window.__MOBILE_FX_LOADED=true;
 
+  // ===== DEBUG MARKER U21.1 (de sters cand confirmat vizibil) =====
+  try{
+    var dbg=document.createElement('div');
+    dbg.id='mfx-debug';
+    dbg.textContent='MFX '+(window.__EARTH_TEX?'E':'.')+(window.__LOGO_SVG_B64?'L':'.');
+    dbg.style.cssText='position:fixed;top:env(safe-area-inset-top,12px);right:12px;z-index:99999;background:#ff0066;color:#fff;padding:4px 8px;font-size:11px;font-family:monospace;border-radius:4px;pointer-events:none;box-shadow:0 0 12px rgba(255,0,102,.6)';
+    document.body.appendChild(dbg);
+  }catch(_){}
+
   var W=window.innerWidth,H=window.innerHeight;
   var REDUCED=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var DPR=Math.min(window.devicePixelRatio||1, 1.5);
