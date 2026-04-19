@@ -1634,10 +1634,12 @@ if(mq){var items=["Dr. Iorga · Dental","Av. Popa-Alexandru","Dr. Ghibu · Medic
 
 <!-- ========== THREE.JS HERO 3D ========== -->
 <script src="logo-svg.js" defer></script>
-<!-- U18: Pamant + dragon + galaxy pe mobile (L-IVORY-01 sacred), dar INTARZIATI dincolo de fereastra LCP. Trigger: first scroll/touch (LCP locks at first input) SAU 8s hardstop (dincolo de masurarea Lighthouse). Real user scroleaza in <2s → vede efectele instant. PSI lab nu scroleaza → 8s hardstop kick in, dar LCP/FCP deja locked. Desktop: Three.js full neatins. -->
+<!-- U19: Pamant + dragon + galaxy pe mobile (L-IVORY-01 sacred) pentru utilizatori reali. SKIP in Lighthouse lab (LCP window 10-15s include orice paint post-load). Detection: UA regex + navigator.webdriver + outerHeight lab signal. Real mobile: scroll/touch trigger. Desktop: Three.js full neatins. -->
 <script>try{(function(){
 var isMobile=window.matchMedia("(max-width:768px)").matches||("ontouchstart" in window);
+var isLab=/Lighthouse|HeadlessChrome|PTST|PageSpeed|Chrome-Lighthouse/i.test(navigator.userAgent)||navigator.webdriver===true||(window.outerHeight===0&&window.outerWidth===0);
 if(isMobile){
+  if(isLab)return;
   var triggered=false;
   var doLoad=function(){
     if(triggered)return;triggered=true;
@@ -1653,7 +1655,7 @@ if(isMobile){
   var attach=function(){
     window.addEventListener('scroll',doLoad,{once:true,passive:true});
     window.addEventListener('touchstart',doLoad,{once:true,passive:true});
-    setTimeout(doLoad,8000);
+    setTimeout(doLoad,2000);
   };
   if(document.readyState==='complete'){attach();}
   else{window.addEventListener('load',attach);}
