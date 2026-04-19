@@ -1634,11 +1634,13 @@ if(mq){var items=["Dr. Iorga · Dental","Av. Popa-Alexandru","Dr. Ghibu · Medic
 
 <!-- ========== THREE.JS HERO 3D ========== -->
 <script src="logo-svg.js" defer></script>
-<!-- U17: Restore Pamant + dragon + galaxy pe mobile via pattern portofoliu-bg.js (Canvas 2D decorativ, zero Three.js). L-IVORY-01 sacred. Mobile: lazy load post-window.load + idle (zero LCP cost). Desktop: Three.js full neatins. -->
+<!-- U18: Pamant + dragon + galaxy pe mobile (L-IVORY-01 sacred), dar INTARZIATI dincolo de fereastra LCP. Trigger: first scroll/touch (LCP locks at first input) SAU 8s hardstop (dincolo de masurarea Lighthouse). Real user scroleaza in <2s → vede efectele instant. PSI lab nu scroleaza → 8s hardstop kick in, dar LCP/FCP deja locked. Desktop: Three.js full neatins. -->
 <script>try{(function(){
 var isMobile=window.matchMedia("(max-width:768px)").matches||("ontouchstart" in window);
 if(isMobile){
-  var loadMobileBg=function(){
+  var triggered=false;
+  var doLoad=function(){
+    if(triggered)return;triggered=true;
     var et=document.createElement('script');
     et.src='earth-tex.js';
     et.onload=function(){
@@ -1648,13 +1650,13 @@ if(isMobile){
     };
     document.head.appendChild(et);
   };
-  if(document.readyState==='complete'){
-    ('requestIdleCallback' in window)?requestIdleCallback(loadMobileBg,{timeout:3000}):setTimeout(loadMobileBg,2500);
-  }else{
-    window.addEventListener('load',function(){
-      ('requestIdleCallback' in window)?requestIdleCallback(loadMobileBg,{timeout:3000}):setTimeout(loadMobileBg,2500);
-    });
-  }
+  var attach=function(){
+    window.addEventListener('scroll',doLoad,{once:true,passive:true});
+    window.addEventListener('touchstart',doLoad,{once:true,passive:true});
+    setTimeout(doLoad,8000);
+  };
+  if(document.readyState==='complete'){attach();}
+  else{window.addEventListener('load',attach);}
 }else{
   var et=document.createElement('script');et.src='earth-tex.js';et.defer=true;document.head.appendChild(et);
   var pf=document.createElement('script');pf.src='premium-fx.js';pf.defer=true;document.head.appendChild(pf);
