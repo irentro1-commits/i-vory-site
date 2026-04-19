@@ -12,3 +12,7 @@ ivory-website-skill-*.md
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# secrets (defensive — .secrets/ normally lives outside repo, but block it here too)
+.secrets/
+*.secret

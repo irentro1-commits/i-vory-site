@@ -8,14 +8,15 @@
   'use strict';
   if(window.__MOBILE_FX_LOADED)return;window.__MOBILE_FX_LOADED=true;
 
-  // ===== DEBUG MARKER U21.1 (de sters cand confirmat vizibil) =====
-  try{
-    var dbg=document.createElement('div');
-    dbg.id='mfx-debug';
-    dbg.textContent='MFX27 E='+(window.__EARTH_TEX?'Y':'N')+' L='+(window.__LOGO_SVG_B64?'Y':'N');
-    dbg.style.cssText='position:fixed;top:env(safe-area-inset-top,12px);right:12px;z-index:99999;background:#ff0066;color:#fff;padding:4px 8px;font-size:11px;font-family:monospace;border-radius:4px;pointer-events:none;box-shadow:0 0 12px rgba(255,0,102,.6)';
-    document.body.appendChild(dbg);
-  }catch(_){}
+  /* U31: in-app browser early-return (TikTok/Instagram/FB/LinkedIn/Pinterest WebViews au GPU limitat + throttling agresiv).
+     Canvas 2D rAF loop = prea scump in WebView → bail out. Static galactic bg (body gradient) preia rolul. */
+  var __ua=navigator.userAgent||'';
+  if(/FBAN|FBAV|Instagram|Line\/|TikTok|musical_ly|BytedanceWebview|Pinterest|LinkedInApp/i.test(__ua)){
+    document.documentElement.classList.add('in-app-browser');
+    return;
+  }
+
+  /* U31: debug marker MFX scos (era badge roz top-right vizibil peste hero). */
 
   var W=window.innerWidth,H=window.innerHeight;
   var REDUCED=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;

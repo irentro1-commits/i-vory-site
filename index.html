@@ -11,6 +11,35 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <script>try{if(window.matchMedia("(max-width:768px)").matches||("ontouchstart" in window)){document.documentElement.classList.add('m-nopre')}}catch(_){}</script>
 <style>.m-nopre #u6-loader,.m-nopre .pre,.m-nopre .hero3d{display:none!important;visibility:hidden!important}</style>
+<!-- U31: in-app browser detection timpuriu (inainte de orice alt script) — TikTok/Instagram/FB/LinkedIn/Pinterest WebViews au GPU limitat + throttling. Seteaza class pe <html> ca sa putem folosi CSS fallback static fara canvas/3D. -->
+<script>try{if(/FBAN|FBAV|Instagram|Line\/|TikTok|musical_ly|BytedanceWebview|Pinterest|LinkedInApp/i.test(navigator.userAgent||'')){document.documentElement.classList.add('in-app-browser')}}catch(_){}</script>
+<style id="in-app-fallback">
+/* U31: fallback pentru in-app browsers (TikTok/Insta/FB/LI/Pinterest WebView).
+   Kill: hero3d (Three.js), mfx-root (canvas 2D), bgblobs, starfield. Pastreaza: layout + text + content.
+   Inlocuire vizuala: static galactic gradient direct pe body (zero GPU cost, identitate pastrata). */
+html.in-app-browser .hero3d,
+html.in-app-browser #mfx-root,
+html.in-app-browser .bgblobs,
+html.in-app-browser .starfield,
+html.in-app-browser #starfield,
+html.in-app-browser .pre,
+html.in-app-browser #u6-loader {
+  display: none !important;
+  visibility: hidden !important;
+}
+html.in-app-browser body {
+  background:
+    radial-gradient(ellipse at 50% 20%, rgba(123,44,255,.18), transparent 55%),
+    radial-gradient(ellipse at 80% 70%, rgba(255,77,166,.12), transparent 50%),
+    #040610 !important;
+}
+html.in-app-browser *, html.in-app-browser *::before, html.in-app-browser *::after {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  filter: none !important;
+  animation: none !important;
+}
+</style>
 
 <title>i-vory Creative - Agenție Social Media București | TikTok Instagram Facebook · v9</title>
 <meta name="description" content="Agenție social media Marketing and Advertising București. Conținut profesional TikTok, Instagram, Facebook, YouTube. Postări, carusele, reels, management complet.">
@@ -1453,6 +1482,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     contain: layout style;
   }
 
+  /* U31: fundamental scroll fix — elimina translateY+scale pe mobile.
+     Problema: scroll rapid (flick 3-5 evenimente in <200ms) toggle-uia .act/.past care aveau transform animat
+     translateY(40px) scale(.95) → translate(0) scale(1). Browser-ul interpola peste animatia anterioara = mismatch
+     vizual intre rata scroll si durata tranzitie = "impresie de lag".
+     Fix: pastreaza DOAR translate(-50%,-50%) (centrare absoluta), scoate translateY+scale complet.
+     Opacity fade 150ms ramane singura tranzitie vizuala. Scroll fast = state change instant, fara interpolare transform. */
+  .prob-line,
+  .prob-line.act,
+  .prob-line.past {
+    transform: translate(-50%, -50%) !important;
+    transition: opacity .15s linear !important;
+  }
+
   /* Reduce transitions (snappy response) */
   * {
     transition-duration: 0.2s !important;
@@ -1676,7 +1718,7 @@ if(isMobile){
   var triggered=false;
   var doLoad=function(){
     if(triggered)return;triggered=true;
-    try{var gd=document.createElement('div');gd.id='mfx-gate-debug';gd.textContent='GATE FIRED';gd.style.cssText='position:fixed;top:env(safe-area-inset-top,40px);left:12px;z-index:99999;background:#00e0c0;color:#000;padding:4px 8px;font-size:11px;font-family:monospace;border-radius:4px;pointer-events:none;box-shadow:0 0 12px rgba(0,224,192,.6)';document.body.appendChild(gd);}catch(_){}
+    /* U31: debug marker GATE FIRED scos (era badge teal top-left vizibil peste hero). */
     var et=document.createElement('script');
     et.src='earth-tex.js?v=24';
     et.onload=function(){
