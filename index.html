@@ -1634,8 +1634,8 @@ if(mq){var items=["Dr. Iorga · Dental","Av. Popa-Alexandru","Dr. Ghibu · Medic
 
 <!-- ========== THREE.JS HERO 3D ========== -->
 <script src="logo-svg.js" defer></script>
-<script src="earth-tex.js" defer></script>
-<script defer src="premium-fx.js"></script>
+<!-- U16c: earth-tex.js (202KB) + premium-fx.js (19KB) = desktop-only. Mobile LCP fix (defer still fetches = blocks bandwidth on slow 4G). -->
+<script>try{(function(){if(window.matchMedia("(max-width:768px)").matches||("ontouchstart" in window))return;var et=document.createElement('script');et.src='earth-tex.js';et.defer=true;document.head.appendChild(et);var pf=document.createElement('script');pf.src='premium-fx.js';pf.defer=true;document.head.appendChild(pf)})()}catch(_){}</script>
 <script type="importmap">
 {"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}
 </script>
