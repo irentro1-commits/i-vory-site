@@ -4,16 +4,26 @@
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
 
-/hero-video-web.mp4
-  Cache-Control: public, max-age=31536000, immutable
+# U26: HTML no-cache — forteaza re-fetch la fiecare vizita, previne Safari iOS cache stale
+/
+  Cache-Control: public, max-age=0, must-revalidate
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+/index.html
+  Cache-Control: public, max-age=0, must-revalidate
 
+# U26: JS dinamic (mobile-fx itereaza des) — 5 min cache + revalidate
+/mobile-fx.js
+  Cache-Control: public, max-age=300, must-revalidate
 /earth-tex.js
-  Cache-Control: public, max-age=31536000, immutable
-
-/premium-fx.js
-  Cache-Control: public, max-age=31536000, immutable
-
+  Cache-Control: public, max-age=86400, must-revalidate
 /logo-svg.js
+  Cache-Control: public, max-age=86400, must-revalidate
+/premium-fx.js
+  Cache-Control: public, max-age=86400, must-revalidate
+
+# Media imutabila
+/hero-video-web.mp4
   Cache-Control: public, max-age=31536000, immutable
 
 /logo-nav.svg
