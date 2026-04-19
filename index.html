@@ -1425,6 +1425,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     display: none !important;
   }
 
+  /* U29: KILL .bgblobs pe mobile — canvas mobile-fx.js ofera deja galaxy+stars+earth.
+     4 blobs × filter:blur(100px) × animation 22-30s infinite = GPU layer × 4 recomputat per frame. */
+  .bgblobs, .bgblobs .blob, .blob1, .blob2, .blob3, .blob4 {
+    display: none !important;
+    animation: none !important;
+  }
+
+  /* U29: kill .pre-glow filter:blur(80px) + animation pe mobile (preloader se ascunde rapid, inutil) */
+  .pre-glow {
+    animation: none !important;
+    filter: none !important;
+    opacity: .4 !important;
+  }
+
   /* Reduce transitions (snappy response) */
   * {
     transition-duration: 0.2s !important;
