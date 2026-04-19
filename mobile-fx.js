@@ -8,15 +8,8 @@
   'use strict';
   if(window.__MOBILE_FX_LOADED)return;window.__MOBILE_FX_LOADED=true;
 
-  /* U31: in-app browser early-return (TikTok/Instagram/FB/LinkedIn/Pinterest WebViews au GPU limitat + throttling agresiv).
-     Canvas 2D rAF loop = prea scump in WebView → bail out. Static galactic bg (body gradient) preia rolul. */
-  var __ua=navigator.userAgent||'';
-  if(/FBAN|FBAV|Instagram|Line\/|TikTok|musical_ly|BytedanceWebview|Pinterest|LinkedInApp/i.test(__ua)){
-    document.documentElement.classList.add('in-app-browser');
-    return;
-  }
-
   /* U31: debug marker MFX scos (era badge roz top-right vizibil peste hero). */
+  /* U32: in-app browser early-return U31 scos. Andy: "vrem versiunea de tiktok sa fie la fel ca mobilul" - mobile post-U29/U30/U31 e optimizat, rul mobile-fx.js si in WebView. */
 
   var W=window.innerWidth,H=window.innerHeight;
   var REDUCED=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;

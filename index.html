@@ -11,35 +11,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <script>try{if(window.matchMedia("(max-width:768px)").matches||("ontouchstart" in window)){document.documentElement.classList.add('m-nopre')}}catch(_){}</script>
 <style>.m-nopre #u6-loader,.m-nopre .pre,.m-nopre .hero3d{display:none!important;visibility:hidden!important}</style>
-<!-- U31: in-app browser detection timpuriu (inainte de orice alt script) — TikTok/Instagram/FB/LinkedIn/Pinterest WebViews au GPU limitat + throttling. Seteaza class pe <html> ca sa putem folosi CSS fallback static fara canvas/3D. -->
-<script>try{if(/FBAN|FBAV|Instagram|Line\/|TikTok|musical_ly|BytedanceWebview|Pinterest|LinkedInApp/i.test(navigator.userAgent||'')){document.documentElement.classList.add('in-app-browser')}}catch(_){}</script>
-<style id="in-app-fallback">
-/* U31: fallback pentru in-app browsers (TikTok/Insta/FB/LI/Pinterest WebView).
-   Kill: hero3d (Three.js), mfx-root (canvas 2D), bgblobs, starfield. Pastreaza: layout + text + content.
-   Inlocuire vizuala: static galactic gradient direct pe body (zero GPU cost, identitate pastrata). */
-html.in-app-browser .hero3d,
-html.in-app-browser #mfx-root,
-html.in-app-browser .bgblobs,
-html.in-app-browser .starfield,
-html.in-app-browser #starfield,
-html.in-app-browser .pre,
-html.in-app-browser #u6-loader {
-  display: none !important;
-  visibility: hidden !important;
-}
-html.in-app-browser body {
-  background:
-    radial-gradient(ellipse at 50% 20%, rgba(123,44,255,.18), transparent 55%),
-    radial-gradient(ellipse at 80% 70%, rgba(255,77,166,.12), transparent 50%),
-    #040610 !important;
-}
-html.in-app-browser *, html.in-app-browser *::before, html.in-app-browser *::after {
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  filter: none !important;
-  animation: none !important;
-}
-</style>
+<!-- U32: in-app browser fallback U31 scos. Andy: "vrem versiunea de tiktok sa fie la fel ca mobilul" - mobile e optimizat post-U29/U30/U31, rul aceeasi experienta in WebView. Daca TikTok/Insta rup ceva real -> revenim cu fallback tintit. -->
+
 
 <title>i-vory Creative - Agenție Social Media București | TikTok Instagram Facebook · v9</title>
 <meta name="description" content="Agenție social media Marketing and Advertising București. Conținut profesional TikTok, Instagram, Facebook, YouTube. Postări, carusele, reels, management complet.">
@@ -1599,7 +1572,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 
 <section class="sec" id="servicii">
-<div class="si"><div class="rv"><div class="lb">La bucată</div><h2 class="sh">Vrei doar o postare?<br>Un video? <span style="color:var(--ac)">Un carusel?</span></h2><p class="ss">Alegi exact ce ai nevoie. Plătești per bucată. Livrare 48 până la 72h.</p></div>
+<div class="si"><div class="rv"><div class="lb">La bucată</div><h2 class="sh">Postare, video, <span style="color:var(--ac)">carusel.</span></h2><p class="ss">Alegi tu. Plătești per bucată. Livrare în 48-72h.</p></div>
 <table class="price-table rv rd1">
 <tr class="pt-divider"><td colspan="4">Postări și carusele</td></tr>
 <tr><td class="pt-name">Postare</td><td class="pt-detail">O imagine pentru feed. Design unic, gata de pus pe Instagram, Facebook sau TikTok.</td><td class="pt-price">50 <span>RON</span></td><td class="pt-urgent-cell"><span class="pt-urgent">Urgent 24h → 100 RON</span></td></tr>
@@ -1630,7 +1603,7 @@ if(mq){var items=["Dr. Iorga · Dental","Av. Popa-Alexandru","Dr. Ghibu · Medic
 
 
 <section class="sec" id="pachete" style="background:rgba(3,3,9,.82);backdrop-filter:none;border-top:1px solid var(--br);border-bottom:1px solid var(--br)"><div class="si"><div class="rv" style="text-align:center;margin-bottom:1.5rem"><div class="lb" style="justify-content:center">Pachete cu management</div><h2 class="sh">Alege un pachet.<br>Noi facem restul.</h2><p class="ss" style="margin-left:auto;margin-right:auto">Postăm pe toate platformele, în fiecare zi. Management complet, tu te ocupi de business.</p></div>
-<div class="consult-banner rv rd1"><p>Primul call de consultanță de <span>30 minute</span> este gratuit.</p><small>Discutăm ce ai nevoie, fără obligații.</small><br><a href="https://calendly.com/ivorymarketing2/30min" target="_blank" class="bh" style="margin-top:1rem;font-size:.82rem;display:inline-flex">Programează call gratuit →</a></div>
+<div class="consult-banner rv rd1"><p>Primele <span>30 de minute</span> sunt din partea noastră.</p><small>Ne spui unde stai, îți arătăm ce merge.</small><br><a href="https://calendly.com/ivorymarketing2/30min" target="_blank" class="bh" style="margin-top:1rem;font-size:.82rem;display:inline-flex">Rezervă call →</a></div>
 <div class="pg">
 <div class="pk rv rd1"><div class="pk-name">All In</div><div class="pk-tag">Prezență zilnică, efort zero.</div><div class="pk-price">3.000</div><div class="pk-sub">RON pe lună fără TVA</div><div class="pk-eur">~600 EUR</div><div class="pk-save">Economie ~40%</div><div class="pk-sl">Postări</div><ul class="pk-features"><li><strong>1 postare pe zi</strong> (1-2 slides pe diverse teme, carusele)</li><li><strong>1 story pe zi</strong></li></ul><div class="pk-sl">Videoclipuri</div><ul class="pk-features"><li><strong>1 videoclip pe săptămână</strong></li></ul><div class="pk-sl">Management</div><ul class="pk-features"><li><strong>4 platforme:</strong> TikTok, Instagram, Facebook, YouTube</li><li>Management complet cu scheduling</li><li>Calendar editorial lunar</li></ul><div class="pk-consult">Consultanță inclusă</div><a href="https://api.whatsapp.com/send/?phone=40775579706&text=Salut%2C%20m%C4%83%20intereseaz%C4%83%20pachetul%20All%20In." class="pk-btn pk-o" target="_blank">Vreau All In</a></div>
 <div class="pk ft rv rd2"><div class="pk-badge">Recomandat</div><div class="pk-name">Growing Business</div><div class="pk-tag">Tot ce include All In, la alt nivel.</div><div class="pk-price">5.000</div><div class="pk-sub">RON pe lună fără TVA</div><div class="pk-eur">~1.000 EUR</div><div class="pk-save">Economie ~60%</div><div class="pk-sl">Postări</div><ul class="pk-features"><li><strong>2 postări pe zi</strong> (1 video obligatoriu)</li><li><strong>3 stories pe zi</strong></li></ul><div class="pk-sl">Videoclipuri</div><ul class="pk-features"><li><strong>3 videoclipuri pe săptămână</strong></li></ul><div class="pk-sl">Management</div><ul class="pk-features"><li><strong>4 platforme:</strong> TikTok, Instagram, Facebook, YouTube</li><li>Management complet cu scheduling</li><li>Trend tracking</li><li>Raport lunar de performanță</li></ul><div class="pk-consult">Consultanță inclusă</div><a href="https://api.whatsapp.com/send/?phone=40775579706&text=Salut%2C%20m%C4%83%20intereseaz%C4%83%20pachetul%20Growing%20Business." class="pk-btn pk-f" target="_blank">Vreau Growing Business</a></div>
@@ -1695,8 +1668,8 @@ if(mq){var items=["Dr. Iorga · Dental","Av. Popa-Alexandru","Dr. Ghibu · Medic
 
 <section class="sec" style="border-bottom:1px solid var(--br);text-align:center"><div class="si rv">
 <div class="lb" style="justify-content:center">Programează un call</div>
-<h2 class="sh">30 minute. Gratuit.<br><span style="color:var(--ac)">Concret.</span></h2>
-<p class="ss" style="margin-left:auto;margin-right:auto;margin-bottom:2rem">Discutăm ce ai nevoie. Dacă nu putem, îți spunem direct.</p>
+<h2 class="sh">30 de minute.<br><span style="color:var(--ac)">Direct la obiect.</span></h2>
+<p class="ss" style="margin-left:auto;margin-right:auto;margin-bottom:2rem">Pune-ne la treabă. Dacă ne potrivim, continuăm. Dacă nu, afli din prima.</p>
 <div class="cta-row" style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;margin-top:.5rem"><a href="https://api.whatsapp.com/send/?phone=40775579706" target="_blank" class="bh" style="font-size:1rem;padding:1.1rem 2.2rem;white-space:nowrap">Scrie-ne pe WhatsApp &rarr;</a><button type="button" class="bh b-ghost" id="openBooking" style="font-size:1rem;padding:1.1rem 2.2rem;white-space:nowrap;cursor:pointer;border:1.5px solid rgba(255,245,230,.5);background:transparent;color:#fff5e6;font-family:inherit;font-weight:700;border-radius:100px;backdrop-filter:blur(8px)">Alege o ora &rarr;</button></div>
 </div></div></section>
 
