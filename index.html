@@ -1439,6 +1439,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     opacity: .4 !important;
   }
 
+  /* U30: zona tranzitie prob → s2 "impresie de lag" fix.
+     (a) .prob-line transitie 600ms → 250ms: la scroll rapid toggle-ul .act/.past nu mai lasa animatii interpolate sa se suprapuna;
+     (b) .prob-overlay redundant peste canvas mobile-fx.js care deja are aura → scos layer absolut;
+     (c) .prob-sticky cost compositing cu canvas fixed dedesubt → contain:paint izoleaza repaint zone. */
+  .prob-line {
+    transition: opacity .25s ease-out, transform .25s ease-out !important;
+  }
+  .prob-overlay {
+    display: none !important;
+  }
+  .prob-sticky {
+    contain: layout style;
+  }
+
   /* Reduce transitions (snappy response) */
   * {
     transition-duration: 0.2s !important;
