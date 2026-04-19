@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="format-detection" content="telephone=no">
 
-<title>Portofoliu — i-Vory Creative</title>
-<meta name="description" content="Carusele, postări, video și identitate vizuală pentru branduri care vor să arate ca fiind făcute cu intenție.">
+<title>Portofoliu — carusele, video, e-commerce livrate lunar | i-Vory Creative</title>
+<meta name="description" content="Carusele, postări, video și e-commerce pentru 4 branduri cu retainer lunar. 30 postări pe zi, fiecare piesă gândită pentru canalul ei.">
 <link rel="canonical" href="https://i-vory.ro/portofoliu.html">
 
 <link rel="icon" href="/favicon.ico">
@@ -18,8 +18,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..900,0..100,0..1;1,9..144,300..900,0..100,0..1&family=Instrument+Serif:ital@0;1&family=Geist+Mono:wght@400;500;600&family=Cormorant+Garamond:ital,wght@1,500&display=swap" rel="stylesheet">
 
 <!-- Open Graph -->
-<meta property="og:title" content="Portofoliu — i-Vory Creative">
-<meta property="og:description" content="Carusele, postări, video și identitate vizuală pentru branduri.">
+<meta property="og:title" content="Portofoliu — carusele, video, e-commerce | i-Vory Creative">
+<meta property="og:description" content="4 branduri retainer lunar. 30 postări pe zi. Zero șabloane.">
 <meta property="og:image" content="https://i-vory.ro/og-image.jpg">
 <meta property="og:type" content="website">
 
@@ -1045,6 +1045,219 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   });
 })();
 </script>
+
+<!-- PORTOFOLIU v11 REBUILD — hero proof, case studies, simplified taxonomy, perf cleanup -->
+<style id="portofoliu-v11-rebuild">
+/* ─── HERO PROOF CHIPS ──────────────────────────────────────────────────── */
+.hero__proof {
+  display: flex;
+  justify-content: center;
+  gap: 1.6rem;
+  list-style: none;
+  padding: 0;
+  margin: 2rem auto 0;
+  flex-wrap: wrap;
+  max-width: 720px;
+}
+.hero__proof li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.8rem 1.4rem;
+  background: rgba(8, 12, 22, 0.5);
+  border: 1px solid rgba(0, 224, 192, 0.2);
+  border-radius: 14px;
+  min-width: 140px;
+  backdrop-filter: blur(8px);
+}
+.hero__proof strong {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-variation-settings: "opsz" 144;
+  font-size: 1.9rem;
+  color: var(--accent);
+  line-height: 1;
+}
+.hero__proof span {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+}
+
+/* ─── CASE STUDIES ──────────────────────────────────────────────────────── */
+.cases {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.4rem;
+  max-width: 1240px;
+  margin: 1rem auto 3rem;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 2;
+}
+.case {
+  position: relative;
+  padding: 1.8rem 1.6rem;
+  background: linear-gradient(135deg, rgba(10, 14, 26, 0.75), rgba(4, 6, 14, 0.85));
+  border: 1px solid rgba(0, 224, 192, 0.18);
+  border-radius: var(--radius-lg);
+  transition: border-color var(--t-med), transform var(--t-med) var(--ease);
+}
+.case:hover {
+  border-color: rgba(0, 224, 192, 0.45);
+  transform: translateY(-3px);
+}
+.case__tag {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.9rem;
+  opacity: 0.9;
+}
+.case__title {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-variation-settings: "opsz" 144, "SOFT" 30;
+  font-size: 1.5rem;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  margin: 0 0 0.8rem;
+  color: var(--text);
+}
+.case__brief {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--text-mute);
+  margin: 0 0 1rem;
+  font-variation-settings: "opsz" 48, "SOFT" 60;
+}
+.case__list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+.case__list li {
+  font-family: var(--font-italic);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--text);
+  padding-left: 1.1rem;
+  position: relative;
+  line-height: 1.4;
+}
+.case__list li::before {
+  content: "·";
+  position: absolute;
+  left: 0.35rem;
+  top: -0.15rem;
+  color: var(--accent);
+  font-size: 1.4rem;
+}
+.case__status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+  padding-top: 0.7rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  margin-top: 0.4rem;
+}
+.case__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 10px var(--accent);
+  animation: case-pulse 2.5s ease-in-out infinite;
+}
+@keyframes case-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.55; transform: scale(0.88); }
+}
+
+/* ─── CONSOLIDATED SUB-SECTION TITLE (înlocuieşte p-axis) ─────────────── */
+.p-sub-title {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-variation-settings: "opsz" 96, "SOFT" 30;
+  font-size: 1.4rem;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  margin: 0 0 0.7rem;
+  color: var(--text);
+}
+
+/* ─── SIMPLIFICARE TAXONOMIE — ascunde elemente pretentioase ─────────── */
+.p-axis { display: none !important; }
+.p-variant__tag { display: none !important; }
+.p-variant__head { gap: 0 !important; margin-bottom: 0.8rem !important; }
+.p-variant__note {
+  font-family: var(--font-italic);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--text-mute);
+  min-width: 0;
+  padding-left: 1rem;
+  border-left: 2px solid rgba(0, 224, 192, 0.4);
+}
+
+/* ─── EXPLAINER — vizibil doar pe mobile (senior-friendly on phone) ─── */
+@media (min-width: 901px) {
+  .p-explainer { display: none !important; }
+}
+
+/* ─── PERF CLEANUP — cosmic-drift pauzat pe mobile + reduced motion ──── */
+@media (max-width: 900px), (prefers-reduced-motion: reduce) {
+  .p-sub::after,
+  .p-sec-head::after {
+    animation: none !important;
+    filter: blur(40px) !important;
+    opacity: 0.55;
+  }
+}
+.p-sub::after,
+.p-sec-head::after {
+  will-change: auto; /* override original will-change:transform to reduce GPU pressure */
+}
+
+/* ─── RESPONSIVE — hero proof + cases pe mobile ─────────────────────── */
+@media (max-width: 900px) {
+  .hero__proof {
+    gap: 0.7rem;
+    margin-top: 1.5rem;
+  }
+  .hero__proof li {
+    min-width: 0;
+    flex: 1 1 40%;
+    padding: 0.7rem 0.9rem;
+  }
+  .hero__proof strong { font-size: 1.5rem; }
+  .hero__proof span { font-size: 0.6rem; letter-spacing: 0.08em; }
+
+  .cases {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 0 1.25rem;
+    margin: 0.5rem auto 2rem;
+  }
+  .case { padding: 1.4rem 1.2rem; }
+  .case__title { font-size: 1.3rem; }
+  .case__brief { font-size: 0.95rem; }
+}
+</style>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -1099,36 +1312,46 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <button class="dock__chip dock__chip--l2" data-l2="vid-medical">Before/After</button>
   </div>
 
-  <!-- L3: depends on L2 selection -->
-  <div class="dock__row dock__row--l3" data-for="carusel">
-    <button class="dock__chip dock__chip--l3 is-active" data-target="car-educational">Educațional</button>
-    <button class="dock__chip dock__chip--l3" data-target="car-storytelling">Storytelling</button>
-    <button class="dock__chip dock__chip--l3" data-target="car-showcase">Showcase</button>
-    <button class="dock__chip dock__chip--l3" data-target="car-promotional">Promoțional</button>
-  </div>
-  <div class="dock__row dock__row--l3" data-for="post" hidden>
-    <button class="dock__chip dock__chip--l3 is-active" data-target="post-emotional">Emoțional</button>
-  </div>
-  <div class="dock__row dock__row--l3" data-for="ecommerce" hidden>
-    <button class="dock__chip dock__chip--l3 is-active" data-target="ec-product-hero">Product hero</button>
-    <button class="dock__chip dock__chip--l3" data-target="ec-landing">Landing</button>
-    <button class="dock__chip dock__chip--l3" data-target="ec-categorii">Categorii</button>
-    <button class="dock__chip dock__chip--l3" data-target="ec-emag">Emag style</button>
-    <button class="dock__chip dock__chip--l3" data-target="ec-cozy">Cozy</button>
-    <button class="dock__chip dock__chip--l3" data-target="ec-studio">Studio</button>
-    <button class="dock__chip dock__chip--l3" data-target="ec-medical-light">Lumină spital</button>
-    <button class="dock__chip dock__chip--l3" data-target="ec-ugc">UGC</button>
-    <button class="dock__chip dock__chip--l3" data-target="ec-editorial">Editorial</button>
-  </div>
 </div>
 
 
 <!-- ─── HERO ─────────────────────────────────────────────────────────────── -->
 <header class="hero">
-  <div class="hero__kicker">Portofoliu</div>
-  <h1 class="hero__title">Ce iese din <em>studio.</em></h1>
-  <p class="hero__lead">Carusele, postări, video și identitate vizuală. Trei branduri, trei voci diferite, toate făcute cu intenție.</p>
+  <div class="hero__kicker">Ce livrăm lunar</div>
+  <h1 class="hero__title">Conținut care aduce <em>clienți.</em></h1>
+  <p class="hero__lead">Patru branduri active cu retainer lunar. Treizeci de postări pe zi. Fiecare piesă gândită pentru canalul, audiența și obiectivul ei.</p>
+  <ul class="hero__proof" aria-label="Rezumat activitate">
+    <li><strong>127+</strong><span>carusele livrate</span></li>
+    <li><strong>18+</strong><span>video produse in-house</span></li>
+    <li><strong>4</strong><span>branduri retainer activ</span></li>
+  </ul>
 </header>
+
+<!-- ─── CASE STUDIES (2 featured) ────────────────────────────────────────── -->
+<section class="cases" aria-label="Studii de caz selecționate">
+  <article class="case">
+    <div class="case__tag">Brand produs · E-commerce</div>
+    <h2 class="case__title">Urbancat — identitate unitară pe patru canale.</h2>
+    <p class="case__brief">Brand de produse pentru pisici care voia prezență vizuală coerentă simultan pe Instagram, site propriu, eMAG și reclame plătite. Revistă pe social, catalog curat pe magazin, atmosferă pe video.</p>
+    <ul class="case__list">
+      <li>Carusel promoțional, trei registre (editorial, direct, produs)</li>
+      <li>Video cinematic „Orașul e al lor" + ASMR + TikTok</li>
+      <li>E-commerce: product hero, landing, categorii, UGC</li>
+    </ul>
+    <div class="case__status"><span class="case__dot"></span> Retainer activ · în dezvoltare</div>
+  </article>
+  <article class="case">
+    <div class="case__tag">Servicii profesionale · B2C</div>
+    <h2 class="case__title">Cabinet avocat &amp; cabinet medical — două registre, un format.</h2>
+    <p class="case__brief">Două cabinete, aceeași structură de carusel educațional de șapte cadre, două registre tonale complet diferite: juridic dens pentru clienți firmă, cald și clinic pentru pacient.</p>
+    <ul class="case__list">
+      <li>Carusel educațional, șapte cadre, livrare lunară</li>
+      <li>Ton juridic (graphite, serif grav) vs. blând (albastru de spital)</li>
+      <li>Format replicat, audiență diferită, rezultate măsurate separat</li>
+    </ul>
+    <div class="case__status"><span class="case__dot"></span> Livrare lunară · activ</div>
+  </article>
+</section>
 
 <main class="pf-body">
 
@@ -1330,130 +1553,44 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
       <article class="p-sub" id="ec-product-hero">
-        <div class="p-axis">
-          <div class="p-axis-row axis-l1"><span class="p-axis-sym">I</span><span class="p-axis-name">Design</span></div>
-          <div class="p-axis-row axis-l2"><span class="p-axis-sym">3</span><span class="p-axis-name">E-commerce</span></div>
-          <div class="p-axis-row axis-l3 is-active"><span class="p-axis-sym">A</span><span class="p-axis-name">Product Hero</span></div>
+        <h3 class="p-sub-title">Product Hero &amp; Studio</h3>
+        <p class="p-sub-desc">Fotografia care duce vizitatorul de la browsing la add-to-cart. Produs izolat, lumină curată, detalii chirurgicale — pentru Google Shopping, eMAG, pagina de produs.</p>
+        <div class="p-grid">
+          <img loading="lazy" src="/portfolio2/design/ecommerce/product-hero/litiera/1.webp" alt="Product hero litieră — cadru editorial">
+          <img loading="lazy" src="/portfolio2/design/ecommerce/product-hero/litiera/2.webp" alt="Product hero litieră — detaliu">
+          <img loading="lazy" src="/portfolio2/design/ecommerce/product-hero/litiera/22.webp" alt="Product hero litieră — vedere frontală">
+          <img loading="lazy" src="/portfolio2/design/ecommerce/product-hero/litiera/11.webp" alt="Product hero litieră — ambalaj">
+          <img loading="lazy" src="/portfolio2/design/ecommerce/product-hero/litiera/33.webp" alt="Product hero litieră — compozitie">
+          <img loading="lazy" src="/portfolio2/design/ecommerce/product-hero/litiera/4.webp" alt="Product hero litieră — set">
+          <img loading="lazy" src="/portfolio2/design/ecommerce/product-hero/litiera/44.webp" alt="Product hero litieră — lifestyle">
+          <img loading="lazy" src="/portfolio2/design/ecommerce/product-hero/litiera/66.webp" alt="Product hero litieră — detaliu material">
+          <img loading="lazy" src="/portfolio2/design/ecommerce/product-hero/google/fantana-urbancat-05.webp" alt="Product hero fântână — fundal curat Google Shopping">
+          <img loading="lazy" src="/portfolio2/design/ecommerce/emag-style/fantana-urbancat-01.webp" alt="Stil eMAG/Apple — fântână frontal">
+          <img loading="lazy" src="/portfolio2/design/ecommerce/emag-style/fantana-urbancat-02.webp" alt="Stil eMAG/Apple — fântână lateral">
+          <img loading="lazy" src="/portfolio2/design/ecommerce/emag-style/fantana-urbancat-03.webp" alt="Stil eMAG/Apple — fântână detaliu">
+          <img loading="lazy" src="/portfolio2/design/ecommerce/studio/fantana-automata-pentru-pisici-2l-2132569.webp" alt="Studio photography — fântână 2L">
+          <img loading="lazy" src="/portfolio2/design/ecommerce/showcase-medical/fantana-urbancat-04.webp" alt="Lumină de spital — premium hygiene">
         </div>
-        <p class="p-sub-desc">Fotografia care duce vizitatorul de la browsing la add-to-cart. <em>Două abordări</em> — una editorial, una chirurgical-curată pentru Google Shopping.</p>
-        <div class="p-variant">
-          <div class="p-variant__head">
-            <span class="p-variant__tag">Variantă <span class="p-variant__greek">𝛼</span></span>
-            <span class="p-variant__note">Pisica e reală. Pagina de produs o imită pe cea de revistă.</span>
-          </div>
-          <div class="p-grid">
-            <img loading="lazy" src="/portfolio2/design/ecommerce/product-hero/litiera/1.webp" alt="">
-            <img loading="lazy" src="/portfolio2/design/ecommerce/product-hero/litiera/2.webp" alt="">
-            <img loading="lazy" src="/portfolio2/design/ecommerce/product-hero/litiera/22.webp" alt="">
-            <img loading="lazy" src="/portfolio2/design/ecommerce/product-hero/litiera/11.webp" alt="">
-            <img loading="lazy" src="/portfolio2/design/ecommerce/product-hero/litiera/33.webp" alt="">
-            <img loading="lazy" src="/portfolio2/design/ecommerce/product-hero/litiera/4.webp" alt="">
-            <img loading="lazy" src="/portfolio2/design/ecommerce/product-hero/litiera/44.webp" alt="">
-            <img loading="lazy" src="/portfolio2/design/ecommerce/product-hero/litiera/66.webp" alt="">
-          </div>
-        </div>
-        <div class="p-variant">
-          <div class="p-variant__head">
-            <span class="p-variant__tag">Variantă <span class="p-variant__greek">𝛽</span></span>
-            <span class="p-variant__note">Fundal curat, produsul singur. Google caută, utilizatorul vede.</span>
-          </div>
-          <div class="p-grid">
-            <img loading="lazy" src="/portfolio2/design/ecommerce/product-hero/google/fantana-urbancat-05.webp" alt="">
-          </div>
+      </article>
+      <article class="p-sub" id="ec-context">
+        <h3 class="p-sub-title">Context &amp; Lifestyle</h3>
+        <p class="p-sub-desc">Produsul în viața reală — apartament, pisică, lumină caldă. Vizitatorul se vede pe el acolo. O persoană care folosește produsul înlocuiește o sută de review-uri scrise.</p>
+        <div class="p-grid">
+          <img loading="lazy" src="/portfolio2/design/ecommerce/cozy-apartment/11.webp" alt="Cozy apartment — fântână în context real">
+          <img loading="lazy" src="/portfolio2/design/ecommerce/cozy-apartment/minge-interactiva-03.webp" alt="Cozy apartment — minge interactivă">
+          <img loading="lazy" src="/portfolio2/design/ecommerce/cozy-apartment/fantana-automata-pentru-pisici-55l-inox-uv-c-8059760.webp" alt="Cozy apartment — fântână 55L">
+          <img loading="lazy" src="/portfolio2/design/ecommerce/ugc/fantana-automata-pentru-pisici-55l-inox-uv-c-4913024.webp" alt="UGC — persoană reală folosind produsul">
         </div>
       </article>
       <article class="p-sub" id="ec-landing">
-        <div class="p-axis">
-          <div class="p-axis-row axis-l1"><span class="p-axis-sym">I</span><span class="p-axis-name">Design</span></div>
-          <div class="p-axis-row axis-l2"><span class="p-axis-sym">3</span><span class="p-axis-name">E-commerce</span></div>
-          <div class="p-axis-row axis-l3 is-active"><span class="p-axis-sym">B</span><span class="p-axis-name">Landing Page</span></div>
-        </div>
-        <p class="p-sub-desc">Hero section pentru landing page complet. Prima impresie, tot mesajul într-un singur cadru.</p>
+        <h3 class="p-sub-title">Landing, Categorii &amp; Editorial</h3>
+        <p class="p-sub-desc">Hero pentru landing page, banere pe meniul principal, format editorial pentru blog. Elementele care construiesc site-ul, nu doar pagina de produs.</p>
         <div class="p-grid">
-          <img loading="lazy" src="/portfolio2/design/ecommerce/landing-page/urbancatsssss.webp" alt="">
-        </div>
-      </article>
-      <article class="p-sub" id="ec-categorii">
-        <div class="p-axis">
-          <div class="p-axis-row axis-l1"><span class="p-axis-sym">I</span><span class="p-axis-name">Design</span></div>
-          <div class="p-axis-row axis-l2"><span class="p-axis-sym">3</span><span class="p-axis-name">E-commerce</span></div>
-          <div class="p-axis-row axis-l3 is-active"><span class="p-axis-sym">C</span><span class="p-axis-name">Hero Categorii</span></div>
-        </div>
-        <p class="p-sub-desc">Banere categorie pentru meniu principal. Fiecare categorie — propria ei imagine-ancoră.</p>
-        <div class="p-grid">
-          <img loading="lazy" src="/portfolio2/design/ecommerce/hero-categorii/123d.webp" alt="">
-          <img loading="lazy" src="/portfolio2/design/ecommerce/hero-categorii/cvvc.webp" alt="">
-          <img loading="lazy" src="/portfolio2/design/ecommerce/hero-categorii/famrinaurbancat.webp" alt="">
-        </div>
-      </article>
-      <article class="p-sub" id="ec-emag">
-        <div class="p-axis">
-          <div class="p-axis-row axis-l1"><span class="p-axis-sym">I</span><span class="p-axis-name">Design</span></div>
-          <div class="p-axis-row axis-l2"><span class="p-axis-sym">3</span><span class="p-axis-name">E-commerce</span></div>
-          <div class="p-axis-row axis-l3 is-active"><span class="p-axis-sym">D</span><span class="p-axis-name">Emag/Apple Style</span></div>
-        </div>
-        <p class="p-sub-desc">Poze comerciale în stilul eMAG/Apple — produs izolat, lumină curată, detalii chirurgicale.</p>
-        <div class="p-grid">
-          <img loading="lazy" src="/portfolio2/design/ecommerce/emag-style/fantana-urbancat-01.webp" alt="">
-          <img loading="lazy" src="/portfolio2/design/ecommerce/emag-style/fantana-urbancat-02.webp" alt="">
-          <img loading="lazy" src="/portfolio2/design/ecommerce/emag-style/fantana-urbancat-03.webp" alt="">
-        </div>
-      </article>
-      <article class="p-sub" id="ec-cozy">
-        <div class="p-axis">
-          <div class="p-axis-row axis-l1"><span class="p-axis-sym">I</span><span class="p-axis-name">Design</span></div>
-          <div class="p-axis-row axis-l2"><span class="p-axis-sym">3</span><span class="p-axis-name">E-commerce</span></div>
-          <div class="p-axis-row axis-l3 is-active"><span class="p-axis-sym">E</span><span class="p-axis-name">Cozy Apartment</span></div>
-        </div>
-        <p class="p-sub-desc">Produsul în contextul real — apartament, pisică, lumină caldă. Vizitatorul se vede pe el acolo.</p>
-        <div class="p-grid">
-          <img loading="lazy" src="/portfolio2/design/ecommerce/cozy-apartment/11.webp" alt="">
-          <img loading="lazy" src="/portfolio2/design/ecommerce/cozy-apartment/minge-interactiva-03.webp" alt="">
-          <img loading="lazy" src="/portfolio2/design/ecommerce/cozy-apartment/fantana-automata-pentru-pisici-55l-inox-uv-c-8059760.webp" alt="">
-        </div>
-      </article>
-      <article class="p-sub" id="ec-studio">
-        <div class="p-axis">
-          <div class="p-axis-row axis-l1"><span class="p-axis-sym">I</span><span class="p-axis-name">Design</span></div>
-          <div class="p-axis-row axis-l2"><span class="p-axis-sym">3</span><span class="p-axis-name">E-commerce</span></div>
-          <div class="p-axis-row axis-l3 is-active"><span class="p-axis-sym">F</span><span class="p-axis-name">Studio Photography</span></div>
-        </div>
-        <p class="p-sub-desc">Fotografie tip studio — fundal infinit, iluminat profesional, pentru specs și comparații.</p>
-        <div class="p-grid">
-          <img loading="lazy" src="/portfolio2/design/ecommerce/studio/fantana-automata-pentru-pisici-2l-2132569.webp" alt="">
-        </div>
-      </article>
-      <article class="p-sub" id="ec-medical-light">
-        <div class="p-axis">
-          <div class="p-axis-row axis-l1"><span class="p-axis-sym">I</span><span class="p-axis-name">Design</span></div>
-          <div class="p-axis-row axis-l2"><span class="p-axis-sym">3</span><span class="p-axis-name">E-commerce</span></div>
-          <div class="p-axis-row axis-l3 is-active"><span class="p-axis-sym">G</span><span class="p-axis-name">Lumină Spital</span></div>
-        </div>
-        <p class="p-sub-desc">Produs în lumină de spital — alb curat, clinic, pentru showcase premium de igienă.</p>
-        <div class="p-grid">
-          <img loading="lazy" src="/portfolio2/design/ecommerce/showcase-medical/fantana-urbancat-04.webp" alt="">
-        </div>
-      </article>
-      <article class="p-sub" id="ec-ugc">
-        <div class="p-axis">
-          <div class="p-axis-row axis-l1"><span class="p-axis-sym">I</span><span class="p-axis-name">Design</span></div>
-          <div class="p-axis-row axis-l2"><span class="p-axis-sym">3</span><span class="p-axis-name">E-commerce</span></div>
-          <div class="p-axis-row axis-l3 is-active"><span class="p-axis-sym">H</span><span class="p-axis-name">UGC</span></div>
-        </div>
-        <p class="p-sub-desc">Persoană reală folosind produsul — înlocuiește 100 de review-uri scrise. <em>Încrederea se vede</em>.</p>
-        <div class="p-grid">
-          <img loading="lazy" src="/portfolio2/design/ecommerce/ugc/fantana-automata-pentru-pisici-55l-inox-uv-c-4913024.webp" alt="">
-        </div>
-      </article>
-      <article class="p-sub" id="ec-editorial">
-        <div class="p-axis">
-          <div class="p-axis-row axis-l1"><span class="p-axis-sym">I</span><span class="p-axis-name">Design</span></div>
-          <div class="p-axis-row axis-l2"><span class="p-axis-sym">3</span><span class="p-axis-name">E-commerce</span></div>
-          <div class="p-axis-row axis-l3 is-active"><span class="p-axis-sym">I</span><span class="p-axis-name">Editorial Website</span></div>
-        </div>
-        <p class="p-sub-desc">Format editorial pentru blog/magazine — lifestyle, nu catalog.</p>
-        <div class="p-grid">
-          <img loading="lazy" src="/portfolio2/design/ecommerce/editorial/123123123.webp" alt="">
+          <img loading="lazy" src="/portfolio2/design/ecommerce/landing-page/urbancatsssss.webp" alt="Landing page hero Urbancat">
+          <img loading="lazy" src="/portfolio2/design/ecommerce/hero-categorii/123d.webp" alt="Hero categorie — imagine ancoră">
+          <img loading="lazy" src="/portfolio2/design/ecommerce/hero-categorii/cvvc.webp" alt="Hero categorie — variantă">
+          <img loading="lazy" src="/portfolio2/design/ecommerce/hero-categorii/famrinaurbancat.webp" alt="Hero categorie — famrin Urbancat">
+          <img loading="lazy" src="/portfolio2/design/ecommerce/editorial/123123123.webp" alt="Editorial website — format blog lifestyle">
         </div>
       </article>
   </section>
@@ -1663,14 +1800,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   var chipsL1 = dock.querySelectorAll('.dock__chip--l1');
   var rowsL2  = dock.querySelectorAll('.dock__row--l2');
-  var rowsL3  = dock.querySelectorAll('.dock__row--l3');
+
+  // Map L2 keys to section IDs
+  var L2_MAP = {
+    'carusel':       'sec-carusel',
+    'post':          'sec-post',
+    'ecommerce':     'sec-ecommerce',
+    'vid-cinematic': 'sec-vid-cinematic',
+    'vid-animat':    'sec-vid-animat',
+    'vid-tiktok':    'sec-vid-tiktok',
+    'vid-asmr':      'sec-vid-asmr',
+    'vid-medical':   'sec-vid-medical'
+  };
 
   // Scroll offset accounting for fixed dock
   function scrollTo(id) {
     var el = document.getElementById(id);
     if (!el) return;
     var dockRect = dock.getBoundingClientRect();
-    var offset = dockRect.height + 16;
+    var offset = dockRect.height + 24;
     var top = el.getBoundingClientRect().top + window.pageYOffset - offset;
     window.scrollTo({ top: top, behavior: 'smooth' });
   }
@@ -1691,11 +1839,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       sec.hidden = isDesign ? isVideo : !isVideo;
     });
 
-    // Pick first visible L2 in new mode as active
+    // Reset active L2 chip to first in new mode (no scroll on mode toggle)
     var visibleL2Row = document.querySelector('.dock__row--l2[data-mode="' + mode + '"]');
     if (visibleL2Row) {
-      var firstL2 = visibleL2Row.querySelector('.dock__chip--l2');
-      if (firstL2) selectL2(firstL2.dataset.l2);
+      visibleL2Row.querySelectorAll('.dock__chip--l2').forEach(function (c, i) {
+        c.classList.toggle('is-active', i === 0);
+      });
     }
   }
 
@@ -1703,34 +1852,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     document.querySelectorAll('.dock__chip--l2').forEach(function (c) {
       c.classList.toggle('is-active', c.dataset.l2 === l2key);
     });
-    // Show matching L3 row
-    rowsL3.forEach(function (r) {
-      r.hidden = r.dataset.for !== l2key;
-    });
-    // For video mode, L2 chip targets section directly
-    if (l2key.indexOf('vid-') === 0) {
-      scrollTo('sec-' + l2key);
-      return;
-    }
-    // For design, L3 exists — pick first chip + scroll
-    var l3row = document.querySelector('.dock__row--l3[data-for="' + l2key + '"]');
-    if (l3row) {
-      var firstL3 = l3row.querySelector('.dock__chip--l3');
-      if (firstL3) {
-        l3row.querySelectorAll('.dock__chip--l3').forEach(function (c) { c.classList.remove('is-active'); });
-        firstL3.classList.add('is-active');
-        scrollTo(firstL3.dataset.target);
-      }
-    }
-  }
-
-  function selectL3(chip) {
-    var row = chip.closest('.dock__row--l3');
-    if (row) {
-      row.querySelectorAll('.dock__chip--l3').forEach(function (c) { c.classList.remove('is-active'); });
-    }
-    chip.classList.add('is-active');
-    scrollTo(chip.dataset.target);
+    var target = L2_MAP[l2key];
+    if (target) scrollTo(target);
   }
 
   // Wire up click handlers
@@ -1739,9 +1862,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   });
   document.querySelectorAll('.dock__chip--l2').forEach(function (c) {
     c.addEventListener('click', function () { selectL2(c.dataset.l2); });
-  });
-  document.querySelectorAll('.dock__chip--l3').forEach(function (c) {
-    c.addEventListener('click', function () { selectL3(c); });
   });
 })();
 
