@@ -125,6 +125,40 @@
     });
   }, true);
 
+  /* --- 11. Generic CTA click (data-cta attribute) -------------------------- */
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest('[data-cta]');
+    if (!el) return;
+    push('click_cta', {
+      cta_id: el.getAttribute('data-cta') || 'unknown',
+      cta_label: (el.innerText || el.getAttribute('aria-label') || '').trim().slice(0, 80),
+      cta_location: getLinkLocation(el),
+      page_path: window.location.pathname
+    });
+  }, true);
+
+  /* --- 12. Hero video unmute ----------------------------------------------- */
+  document.addEventListener('click', function (e) {
+    var vid = e.target.closest('video');
+    if (!vid) return;
+    if (vid.muted) return;
+    push('video_unmute', {
+      video_id: vid.id || 'unnamed',
+      page_path: window.location.pathname
+    });
+  }, true);
+
+  /* --- 13. Portfolio link clicks (any -> /portofoliu) ---------------------- */
+  document.addEventListener('click', function (e) {
+    var link = e.target.closest('a[href*="portofoliu"]');
+    if (!link) return;
+    push('portfolio_click', {
+      link_url: link.href,
+      link_location: getLinkLocation(link),
+      page_path: window.location.pathname
+    });
+  }, true);
+
   /* --- Helper: detect where on page the link was clicked ------------------- */
   function getLinkLocation(link) {
     if (link.closest('nav, header, .nav, #nav'))       return 'header';
