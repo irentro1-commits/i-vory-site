@@ -1634,8 +1634,32 @@ if(mq){var items=["Dr. Iorga · Dental","Av. Popa-Alexandru","Dr. Ghibu · Medic
 
 <!-- ========== THREE.JS HERO 3D ========== -->
 <script src="logo-svg.js" defer></script>
-<!-- U16c: earth-tex.js (202KB) + premium-fx.js (19KB) = desktop-only. Mobile LCP fix (defer still fetches = blocks bandwidth on slow 4G). -->
-<script>try{(function(){if(window.matchMedia("(max-width:768px)").matches||("ontouchstart" in window))return;var et=document.createElement('script');et.src='earth-tex.js';et.defer=true;document.head.appendChild(et);var pf=document.createElement('script');pf.src='premium-fx.js';pf.defer=true;document.head.appendChild(pf)})()}catch(_){}</script>
+<!-- U17: Restore Pamant + dragon + galaxy pe mobile via pattern portofoliu-bg.js (Canvas 2D decorativ, zero Three.js). L-IVORY-01 sacred. Mobile: lazy load post-window.load + idle (zero LCP cost). Desktop: Three.js full neatins. -->
+<script>try{(function(){
+var isMobile=window.matchMedia("(max-width:768px)").matches||("ontouchstart" in window);
+if(isMobile){
+  var loadMobileBg=function(){
+    var et=document.createElement('script');
+    et.src='earth-tex.js';
+    et.onload=function(){
+      var bg=document.createElement('script');
+      bg.src='portofoliu-bg.js';
+      document.head.appendChild(bg);
+    };
+    document.head.appendChild(et);
+  };
+  if(document.readyState==='complete'){
+    ('requestIdleCallback' in window)?requestIdleCallback(loadMobileBg,{timeout:3000}):setTimeout(loadMobileBg,2500);
+  }else{
+    window.addEventListener('load',function(){
+      ('requestIdleCallback' in window)?requestIdleCallback(loadMobileBg,{timeout:3000}):setTimeout(loadMobileBg,2500);
+    });
+  }
+}else{
+  var et=document.createElement('script');et.src='earth-tex.js';et.defer=true;document.head.appendChild(et);
+  var pf=document.createElement('script');pf.src='premium-fx.js';pf.defer=true;document.head.appendChild(pf);
+}
+})()}catch(_){}</script>
 <script type="importmap">
 {"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}
 </script>
