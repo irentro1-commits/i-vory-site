@@ -46,7 +46,14 @@
 
   // ===== STYLE KEYFRAMES =====
   var style=document.createElement('style');
-  style.textContent='@keyframes mfxAura{0%{opacity:.55;transform:translate(-50%,-50%) scale(1)}100%{opacity:.85;transform:translate(-50%,-50%) scale(1.15)}}@keyframes mfxEarthSpin{to{transform:translate(-50%,-50%) rotate(360deg)}}@keyframes mfxDragonFloat{0%,100%{transform:translateY(0) rotate(-8deg)}50%{transform:translateY(-12px) rotate(-4deg)}}';
+  style.textContent=[
+    '@keyframes mfxAura{0%{opacity:.55;transform:translate(-50%,-50%) scale(1)}100%{opacity:.85;transform:translate(-50%,-50%) scale(1.15)}}',
+    '@keyframes mfxEarthSpin{to{transform:translate(-50%,-50%) rotate(360deg)}}',
+    '@keyframes mfxDragonFloat{0%,100%{transform:translateY(0) rotate(-8deg)}50%{transform:translateY(-12px) rotate(-4deg)}}',
+    '@keyframes mfxOrbitCW{from{transform:translate(-50%,-50%) rotate(0deg)}to{transform:translate(-50%,-50%) rotate(360deg)}}',
+    '@keyframes mfxOrbitCCW{from{transform:translate(-50%,-50%) rotate(0deg)}to{transform:translate(-50%,-50%) rotate(-360deg)}}',
+    '@keyframes mfxSatPulse{0%,100%{opacity:.9;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.3)}}'
+  ].join('');
   document.head.appendChild(style);
 
   // ===== STARFIELD CANVAS =====
@@ -117,6 +124,64 @@
     img.src=typeof tex==='string'?tex:tex.src||tex;
   }
   paintEarth();
+
+  // ===== ORBITS + SATELLITES (U23: 4 sateliti pe 3 orbite in jurul Pamantului) =====
+  // Strategie: ringuri invizibile centrate pe Pamant, cu puncte luminoase animate prin CSS rotate.
+  // Sateliti = absolute positioned pe rim-ul ringului, glow cu box-shadow, pulse in paralel.
+  function makeOrbit(ringSize, dur, dir, sats){
+    var ring=document.createElement('div');
+    ring.style.cssText=[
+      'position:absolute',
+      'left:50%','top:28%',
+      'width:'+ringSize+'px','height:'+ringSize+'px',
+      'transform:translate(-50%,-50%)',
+      'pointer-events:none',
+      'animation: '+(dir==='cw'?'mfxOrbitCW':'mfxOrbitCCW')+' '+dur+'s linear infinite'
+    ].join(';');
+    // Inel subtil vizibil (orbital trace, super discret)
+    var trace=document.createElement('div');
+    trace.style.cssText=[
+      'position:absolute','inset:0',
+      'border-radius:50%',
+      'border:1px dashed rgba(186,85,211,.12)',
+      'box-sizing:border-box'
+    ].join(';');
+    ring.appendChild(trace);
+    // Sateliti pe rim la unghiuri diferite
+    for(var s=0;s<sats.length;s++){
+      var sat=sats[s];
+      var deg=sat.angle*Math.PI/180;
+      var cx=ringSize/2+Math.cos(deg)*ringSize/2;
+      var cy=ringSize/2+Math.sin(deg)*ringSize/2;
+      var dot=document.createElement('div');
+      dot.style.cssText=[
+        'position:absolute',
+        'left:'+cx+'px','top:'+cy+'px',
+        'width:'+sat.size+'px','height:'+sat.size+'px',
+        'transform:translate(-50%,-50%)',
+        'border-radius:50%',
+        'background:'+sat.color,
+        'box-shadow:0 0 '+(sat.size*2)+'px '+sat.glow+', 0 0 '+(sat.size*4)+'px '+sat.glow,
+        'animation: mfxSatPulse '+(2+s*.7)+'s ease-in-out infinite'
+      ].join(';');
+      ring.appendChild(dot);
+    }
+    root.appendChild(ring);
+  }
+  var ringBase=earthSize*1.15;
+  // Orbita 1 (interioara, rapida, 1 satelit cyan)
+  makeOrbit(ringBase*0.95, 9, 'cw', [
+    {angle:0, size:8, color:'#7ef5ff', glow:'rgba(126,245,255,.9)'}
+  ]);
+  // Orbita 2 (mijloc, contra-sens, 2 sateliti mov+roz)
+  makeOrbit(ringBase*1.2, 16, 'ccw', [
+    {angle:45, size:7, color:'#d98cff', glow:'rgba(186,85,211,.9)'},
+    {angle:220, size:6, color:'#ff5fa8', glow:'rgba(255,95,168,.85)'}
+  ]);
+  // Orbita 3 (exterioara, lenta, 1 satelit alb mare = semnal, prin sus)
+  makeOrbit(ringBase*1.5, 24, 'cw', [
+    {angle:135, size:10, color:'#fff7d6', glow:'rgba(255,247,214,.95)'}
+  ]);
 
   // ===== DRAGON/LOGO (floating, top-right of hero) =====
   // FIX U22: window.__LOGO_SVG_B64 contine doar base64, trebuie prefix data URL
