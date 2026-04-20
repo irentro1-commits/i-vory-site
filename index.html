@@ -1707,7 +1707,7 @@ if(isMobile){
     et.src='earth-tex.js?v=34';
     et.onload=function(){
       var lg=document.createElement('script');
-      lg.src='logo-svg.js?v=34';
+      lg.src='logo-svg.js?v=35';
       lg.onload=function(){
         var bg=document.createElement('script');
         bg.src='mobile-fx.js?v=34';
@@ -1728,7 +1728,7 @@ if(isMobile){
   else{window.addEventListener('load',attach);}
 }else{
   var et=document.createElement('script');et.src='earth-tex.js';et.defer=true;document.head.appendChild(et);
-  var lg=document.createElement('script');lg.src='logo-svg.js';lg.defer=true;document.head.appendChild(lg);
+  var lg=document.createElement('script');lg.src='logo-svg.js?v=35';lg.defer=true;document.head.appendChild(lg);
   var pf=document.createElement('script');pf.src='premium-fx.js';pf.defer=true;document.head.appendChild(pf);
 }
 })()}catch(_){}</script>
