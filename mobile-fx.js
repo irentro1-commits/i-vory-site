@@ -13,7 +13,12 @@
 
   var W=window.innerWidth,H=window.innerHeight;
   var REDUCED=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var DPR=Math.min(window.devicePixelRatio||1, 1.5);
+  /* P0-M2 device tier detect: low-end = <=4 cores OR <=4GB RAM.
+     Android low-end + iPhone SE 1/2 cadrul in acest bucket => skip compositing-heavy efecte. */
+  var HC=navigator.hardwareConcurrency||4;
+  var DM=(navigator.deviceMemory==null?4:navigator.deviceMemory);
+  var TIER_LOW=HC<=4||DM<=4;
+  var DPR=Math.min(window.devicePixelRatio||1, TIER_LOW?1.25:1.5);
 
   // ===== CONTAINER ROOT (z:0 peste bg, sub content z:3+) =====
   var root=document.createElement('div');
@@ -141,6 +146,9 @@
       'width:'+ringSize+'px','height:'+ringSize+'px',
       'transform:translate(-50%,-50%)',
       'pointer-events:none',
+      /* P0-M2: contain + will-change izoleaza compositing layer pe GPU, nu re-evalueaza pagina. */
+      'contain:layout style paint',
+      'will-change:transform',
       'animation: '+(dir==='cw'?'mfxOrbitCW':'mfxOrbitCCW')+' '+dur+'s linear infinite'
     ].join(';');
     var trace=document.createElement('div');
@@ -164,19 +172,27 @@
         'left:'+cx+'px','top:'+cy+'px',
         'width:'+sat.size+'px','height:'+sat.size+'px',
         'transform:translate(-50%,-50%)',
+        /* P0-M2: contain + will-change pe counter (rotatie contra-sens = animation transform). */
+        'contain:layout style paint',
+        'will-change:transform',
         'animation: '+(dir==='cw'?'mfxOrbitCCW':'mfxOrbitCW')+' '+dur+'s linear infinite',
         'transform-origin:center'
       ].join(';');
       var badge=document.createElement('div');
+      /* P0-M2: box-shadow TRIPLE → SINGLE (1/3 cost blur GPU per frame).
+         Pastrez halo mov dominant, scot ring exterior + shadow inferior.
+         mfxSatPulse skip pe low-end (HC<=4 || DM<=4) → zero scale animation = zero compositing per satelit. */
       badge.style.cssText=[
         'width:100%','height:100%',
         'border-radius:22%',
         'background:'+ic.bg,
-        'box-shadow:0 0 '+(sat.size*.6)+'px rgba(186,85,211,.9), 0 0 '+(sat.size*1.2)+'px rgba(123,44,255,.7), 0 4px 12px rgba(0,0,0,.4)',
+        'box-shadow:0 0 '+(sat.size*.75)+'px rgba(186,85,211,.8)',
         'display:flex','align-items:center','justify-content:center',
         'padding:'+(sat.size*.18)+'px',
         'box-sizing:border-box',
-        'animation: mfxSatPulse '+(2.5+s*.6)+'s ease-in-out infinite'
+        'contain:layout style paint',
+        'will-change:transform',
+        (TIER_LOW?'':'animation: mfxSatPulse '+(2.5+s*.6)+'s ease-in-out infinite')
       ].join(';');
       badge.innerHTML=ic.svg;
       var svgEl=badge.querySelector('svg');
@@ -215,17 +231,22 @@
     logoSrc='logo-nav.svg';
   }
   var logoImg=document.createElement('img');
+  logoImg.decoding='async';
   logoImg.src=logoSrc;
   logoImg.alt='';
   logoImg.setAttribute('aria-hidden','true');
+  /* P0-M1: filter TRIPLE drop-shadow → SINGLE (56kb SVG × 3 blur pass × infinite animation = GPU saturation pe mobile low-end).
+     Halo mov dominant intr-un singur pass. contain+will-change izoleaza dragon intr-un compositing layer propriu = zero reflow pe rest pagina. */
   logoImg.style.cssText=[
     'position:absolute',
     'right:5%','top:10%',
     'width:'+Math.min(W*.4,180)+'px',
     'height:auto',
     'opacity:1',
-    'filter:drop-shadow(0 0 30px rgba(186,85,211,.95)) drop-shadow(0 0 60px rgba(123,44,255,.7)) drop-shadow(0 0 10px rgba(255,77,166,.8))',
+    'filter:drop-shadow(0 0 28px rgba(186,85,211,.9))',
     'animation: mfxDragonFloat 6s ease-in-out infinite',
+    'contain:layout style paint',
+    'will-change:transform',
     'pointer-events:none'
   ].join(';');
   // Fallback sa nu ramana gol daca src-ul principal eseueaza
@@ -284,8 +305,14 @@
   },{passive:true});
 
   // ===== VISIBILITY API (pauza tab inactiv) =====
+  /* P0-M1/M2 extins: pauza animation-play-state pe TOATE elementele heavy (aura, dragon, earth)
+     cand tab-ul e ascuns. Economie GPU + baterie pe mobile. */
   document.addEventListener('visibilitychange',function(){
     running=!document.hidden;
+    var ps=document.hidden?'paused':'running';
+    try{aura.style.animationPlayState=ps;}catch(_){}
+    try{logoImg.style.animationPlayState=ps;}catch(_){}
+    try{earthWrap.style.animationPlayState=ps;}catch(_){}
     if(running&&!REDUCED)requestAnimationFrame(tickStars);
   });
 })();
