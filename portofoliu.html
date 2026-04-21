@@ -1087,7 +1087,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   }
 
   /* Solid bg on fixed elements */
-  .dock, .wa-float  {
+  .wa-float   {
     background: rgba(5, 5, 5, 0.96) !important;
   }
 
@@ -1172,6 +1172,31 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 }
 </style>
 <!-- MARKER_END:nav_mobile_transparent_v1 -->
+<!-- MARKER_START:dock_mobile_transparent_v1 -->
+<style id="dock-mobile-transparent-v1">
+@media (max-width: 900px), (pointer: coarse) {
+  .dock {
+    background: linear-gradient(180deg, rgba(5,5,5,.55) 0%, rgba(5,5,5,.35) 70%, rgba(5,5,5,.15) 100%) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border: none !important;
+    border-bottom: 1px solid rgba(255,255,255,.06) !important;
+    box-shadow: 0 6px 20px rgba(0,0,0,.35) !important;
+  }
+  .dock__chip {
+    text-shadow: 0 1px 3px rgba(0,0,0,.85), 0 0 8px rgba(0,0,0,.5);
+  }
+  .dock__row + .dock__row {
+    border-top: 1px solid rgba(255,255,255,.08) !important;
+  }
+  /* active chip pastreaza accent dar cu bg mai opac pentru contrast */
+  .dock__chip.is-active {
+    background: rgba(0,224,192,0.18) !important;
+    text-shadow: none;
+  }
+}
+</style>
+<!-- MARKER_END:dock_mobile_transparent_v1 -->
 <script id="mobile-perf-js">
 /* Block ONLY meteor-cursor + premium-fx on mobile, nothing else */
 (function(){
