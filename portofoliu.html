@@ -1480,6 +1480,44 @@ nav#nav .ham svg{stroke:#fff5e6}
 .p-sec-cta__btn{display:inline-flex;align-items:center;gap:.45rem;padding:.8rem 1.4rem;background:linear-gradient(135deg,#ff9a3d,#ffb86b);color:#1a0a00;border-radius:100px;text-decoration:none;font-weight:700;font-size:.85rem;transition:transform .2s,box-shadow .2s;white-space:nowrap}
 .p-sec-cta__btn:hover{transform:translateY(-1px);box-shadow:0 12px 28px rgba(255,154,61,.35)}
 @media(max-width:600px){.p-sec-cta{flex-direction:column;align-items:flex-start;padding:1.2rem 1.3rem}.p-sec-cta__btn{width:100%;justify-content:center}}
+
+/* MARKER_START:nav_scrollhide_override_v1 */
+/* NAV-FIX v1: neutralize .nav-hidden scroll-hide (keep nav always visible + tappable) */
+nav#nav.nav-hidden,
+nav.nav-hidden {
+  transform: none !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+body.nav-hidden {
+  /* neutralize any body-level nav-hidden side effects */
+}
+/* MARKER_END:nav_scrollhide_override_v1 */
+
+/* MARKER_START:mobile_tap_responsive_v1 */
+/* NAV-FIX v1: mobile tap responsiveness — kill 300ms delay + bigger targets + clean highlight */
+html { touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+a, button, .ham, .mm-close, .mm-cta, .bh, .nc, .mm-item,
+input, select, textarea, [role="button"] {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: rgba(0,224,192,.15);
+}
+/* Minimum 44x44 tap target (WCAG 2.5.5 + Apple HIG) */
+.ham, #ham {
+  min-height: 44px;
+  min-width: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mm-close, .mm-cta, .nc, .bh {
+  min-height: 44px;
+}
+/* Ensure nav links easy to tap on mobile */
+@media (max-width: 768px) {
+  .nk a, .mm-item { min-height: 44px; display: flex; align-items: center; }
+}
+/* MARKER_END:mobile_tap_responsive_v1 */
 </style>
 </head>
 <body>

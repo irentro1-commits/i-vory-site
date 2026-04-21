@@ -1533,6 +1533,31 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     height: 36px !important;
   }
 }
+
+/* MARKER_START:mobile_tap_responsive_v1 */
+/* NAV-FIX v1: mobile tap responsiveness — kill 300ms delay + bigger targets + clean highlight */
+html { touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+a, button, .ham, .mm-close, .mm-cta, .bh, .nc, .mm-item,
+input, select, textarea, [role="button"] {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: rgba(0,224,192,.15);
+}
+/* Minimum 44x44 tap target (WCAG 2.5.5 + Apple HIG) */
+.ham, #ham {
+  min-height: 44px;
+  min-width: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mm-close, .mm-cta, .nc, .bh {
+  min-height: 44px;
+}
+/* Ensure nav links easy to tap on mobile */
+@media (max-width: 768px) {
+  .nk a, .mm-item { min-height: 44px; display: flex; align-items: center; }
+}
+/* MARKER_END:mobile_tap_responsive_v1 */
 </style>
 <!-- MARKER_END:nav_mobile_transparent_v1 -->
 <script id="mobile-perf-js">

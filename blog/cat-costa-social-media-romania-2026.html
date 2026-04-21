@@ -267,7 +267,32 @@ nav#nav .ham svg{stroke:#fff5e6}
 </script>
 <meta name="view-transition" content="same-origin">
 <style id="u4-vt-css">@view-transition{navigation:auto}::view-transition-old(root),::view-transition-new(root){animation-duration:.35s}</style>
-<style id="u6-loader-css">#u6-loader{position:fixed;inset:0;z-index:99999;background:#04060e;display:flex;align-items:center;justify-content:center;transition:opacity .42s cubic-bezier(.4,0,.2,1);pointer-events:none}#u6-loader.u6-out{opacity:0}#u6-loader .u6-dot{width:14px;height:14px;border-radius:50%;background:#00e0c0;box-shadow:0 0 24px 4px rgba(0,224,192,.6),0 0 60px 12px rgba(0,224,192,.25);animation:u6-p 1.4s cubic-bezier(.4,0,.6,1) infinite}@keyframes u6-p{0%,100%{opacity:.55;transform:scale(.92)}50%{opacity:1;transform:scale(1.08)}}@media (prefers-reduced-motion:reduce){#u6-loader .u6-dot{animation:none;opacity:.85}}</style>
+<style id="u6-loader-css">#u6-loader{position:fixed;inset:0;z-index:99999;background:#04060e;display:flex;align-items:center;justify-content:center;transition:opacity .42s cubic-bezier(.4,0,.2,1);pointer-events:none}#u6-loader.u6-out{opacity:0}#u6-loader .u6-dot{width:14px;height:14px;border-radius:50%;background:#00e0c0;box-shadow:0 0 24px 4px rgba(0,224,192,.6),0 0 60px 12px rgba(0,224,192,.25);animation:u6-p 1.4s cubic-bezier(.4,0,.6,1) infinite}@keyframes u6-p{0%,100%{opacity:.55;transform:scale(.92)}50%{opacity:1;transform:scale(1.08)}}@media (prefers-reduced-motion:reduce){#u6-loader .u6-dot{animation:none;opacity:.85}}
+/* MARKER_START:mobile_tap_responsive_v1 */
+/* NAV-FIX v1: mobile tap responsiveness — kill 300ms delay + bigger targets + clean highlight */
+html { touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+a, button, .ham, .mm-close, .mm-cta, .bh, .nc, .mm-item,
+input, select, textarea, [role="button"] {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: rgba(0,224,192,.15);
+}
+/* Minimum 44x44 tap target (WCAG 2.5.5 + Apple HIG) */
+.ham, #ham {
+  min-height: 44px;
+  min-width: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mm-close, .mm-cta, .nc, .bh {
+  min-height: 44px;
+}
+/* Ensure nav links easy to tap on mobile */
+@media (max-width: 768px) {
+  .nk a, .mm-item { min-height: 44px; display: flex; align-items: center; }
+}
+/* MARKER_END:mobile_tap_responsive_v1 */
+</style>
 </head>
 <body>
 <div id="u6-loader" aria-hidden="true"><span class="u6-dot"></span></div>
