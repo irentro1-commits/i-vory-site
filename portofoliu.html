@@ -13,9 +13,11 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
 <!-- Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..900,0..100,0..1;1,9..144,300..900,0..100,0..1&family=Instrument+Serif:ital@0;1&family=Geist+Mono:wght@400;500;600&family=Cormorant+Garamond:ital,wght@1,500&display=swap" rel="stylesheet">
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;700;800&family=Geist+Mono:wght@500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;700;800&family=Geist+Mono:wght@500&display=swap"></noscript>
+<script>try{(function(){var load=function(){var l=document.createElement('link');l.rel='stylesheet';l.href='https://fonts.googleapis.com/css2?family=Geist:wght@600;900&family=Instrument+Serif:ital@0;1&family=Fraunces:ital,opsz,wght@0,9..144,700;1,9..144,400&display=swap';document.head.appendChild(l)};if(document.readyState==='complete'){('requestIdleCallback' in window)?requestIdleCallback(load,{timeout:2500}):setTimeout(load,2000)}else{window.addEventListener('load',function(){('requestIdleCallback' in window)?requestIdleCallback(load,{timeout:2500}):setTimeout(load,2000)})}})()}catch(_){}</script>
 
 <!-- Open Graph -->
 <meta property="og:title" content="Portofoliu — carusele, video, e-commerce | i-vory Studio">
@@ -133,10 +135,10 @@
   --border-hi:    rgba(0, 224, 192, 0.28);
 
   /* fonts */
-  --font-serif:   'Fraunces', Georgia, serif;
+  --font-serif:   'Geist', -apple-system, sans-serif;
   --font-italic:  'Instrument Serif', Georgia, serif;
   --font-mono:    'Geist Mono', ui-monospace, 'Cascadia Code', monospace;
-  --font-greek:   'Cormorant Garamond', 'STIX Two Math', 'Cambria Math', Georgia, serif;
+  --font-greek:   'Instrument Serif', Georgia, serif;
 
   /* scale */
   --radius-sm:    10px;
@@ -1128,11 +1130,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <style id="nav-canonical-css-v1">
 nav#nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.1rem 2.5rem;display:flex;justify-content:space-between;align-items:center;transition:background .4s,backdrop-filter .4s,border-color .5s;border-bottom:1px solid transparent}
 nav#nav.sc{background:rgba(5,5,5,.75);backdrop-filter:blur(20px) saturate(1.5);border-bottom-color:rgba(255,255,255,.06)}
-nav#nav .nl{font-family:'Syne','Segoe UI',sans-serif;font-weight:800;font-size:1.35rem;color:#fff5e6;text-decoration:none;letter-spacing:-.04em}
+nav#nav .nl{font-family:'Geist','Segoe UI',-apple-system,sans-serif;font-weight:800;font-size:1.35rem;color:#fff5e6;text-decoration:none;letter-spacing:-.04em}
 nav#nav .nk{display:flex;align-items:center;gap:2.2rem;list-style:none;margin:0;padding:0}
 nav#nav .nk a{color:#d8d4c8;text-decoration:none;font-size:.8rem;font-weight:500;letter-spacing:.04em;transition:color .3s}
 nav#nav .nk a:hover{color:#fff5e6}
-nav#nav .nc{display:inline-flex;align-items:center;gap:.5rem;background:linear-gradient(135deg,#ff9a3d,#ffb86b);color:#1a0a00;padding:.7rem 1.4rem;border-radius:100px;font-family:'Syne',sans-serif;font-weight:700;font-size:.85rem;text-decoration:none;transition:all .3s cubic-bezier(.2,.9,.3,1.1);box-shadow:0 8px 24px rgba(255,154,61,.3),0 0 40px rgba(255,154,61,.15)}
+nav#nav .nc{display:inline-flex;align-items:center;gap:.5rem;background:linear-gradient(135deg,#ff9a3d,#ffb86b);color:#1a0a00;padding:.7rem 1.4rem;border-radius:100px;font-family:'Geist',-apple-system,sans-serif;font-weight:700;font-size:.85rem;text-decoration:none;transition:all .3s cubic-bezier(.2,.9,.3,1.1);box-shadow:0 8px 24px rgba(255,154,61,.3),0 0 40px rgba(255,154,61,.15)}
 nav#nav .nc:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,224,192,.25)}
 nav#nav .ham{display:none;background:none;border:none;cursor:pointer;padding:6px}
 nav#nav .ham svg{stroke:#fff5e6}
