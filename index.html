@@ -3,6 +3,10 @@
 <html lang="ro">
 <head>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}</script>
+<!-- FIX-MOB-04_START preconnect hints -->
+<link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+<link rel="preconnect" href="https://t.contentsquare.net" crossorigin>
+<!-- FIX-MOB-04_END -->
 <link rel="dns-prefetch" href="https://www.googletagmanager.com">
 <link rel="dns-prefetch" href="https://api.whatsapp.com">
 
@@ -1421,13 +1425,25 @@ body{overflow-x:clip}
   ]
 }
 </script>
+<!-- FIX-MOB-01_START GTM defer (idleCallback + first-interaction + 4s timeout) -->
 <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-ND5ZF7NB');</script>
+<script>(function(){
+var GTM_ID='GTM-ND5ZF7NB',loaded=false;
+function loadGTM(){
+  if(loaded)return;loaded=true;
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer',GTM_ID);
+}
+var events=['scroll','mousemove','touchstart','keydown','click'];
+function kick(){events.forEach(function(e){window.removeEventListener(e,kick);});loadGTM();}
+events.forEach(function(e){window.addEventListener(e,kick,{passive:true,once:true});});
+if('requestIdleCallback' in window){requestIdleCallback(loadGTM,{timeout:4000});}else{setTimeout(loadGTM,3000);}
+})();</script>
 <!-- End Google Tag Manager -->
+<!-- FIX-MOB-01_END -->
 
 
 

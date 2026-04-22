@@ -88,6 +88,10 @@ nav{transition:transform .3s ease !important}nav.nav-hidden{transform:translateY
 .ft-links a:hover{color:#00e0c0}
 @media(max-width:900px){.ft-wrap{padding:3rem 1.2rem 1.5rem;margin-top:0}.ft-grid{grid-template-columns:1fr;gap:2.2rem}.ft-brand .ft-logo img{height:42px}.ft-bottom{flex-direction:column;text-align:center;align-items:center}.ft-legal{align-items:center}}
 </style><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}</script>
+<!-- FIX-MOB-04_START preconnect hints -->
+<link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+<link rel="preconnect" href="https://t.contentsquare.net" crossorigin>
+<!-- FIX-MOB-04_END -->
 <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;700;800&family=Geist+Mono:wght@500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -97,13 +101,25 @@ nav{transition:transform .3s ease !important}nav.nav-hidden{transform:translateY
 {"@context": "https://schema.org", "@type": "WebPage", "speakable": {"@type": "SpeakableSpecification", "cssSelector": ["h1", "h2", "p"]}, "url": "https://i-vory.ro/blog/tiktok-vs-instagram-2026.html"}
 </script>
 <script src="https://t.contentsquare.net/uxa/1c375afd3bba3.js"></script>
+<!-- FIX-MOB-01_START GTM defer (idleCallback + first-interaction + 4s timeout) -->
 <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-ND5ZF7NB');</script>
+<script>(function(){
+var GTM_ID='GTM-ND5ZF7NB',loaded=false;
+function loadGTM(){
+  if(loaded)return;loaded=true;
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer',GTM_ID);
+}
+var events=['scroll','mousemove','touchstart','keydown','click'];
+function kick(){events.forEach(function(e){window.removeEventListener(e,kick);});loadGTM();}
+events.forEach(function(e){window.addEventListener(e,kick,{passive:true,once:true});});
+if('requestIdleCallback' in window){requestIdleCallback(loadGTM,{timeout:4000});}else{setTimeout(loadGTM,3000);}
+})();</script>
 <!-- End Google Tag Manager -->
+<!-- FIX-MOB-01_END -->
 
 
 
