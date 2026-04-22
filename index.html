@@ -2371,4 +2371,73 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")close()});
 <script id="landing-ux-fixes">
 (function(){
   // #7 Meteor auto-fade after 5s idle + toggle
-  var meteor
+  var meteor=document.querySelector('.meteor');
+  var nebula=document.getElementById('nebulaCanvas');
+  if(meteor&&window.innerWidth>768){
+    var idleTimer=null;
+    function resetIdle(){
+      if(meteor)meteor.classList.remove('idle');
+      if(nebula)nebula.classList.remove('idle');
+      clearTimeout(idleTimer);
+      idleTimer=setTimeout(function(){
+        if(meteor)meteor.classList.add('idle');
+        if(nebula)nebula.classList.add('idle');
+      },5000);
+    }
+    document.addEventListener('mousemove',resetIdle,{passive:true});
+    resetIdle();
+  }
+})();
+</script>
+<script id="nav-auto-hide">
+(function(){
+  var nav=document.getElementById('nav')||document.querySelector('nav');
+  if(!nav)return;
+  var lastY=window.scrollY;
+  var ticking=false;
+  function update(){
+    var cur=window.scrollY;
+    if(cur<80){
+      nav.classList.remove('nav-hidden');
+      document.body.classList.remove('nav-hidden');
+    } else if(cur>lastY+5){
+      nav.classList.add('nav-hidden');
+      document.body.classList.add('nav-hidden');
+    } else if(cur<lastY-5){
+      nav.classList.remove('nav-hidden');
+      document.body.classList.remove('nav-hidden');
+    }
+    lastY=cur;
+    ticking=false;
+  }
+  window.addEventListener('scroll',function(){
+    if(!ticking){requestAnimationFrame(update);ticking=true;}
+  },{passive:true});
+})();
+</script>
+<script>(function(){if(window.matchMedia("(pointer:coarse)").matches||window.innerWidth<=900)return;var s=document.createElement("script");s.src="/meteor-cursor.js";s.defer=true;document.head.appendChild(s);})();</script><!-- was: meteor-cursor.js -->
+<script>(function(){if(window.matchMedia("(pointer:coarse)").matches||window.innerWidth<=900)return;var s=document.createElement("script");s.src="/gsap-kinetic.js";s.defer=true;document.head.appendChild(s);})();</script><!-- U3: GSAP kinetic hero + magnetic buttons -->
+<script>(function(){if(window.matchMedia("(pointer:coarse)").matches||window.innerWidth<=900)return;var s=document.createElement("script");s.src="/u4-transitions.js";s.defer=true;document.head.appendChild(s);})();</script><!-- U4: Lenis smooth scroll (View Transitions handled via CSS above) -->
+<script src="/gtm-events.js?v=2" defer></script>
+
+<!-- LANG_JS_START -->
+<script>
+(function(){
+  var RO_ONLY=['/blog/metrici-reale-social-media-2026.html'];
+  document.addEventListener('click',function(e){
+    var el=e.target.closest('[data-lang-switch]');
+    if(!el)return;
+    e.preventDefault();
+    var lang=el.getAttribute('data-lang-switch');
+    var domain=lang==='en'?'https://i-vory.studio':'https://i-vory.ro';
+    var path=window.location.pathname;
+    if(lang==='en'&&RO_ONLY.indexOf(path)!==-1){
+      window.location.href=domain+'/';
+    }else{
+      window.location.href=domain+path;
+    }
+  });
+})();
+</script>
+<!-- LANG_JS_END -->
+</body></html>
