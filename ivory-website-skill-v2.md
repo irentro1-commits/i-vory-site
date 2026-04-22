@@ -20,7 +20,7 @@
 - **Hosting:** Cloudflare Pages (auto-deploy on push)
 - **Repo:** `https://github.com/irentro1-commits/i-vory-site` (branch: `main`)
 - **Domain:** `i-vory.ro` (Cloudflare DNS)
-- **Email:** Resend (contact@i-vory.ro) — pentru booking worker
+- **Email:** Resend (contact@i-vory.studio) — pentru booking worker
 - **Analytics:** GA4 `G-256CM7TGEG`
 - **Scheduling:** Calendly `calendly.com/ivorymarketing2/30min`
 
@@ -425,7 +425,7 @@ npx wrangler deploy
 ```
 
 ### Endpoint behavior
-- POST /book → creates .ics cu 2 VALARM (-PT24H, -PT30M), emails client + contact@i-vory.ro
+- POST /book → creates .ics cu 2 VALARM (-PT24H, -PT30M), emails client + contact@i-vory.studio
 - POST /lead → exit-intent form captures
 
 ### Update BOOKING_ENDPOINT
@@ -506,7 +506,7 @@ Clutch, Sortlist, TechBehemoths, GoodFirms, DesignRush, Agency Spotter — Andy 
 
 ## 14. CONTACT INFO (site-wide)
 
-- **Email:** contact@i-vory.ro
+- **Email:** contact@i-vory.studio
 - **Telefon:** +40 775 579 706
 - **WhatsApp:** `https://wa.me/40775579706`
 - **Instagram:** `https://www.instagram.com/ivory.creative.social.media`

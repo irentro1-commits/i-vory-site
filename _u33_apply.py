@@ -97,7 +97,7 @@ FOOTER_MARKUP = '''<!-- U33: Footer unificat (copiat din index.html) -->
 <a href="https://www.instagram.com/ivory.creative.social.media" target="_blank" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
 <a href="https://www.tiktok.com/@ivory.ro69" target="_blank" aria-label="TikTok"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5.8 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1.84-.1z"/></svg></a>
 <a href="https://wa.me/40775579706" target="_blank" aria-label="WhatsApp"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.38 5.07L2 22l5.07-1.38C8.42 21.5 10.15 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.5 14.5c-.25.7-1.4 1.3-2 1.4-.5.1-1.15.15-3.3-.7-2.8-1.1-4.6-4-4.75-4.2-.15-.2-1.15-1.5-1.15-2.85s.7-2 .95-2.3c.25-.3.55-.35.75-.35h.55c.15 0 .4-.05.6.45s.7 1.7.75 1.85c.05.15.1.3 0 .5s-.15.3-.3.45c-.15.15-.3.35-.45.45-.15.15-.3.3-.15.6.15.3.7 1.15 1.5 1.85 1.05.9 1.95 1.2 2.25 1.35.3.15.45.1.65-.05.2-.15.75-.85.95-1.15.2-.3.4-.25.65-.15.25.1 1.65.8 1.95.95.3.15.5.2.55.3.1.15.1.55-.15 1.2z"/></svg></a>
-<a href="mailto:contact@i-vory.ro" aria-label="Email"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
+<a href="mailto:contact@i-vory.studio" aria-label="Email"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
 </div>
 </div>
 <div class="ft-col">
@@ -121,7 +121,7 @@ FOOTER_MARKUP = '''<!-- U33: Footer unificat (copiat din index.html) -->
 <div class="ft-col">
 <h4>Contact</h4>
 <ul class="ft-contact">
-<li><a href="mailto:contact@i-vory.ro">contact@i-vory.ro</a></li>
+<li><a href="mailto:contact@i-vory.studio">contact@i-vory.studio</a></li>
 <li><a href="tel:+40775579706">+40 775 579 706</a></li>
 <li>Luni - Vineri · 9:00 - 19:00</li>
 <li>București, România</li>
