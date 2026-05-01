@@ -219,11 +219,15 @@ const planetGeo=new THREE.SphereGeometry(window.__IS_MOBILE?1.4:1.1,96,96);
 const planetMat=new THREE.MeshStandardMaterial({
   map:earthDayTex,
   normalMap:earthBumpTex,
-  normalScale:new THREE.Vector2(.65,.65),
+  normalScale:new THREE.Vector2(.55,.55),
   roughnessMap:earthSpecTex,
-  roughness:.78,
+  roughness:.62,
   metalness:.05,
-  color:0xffffff
+  color:0xffffff,
+  /* U41b: emissive subtle pe textura earth → dark side nu pitch black, brightness perceived 2x. */
+  emissive:0xffffff,
+  emissiveMap:earthDayTex,
+  emissiveIntensity:.35
 });
 // Dummy uniforms object for animate loop compatibility
 planetMat.uniforms={time:{value:0}};
@@ -311,7 +315,8 @@ const haloMat=new THREE.ShaderMaterial({
   transparent:true,side:THREE.BackSide,depthWrite:false,blending:THREE.AdditiveBlending
 });
 const halo=new THREE.Mesh(haloGeo,haloMat);
-halo.visible=!window.__IS_MOBILE;
+/* U41b: halo OFF — Andy "pisatul ala de margine e un cacat" → visible:false, scoatem rim-ul atmosfera. */
+halo.visible=false;
 halo.position.copy(planet.position);
 scene.add(halo);
 
@@ -501,8 +506,12 @@ scene.add(fillLight);
 const rimLight=new THREE.DirectionalLight(0xe8734a,.8);
 rimLight.position.set(0,-5,-8);
 scene.add(rimLight);
-const ambient=new THREE.AmbientLight(0x224455,.4);
+const ambient=new THREE.AmbientLight(0x445566,.95);
 scene.add(ambient);
+/* U41b: dedicated SUN light pentru earth zone — alb-warm, intensity mare, position spre earth. Cresc luminanta planet sub-bright peceput. */
+const sunEarth=new THREE.DirectionalLight(0xfff5e0,2.6);
+sunEarth.position.set(-6,9,8);
+scene.add(sunEarth);
 
 // Center and scale the group
 const box=new THREE.Box3().setFromObject(elephantGroup);
