@@ -52,28 +52,8 @@
       });
     });
 
-    // === B1: PIN SECTIONS — services + packages Apple-style ===
-    // Pin services in sus pe scroll → carduri price-table interior anim
-    const servicii = document.getElementById('servicii');
-    if(servicii){
-      const priceRows = servicii.querySelectorAll('.price-table tr:not(.pt-divider)');
-      gsap.set(priceRows, { opacity: 0.3, x: -20 });
-      ST.create({
-        trigger: servicii,
-        start: 'top top',
-        end: '+=600',
-        pin: true,
-        pinSpacing: true,
-        scrub: 0.8,
-        onUpdate: (self) => {
-          const p = self.progress;
-          priceRows.forEach((row, i) => {
-            const localP = Math.max(0, Math.min(1, (p * priceRows.length) - i));
-            gsap.set(row, { opacity: 0.3 + 0.7 * localP, x: -20 + 20 * localP });
-          });
-        }
-      });
-    }
+    // === B1: PIN SERVICII REMOVED 2026-05-02 — duplicare cu image-reveals.js price-row anim. Andy: "crashuieste pe servicii".
+    // image-reveals.js IR-4 face singur anim-ul price-table rows fara pin.
 
     // Pin packages — pachetele se reveal staggered
     const pachete = document.getElementById('pachete');
