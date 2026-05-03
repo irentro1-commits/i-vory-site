@@ -20,8 +20,11 @@
   s.defer = true;
   s.onload = function () {
     if (!window.gsap) return;
-    initKinetic();
-    initMagnetic();
+    /* OPT-S2.3 2026-05-03: kill initKinetic — kinetic-fx.js (kfx-char) handle .s2 h2 SplitText exclusiv. Era 2 listeners pe .s2 h2 (kin-char + kfx-char). */
+    /* OPT-S2.2 2026-05-03: kill initMagnetic — magnetic-strong.js preia exclusiv. */
+    /* gsap-kinetic.js ramane LOADED ca GSAP core loader pentru ScrollTrigger CDN (chain dep). */
+    /* initKinetic(); */
+    /* initMagnetic(); */
   };
   s.onerror = function () {
     console.warn("gsap-kinetic: CDN load failed, skipping");

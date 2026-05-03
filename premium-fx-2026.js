@@ -125,8 +125,10 @@
   // === BOOT ===
   function boot(){
     try{ initLenis(); }catch(e){ console.warn('[premium-fx] lenis err', e); }
-    try{ initMagnetic(); }catch(e){ console.warn('[premium-fx] magnetic err', e); }
-    try{ initCountUp(); }catch(e){ console.warn('[premium-fx] countup err', e); }
+    /* OPT-S2.2 2026-05-03: kill initMagnetic — magnetic-strong.js (.bh/.b-ghost strength 0.45) preia exclusiv. Era 3 listeners pe .bh: aici (0.32) + magnetic-strong (0.45) + gsap-kinetic (0.28). */
+    /* try{ initMagnetic(); }catch(e){ console.warn('[premium-fx] magnetic err', e); } */
+    /* OPT-S2.4 2026-05-03: kill initCountUp — premium-fx.js (vechi) handle .proof-num + [data-count] exclusiv. Era dublu pe .proof-num[data-target]. */
+    /* try{ initCountUp(); }catch(e){ console.warn('[premium-fx] countup err', e); } */
     try{ initMouseGlow(); }catch(e){ console.warn('[premium-fx] glow err', e); }
   }
   if(document.readyState === 'loading'){
