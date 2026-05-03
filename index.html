@@ -1895,8 +1895,9 @@ if(isMobile){
   if(document.readyState==='complete'){attach();}
   else{window.addEventListener('load',attach);}
 }else{
-  /* OPT-S1 2026-05-03: scos logo-svg.js (56KB) — consumat exclusiv de mobile-fx.js, pe desktop hero-3d.module.js renderuieste logo-ul direct in Three.js. Adaugat ?v=34 la earth-tex.js (cache hygiene aliniat cu mobile branch). */
+  /* OPT-S1.1 REVERT 2026-05-03: logo-svg.js NECESAR pe desktop — hero-3d.module.js:467 consuma window.__LOGO_SVG_B64 pentru logo-ul 3D din hero. Audit-ul initial a fost gresit. Adaugat ?v=34 la earth-tex.js ramane (cache hygiene). */
   var et=document.createElement('script');et.src='earth-tex.js?v=34';et.defer=true;document.head.appendChild(et);
+  var lg=document.createElement('script');lg.src='logo-svg.js?v=35';lg.defer=true;document.head.appendChild(lg);
   var pf=document.createElement('script');pf.src='premium-fx.js';pf.defer=true;document.head.appendChild(pf);
 }
 })()}catch(_){}</script>
@@ -2418,7 +2419,7 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")close()});
 <!-- METEOR CURSOR RESTORED U53 2026-05-02 — Andy: 'era super smechera, scoate celelalte cursor fx in loc' -->
 <script>(function(){if(window.matchMedia("(pointer:coarse)").matches||window.innerWidth<=900)return;var s=document.createElement("script");s.src="/meteor-cursor.js";s.defer=true;document.head.appendChild(s);})();</script>
 <script>(function(){if(window.matchMedia("(pointer:coarse)").matches||window.innerWidth<=900)return;var s=document.createElement("script");s.src="/gsap-kinetic.js";s.defer=true;document.head.appendChild(s);})();</script><!-- U3: GSAP kinetic hero + magnetic buttons -->
-<!-- OPT-S2.1 2026-05-03: kill u4-transitions.js — Lenis e deja initializat de premium-fx-2026.js (cu sync GSAP ScrollTrigger). Doua instante Lenis = doua RAF + doua wheel listeners conflict. View Transitions tot via @view-transition CSS in head. -->
+<!-- OPT-S2.1 REVERT 2026-05-03: u4-transitions.js bootea Lenis cu defer la pageload (~500ms). premium-fx-2026 chain booteaza la primul gesture/3500ms timeout — primele scroll-uri raman fara Lenis = scroll perceived jerky. Restored. --><script>(function(){if(window.matchMedia("(pointer:coarse)").matches||window.innerWidth<=900)return;var s=document.createElement("script");s.src="/u4-transitions.js";s.defer=true;document.head.appendChild(s);})();</script>
 <script src="/gtm-events.js?v=2" defer></script>
 
 <!-- LANG_JS_START -->
