@@ -19,7 +19,6 @@
 
 <title>i-vory Studio - Agenție Social Media București | TikTok Instagram Facebook · v9</title>
 <meta name="description" content="Agenție social media Marketing and Advertising București. Conținut profesional TikTok, Instagram, Facebook, YouTube. Postări, carusele, reels, management complet.">
-<meta name="keywords" content="agenție social media București, social media manager România, conținut tiktok, instagram marketing București, reels România, carusele instagram, video social media, management social media pret, content creator România, agenție marketing digital București">
 <meta name="author" content="i-vory Studio">
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
 <meta name="googlebot" content="index,follow">
@@ -29,7 +28,6 @@
 <meta name="geo.position" content="44.4268;26.1025">
 <meta name="ICBM" content="44.4268, 26.1025">
 <meta name="rating" content="general">
-<meta name="revisit-after" content="7 days">
 <meta name="distribution" content="global">
 <link rel="canonical" href="https://i-vory.ro/">
 
@@ -97,7 +95,7 @@
 
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{--bg:#050505;--bg2:#0b0b0b;--bg3:#111;--bg4:#181818;--t:#ede9e3;--td:#d0cbc3;--tm:#8a857e;--ac:#00e0c0;--ac2:rgba(0,224,192,.12);--ac3:rgba(0,224,192,.06);--acb:rgba(0,224,192,.2);--pu:#7b2cff;--pu2:rgba(123,44,255,.15);--br:rgba(255,255,255,.06);--br2:rgba(255,255,255,.12);--r:12px;--fd:'Geist',-apple-system,sans-serif;--fh:'Geist',-apple-system,sans-serif;--fa:'Geist',-apple-system,sans-serif;--fn:'Geist',-apple-system,sans-serif;--fb:'Geist',-apple-system,sans-serif;--fm:'Geist Mono',monospace;--e:cubic-bezier(.16,1,.3,1)}
-html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}body{background:var(--bg);color:var(--t);font-family:var(--fb);line-height:1.6;overflow-x:clip;width:100%;max-width:100vw}html{overflow-x:clip;max-width:100vw}::selection{background:var(--ac);color:var(--bg)}img{max-width:100%;display:block}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;overflow-x:clip;max-width:100vw}body{background:var(--bg);color:var(--t);font-family:var(--fb);line-height:1.6;width:100%}::selection{background:var(--ac);color:var(--bg)}img{max-width:100%;display:block}
 body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.02'/%3E%3C/svg%3E");pointer-events:none;z-index:9999}
 
 /* ========== GRADIENT BLOBS BACKGROUND (peachweb-style) ========== */
@@ -1897,8 +1895,8 @@ if(isMobile){
   if(document.readyState==='complete'){attach();}
   else{window.addEventListener('load',attach);}
 }else{
-  var et=document.createElement('script');et.src='earth-tex.js';et.defer=true;document.head.appendChild(et);
-  var lg=document.createElement('script');lg.src='logo-svg.js?v=35';lg.defer=true;document.head.appendChild(lg);
+  /* OPT-S1 2026-05-03: scos logo-svg.js (56KB) — consumat exclusiv de mobile-fx.js, pe desktop hero-3d.module.js renderuieste logo-ul direct in Three.js. Adaugat ?v=34 la earth-tex.js (cache hygiene aliniat cu mobile branch). */
+  var et=document.createElement('script');et.src='earth-tex.js?v=34';et.defer=true;document.head.appendChild(et);
   var pf=document.createElement('script');pf.src='premium-fx.js';pf.defer=true;document.head.appendChild(pf);
 }
 })()}catch(_){}</script>
