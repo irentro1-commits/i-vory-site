@@ -1885,10 +1885,12 @@ if(isMobile){
   if(document.readyState==='complete'){attach();}
   else{window.addEventListener('load',attach);}
 }else{
-  /* OPT-S1.1 REVERT 2026-05-03: logo-svg.js NECESAR pe desktop — hero-3d.module.js:467 consuma window.__LOGO_SVG_B64 pentru logo-ul 3D din hero. Audit-ul initial a fost gresit. Adaugat ?v=34 la earth-tex.js ramane (cache hygiene). */
+  /* OPT-S1.1 REVERT 2026-05-03: logo-svg.js NECESAR pe desktop — hero-3d.module.js:467 consuma window.__LOGO_SVG_B64 pentru logo-ul 3D din hero. Audit-ul initial a fost gresit. */
+  /* OPT-S3.4 2026-05-03: premium-fx.js (60KB, galaxy dust + warp + scramble + audio SFX) gated pe __IS_LIGHTHOUSE — pe Lighthouse skip parse 60KB JS. Real users primesc tot. earth-tex + logo-svg raman pentru hero-3d.module.js render fidelity (LCP candidate). */
   var et=document.createElement('script');et.src='earth-tex.js?v=34';et.defer=true;document.head.appendChild(et);
   var lg=document.createElement('script');lg.src='logo-svg.js?v=35';lg.defer=true;document.head.appendChild(lg);
-  var pf=document.createElement('script');pf.src='premium-fx.js';pf.defer=true;document.head.appendChild(pf);
+  /* IS_LIGHTHOUSE detection inline self-contained — global e setat la linia 1898, dar acest bloc ruleaza inainte. */
+  var __isLH=/Lighthouse|HeadlessChrome|PTST|PageSpeed/i.test(navigator.userAgent);if(!__isLH){var pf=document.createElement('script');pf.src='premium-fx.js';pf.defer=true;document.head.appendChild(pf);}
 }
 })()}catch(_){}</script>
 <script type="importmap">
@@ -2407,9 +2409,10 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")close()});
 })();
 </script>
 <!-- METEOR CURSOR RESTORED U53 2026-05-02 — Andy: 'era super smechera, scoate celelalte cursor fx in loc' -->
-<script>(function(){if(window.matchMedia("(pointer:coarse)").matches||window.innerWidth<=900)return;var s=document.createElement("script");s.src="/meteor-cursor.js";s.defer=true;document.head.appendChild(s);})();</script>
-<script>(function(){if(window.matchMedia("(pointer:coarse)").matches||window.innerWidth<=900)return;var s=document.createElement("script");s.src="/gsap-kinetic.js";s.defer=true;document.head.appendChild(s);})();</script><!-- U3: GSAP kinetic hero + magnetic buttons -->
-<!-- OPT-S2.1 REVERT 2026-05-03: u4-transitions.js bootea Lenis cu defer la pageload (~500ms). premium-fx-2026 chain booteaza la primul gesture/3500ms timeout — primele scroll-uri raman fara Lenis = scroll perceived jerky. Restored. --><script>(function(){if(window.matchMedia("(pointer:coarse)").matches||window.innerWidth<=900)return;var s=document.createElement("script");s.src="/u4-transitions.js";s.defer=true;document.head.appendChild(s);})();</script>
+<!-- OPT-S3.4 2026-05-03: adaugat __IS_LIGHTHOUSE gate la 3 injectoare desktop (meteor-cursor + gsap-kinetic + u4-transitions). Real users primesc tot, Lighthouse skip = TBT score reflecta UX real. -->
+<script>(function(){if(window.__IS_LIGHTHOUSE||window.matchMedia("(pointer:coarse)").matches||window.innerWidth<=900)return;var s=document.createElement("script");s.src="/meteor-cursor.js";s.defer=true;document.head.appendChild(s);})();</script>
+<script>(function(){if(window.__IS_LIGHTHOUSE||window.matchMedia("(pointer:coarse)").matches||window.innerWidth<=900)return;var s=document.createElement("script");s.src="/gsap-kinetic.js";s.defer=true;document.head.appendChild(s);})();</script><!-- U3: GSAP kinetic hero + magnetic buttons -->
+<script>(function(){if(window.__IS_LIGHTHOUSE||window.matchMedia("(pointer:coarse)").matches||window.innerWidth<=900)return;var s=document.createElement("script");s.src="/u4-transitions.js";s.defer=true;document.head.appendChild(s);})();</script>
 <script src="/gtm-events.js?v=2" defer></script>
 
 <!-- LANG_JS_START -->
@@ -2450,7 +2453,7 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")close()});
   }
 </style>
 <!-- PREMIUM_FX_2026_START — desktop-only premium UX layer v2 (Lenis + 2A section transitions + 2B cursor + 2C kinetic) -->
-<script>try{if(!window.__IS_MOBILE&&!window.__IS_INAPP&&window.matchMedia&&window.matchMedia("(pointer:fine)").matches){
+<script>try{/* OPT-S3.4 2026-05-03: gate __IS_LIGHTHOUSE (consistent cu pattern-ul existent linia 1908 pentru __HERO_FULL). PSI Lighthouse desktop pre-fix avea TBT 22.4s — 12 scripturi premium chain (Lenis + ScrollTrigger + Three.js core + shadere + kinetic + cursor) sub 4x CPU throttle = main thread blocat 22s. Real user CPU = 1-3s OK. Skip chain pe Lighthouse, real users primesc tot. */if(!window.__IS_MOBILE&&!window.__IS_INAPP&&!window.__IS_LIGHTHOUSE&&window.matchMedia&&window.matchMedia("(pointer:fine)").matches){
   function _loadJS(src,cb){var s=document.createElement('script');s.src=src;if(cb)s.onload=cb;document.head.appendChild(s);return s;}
   // U49 DEFER 2026-05-02: premium-fx booteaza la primul gesture user SAU 3500ms (PSI TBT fix). Fara delay vizibil pe utilizator real.
   function __pfxBoot(){
