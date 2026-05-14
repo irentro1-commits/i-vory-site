@@ -361,6 +361,28 @@ h1.case161 .em{color:#00e0c0;font-style:italic;font-variation-settings:"opsz" 14
 .ab-note{font-size:.85rem;color:#a8b5c0;line-height:1.5;max-width:200px;margin:0 auto}
 @media(max-width:760px){.audience-block{grid-template-columns:1fr;gap:1rem}.ab-stat{border-right:none;border-bottom:1px solid rgba(255,255,255,.06);padding-bottom:1.5rem}.ab-stat:last-child{border-bottom:none}}
 
+.slides-block{margin:5rem 0 4rem}
+.sb-title{font-family:'Fraunces',serif;font-size:clamp(1.5rem,2.6vw,2.1rem);color:#fff5e6;line-height:1.2;margin:0 0 .5rem;font-variation-settings:"opsz" 144,"SOFT" 40}
+.sb-intro{font-size:.98rem;color:#a8b5c0;margin-bottom:1.8rem;max-width:560px;line-height:1.6}
+.sb-track{display:flex;gap:1rem;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:.5rem .2rem 1.2rem;scrollbar-width:thin;scrollbar-color:rgba(0,224,192,.5) rgba(255,255,255,.06)}
+.sb-track::-webkit-scrollbar{height:6px}
+.sb-track::-webkit-scrollbar-track{background:rgba(255,255,255,.04);border-radius:3px}
+.sb-track::-webkit-scrollbar-thumb{background:rgba(0,224,192,.4);border-radius:3px}
+.sb-card{flex:0 0 auto;width:min(360px,80vw);aspect-ratio:4/5;background:linear-gradient(135deg,#1a0a2e,#04060e);border:1px solid rgba(255,255,255,.08);border-radius:18px;overflow:hidden;scroll-snap-align:center;position:relative;cursor:grab;transition:transform .35s cubic-bezier(.2,.9,.3,1.2),border-color .35s,box-shadow .35s}
+.sb-card:hover{transform:translateY(-4px);border-color:rgba(0,224,192,.3);box-shadow:0 20px 50px rgba(0,0,0,.5),0 0 30px rgba(0,224,192,.15)}
+.sb-card:active{cursor:grabbing}
+.sb-card img{width:100%;height:100%;object-fit:cover;display:block;border-radius:18px}
+.sb-num{position:absolute;top:.9rem;left:.9rem;padding:.4rem .7rem;background:rgba(4,6,14,.85);backdrop-filter:blur(8px);border:1px solid rgba(0,224,192,.4);border-radius:100px;font-family:'Geist Mono',monospace;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:#00e0c0;font-weight:700;z-index:2}
+.sb-nav{display:flex;align-items:center;justify-content:center;gap:1.2rem;margin-top:1rem}
+.sb-btn{width:44px;height:44px;border-radius:50%;background:rgba(0,224,192,.12);border:1.5px solid rgba(0,224,192,.4);color:#00e0c0;font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .25s;font-family:inherit}
+.sb-btn:hover{background:rgba(0,224,192,.25);transform:scale(1.08)}
+.sb-btn:active{transform:scale(.95)}
+.sb-dots{display:flex;gap:.5rem;align-items:center}
+.sb-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.18);border:none;cursor:pointer;padding:0;transition:all .3s}
+.sb-dot.on{background:#00e0c0;width:22px;border-radius:4px;box-shadow:0 0 12px rgba(0,224,192,.5)}
+.sb-foot{margin-top:1.2rem;padding-top:1rem;border-top:1px dashed rgba(255,255,255,.1);font-size:.92rem;color:#a8b5c0;line-height:1.6;max-width:680px}
+@media(max-width:600px){.sb-card{width:78vw}.sb-btn{width:40px;height:40px}}
+
 .comments-block{margin:5rem 0 4rem}
 .comments-block h2{font-family:'Fraunces',serif;font-size:clamp(1.5rem,2.6vw,2.1rem);color:#fff5e6;line-height:1.2;margin:0 0 .5rem;font-variation-settings:"opsz" 144,"SOFT" 40}
 .comments-block .cb-intro{font-size:.98rem;color:#a8b5c0;margin-bottom:1.8rem;max-width:560px}
@@ -549,6 +571,26 @@ Vezi caruselul pe TikTok
 <p class="vc-line" style="margin-top:1.5rem;font-size:.92rem;max-width:520px;margin-left:auto;margin-right:auto">Plus că boost-ul ar fi cumpărat doar views — nu shares, salvări sau followers reali. Organicul aduce toate trei.</p>
 </section>
 
+<section class="slides-block">
+<h2 class="sb-title">Caruselul, slide cu slide.</h2>
+<p class="sb-intro">Cele 7 cadre care au generat 164.639 vizualizări. Glisează stânga-dreapta. Sau atinge un slide pentru detaliu.</p>
+<div class="sb-track" id="sbTrack">
+<div class="sb-card"><div class="sb-num">1 / 7</div><img src="/case/urbancat-assets/c161k_1.jpg" alt="Slide 1 — Dacă ar putea vorbi, te-ar contrazice. Ghid scurt de limbaj corporal." loading="lazy" decoding="async"></div>
+<div class="sb-card"><div class="sb-num">2 / 7</div><img src="/case/urbancat-assets/c161k_2.jpg" alt="Slide 2 — Ea vorbește tot timpul. Tu abia acum ai început să asculți." loading="lazy" decoding="async"></div>
+<div class="sb-card"><div class="sb-num">3 / 7</div><img src="/case/urbancat-assets/c161k_3.jpg" alt="Slide 3 — Te frământă cu lăbuțele. Cel mai mare compliment." loading="lazy" decoding="async"></div>
+<div class="sb-card"><div class="sb-num">4 / 7</div><img src="/case/urbancat-assets/c161k_4.jpg" alt="Slide 4 — Urechile spun totul. Două antene reglate pe tine." loading="lazy" decoding="async"></div>
+<div class="sb-card"><div class="sb-num">5 / 7</div><img src="/case/urbancat-assets/c161k_5.jpg" alt="Slide 5 — Îți arată burta. Nu e invitație, e declarație de încredere." loading="lazy" decoding="async"></div>
+<div class="sb-card"><div class="sb-num">6 / 7</div><img src="/case/urbancat-assets/c161k_6.jpg" alt="Slide 6 — Coada dreaptă în sus. Doar pisicile de casă fac asta." loading="lazy" decoding="async"></div>
+<div class="sb-card"><div class="sb-num">7 / 7</div><img src="/case/urbancat-assets/c161k_7.jpg" alt="Slide 7 — Te iubesc. Clipește încet înapoi." loading="lazy" decoding="async"></div>
+</div>
+<div class="sb-nav">
+<button class="sb-btn sb-prev" aria-label="Slide anterior">&larr;</button>
+<div class="sb-dots" id="sbDots"></div>
+<button class="sb-btn sb-next" aria-label="Slide următor">&rarr;</button>
+</div>
+<p class="sb-foot">Slide 7 a generat 32% din total like-uri. Final puternic, citit pâna la capat de 25,84% din public.</p>
+</section>
+
 <section class="comments-block">
 <h2>Comentarii reale sub caruselul UrbanCat.</h2>
 <p class="cb-intro">79 de oameni au pornit conversații sub un singur post. Iata 4 dintre ele.</p>
@@ -732,6 +774,41 @@ e.target.classList.add('in-view');
 });
 },{threshold:0.3});
 document.querySelectorAll('.search-row,.proof-donut').forEach(function(el){revealIo.observe(el);});
+
+/* Slides carousel prev/next + dots */
+(function(){
+var track=document.getElementById('sbTrack');
+var dotsEl=document.getElementById('sbDots');
+if(!track||!dotsEl)return;
+var cards=track.querySelectorAll('.sb-card');
+var dots=[];
+cards.forEach(function(c,i){
+var b=document.createElement('button');
+b.className='sb-dot'+(i===0?' on':'');
+b.setAttribute('aria-label','Mergi la slide '+(i+1));
+b.addEventListener('click',function(){c.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});});
+dotsEl.appendChild(b);
+dots.push(b);
+});
+var btnPrev=document.querySelector('.sb-prev');
+var btnNext=document.querySelector('.sb-next');
+function step(dir){
+var w=cards[0].offsetWidth+16;
+track.scrollBy({left:dir*w,behavior:'smooth'});
+}
+if(btnPrev)btnPrev.addEventListener('click',function(){step(-1);});
+if(btnNext)btnNext.addEventListener('click',function(){step(1);});
+track.addEventListener('scroll',function(){
+var center=track.scrollLeft+track.offsetWidth/2;
+var closest=0,minD=Infinity;
+cards.forEach(function(c,i){
+var cc=c.offsetLeft+c.offsetWidth/2;
+var d=Math.abs(cc-center);
+if(d<minD){minD=d;closest=i;}
+});
+dots.forEach(function(d,i){d.classList.toggle('on',i===closest);});
+},{passive:true});
+})();
 
 /* Retention chart SVG line draw on scroll */
 var chartIo=new IntersectionObserver(function(entries){
