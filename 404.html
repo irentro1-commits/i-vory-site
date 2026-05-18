@@ -436,27 +436,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 </div>
 </footer>
-
-<script id="nav-auto-hide">
-(function(){
-  var nav=document.getElementById('nav')||document.querySelector('nav.nv');
-  if(!nav)return;
-  var lastY=window.scrollY;var ticking=false;
-  function update(){
-    var cur=window.scrollY;
-    if(cur<20){nav.classList.remove('nav-hidden');}
-    else if(cur>lastY+4){nav.classList.add('nav-hidden');}
-    else if(cur<lastY-4){nav.classList.remove('nav-hidden');}
-    lastY=cur;ticking=false;
-  }
-  window.addEventListener('scroll',function(){if(!ticking){requestAnimationFrame(update);ticking=true;}},{passive:true});
-})();
-</script>
-
-<!-- Track 404 hit for GA4 (debug stale links) -->
-<script>
-(function(){
-  window.dataLayer=window.dataLayer||[];
-  dataLayer.push({
-    event:'page_404',
-    page_path: window.location.pathname + window.location.
+<!-- MARKER_START:nav_canonical_js_v1 -->
+<script id="nav-canonical-js-v1">(function(){var ham=document.getElementById('ham'),mm=document.getElementById('mm');if(ham&&mm){ham.addEventListener('click',function(){mm.classList.toggle('op');document.body.style.overflow=mm.classList.contains('op')?'hidden':''});var mmClose=document.getElementById('mmClose');if(mmClose){mmClose.addEventListener('click',function(){mm.classList.remove('op');document.body.style.overflow=''})}var mmLinks=mm.querySelectorAll('a');mmLinks.forEach(function(l){l.addEventListener('click',function(){mm.classList.remove('op');document.body.style.overflow=''})})}})();</script>
+<!-- MARKER_END:nav_canonical_js_v1 -->
+</body>
+</html>
