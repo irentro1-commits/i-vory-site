@@ -322,6 +322,9 @@ main{display:block}
 .promo-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--ac);box-shadow:0 0 10px var(--ac);vertical-align:middle;margin-right:.45rem}
 @media(max-width:600px){.promo-bar{font-size:.76rem;padding:.6rem .9rem}}
 .pt-was{font-family:var(--fm);font-size:.72rem;color:var(--tm);text-decoration:line-through;text-decoration-thickness:1.5px;white-space:nowrap;letter-spacing:.02em}
+.pk-disc{position:absolute;top:14px;right:14px;background:#04060e;color:var(--ac);border:1px solid var(--acb);font-family:var(--fd);font-size:.64rem;font-weight:900;letter-spacing:.04em;padding:.3rem .65rem;border-radius:100px;z-index:8;text-transform:uppercase;box-shadow:0 4px 14px rgba(0,0,0,.5)}
+.pk-sc .pk-disc{color:#f0a030;border-color:rgba(240,160,48,.4)}
+.pt-norm{display:block;font-family:var(--fm);font-size:.62rem;color:var(--tm);text-decoration:line-through;text-decoration-thickness:1.5px;line-height:1.2;margin-bottom:2px;white-space:nowrap}
 
 /* ===== PACKAGE CARDS (.pk) ===== */
 .pg{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;align-items:start;margin-top:1.5rem}
@@ -610,6 +613,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <!-- PILLAR 1: Video -->
       <div class="svc-pillar rv rd1">
+        <div class="pk-disc">-33%</div>
         <div class="svc-pillar-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M10 9l5 3-5 3z" fill="currentColor" stroke="none"/></svg></div>
         <div class="svc-pillar-name">Video</div>
         <p class="svc-pillar-line">Filmăm pe bune, trecem clipul prin AI să pară de Hollywood, finisăm în DaVinci Resolve.</p>
@@ -620,6 +624,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <!-- PILLAR 2: Design -->
       <div class="svc-pillar rv rd2">
+        <div class="pk-disc">-33%</div>
         <div class="svc-pillar-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5z"/><path d="M2 12l10 5 10-5"/><path d="M2 17l10 5 10-5"/></svg></div>
         <div class="svc-pillar-name">Design</div>
         <p class="svc-pillar-line">Postări, carusele, orice vizual îți trebuie. Precizie de 9 din 10, orice complexitate.</p>
@@ -630,10 +635,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <!-- PILLAR 3: Website -->
       <div class="svc-pillar rv rd3">
+        <div class="pk-disc">-33%</div>
         <div class="svc-pillar-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
         <div class="svc-pillar-name">Website</div>
         <p class="svc-pillar-line">Site rapid care transformă curiosul în client. Optimizat pentru Google și pentru AI.</p>
-        <div class="svc-pillar-price">de la 1.500 lei <span>early bird</span></div>
+        <div class="svc-pillar-price">de la 1.500 lei <span>/site</span></div>
         <div class="svc-chips"><span class="svc-chip">SEO + AEO + GEO</span><span class="svc-chip">3D &amp; animații</span><span class="svc-chip">Shopify e-commerce</span></div>
         <a href="#site-uri" class="svc-pillar-link">Vezi detalii <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       </div>
@@ -655,7 +661,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="pg pg-4">
       <!-- CARD 1: Starter -->
       <div class="pk rv rd1">
-        <div class="eb-ribbon">-33%</div>
+        <div class="pk-disc">-33%</div>
         <div class="pk-name">Starter</div>
         <div class="pk-tag">Intri în joc. Constant, fără efort.</div>
         <span class="pk-was">Normal 2.250 RON</span>
@@ -673,7 +679,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <!-- CARD 2: All In -->
       <div class="pk rv rd2">
-        <div class="eb-ribbon">-33%</div>
+        <div class="pk-disc">-33%</div>
         <div class="pk-name">All In</div>
         <div class="pk-tag">Prezență zilnică, efort zero.</div>
         <span class="pk-was">Normal 4.500 RON</span>
@@ -692,7 +698,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <!-- CARD 3: Growing Business -->
       <div class="pk ft pk-crowned rv rd3">
         <div class="bonus-banner"><span class="bb-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="13" rx="1"/><path d="M3 12h18"/><path d="M12 8v13"/><path d="M12 8C12 5 10 3 8 3a2.5 2.5 0 0 0 0 5h4z"/><path d="M12 8c0-3 2-5 4-5a2.5 2.5 0 0 1 0 5h-4z"/></svg>BONUS: SITE DE PREZENTARE INCLUS</span><span class="bb-sub">Livrat în prima lună. Contract minim 3 luni.</span></div>
-        <div class="eb-ribbon">-33%</div>
+        <div class="pk-disc">-33%</div>
         <div class="pk-badge">Recomandat</div>
         <div class="pk-name">Growing Business</div>
         <div class="pk-tag">Tot ce include All In, la alt nivel.</div>
@@ -712,7 +718,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <!-- CARD 4: Scale Mode -->
       <div class="pk pk-sc pk-crowned rv rd4">
         <div class="bonus-banner"><span class="bb-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="13" rx="1"/><path d="M3 12h18"/><path d="M12 8v13"/><path d="M12 8C12 5 10 3 8 3a2.5 2.5 0 0 0 0 5h4z"/><path d="M12 8c0-3 2-5 4-5a2.5 2.5 0 0 1 0 5h-4z"/></svg>BONUS: SITE PREMIUM INCLUS (3D + ANIMAȚII)</span><span class="bb-sub">Livrat în prima lună. Contract minim 3 luni.</span></div>
-        <div class="eb-ribbon">-33%</div>
+        <div class="pk-disc">-33%</div>
         <div class="pk-badge pk-badge-gold">Maximum</div>
         <div class="pk-name">Scale Mode</div>
         <div class="pk-tag">Bulk invader. Imposibil de ignorat.</div>
@@ -747,21 +753,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <table class="price-table rv rd1">
       <tr class="pt-divider"><td colspan="4">Postări și carusele</td></tr>
-      <tr><td class="pt-name">Postare</td><td class="pt-detail">Imagine pentru pagina ta de Instagram, Facebook sau TikTok. Design unic, gata postat.</td><td class="pt-price">50 <span>RON</span></td><td class="pt-urgent-cell"><span class="pt-urgent">Urgent 24h → 100 RON</span></td></tr>
-      <tr><td class="pt-name">Story</td><td class="pt-detail">Imagine verticală care apare 24 de ore în pagina ta. Ține contul activ.</td><td class="pt-price">50 <span>RON</span></td><td class="pt-urgent-cell"><span class="pt-urgent">Urgent 24h → 100 RON</span></td></tr>
-      <tr><td class="pt-name">Carusel 7 Slides</td><td class="pt-detail">7 imagini pe care clienții le răsfoiesc cu degetul. Pentru educație sau vânzare.</td><td class="pt-price">80 <span>RON</span></td><td class="pt-urgent-cell"><span class="pt-urgent">Urgent 24h → 160 RON</span></td></tr>
+      <tr><td class="pt-name">Postare</td><td class="pt-detail">Imagine pentru pagina ta de Instagram, Facebook sau TikTok. Design unic, gata postat.</td><td class="pt-price"><span class="pt-norm">75 RON</span>50 <span>RON</span></td><td class="pt-urgent-cell"><span class="pt-urgent">Urgent 24h → 100 RON</span></td></tr>
+      <tr><td class="pt-name">Story</td><td class="pt-detail">Imagine verticală care apare 24 de ore în pagina ta. Ține contul activ.</td><td class="pt-price"><span class="pt-norm">75 RON</span>50 <span>RON</span></td><td class="pt-urgent-cell"><span class="pt-urgent">Urgent 24h → 100 RON</span></td></tr>
+      <tr><td class="pt-name">Carusel 7 Slides</td><td class="pt-detail">7 imagini pe care clienții le răsfoiesc cu degetul. Pentru educație sau vânzare.</td><td class="pt-price"><span class="pt-norm">120 RON</span>80 <span>RON</span></td><td class="pt-urgent-cell"><span class="pt-urgent">Urgent 24h → 160 RON</span></td></tr>
       <tr class="pt-divider"><td colspan="4">Videoclipuri</td></tr>
-      <tr><td class="pt-name">Video sub 10 secunde</td><td class="pt-detail">Clip scurt care atrage atenția instant. Perfect pentru TikTok și Reels.</td><td class="pt-price">300 <span>RON</span></td><td class="pt-urgent-cell"><span class="pt-urgent">Urgent 24h → 600 RON</span></td></tr>
-      <tr><td class="pt-name">Video sub 20 secunde</td><td class="pt-detail">Arată produsul, spune de ce e bun, îndeamnă lumea să cumpere sau să te contacteze.</td><td class="pt-price">400 <span>RON</span></td><td class="pt-urgent-cell"><span class="pt-urgent">Urgent 24h → 800 RON</span></td></tr>
-      <tr><td class="pt-name">Video sub 30 secunde</td><td class="pt-detail">Reclamă completă: arată problema, soluția, cum funcționează, ce trebuie să facă.</td><td class="pt-price">500 <span>RON</span></td><td class="pt-urgent-cell"><span class="pt-urgent">Urgent 24h → 1.000 RON</span></td></tr>
-      <tr><td class="pt-name">Video 1 minut</td><td class="pt-detail">Videoclip de prezentare premium, cu poveste completă. Cel mai bun mod de a arăta ce faci.</td><td class="pt-price">1.000 <span>RON</span></td><td class="pt-urgent-cell"><span class="pt-urgent">Urgent 24h → 2.000 RON</span></td></tr>
+      <tr><td class="pt-name">Video sub 10 secunde</td><td class="pt-detail">Clip scurt care atrage atenția instant. Perfect pentru TikTok și Reels.</td><td class="pt-price"><span class="pt-norm">450 RON</span>300 <span>RON</span></td><td class="pt-urgent-cell"><span class="pt-urgent">Urgent 24h → 600 RON</span></td></tr>
+      <tr><td class="pt-name">Video sub 20 secunde</td><td class="pt-detail">Arată produsul, spune de ce e bun, îndeamnă lumea să cumpere sau să te contacteze.</td><td class="pt-price"><span class="pt-norm">600 RON</span>400 <span>RON</span></td><td class="pt-urgent-cell"><span class="pt-urgent">Urgent 24h → 800 RON</span></td></tr>
+      <tr><td class="pt-name">Video sub 30 secunde</td><td class="pt-detail">Reclamă completă: arată problema, soluția, cum funcționează, ce trebuie să facă.</td><td class="pt-price"><span class="pt-norm">750 RON</span>500 <span>RON</span></td><td class="pt-urgent-cell"><span class="pt-urgent">Urgent 24h → 1.000 RON</span></td></tr>
+      <tr><td class="pt-name">Video 1 minut</td><td class="pt-detail">Videoclip de prezentare premium, cu poveste completă. Cel mai bun mod de a arăta ce faci.</td><td class="pt-price"><span class="pt-norm">1.500 RON</span>1.000 <span>RON</span></td><td class="pt-urgent-cell"><span class="pt-urgent">Urgent 24h → 2.000 RON</span></td></tr>
       <tr class="pt-divider"><td colspan="4">Extra</td></tr>
-      <tr><td class="pt-name">Hook adițional</td><td class="pt-detail">Încă un început diferit pentru același video. Vezi care prinde mai bine.</td><td class="pt-price">+100 <span>RON</span></td><td class="pt-urgent-cell"><span class="pt-urgent">Urgent 24h → 200 RON</span></td></tr>
+      <tr><td class="pt-name">Hook adițional</td><td class="pt-detail">Încă un început diferit pentru același video. Vezi care prinde mai bine.</td><td class="pt-price"><span class="pt-norm">+150 RON</span>+100 <span>RON</span></td><td class="pt-urgent-cell"><span class="pt-urgent">Urgent 24h → 200 RON</span></td></tr>
       <tr class="pt-divider"><td colspan="4">Website-uri</td></tr>
-      <tr><td class="pt-name">Site prezentare standard</td><td class="pt-detail">Site rapid de prezentare, până la 5 pagini. Optimizat pentru Google și pentru AI (SEO, GEO, AEO). Domeniu, găzduire 1 an și email profesional incluse.</td><td class="pt-price">1.500 <span>RON</span></td><td class="pt-urgent-cell"><span class="pt-was">Normal 2.250 RON</span></td></tr>
-      <tr><td class="pt-name">Site prezentare premium</td><td class="pt-detail">Tot ce e inclus la standard, plus efecte 3D, animații cinematice, până la 8 pagini și studii de caz ca mini-povești.</td><td class="pt-price">2.500 <span>RON</span></td><td class="pt-urgent-cell"><span class="pt-was">Normal 3.750 RON</span></td></tr>
-      <tr><td class="pt-name">Magazin online standard</td><td class="pt-detail">Magazin pe Shopify: 30-50 produse, coș, plată și livrare. Optimizat pentru Google și AI. Abonamentul Shopify se plătește separat.</td><td class="pt-price">3.500 <span>RON</span></td><td class="pt-urgent-cell"><span class="pt-was">Normal 5.250 RON</span></td></tr>
-      <tr><td class="pt-name">Magazin online premium</td><td class="pt-detail">Tot ce e inclus la magazinul standard, plus animații custom, catalog mare cu filtre, email marketing și automatizări (coș abandonat, welcome).</td><td class="pt-price">5.000 <span>RON</span></td><td class="pt-urgent-cell"><span class="pt-was">Normal 7.500 RON</span></td></tr>
+      <tr><td class="pt-name">Site prezentare standard</td><td class="pt-detail">Site rapid de prezentare, până la 5 pagini. Optimizat pentru Google și pentru AI (SEO, GEO, AEO). Domeniu, găzduire 1 an și email profesional incluse.</td><td class="pt-price"><span class="pt-norm">2.250 RON</span>1.500 <span>RON</span></td><td class="pt-urgent-cell"></td></tr>
+      <tr><td class="pt-name">Site prezentare premium</td><td class="pt-detail">Tot ce e inclus la standard, plus efecte 3D, animații cinematice, până la 8 pagini și studii de caz ca mini-povești.</td><td class="pt-price"><span class="pt-norm">3.750 RON</span>2.500 <span>RON</span></td><td class="pt-urgent-cell"></td></tr>
+      <tr><td class="pt-name">Magazin online standard</td><td class="pt-detail">Magazin pe Shopify: 30-50 produse, coș, plată și livrare. Optimizat pentru Google și AI. Abonamentul Shopify se plătește separat.</td><td class="pt-price"><span class="pt-norm">5.250 RON</span>3.500 <span>RON</span></td><td class="pt-urgent-cell"></td></tr>
+      <tr><td class="pt-name">Magazin online premium</td><td class="pt-detail">Tot ce e inclus la magazinul standard, plus animații custom, catalog mare cu filtre, email marketing și automatizări (coș abandonat, welcome).</td><td class="pt-price"><span class="pt-norm">7.500 RON</span>5.000 <span>RON</span></td><td class="pt-urgent-cell"></td></tr>
     </table>
     <p style="margin-top:1.5rem;font-size:.72rem;color:var(--tm);font-family:var(--fm)" class="rv rd2">Toate prețurile sunt prețuri de lansare, reduse cu 33% până la 31 august 2026. Prețurile nu includ TVA. Urgentare = livrare garantată în 24h la preț dublu.</p>
   </div>
