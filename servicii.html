@@ -122,6 +122,7 @@
           "name": "Starter, pachet social media",
           "category": "Social media management",
           "priceSpecification": {"@type": "PriceSpecification", "priceCurrency": "RON", "price": "1500", "valueAddedTaxIncluded": false},
+          "priceValidUntil": "2026-08-31",
           "url": "https://i-vory.ro/servicii.html#pachete"
         },
         {
@@ -129,6 +130,7 @@
           "name": "All In, pachet social media",
           "category": "Social media management",
           "priceSpecification": {"@type": "PriceSpecification", "priceCurrency": "RON", "price": "3000", "valueAddedTaxIncluded": false},
+          "priceValidUntil": "2026-08-31",
           "url": "https://i-vory.ro/servicii.html#pachete"
         },
         {
@@ -136,6 +138,7 @@
           "name": "Growing Business, pachet social media",
           "category": "Social media management",
           "priceSpecification": {"@type": "PriceSpecification", "priceCurrency": "RON", "price": "5000", "valueAddedTaxIncluded": false},
+          "priceValidUntil": "2026-08-31",
           "url": "https://i-vory.ro/servicii.html#pachete"
         },
         {
@@ -143,6 +146,7 @@
           "name": "Scale Mode, pachet social media",
           "category": "Social media management",
           "priceSpecification": {"@type": "PriceSpecification", "priceCurrency": "RON", "price": "10000", "valueAddedTaxIncluded": false},
+          "priceValidUntil": "2026-08-31",
           "url": "https://i-vory.ro/servicii.html#pachete"
         },
         {
@@ -188,7 +192,8 @@
         {"@type": "Question", "name": "Hostingul e inclus?", "acceptedAnswer": {"@type": "Answer", "text": "Da, primul an de hosting e inclus la site-urile de prezentare. La magazin, hostingul e Shopify și se plătește separat, direct la ei."}},
         {"@type": "Question", "name": "De ce faceți e-commerce doar pe Shopify?", "acceptedAnswer": {"@type": "Answer", "text": "Shopify e cea mai sigură și stabilă platformă de magazin online. Plăți, stocuri, livrare, totul pus la punct, fără bătăi de cap."}},
         {"@type": "Question", "name": "Pot să-mi actualizez singur textul după?", "acceptedAnswer": {"@type": "Answer", "text": "Da. La livrare îți arătăm cum schimbi singur textul de bază. Pentru restul, există abonamentul de mentenanță."}},
-        {"@type": "Question", "name": "Site-ul din pachetele de social media e cu adevărat inclus?", "acceptedAnswer": {"@type": "Answer", "text": "Da. La Growing Business primești un site de prezentare standard, la Scale Mode unul premium. Se construiește în prima lună, cu un contract minim de 3 luni."}}
+        {"@type": "Question", "name": "Site-ul din pachetele de social media e cu adevărat inclus?", "acceptedAnswer": {"@type": "Answer", "text": "Da. La Growing Business primești un site de prezentare standard, la Scale Mode unul premium. Se construiește în prima lună, cu un contract minim de 3 luni."}},
+        {"@type": "Question", "name": "Pachetele de social media sunt și ele reduse?", "acceptedAnswer": {"@type": "Answer", "text": "Da. Prețurile de lansare sunt reduse cu 33% până la 31 august 2026. După, revin la prețul normal."}}
       ]
     }
   ]
@@ -423,9 +428,66 @@ main{display:block}
 .ft-links a{color:#a0aab4;font-size:.75rem;text-decoration:none;transition:color .25s}
 .ft-links a:hover{color:#00e0c0}
 
+/* ===== PRICE TABLE (la bucata, reuse din index.html) ===== */
+.price-table{width:100%;border-collapse:collapse;margin-top:1rem}
+.price-table tr{border-bottom:1px solid var(--br);transition:background .3s}
+.price-table tr:hover{background:rgba(255,255,255,.02)}
+.price-table td{padding:1rem .8rem;vertical-align:middle}
+.price-table .pt-name{font-family:var(--fd);font-size:1.05rem;font-weight:800;letter-spacing:-.02em;min-width:180px;color:#fff}
+.price-table .pt-detail{font-size:.8rem;color:var(--td);max-width:300px}
+.price-table .pt-price{font-family:var(--fd);font-size:1.5rem;font-weight:900;color:var(--ac);letter-spacing:-.03em;white-space:nowrap;text-align:right}
+.price-table .pt-price span{font-size:.62rem;font-weight:600;color:var(--tm);font-family:var(--fb);margin-left:.3rem}
+.price-table .pt-urgent{font-family:var(--fm);font-size:.55rem;color:#f0a030;letter-spacing:.04em;text-transform:uppercase;background:rgba(240,160,48,.1);border:1px solid rgba(240,160,48,.28);padding:.25rem .55rem;border-radius:100px;white-space:nowrap;font-weight:600}
+.price-table .pt-urgent-cell{text-align:right}
+.pt-divider td{padding:.6rem 0;font-family:var(--fm);font-size:.55rem;color:var(--ac);letter-spacing:.14em;text-transform:uppercase;border-bottom:1.5px solid var(--acb)!important;font-weight:600}
+
+/* ===== SERVICE PILLARS (Ce facem) ===== */
+.pillar-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:1.5rem}
+.svc-pillar{background:rgba(3,3,9,.9);border:1px solid var(--br2);border-radius:var(--r);padding:2.4rem 2rem;display:flex;flex-direction:column;position:relative;transition:transform .45s var(--e),border-color .4s,box-shadow .4s}
+.svc-pillar:hover{transform:translateY(-6px);border-color:var(--ac);box-shadow:0 18px 50px rgba(0,224,192,.14)}
+.svc-pillar-ico{width:58px;height:58px;border-radius:14px;background:linear-gradient(135deg,var(--ac2),var(--ac3));border:1.5px solid var(--acb);display:flex;align-items:center;justify-content:center;color:var(--ac);margin-bottom:1.3rem}
+.svc-pillar-ico svg{width:30px;height:30px}
+.svc-pillar-name{font-family:var(--fd);font-size:1.55rem;font-weight:900;letter-spacing:-.04em;margin-bottom:.6rem;color:#fff}
+.svc-pillar-line{font-size:.92rem;color:var(--td);line-height:1.55;margin-bottom:1.2rem}
+.svc-pillar-price{font-family:var(--fd);font-size:1.25rem;font-weight:900;color:var(--ac);letter-spacing:-.03em;margin-bottom:1.2rem}
+.svc-pillar-price span{font-family:var(--fm);font-size:.66rem;color:var(--tm);font-weight:500;letter-spacing:.02em}
+.svc-chips{display:flex;flex-wrap:wrap;gap:.45rem;margin-bottom:1.6rem}
+.svc-chip{font-family:var(--fm);font-size:.62rem;font-weight:600;letter-spacing:.04em;color:var(--ac);background:var(--ac3);border:1px solid var(--acb);padding:.32rem .7rem;border-radius:100px;text-transform:uppercase}
+.svc-pillar-link{margin-top:auto;font-family:var(--fd);font-size:.9rem;font-weight:700;color:#fff;text-decoration:none;display:inline-flex;align-items:center;gap:.4rem;transition:color .3s,gap .3s}
+.svc-pillar-link:hover{color:var(--ac);gap:.7rem}
+
+/* ===== EARLY-BIRD RIBBON (badge pe carduri cu pret) ===== */
+.eb-ribbon{position:absolute;top:-13px;right:14px;background:linear-gradient(135deg,#ff9a3d,#ffc857);color:#1a0a00;font-family:var(--fd);font-size:.64rem;font-weight:900;letter-spacing:.02em;padding:.4rem .85rem;border-radius:100px;white-space:nowrap;box-shadow:0 6px 20px rgba(255,154,61,.4);z-index:5;text-transform:uppercase}
+
+/* ===== BONUS BANNER (top of card) ===== */
+.bonus-banner{margin:-2.5rem -2rem 1.4rem;padding:.9rem 1.2rem;background:linear-gradient(135deg,#f0a030,#ffce6b);color:#1a0a00;border-radius:var(--r) var(--r) 0 0;text-align:center;display:flex;flex-direction:column;align-items:center;gap:.25rem}
+.bonus-banner .bb-title{font-family:var(--fd);font-size:.82rem;font-weight:900;letter-spacing:-.01em;display:inline-flex;align-items:center;gap:.4rem;line-height:1.2}
+.bonus-banner .bb-title svg{width:16px;height:16px;flex-shrink:0}
+.bonus-banner .bb-sub{font-family:var(--fm);font-size:.6rem;font-weight:600;opacity:.85;line-height:1.3}
+
+/* ===== FEATURE CHECKMARKS (bold accent) ===== */
+.feat-list{list-style:none;display:flex;flex-direction:column;gap:.6rem;margin-bottom:.3rem}
+.feat-list li{display:flex;align-items:flex-start;gap:.6rem;font-size:.84rem;color:var(--td);line-height:1.45}
+.feat-list li .feat-check{width:17px;height:17px;flex-shrink:0;margin-top:.1rem;color:var(--ac)}
+.pk-sc .feat-list li .feat-check{color:#f0a030}
+.feat-list li strong{color:#fff;font-weight:800}
+
+/* ===== PERK HERO (full-width highlighted first website perk) ===== */
+.perk-hero{position:relative;background:linear-gradient(135deg,rgba(0,224,192,.1),rgba(123,44,255,.06) 60%,rgba(3,3,9,.9));border-radius:var(--r);padding:2.6rem 2.4rem;margin-bottom:1.2rem;display:flex;gap:1.8rem;align-items:flex-start;overflow:hidden}
+.perk-hero::before{content:'';position:absolute;inset:0;border-radius:var(--r);padding:1.5px;background:linear-gradient(135deg,var(--ac),var(--pu) 70%,transparent);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.perk-hero::after{content:'';position:absolute;top:-40%;right:-10%;width:50%;height:160%;background:radial-gradient(circle,rgba(0,224,192,.18),transparent 65%);filter:blur(30px);pointer-events:none}
+.perk-hero-ico{width:64px;height:64px;flex-shrink:0;border-radius:16px;background:linear-gradient(135deg,var(--ac),#00b896);display:flex;align-items:center;justify-content:center;color:#041412;box-shadow:0 10px 30px rgba(0,224,192,.3)}
+.perk-hero-ico svg{width:34px;height:34px}
+.perk-hero-body{position:relative;z-index:1}
+.perk-hero-tag{display:inline-block;font-family:var(--fm);font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#1a0a00;background:linear-gradient(135deg,#ff9a3d,#ffc857);padding:.3rem .7rem;border-radius:100px;margin-bottom:.8rem}
+.perk-hero-title{font-family:var(--fd);font-size:clamp(1.3rem,3vw,1.7rem);font-weight:900;letter-spacing:-.03em;color:#fff;margin-bottom:.7rem;line-height:1.15}
+.perk-hero-body p{font-size:.98rem;color:#e2ded4;line-height:1.6;margin:0;max-width:760px}
+.perk-hero-body p strong{color:var(--ac);font-weight:800}
+
 /* ===== RESPONSIVE ===== */
 @media(max-width:1024px){
   .pg,.pg-4{grid-template-columns:repeat(2,1fr)}
+  .pillar-grid{grid-template-columns:repeat(2,1fr)}
   .inc-grid{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:768px){
@@ -437,11 +499,18 @@ main{display:block}
   .sec{padding:4.5rem 1.2rem}
   .hero{padding:7rem 1.2rem 3.5rem;min-height:auto}
   .pg,.pg-4{grid-template-columns:1fr}
+  .pillar-grid{grid-template-columns:1fr}
   .inc-grid{grid-template-columns:1fr}
   .maint-grid{grid-template-columns:1fr}
   .pk{padding:2.2rem 1.5rem}
+  .bonus-banner{margin:-2.2rem -1.5rem 1.3rem}
+  .perk-hero{flex-direction:column;gap:1.2rem;padding:2rem 1.4rem}
+  .price-table .pt-name{min-width:auto;font-size:.92rem}
+  .price-table .pt-detail{display:none}
+  .price-table .pt-price{font-size:1.15rem}
+  .price-table .pt-urgent-cell{display:none}
   .cta-final{padding:5rem 1.2rem 3.5rem}
-  a,button,.pk,.faq-item,.inc-card,.maint-card{min-height:44px}
+  a,button,.pk,.faq-item,.inc-card,.maint-card,.svc-pillar{min-height:44px}
 }
 @media(max-width:900px){
   .ft-wrap{padding:2.5rem 1.2rem 1.5rem;margin-top:0}
@@ -519,87 +588,160 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
+<!-- ========== SECTION: CE FACEM (3 SERVICE PILLARS) ========== -->
+<section class="sec">
+  <div class="si">
+    <div class="rv" style="margin-bottom:1rem">
+      <div class="lb">Ce facem</div>
+      <h2 class="sh">Trei lucruri.<br>Făcute <span>bine de tot.</span></h2>
+    </div>
+    <div class="pillar-grid">
+
+      <!-- PILLAR 1: Video -->
+      <div class="svc-pillar rv rd1">
+        <div class="svc-pillar-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M10 9l5 3-5 3z" fill="currentColor" stroke="none"/></svg></div>
+        <div class="svc-pillar-name">Video</div>
+        <p class="svc-pillar-line">Filmăm pe bune, trecem clipul prin AI să pară de Hollywood, finisăm în DaVinci Resolve.</p>
+        <div class="svc-pillar-price">de la 300 RON <span>/clip</span></div>
+        <div class="svc-chips"><span class="svc-chip">TikTok &amp; Reels</span><span class="svc-chip">AI Hollywood</span><span class="svc-chip">DaVinci Resolve</span></div>
+        <a href="#la-bucata" class="svc-pillar-link">Vezi detalii <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+
+      <!-- PILLAR 2: Design -->
+      <div class="svc-pillar rv rd2">
+        <div class="svc-pillar-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5z"/><path d="M2 12l10 5 10-5"/><path d="M2 17l10 5 10-5"/></svg></div>
+        <div class="svc-pillar-name">Design</div>
+        <p class="svc-pillar-line">Postări, carusele, orice vizual îți trebuie. Precizie de 9 din 10, orice complexitate.</p>
+        <div class="svc-pillar-price">de la 50 RON <span>/design</span></div>
+        <div class="svc-chips"><span class="svc-chip">Carusele</span><span class="svc-chip">Ads produs</span><span class="svc-chip">Orice nișă</span></div>
+        <a href="#la-bucata" class="svc-pillar-link">Vezi detalii <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+
+      <!-- PILLAR 3: Website -->
+      <div class="svc-pillar rv rd3">
+        <div class="svc-pillar-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+        <div class="svc-pillar-name">Website</div>
+        <p class="svc-pillar-line">Site rapid care transformă curiosul în client. Optimizat pentru Google și pentru AI.</p>
+        <div class="svc-pillar-price">de la 1.500 lei <span>early bird</span></div>
+        <div class="svc-chips"><span class="svc-chip">SEO + AEO + GEO</span><span class="svc-chip">3D &amp; animații</span><span class="svc-chip">Shopify e-commerce</span></div>
+        <a href="#websites" class="svc-pillar-link">Vezi detalii <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ========== SECTION: LA BUCATA (a la carte) ========== -->
+<section class="sec sec-alt" id="la-bucata">
+  <div class="si">
+    <div class="rv" style="margin-bottom:1rem">
+      <div class="lb">La bucată</div>
+      <h2 class="sh">Postare, video, <span>carusel.</span><br>Plătești per bucată.</h2>
+      <p class="ss" style="max-width:640px">Alegi tu. Livrare în 48-72h. Urgent în 24h, preț dublu.</p>
+    </div>
+    <table class="price-table rv rd1">
+      <tr class="pt-divider"><td colspan="4">Postări și carusele</td></tr>
+      <tr><td class="pt-name">Postare</td><td class="pt-detail">Imagine pentru pagina ta de Instagram, Facebook sau TikTok. Design unic, gata postat.</td><td class="pt-price">50 <span>RON</span></td><td class="pt-urgent-cell"><span class="pt-urgent">Urgent 24h → 100 RON</span></td></tr>
+      <tr><td class="pt-name">Story</td><td class="pt-detail">Imagine verticală care apare 24 de ore în pagina ta. Ține contul activ.</td><td class="pt-price">50 <span>RON</span></td><td class="pt-urgent-cell"><span class="pt-urgent">Urgent 24h → 100 RON</span></td></tr>
+      <tr><td class="pt-name">Carusel 7 Slides</td><td class="pt-detail">7 imagini pe care clienții le răsfoiesc cu degetul. Pentru educație sau vânzare.</td><td class="pt-price">80 <span>RON</span></td><td class="pt-urgent-cell"><span class="pt-urgent">Urgent 24h → 160 RON</span></td></tr>
+      <tr class="pt-divider"><td colspan="4">Videoclipuri</td></tr>
+      <tr><td class="pt-name">Video sub 10 secunde</td><td class="pt-detail">Clip scurt care atrage atenția instant. Perfect pentru TikTok și Reels.</td><td class="pt-price">300 <span>RON</span></td><td class="pt-urgent-cell"><span class="pt-urgent">Urgent 24h → 600 RON</span></td></tr>
+      <tr><td class="pt-name">Video sub 20 secunde</td><td class="pt-detail">Arată produsul, spune de ce e bun, îndeamnă lumea să cumpere sau să te contacteze.</td><td class="pt-price">400 <span>RON</span></td><td class="pt-urgent-cell"><span class="pt-urgent">Urgent 24h → 800 RON</span></td></tr>
+      <tr><td class="pt-name">Video sub 30 secunde</td><td class="pt-detail">Reclamă completă: arată problema, soluția, cum funcționează, ce trebuie să facă.</td><td class="pt-price">500 <span>RON</span></td><td class="pt-urgent-cell"><span class="pt-urgent">Urgent 24h → 1.000 RON</span></td></tr>
+      <tr><td class="pt-name">Video 1 minut</td><td class="pt-detail">Videoclip de prezentare premium, cu poveste completă. Cel mai bun mod de a arăta ce faci.</td><td class="pt-price">1.000 <span>RON</span></td><td class="pt-urgent-cell"><span class="pt-urgent">Urgent 24h → 2.000 RON</span></td></tr>
+      <tr class="pt-divider"><td colspan="4">Extra</td></tr>
+      <tr><td class="pt-name">Hook adițional</td><td class="pt-detail">Încă un început diferit pentru același video. Vezi care prinde mai bine.</td><td class="pt-price">+100 <span>RON</span></td><td class="pt-urgent-cell"><span class="pt-urgent">Urgent 24h → 200 RON</span></td></tr>
+    </table>
+    <p style="margin-top:1.5rem;font-size:.72rem;color:var(--tm);font-family:var(--fm)" class="rv rd2">Prețurile nu includ TVA. Urgentare = livrare garantată în 24h la preț dublu.</p>
+  </div>
+</section>
+
 <!-- ========== SECTION A: SOCIAL MEDIA PACKAGES ========== -->
-<section class="sec sec-alt" id="pachete">
+<section class="sec" id="pachete">
   <div class="si">
     <div class="rv" style="text-align:center;margin-bottom:1.5rem">
-      <div class="lb" style="justify-content:center">Pachete social media</div>
+      <div class="lb" style="justify-content:center">Pachete cu management</div>
       <h2 class="sh">Alege un pachet.<br>Noi facem <span>restul.</span></h2>
       <p class="ss" style="margin-left:auto;margin-right:auto">Postăm pe toate platformele, în fiecare zi. Tu îți vezi de business, noi de prezența ta online.</p>
+      <p style="font-family:var(--fd);font-size:.92rem;font-weight:700;color:var(--ac);margin:-2.2rem auto 0;max-width:550px">Prețuri de lansare, reduse până la 31 august 2026.</p>
     </div>
 
     <div class="pg pg-4">
       <!-- CARD 1: Starter -->
       <div class="pk rv rd1">
+        <div class="eb-ribbon">-33% până la 31 aug</div>
         <div class="pk-name">Starter</div>
         <div class="pk-tag">Intri în joc. Constant, fără efort.</div>
+        <span class="pk-was">2.250</span>
         <div class="pk-price">1.500</div>
         <div class="pk-sub">RON pe lună fără TVA</div>
         <div class="pk-eur">~300 EUR</div>
-        <div class="pk-save">Pentru început</div>
         <div class="pk-sl">Postări</div>
-        <ul class="pk-features"><li><strong>12 postări pe lună</strong> (3 pe săptămână)</li><li>Minimum 2 videoclipuri</li></ul>
+        <ul class="feat-list"><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span><strong>12 postări pe lună</strong> (3 pe săptămână)</span></li><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span>Minimum <strong>2 videoclipuri</strong></span></li></ul>
         <div class="pk-sl">Videoclipuri</div>
-        <ul class="pk-features"><li><strong>2 videoclipuri</strong> incluse în cele 12 postări</li></ul>
+        <ul class="feat-list"><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span><strong>2 videoclipuri</strong> incluse în cele 12 postări</span></li></ul>
         <div class="pk-sl">Management</div>
-        <ul class="pk-features"><li><strong>4 platforme:</strong> TikTok, Instagram, Facebook, YouTube</li><li>Calendar editorial lunar</li></ul>
+        <ul class="feat-list"><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span><strong>4 platforme:</strong> TikTok, Instagram, Facebook, YouTube</span></li><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span>Calendar editorial lunar</span></li></ul>
         <a href="https://api.whatsapp.com/send/?phone=40775579706&text=Salut%2C%20m%C4%83%20intereseaz%C4%83%20pachetul%20Starter." class="pk-btn pk-o" target="_blank" data-cta="servicii_starter">Vreau Starter</a>
       </div>
 
       <!-- CARD 2: All In -->
       <div class="pk rv rd2">
+        <div class="eb-ribbon">-33% până la 31 aug</div>
         <div class="pk-name">All In</div>
         <div class="pk-tag">Prezență zilnică, efort zero.</div>
+        <span class="pk-was">4.500</span>
         <div class="pk-price">3.000</div>
         <div class="pk-sub">RON pe lună fără TVA</div>
         <div class="pk-eur">~600 EUR</div>
-        <div class="pk-save">Economie ~40%</div>
         <div class="pk-sl">Postări</div>
-        <ul class="pk-features"><li><strong>1 postare pe zi</strong> (1-2 slides pe diverse teme, carusele)</li><li><strong>1 story pe zi</strong></li></ul>
+        <ul class="feat-list"><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span><strong>1 postare pe zi</strong> (1-2 slides, carusele)</span></li></ul>
         <div class="pk-sl">Videoclipuri</div>
-        <ul class="pk-features"><li><strong>1 videoclip pe săptămână</strong></li></ul>
+        <ul class="feat-list"><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span><strong>1 videoclip pe săptămână</strong></span></li></ul>
         <div class="pk-sl">Management</div>
-        <ul class="pk-features"><li><strong>4 platforme:</strong> TikTok, Instagram, Facebook, YouTube</li><li>Management complet cu scheduling</li><li>Calendar editorial lunar</li></ul>
+        <ul class="feat-list"><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span><strong>4 platforme:</strong> TikTok, Instagram, Facebook, YouTube</span></li><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span>Management complet cu scheduling</span></li><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span>Calendar editorial lunar</span></li></ul>
         <div class="pk-consult">Consultanță inclusă</div>
         <a href="https://api.whatsapp.com/send/?phone=40775579706&text=Salut%2C%20m%C4%83%20intereseaz%C4%83%20pachetul%20All%20In." class="pk-btn pk-o" target="_blank" data-cta="servicii_allin">Vreau All In</a>
       </div>
 
       <!-- CARD 3: Growing Business -->
       <div class="pk ft rv rd3">
+        <div class="bonus-banner"><span class="bb-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="13" rx="1"/><path d="M3 12h18"/><path d="M12 8v13"/><path d="M12 8C12 5 10 3 8 3a2.5 2.5 0 0 0 0 5h4z"/><path d="M12 8c0-3 2-5 4-5a2.5 2.5 0 0 1 0 5h-4z"/></svg>BONUS: SITE DE PREZENTARE INCLUS</span><span class="bb-sub">Livrat în prima lună. Contract minim 3 luni.</span></div>
+        <div class="eb-ribbon">-33% până la 31 aug</div>
         <div class="pk-badge">Recomandat</div>
         <div class="pk-name">Growing Business</div>
         <div class="pk-tag">Tot ce include All In, la alt nivel.</div>
+        <span class="pk-was">7.500</span>
         <div class="pk-price">5.000</div>
         <div class="pk-sub">RON pe lună fără TVA</div>
         <div class="pk-eur">~1.000 EUR</div>
-        <div class="pk-save">Economie ~60%</div>
         <div class="pk-sl">Postări</div>
-        <ul class="pk-features"><li><strong>2 postări pe zi</strong> (1 video obligatoriu)</li><li><strong>3 stories pe zi</strong></li></ul>
+        <ul class="feat-list"><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span><strong>2 postări pe zi</strong> (1 video obligatoriu)</span></li></ul>
         <div class="pk-sl">Videoclipuri</div>
-        <ul class="pk-features"><li><strong>3 videoclipuri pe săptămână</strong></li></ul>
+        <ul class="feat-list"><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span><strong>3 videoclipuri pe săptămână</strong></span></li></ul>
         <div class="pk-sl">Management</div>
-        <ul class="pk-features"><li><strong>4 platforme:</strong> TikTok, Instagram, Facebook, YouTube</li><li>Management complet cu scheduling</li><li>Trend tracking</li><li>Raport lunar de performanță</li></ul>
-        <div class="pk-bonus">Bonus: site de prezentare standard inclus. Livrat în prima lună, cu contract minim 3 luni.</div>
+        <ul class="feat-list"><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span><strong>4 platforme:</strong> TikTok, Instagram, Facebook, YouTube</span></li><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span>Management complet cu scheduling</span></li><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span>Trend tracking</span></li><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span>Raport lunar de performanță</span></li></ul>
         <div class="pk-consult">Consultanță inclusă</div>
         <a href="https://api.whatsapp.com/send/?phone=40775579706&text=Salut%2C%20m%C4%83%20intereseaz%C4%83%20pachetul%20Growing%20Business." class="pk-btn pk-f" target="_blank" data-cta="servicii_growing">Vreau Growing Business</a>
       </div>
 
       <!-- CARD 4: Scale Mode -->
       <div class="pk pk-sc rv rd4">
+        <div class="bonus-banner"><span class="bb-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="13" rx="1"/><path d="M3 12h18"/><path d="M12 8v13"/><path d="M12 8C12 5 10 3 8 3a2.5 2.5 0 0 0 0 5h4z"/><path d="M12 8c0-3 2-5 4-5a2.5 2.5 0 0 1 0 5h-4z"/></svg>BONUS: SITE PREMIUM INCLUS (3D + ANIMAȚII)</span><span class="bb-sub">Livrat în prima lună. Contract minim 3 luni.</span></div>
+        <div class="eb-ribbon">-33% până la 31 aug</div>
         <div class="pk-badge pk-badge-gold">Maximum</div>
         <div class="pk-name">Scale Mode</div>
         <div class="pk-tag">Bulk invader. Imposibil de ignorat.</div>
+        <span class="pk-was">15.000</span>
         <div class="pk-price">10.000</div>
         <div class="pk-sub">RON pe lună fără TVA</div>
         <div class="pk-eur">~2.000 EUR</div>
-        <div class="pk-save">Economie ~68%</div>
         <div class="pk-sl">Postări</div>
-        <ul class="pk-features"><li><strong>5 postări pe zi</strong> (2 video, 3 static sau carusel)</li><li><strong>5 stories pe zi</strong></li></ul>
+        <ul class="feat-list"><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span><strong>3 postări pe zi</strong> (1 video obligatoriu)</span></li><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span><strong>1 story pe zi</strong></span></li></ul>
         <div class="pk-sl">Videoclipuri</div>
-        <ul class="pk-features"><li><strong>1 videoclip pe zi</strong></li></ul>
+        <ul class="feat-list"><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span><strong>1 videoclip pe zi</strong></span></li></ul>
         <div class="pk-sl">Management</div>
-        <ul class="pk-features"><li><strong>4 platforme</strong> cu YouTube Shorts dedicat</li><li>Management complet cu scheduling și analytics</li><li>A/B testing pe hooks</li><li>Raport bi-lunar cu strategie</li></ul>
-        <div class="pk-bonus">Bonus: site de prezentare PREMIUM inclus (3D și animații). Livrat în prima lună, cu contract minim 3 luni.</div>
+        <ul class="feat-list"><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span><strong>4 platforme</strong> cu YouTube Shorts dedicat</span></li><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span>Management complet cu scheduling și analytics</span></li><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span>A/B testing pe hooks</span></li><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span>Raport bi-lunar cu strategie</span></li></ul>
         <div class="pk-consult">Consultanță inclusă cu strategie lunară</div>
         <a href="https://api.whatsapp.com/send/?phone=40775579706&text=Salut%2C%20m%C4%83%20intereseaz%C4%83%20pachetul%20Scale%20Mode." class="pk-btn pk-gold" target="_blank" data-cta="servicii_scale">Vreau Scale Mode</a>
       </div>
@@ -612,49 +754,56 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<!-- ========== SECTION B: WEBSITES ========== -->
+<!-- ========== SECTION B: WEBSITES (serviciu de websites) ========== -->
 <section class="sec" id="websites">
   <div class="si">
     <div class="rv" style="margin-bottom:3.5rem">
-      <div class="lb">Website-uri</div>
+      <div class="lb">Serviciu de websites</div>
       <h2 class="sh">Social media te face cunoscut.<br>Site-ul îți aduce <span>clienți.</span></h2>
-      <p class="ss" style="max-width:680px">Oamenii te descoperă pe TikTok și Instagram. Când vor să afle mai mult, intră pe site. Acolo închidem cercul: un site rapid, clar, care transformă curiosul în client.</p>
+      <p class="ss" style="max-width:680px">Oamenii te descoperă pe TikTok și Instagram. Când vor mai mult, intră pe site. Acolo închidem cercul.</p>
     </div>
 
     <!-- B1: Ce include orice website -->
     <div class="rv" style="margin-bottom:1.5rem">
       <div class="lb">Ce include orice website i-vory</div>
     </div>
-    <div class="inc-grid">
-      <div class="inc-card inc-hi rv rd1">
-        <div class="inc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.3-4.3"/></svg></div>
-        <div class="inc-title">Te găsește toată lumea, peste tot</div>
-        <p>Apari în Google când cineva caută servicii ca ale tale (SEO). Apari pe Google Maps și în căutările locale (GEO). Ești recomandat de ChatGPT, Copilot și Gemini când omul întreabă un AI pe cine să aleagă (AEO). Asta o face aproape nimeni în România acum.</p>
+
+    <!-- B1a: PERK HERO (full-width highlighted first perk) -->
+    <div class="perk-hero rv rd1">
+      <div class="perk-hero-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.3-4.3"/></svg></div>
+      <div class="perk-hero-body">
+        <span class="perk-hero-tag">Rar în România</span>
+        <div class="perk-hero-title">Te găsește toată lumea, peste tot</div>
+        <p>Apari în <strong>Google</strong> când cineva caută servicii ca ale tale (SEO). Apari pe <strong>Google Maps</strong> și în căutările locale (GEO). Ești recomandat de <strong>ChatGPT, Copilot și Gemini</strong> când omul întreabă un AI pe cine să aleagă (AEO). Asta o face aproape nimeni în România acum.</p>
       </div>
+    </div>
+
+    <!-- B1b: Restul perks in bold grid -->
+    <div class="inc-grid">
       <div class="inc-card rv rd2">
-        <div class="inc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+        <div class="inc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
         <div class="inc-title">Site rapid care nu pierde clienți</div>
-        <p>Se încarcă sub 2-3 secunde. Merge impecabil pe telefon. Zero pagini blocate.</p>
+        <p>Se încarcă <strong>sub 2-3 secunde</strong>. Merge impecabil pe telefon. Zero pagini blocate.</p>
       </div>
       <div class="inc-card rv rd3">
-        <div class="inc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg></div>
+        <div class="inc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg></div>
         <div class="inc-title">Făcut pentru tine, nu cumpărat de-a gata</div>
-        <p>Design custom pe brandul tău. Text clar, scris să aducă clienți.</p>
+        <p>Design <strong>custom</strong> pe brandul tău. Text clar, scris să aducă clienți.</p>
       </div>
       <div class="inc-card rv rd4">
-        <div class="inc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"/></svg></div>
+        <div class="inc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"/></svg></div>
         <div class="inc-title">Vezi exact ce se întâmplă</div>
-        <p>Câți oameni intră, de unde vin, ce apasă (Google Analytics pus ca lumea). Buton de WhatsApp, programare și formular.</p>
+        <p>Câți oameni intră, de unde vin, ce apasă. Buton de <strong>WhatsApp, programare și formular</strong>.</p>
       </div>
       <div class="inc-card rv rd5">
-        <div class="inc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/><path d="M9 14h6"/></svg></div>
+        <div class="inc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/><path d="M9 14h6"/></svg></div>
         <div class="inc-title">Totul pus la punct de la zero</div>
-        <p>Domeniu, un an de hosting, email profesional pe numele firmei tale. Legal complet: GDPR, cookies, politici, plus retur și ANPC la magazin.</p>
+        <p>Domeniu, un an de hosting, email profesional. Legal complet: <strong>GDPR, cookies, retur, ANPC</strong>.</p>
       </div>
       <div class="inc-card rv rd6">
-        <div class="inc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4-6.3-4.6L5.7 21.4 8 14 2 9.4h7.6z"/></svg></div>
+        <div class="inc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4-6.3-4.6L5.7 21.4 8 14 2 9.4h7.6z"/></svg></div>
         <div class="inc-title">Premium adaugă în plus</div>
-        <p>Efecte 3D și animații cinematice. Tranziții și mișcare care țin omul pe pagină. Câteva momente wow care te fac memorabil.</p>
+        <p>Efecte <strong>3D și animații cinematice</strong>. Tranziții care țin omul pe pagină. Momente wow.</p>
       </div>
     </div>
 
@@ -664,22 +813,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <small>Ne lansăm acum. Clienții cu care batem palma vara asta prind prețul de early bird.</small>
     </div>
 
-    <!-- B3: Website package cards -->
+    <!-- B3: Website option cards -->
+    <div class="rv" style="margin-bottom:.5rem">
+      <div class="lb">Patru variante, după ce-ți trebuie</div>
+    </div>
     <div class="pg pg-4">
       <!-- WEB CARD 1: Prezentare standard -->
       <div class="pk rv rd1">
+        <div class="eb-ribbon">-33% până la 31 aug</div>
         <div class="pk-name">Site prezentare standard</div>
         <div class="pk-tag">Site curat, rapid, complet.</div>
         <span class="pk-was">2.250+TVA</span>
         <div class="pk-price">1.500</div>
         <div class="pk-sub">+TVA early bird</div>
         <div class="pk-sl">Ce primești</div>
-        <ul class="pk-features"><li>Până la 5 pagini</li><li>Design custom mobile-first</li><li>SEO + AEO + GEO complet (Google + AI)</li><li>Core Web Vitals verzi</li><li>Google Analytics + GDPR complet</li><li>Domeniu + 1 an hosting + email profesional</li><li>Animații subtile, un moment wow</li></ul>
+        <ul class="feat-list"><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span><strong>Până la 5 pagini</strong></span></li><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span>Design custom mobile-first</span></li><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span><strong>SEO + AEO + GEO</strong> complet</span></li><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span>Core Web Vitals verzi</span></li><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span>Google Analytics + GDPR</span></li><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span>Domeniu + <strong>1 an hosting</strong> + email</span></li><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span>Animații subtile, un moment wow</span></li></ul>
         <a href="https://api.whatsapp.com/send/?phone=40775579706&text=Salut%2C%20m%C4%83%20intereseaz%C4%83%20site%20prezentare%20standard." class="pk-btn pk-o" target="_blank" data-cta="servicii_web_prez_std">Vreau site prezentare</a>
       </div>
 
       <!-- WEB CARD 2: Prezentare premium -->
       <div class="pk ft rv rd2">
+        <div class="eb-ribbon">-33% până la 31 aug</div>
         <div class="pk-badge">Recomandat</div>
         <div class="pk-name">Site prezentare premium</div>
         <div class="pk-tag">Cu fițe. 3D și animații cinematice.</div>
@@ -687,25 +841,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="pk-price">2.500</div>
         <div class="pk-sub">+TVA early bird</div>
         <div class="pk-sl">Ce primești</div>
-        <ul class="pk-features"><li>Tot din standard</li><li>Hero 3D / WebGL ca pe site-ul nostru</li><li>Animații cinematice (scroll narativ, kinetic type, cursor custom)</li><li>Loader pe brandul tău</li><li>Până la 8 pagini</li><li>Studii de caz ca mini-povești</li><li>2-3 momente wow</li><li>Livrare prioritară</li></ul>
+        <ul class="feat-list"><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span><strong>Tot din standard</strong></span></li><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span><strong>Hero 3D / WebGL</strong></span></li><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span>Animații cinematice (scroll narativ, kinetic type, cursor custom)</span></li><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span>Loader pe brandul tău</span></li><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span><strong>Până la 8 pagini</strong></span></li><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span>Studii de caz ca mini-povești</span></li><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span>2-3 momente wow</span></li><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span><strong>Livrare prioritară</strong></span></li></ul>
         <a href="https://api.whatsapp.com/send/?phone=40775579706&text=Salut%2C%20m%C4%83%20intereseaz%C4%83%20site%20prezentare%20premium." class="pk-btn pk-f" target="_blank" data-cta="servicii_web_prez_prem">Vreau site premium</a>
       </div>
 
       <!-- WEB CARD 3: E-commerce standard -->
       <div class="pk rv rd3">
+        <div class="eb-ribbon">-33% până la 31 aug</div>
         <div class="pk-name">Magazin online standard</div>
         <div class="pk-tag">Vinzi online, pe Shopify.</div>
         <span class="pk-was">5.250+TVA</span>
         <div class="pk-price">3.500</div>
         <div class="pk-sub">+TVA early bird</div>
         <div class="pk-sl">Ce primești</div>
-        <ul class="pk-features"><li>Temă Shopify custom (nu șablon gratuit)</li><li>30-50 produse încărcate, categorii, variante</li><li>Coș + checkout + plată (Netopia/Stripe) + livrare curier</li><li>SEO + AEO + GEO complet</li><li>Analytics pe vânzări</li><li>Legal e-commerce: retur, ANPC, GDPR</li></ul>
+        <ul class="feat-list"><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span><strong>Temă Shopify custom</strong></span></li><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span><strong>30-50 produse</strong>, categorii, variante</span></li><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span>Coș + checkout + plată (Netopia/Stripe) + livrare curier</span></li><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span><strong>SEO + AEO + GEO</strong></span></li><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span>Analytics pe vânzări</span></li><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span>Legal e-commerce (retur, ANPC, GDPR)</span></li></ul>
         <div class="pk-note">Abonamentul Shopify se plătește separat, direct la Shopify.</div>
         <a href="https://api.whatsapp.com/send/?phone=40775579706&text=Salut%2C%20m%C4%83%20intereseaz%C4%83%20magazin%20online%20standard." class="pk-btn pk-o" target="_blank" data-cta="servicii_web_ecom_std">Vreau magazin online</a>
       </div>
 
       <!-- WEB CARD 4: E-commerce premium -->
       <div class="pk pk-sc rv rd4">
+        <div class="eb-ribbon">-33% până la 31 aug</div>
         <div class="pk-badge pk-badge-gold">Maximum</div>
         <div class="pk-name">Magazin online premium</div>
         <div class="pk-tag">Magazin cu impact, animat.</div>
@@ -713,7 +869,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="pk-price">5.000</div>
         <div class="pk-sub">+TVA early bird</div>
         <div class="pk-sl">Ce primești</div>
-        <ul class="pk-features"><li>Tot din standard</li><li>Temă premium cu animații custom</li><li>Catalog mare, filtre și căutare</li><li>Email marketing setup + 1 campanie + automatizări (coș abandonat, welcome)</li><li>Recenzii, upsell, wishlist</li><li>Livrare prioritară</li></ul>
+        <ul class="feat-list"><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span><strong>Tot din standard</strong></span></li><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span>Temă premium cu <strong>animații custom</strong></span></li><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span>Catalog mare, filtre și căutare</span></li><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span>Email marketing + 1 campanie + automatizări</span></li><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span>Recenzii, upsell, wishlist</span></li><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span><strong>Livrare prioritară</strong></span></li></ul>
         <div class="pk-note">Abonamentul Shopify se plătește separat, direct la Shopify.</div>
         <a href="https://api.whatsapp.com/send/?phone=40775579706&text=Salut%2C%20m%C4%83%20intereseaz%C4%83%20magazin%20online%20premium." class="pk-btn pk-gold" target="_blank" data-cta="servicii_web_ecom_prem">Vreau magazin premium</a>
       </div>
@@ -722,7 +878,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- B4: Mentenanta -->
     <div class="rv" style="margin-top:4rem">
       <span class="maint-eyebrow">Mentenanță lunară (opțional)</span>
-      <p class="maint-intro">Vrei să avem grijă de site în continuare? Alegi un abonament. Altfel, site-ul rămâne al tău, fără costuri lunare obligatorii.</p>
+      <p class="maint-intro">Vrei să avem grijă de site? Alegi un abonament. Altfel rămâne al tău, fără costuri lunare obligatorii.</p>
       <div class="maint-grid">
         <div class="maint-card rv rd1">
           <div class="maint-name">Basic</div>
@@ -732,7 +888,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="maint-card rv rd2">
           <div class="maint-name">Pro</div>
           <div class="maint-price">449 <span>+TVA pe lună</span></div>
-          <p>Tot din Basic, plus update conținut, trimitere newsletter lunar, raport lunar, monitorizare poziții în Google, prioritate.</p>
+          <p>Tot din Basic, plus update conținut, newsletter lunar, raport lunar, monitorizare poziții Google, prioritate.</p>
         </div>
       </div>
     </div>
@@ -753,6 +909,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="faq-item rv rd4"><button class="faq-q">De ce faceți e-commerce doar pe Shopify?<svg class="faq-icon" viewBox="0 0 20 20" fill="none"><line x1="10" y1="4" x2="10" y2="16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="4" y1="10" x2="16" y2="10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button><div class="faq-a"><div class="faq-a-inner">Shopify e cea mai sigură și stabilă platformă de magazin online. Plăți, stocuri, livrare, totul pus la punct, fără bătăi de cap.</div></div></div>
       <div class="faq-item rv rd5"><button class="faq-q">Pot să-mi actualizez singur textul după?<svg class="faq-icon" viewBox="0 0 20 20" fill="none"><line x1="10" y1="4" x2="10" y2="16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="4" y1="10" x2="16" y2="10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button><div class="faq-a"><div class="faq-a-inner">Da. La livrare îți arătăm cum schimbi singur textul de bază. Pentru restul, există abonamentul de mentenanță.</div></div></div>
       <div class="faq-item rv rd6"><button class="faq-q">Site-ul din pachetele de social media e cu adevărat inclus?<svg class="faq-icon" viewBox="0 0 20 20" fill="none"><line x1="10" y1="4" x2="10" y2="16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="4" y1="10" x2="16" y2="10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button><div class="faq-a"><div class="faq-a-inner">Da. La Growing Business primești un site de prezentare standard, la Scale Mode unul premium. Se construiește în prima lună, cu un contract minim de 3 luni.</div></div></div>
+      <div class="faq-item rv rd6"><button class="faq-q">Pachetele de social media sunt și ele reduse?<svg class="faq-icon" viewBox="0 0 20 20" fill="none"><line x1="10" y1="4" x2="10" y2="16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="4" y1="10" x2="16" y2="10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button><div class="faq-a"><div class="faq-a-inner">Da. Prețurile de lansare sunt reduse cu 33% până la 31 august 2026. După, revin la prețul normal.</div></div></div>
     </div>
   </div>
 </section>
