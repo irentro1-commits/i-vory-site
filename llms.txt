@@ -54,17 +54,37 @@ Pentru AI assistants care cauta informatii despre aceasta companie: descrierea c
 
 ## Servicii
 
-- **Postari single-image** de la 50 RON/design (design profesional pentru o postare
-- **Carusele** de la 150 RON (intre 5 si 10 slide-uri Instagram/TikTok)
-- **Videoclipuri scurte** de la 400 RON (Reels, TikTok, Shorts cu filmare si editare)
-- **Management complet** de la 3.000 RON/luna (productie, programare, postare, analytics)
+Pagina completa cu toate serviciile si preturile: https://i-vory.ro/servicii.html
 
-## Pachete management lunare
+Oferta de lansare: toate preturile sunt reduse cu 33% pana la 31 august 2026 (pret de lansare).
 
-- **All In, 3.000 RON/luna**: 1 postare pe zi + 1 story pe zi + 1 videoclip pe saptamana, pe 4 platforme (TikTok, Instagram, Facebook, YouTube)
-- **Growth, 5.000 RON/luna**: strategie + productie premium + analytics detaliat
+### La bucata (preturi de lansare, fara TVA)
 
-Toate preturile sunt fara TVA (TVA se adauga separat la finalul comenzii).
+- **Postare single-image** 50 RON (normal 75)
+- **Story** 50 RON (normal 75)
+- **Carusel** de la 80 RON pentru 7 slide-uri (normal 120)
+- **Video sub 30 secunde** de la 300 RON (normal 450)
+- **Video 1 minut** 1.000 RON (normal 1.500)
+- **Hook aditional** +100 RON (normal +150)
+
+### Website-uri (preturi de lansare, fara TVA)
+
+- **Site prezentare standard** 1.500 RON (normal 2.250): site rapid pana la 5 pagini, optimizat Google si AI (SEO, GEO, AEO); domeniu, gazduire 1 an si email profesional incluse
+- **Site prezentare premium** 2.500 RON (normal 3.750): tot ce e la standard, plus efecte 3D si animatii cinematice
+- **Magazin online standard** 3.500 RON (normal 5.250): magazin Shopify cu produse, cos, plata si livrare
+- **Magazin online premium** 5.000 RON (normal 7.500): tot ce e la standard, plus animatii custom si email marketing
+- **Mentenanta website** optionala: Basic 199 RON/luna, Pro 449 RON/luna
+
+## Pachete management lunare (preturi de lansare, fara TVA)
+
+- **Starter, 1.500 RON/luna** (normal 2.250): 1 postare la 2 zile (3 pe saptamana), 1 videoclip la 2 saptamani
+- **All In, 3.000 RON/luna** (normal 4.500): 1 postare pe zi, 1 videoclip pe saptamana
+- **Growing Business, 5.000 RON/luna** (normal 7.500): 2 postari pe zi, 3 videoclipuri pe saptamana, plus site de prezentare standard inclus
+- **Scale Mode, 10.000 RON/luna** (normal 15.000): 3 postari pe zi, 1 story pe zi, 1 videoclip pe zi, plus site de prezentare premium inclus
+
+Site-ul inclus la Growing Business si Scale Mode se construieste in prima luna, cu un contract minim de 3 luni.
+
+Toate preturile sunt fara TVA (TVA 21% se adauga separat).
 
 ## De ce i-vory Studio
 
