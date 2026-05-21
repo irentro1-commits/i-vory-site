@@ -317,17 +317,22 @@ main{display:block}
 .bg:hover{border-color:var(--ac);color:var(--t)}
 .b-ghost{background:transparent;color:#fff5e6;border:1.5px solid rgba(255,245,230,.5);box-shadow:0 0 0 1px rgba(255,245,230,.1),0 8px 24px rgba(0,0,0,.3)}
 .b-ghost:hover{background:rgba(255,245,230,.08);border-color:rgba(255,245,230,.8);color:#ffffff}
+.promo-bar{background:linear-gradient(135deg,rgba(0,224,192,.16),rgba(123,44,255,.1));border-bottom:1px solid rgba(0,224,192,.25);color:#eafffb;font-family:var(--fd);font-size:.92rem;font-weight:600;letter-spacing:-.01em;text-align:center;padding:.75rem 1.2rem;position:relative;z-index:6}
+.promo-bar strong{color:var(--ac);font-weight:800}
+.promo-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--ac);box-shadow:0 0 10px var(--ac);vertical-align:middle;margin-right:.45rem}
+@media(max-width:600px){.promo-bar{font-size:.76rem;padding:.6rem .9rem}}
+.pt-was{font-family:var(--fm);font-size:.72rem;color:var(--tm);text-decoration:line-through;text-decoration-thickness:1.5px;white-space:nowrap;letter-spacing:.02em}
 
 /* ===== PACKAGE CARDS (.pk) ===== */
-.pg{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;align-items:stretch;margin-top:1.5rem}
+.pg{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;align-items:start;margin-top:1.5rem}
 .pg-4{grid-template-columns:repeat(4,1fr)}
 .pk{background:rgba(3,3,9,.9);backdrop-filter:none;border:1px solid var(--br2);border-radius:var(--r);padding:2.6rem 2rem 2.2rem;position:relative;transition:transform .5s var(--e),border-color .4s,box-shadow .4s;display:flex;flex-direction:column;box-shadow:0 18px 44px rgba(0,0,0,.35)}
 .pk:hover{transform:translateY(-6px);border-color:var(--acb)}
-.pk.ft{border:1.5px solid var(--ac);background:linear-gradient(180deg,rgba(0,224,192,.07) 0%,rgba(3,3,9,.9) 42%);box-shadow:0 20px 50px rgba(0,0,0,.4);transform:translateY(-22px)}
-.pk.ft:hover{transform:translateY(-28px)}
+.pk.ft{border:1.5px solid var(--ac);background:linear-gradient(180deg,rgba(0,224,192,.07) 0%,rgba(3,3,9,.9) 42%);box-shadow:0 20px 50px rgba(0,0,0,.4)}
+.pk.ft:hover{transform:translateY(-6px)}
 /* .pk.ft::before gradient ring removed: crisp 1.5px border replaces glow */
-.pk-sc{border:1.5px solid #f0a030;background:linear-gradient(180deg,rgba(240,160,48,.07) 0%,rgba(3,3,9,.9) 42%);box-shadow:0 20px 50px rgba(0,0,0,.4);transform:translateY(-22px)}
-.pk-sc:hover{transform:translateY(-28px)}
+.pk-sc{border:1.5px solid #f0a030;background:linear-gradient(180deg,rgba(240,160,48,.07) 0%,rgba(3,3,9,.9) 42%);box-shadow:0 20px 50px rgba(0,0,0,.4)}
+.pk-sc:hover{transform:translateY(-6px)}
 /* .pk-sc::before gradient ring removed: crisp 1.5px border replaces glow */
 .pk-badge{display:inline-block;align-self:flex-start;background:var(--ac);color:var(--bg);font-family:var(--fm);font-size:.6rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:.3rem .9rem;border-radius:100px;white-space:nowrap;margin-bottom:1rem}
 .pk-badge-gold{background:#f0a030}
@@ -353,7 +358,7 @@ main{display:block}
 .pk-sc .pk-bonus{color:#f0a030;background:linear-gradient(135deg,rgba(240,160,48,.1),rgba(240,160,48,.03));border-left-color:#f0a030}
 .pk-consult{font-size:.7rem;color:var(--ac);font-family:var(--fm);letter-spacing:.02em;margin:1rem 0 1.5rem;padding:.4rem .6rem;background:var(--ac3);border:1px solid var(--acb);border-radius:6px;text-align:center}
 .pk-sc .pk-consult{color:#f0a030;background:rgba(240,160,48,.06);border-color:rgba(240,160,48,.2)}
-.pk-btn{display:block;width:100%;text-align:center;padding:.85rem;border-radius:100px;font-family:var(--fd);font-weight:700;font-size:.82rem;text-decoration:none;transition:transform .3s var(--e),box-shadow .3s;border:none;cursor:pointer;margin-top:auto}
+.pk-btn{display:block;width:100%;text-align:center;padding:.85rem;border-radius:100px;font-family:var(--fd);font-weight:700;font-size:.82rem;text-decoration:none;transition:transform .3s var(--e),box-shadow .3s;border:none;cursor:pointer;margin-top:1.2rem}
 .pk-o{background:transparent;border:1px solid var(--br2);color:var(--t)}
 .pk-o:hover{border-color:var(--ac);background:var(--ac3)}
 .pk-f{background:var(--ac);color:var(--bg)}
@@ -577,6 +582,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <main>
 
+<div class="promo-bar"><span class="promo-dot"></span> Lansare i-vory: <strong>-33% la toate serviciile</strong>, până la 31 august 2026.</div>
+
 <!-- ========== HERO ========== -->
 <section class="hero">
   <div class="hero-wrap">
@@ -635,6 +642,101 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
+<!-- ========== SECTION A: SOCIAL MEDIA PACKAGES ========== -->
+<section class="sec" id="pachete">
+  <div class="si">
+    <div class="rv" style="text-align:center;margin-bottom:1.5rem">
+      <div class="lb" style="justify-content:center">Pachete cu management</div>
+      <h2 class="sh">Alege un pachet.<br>Noi facem <span>restul.</span></h2>
+      <p class="ss" style="margin-left:auto;margin-right:auto">Postăm pe toate platformele, în fiecare zi. Tu îți vezi de business, noi de prezența ta online.</p>
+      <p style="font-family:var(--fd);font-size:.92rem;font-weight:700;color:var(--ac);margin:-2.2rem auto 0;max-width:550px">Prețuri de lansare, reduse până la 31 august 2026.</p>
+    </div>
+
+    <div class="pg pg-4">
+      <!-- CARD 1: Starter -->
+      <div class="pk rv rd1">
+        <div class="eb-ribbon">-33%</div>
+        <div class="pk-name">Starter</div>
+        <div class="pk-tag">Intri în joc. Constant, fără efort.</div>
+        <span class="pk-was">Normal 2.250 RON</span>
+        <div class="pk-price">1.500</div>
+        <div class="pk-sub">RON pe lună fără TVA</div>
+        <div class="pk-sl">Postări</div>
+        <ul class="feat-list"><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span><strong>1 postare la 2 zile</strong> (3 postări pe săptămână)</span></li></ul>
+        <div class="pk-sl">Videoclipuri</div>
+        <ul class="feat-list"><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span><strong>1 videoclip la 2 săptămâni</strong></span></li></ul>
+        <div class="pk-sl">Management</div>
+        <ul class="feat-list"><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span><strong>4 platforme:</strong> TikTok, Instagram, Facebook, YouTube</span></li><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span>Calendar editorial lunar</span></li></ul>
+        <div class="pk-consult">Consultanță inclusă</div>
+        <a href="https://api.whatsapp.com/send/?phone=40775579706&text=Salut%2C%20m%C4%83%20intereseaz%C4%83%20pachetul%20Starter." class="pk-btn pk-o" target="_blank" data-cta="servicii_starter">Vreau Starter</a>
+      </div>
+
+      <!-- CARD 2: All In -->
+      <div class="pk rv rd2">
+        <div class="eb-ribbon">-33%</div>
+        <div class="pk-name">All In</div>
+        <div class="pk-tag">Prezență zilnică, efort zero.</div>
+        <span class="pk-was">Normal 4.500 RON</span>
+        <div class="pk-price">3.000</div>
+        <div class="pk-sub">RON pe lună fără TVA</div>
+        <div class="pk-sl">Postări</div>
+        <ul class="feat-list"><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span><strong>1 postare pe zi</strong> (1-2 slides, carusele)</span></li></ul>
+        <div class="pk-sl">Videoclipuri</div>
+        <ul class="feat-list"><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span><strong>1 videoclip pe săptămână</strong></span></li></ul>
+        <div class="pk-sl">Management</div>
+        <ul class="feat-list"><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span><strong>4 platforme:</strong> TikTok, Instagram, Facebook, YouTube</span></li><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span>Management complet cu scheduling</span></li><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span>Calendar editorial lunar</span></li></ul>
+        <div class="pk-consult">Consultanță inclusă</div>
+        <a href="https://api.whatsapp.com/send/?phone=40775579706&text=Salut%2C%20m%C4%83%20intereseaz%C4%83%20pachetul%20All%20In." class="pk-btn pk-o" target="_blank" data-cta="servicii_allin">Vreau All In</a>
+      </div>
+
+      <!-- CARD 3: Growing Business -->
+      <div class="pk ft pk-crowned rv rd3">
+        <div class="bonus-banner"><span class="bb-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="13" rx="1"/><path d="M3 12h18"/><path d="M12 8v13"/><path d="M12 8C12 5 10 3 8 3a2.5 2.5 0 0 0 0 5h4z"/><path d="M12 8c0-3 2-5 4-5a2.5 2.5 0 0 1 0 5h-4z"/></svg>BONUS: SITE DE PREZENTARE INCLUS</span><span class="bb-sub">Livrat în prima lună. Contract minim 3 luni.</span></div>
+        <div class="eb-ribbon">-33%</div>
+        <div class="pk-badge">Recomandat</div>
+        <div class="pk-name">Growing Business</div>
+        <div class="pk-tag">Tot ce include All In, la alt nivel.</div>
+        <span class="pk-was">Normal 7.500 RON</span>
+        <div class="pk-price">5.000</div>
+        <div class="pk-sub">RON pe lună fără TVA</div>
+        <div class="pk-sl">Postări</div>
+        <ul class="feat-list"><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span><strong>2 postări pe zi</strong> (1 video obligatoriu)</span></li></ul>
+        <div class="pk-sl">Videoclipuri</div>
+        <ul class="feat-list"><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span><strong>3 videoclipuri pe săptămână</strong></span></li></ul>
+        <div class="pk-sl">Management</div>
+        <ul class="feat-list"><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span><strong>4 platforme:</strong> TikTok, Instagram, Facebook, YouTube</span></li><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span>Management complet cu scheduling</span></li><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span>Trend tracking</span></li><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span>Raport lunar de performanță</span></li></ul>
+        <div class="pk-consult">Consultanță inclusă</div>
+        <a href="https://api.whatsapp.com/send/?phone=40775579706&text=Salut%2C%20m%C4%83%20intereseaz%C4%83%20pachetul%20Growing%20Business." class="pk-btn pk-f" target="_blank" data-cta="servicii_growing">Vreau Growing Business</a>
+      </div>
+
+      <!-- CARD 4: Scale Mode -->
+      <div class="pk pk-sc pk-crowned rv rd4">
+        <div class="bonus-banner"><span class="bb-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="13" rx="1"/><path d="M3 12h18"/><path d="M12 8v13"/><path d="M12 8C12 5 10 3 8 3a2.5 2.5 0 0 0 0 5h4z"/><path d="M12 8c0-3 2-5 4-5a2.5 2.5 0 0 1 0 5h-4z"/></svg>BONUS: SITE PREMIUM INCLUS (3D + ANIMAȚII)</span><span class="bb-sub">Livrat în prima lună. Contract minim 3 luni.</span></div>
+        <div class="eb-ribbon">-33%</div>
+        <div class="pk-badge pk-badge-gold">Maximum</div>
+        <div class="pk-name">Scale Mode</div>
+        <div class="pk-tag">Bulk invader. Imposibil de ignorat.</div>
+        <span class="pk-was">Normal 15.000 RON</span>
+        <div class="pk-price">10.000</div>
+        <div class="pk-sub">RON pe lună fără TVA</div>
+        <div class="pk-sl">Postări</div>
+        <ul class="feat-list"><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span><strong>3 postări pe zi</strong> (1 video obligatoriu)</span></li><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span><strong>1 story pe zi</strong></span></li></ul>
+        <div class="pk-sl">Videoclipuri</div>
+        <ul class="feat-list"><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span><strong>1 videoclip pe zi</strong></span></li></ul>
+        <div class="pk-sl">Management</div>
+        <ul class="feat-list"><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span><strong>4 platforme</strong> cu YouTube Shorts dedicat</span></li><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span>Management complet cu scheduling și analytics</span></li><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span>A/B testing pe hooks</span></li><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span>Raport bi-lunar cu strategie</span></li></ul>
+        <div class="pk-consult">Consultanță inclusă cu strategie lunară</div>
+        <a href="https://api.whatsapp.com/send/?phone=40775579706&text=Salut%2C%20m%C4%83%20intereseaz%C4%83%20pachetul%20Scale%20Mode." class="pk-btn pk-gold" target="_blank" data-cta="servicii_scale">Vreau Scale Mode</a>
+      </div>
+    </div>
+
+    <div class="pk-custom rv rd4">
+      <p>Ai nevoie de altceva? <strong>Facem oferte personalizate.</strong><br>Spune-ne ce vrei și construim un pachet pe măsura business-ului tău.</p>
+      <a href="https://api.whatsapp.com/send/?phone=40775579706&text=Salut%2C%20vreau%20o%20ofert%C4%83%20personalizat%C4%83." class="bh" target="_blank" style="font-size:.82rem" data-cta="servicii_custom_offer">Cere o ofertă personalizată <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+  </div>
+</section>
+
 <!-- ========== SECTION: LA BUCATA (a la carte) ========== -->
 <section class="sec sec-alt" id="la-bucata">
   <div class="si">
@@ -656,12 +758,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <tr class="pt-divider"><td colspan="4">Extra</td></tr>
       <tr><td class="pt-name">Hook adițional</td><td class="pt-detail">Încă un început diferit pentru același video. Vezi care prinde mai bine.</td><td class="pt-price">+100 <span>RON</span></td><td class="pt-urgent-cell"><span class="pt-urgent">Urgent 24h → 200 RON</span></td></tr>
       <tr class="pt-divider"><td colspan="4">Website-uri</td></tr>
-      <tr><td class="pt-name">Site prezentare standard</td><td class="pt-detail">Site rapid de prezentare, până la 5 pagini. Optimizat pentru Google și pentru AI (SEO, GEO, AEO). Domeniu, găzduire 1 an și email profesional incluse.</td><td class="pt-price">1.500 <span>RON</span></td><td class="pt-urgent-cell"><span class="pt-urgent">Normal 2.250 · -33% până 31 aug</span></td></tr>
-      <tr><td class="pt-name">Site prezentare premium</td><td class="pt-detail">Tot ce e inclus la standard, plus efecte 3D, animații cinematice, până la 8 pagini și studii de caz ca mini-povești.</td><td class="pt-price">2.500 <span>RON</span></td><td class="pt-urgent-cell"><span class="pt-urgent">Normal 3.750 · -33% până 31 aug</span></td></tr>
-      <tr><td class="pt-name">Magazin online standard</td><td class="pt-detail">Magazin pe Shopify: 30-50 produse, coș, plată și livrare. Optimizat pentru Google și AI. Abonamentul Shopify se plătește separat.</td><td class="pt-price">3.500 <span>RON</span></td><td class="pt-urgent-cell"><span class="pt-urgent">Normal 5.250 · -33% până 31 aug</span></td></tr>
-      <tr><td class="pt-name">Magazin online premium</td><td class="pt-detail">Tot ce e inclus la magazinul standard, plus animații custom, catalog mare cu filtre, email marketing și automatizări (coș abandonat, welcome).</td><td class="pt-price">5.000 <span>RON</span></td><td class="pt-urgent-cell"><span class="pt-urgent">Normal 7.500 · -33% până 31 aug</span></td></tr>
+      <tr><td class="pt-name">Site prezentare standard</td><td class="pt-detail">Site rapid de prezentare, până la 5 pagini. Optimizat pentru Google și pentru AI (SEO, GEO, AEO). Domeniu, găzduire 1 an și email profesional incluse.</td><td class="pt-price">1.500 <span>RON</span></td><td class="pt-urgent-cell"><span class="pt-was">Normal 2.250 RON</span></td></tr>
+      <tr><td class="pt-name">Site prezentare premium</td><td class="pt-detail">Tot ce e inclus la standard, plus efecte 3D, animații cinematice, până la 8 pagini și studii de caz ca mini-povești.</td><td class="pt-price">2.500 <span>RON</span></td><td class="pt-urgent-cell"><span class="pt-was">Normal 3.750 RON</span></td></tr>
+      <tr><td class="pt-name">Magazin online standard</td><td class="pt-detail">Magazin pe Shopify: 30-50 produse, coș, plată și livrare. Optimizat pentru Google și AI. Abonamentul Shopify se plătește separat.</td><td class="pt-price">3.500 <span>RON</span></td><td class="pt-urgent-cell"><span class="pt-was">Normal 5.250 RON</span></td></tr>
+      <tr><td class="pt-name">Magazin online premium</td><td class="pt-detail">Tot ce e inclus la magazinul standard, plus animații custom, catalog mare cu filtre, email marketing și automatizări (coș abandonat, welcome).</td><td class="pt-price">5.000 <span>RON</span></td><td class="pt-urgent-cell"><span class="pt-was">Normal 7.500 RON</span></td></tr>
     </table>
-    <p style="margin-top:1.5rem;font-size:.72rem;color:var(--tm);font-family:var(--fm)" class="rv rd2">Prețurile nu includ TVA. Urgentare = livrare garantată în 24h la preț dublu. Website-urile au preț de lansare redus cu 33% până la 31 august 2026.</p>
+    <p style="margin-top:1.5rem;font-size:.72rem;color:var(--tm);font-family:var(--fm)" class="rv rd2">Toate prețurile sunt prețuri de lansare, reduse cu 33% până la 31 august 2026. Prețurile nu includ TVA. Urgentare = livrare garantată în 24h la preț dublu.</p>
   </div>
 </section>
 
@@ -738,103 +840,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<!-- ========== SECTION A: SOCIAL MEDIA PACKAGES ========== -->
-<section class="sec" id="pachete">
-  <div class="si">
-    <div class="rv" style="text-align:center;margin-bottom:1.5rem">
-      <div class="lb" style="justify-content:center">Pachete cu management</div>
-      <h2 class="sh">Alege un pachet.<br>Noi facem <span>restul.</span></h2>
-      <p class="ss" style="margin-left:auto;margin-right:auto">Postăm pe toate platformele, în fiecare zi. Tu îți vezi de business, noi de prezența ta online.</p>
-      <p style="font-family:var(--fd);font-size:.92rem;font-weight:700;color:var(--ac);margin:-2.2rem auto 0;max-width:550px">Prețuri de lansare, reduse până la 31 august 2026.</p>
-    </div>
 
-    <div class="pg pg-4">
-      <!-- CARD 1: Starter -->
-      <div class="pk rv rd1">
-        <div class="eb-ribbon">-33% până la 31 aug</div>
-        <div class="pk-name">Starter</div>
-        <div class="pk-tag">Intri în joc. Constant, fără efort.</div>
-        <span class="pk-was">2.250</span>
-        <div class="pk-price">1.500</div>
-        <div class="pk-sub">RON pe lună fără TVA</div>
-        <div class="pk-eur">~300 EUR</div>
-        <div class="pk-sl">Postări</div>
-        <ul class="feat-list"><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span><strong>12 postări pe lună</strong> (3 pe săptămână)</span></li><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span>Minimum <strong>2 videoclipuri</strong></span></li></ul>
-        <div class="pk-sl">Videoclipuri</div>
-        <ul class="feat-list"><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span><strong>2 videoclipuri</strong> incluse în cele 12 postări</span></li></ul>
-        <div class="pk-sl">Management</div>
-        <ul class="feat-list"><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span><strong>4 platforme:</strong> TikTok, Instagram, Facebook, YouTube</span></li><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span>Calendar editorial lunar</span></li></ul>
-        <a href="https://api.whatsapp.com/send/?phone=40775579706&text=Salut%2C%20m%C4%83%20intereseaz%C4%83%20pachetul%20Starter." class="pk-btn pk-o" target="_blank" data-cta="servicii_starter">Vreau Starter</a>
-      </div>
-
-      <!-- CARD 2: All In -->
-      <div class="pk rv rd2">
-        <div class="eb-ribbon">-33% până la 31 aug</div>
-        <div class="pk-name">All In</div>
-        <div class="pk-tag">Prezență zilnică, efort zero.</div>
-        <span class="pk-was">4.500</span>
-        <div class="pk-price">3.000</div>
-        <div class="pk-sub">RON pe lună fără TVA</div>
-        <div class="pk-eur">~600 EUR</div>
-        <div class="pk-sl">Postări</div>
-        <ul class="feat-list"><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span><strong>1 postare pe zi</strong> (1-2 slides, carusele)</span></li></ul>
-        <div class="pk-sl">Videoclipuri</div>
-        <ul class="feat-list"><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span><strong>1 videoclip pe săptămână</strong></span></li></ul>
-        <div class="pk-sl">Management</div>
-        <ul class="feat-list"><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span><strong>4 platforme:</strong> TikTok, Instagram, Facebook, YouTube</span></li><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span>Management complet cu scheduling</span></li><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span>Calendar editorial lunar</span></li></ul>
-        <div class="pk-consult">Consultanță inclusă</div>
-        <a href="https://api.whatsapp.com/send/?phone=40775579706&text=Salut%2C%20m%C4%83%20intereseaz%C4%83%20pachetul%20All%20In." class="pk-btn pk-o" target="_blank" data-cta="servicii_allin">Vreau All In</a>
-      </div>
-
-      <!-- CARD 3: Growing Business -->
-      <div class="pk ft pk-crowned rv rd3">
-        <div class="bonus-banner"><span class="bb-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="13" rx="1"/><path d="M3 12h18"/><path d="M12 8v13"/><path d="M12 8C12 5 10 3 8 3a2.5 2.5 0 0 0 0 5h4z"/><path d="M12 8c0-3 2-5 4-5a2.5 2.5 0 0 1 0 5h-4z"/></svg>BONUS: SITE DE PREZENTARE INCLUS</span><span class="bb-sub">Livrat în prima lună. Contract minim 3 luni.</span></div>
-        <div class="eb-ribbon">-33% până la 31 aug</div>
-        <div class="pk-badge">Recomandat</div>
-        <div class="pk-name">Growing Business</div>
-        <div class="pk-tag">Tot ce include All In, la alt nivel.</div>
-        <span class="pk-was">7.500</span>
-        <div class="pk-price">5.000</div>
-        <div class="pk-sub">RON pe lună fără TVA</div>
-        <div class="pk-eur">~1.000 EUR</div>
-        <div class="pk-sl">Postări</div>
-        <ul class="feat-list"><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span><strong>2 postări pe zi</strong> (1 video obligatoriu)</span></li></ul>
-        <div class="pk-sl">Videoclipuri</div>
-        <ul class="feat-list"><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span><strong>3 videoclipuri pe săptămână</strong></span></li></ul>
-        <div class="pk-sl">Management</div>
-        <ul class="feat-list"><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span><strong>4 platforme:</strong> TikTok, Instagram, Facebook, YouTube</span></li><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span>Management complet cu scheduling</span></li><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span>Trend tracking</span></li><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span>Raport lunar de performanță</span></li></ul>
-        <div class="pk-consult">Consultanță inclusă</div>
-        <a href="https://api.whatsapp.com/send/?phone=40775579706&text=Salut%2C%20m%C4%83%20intereseaz%C4%83%20pachetul%20Growing%20Business." class="pk-btn pk-f" target="_blank" data-cta="servicii_growing">Vreau Growing Business</a>
-      </div>
-
-      <!-- CARD 4: Scale Mode -->
-      <div class="pk pk-sc pk-crowned rv rd4">
-        <div class="bonus-banner"><span class="bb-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="13" rx="1"/><path d="M3 12h18"/><path d="M12 8v13"/><path d="M12 8C12 5 10 3 8 3a2.5 2.5 0 0 0 0 5h4z"/><path d="M12 8c0-3 2-5 4-5a2.5 2.5 0 0 1 0 5h-4z"/></svg>BONUS: SITE PREMIUM INCLUS (3D + ANIMAȚII)</span><span class="bb-sub">Livrat în prima lună. Contract minim 3 luni.</span></div>
-        <div class="eb-ribbon">-33% până la 31 aug</div>
-        <div class="pk-badge pk-badge-gold">Maximum</div>
-        <div class="pk-name">Scale Mode</div>
-        <div class="pk-tag">Bulk invader. Imposibil de ignorat.</div>
-        <span class="pk-was">15.000</span>
-        <div class="pk-price">10.000</div>
-        <div class="pk-sub">RON pe lună fără TVA</div>
-        <div class="pk-eur">~2.000 EUR</div>
-        <div class="pk-sl">Postări</div>
-        <ul class="feat-list"><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span><strong>3 postări pe zi</strong> (1 video obligatoriu)</span></li><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span><strong>1 story pe zi</strong></span></li></ul>
-        <div class="pk-sl">Videoclipuri</div>
-        <ul class="feat-list"><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span><strong>1 videoclip pe zi</strong></span></li></ul>
-        <div class="pk-sl">Management</div>
-        <ul class="feat-list"><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span><strong>4 platforme</strong> cu YouTube Shorts dedicat</span></li><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span>Management complet cu scheduling și analytics</span></li><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span>A/B testing pe hooks</span></li><li><svg class="feat-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg><span>Raport bi-lunar cu strategie</span></li></ul>
-        <div class="pk-consult">Consultanță inclusă cu strategie lunară</div>
-        <a href="https://api.whatsapp.com/send/?phone=40775579706&text=Salut%2C%20m%C4%83%20intereseaz%C4%83%20pachetul%20Scale%20Mode." class="pk-btn pk-gold" target="_blank" data-cta="servicii_scale">Vreau Scale Mode</a>
-      </div>
-    </div>
-
-    <div class="pk-custom rv rd4">
-      <p>Ai nevoie de altceva? <strong>Facem oferte personalizate.</strong><br>Spune-ne ce vrei și construim un pachet pe măsura business-ului tău.</p>
-      <a href="https://api.whatsapp.com/send/?phone=40775579706&text=Salut%2C%20vreau%20o%20ofert%C4%83%20personalizat%C4%83." class="bh" target="_blank" style="font-size:.82rem" data-cta="servicii_custom_offer">Cere o ofertă personalizată <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-    </div>
-  </div>
-</section>
 
 <!-- ========== SECTION C: FAQ ========== -->
 <section class="sec sec-alt" id="faq">
