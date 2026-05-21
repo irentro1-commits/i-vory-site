@@ -1,5 +1,4 @@
 (function(){
-var __MOB=window.matchMedia("(max-width:900px)").matches||("ontouchstart" in window&&window.innerWidth<=900);
 // Premium interactions — mobile-aware, FULL premium on mobile
 const __MOB=window.__IS_MOBILE||("ontouchstart" in window)||matchMedia("(max-width:768px)").matches;
 const __LOW=false; // force full premium
@@ -1103,4 +1102,4 @@ if(!__MOB){(function(){
     navImg.style.filter=`drop-shadow(0 0 12px rgba(0,224,192,.55)) hue-rotate(${hue}deg)`;
     lastY=y;
   },{passive:true});
-})();
+})();})();
