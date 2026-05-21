@@ -911,18 +911,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p class="ss" style="margin-left:auto;margin-right:auto;margin-bottom:2rem">Pune-ne la treabă. Dacă ne potrivim, continuăm. Dacă nu, afli din prima.</p>
     <div class="lead-wrap rv">
       <button type="button" class="lead-toggle" id="leadToggle" data-cta="servicii_lead_open">Vreau mai mulți clienți →</button>
-      <form class="lead-form" id="leadForm" action="https://formsubmit.co/4070d62936e75190a85dec05ba7d7d72" method="POST">
+      <form class="lead-form" id="leadForm" action="https://api.web3forms.com/submit" method="POST">
         <input type="text" name="nume" placeholder="Numele tău" required>
         <input type="tel" name="telefon" placeholder="Număr de telefon" required>
         <input type="email" name="email" placeholder="Email" required>
         <textarea name="descriere" placeholder="Descrie pe scurt afacerea și ce vrei să obții"></textarea>
         <label class="lead-check"><input type="checkbox" name="acord_comunicari" value="da"> Sunt de acord să primesc ocazional informații utile prin email.</label>
         <label class="lead-check"><input type="checkbox" name="acord_termeni" value="da" required> Am citit și sunt de acord cu <a href="/terms.html" target="_blank">Termenii</a> și <a href="/privacy.html" target="_blank">Politica de confidențialitate</a>.</label>
-        <input type="text" name="_honey" class="lead-hp" tabindex="-1" autocomplete="off">
-        <input type="hidden" name="_subject" value="Lead nou de pe i-vory.ro/servicii">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_next" value="https://i-vory.ro/servicii.html?trimis=1">
+        <input type="hidden" name="access_key" value="826056ec-19c9-49f6-b07f-2dda086e6887">
+        <input type="hidden" name="subject" value="Lead nou de pe i-vory.ro/servicii">
+        <input type="hidden" name="from_name" value="i-vory.ro servicii">
+        <input type="hidden" name="redirect" value="https://i-vory.ro/servicii.html?trimis=1">
+        <input type="checkbox" name="botcheck" class="lead-hp" tabindex="-1" autocomplete="off" style="display:none">
         <button type="submit" class="lead-submit" data-cta="servicii_lead_submit">Trimite →</button>
       </form>
       <div class="lead-ok" id="leadOk">
@@ -939,7 +939,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       f.addEventListener('submit',function(e){
         e.preventDefault();
         var btn=f.querySelector('.lead-submit');btn.disabled=true;btn.textContent='Se trimite...';
-        fetch('https://formsubmit.co/ajax/4070d62936e75190a85dec05ba7d7d72',{method:'POST',headers:{'Accept':'application/json'},body:new FormData(f)})
+        fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Accept':'application/json'},body:new FormData(f)})
         .then(function(r){return r.json();})
         .then(function(){f.style.display='none';ok.classList.add('show');try{window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'lead_submit',form:'servicii'});}catch(_){}})
         .catch(function(){btn.disabled=false;btn.textContent='Trimite →';f.submit();});
