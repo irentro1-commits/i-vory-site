@@ -329,7 +329,7 @@ if(!__MOB){(function(){
     entries.forEach(en=>{
       if(en.isIntersecting&&en.target.dataset.swooshed!=='1'){
         en.target.dataset.swooshed='1';
-        try{playSwoosh()}catch(e){}
+        /*swoosh off (was autoplay on scroll)*/
       }
     });
   },{threshold:.3});
@@ -341,7 +341,7 @@ if(!__MOB){(function(){
 // 12. LIVE TICKER under nav
 (function(){
   const ticker=document.createElement('div');
-  ticker.style.cssText='position:fixed;top:60px;left:0;right:0;background:linear-gradient(90deg,rgba(6,8,18,.95),rgba(10,20,35,.95),rgba(6,8,18,.95));backdrop-filter:blur(8px);border-bottom:1px solid rgba(0,224,192,.15);padding:.4rem 1.2rem;font-family:var(--fd,Syne),sans-serif;font-size:.72rem;color:#b8c5d0;z-index:99;display:flex;align-items:center;gap:.7rem;overflow:hidden;letter-spacing:.08em;text-transform:uppercase';
+  ticker.style.cssText='position:fixed;bottom:0;left:0;right:0;background:linear-gradient(90deg,rgba(6,8,18,.95),rgba(10,20,35,.95),rgba(6,8,18,.95));backdrop-filter:blur(8px);border-bottom:1px solid rgba(0,224,192,.15);padding:.4rem 1.2rem;font-family:var(--fd,Syne),sans-serif;font-size:.72rem;color:#b8c5d0;z-index:99;display:flex;align-items:center;gap:.7rem;overflow:hidden;letter-spacing:.08em;text-transform:uppercase';
   const dot='<span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#ff3344;box-shadow:0 0 8px rgba(255,51,68,.8);animation:livePulse 1.6s ease-in-out infinite"></span>';
   const items=[
     'Filmăm pentru client dental · azi',
@@ -361,7 +361,7 @@ if(!__MOB){(function(){
   kf.textContent='@keyframes tickerScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}@keyframes livePulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)}}';
   document.head.appendChild(kf);
   // Push nav content down
-  document.body.style.paddingTop='28px';
+  void 0;
 })();
 
 // 13. EXIT-INTENT MODAL
@@ -572,7 +572,7 @@ if(!__MOB){(function(){
   ];
   map.forEach(m=>{
     document.querySelectorAll(m.sel).forEach(el=>{
-      el.addEventListener('mouseenter',()=>tone(m.freq));
+      /*hover tone off*/
     });
   });
 })();
@@ -610,7 +610,7 @@ if(!__MOB){(function(){
 
 // 25. CONFETTI on form submit success
 (function(){
-  const form=document.getElementById('contactForm');
+  const form=document.getElementById('leadForm');
   if(!form)return;
   const cvs=document.createElement('canvas');
   cvs.style.cssText='position:fixed;inset:0;pointer-events:none;z-index:10000';
@@ -660,8 +660,8 @@ if(!__MOB){(function(){
   document.head.appendChild(wfStyle);
   const sec=document.createElement('section');
   sec.id='workflow';sec.className='sec';
-  const steps=[['Brief','Ne spui ce vrei. ÃŽnÈ›elegem business-ul tÄƒu.'],['Research','AnalizÄƒm niÈ™a, audienÈ›a È™i competiÈ›ia.'],['ProducÈ›ie','FilmÄƒm, editÄƒm, creÄƒm conÈ›inutul.'],['Publicare','ProgramÄƒm È™i postÄƒm pe toate platformele.'],['Analytics','RaportÄƒm rezultatele È™i optimizÄƒm.']];
-  sec.innerHTML='<div class="si"><div style="text-align:center"><span class="wf-eyebrow">Workflow</span><h2 class="wf-title">Cum lucrÄƒm cu tine</h2></div><div class="wf-grid"><div class="wf-line" id="wfLine"></div>'+steps.map((s,i)=>'<div class="wf-step"><div class="wf-num" data-i="'+i+'">0'+(i+1)+'</div><h4>'+s[0]+'</h4><p>'+s[1]+'</p></div>').join('')+'</div></div>';
+  const steps=[['Brief','Ne spui ce vrei. Înțelegem business-ul tău.'],['Research','Analizăm nișa, audiența și competiția.'],['Producție','Filmăm, edităm, creăm conținutul.'],['Publicare','Programăm și postăm pe toate platformele.'],['Analytics','Raportăm rezultatele și optimizăm.']];
+  sec.innerHTML='<div class="si"><div style="text-align:center"><span class="wf-eyebrow">Workflow</span><h2 class="wf-title">Cum lucrăm cu tine</h2></div><div class="wf-grid"><div class="wf-line" id="wfLine"></div>'+steps.map((s,i)=>'<div class="wf-step"><div class="wf-num" data-i="'+i+'">0'+(i+1)+'</div><h4>'+s[0]+'</h4><p>'+s[1]+'</p></div>').join('')+'</div></div>';
   target.parentNode.insertBefore(sec,target);
   const line=sec.querySelector('#wfLine');
   const nums=sec.querySelectorAll('.wf-num');
@@ -737,7 +737,7 @@ if(!__MOB){(function(){
 // 30. FILM GRAIN + CHROMATIC ABERRATION overlay
 (function(){
   const s=document.createElement('style');
-  s.textContent='@keyframes grainShift{0%,100%{transform:translate(0,0)}10%{transform:translate(-5%,-10%)}20%{transform:translate(-15%,5%)}30%{transform:translate(7%,-25%)}40%{transform:translate(-5%,25%)}50%{transform:translate(-15%,10%)}60%{transform:translate(15%,0)}70%{transform:translate(0,15%)}80%{transform:translate(3%,35%)}90%{transform:translate(-10%,10%)}}html::after{content:"";position:fixed;inset:-100%;width:300%;height:300%;background-image:url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'200\' height=\'200\'><filter id=\'n\'><feTurbulence type=\'fractalNoise\' baseFrequency=\'.9\' numOctaves=\'3\' stitchTiles=\'stitch\'/><feColorMatrix values=\'0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .15 0\'/></filter><rect width=\'200\' height=\'200\' filter=\'url(%23n)\'/></svg>");pointer-events:none;z-index:9994;opacity:.06;animation:grainShift 8s steps(10) infinite;mix-blend-mode:overlay}body{position:relative}body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:9993;background:radial-gradient(ellipse at center,transparent 60%,rgba(0,224,192,.04) 100%);mix-blend-mode:screen;box-shadow:inset 0 0 200px rgba(255,154,61,.04)}';
+  s.textContent='@keyframes grainShift{0%,100%{transform:translate(0,0)}10%{transform:translate(-5%,-10%)}20%{transform:translate(-15%,5%)}30%{transform:translate(7%,-25%)}40%{transform:translate(-5%,25%)}50%{transform:translate(-15%,10%)}60%{transform:translate(15%,0)}70%{transform:translate(0,15%)}80%{transform:translate(3%,35%)}90%{transform:translate(-10%,10%)}}html::after{content:"";position:fixed;inset:-100%;width:300%;height:300%;background-image:url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'200\' height=\'200\'><filter id=\'n\'><feTurbulence type=\'fractalNoise\' baseFrequency=\'.9\' numOctaves=\'3\' stitchTiles=\'stitch\'/><feColorMatrix values=\'0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .05 0\'/></filter><rect width=\'200\' height=\'200\' filter=\'url(%23n)\'/></svg>");pointer-events:none;z-index:9994;opacity:.06;animation:grainShift 8s steps(10) infinite;mix-blend-mode:overlay}body{position:relative}body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:9993;background:radial-gradient(ellipse at center,transparent 60%,rgba(0,224,192,.04) 100%);mix-blend-mode:screen;box-shadow:inset 0 0 200px rgba(255,154,61,.04)}';
   document.head.appendChild(s);
 })();
 
@@ -1001,7 +1001,7 @@ if(!__MOB){(function(){
 // 46. STICKY SCROLL STORYTELLING on packages
 (function(){
   const s=document.createElement('style');
-  s.textContent='@media(min-width:769px){#pachete .packages-grid,#pachete .pk-grid{position:relative}#pachete .pk{transition:filter .5s,transform .5s,opacity .5s}#pachete .pk.faded{filter:blur(3px);opacity:.4;transform:scale(.96)}#pachete .pk.focused{filter:none;opacity:1;transform:scale(1.02);z-index:5;box-shadow:0 40px 100px rgba(0,0,0,.6),0 0 80px rgba(0,224,192,.2)}}';
+  s.textContent='@media(min-width:769px){#pachete .packages-grid,#pachete .pk-grid{position:relative}#pachete .pk{transition:filter .5s,transform .5s,opacity .5s}#pachete .pk.faded{filter:blur(0px);opacity:.4;transform:scale(.96)}#pachete .pk.focused{filter:none;opacity:1;transform:scale(1.02);z-index:5;box-shadow:0 40px 100px rgba(0,0,0,.6),0 0 80px rgba(0,224,192,.2)}}';
   document.head.appendChild(s);
   const pks=document.querySelectorAll('#pachete .pk');
   if(!pks.length)return;
@@ -1038,13 +1038,11 @@ if(!__MOB){(function(){
       else if(w){const sp=document.createElement('span');sp.className='gw';sp.textContent=w;p.appendChild(sp)}
     });
   });
-  document.addEventListener('mousemove',e=>{
-    document.querySelectorAll('.glow-p .gw').forEach(w=>{
-      const r=w.getBoundingClientRect();
-      const dx=e.clientX-(r.left+r.width/2),dy=e.clientY-(r.top+r.height/2);
-      const d=Math.sqrt(dx*dx+dy*dy);
-      if(d<60)w.classList.add('lit');else w.classList.remove('lit');
-    });
+  var __gwT=false,__gwX=0,__gwY=0,__gwEls=null;
+  document.addEventListener('mousemove',e=>{__gwX=e.clientX;__gwY=e.clientY;if(__gwT)return;__gwT=true;
+    requestAnimationFrame(()=>{__gwT=false;if(!__gwEls)__gwEls=document.querySelectorAll('.glow-p .gw');
+      __gwEls.forEach(w=>{const r=w.getBoundingClientRect();const dx=__gwX-(r.left+r.width/2),dy=__gwY-(r.top+r.height/2);
+        if(dx*dx+dy*dy<3600)w.classList.add('lit');else w.classList.remove('lit');});});
   },{passive:true});
 })()}
 // 48. WATER RIPPLE on image hover (SVG turbulence)
@@ -1087,7 +1085,7 @@ if(!__MOB){(function(){
 // 50. CINEMATIC COLOR GRADING + LENS FLARE overlay (CSS-based, complements Three.js bloom)
 (function(){
   const s=document.createElement('style');
-  s.textContent='@keyframes flareDrift{0%,100%{transform:translate(0,0) scale(1);opacity:.4}50%{transform:translate(20px,-15px) scale(1.1);opacity:.55}}html::before{content:"";position:fixed;top:-15%;right:-10%;width:50vw;height:50vw;background:radial-gradient(ellipse at center,rgba(255,200,120,.18) 0%,rgba(255,154,61,.08) 25%,transparent 60%);pointer-events:none;z-index:5;mix-blend-mode:screen;animation:flareDrift 12s ease-in-out infinite;filter:blur(40px)}body{position:relative}body{filter:saturate(1.08) contrast(1.04)}';
+  s.textContent='@keyframes flareDrift{0%,100%{transform:translate(0,0) scale(1);opacity:.4}50%{transform:translate(20px,-15px) scale(1.1);opacity:.55}}html::before{content:"";position:fixed;top:-15%;right:-10%;width:50vw;height:50vw;background:radial-gradient(ellipse at center,rgba(255,200,120,.18) 0%,rgba(255,154,61,.08) 25%,transparent 60%);pointer-events:none;z-index:5;mix-blend-mode:screen;animation:flareDrift 12s ease-in-out infinite;filter:blur(40px)}body{position:relative}';
   document.head.appendChild(s);
 })();
 
@@ -1102,4 +1100,6 @@ if(!__MOB){(function(){
     navImg.style.filter=`drop-shadow(0 0 12px rgba(0,224,192,.55)) hue-rotate(${hue}deg)`;
     lastY=y;
   },{passive:true});
-})();})();
+})();
+try{setTimeout(function(){document.querySelectorAll('.sec:not(.entered)').forEach(function(x){x.classList.add('entered')})},1600);}catch(_){}
+})();
