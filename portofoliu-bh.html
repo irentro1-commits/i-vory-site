@@ -72,7 +72,7 @@ vec3 temp(float t){vec3 a=vec3(1.0,0.32,0.06),b=vec3(1.0,0.66,0.26),c=vec3(1.0,0
 void main(){
  vec2 uv=(gl_FragCoord.xy-0.5*uRes)/uRes.y;
  float my=uMouse.y*0.45+0.30, mx=uMouse.x*0.7+uTime*0.05;
- float cd=9.0;
+ float cd=17.0;
  vec3 ro=vec3(sin(mx)*cos(my),sin(my),cos(mx)*cos(my))*cd;
  vec3 f=normalize(-ro), r=normalize(cross(vec3(0.0,1.0,0.0),f)), u=cross(f,r);
  vec3 rd=normalize(uv.x*r+uv.y*u+1.5*f);
@@ -115,7 +115,7 @@ scene.add(quad);
 
 const composer=new EffectComposer(renderer);
 composer.addPass(new RenderPass(scene,cam));
-const bloom=new UnrealBloomPass(new THREE.Vector2(innerWidth,innerHeight),1.15,0.55,0.5);
+const bloom=new UnrealBloomPass(new THREE.Vector2(innerWidth,innerHeight),0.95,0.5,0.62);
 composer.addPass(bloom);
 
 let tmx=0,tmy=0,mx=0,my=0;
