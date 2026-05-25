@@ -13,7 +13,7 @@
 <style>
   :root{--bg:#050505;--t:#ede9e3;--td:#d0cbc3;--tm:#8a857e;--ac:#00e0c0;--pu:#7b2cff;--br:rgba(255,255,255,.08);--br2:rgba(255,255,255,.14);--fd:'Geist',-apple-system,sans-serif;--fm:'Geist Mono',ui-monospace,monospace;--fs:'Fraunces','Times New Roman',serif;--e:cubic-bezier(.16,1,.3,1)}
   *{margin:0;padding:0;box-sizing:border-box}
-  html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+  html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;overflow-x:hidden;max-width:100vw}
   body{background:var(--bg);color:var(--t);font-family:var(--fd);line-height:1.6;overflow-x:hidden}
   ::selection{background:var(--ac);color:#041412}
   a{color:inherit;text-decoration:none}
@@ -42,7 +42,7 @@
   .gh{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;margin-bottom:1.8rem;border-bottom:1px solid var(--br);padding-bottom:1rem}
   .gh h2{font-family:var(--fs);font-weight:600;font-size:clamp(1.5rem,4vw,2.1rem);letter-spacing:-.02em}
   .gh .count{font-family:var(--fm);font-size:.72rem;letter-spacing:.16em;color:var(--tm);text-transform:uppercase}
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:1.5rem}
 
   .card{position:relative;border:1px solid var(--br);border-radius:16px;overflow:hidden;background:rgba(12,12,14,.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:transform .4s var(--e),border-color .3s,box-shadow .4s}
   .card.live{cursor:pointer}
