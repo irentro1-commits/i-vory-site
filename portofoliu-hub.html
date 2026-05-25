@@ -123,7 +123,7 @@ const TEMP=`
 vec3 temp(float t){vec3 a=vec3(1.0,0.40,0.10),b=vec3(1.0,0.78,0.34),c=vec3(1.0,0.97,0.92);
  return t<0.5?mix(a,b,t*2.0):mix(b,c,(t-0.5)*2.0);}`;
 const VERT=`varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}`;
-const SOCK=`precision highp float;varying vec2 vUv;uniform float uFade;void main(){vec2 uv=(vUv-0.5)*2.0;float r=length(uv);float a=smoothstep(1.0,0.12,r)*0.85;gl_FragColor=vec4(vec3(0.002,0.003,0.008),a*uFade);}`;
+const SOCK=`precision highp float;varying vec2 vUv;uniform float uFade;void main(){vec2 uv=(vUv-0.5)*2.0;float r=length(uv);float a=smoothstep(1.0,0.30,r)*0.96;gl_FragColor=vec4(vec3(0.001,0.0015,0.004),a*uFade);}`;
 
 /* ---------- bodies ---------- */
 // WEBSITES = galaxie
@@ -324,7 +324,7 @@ neb.renderOrder=-10; scene.add(neb);
 const group=new THREE.Group(); scene.add(group);
 function makeBody(frag,size,pos,blend,ro){
   const u={uTime:{value:0},uHover:{value:0},uFade:{value:1}};
-  const sk=new THREE.Mesh(new THREE.PlaneGeometry(size*1.3,size*1.3),
+  const sk=new THREE.Mesh(new THREE.PlaneGeometry(size*1.85,size*1.85),
     new THREE.ShaderMaterial({uniforms:u,vertexShader:VERT,fragmentShader:SOCK,transparent:true,blending:THREE.NormalBlending,depthWrite:false,depthTest:false}));
   sk.position.set(pos.x,pos.y,pos.z); sk.renderOrder=-5; group.add(sk);
   const m=new THREE.Mesh(new THREE.PlaneGeometry(size,size),
