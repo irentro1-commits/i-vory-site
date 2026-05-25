@@ -46,19 +46,17 @@
 
   /* ===== MOBILE HUB (animat usor, fara Three.js) ===== */
   #mob{display:none}
-  @media (max-width:820px){
-    .cap,.hint,.lab,#arr{display:none!important}
-    .logo{top:1.05rem;left:1.15rem}
-    #mob{display:flex;flex-direction:column;position:fixed;inset:0;z-index:12;padding:4.8rem 1.1rem 1.5rem;pointer-events:none}
-    #mob .mh{font-weight:800;font-size:1.55rem;letter-spacing:-.012em;text-align:center;color:#ede9e3}
-    #mob .ms{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:#7a7570;text-align:center;margin:.35rem 0 1.1rem}
-    #mob .grid{display:grid;grid-template-columns:1fr 1fr;gap:.85rem;pointer-events:auto;margin-top:auto;margin-bottom:auto}
-    .mc{position:relative;border:1px solid rgba(255,255,255,.1);border-radius:16px;background:rgba(10,10,14,.5);backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px);padding:1.1rem .95rem 1rem;text-decoration:none;overflow:hidden;display:flex;flex-direction:column;align-items:flex-start;gap:.45rem;min-height:130px;justify-content:flex-end;-webkit-tap-highlight-color:transparent;transition:transform .2s,border-color .2s}
-    .mc:active{transform:scale(.97);border-color:var(--c)}
-    .mc-orb{position:absolute;top:-20px;right:-20px;width:80px;height:80px;border-radius:50%;background:radial-gradient(circle at 50% 50%,var(--c),transparent 68%);opacity:.85}
-    .mc-k{font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;color:#8f8a82;position:relative}
-    .mc-n{font-weight:800;font-size:1.35rem;letter-spacing:-.01em;color:#ede9e3;position:relative}
-  }
+  html.mob .cap, html.mob .hint, html.mob .lab, html.mob #arr{display:none!important}
+  html.mob .logo{top:1.05rem;left:1.15rem}
+  html.mob #mob{display:flex;flex-direction:column;position:fixed;inset:0;z-index:12;padding:4.8rem 1.1rem 1.5rem;pointer-events:none}
+  html.mob #mob .mh{font-weight:800;font-size:1.55rem;letter-spacing:-.012em;text-align:center;color:#ede9e3}
+  html.mob #mob .ms{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:#7a7570;text-align:center;margin:.35rem 0 1.1rem}
+  html.mob #mob .grid{display:grid;grid-template-columns:1fr 1fr;gap:.85rem;pointer-events:auto;margin-top:auto;margin-bottom:auto;max-width:520px;width:100%;align-self:center}
+  html.mob .mc{position:relative;border:1px solid rgba(255,255,255,.1);border-radius:16px;background:rgba(10,10,14,.5);backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px);padding:1.1rem .95rem 1rem;text-decoration:none;overflow:hidden;display:flex;flex-direction:column;align-items:flex-start;gap:.45rem;min-height:130px;justify-content:flex-end;-webkit-tap-highlight-color:transparent;transition:transform .2s,border-color .2s}
+  html.mob .mc:active{transform:scale(.97);border-color:var(--c)}
+  html.mob .mc-orb{position:absolute;top:-20px;right:-20px;width:80px;height:80px;border-radius:50%;background:radial-gradient(circle at 50% 50%,var(--c),transparent 68%);opacity:.85}
+  html.mob .mc-k{font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;color:#8f8a82;position:relative}
+  html.mob .mc-n{font-weight:800;font-size:1.35rem;letter-spacing:-.01em;color:#ede9e3;position:relative}
 </style>
 </head>
 <body>
@@ -82,7 +80,7 @@
     <a class="mc" style="--c:#a78bff" href="/portofoliu/rezultate.html"><span class="mc-orb"></span><span class="mc-k">Pove&#537;ti de client</span><span class="mc-n">Rezultate</span></a>
   </div>
 </div>
-<script>window.__MOB=(matchMedia('(max-width:820px)').matches||('ontouchstart' in window && innerWidth<900)||location.search.indexOf('forcemob')>-1);</script>
+<script>window.__MOB=(matchMedia('(max-width:820px)').matches||('ontouchstart' in window && innerWidth<900)||location.search.indexOf('forcemob')>-1);if(window.__MOB)document.documentElement.classList.add('mob');</script>
 <script type="importmap">
 {"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}
 </script>
