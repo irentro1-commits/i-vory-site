@@ -146,7 +146,7 @@ vec3 starfield(vec3 d){
  return col;
 }
 void main(){
- vec2 uv=(vUv-0.5)*2.0; vec2 uvz=uv*0.52;
+ vec2 uv=(vUv-0.5)*2.0; vec2 uvz=uv*0.62;
  float my=0.30, mx=uTime*0.06;
  float cd=17.0;
  vec3 ro=vec3(sin(mx)*cos(my),sin(my),cos(mx)*cos(my))*cd;
@@ -175,7 +175,7 @@ void main(){
  }
  vec3 bg = hit ? vec3(0.0) : starfield(normalize(vel));
  vec3 col = bg + dcol*1.2*(1.0+uHover*0.45);
- float fe=smoothstep(1.18,0.55,length(uv));
+ float fe=smoothstep(1.0,0.5,length(uv));
  gl_FragColor=vec4(col, fe*uFade);
 }`;
 
@@ -225,7 +225,7 @@ function makeBody(frag,size,pos,blend,ro){
 }
 const BODIES=[
   {key:'video',    name:'Video',    label:'film & motion',  color:'#ff9650', href:'/portofoliu/video.html',
-   rad:2.9, mesh:makeBody(FRAG_BH,13,{x:-8.6,y:2.3,z:0.5},THREE.NormalBlending,0)},
+   rad:3.2, mesh:makeBody(FRAG_BH,9,{x:-7.8,y:2.0,z:0.5},THREE.NormalBlending,0)},
   {key:'design',   name:'Design',   label:'lumina & forma', color:'#ffce80', href:'/portofoliu/design.html',
    rad:3.0, mesh:makeBody(FRAG_SN,8.5,{x:8.6,y:2.5,z:-1.5},THREE.AdditiveBlending,1)},
   {key:'websites', name:'Websites', label:'lumi construite',color:'#00e0c0', href:'/portofoliu/websites.html',
