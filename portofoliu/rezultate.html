@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Rezultate — Portofoliu i-vory</title>
+<meta name="view-transition" content="same-origin">
+<link rel="preconnect" href="https://unpkg.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;700;800&family=Geist+Mono:wght@500&family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,400&display=swap">
+<style>
+  :root{--bg:#050505;--t:#ede9e3;--td:#d0cbc3;--tm:#8a857e;--ac:#a78bff;--ac2:#00e0c0;--br:rgba(255,255,255,.08);--br2:rgba(255,255,255,.14);--fd:'Geist',-apple-system,sans-serif;--fm:'Geist Mono',ui-monospace,monospace;--fs:'Fraunces','Times New Roman',serif;--e:cubic-bezier(.16,1,.3,1)}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+  body{background:var(--bg);color:var(--t);font-family:var(--fd);line-height:1.6;overflow-x:hidden}
+  ::selection{background:var(--ac);color:#0e0a1a}
+  a{color:inherit;text-decoration:none}
+  #bg{position:fixed;inset:0;z-index:0;display:block}
+  #ov{position:fixed;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(5,5,5,.45) 0%,rgba(5,5,5,.66) 42%,rgba(5,5,5,.93) 78%,#050505 100%)}
+  .wrap{position:relative;z-index:2}
+  .nav{position:fixed;top:0;left:0;right:0;z-index:30;display:flex;align-items:center;justify-content:space-between;padding:1.15rem 1.8rem;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);background:linear-gradient(180deg,rgba(5,5,5,.55),transparent)}
+  .brand{font-weight:800;font-size:1.1rem;letter-spacing:-.01em}
+  .brand span{color:var(--ac)}
+  .back{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--fm);font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--td);padding:.5rem .9rem;border:1px solid var(--br2);border-radius:100px;transition:border-color .25s,color .25s,background .25s}
+  .back:hover{color:var(--t);border-color:var(--ac);background:rgba(167,139,255,.10)}
+  .hero{min-height:74vh;display:flex;flex-direction:column;justify-content:center;padding:7rem 1.8rem 3rem;max-width:1120px;margin:0 auto}
+  .eyebrow{font-family:var(--fm);font-size:.7rem;letter-spacing:.34em;text-transform:uppercase;color:var(--ac);margin-bottom:1.2rem;display:flex;align-items:center;gap:.7rem}
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--ac);opacity:.6}
+  h1{font-family:var(--fs);font-weight:700;font-size:clamp(3rem,10vw,6.4rem);line-height:.92;letter-spacing:-.03em;font-variation-settings:"opsz" 144}
+  .lede{font-size:clamp(1.05rem,2.4vw,1.4rem);color:var(--td);max-width:640px;margin-top:1.4rem;line-height:1.55}
+  .lede b{color:var(--t);font-weight:600}
+  .gallery{max-width:1120px;margin:0 auto;padding:2rem 1.8rem 5rem}
+  .gh{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;margin-bottom:1.8rem;border-bottom:1px solid var(--br);padding-bottom:1rem}
+  .gh h2{font-family:var(--fs);font-weight:600;font-size:clamp(1.5rem,4vw,2.1rem);letter-spacing:-.02em}
+  .gh .count{font-family:var(--fm);font-size:.72rem;letter-spacing:.16em;color:var(--tm);text-transform:uppercase}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:1.5rem}
+  .card{position:relative;border:1px solid var(--br);border-radius:18px;overflow:hidden;background:rgba(12,12,16,.6);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:1.5rem 1.5rem 1.6rem;transition:transform .4s var(--e),border-color .3s,box-shadow .4s}
+  .card.live{cursor:pointer}
+  .card.live:hover{transform:translateY(-6px);border-color:rgba(167,139,255,.5);box-shadow:0 18px 50px rgba(0,0,0,.5),0 0 0 1px rgba(167,139,255,.15)}
+  .ct{font-family:var(--fm);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ac);margin-bottom:.6rem}
+  .cn{font-family:var(--fs);font-weight:600;font-size:1.5rem;letter-spacing:-.01em;margin-bottom:.2rem}
+  .cd{font-size:.85rem;color:var(--td);margin-bottom:1.1rem}
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;margin-bottom:1.1rem}
+  .stat{border:1px solid var(--br);border-radius:12px;padding:.7rem .5rem;text-align:center;background:rgba(255,255,255,.02)}
+  .stat .v{font-family:var(--fs);font-weight:700;font-size:1.4rem;color:var(--ac2);line-height:1}
+  .stat .l{font-family:var(--fm);font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:var(--tm);margin-top:.35rem}
+  .did{display:flex;flex-wrap:wrap;gap:.4rem}
+  .pill{font-family:var(--fm);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--td);border:1px solid var(--br2);border-radius:100px;padding:.28rem .65rem}
+  .badge{position:absolute;top:1.1rem;right:1.1rem;font-family:var(--fm);font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:var(--td);background:rgba(5,5,5,.7);border:1px solid var(--br2);padding:.3rem .6rem;border-radius:100px}
+  .cta{max-width:1120px;margin:0 auto;padding:1rem 1.8rem 7rem;text-align:center}
+  .cta h2{font-family:var(--fs);font-weight:700;font-size:clamp(1.8rem,5vw,3rem);letter-spacing:-.02em;line-height:1.05}
+  .cta p{color:var(--td);margin-top:.9rem;font-size:1.05rem}
+  .btn{display:inline-flex;align-items:center;gap:.6rem;margin-top:1.8rem;padding:1rem 1.8rem;background:linear-gradient(135deg,#a78bff,#7b5aff);color:#0e0a1a;font-weight:700;border-radius:100px;box-shadow:0 12px 34px rgba(123,90,255,.28);transition:transform .25s}
+  .btn:hover{transform:translateY(-2px)}
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s var(--e),transform .7s var(--e)}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+  @media (max-width:560px){.nav{padding:1rem 1.2rem}.hero{padding:6rem 1.2rem 2rem}.gallery,.cta{padding-left:1.2rem;padding-right:1.2rem}}
+</style>
+</head>
+<body>
+<canvas id="bg"></canvas>
+<div id="ov"></div>
+<header class="nav">
+  <a class="brand" href="/">i<span>-</span>vory</a>
+  <a class="back" href="/portofoliu-hub.html">&larr; Portofoliu</a>
+</header>
+<div class="wrap">
+  <section class="hero">
+    <div class="eyebrow reveal">Portofoliu &middot; Pove&#537;ti de client</div>
+    <h1 class="reveal">Rezultate</h1>
+    <p class="lede reveal">Nu doar lucr&#259;ri frumoase, ci <b>ce s-a schimbat pentru clien&#539;i</b>. C&#226;t timp am lucrat &#238;mpreun&#259;, ce am f&#259;cut &#537;i unde au ajuns.</p>
+  </section>
+  <section class="gallery">
+    <div class="gh reveal"><h2>Pove&#537;ti de client</h2><span class="count" id="count"></span></div>
+    <div class="grid" id="grid"></div>
+  </section>
+  <section class="cta reveal">
+    <h2>Vrei s&#259; fii urm&#259;torul rezultat?</h2>
+    <p>Spune-ne unde e&#537;ti acum &#537;i unde vrei s&#259; ajungi.</p>
+    <a class="btn" href="/servicii.html">Hai s&#259; vorbim
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </section>
+</div>
+<script type="importmap">
+{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}
+</script>
+<script type="module">
+import * as THREE from 'three';
+import {EffectComposer} from 'three/addons/postprocessing/EffectComposer.js';
+import {RenderPass} from 'three/addons/postprocessing/RenderPass.js';
+import {UnrealBloomPass} from 'three/addons/postprocessing/UnrealBloomPass.js';
+const canvas=document.getElementById('bg');
+const renderer=new THREE.WebGLRenderer({canvas,antialias:false,powerPreference:'high-performance'});
+renderer.setPixelRatio(Math.min(devicePixelRatio,1.6));
+renderer.setSize(innerWidth,innerHeight);
+renderer.toneMapping=THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure=0.6;
+const scene=new THREE.Scene();
+const cam=new THREE.OrthographicCamera(-1,1,1,-1,0,1);
+const uniforms={uTime:{value:0},uRes:{value:new THREE.Vector2(innerWidth,innerHeight)}};
+const frag=`
+precision highp float;
+uniform float uTime; uniform vec2 uRes;
+float hash(vec3 p){p=fract(p*0.3183099+0.1);p*=17.0;return fract(p.x*p.y*p.z*(p.x+p.y+p.z));}
+float noise(vec3 x){vec3 i=floor(x),f=fract(x);f=f*f*(3.0-2.0*f);
+ return mix(mix(mix(hash(i+vec3(0,0,0)),hash(i+vec3(1,0,0)),f.x),mix(hash(i+vec3(0,1,0)),hash(i+vec3(1,1,0)),f.x),f.y),
+            mix(mix(hash(i+vec3(0,0,1)),hash(i+vec3(1,0,1)),f.x),mix(hash(i+vec3(0,1,1)),hash(i+vec3(1,1,1)),f.x),f.y),f.z);}
+float fbm(vec3 p){float s=0.0,a=0.5;for(int i=0;i<5;i++){s+=a*noise(p);p*=2.1;a*=0.5;}return s;}
+void main(){
+ vec2 uv=(gl_FragCoord.xy-0.5*uRes)/uRes.y;
+ float r=length(uv);
+ float a=atan(uv.y,uv.x);
+ float t=uTime;
+ float depth=0.6/(r+0.07)+t*0.55;
+ float swirl=a + r*2.4 - t*0.4;
+ float n=fbm(vec3(cos(swirl)*1.6, sin(swirl)*1.6, depth*0.6));
+ float rings=0.55+0.45*sin(depth*6.2831 + swirl*2.0);
+ float band=pow(rings,1.7)*(0.45+0.85*n);
+ vec3 cIn=vec3(0.0,0.92,0.82), cOut=vec3(0.52,0.36,1.0);
+ vec3 col=mix(cIn,cOut,clamp(r*0.9,0.0,1.0))*band;
+ col+=vec3(0.55,0.95,1.0)*exp(-r*r*5.0)*0.9;
+ float st=hash(vec3(floor(uv*300.0),3.0)); if(st>0.994)col+=vec3((st-0.994)/0.006)*0.4;
+ gl_FragColor=vec4(col,1.0);
+}`;
+const quad=new THREE.Mesh(new THREE.PlaneGeometry(2,2),new THREE.ShaderMaterial({uniforms,vertexShader:`void main(){gl_Position=vec4(position.xy,0.0,1.0);}`,fragmentShader:frag,depthTest:false,depthWrite:false}));
+scene.add(quad);
+const composer=new EffectComposer(renderer);
+composer.addPass(new RenderPass(scene,cam));
+composer.addPass(new UnrealBloomPass(new THREE.Vector2(innerWidth,innerHeight),0.6,0.6,0.5));
+addEventListener('resize',()=>{renderer.setSize(innerWidth,innerHeight);composer.setSize(innerWidth,innerHeight);uniforms.uRes.value.set(innerWidth,innerHeight);});
+const clock=new THREE.Clock();
+function loop(){requestAnimationFrame(loop);uniforms.uTime.value=clock.getElapsedTime();composer.render();}
+loop();
+</script>
+<script>
+/* CASE STUDIES pe client: schelet. Andy pune clientii reali + cifre la FINAL (zero inventat). */
+const CASES=[
+  {client:"Client", domain:"Domeniu de activitate", time:"3 luni", did:["Carusele","Video","Pagina"],
+   stats:[{v:"+__%",l:"reach"},{v:"__",l:"clienți noi"},{v:"__",l:"postări"}], status:"soon"},
+  {client:"Client", domain:"Domeniu de activitate", time:"3 luni", did:["Design","Video"],
+   stats:[{v:"+__%",l:"reach"},{v:"__",l:"comenzi"},{v:"__",l:"clipuri"}], status:"soon"},
+  {client:"Client", domain:"Domeniu de activitate", time:"luni", did:["Website","Design"],
+   stats:[{v:"__",l:"vizite"},{v:"__%",l:"conversie"},{v:"__",l:"pagini"}], status:"soon"}
+];
+const grid=document.getElementById('grid');
+CASES.forEach(c=>{
+  const live=c.status==='live';
+  const el=document.createElement(live?'a':'div');
+  el.className='card reveal'+(live?' live':'');
+  if(live){el.href=c.url;}
+  const badge=live?'':'<span class="badge">în curând</span>';
+  const stats=c.stats.map(s=>'<div class="stat"><div class="v">'+s.v+'</div><div class="l">'+s.l+'</div></div>').join('');
+  const pills=c.did.map(d=>'<span class="pill">'+d+'</span>').join('');
+  el.innerHTML=badge+
+    '<div class="ct">'+c.time+' &middot; impreuna</div>'+
+    '<div class="cn">'+c.client+'</div>'+
+    '<div class="cd">'+c.domain+'</div>'+
+    '<div class="stats">'+stats+'</div>'+
+    '<div class="did">'+pills+'</div>';
+  grid.appendChild(el);
+});
+document.getElementById('count').textContent=CASES.length+' povesti';
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
