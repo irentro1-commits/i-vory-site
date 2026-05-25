@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Supernova — benchmark 9/10 (preview)</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{height:100%;background:#000;overflow:hidden;font-family:'Geist',-apple-system,sans-serif;color:#fff}
+  #c{position:fixed;inset:0;display:block}
+  #ld{position:fixed;inset:0;z-index:10;background:#000;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1.2rem;transition:opacity .8s}
+  #ld.out{opacity:0;pointer-events:none}
+  .r{width:48px;height:48px;border-radius:50%;border:2px solid rgba(255,200,120,.15);border-top-color:#ffce80;animation:s 1s linear infinite}
+  @keyframes s{to{transform:rotate(360deg)}}
+  .t{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:#7a7570}
+  .cap{position:fixed;left:0;right:0;bottom:1.4rem;text-align:center;z-index:5;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:#8a857e;pointer-events:none}
+</style>
+</head>
+<body>
+<div id="ld"><div class="r"></div><div class="t">Se aprinde o supernova</div></div>
+<canvas id="c"></canvas>
+<div class="cap">Design — lumina &amp; forma</div>
+
+<script type="importmap">
+{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}
+</script>
+<script type="module">
+import * as THREE from 'three';
+import {EffectComposer} from 'three/addons/postprocessing/EffectComposer.js';
+import {RenderPass} from 'three/addons/postprocessing/RenderPass.js';
+import {UnrealBloomPass} from 'three/addons/postprocessing/UnrealBloomPass.js';
+
+const canvas=document.getElementById('c');
+const renderer=new THREE.WebGLRenderer({canvas,antialias:false,powerPreference:'high-performance'});
+renderer.setPixelRatio(Math.min(devicePixelRatio,1.6));
+renderer.setSize(innerWidth,innerHeight);
+renderer.toneMapping=THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure=1.0;
+
+const scene=new THREE.Scene();
+const cam=new THREE.OrthographicCamera(-1,1,1,-1,0,1);
+const uniforms={uTime:{value:0},uRes:{value:new THREE.Vector2(innerWidth,innerHeight)},uMouse:{value:new THREE.Vector2(0,0)}};
+
+const frag=`
+precision highp float;
+uniform float uTime; uniform vec2 uRes; uniform vec2 uMouse;
+float hash(vec3 p){p=fract(p*0.3183099+0.1);p*=17.0;return fract(p.x*p.y*p.z*(p.x+p.y+p.z));}
+float noise(vec3 x){vec3 i=floor(x),f=fract(x);f=f*f*(3.0-2.0*f);
+ return mix(mix(mix(hash(i+vec3(0,0,0)),hash(i+vec3(1,0,0)),f.x),mix(hash(i+vec3(0,1,0)),hash(i+vec3(1,1,0)),f.x),f.y),
+            mix(mix(hash(i+vec3(0,0,1)),hash(i+vec3(1,0,1)),f.x),mix(hash(i+vec3(0,1,1)),hash(i+vec3(1,1,1)),f.x),f.y),f.z);}
+float fbm(vec3 p){float s=0.0,a=0.5;for(int i=0;i<5;i++){s+=a*noise(p);p*=2.13;a*=0.5;}return s;}
+vec3 temp(float t){vec3 a=vec3(1.0,0.42,0.10),b=vec3(1.0,0.78,0.34),c=vec3(1.0,0.97,0.92);
+ return t<0.5?mix(a,b,t*2.0):mix(b,c,(t-0.5)*2.0);}
+void main(){
+ vec2 uv=(gl_FragCoord.xy-0.5*uRes)/uRes.y;
+ uv+=vec2(uMouse.x,uMouse.y)*0.05;
+ float r=length(uv);
+ float pulse=0.93+0.07*sin(uTime*1.4)+0.02*sin(uTime*3.7);
+ float Rs=0.40*pulse;
+ vec3 col=vec3(0.0);
+ if(r<Rs){
+  float z=sqrt(max(Rs*Rs-r*r,0.0));
+  vec3 n=normalize(vec3(uv,z));
+  float pl=fbm(n*3.6+vec3(uTime*0.22,uTime*0.1,-uTime*0.15));
+  pl=pow(clamp(pl+0.28,0.0,1.0),1.4);
+  float fres=pow(1.0-z/Rs,1.6);
+  col=temp(pl)*(1.25+pl*1.4)+temp(1.0)*fres*0.9;
+ } else {
+  float fall=Rs/r;
+  float ang=atan(uv.y,uv.x);
+  float fil=fbm(vec3(cos(ang)*3.0,sin(ang)*3.0,uTime*0.13));
+  float rays=pow(0.5+0.5*sin(ang*13.0+fil*7.0),3.0);
+  float glow=pow(fall,2.1)*(0.55+0.7*fil)+pow(fall,3.6)*rays*0.8;
+  col=temp(0.32)*glow;
+  col+=vec3(0.0,0.55,0.5)*pow(fall,1.25)*pow(fil,3.2)*0.5;
+ }
+ float sw=mod(uTime*0.16,1.0);
+ float ringR=0.40+sw*1.5;
+ float ring=smoothstep(0.05,0.0,abs(r-ringR))*(1.0-sw)*0.45;
+ col+=temp(0.65)*ring;
+ float st=hash(floor(uv*270.0+50.0)); if(st>0.992)col+=vec3((st-0.992)/0.008)*0.55;
+ gl_FragColor=vec4(col,1.0);
+}`;
+
+const quad=new THREE.Mesh(new THREE.PlaneGeometry(2,2),new THREE.ShaderMaterial({
+  uniforms,vertexShader:`void main(){gl_Position=vec4(position.xy,0.0,1.0);}`,fragmentShader:frag,depthTest:false,depthWrite:false}));
+scene.add(quad);
+
+const composer=new EffectComposer(renderer);
+composer.addPass(new RenderPass(scene,cam));
+composer.addPass(new UnrealBloomPass(new THREE.Vector2(innerWidth,innerHeight),1.05,0.55,0.5));
+
+let tmx=0,tmy=0,mx=0,my=0;
+addEventListener('mousemove',e=>{tmx=(e.clientX/innerWidth*2-1);tmy=-(e.clientY/innerHeight*2-1);});
+addEventListener('resize',()=>{renderer.setSize(innerWidth,innerHeight);composer.setSize(innerWidth,innerHeight);uniforms.uRes.value.set(innerWidth,innerHeight);});
+const clock=new THREE.Clock();
+function loop(){requestAnimationFrame(loop);mx+=(tmx-mx)*0.05;my+=(tmy-my)*0.05;uniforms.uMouse.value.set(mx,my);uniforms.uTime.value=clock.getElapsedTime();composer.render();}
+loop();
+addEventListener('load',()=>setTimeout(()=>{const l=document.getElementById('ld');l.classList.add('out');setTimeout(()=>l.style.display='none',800);},600));
+setTimeout(()=>{const l=document.getElementById('ld');if(l){l.classList.add('out');setTimeout(()=>l.style.display='none',800);}},3500);
+</script>
+</body>
+</html>
