@@ -79,7 +79,7 @@ void main(){
  float ringR=0.40+sw*1.5;
  float ring=smoothstep(0.05,0.0,abs(r-ringR))*(1.0-sw)*0.45;
  col+=temp(0.65)*ring;
- float st=hash(floor(uv*270.0+50.0)); if(st>0.992)col+=vec3((st-0.992)/0.008)*0.55;
+ float st=hash(vec3(floor(uv*270.0+50.0),7.0)); if(st>0.992)col+=vec3((st-0.992)/0.008)*0.55;
  gl_FragColor=vec4(col,1.0);
 }`;
 
