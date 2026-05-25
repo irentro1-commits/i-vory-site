@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
+<meta name="view-transition" content="same-origin">
 <title>Portofoliu — hub 3D (preview)</title>
 <style>
   *{margin:0;padding:0;box-sizing:border-box}
@@ -332,7 +333,7 @@ function loop(){
     const dest=tmpV.clone().add(HOME.clone().sub(tmpV).normalize().multiplyScalar(4.2));
     camPos.copy(HOME).lerp(dest,e);
     lookAt.set(0,0,0).lerp(tmpV,e);
-    if(tprog>=1){ state='arrived'; arr.classList.add('show'); setTimeout(()=>{ state='returning'; tprog=0; arr.classList.remove('show'); },1150); }
+    if(tprog>=1){ state='arrived'; arr.classList.add('show'); setTimeout(()=>{ if(target&&target.href){location.href=target.href;} else {state='returning';tprog=0;arr.classList.remove('show');} },850); }
   } else if(state==='returning'){
     tprog=Math.min(1,tprog+0.022);
     const e=tprog*tprog*(3-2*tprog);
