@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<title>Websites — Portofoliu i-vory</title>
+<title>Websites · Portofoliu i-vory</title>
 <meta name="view-transition" content="same-origin">
 <link rel="preconnect" href="https://unpkg.com" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
@@ -14,12 +14,10 @@
   :root{--bg:#050505;--t:#ede9e3;--td:#d0cbc3;--tm:#8a857e;--ac:#00e0c0;--pu:#7b2cff;--br:rgba(255,255,255,.08);--br2:rgba(255,255,255,.14);--fd:'Geist',-apple-system,sans-serif;--fm:'Geist Mono',ui-monospace,monospace;--fs:'Fraunces','Times New Roman',serif;--e:cubic-bezier(.16,1,.3,1)}
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;overflow-x:hidden;max-width:100vw}
-  body{background:var(--bg);color:var(--t);font-family:var(--fd);line-height:1.6;overflow-x:hidden}
+  body{background:radial-gradient(125% 90% at 80% 6%,rgba(0,224,192,.10),transparent 56%),radial-gradient(100% 80% at 10% 98%,rgba(123,44,255,.08),transparent 60%),var(--bg);color:var(--t);font-family:var(--fd);line-height:1.6;overflow-x:hidden}
   ::selection{background:var(--ac);color:#041412}
   a{color:inherit;text-decoration:none}
 
-  #bg{position:fixed;inset:0;z-index:0;display:block}
-  #ov{position:fixed;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,rgba(5,5,5,.82) 0%,rgba(5,5,5,.45) 34%,rgba(5,5,5,0) 64%),linear-gradient(180deg,rgba(5,5,5,.30) 0%,rgba(5,5,5,.55) 42%,rgba(5,5,5,.92) 78%,#050505 100%)}
   .wrap{position:relative;z-index:2}
 
   /* nav (casa izolata: doar logo + iesire la portofoliu) */
@@ -29,14 +27,21 @@
   .back{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--fm);font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--td);padding:.5rem .9rem;border:1px solid var(--br2);border-radius:100px;transition:border-color .25s,color .25s,background .25s}
   .back:hover{color:var(--t);border-color:var(--ac);background:rgba(0,224,192,.06)}
 
-  /* hero */
-  .hero{min-height:78vh;display:flex;flex-direction:column;justify-content:center;padding:7rem 1.8rem 3rem;max-width:1120px;margin:0 auto}
-  .eyebrow{font-family:var(--fm);font-size:.7rem;letter-spacing:.34em;text-transform:uppercase;color:var(--ac);margin-bottom:1.2rem;display:flex;align-items:center;gap:.7rem}
+  /* hero · Lusion style: text in zona curata + vizual continut, separat */
+  .hero{min-height:90vh;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.04fr);align-items:center;gap:3.5rem;padding:8rem 1.8rem 3rem;max-width:1240px;margin:0 auto}
+  .htext{max-width:520px}
+  .eyebrow{font-family:var(--fm);font-size:.7rem;letter-spacing:.34em;text-transform:uppercase;color:var(--ac);margin-bottom:1.4rem;display:flex;align-items:center;gap:.7rem}
   .eyebrow::before{content:"";width:26px;height:1px;background:var(--ac);opacity:.6}
-  h1{font-family:var(--fs);font-weight:700;font-size:clamp(3.2rem,11vw,7rem);line-height:.92;letter-spacing:-.03em;font-variation-settings:"opsz" 144,"SOFT" 0,"WONK" 0}
-  .lede{font-size:clamp(1.4rem,3.4vw,2.15rem);color:var(--t);max-width:640px;margin-top:1.6rem;line-height:1.22;font-weight:600;letter-spacing:-.018em}
-  .lede .dim{display:block;color:var(--tm);font-weight:400;margin-top:.25rem;font-size:.82em}
+  h1{font-family:var(--fs);font-weight:700;font-size:clamp(3.4rem,8vw,6.2rem);line-height:.9;letter-spacing:-.03em;font-variation-settings:"opsz" 144,"SOFT" 0,"WONK" 0}
+  .lede{font-size:clamp(1.45rem,2.7vw,2rem);color:var(--t);margin-top:1.7rem;line-height:1.16;font-weight:600;letter-spacing:-.018em}
+  .lede .dim{display:block;color:var(--tm);font-weight:400;margin-top:.35rem;font-size:.82em}
   .lede b{color:var(--t);font-weight:600}
+  .scroll{margin-top:2.4rem;display:inline-flex;align-items:center;gap:.7rem;font-family:var(--fm);font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--tm)}
+  .scroll i{width:1px;height:26px;background:linear-gradient(var(--ac),transparent);display:inline-block}
+  .stage{position:relative;aspect-ratio:1/1;border-radius:24px;overflow:hidden;border:1px solid var(--br2);background:#04060a;box-shadow:0 40px 120px -34px rgba(0,224,192,.30),inset 0 0 0 1px rgba(255,255,255,.03)}
+  .stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+  .stage::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(125% 125% at 50% 50%,transparent 56%,rgba(4,6,10,.55) 100%);box-shadow:inset 0 0 70px rgba(0,0,0,.6)}
+  .stage .chip{position:absolute;left:1rem;bottom:1rem;z-index:3;font-family:var(--fm);font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--td);background:rgba(5,5,5,.5);border:1px solid var(--br2);padding:.35rem .7rem;border-radius:100px;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
 
   /* gallery */
   .gallery{max-width:1120px;margin:0 auto;padding:2rem 1.8rem 5rem}
@@ -78,15 +83,12 @@
   .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s var(--e),transform .7s var(--e)}
   .reveal.in{opacity:1;transform:none}
   @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
-  @media (max-width:560px){.nav{padding:1rem 1.2rem}.hero{padding:6rem 1.2rem 2rem}.gallery,.cta{padding-left:1.2rem;padding-right:1.2rem}}
-  html.mob #bg{display:none}
-  html.mob body{background:radial-gradient(130% 95% at 72% 12%,rgba(0,224,192,.14),transparent 58%),radial-gradient(110% 85% at 18% 92%,rgba(123,90,255,.10),transparent 60%),#050505}
+  @media (max-width:900px){.hero{grid-template-columns:1fr;gap:2rem;min-height:auto;padding:7rem 1.4rem 2rem}.htext{max-width:none;order:1}.stage{order:2;aspect-ratio:4/3}}
+  @media (max-width:560px){.nav{padding:1rem 1.2rem}.hero{padding:6.5rem 1.2rem 1.5rem}.gallery,.cta{padding-left:1.2rem;padding-right:1.2rem}.stage{aspect-ratio:1/1}}
+  html.mob .stage{background:radial-gradient(130% 110% at 30% 18%,rgba(0,224,192,.34),transparent 60%),radial-gradient(120% 110% at 82% 86%,rgba(123,44,255,.30),transparent 62%),conic-gradient(from 210deg at 50% 50%,rgba(0,224,192,.10),rgba(123,44,255,.10),rgba(0,224,192,.10)),#04060a}
 </style>
 </head>
 <body>
-<canvas id="bg"></canvas>
-<div id="ov"></div>
-
 <header class="nav">
   <a class="brand" href="/">i<span>-</span>vory</a>
   <a class="back" href="/portofoliu-hub.html" id="backHub">&larr; Portofoliu</a>
@@ -94,9 +96,16 @@
 
 <div class="wrap">
   <section class="hero">
-    <div class="eyebrow reveal">Portofoliu</div>
-    <h1 class="reveal">Websites</h1>
-    <p class="lede reveal">Site-uri care aduc clien&#539;i.<span class="dim">Nu doar care arat&#259; bine.</span></p>
+    <div class="htext">
+      <div class="eyebrow reveal">Portofoliu</div>
+      <h1 class="reveal">Websites</h1>
+      <p class="lede reveal">Site-uri care aduc clien&#539;i.<span class="dim">Nu doar care arat&#259; bine.</span></p>
+      <div class="scroll reveal"><i></i> Vezi site-urile</div>
+    </div>
+    <div class="stage reveal">
+      <canvas id="bg"></canvas>
+      <span class="chip">Galaxie &middot; live</span>
+    </div>
   </section>
 
   <section class="gallery">
@@ -128,14 +137,15 @@ const {RenderPass} = await import('three/addons/postprocessing/RenderPass.js');
 const {UnrealBloomPass} = await import('three/addons/postprocessing/UnrealBloomPass.js');
 
 const canvas=document.getElementById('bg');
+const stage=canvas.parentElement;
 const renderer=new THREE.WebGLRenderer({canvas,antialias:false,powerPreference:'high-performance'});
 renderer.setPixelRatio(Math.min(devicePixelRatio,1.6));
-renderer.setSize(innerWidth,innerHeight);
+renderer.setSize(stage.clientWidth,stage.clientHeight,false);
 renderer.toneMapping=THREE.ACESFilmicToneMapping;
 renderer.toneMappingExposure=0.62;
 const scene=new THREE.Scene();
 const cam=new THREE.OrthographicCamera(-1,1,1,-1,0,1);
-const uniforms={uTime:{value:0},uRes:{value:new THREE.Vector2(innerWidth,innerHeight)}};
+const uniforms={uTime:{value:0},uRes:{value:new THREE.Vector2(stage.clientWidth,stage.clientHeight)}};
 const frag=`
 precision highp float;
 uniform float uTime; uniform vec2 uRes;
@@ -146,8 +156,7 @@ float noise(vec3 x){vec3 i=floor(x),f=fract(x);f=f*f*(3.0-2.0*f);
 float fbm(vec3 p){float s=0.0,a=0.5;for(int i=0;i<5;i++){s+=a*noise(p);p*=2.1;a*=0.5;}return s;}
 void main(){
  vec2 uv=(gl_FragCoord.xy-0.5*uRes)/uRes.y;
- uv.x-=0.42;
- vec2 p=vec2(uv.x,uv.y/0.55)*1.35;
+ vec2 p=vec2(uv.x,uv.y/0.62)*1.28;
  float r=length(p), ang=atan(p.y,p.x), t=uTime*0.04;
  float sp=cos(ang*2.0 - log(r+0.08)*6.0 + t*6.0);
  float arm=pow(0.5+0.5*sp,3.3);
@@ -167,9 +176,12 @@ void main(){
 const quad=new THREE.Mesh(new THREE.PlaneGeometry(2,2),new THREE.ShaderMaterial({uniforms,vertexShader:`void main(){gl_Position=vec4(position.xy,0.0,1.0);}`,fragmentShader:frag,depthTest:false,depthWrite:false}));
 scene.add(quad);
 const composer=new EffectComposer(renderer);
+composer.setSize(stage.clientWidth,stage.clientHeight);
 composer.addPass(new RenderPass(scene,cam));
-composer.addPass(new UnrealBloomPass(new THREE.Vector2(innerWidth,innerHeight),0.5,0.6,0.5));
-addEventListener('resize',()=>{renderer.setSize(innerWidth,innerHeight);composer.setSize(innerWidth,innerHeight);uniforms.uRes.value.set(innerWidth,innerHeight);});
+composer.addPass(new UnrealBloomPass(new THREE.Vector2(stage.clientWidth,stage.clientHeight),0.6,0.6,0.5));
+function fit(){const w=stage.clientWidth,h=stage.clientHeight;renderer.setSize(w,h,false);composer.setSize(w,h);uniforms.uRes.value.set(w,h);}
+addEventListener('resize',fit);
+if(window.ResizeObserver){new ResizeObserver(fit).observe(stage);}
 const clock=new THREE.Clock();
 function loop(){requestAnimationFrame(loop);uniforms.uTime.value=clock.getElapsedTime();composer.render();}
 loop();
@@ -177,14 +189,66 @@ loop();
 </script>
 
 <script>
+/* MOBIL: galaxie live raw-WebGL in panoul hero (zero Three.js) */
+if(window.__MOB){(function(){
+  var cv=document.getElementById('bg'); if(!cv) return;
+  var stage=cv.parentElement;
+  var gl=cv.getContext('webgl',{antialias:false,alpha:true,premultipliedAlpha:false,powerPreference:'high-performance'}); if(!gl) return;
+  var dpr=Math.min(window.devicePixelRatio||1,1.5);
+  function size(){var w=stage.clientWidth,h=stage.clientHeight;cv.width=Math.round(w*dpr);cv.height=Math.round(h*dpr);gl.viewport(0,0,cv.width,cv.height);}
+  size();
+  var vs='attribute vec2 p;void main(){gl_Position=vec4(p,0.0,1.0);}';
+  var fs=`precision highp float;uniform float uTime;uniform vec2 uRes;
+  float hash(vec3 p){p=fract(p*0.3183099+0.1);p*=17.0;return fract(p.x*p.y*p.z*(p.x+p.y+p.z));}
+  float noise(vec3 x){vec3 i=floor(x),f=fract(x);f=f*f*(3.0-2.0*f);
+   return mix(mix(mix(hash(i+vec3(0,0,0)),hash(i+vec3(1,0,0)),f.x),mix(hash(i+vec3(0,1,0)),hash(i+vec3(1,1,0)),f.x),f.y),
+              mix(mix(hash(i+vec3(0,0,1)),hash(i+vec3(1,0,1)),f.x),mix(hash(i+vec3(0,1,1)),hash(i+vec3(1,1,1)),f.x),f.y),f.z);}
+  float fbm(vec3 p){float s=0.0,a=0.5;for(int i=0;i<5;i++){s+=a*noise(p);p*=2.1;a*=0.5;}return s;}
+  void main(){
+   vec2 uv=(gl_FragCoord.xy-0.5*uRes)/uRes.y;
+   vec2 p=vec2(uv.x,uv.y/0.62)*1.28;
+   float r=length(p), ang=atan(p.y,p.x), t=uTime*0.04;
+   float sp=cos(ang*2.0 - log(r+0.08)*6.0 + t*6.0);
+   float arm=pow(0.5+0.5*sp,3.3);
+   float gas=fbm(vec3(p*1.7,t));
+   float dens=arm*(0.35+1.0*gas);
+   dens*=smoothstep(3.0,0.15,r);
+   dens*=(0.32+0.7/(1.0+r*r*2.8));
+   float core=exp(-r*r*12.0);
+   vec3 cCore=vec3(1.0,0.82,0.50), cMid=vec3(0.0,0.90,0.80), cEdge=vec3(0.50,0.38,1.0);
+   vec3 colr = r<0.55 ? mix(cCore,cMid,r/0.55) : mix(cMid,cEdge,clamp((r-0.55)/1.4,0.0,1.0));
+   vec3 col = colr*dens*1.75 + cCore*core*1.3;
+   col *= 0.55+0.55*smoothstep(0.15,0.65,fbm(vec3(p*3.2+9.0,t*0.4)));
+   col += cMid*0.06*smoothstep(2.2,0.0,r)*gas;
+   col = col/(col+0.62);
+   float s=hash(vec3(floor(uv*320.0+30.0),3.0)); if(s>0.9945)col+=vec3((s-0.9945)/0.0055)*0.4;
+   float a=clamp(max(max(col.r,col.g),col.b)*1.6+core,0.0,1.0);
+   gl_FragColor=vec4(col,a);
+  }`;
+  function sh(t,src){var x=gl.createShader(t);gl.shaderSource(x,src);gl.compileShader(x);return x;}
+  var pr=gl.createProgram();gl.attachShader(pr,sh(gl.VERTEX_SHADER,vs));gl.attachShader(pr,sh(gl.FRAGMENT_SHADER,fs));gl.linkProgram(pr);
+  if(!gl.getProgramParameter(pr,gl.LINK_STATUS)) return;
+  gl.useProgram(pr);
+  var buf=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,buf);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,3,-1,-1,3]),gl.STATIC_DRAW);
+  var loc=gl.getAttribLocation(pr,'p');gl.enableVertexAttribArray(loc);gl.vertexAttribPointer(loc,2,gl.FLOAT,false,0,0);
+  var uT=gl.getUniformLocation(pr,'uTime'),uR=gl.getUniformLocation(pr,'uRes');
+  gl.clearColor(0,0,0,0);
+  if(window.ResizeObserver){new ResizeObserver(size).observe(stage);} addEventListener('resize',size);
+  var t0=performance.now();
+  function loop(){gl.clear(gl.COLOR_BUFFER_BIT);gl.uniform1f(uT,(performance.now()-t0)/1000);gl.uniform2f(uR,cv.width,cv.height);gl.drawArrays(gl.TRIANGLES,0,3);requestAnimationFrame(loop);}
+  loop();
+})();}
+</script>
+
+<script>
 /* ---- GALERIE: schelet data-driven. Andy ataaaarna tablourile (thumb + url real) aici. ---- */
 /* BASE = standardul premium i-vory, IDENTIC pe orice site (aceeasi ordine = se aliniaza intre carduri). specific = ce e unic. */
 const BASE=["Design premium custom","Rapid pe telefon (mobile-first)","Core Web Vitals verzi","SEO + AEO (Google + AI)"];
 const PROJECTS=[
-  {name:"UrbanCat", tag:"Magazin online premium · Shopify", url:"https://urbancat.ro", urlLabel:"urbancat.ro",
+  {name:"UrbanCat", tag:"Magazin online premium · Shopify", url:"https://urbancat.ro", urlLabel:"urbancat.ro", case:"/portofoliu/proiect/urbancat.html",
    result:"Magazin premium pentru pisici de apartament.", thumb:"/portofoliu/img/urbancat.jpg?v=1",
    base:BASE, spec:["Magazin Shopify complet","Catalog + blog + multilingv"], price:"de la 5.000 lei", status:"live"},
-  {name:"i-vory Studio", tag:"Site prezentare premium", url:"https://i-vory.ro", urlLabel:"i-vory.ro",
+  {name:"i-vory Studio", tag:"Site prezentare premium", url:"https://i-vory.ro", urlLabel:"i-vory.ro", case:"/portofoliu/proiect/ivory.html",
    result:"Prezentare cu hero 3D animat și performanță impecabilă.", thumb:"/portofoliu/img/ivory.jpg?v=1",
    base:BASE, spec:["Hero 3D + animații cinematice","Site multi-pagină"], price:"de la 2.500 lei", status:"live"}
 ];
@@ -195,7 +259,8 @@ PROJECTS.forEach(p=>{
   const live=p.status==='live';
   const el=document.createElement(live?'a':'div');
   el.className='card reveal'+(live?' live':'');
-  if(live){el.href=p.url;el.target='_blank';el.rel='noopener';}
+  const hasCase=!!p.case;
+  if(live){ if(hasCase){el.href=p.case;} else {el.href=p.url;el.target='_blank';el.rel='noopener';} }
   const initial=p.name.trim().charAt(0).toUpperCase();
   const shot = p.thumb ? '<img src="'+p.thumb+'" alt="'+p.name+'" loading="lazy">' : '<span class="ph">'+initial+'</span>';
   const badge = live ? '' : '<span class="badge">în curând</span>';
@@ -208,7 +273,7 @@ PROJECTS.forEach(p=>{
     '<div class="chrome"><i></i><i></i><i></i><span class="url">'+p.urlLabel+'</span></div>'+
     '<div class="shot">'+shot+'</div>'+
     '<div class="meta"><div class="tag">'+p.tag+'</div><h3>'+p.name+'</h3><p>'+p.result+'</p>'+feats+price+
-    (live?'<span class="go">Vezi site '+ICON+'</span>':'')+
+    (live?'<span class="go">'+(hasCase?'Vezi proiectul':'Vezi site')+' '+ICON+'</span>':'')+
     '</div>';
   grid.appendChild(el);
 });
