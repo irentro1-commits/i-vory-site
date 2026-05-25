@@ -195,16 +195,16 @@ vec3 starfield(vec3 d){
  return col;
 }
 void main(){
- vec2 uv=(vUv-0.5)*2.0; vec2 uvz=uv*0.58;
+ vec2 uv=(vUv-0.5)*2.0; vec2 uvz=uv*0.56;
  float my=0.30, mx=uTime*0.06;
  float cd=17.0;
  vec3 ro=vec3(sin(mx)*cos(my),sin(my),cos(mx)*cos(my))*cd;
  vec3 f=normalize(-ro), rr=normalize(cross(vec3(0.0,1.0,0.0),f)), u=cross(f,rr);
  vec3 rd=normalize(uvz.x*rr+uvz.y*u+1.5*f);
  vec3 pos=ro, vel=rd;
- float HOR=0.70; float dacc=0.0; vec3 dcol=vec3(0.0); bool hit=false;
+ float HOR=0.70; float dacc=0.0; vec3 dcol=vec3(0.0); bool hit=false; float md=99.0;
  for(int i=0;i<88;i++){
-  float r2=dot(pos,pos); float dist=sqrt(r2);
+  float r2=dot(pos,pos); float dist=sqrt(r2); md=min(md,dist);
   if(dist<HOR){hit=true;break;}
   vec3 g=-pos/(r2*dist)*0.68; vel=normalize(vel+g);
   float st=0.10+dist*0.022; vec3 np=pos+vel*st;
@@ -224,7 +224,8 @@ void main(){
   pos=np; if(dacc>0.97)break;
  }
  vec3 bg = hit ? vec3(0.0) : starfield(normalize(vel));
- vec3 col = bg + dcol*1.5*(1.0+uHover*0.45);
+ float halo = hit?0.0: smoothstep(HOR*2.05,HOR*1.0,md);
+ vec3 col = bg + vec3(1.0,0.72,0.30)*pow(halo,1.2)*2.7 + dcol*1.6*(1.0+uHover*0.45);
  float fe=smoothstep(1.06,0.5,length(uv));
  gl_FragColor=vec4(col, fe*uFade);
 }`;
