@@ -108,7 +108,7 @@ void main(){
  vec2 uv=(vUv-0.5)*2.4;
  float r=length(uv);
  float pulse=0.93+0.07*sin(uTime*1.4)+0.02*sin(uTime*3.7);
- float Rs=0.34*pulse;
+ float Rs=0.30*pulse;
  vec3 col=vec3(0.0);
  if(r<Rs){
   float z=sqrt(max(Rs*Rs-r*r,0.0));
@@ -116,7 +116,7 @@ void main(){
   float pl=fbm(n*3.6+vec3(uTime*0.22,uTime*0.1,-uTime*0.15));
   pl=pow(clamp(pl+0.28,0.0,1.0),1.4);
   float fres=pow(1.0-z/Rs,1.6);
-  col=temp(pl)*(0.85+pl*0.9)+temp(1.0)*fres*0.55;
+  col=temp(pl)*(0.62+pl*0.62)+temp(1.0)*fres*0.38;
  } else {
   float fall=Rs/r, ang=atan(uv.y,uv.x);
   float fil=fbm(vec3(cos(ang)*3.0,sin(ang)*3.0,uTime*0.13));
@@ -266,8 +266,9 @@ function pickTarget(){
   }
   return null;
 }
-canvas.addEventListener('click',()=>{
+canvas.addEventListener('click',(e)=>{
   if(state!=='idle') return;
+  ndc.x=e.clientX/innerWidth*2-1; ndc.y=-(e.clientY/innerHeight*2-1);
   const b=pickTarget(); if(!b) return;
   target=b; state='flying'; tprog=0;
   arr.querySelector('.ak').textContent=b.label;
