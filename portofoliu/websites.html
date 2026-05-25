@@ -136,6 +136,7 @@ float noise(vec3 x){vec3 i=floor(x),f=fract(x);f=f*f*(3.0-2.0*f);
 float fbm(vec3 p){float s=0.0,a=0.5;for(int i=0;i<5;i++){s+=a*noise(p);p*=2.1;a*=0.5;}return s;}
 void main(){
  vec2 uv=(gl_FragCoord.xy-0.5*uRes)/uRes.y;
+ uv.x-=0.42;
  vec2 p=vec2(uv.x,uv.y/0.55)*1.35;
  float r=length(p), ang=atan(p.y,p.x), t=uTime*0.04;
  float sp=cos(ang*2.0 - log(r+0.08)*6.0 + t*6.0);
