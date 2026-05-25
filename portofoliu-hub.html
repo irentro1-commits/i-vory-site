@@ -48,14 +48,18 @@
   #mob{display:none}
   html.mob .cap, html.mob .hint, html.mob .lab, html.mob #arr{display:none!important}
   html.mob .logo{top:1.05rem;left:1.15rem}
-  html.mob #mob{display:flex;flex-direction:column;position:fixed;inset:0;z-index:12;padding:4.3rem 0 1rem;pointer-events:none}
-  html.mob #mob .mh{font-weight:800;font-size:1.5rem;letter-spacing:-.012em;text-align:center;color:#ede9e3}
-  html.mob #mob .ms{font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:#7a7570;text-align:center;margin:.3rem 0 0}
-  html.mob #mob .mgrid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;flex:1;pointer-events:auto}
-  html.mob .mz{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:.7rem;text-decoration:none;-webkit-tap-highlight-color:transparent;transition:opacity .2s}
-  html.mob .mz:active{opacity:.55}
-  html.mob .mz-k{font-size:.5rem;letter-spacing:.16em;text-transform:uppercase;color:#8f8a82}
-  html.mob .mz-n{font-weight:800;font-size:1.3rem;letter-spacing:-.01em;color:var(--c);margin-top:.18rem}
+  html.mob #mob{display:block;position:fixed;inset:0;z-index:12;pointer-events:none}
+  html.mob #mob .mh{position:absolute;left:0;right:0;top:1.5rem;font-weight:800;font-size:1.5rem;letter-spacing:-.012em;text-align:center;color:#ede9e3}
+  html.mob #mob .ms{position:absolute;left:0;right:0;top:3.5rem;font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:#7a7570;text-align:center}
+  html.mob .mz{position:absolute;width:50%;height:50%;pointer-events:auto;-webkit-tap-highlight-color:transparent}
+  html.mob .mz[data-q=tl]{left:0;top:0}
+  html.mob .mz[data-q=tr]{right:0;top:0}
+  html.mob .mz[data-q=bl]{left:0;bottom:0}
+  html.mob .mz[data-q=br]{right:0;bottom:0}
+  html.mob .mz:active{background:rgba(255,255,255,.035)}
+  html.mob .ml{position:absolute;transform:translate(-50%,-50%);text-align:center;pointer-events:none;display:flex;flex-direction:column;gap:.18rem;width:46%}
+  html.mob .ml .mz-k{font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;color:#8f8a82}
+  html.mob .ml .mz-n{font-weight:800;font-size:1.3rem;letter-spacing:-.01em;color:var(--c)}
 </style>
 </head>
 <body>
@@ -72,12 +76,14 @@
 <div id="mob">
   <div class="mh">Portofoliu</div>
   <div class="ms">alege un univers</div>
-  <div class="mgrid">
-    <a class="mz" href="/portofoliu/video.html" style="--c:#ff9650"><span class="mz-k">Film &amp; motion</span><span class="mz-n">Video</span></a>
-    <a class="mz" href="/portofoliu/design.html" style="--c:#ffce80"><span class="mz-k">Lumin&#259; &amp; form&#259;</span><span class="mz-n">Design</span></a>
-    <a class="mz" href="/portofoliu/websites.html" style="--c:#00e0c0"><span class="mz-k">Lumi construite</span><span class="mz-n">Websites</span></a>
-    <a class="mz" href="/portofoliu/rezultate.html" style="--c:#a78bff"><span class="mz-k">Pove&#537;ti de client</span><span class="mz-n">Rezultate</span></a>
-  </div>
+  <a class="mz" data-q="tl" href="/portofoliu/video.html" aria-label="Video"></a>
+  <a class="mz" data-q="tr" href="/portofoliu/design.html" aria-label="Design"></a>
+  <a class="mz" data-q="bl" href="/portofoliu/websites.html" aria-label="Websites"></a>
+  <a class="mz" data-q="br" href="/portofoliu/rezultate.html" aria-label="Rezultate"></a>
+  <div class="ml" style="--c:#ff9650;left:28%;top:48%"><span class="mz-k">Film &amp; motion</span><span class="mz-n">Video</span></div>
+  <div class="ml" style="--c:#ffce80;left:72%;top:48%"><span class="mz-k">Lumin&#259; &amp; form&#259;</span><span class="mz-n">Design</span></div>
+  <div class="ml" style="--c:#00e0c0;left:28%;top:88%"><span class="mz-k">Lumi construite</span><span class="mz-n">Websites</span></div>
+  <div class="ml" style="--c:#a78bff;left:72%;top:88%"><span class="mz-k">Pove&#537;ti de client</span><span class="mz-n">Rezultate</span></div>
 </div>
 <script>window.__MOB=(matchMedia('(max-width:820px)').matches||('ontouchstart' in window && innerWidth<900)||location.search.indexOf('forcemob')>-1);if(window.__MOB)document.documentElement.classList.add('mob');</script>
 <script type="importmap">
@@ -432,12 +438,12 @@ void main(){
  vec3 col=mix(vec3(.01,.013,.022),vec3(.04,.022,.07),n);
  col+=vec3(0.,.16,.15)*pow(n,3.)*.4;
  float st=hash(floor(sc*200.)); if(st>.99)col+=vec3((st-.99)/.01)*.5;
- float S=0.205;
+ float S=0.17;
  vec2 q;
- q=(sc-vec2(0.28,0.665)); q.x*=asp; col+=bh(q/S);
- q=(sc-vec2(0.72,0.665)); q.x*=asp; col+=sn(q/S);
- q=(sc-vec2(0.28,0.405)); q.x*=asp; col+=galaxy(q/S);
- q=(sc-vec2(0.72,0.405)); q.x*=asp; col+=worm(q/S);
+ q=(sc-vec2(0.28,0.70)); q.x*=asp; col+=bh(q/S);
+ q=(sc-vec2(0.72,0.70)); q.x*=asp; col+=sn(q/S);
+ q=(sc-vec2(0.28,0.30)); q.x*=asp; col+=galaxy(q/S);
+ q=(sc-vec2(0.72,0.30)); q.x*=asp; col+=worm(q/S);
  gl_FragColor=vec4(col,1.0);
 }`;
     function mk(t,src){const o=gl.createShader(t);gl.shaderSource(o,src);gl.compileShader(o);return o;}
