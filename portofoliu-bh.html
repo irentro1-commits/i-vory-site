@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Gaura neagra — benchmark 9/10 (preview)</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{height:100%;background:#000;overflow:hidden;font-family:'Geist',-apple-system,sans-serif;color:#fff}
+  #c{position:fixed;inset:0;display:block}
+  #ld{position:fixed;inset:0;z-index:10;background:#000;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1.2rem;transition:opacity .8s}
+  #ld.out{opacity:0;pointer-events:none}
+  .r{width:48px;height:48px;border-radius:50%;border:2px solid rgba(255,150,80,.15);border-top-color:#ff9650;animation:s 1s linear infinite}
+  @keyframes s{to{transform:rotate(360deg)}}
+  .t{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:#7a7570}
+  .cap{position:fixed;left:0;right:0;bottom:1.4rem;text-align:center;z-index:5;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:#8a857e;pointer-events:none}
+  .lab{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:5;text-align:center;pointer-events:none;mix-blend-mode:screen}
+  .lab .n{font-size:clamp(1.6rem,4vw,2.6rem);font-weight:800;letter-spacing:-.02em}
+  .lab .s{display:block;font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:#ffb86b;margin-top:.4rem;opacity:.85}
+</style>
+</head>
+<body>
+<div id="ld"><div class="r"></div><div class="t">Se naste o gaura neagra</div></div>
+<canvas id="c"></canvas>
+<div class="cap">misca mouse-ul ca sa orbitezi</div>
+
+<script type="importmap">
+{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}
+</script>
+<script type="module">
+import * as THREE from 'three';
+import {EffectComposer} from 'three/addons/postprocessing/EffectComposer.js';
+import {RenderPass} from 'three/addons/postprocessing/RenderPass.js';
+import {UnrealBloomPass} from 'three/addons/postprocessing/UnrealBloomPass.js';
+
+const canvas=document.getElementById('c');
+const renderer=new THREE.WebGLRenderer({canvas,antialias:false,powerPreference:'high-performance'});
+renderer.setPixelRatio(Math.min(devicePixelRatio,1.6));
+renderer.setSize(innerWidth,innerHeight);
+renderer.toneMapping=THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure=1.05;
+
+const scene=new THREE.Scene();
+const cam=new THREE.OrthographicCamera(-1,1,1,-1,0,1);
+
+const uniforms={
+  uTime:{value:0},
+  uRes:{value:new THREE.Vector2(innerWidth,innerHeight)},
+  uMouse:{value:new THREE.Vector2(0,0)}
+};
+
+const frag=`
+precision highp float;
+uniform float uTime; uniform vec2 uRes; uniform vec2 uMouse;
+float hash(vec3 p){p=fract(p*0.3183099+0.1);p*=17.0;return fract(p.x*p.y*p.z*(p.x+p.y+p.z));}
+float noise(vec3 x){vec3 i=floor(x),f=fract(x);f=f*f*(3.0-2.0*f);
+ return mix(mix(mix(hash(i+vec3(0,0,0)),hash(i+vec3(1,0,0)),f.x),mix(hash(i+vec3(0,1,0)),hash(i+vec3(1,1,0)),f.x),f.y),
+            mix(mix(hash(i+vec3(0,0,1)),hash(i+vec3(1,0,1)),f.x),mix(hash(i+vec3(0,1,1)),hash(i+vec3(1,1,1)),f.x),f.y),f.z);}
+float fbm(vec3 p){float s=0.0,a=0.5;for(int i=0;i<4;i++){s+=a*noise(p);p*=2.12;a*=0.5;}return s;}
+vec3 starfield(vec3 d){
+ vec3 col=vec3(0.0);
+ float n=hash(floor(d*260.0));
+ if(n>0.987){float b=(n-0.987)/0.013;col+=vec3(b*b)*(0.4+0.6*hash(floor(d*131.0)+7.7));}
+ float neb=fbm(d*2.4+vec3(0.0,0.0,uTime*0.01));
+ col+=mix(vec3(0.0,0.045,0.05),vec3(0.05,0.015,0.09),neb)*0.55;
+ col+=vec3(0.0,0.20,0.18)*pow(neb,3.0)*0.5;
+ return col;
+}
+vec3 temp(float t){vec3 a=vec3(1.0,0.32,0.06),b=vec3(1.0,0.66,0.26),c=vec3(1.0,0.95,0.92);
+ return t<0.5?mix(a,b,t*2.0):mix(b,c,(t-0.5)*2.0);}
+void main(){
+ vec2 uv=(gl_FragCoord.xy-0.5*uRes)/uRes.y;
+ float my=uMouse.y*0.45+0.30, mx=uMouse.x*0.7+uTime*0.05;
+ float cd=9.0;
+ vec3 ro=vec3(sin(mx)*cos(my),sin(my),cos(mx)*cos(my))*cd;
+ vec3 f=normalize(-ro), r=normalize(cross(vec3(0.0,1.0,0.0),f)), u=cross(f,r);
+ vec3 rd=normalize(uv.x*r+uv.y*u+1.5*f);
+ vec3 pos=ro, vel=rd;
+ float HOR=0.62; bool hit=false; float dacc=0.0; vec3 dcol=vec3(0.0);
+ for(int i=0;i<90;i++){
+  float r2=dot(pos,pos); float dist=sqrt(r2);
+  if(dist<HOR){hit=true;break;}
+  vec3 g=-pos/(r2*dist)*0.42; vel=normalize(vel+g);
+  float st=0.10+dist*0.022; vec3 np=pos+vel*st;
+  if(pos.y*np.y<0.0){
+   float t=pos.y/(pos.y-np.y); vec3 hp=mix(pos,np,t); float rad=length(hp.xz);
+   float rin=HOR*1.6, rout=4.2;
+   if(rad>rin&&rad<rout){
+    float tn=1.0-clamp((rad-rin)/(rout-rin),0.0,1.0);
+    float ang=atan(hp.z,hp.x);
+    float tb=fbm(vec3(rad*2.2,ang*2.0+uTime*0.7,uTime*0.25));
+    float br=(0.45+0.9*tb)*(0.55+0.45*sin(ang*1.0-uTime*0.8));
+    float dop=0.55+0.7*clamp(dot(normalize(vec3(-hp.z,0.0,hp.x)),vel),0.0,1.0);
+    vec3 cc=temp(tn)*br*dop*(0.7+tn*2.2);
+    dcol+=cc*(1.0-dacc); dacc+=0.85*(1.0-dacc);
+   }
+  }
+  pos=np; if(dacc>0.97)break;
+ }
+ vec3 col = hit?vec3(0.0):starfield(normalize(vel));
+ col+=dcol;
+ // soft photon ring around horizon in screen space
+ col+=temp(1.0)*0.0;
+ gl_FragColor=vec4(col,1.0);
+}`;
+
+const quad=new THREE.Mesh(new THREE.PlaneGeometry(2,2),new THREE.ShaderMaterial({
+  uniforms,
+  vertexShader:`void main(){gl_Position=vec4(position.xy,0.0,1.0);}`,
+  fragmentShader:frag,
+  depthTest:false,depthWrite:false
+}));
+scene.add(quad);
+
+const composer=new EffectComposer(renderer);
+composer.addPass(new RenderPass(scene,cam));
+const bloom=new UnrealBloomPass(new THREE.Vector2(innerWidth,innerHeight),1.15,0.55,0.5);
+composer.addPass(bloom);
+
+let tmx=0,tmy=0,mx=0,my=0;
+addEventListener('mousemove',e=>{tmx=(e.clientX/innerWidth*2-1);tmy=-(e.clientY/innerHeight*2-1);});
+addEventListener('resize',()=>{
+  renderer.setSize(innerWidth,innerHeight);composer.setSize(innerWidth,innerHeight);
+  uniforms.uRes.value.set(innerWidth,innerHeight);
+});
+
+const clock=new THREE.Clock();
+function loop(){
+  requestAnimationFrame(loop);
+  mx+=(tmx-mx)*0.05; my+=(tmy-my)*0.05;
+  uniforms.uMouse.value.set(mx,my);
+  uniforms.uTime.value=clock.getElapsedTime();
+  composer.render();
+}
+loop();
+
+addEventListener('load',()=>setTimeout(()=>{const l=document.getElementById('ld');l.classList.add('out');setTimeout(()=>l.style.display='none',800);},600));
+setTimeout(()=>{const l=document.getElementById('ld');if(l){l.classList.add('out');setTimeout(()=>l.style.display='none',800);}},3500);
+</script>
+</body>
+</html>
