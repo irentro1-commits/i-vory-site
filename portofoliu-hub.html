@@ -186,20 +186,22 @@ const FRAG_WH=`precision highp float;varying vec2 vUv;uniform float uTime;unifor
 ${NOISE}
 void main(){
  vec2 uv=(vUv-0.5)*2.0;
- float r=length(uv);
- float a=atan(uv.y,uv.x);
- float t=uTime;
- float depth=0.55/(r+0.06)+t*0.65;
- float swirl=a + r*2.6 - t*0.45;
- float n=fbm(vec3(cos(swirl)*1.6, sin(swirl)*1.6, depth*0.6));
- float rings=0.55+0.45*sin(depth*6.2831 + swirl*2.0);
- float band=pow(rings,1.7)*(0.45+0.85*n);
+ float r=length(uv), ang=atan(uv.y,uv.x), t=uTime;
+ float spiral=sin(ang*3.0 + log(r+0.05)*7.0 - t*2.2);
+ float arms=pow(0.5+0.5*spiral,2.2);
+ float rings=0.5+0.5*sin((1.0/(r+0.10))*4.5 + t*2.2);
+ float tex=fbm(vec3(uv*3.2,t*0.3));
+ float body=arms*(0.40+0.75*rings)*(0.45+0.8*tex);
+ body*=smoothstep(0.98,0.08,r);
+ float rim=exp(-pow((r-0.17)*8.5,2.0));
+ float mouth=smoothstep(0.17,0.0,r);
  vec3 cIn=vec3(0.0,0.92,0.82), cOut=vec3(0.52,0.36,1.0);
- vec3 col=mix(cIn,cOut,clamp(r*1.15,0.0,1.0))*band;
- col+=vec3(0.55,0.95,1.0)*exp(-r*r*8.0)*1.15;
+ vec3 col=mix(cIn,cOut,clamp(r*1.2,0.0,1.0))*body;
+ col+=vec3(0.5,0.95,1.0)*rim*1.25;
+ col*=(1.0-mouth*0.8);
  col*=1.0+uHover*0.5;
- float a2=smoothstep(1.02,0.12,r);
- gl_FragColor=vec4(col*a2*uFade, 1.0);
+ float a2=smoothstep(1.02,0.1,r);
+ gl_FragColor=vec4(col*a2*uFade,1.0);
 }`;
 
 const FRAG_NEB=`precision highp float;varying vec3 vDir;uniform float uTime;
@@ -254,7 +256,7 @@ const BODIES=[
   {key:'websites', name:'Websites', label:'lumi construite',color:'#00e0c0', href:'/portofoliu/websites.html',
    rad:3.6, mesh:makeBody(FRAG_GX,12,{x:0.2,y:-3.8,z:-2.5},THREE.AdditiveBlending,1)},
   {key:'rezultate', name:'Rezultate', label:'povești de client', color:'#a78bff', href:'/portofoliu/rezultate.html',
-   rad:2.3, mesh:makeBody(FRAG_WH,5.2,{x:0.0,y:0.7,z:-1.0},THREE.AdditiveBlending,1)}
+   rad:2.6, mesh:makeBody(FRAG_WH,6.2,{x:0.0,y:1.5,z:-1.0},THREE.AdditiveBlending,1)}
 ];
 
 /* labels (HTML, projected) */
