@@ -29,11 +29,12 @@
   .lab{position:fixed;z-index:10;transform:translate(-50%,-50%);text-align:center;pointer-events:none;opacity:.78;transition:opacity .3s,filter .3s;filter:saturate(.9)}
   .lab.on{opacity:1;filter:saturate(1.15)}
   .lab .k{font-size:1.0rem;letter-spacing:.2em;text-transform:uppercase;color:#f0ece6}
-  .lab .n{font-size:clamp(1.25rem,2.5vw,2.05rem);font-weight:800;letter-spacing:-.012em;line-height:1;margin-top:.32rem}
+  .lab .n{font-size:clamp(1.9rem,3.8vw,3.0rem);font-weight:800;letter-spacing:-.012em;line-height:1;margin-top:.42rem;text-shadow:0 0 20px currentColor,0 2px 12px rgba(0,0,0,.5)}
   .lab .ln{display:block;width:0;height:1px;margin:.7rem auto 0;background:linear-gradient(90deg,transparent,currentColor,transparent);transition:width .35s}
   .lab.on .ln{width:54px}
 
-  .cap{position:fixed;left:0;right:0;top:50%;transform:translateY(-58%);text-align:center;z-index:9;font-size:clamp(1.5rem,3.5vw,2.7rem);font-weight:700;letter-spacing:.36em;text-indent:.36em;text-transform:uppercase;color:transparent;background:linear-gradient(100deg,#bcd4ff,#ffffff 48%,#e8d8ff);-webkit-background-clip:text;background-clip:text;pointer-events:none;filter:drop-shadow(0 0 20px rgba(123,90,255,.55)) drop-shadow(0 0 14px rgba(0,0,0,.7))}
+  .cap{position:fixed;left:50%;top:50%;transform:translate(-50%,-58%);z-index:9;pointer-events:none;filter:drop-shadow(0 0 16px rgba(123,90,255,.45))}
+  .capscrim{position:fixed;left:50%;top:50%;transform:translate(-50%,-54%);width:min(620px,72vw);height:150px;z-index:8;pointer-events:none;background:radial-gradient(ellipse 58% 68% at 50% 50%,rgba(2,4,10,0),transparent 72%)}
   .belt{position:fixed;left:0;right:0;top:calc(50% + .55rem);text-align:center;z-index:9;pointer-events:none}
   .belt svg{width:clamp(230px,44vw,520px);height:auto;display:inline-block;animation:beltp 6s ease-in-out infinite}
   @keyframes beltp{0%,100%{opacity:.8}50%{opacity:1}}
@@ -50,7 +51,7 @@
   .seo{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;border:0;padding:0;margin:-1px}
   /* ===== MOBILE HUB (4 chenare egale, shadere 3D reale, fara Three.js) ===== */
   #mob{display:none}
-  html.mob .cap, html.mob .hint, html.mob .lab, html.mob #arr, html.mob .belt{display:none!important}
+  html.mob .cap, html.mob .capscrim, html.mob .hint, html.mob .lab, html.mob #arr, html.mob .belt{display:none!important}
   html.mob .logo{top:1.15rem;left:1.15rem;font-size:1rem}
   html.mob .logo .x{display:none}
   html.mob #mob{display:block;position:fixed;inset:0;z-index:12;pointer-events:none}
@@ -81,7 +82,7 @@
 <a class="logo" href="/" id="logo">i<span>-</span>vory<span class="x">← înapoi la site</span></a>
 <canvas id="c"></canvas>
 
-<div class="cap">Portofoliu</div>
+<div class="capscrim"></div><canvas id="titlec" class="cap" aria-label="Portofoliu"></canvas>
 <div class="belt"><svg viewBox="0 0 520 26" width="520" height="26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="bl" x1="0" x2="1"><stop offset="0" stop-color="#dfe9ff" stop-opacity="0"/><stop offset=".5" stop-color="#dfe9ff" stop-opacity=".5"/><stop offset="1" stop-color="#dfe9ff" stop-opacity="0"/></linearGradient></defs><line x1="20" y1="13" x2="500" y2="13" stroke="url(#bl)" stroke-width=".5"/><circle cx="20.0" cy="12.1" r="0.87" fill="#00e0c0" opacity="0.08"/><circle cx="36.6" cy="13.2" r="1.26" fill="#dfe9ff" opacity="0.08"/><circle cx="53.1" cy="10.7" r="1.38" fill="#00e0c0" opacity="0.08"/><circle cx="69.7" cy="12.6" r="2.09" fill="#ff9650" opacity="0.1"/><circle cx="86.2" cy="13.6" r="2.31" fill="#ffce80" opacity="0.19"/><circle cx="102.8" cy="15.4" r="0.68" fill="#a78bff" opacity="0.28"/><circle cx="119.3" cy="11.2" r="0.81" fill="#dfe9ff" opacity="0.24"/><circle cx="135.9" cy="11.4" r="1.65" fill="#ffce80" opacity="0.35"/><circle cx="152.4" cy="13.2" r="0.71" fill="#ff9650" opacity="0.26"/><circle cx="169.0" cy="13.9" r="1.37" fill="#dfe9ff" opacity="0.38"/><circle cx="185.5" cy="12.8" r="1.14" fill="#dfe9ff" opacity="0.58"/><circle cx="202.1" cy="11.7" r="1.63" fill="#dfe9ff" opacity="0.55"/><circle cx="218.6" cy="14.1" r="1.12" fill="#00e0c0" opacity="0.79"/><circle cx="235.2" cy="12.6" r="1.96" fill="#dfe9ff" opacity="0.51"/><circle cx="251.7" cy="10.7" r="1.8" fill="#dfe9ff" opacity="0.85"/><circle cx="268.3" cy="14.9" r="1.16" fill="#dfe9ff" opacity="0.81"/><circle cx="284.8" cy="13.4" r="1.42" fill="#dfe9ff" opacity="0.81"/><circle cx="301.4" cy="12.9" r="1.8" fill="#dfe9ff" opacity="0.42"/><circle cx="317.9" cy="13.7" r="2.39" fill="#a78bff" opacity="0.66"/><circle cx="334.5" cy="12.4" r="1.8" fill="#dfe9ff" opacity="0.33"/><circle cx="351.0" cy="11.3" r="0.81" fill="#dfe9ff" opacity="0.3"/><circle cx="367.6" cy="11.1" r="1.05" fill="#dfe9ff" opacity="0.35"/><circle cx="384.1" cy="10.9" r="1.41" fill="#dfe9ff" opacity="0.33"/><circle cx="400.7" cy="14.6" r="2.16" fill="#ffce80" opacity="0.23"/><circle cx="417.2" cy="12.3" r="2.19" fill="#ff9650" opacity="0.29"/><circle cx="433.8" cy="11.4" r="1.02" fill="#dfe9ff" opacity="0.15"/><circle cx="450.3" cy="13.4" r="1.07" fill="#ffce80" opacity="0.09"/><circle cx="466.9" cy="12.3" r="1.62" fill="#dfe9ff" opacity="0.12"/><circle cx="483.4" cy="13.1" r="1.71" fill="#00e0c0" opacity="0.08"/><circle cx="500.0" cy="15.0" r="2.0" fill="#dfe9ff" opacity="0.08"/></svg></div>
 <div class="hint" id="hint">click pe un corp ceresc · mișcă mouse-ul</div>
 
@@ -279,8 +280,8 @@ void main(){
   float c=hash(floor(ns*100.0)+19.0);
   if(c>dens){float b=(c-dens)/(1.0-dens);col+=pick(hash(floor(ns*100.0)+3.1))*b*1.3*(0.7+0.6*core);}
   float cT=fbm(ns*7.0+vec3(t*0.04,0.0,0.0));
-  col+=mix(vec3(0.45,0.26,0.16),vec3(1.0,0.78,0.52),cT)*pow(core,1.7)*0.6;
-  col+=vec3(1.0,0.90,0.74)*pow(core,4.0)*0.42;
+  col+=mix(vec3(0.45,0.26,0.16),vec3(1.0,0.78,0.52),cT)*pow(core,1.7)*0.42;
+  col+=vec3(1.0,0.90,0.74)*pow(core,4.0)*0.24;
   float fres=pow(1.0-z,6.0);
   col+=vec3(0.22,0.55,1.0)*fres*0.85;
  } else {
@@ -506,6 +507,53 @@ if(window.__MOB){
   loop();
   var l=document.getElementById('ld');if(l){l.classList.add('out');setTimeout(function(){l.style.display='none';},700);}
 }
+</script>
+<script>
+if(!window.__MOB){(function(){
+ var cv=document.getElementById('titlec'); if(!cv) return;
+ var ctx=cv.getContext('2d');
+ var TEXT='PORTOFOLIU';
+ var COLORS=['#ffffff','#ffffff','#ffffff','#eef4ff','#f6f9ff','#ffffff','#e8efff','#ffffff','#ffffff'];
+ var parts=[],W=0,H=0,bg=null,dpr=Math.min(devicePixelRatio||1,2);
+ function build(){
+  var fs=Math.max(26,Math.min(64,Math.round(innerWidth*0.044)));
+  var ls=fs*0.30;
+  var off=document.createElement('canvas'),o=off.getContext('2d');
+  o.font='700 '+fs+'px Geist, system-ui, sans-serif';
+  var tw=0,ch; for(var i=0;i<TEXT.length;i++){tw+=o.measureText(TEXT[i]).width+ls;} tw-=ls;
+  var pad=Math.ceil(fs*0.7);
+  off.width=Math.ceil(tw)+pad*2; off.height=Math.ceil(fs*1.6)+pad*2;
+  o.font='700 '+fs+'px Geist, system-ui, sans-serif'; o.textBaseline='middle'; o.fillStyle='#fff';
+  var x=pad,y=off.height/2;
+  for(var j=0;j<TEXT.length;j++){o.fillText(TEXT[j],x,y); x+=o.measureText(TEXT[j]).width+ls;}
+  var d=o.getImageData(0,0,off.width,off.height).data;
+  parts=[]; var step=Math.max(2,Math.round(fs/24));
+  for(var yy=0;yy<off.height;yy+=step)for(var xx=0;xx<off.width;xx+=step){
+   if(d[(yy*off.width+xx)*4+3]>130){
+    parts.push({ox:xx,oy:yy,c:COLORS[(Math.random()*COLORS.length)|0],r:0.75+Math.random()*1.55,ph:Math.random()*6.28,sp:0.4+Math.random()*0.9,am:0.4+Math.random()*0.7});
+   }
+  }
+  bg=document.createElement("canvas"); bg.width=off.width; bg.height=off.height;
+  var bx=bg.getContext("2d"); bx.filter="blur(6px)"; bx.drawImage(off,0,0);
+  bx.filter="none"; bx.globalCompositeOperation="source-in"; bx.fillStyle="rgba(1,3,10,1)"; bx.fillRect(0,0,bg.width,bg.height);
+  W=off.width;H=off.height;
+  cv.width=W*dpr;cv.height=H*dpr;cv.style.width=W+'px';cv.style.height=H+'px';
+  ctx.setTransform(dpr,0,0,dpr,0,0);
+ }
+ build(); addEventListener('resize',build); setTimeout(build,700);
+ var t0=performance.now();
+ (function loop(){
+  var t=(performance.now()-t0)/1000;
+  ctx.clearRect(0,0,W,H);
+  // alb pe fundal = contrast, fara umbra care strica fundalul
+  for(var i=0;i<parts.length;i++){var p=parts[i];
+   var dx=Math.sin(t*p.sp+p.ph)*p.am, dy=Math.cos(t*p.sp*0.8+p.ph)*p.am;
+   ctx.globalAlpha=0.78+0.22*Math.sin(t*2.0+p.ph); ctx.fillStyle=p.c;
+   ctx.beginPath(); ctx.arc(p.ox+dx,p.oy+dy,p.r,0,6.283); ctx.fill();
+  }
+  ctx.globalAlpha=1; requestAnimationFrame(loop);
+ })();
+})();}
 </script>
 </body>
 </html>
