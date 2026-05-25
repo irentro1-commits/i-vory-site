@@ -165,8 +165,9 @@ void main(){
    if(rad>rin&&rad<rout){
     float tn=1.0-clamp((rad-rin)/(rout-rin),0.0,1.0);
     float ang=atan(hp.z,hp.x);
-    float tb=fbm(vec3(rad*2.2,ang*2.0+uTime*0.7,uTime*0.25));
-    float br=(0.45+0.9*tb)*(0.55+0.45*sin(ang*1.0-uTime*0.8));
+    float tb=fbm(vec3(rad*2.4,ang*3.0+uTime*0.7,uTime*0.25));
+    tb=tb*0.6+0.4*fbm(vec3(rad*6.4,ang*7.5-uTime*1.25,uTime*0.55));
+    float br=(0.18+1.45*tb)*(0.5+0.5*sin(ang*1.0-uTime*0.8));
     float dop=0.55+0.7*clamp(dot(normalize(vec3(-hp.z,0.0,hp.x)),vel),0.0,1.0);
     dcol+=temp(tn)*br*dop*(0.95+tn*3.0)*(1.0-dacc); dacc+=0.85*(1.0-dacc);
    }
@@ -174,7 +175,7 @@ void main(){
   pos=np; if(dacc>0.97)break;
  }
  vec3 bg = hit ? vec3(0.0) : starfield(normalize(vel));
- vec3 col = bg + dcol*1.7*(1.0+uHover*0.45);
+ vec3 col = bg + dcol*1.5*(1.0+uHover*0.45);
  float fe=smoothstep(1.06,0.5,length(uv));
  gl_FragColor=vec4(col, fe*uFade);
 }`;
