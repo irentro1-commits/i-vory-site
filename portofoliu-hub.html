@@ -146,12 +146,12 @@ vec3 starfield(vec3 d){
  return col;
 }
 void main(){
- vec2 uv=(vUv-0.5)*2.0;
+ vec2 uv=(vUv-0.5)*2.0; vec2 uvz=uv*1.12;
  float my=0.30, mx=uTime*0.06;
  float cd=15.0;
  vec3 ro=vec3(sin(mx)*cos(my),sin(my),cos(mx)*cos(my))*cd;
  vec3 f=normalize(-ro), rr=normalize(cross(vec3(0.0,1.0,0.0),f)), u=cross(f,rr);
- vec3 rd=normalize(uv.x*rr*1.7+uv.y*u*1.7+1.5*f);
+ vec3 rd=normalize(uvz.x*rr*1.7+uvz.y*u*1.7+1.5*f);
  vec3 pos=ro, vel=rd;
  float HOR=0.62; float dacc=0.0; vec3 dcol=vec3(0.0); bool hit=false;
  for(int i=0;i<88;i++){
@@ -168,15 +168,16 @@ void main(){
     float tb=fbm(vec3(rad*2.2,ang*2.0+uTime*0.7,uTime*0.25));
     float br=(0.45+0.9*tb)*(0.55+0.45*sin(ang*1.0-uTime*0.8));
     float dop=0.55+0.7*clamp(dot(normalize(vec3(-hp.z,0.0,hp.x)),vel),0.0,1.0);
-    dcol+=temp(tn)*br*dop*(0.7+tn*2.2)*(1.0-dacc); dacc+=0.85*(1.0-dacc);
+    dcol+=temp(tn)*br*dop*(0.82+tn*2.5)*(1.0-dacc); dacc+=0.85*(1.0-dacc);
    }
   }
   pos=np; if(dacc>0.97)break;
  }
  vec3 bg = hit ? vec3(0.0) : starfield(normalize(vel));
  vec3 col = bg + dcol*(1.0+uHover*0.45);
- float fe=smoothstep(1.05,0.30,length(uv));
- gl_FragColor=vec4(col, fe*uFade);
+ float fe=smoothstep(1.08,0.26,length(uv));
+ float a = (hit ? 1.0 : (0.40 + 0.60*clamp(dacc,0.0,1.0))) * fe * uFade;
+ gl_FragColor=vec4(col, a);
 }`;
 
 const FRAG_NEB=`precision highp float;varying vec3 vDir;uniform float uTime;
@@ -225,11 +226,11 @@ function makeBody(frag,size,pos,blend,ro){
 }
 const BODIES=[
   {key:'video',    name:'Video',    label:'film & motion',  color:'#ff9650', href:'/portofoliu/video.html',
-   rad:2.7, mesh:makeBody(FRAG_BH,11,{x:-6.4,y:1.9,z:0.5},THREE.NormalBlending,0)},
+   rad:2.9, mesh:makeBody(FRAG_BH,12,{x:-8.6,y:2.3,z:0.5},THREE.NormalBlending,0)},
   {key:'design',   name:'Design',   label:'lumina & forma', color:'#ffce80', href:'/portofoliu/design.html',
-   rad:3.0, mesh:makeBody(FRAG_SN,8.5,{x:6.4,y:2.6,z:-1.5},THREE.AdditiveBlending,1)},
+   rad:3.0, mesh:makeBody(FRAG_SN,8.5,{x:8.6,y:2.5,z:-1.5},THREE.AdditiveBlending,1)},
   {key:'websites', name:'Websites', label:'lumi construite',color:'#00e0c0', href:'/portofoliu/websites.html',
-   rad:3.5, mesh:makeBody(FRAG_GX,12,{x:0.2,y:-2.7,z:-2.5},THREE.AdditiveBlending,1)}
+   rad:3.6, mesh:makeBody(FRAG_GX,12,{x:0.2,y:-3.8,z:-2.5},THREE.AdditiveBlending,1)}
 ];
 
 /* labels (HTML, projected) */
