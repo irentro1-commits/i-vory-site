@@ -246,27 +246,46 @@ void main(){
 const FRAG_NEB=`precision highp float;varying vec3 vDir;uniform float uTime;uniform vec2 uRes;
 ${NOISE}
 vec3 pick(float h){
- if(h<0.30) return vec3(0.00,0.85,0.74);
- if(h<0.55) return vec3(1.00,0.55,0.22);
- if(h<0.75) return vec3(1.00,0.80,0.40);
- if(h<0.90) return vec3(0.55,0.40,1.00);
- return vec3(0.82,0.90,1.00);
+ if(h<0.32) return vec3(1.00,0.55,0.20);
+ if(h<0.55) return vec3(1.00,0.80,0.40);
+ if(h<0.74) return vec3(0.60,0.42,1.00);
+ if(h<0.88) return vec3(0.00,0.85,0.74);
+ return vec3(0.85,0.92,1.00);
 }
+vec3 roty(vec3 p,float a){float s=sin(a),c=cos(a);return vec3(c*p.x+s*p.z,p.y,-s*p.x+c*p.z);}
 void main(){
- vec3 d=normalize(vDir); float t=uTime;
- float neb=fbm(d*2.4+vec3(t*0.02,t*0.015,t*0.01));
- vec3 col=mix(vec3(0.004,0.007,0.018),vec3(0.010,0.020,0.050),neb);
- float hb=fbm(d*1.6+vec3(-t*0.02,0.0,t*0.015));
- col+=mix(vec3(0.0,0.10,0.12),vec3(0.10,0.04,0.16),hb)*pow(neb,2.0)*0.35;
- float a=hash(floor(d*620.0));
- if(a>0.965){float b=(a-0.965)/0.035;col+=vec3(b*0.5)*(0.5+0.5*sin(t*2.5+a*50.0));}
- float bs=hash(floor(d*300.0)+5.0);
- if(bs>0.988){float b=(bs-0.988)/0.012;col+=vec3(b)*(0.6+0.4*sin(t*2.0+bs*30.0));}
- float c=hash(floor(d*120.0)+19.0);
- if(c>0.992){float b=(c-0.992)/0.008;float tw=0.55+0.45*sin(t*1.6+c*22.0);col+=pick(hash(floor(d*120.0)+3.1))*b*tw*1.6;}
- vec2 sc=(gl_FragCoord.xy-0.5*uRes)/uRes.y; float rr=length(sc);
- col+=vec3(0.05,0.18,0.46)*smoothstep(0.62,1.18,rr)*0.34;
- col*=1.0-smoothstep(0.5,1.25,rr)*0.30;
+ vec2 sc=(gl_FragCoord.xy-0.5*uRes)/uRes.y;
+ float rr=length(sc); float t=uTime; float R=0.46;
+ vec3 col=vec3(0.003,0.005,0.011);
+ if(rr<R){
+  float z=sqrt(max(R*R-rr*rr,0.0))/R;
+  vec3 n=normalize(vec3(sc/R,z));
+  vec3 ns=roty(n,t*0.04);
+  float core=smoothstep(R*0.55,0.0,rr);
+  float neb=fbm(ns*3.2+vec3(0.0,0.0,t*0.05));
+  col=vec3(0.006,0.010,0.024)+mix(vec3(0.0),vec3(0.016,0.022,0.050),neb)*0.7;
+  float cneb=fbm(ns*6.0+vec3(t*0.03,0.0,0.0));
+  col+=mix(vec3(0.10,0.08,0.12),vec3(0.42,0.30,0.26),cneb)*core*core*0.35;
+  float dboost=0.8+1.4*core;
+  float a=hash(floor(ns*380.0));
+  if(a>0.91){float b=(a-0.91)/0.09;col+=vec3(b*0.5)*dboost*(0.55+0.45*sin(t*2.0+a*40.0));}
+  float bs=hash(floor(ns*200.0)+5.0);
+  if(bs>0.965){float b=(bs-0.965)/0.035;col+=vec3(b*0.95)*dboost;}
+  float dens=mix(0.991,0.955,core);
+  float c=hash(floor(ns*100.0)+19.0);
+  if(c>dens){float b=(c-dens)/(1.0-dens);col+=pick(hash(floor(ns*100.0)+3.1))*b*1.3*(0.7+0.6*core);}
+  float cT=fbm(ns*7.0+vec3(t*0.04,0.0,0.0));
+  col+=mix(vec3(0.45,0.26,0.16),vec3(1.0,0.78,0.52),cT)*pow(core,1.7)*0.6;
+  col+=vec3(1.0,0.90,0.74)*pow(core,4.0)*0.55;
+  float fres=pow(1.0-z,6.0);
+  col+=vec3(0.22,0.55,1.0)*fres*0.85;
+ } else {
+  float halo=smoothstep(R+0.07,R,rr);
+  col+=vec3(0.12,0.42,0.95)*halo*halo*0.5;
+  vec3 dd=normalize(vec3(sc,0.8));
+  float os=hash(floor(dd*330.0));
+  if(os>0.993){col+=vec3((os-0.993)/0.007)*0.4;}
+ }
  gl_FragColor=vec4(col,1.0);
 }`;
 
