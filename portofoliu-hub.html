@@ -286,12 +286,15 @@ canvas.addEventListener('click',(e)=>{
   arr.querySelector('.ak').textContent=b.label;
   arr.querySelector('.an').textContent=b.name;
   arr.querySelector('.an').style.color=b.color;
+  setTimeout(()=>arr.classList.add('show'),650);
+  setTimeout(()=>{location.href=b.href;},1450);
 });
 
 const tmpV=new THREE.Vector3(), cV=new THREE.Vector3(), eV=new THREE.Vector3();
 const clock=new THREE.Clock();
 function loop(){
   requestAnimationFrame(loop);
+  try{
   const t=clock.getElapsedTime();
   neb.material.uniforms.uTime.value=t;
 
@@ -333,7 +336,7 @@ function loop(){
     const dest=tmpV.clone().add(HOME.clone().sub(tmpV).normalize().multiplyScalar(4.2));
     camPos.copy(HOME).lerp(dest,e);
     lookAt.set(0,0,0).lerp(tmpV,e);
-    if(tprog>=1){ state='arrived'; arr.classList.add('show'); setTimeout(()=>{ if(target&&target.href){location.href=target.href;} else {state='returning';tprog=0;arr.classList.remove('show');} },850); }
+    if(tprog>=1){ state='arrived'; }
   } else if(state==='returning'){
     tprog=Math.min(1,tprog+0.022);
     const e=tprog*tprog*(3-2*tprog);
@@ -346,6 +349,7 @@ function loop(){
   cam.position.copy(camPos); cam.lookAt(lookAt);
 
   composer.render();
+  }catch(err){window.__loopErr=(window.__loopErr||'')+' '+err.message;}
 }
 loop();
 
