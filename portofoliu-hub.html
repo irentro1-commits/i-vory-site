@@ -324,7 +324,7 @@ neb.renderOrder=-10; scene.add(neb);
 const group=new THREE.Group(); scene.add(group);
 function makeBody(frag,size,pos,blend,ro){
   const u={uTime:{value:0},uHover:{value:0},uFade:{value:1}};
-  const sk=new THREE.Mesh(new THREE.PlaneGeometry(size*2.15,size*2.15),
+  const sk=new THREE.Mesh(new THREE.PlaneGeometry(size*(window.__PT?1.32:2.15),size*(window.__PT?1.32:2.15)),
     new THREE.ShaderMaterial({uniforms:u,vertexShader:VERT,fragmentShader:SOCK,transparent:true,blending:THREE.NormalBlending,depthWrite:false,depthTest:false}));
   sk.position.set(pos.x,pos.y,pos.z); sk.renderOrder=-5; group.add(sk);
   const m=new THREE.Mesh(new THREE.PlaneGeometry(size,size),
