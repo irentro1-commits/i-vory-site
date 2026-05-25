@@ -120,6 +120,7 @@ const TEMP=`
 vec3 temp(float t){vec3 a=vec3(1.0,0.40,0.10),b=vec3(1.0,0.78,0.34),c=vec3(1.0,0.97,0.92);
  return t<0.5?mix(a,b,t*2.0):mix(b,c,(t-0.5)*2.0);}`;
 const VERT=`varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}`;
+const SOCK=`precision highp float;varying vec2 vUv;uniform float uFade;void main(){vec2 uv=(vUv-0.5)*2.0;float r=length(uv);float a=smoothstep(1.0,0.12,r)*0.85;gl_FragColor=vec4(vec3(0.002,0.003,0.008),a*uFade);}`;
 
 /* ---------- bodies ---------- */
 // WEBSITES = galaxie
@@ -186,8 +187,8 @@ vec3 starfield(vec3 d){
  float n=hash(floor(d*260.0));
  if(n>0.987){float b=(n-0.987)/0.013;col+=vec3(b*b)*(0.4+0.6*hash(floor(d*131.0)+7.7));}
  float nb=fbm(d*2.4+vec3(0.0,0.0,uTime*0.01));
- col+=mix(vec3(0.0,0.045,0.05),vec3(0.05,0.015,0.09),nb)*0.55;
- col+=vec3(0.0,0.20,0.18)*pow(nb,3.0)*0.5;
+ col+=mix(vec3(0.0,0.020,0.026),vec3(0.026,0.008,0.05),nb)*0.42;
+ col+=vec3(0.0,0.10,0.09)*pow(nb,3.0)*0.4;
  return col;
 }
 void main(){
@@ -198,7 +199,7 @@ void main(){
  vec3 f=normalize(-ro), rr=normalize(cross(vec3(0.0,1.0,0.0),f)), u=cross(f,rr);
  vec3 rd=normalize(uvz.x*rr+uvz.y*u+1.5*f);
  vec3 pos=ro, vel=rd;
- float HOR=0.62; float dacc=0.0; vec3 dcol=vec3(0.0); bool hit=false;
+ float HOR=0.70; float dacc=0.0; vec3 dcol=vec3(0.0); bool hit=false;
  for(int i=0;i<88;i++){
   float r2=dot(pos,pos); float dist=sqrt(r2);
   if(dist<HOR){hit=true;break;}
@@ -320,6 +321,9 @@ neb.renderOrder=-10; scene.add(neb);
 const group=new THREE.Group(); scene.add(group);
 function makeBody(frag,size,pos,blend,ro){
   const u={uTime:{value:0},uHover:{value:0},uFade:{value:1}};
+  const sk=new THREE.Mesh(new THREE.PlaneGeometry(size*1.3,size*1.3),
+    new THREE.ShaderMaterial({uniforms:u,vertexShader:VERT,fragmentShader:SOCK,transparent:true,blending:THREE.NormalBlending,depthWrite:false,depthTest:false}));
+  sk.position.set(pos.x,pos.y,pos.z); sk.renderOrder=-5; group.add(sk);
   const m=new THREE.Mesh(new THREE.PlaneGeometry(size,size),
     new THREE.ShaderMaterial({uniforms:u,vertexShader:VERT,fragmentShader:frag,
       transparent:true,blending:blend||THREE.AdditiveBlending,depthWrite:false,depthTest:false}));
