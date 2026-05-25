@@ -17,13 +17,15 @@
   body{background:radial-gradient(125% 90% at 80% 6%,rgba(255,150,80,.10),transparent 56%),radial-gradient(100% 80% at 10% 98%,rgba(123,44,255,.07),transparent 60%),var(--bg);color:var(--t);font-family:var(--fd);line-height:1.6;overflow-x:hidden}
   ::selection{background:var(--ac);color:#1a0e06}
   a{color:inherit;text-decoration:none}
+  #bg{position:fixed;inset:0;z-index:0;display:block}
+  #ov{position:fixed;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,rgba(5,5,5,.82) 0%,rgba(5,5,5,.45) 34%,rgba(5,5,5,0) 64%),linear-gradient(180deg,rgba(5,5,5,.34) 0%,rgba(5,5,5,.58) 42%,rgba(5,5,5,.92) 78%,#050505 100%)}
   .wrap{position:relative;z-index:2}
   .nav{position:fixed;top:0;left:0;right:0;z-index:30;display:flex;align-items:center;justify-content:space-between;padding:1.15rem 1.8rem;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);background:linear-gradient(180deg,rgba(5,5,5,.55),transparent)}
   .brand{font-weight:800;font-size:1.1rem;letter-spacing:-.01em}
   .brand span{color:var(--ac)}
   .back{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--fm);font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--td);padding:.5rem .9rem;border:1px solid var(--br2);border-radius:100px;transition:border-color .25s,color .25s,background .25s}
   .back:hover{color:var(--t);border-color:var(--ac);background:rgba(255,150,80,.08)}
-  .hero{min-height:90vh;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.04fr);align-items:center;gap:3.5rem;padding:8rem 1.8rem 3rem;max-width:1240px;margin:0 auto}
+  .hero{min-height:82vh;display:flex;flex-direction:column;justify-content:center;padding:7rem 1.8rem 3rem;max-width:1120px;margin:0 auto}
   .htext{max-width:520px}
   .eyebrow{font-family:var(--fm);font-size:.7rem;letter-spacing:.34em;text-transform:uppercase;color:var(--ac);margin-bottom:1.4rem;display:flex;align-items:center;gap:.7rem}
   .eyebrow::before{content:"";width:26px;height:1px;background:var(--ac);opacity:.6}
@@ -63,12 +65,15 @@
   .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s var(--e),transform .7s var(--e)}
   .reveal.in{opacity:1;transform:none}
   @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
-  @media (max-width:900px){.hero{grid-template-columns:1fr;gap:2rem;min-height:auto;padding:7rem 1.4rem 2rem}.htext{max-width:none;order:1}.stage{order:2;aspect-ratio:4/3}}
+  @media (max-width:900px){.hero{min-height:88vh;padding:7rem 1.4rem 3rem}.htext{max-width:none}#ov{background:linear-gradient(180deg,rgba(5,5,5,.66) 0%,rgba(5,5,5,.34) 26%,rgba(5,5,5,.52) 54%,rgba(5,5,5,.93) 82%,#050505 100%)}}
   @media (max-width:560px){.nav{padding:1rem 1.2rem}.hero{padding:6.5rem 1.2rem 1.5rem}.gallery,.cta{padding-left:1.2rem;padding-right:1.2rem}.stage{aspect-ratio:1/1}}
   html.mob .stage{background:#04060a}
 </style>
 </head>
 <body>
+<canvas id="bg"></canvas>
+<div id="ov"></div>
+
 <header class="nav">
   <a class="brand" href="/">i<span>-</span>vory</a>
   <a class="back" href="/portofoliu-hub.html">&larr; Portofoliu</a>
@@ -80,10 +85,6 @@
       <h1 class="reveal">Video</h1>
       <p class="lede reveal">Clipuri care se uit&#259; p&#226;n&#259; la cap&#259;t.<span class="dim">Filmare &#537;i montaj pentru Reels, TikTok, YouTube.</span></p>
       <div class="scroll reveal"><i></i> Vezi clipurile</div>
-    </div>
-    <div class="stage reveal">
-      <canvas id="bg"></canvas>
-      <span class="chip">Gaur&#259; neagr&#259; &middot; live</span>
     </div>
   </section>
   <section class="gallery">
@@ -112,12 +113,12 @@ const canvas=document.getElementById('bg');
 const stage=canvas.parentElement;
 const renderer=new THREE.WebGLRenderer({canvas,antialias:false,powerPreference:'high-performance'});
 renderer.setPixelRatio(Math.min(devicePixelRatio,1.6));
-renderer.setSize(stage.clientWidth,stage.clientHeight,false);
+renderer.setSize(innerWidth,innerHeight);
 renderer.toneMapping=THREE.ACESFilmicToneMapping;
 renderer.toneMappingExposure=0.78;
 const scene=new THREE.Scene();
 const cam=new THREE.OrthographicCamera(-1,1,1,-1,0,1);
-const uniforms={uTime:{value:0},uRes:{value:new THREE.Vector2(stage.clientWidth,stage.clientHeight)}};
+const uniforms={uTime:{value:0},uRes:{value:new THREE.Vector2(innerWidth,innerHeight)}};
 const frag=`
 precision highp float;
 uniform float uTime; uniform vec2 uRes;
@@ -139,6 +140,7 @@ vec3 temp(float t){vec3 a=vec3(1.0,0.32,0.06),b=vec3(1.0,0.66,0.26),c=vec3(1.0,0
  return t<0.5?mix(a,b,t*2.0):mix(b,c,(t-0.5)*2.0);}
 void main(){
  vec2 uv=(gl_FragCoord.xy-0.5*uRes)/uRes.y;
+ uv.x-=0.40;
  float my=0.30, mx=uTime*0.05;
  float cd=17.0;
  vec3 ro=vec3(sin(mx)*cos(my),sin(my),cos(mx)*cos(my))*cd;
@@ -173,12 +175,10 @@ void main(){
 const quad=new THREE.Mesh(new THREE.PlaneGeometry(2,2),new THREE.ShaderMaterial({uniforms,vertexShader:`void main(){gl_Position=vec4(position.xy,0.0,1.0);}`,fragmentShader:frag,depthTest:false,depthWrite:false}));
 scene.add(quad);
 const composer=new EffectComposer(renderer);
-composer.setSize(stage.clientWidth,stage.clientHeight);
+composer.setSize(innerWidth,innerHeight);
 composer.addPass(new RenderPass(scene,cam));
-composer.addPass(new UnrealBloomPass(new THREE.Vector2(stage.clientWidth,stage.clientHeight),0.75,0.5,0.55));
-function fit(){const w=stage.clientWidth,h=stage.clientHeight;renderer.setSize(w,h,false);composer.setSize(w,h);uniforms.uRes.value.set(w,h);}
-addEventListener('resize',fit);
-if(window.ResizeObserver){new ResizeObserver(fit).observe(stage);}
+composer.addPass(new UnrealBloomPass(new THREE.Vector2(innerWidth,innerHeight),0.75,0.5,0.55));
+addEventListener('resize',()=>{renderer.setSize(innerWidth,innerHeight);composer.setSize(innerWidth,innerHeight);uniforms.uRes.value.set(innerWidth,innerHeight);});
 const clock=new THREE.Clock();
 function loop(){requestAnimationFrame(loop);uniforms.uTime.value=clock.getElapsedTime();composer.render();}
 loop();
@@ -189,10 +189,9 @@ loop();
 /* MOBIL: gaura neagra live raw-WebGL in panou (zero Three.js, raymarch redus la 60 iter) */
 if(window.__MOB){(function(){
   var cv=document.getElementById('bg'); if(!cv) return;
-  var stage=cv.parentElement;
   var gl=cv.getContext('webgl',{antialias:false,alpha:false}); if(!gl) return;
   var dpr=Math.min(window.devicePixelRatio||1,1.3);
-  function size(){var w=stage.clientWidth,h=stage.clientHeight;cv.width=Math.round(w*dpr);cv.height=Math.round(h*dpr);gl.viewport(0,0,cv.width,cv.height);}
+  function size(){var w=innerWidth,h=innerHeight;cv.width=Math.round(w*dpr);cv.height=Math.round(h*dpr);gl.viewport(0,0,cv.width,cv.height);}
   size();
   var vs='attribute vec2 p;void main(){gl_Position=vec4(p,0.0,1.0);}';
   var fs=`precision highp float;uniform float uTime;uniform vec2 uRes;
@@ -247,7 +246,7 @@ if(window.__MOB){(function(){
   var buf=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,buf);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,3,-1,-1,3]),gl.STATIC_DRAW);
   var loc=gl.getAttribLocation(pr,'p');gl.enableVertexAttribArray(loc);gl.vertexAttribPointer(loc,2,gl.FLOAT,false,0,0);
   var uT=gl.getUniformLocation(pr,'uTime'),uR=gl.getUniformLocation(pr,'uRes');
-  if(window.ResizeObserver){new ResizeObserver(size).observe(stage);} addEventListener('resize',size);
+  addEventListener('resize',size);
   var t0=performance.now();
   function loop(){gl.uniform1f(uT,(performance.now()-t0)/1000);gl.uniform2f(uR,cv.width,cv.height);gl.drawArrays(gl.TRIANGLES,0,3);requestAnimationFrame(loop);}
   loop();

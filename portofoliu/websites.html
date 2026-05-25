@@ -18,6 +18,8 @@
   ::selection{background:var(--ac);color:#041412}
   a{color:inherit;text-decoration:none}
 
+  #bg{position:fixed;inset:0;z-index:0;display:block}
+  #ov{position:fixed;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,rgba(5,5,5,.82) 0%,rgba(5,5,5,.45) 34%,rgba(5,5,5,0) 64%),linear-gradient(180deg,rgba(5,5,5,.30) 0%,rgba(5,5,5,.55) 42%,rgba(5,5,5,.92) 78%,#050505 100%)}
   .wrap{position:relative;z-index:2}
 
   /* nav (casa izolata: doar logo + iesire la portofoliu) */
@@ -28,7 +30,7 @@
   .back:hover{color:var(--t);border-color:var(--ac);background:rgba(0,224,192,.06)}
 
   /* hero · Lusion style: text in zona curata + vizual continut, separat */
-  .hero{min-height:90vh;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.04fr);align-items:center;gap:3.5rem;padding:8rem 1.8rem 3rem;max-width:1240px;margin:0 auto}
+  .hero{min-height:82vh;display:flex;flex-direction:column;justify-content:center;padding:7rem 1.8rem 3rem;max-width:1120px;margin:0 auto}
   .htext{max-width:520px}
   .eyebrow{font-family:var(--fm);font-size:.7rem;letter-spacing:.34em;text-transform:uppercase;color:var(--ac);margin-bottom:1.4rem;display:flex;align-items:center;gap:.7rem}
   .eyebrow::before{content:"";width:26px;height:1px;background:var(--ac);opacity:.6}
@@ -83,12 +85,15 @@
   .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s var(--e),transform .7s var(--e)}
   .reveal.in{opacity:1;transform:none}
   @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
-  @media (max-width:900px){.hero{grid-template-columns:1fr;gap:2rem;min-height:auto;padding:7rem 1.4rem 2rem}.htext{max-width:none;order:1}.stage{order:2;aspect-ratio:4/3}}
+  @media (max-width:900px){.hero{min-height:88vh;padding:7rem 1.4rem 3rem}.htext{max-width:none}#ov{background:linear-gradient(180deg,rgba(5,5,5,.62) 0%,rgba(5,5,5,.32) 26%,rgba(5,5,5,.5) 54%,rgba(5,5,5,.93) 82%,#050505 100%)}}
   @media (max-width:560px){.nav{padding:1rem 1.2rem}.hero{padding:6.5rem 1.2rem 1.5rem}.gallery,.cta{padding-left:1.2rem;padding-right:1.2rem}.stage{aspect-ratio:1/1}}
   html.mob .stage{background:radial-gradient(130% 110% at 30% 18%,rgba(0,224,192,.34),transparent 60%),radial-gradient(120% 110% at 82% 86%,rgba(123,44,255,.30),transparent 62%),conic-gradient(from 210deg at 50% 50%,rgba(0,224,192,.10),rgba(123,44,255,.10),rgba(0,224,192,.10)),#04060a}
 </style>
 </head>
 <body>
+<canvas id="bg"></canvas>
+<div id="ov"></div>
+
 <header class="nav">
   <a class="brand" href="/">i<span>-</span>vory</a>
   <a class="back" href="/portofoliu-hub.html" id="backHub">&larr; Portofoliu</a>
@@ -101,10 +106,6 @@
       <h1 class="reveal">Websites</h1>
       <p class="lede reveal">Site-uri care aduc clien&#539;i.<span class="dim">Nu doar care arat&#259; bine.</span></p>
       <div class="scroll reveal"><i></i> Vezi site-urile</div>
-    </div>
-    <div class="stage reveal">
-      <canvas id="bg"></canvas>
-      <span class="chip">Galaxie &middot; live</span>
     </div>
   </section>
 
@@ -140,12 +141,12 @@ const canvas=document.getElementById('bg');
 const stage=canvas.parentElement;
 const renderer=new THREE.WebGLRenderer({canvas,antialias:false,powerPreference:'high-performance'});
 renderer.setPixelRatio(Math.min(devicePixelRatio,1.6));
-renderer.setSize(stage.clientWidth,stage.clientHeight,false);
+renderer.setSize(innerWidth,innerHeight);
 renderer.toneMapping=THREE.ACESFilmicToneMapping;
 renderer.toneMappingExposure=0.62;
 const scene=new THREE.Scene();
 const cam=new THREE.OrthographicCamera(-1,1,1,-1,0,1);
-const uniforms={uTime:{value:0},uRes:{value:new THREE.Vector2(stage.clientWidth,stage.clientHeight)}};
+const uniforms={uTime:{value:0},uRes:{value:new THREE.Vector2(innerWidth,innerHeight)}};
 const frag=`
 precision highp float;
 uniform float uTime; uniform vec2 uRes;
@@ -156,7 +157,8 @@ float noise(vec3 x){vec3 i=floor(x),f=fract(x);f=f*f*(3.0-2.0*f);
 float fbm(vec3 p){float s=0.0,a=0.5;for(int i=0;i<5;i++){s+=a*noise(p);p*=2.1;a*=0.5;}return s;}
 void main(){
  vec2 uv=(gl_FragCoord.xy-0.5*uRes)/uRes.y;
- vec2 p=vec2(uv.x,uv.y/0.62)*1.28;
+ uv.x-=0.42;
+ vec2 p=vec2(uv.x,uv.y/0.55)*1.35;
  float r=length(p), ang=atan(p.y,p.x), t=uTime*0.04;
  float sp=cos(ang*2.0 - log(r+0.08)*6.0 + t*6.0);
  float arm=pow(0.5+0.5*sp,3.3);
@@ -176,12 +178,10 @@ void main(){
 const quad=new THREE.Mesh(new THREE.PlaneGeometry(2,2),new THREE.ShaderMaterial({uniforms,vertexShader:`void main(){gl_Position=vec4(position.xy,0.0,1.0);}`,fragmentShader:frag,depthTest:false,depthWrite:false}));
 scene.add(quad);
 const composer=new EffectComposer(renderer);
-composer.setSize(stage.clientWidth,stage.clientHeight);
+composer.setSize(innerWidth,innerHeight);
 composer.addPass(new RenderPass(scene,cam));
-composer.addPass(new UnrealBloomPass(new THREE.Vector2(stage.clientWidth,stage.clientHeight),0.6,0.6,0.5));
-function fit(){const w=stage.clientWidth,h=stage.clientHeight;renderer.setSize(w,h,false);composer.setSize(w,h);uniforms.uRes.value.set(w,h);}
-addEventListener('resize',fit);
-if(window.ResizeObserver){new ResizeObserver(fit).observe(stage);}
+composer.addPass(new UnrealBloomPass(new THREE.Vector2(innerWidth,innerHeight),0.6,0.6,0.5));
+addEventListener('resize',()=>{renderer.setSize(innerWidth,innerHeight);composer.setSize(innerWidth,innerHeight);uniforms.uRes.value.set(innerWidth,innerHeight);});
 const clock=new THREE.Clock();
 function loop(){requestAnimationFrame(loop);uniforms.uTime.value=clock.getElapsedTime();composer.render();}
 loop();
@@ -192,10 +192,9 @@ loop();
 /* MOBIL: galaxie live raw-WebGL in panoul hero (zero Three.js) */
 if(window.__MOB){(function(){
   var cv=document.getElementById('bg'); if(!cv) return;
-  var stage=cv.parentElement;
   var gl=cv.getContext('webgl',{antialias:false,alpha:true,premultipliedAlpha:false,powerPreference:'high-performance'}); if(!gl) return;
   var dpr=Math.min(window.devicePixelRatio||1,1.5);
-  function size(){var w=stage.clientWidth,h=stage.clientHeight;cv.width=Math.round(w*dpr);cv.height=Math.round(h*dpr);gl.viewport(0,0,cv.width,cv.height);}
+  function size(){var w=innerWidth,h=innerHeight;cv.width=Math.round(w*dpr);cv.height=Math.round(h*dpr);gl.viewport(0,0,cv.width,cv.height);}
   size();
   var vs='attribute vec2 p;void main(){gl_Position=vec4(p,0.0,1.0);}';
   var fs=`precision highp float;uniform float uTime;uniform vec2 uRes;
@@ -233,7 +232,7 @@ if(window.__MOB){(function(){
   var loc=gl.getAttribLocation(pr,'p');gl.enableVertexAttribArray(loc);gl.vertexAttribPointer(loc,2,gl.FLOAT,false,0,0);
   var uT=gl.getUniformLocation(pr,'uTime'),uR=gl.getUniformLocation(pr,'uRes');
   gl.clearColor(0,0,0,0);
-  if(window.ResizeObserver){new ResizeObserver(size).observe(stage);} addEventListener('resize',size);
+  addEventListener('resize',size);
   var t0=performance.now();
   function loop(){gl.clear(gl.COLOR_BUFFER_BIT);gl.uniform1f(uT,(performance.now()-t0)/1000);gl.uniform2f(uR,cv.width,cv.height);gl.drawArrays(gl.TRIANGLES,0,3);requestAnimationFrame(loop);}
   loop();
