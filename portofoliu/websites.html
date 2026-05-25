@@ -57,6 +57,9 @@
   .meta .tag{font-family:var(--fm);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ac);margin-bottom:.5rem}
   .meta h3{font-family:var(--fs);font-weight:600;font-size:1.3rem;letter-spacing:-.01em;margin-bottom:.4rem}
   .meta p{font-size:.86rem;color:var(--td);line-height:1.5}
+  .meta .feat{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.85rem}
+  .meta .feat span{font-family:var(--fm);font-size:.57rem;letter-spacing:.08em;text-transform:uppercase;color:var(--td);border:1px solid var(--br2);border-radius:100px;padding:.3rem .6rem}
+  .meta .price{margin-top:.85rem;font-family:var(--fs);font-weight:600;font-size:1.05rem;color:var(--ac)}
   .meta .go{margin-top:.85rem;display:inline-flex;align-items:center;gap:.45rem;font-family:var(--fm);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--t)}
   .meta .go svg{transition:transform .3s}
   .card.live:hover .meta .go svg{transform:translateX(4px)}
@@ -173,10 +176,14 @@ loop();
 <script>
 /* ---- GALERIE: schelet data-driven. Andy ataaaarna tablourile (thumb + url real) aici. ---- */
 const PROJECTS=[
-  {name:"i-vory Studio", tag:"Site propriu · agenție", url:"https://i-vory.ro", urlLabel:"i-vory.ro",
-   result:"Hero 3D animat, PageSpeed 87 pe telefon, Core Web Vitals verzi.", thumb:"", status:"live"},
-  {name:"Magazin Shopify", tag:"E-commerce", url:"#", urlLabel:"shopify",
-   result:"Magazin online cu plată integrată și livrare.", thumb:"", status:"soon"}
+  {name:"UrbanCat", tag:"Magazin online · Shopify premium", url:"https://urbancat.ro", urlLabel:"urbancat.ro",
+   result:"Magazin premium pentru pisici de apartament.", thumb:"/portofoliu/img/urbancat.jpg?v=1",
+   features:["Shopify premium","Catalog pe categorii","Blog integrat","Multilingv RO/EN","Optimizat mobil"],
+   price:"", status:"live"},
+  {name:"i-vory Studio", tag:"Site prezentare premium", url:"https://i-vory.ro", urlLabel:"i-vory.ro",
+   result:"Prezentare cu hero 3D animat și performanță impecabilă.", thumb:"/portofoliu/img/ivory.jpg?v=1",
+   features:["Hero 3D animat","Core Web Vitals verzi","Multi-pagină","SEO + AEO","Mobile-first"],
+   price:"", status:"live"}
 ];
 
 const grid=document.getElementById('grid');
@@ -189,11 +196,13 @@ PROJECTS.forEach(p=>{
   const initial=p.name.trim().charAt(0).toUpperCase();
   const shot = p.thumb ? '<img src="'+p.thumb+'" alt="'+p.name+'" loading="lazy">' : '<span class="ph">'+initial+'</span>';
   const badge = live ? '' : '<span class="badge">în curând</span>';
+  const feats=(p.features&&p.features.length)?'<div class="feat">'+p.features.map(function(x){return '<span>'+x+'</span>';}).join('')+'</div>':'';
+  const price=p.price?'<div class="price">'+p.price+'</div>':'';
   el.innerHTML =
     badge+
     '<div class="chrome"><i></i><i></i><i></i><span class="url">'+p.urlLabel+'</span></div>'+
     '<div class="shot">'+shot+'</div>'+
-    '<div class="meta"><div class="tag">'+p.tag+'</div><h3>'+p.name+'</h3><p>'+p.result+'</p>'+
+    '<div class="meta"><div class="tag">'+p.tag+'</div><h3>'+p.name+'</h3><p>'+p.result+'</p>'+feats+price+
     (live?'<span class="go">Vezi site '+ICON+'</span>':'')+
     '</div>';
   grid.appendChild(el);
