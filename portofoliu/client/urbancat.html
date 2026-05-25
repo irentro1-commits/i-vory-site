@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>UrbanCat · Client · Portofoliu i-vory</title>
+<meta name="view-transition" content="same-origin">
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;700;800&family=Geist+Mono:wght@500&family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,400&display=swap" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;700;800&family=Geist+Mono:wght@500&family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,400&display=swap"></noscript>
+<style>
+  :root{--bg:#050505;--t:#ede9e3;--td:#d0cbc3;--tm:#8a857e;--ac:#00e0c0;--br:rgba(255,255,255,.08);--br2:rgba(255,255,255,.14);--fd:'Geist',-apple-system,sans-serif;--fm:'Geist Mono',ui-monospace,monospace;--fs:'Fraunces','Times New Roman',serif;--e:cubic-bezier(.16,1,.3,1)}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;overflow-x:hidden;max-width:100vw}
+  body{background:radial-gradient(125% 90% at 80% 4%,rgba(0,224,192,.10),transparent 55%),radial-gradient(100% 80% at 8% 100%,rgba(123,44,255,.07),transparent 60%),var(--bg);color:var(--t);font-family:var(--fd);line-height:1.6;overflow-x:hidden}
+  ::selection{background:var(--ac);color:#041412}
+  a{color:inherit;text-decoration:none}
+  .nav{position:fixed;top:0;left:0;right:0;z-index:30;display:flex;align-items:center;justify-content:space-between;padding:1.15rem 1.8rem;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);background:linear-gradient(180deg,rgba(5,5,5,.55),transparent)}
+  .brand{font-weight:800;font-size:1.1rem;letter-spacing:-.01em}.brand span{color:var(--ac)}
+  .back{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--fm);font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--td);padding:.5rem .9rem;border:1px solid var(--br2);border-radius:100px;transition:border-color .25s,color .25s,background .25s}
+  .back:hover{color:var(--t);border-color:var(--ac);background:rgba(0,224,192,.06)}
+  .wrap{position:relative;z-index:2;max-width:1120px;margin:0 auto;padding:0 1.8rem}
+  .hero{min-height:62vh;display:flex;flex-direction:column;justify-content:center;padding:8rem 0 2rem}
+  .eyebrow{font-family:var(--fm);font-size:.7rem;letter-spacing:.32em;text-transform:uppercase;color:var(--ac);margin-bottom:1.3rem;display:flex;align-items:center;gap:.7rem}
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--ac);opacity:.6}
+  h1{font-family:var(--fs);font-weight:700;font-size:clamp(3.2rem,9vw,6rem);line-height:.9;letter-spacing:-.03em;font-variation-settings:"opsz" 144}
+  .lede{font-size:clamp(1.3rem,2.6vw,1.85rem);color:var(--t);margin-top:1.5rem;line-height:1.25;font-weight:600;letter-spacing:-.018em;max-width:680px}
+  .lede .dim{color:var(--tm);font-weight:400}
+  .stats{display:flex;flex-wrap:wrap;gap:2.2rem;margin-top:2.4rem}
+  .stat .v{font-family:var(--fs);font-weight:700;font-size:clamp(1.8rem,4vw,2.6rem);color:var(--ac);line-height:1}
+  .stat .l{font-family:var(--fm);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--tm);margin-top:.4rem}
+  section.blk{padding:3.5rem 0;border-top:1px solid var(--br)}
+  .ey2{font-family:var(--fm);font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ac);margin-bottom:.8rem}
+  h2{font-family:var(--fs);font-weight:600;font-size:clamp(1.8rem,4.5vw,2.7rem);letter-spacing:-.02em;line-height:1.05}
+  .blk p{color:var(--td);margin-top:1rem;max-width:680px;font-size:1.02rem}
+  .blk p b{color:var(--t);font-weight:600}
+  .cargrid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2rem}
+  .cargrid img{width:100%;aspect-ratio:1080/1341;object-fit:cover;border-radius:14px;border:1px solid var(--br2);display:block;background:#0a0a0e}
+  .link{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.8rem;font-family:var(--fm);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ac);border-bottom:1px solid rgba(0,224,192,.3);padding-bottom:.3rem;transition:gap .25s}
+  .link:hover{gap:.85rem}
+  .siterow{display:grid;grid-template-columns:1.1fr .9fr;gap:2.2rem;align-items:center;margin-top:2rem}
+  .frame{border:1px solid var(--br2);border-radius:18px;overflow:hidden;background:#0a0a12;box-shadow:0 30px 70px -30px rgba(0,224,192,.3)}
+  .chrome{display:flex;align-items:center;gap:.4rem;padding:.7rem .9rem;border-bottom:1px solid var(--br);background:rgba(255,255,255,.03)}
+  .chrome i{width:9px;height:9px;border-radius:50%;background:#2a2a2a;display:inline-block}
+  .chrome .url{margin-left:.5rem;font-family:var(--fm);font-size:.68rem;color:#7a8590}
+  .frame img{width:100%;display:block}
+  .feat{list-style:none;display:flex;flex-direction:column;gap:.6rem;margin:0 0 1.5rem}
+  .feat li{display:flex;align-items:center;gap:.6rem;color:var(--td);font-size:.95rem}
+  .feat li::before{content:"";flex:none;width:18px;height:18px;border-radius:50%;background:rgba(0,224,192,.14);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300e0c0' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E");background-size:11px;background-repeat:no-repeat;background-position:center}
+  .openbtn{display:inline-flex;align-items:center;gap:.5rem;padding:.9rem 1.6rem;background:linear-gradient(135deg,#00e0c0,#00b896);color:#041412;font-weight:800;border-radius:100px;box-shadow:0 12px 30px rgba(0,224,192,.3);transition:transform .25s}
+  .openbtn:hover{transform:translateY(-2px)}
+  .cta{text-align:center;padding:4rem 0 6rem}
+  .cta h2{margin:0 auto}
+  .cta p{color:var(--td);margin:.9rem auto 0;max-width:520px}
+  .btn{display:inline-flex;align-items:center;gap:.6rem;margin-top:1.8rem;padding:1rem 1.8rem;background:linear-gradient(135deg,#00e0c0,#00b896);color:#041412;font-weight:700;border-radius:100px;box-shadow:0 12px 34px rgba(0,224,192,.28);transition:transform .25s}
+  .btn:hover{transform:translateY(-2px)}
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s var(--e),transform .7s var(--e)}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+  @media (max-width:760px){.siterow{grid-template-columns:1fr;gap:1.4rem}.cargrid{grid-template-columns:repeat(2,1fr)}.hero{min-height:auto;padding:7rem 0 1.5rem}.stats{gap:1.5rem}}
+  @media (max-width:560px){.nav{padding:1rem 1.2rem}.wrap{padding:0 1.2rem}}
+</style>
+</head>
+<body>
+<header class="nav">
+  <a class="brand" href="/">i<span>-</span>vory</a>
+  <a class="back" href="/portofoliu-hub.html">&larr; Portofoliu</a>
+</header>
+<div class="wrap">
+  <section class="hero">
+    <div class="eyebrow reveal">Client &middot; Brand complet</div>
+    <h1 class="reveal">UrbanCat</h1>
+    <p class="lede reveal">Brand de produse pentru pisicile de apartament. <span class="dim">Social media care a explodat organic + magazin online premium, construite de noi cap-coad&#259;.</span></p>
+    <div class="stats reveal">
+      <div class="stat"><div class="v">164.639</div><div class="l">vizualiz&#259;ri organic</div></div>
+      <div class="stat"><div class="v">+1.265</div><div class="l">followeri din 1 post</div></div>
+      <div class="stat"><div class="v">95,7%</div><div class="l">trafic For You</div></div>
+      <div class="stat"><div class="v">80 RON</div><div class="l">cost productie</div></div>
+    </div>
+  </section>
+
+  <section class="blk reveal">
+    <div class="ey2">Social media</div>
+    <h2>Un carusel. 164.639 vizualiz&#259;ri organic. 80 RON.</h2>
+    <p>Un singur carusel TikTok, slide-uri statice cu hook construit pe research de ni&#537;&#259;. <b>Zero ads, zero boost.</b> Algoritmul a f&#259;cut promovarea: 95,7% din vizualiz&#259;ri din For You, 25,84% retentie p&#226;n&#259; la ultimul slide, +1.265 followeri din postarea asta.</p>
+    <div class="cargrid">
+      <img src="/case/urbancat-assets/c161k_1.jpg?v=1" alt="Carusel UrbanCat slide 1" loading="lazy">
+      <img src="/case/urbancat-assets/c161k_2.jpg?v=1" alt="Carusel UrbanCat slide 2" loading="lazy">
+      <img src="/case/urbancat-assets/c161k_3.jpg?v=1" alt="Carusel UrbanCat slide 3" loading="lazy">
+      <img src="/case/urbancat-assets/c161k_4.jpg?v=1" alt="Carusel UrbanCat slide 4" loading="lazy">
+    </div>
+    <a class="link" href="/case/urbancat.html">Vezi tot case study-ul
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </section>
+
+  <section class="blk reveal">
+    <div class="ey2">Site</div>
+    <h2>Magazin online premium pe Shopify.</h2>
+    <div class="siterow">
+      <div class="frame">
+        <div class="chrome"><i></i><i></i><i></i><span class="url">urbancat.ro</span></div>
+        <img src="/portofoliu/img/urbancat.jpg?v=1" alt="Magazin online UrbanCat" loading="lazy">
+      </div>
+      <div>
+        <ul class="feat">
+          <li>Magazin Shopify complet</li>
+          <li>Catalog + colec&#539;ii</li>
+          <li>Blog + ghiduri SEO</li>
+          <li>Quiz + comparator</li>
+          <li>Mobile-first &middot; Core Web Vitals verzi</li>
+          <li>SEO + AEO</li>
+        </ul>
+        <a class="openbtn" href="https://urbancat.ro" target="_blank" rel="noopener" data-cta="client_urbancat_site">Deschide site-ul
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta reveal">
+    <h2>Vrei rezultate ca UrbanCat?</h2>
+    <p>Spune-ne ce vinzi &#537;i &#238;&#539;i ar&#259;t&#259;m cum ar ar&#259;ta pentru brandul t&#259;u.</p>
+    <a class="btn" href="/servicii.html">Cere o ofert&#259;
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </section>
+</div>
+<script>
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
