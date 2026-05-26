@@ -1960,9 +1960,11 @@ if(__cpBtn){__cpBtn.addEventListener("click",function(){
 
 // Cookie consent
 var cb=document.getElementById('cookieBar');
+if(cb){
 if(!localStorage.getItem('cookie-consent')){setTimeout(function(){cb.classList.add('show')},2500)}
 var __ca=document.getElementById('cookieAccept');if(__ca)__ca.addEventListener('click',function(){localStorage.setItem('cookie-consent','accepted');cb.classList.remove('show')});
 var __cd=document.getElementById('cookieDecline');if(__cd)__cd.addEventListener('click',function(){localStorage.setItem('cookie-consent','declined');cb.classList.remove('show');window['ga-disable-G-256CM7TGEG']=true});
+}
 
 // Counter animation
 var counted=false;function animateCounters(){if(counted)return;var nums=document.querySelectorAll('.proof-num');if(!nums.length)return;var rect=nums[0].getBoundingClientRect();if(rect.top<window.innerHeight*0.85){counted=true;nums.forEach(function(el){var target=parseInt(el.dataset.target);var current=0;var step=Math.max(1,Math.floor(target/40));var timer=setInterval(function(){current+=step;if(current>=target){current=target;clearInterval(timer)}el.textContent=current+'+'},30)})}}
@@ -2065,44 +2067,9 @@ fm.addEventListener("submit",async function(e){
 
 })();
 }catch(__v9e){console.warn('v9 guard:',__v9e.message)}</script>
-<script>try{
-(function(){
-});
-  var labels={"servicii":"servicii","pachete":"pachete","portofoliu":"portofoliu","faq":"o întrebare din FAQ","contact":"contact","s2":"pagina principala","prob":"inceputul paginii"};
-  var l=labels[sec]||sec;
-  var msg="Salut! Vin din sectiunea "+l+" de pe i-vory.ro si as vrea sa stiu mai multe.";
-  window.open("https://wa.me/40775579706?text="+encodeURIComponent(msg),"_blank");
-  cw.classList.remove("open");
-});
-})();
-}catch(__v9e){console.warn('v9 guard:',__v9e.message)}</script>
 
-<script>try{
-(function(){
-if(window.matchMedia("(max-width:768px)").matches)return;
-var ov=/* ei removed */
-if(!ov)return;
-var shown=sessionStorage.getItem("ei_shown");
-if(shown)return;
-function open(){ov.classList.add("open");sessionStorage.setItem("ei_shown","1")}
-function close(){ov.classList.remove("open")}
-document.addEventListener("mouseout",function(e){if(!e.relatedTarget&&!e.toElement&&e.clientY<10&&!shown){shown=1;open()}});
-cl.addEventListener("click",close);
-ov.addEventListener("click",function(e){if(e.target===ov)close()});
-document.addEventListener("keydown",function(e){if(e.key==="Escape")close()});
-fm.addEventListener("submit",async function(e){
-  e.preventDefault();
-  var fd=new FormData(fm);
-  var data={name:fd.get("name"),email:fd.get("email"),source:"exit-intent-15pct",type:"discount_lead"};
-  var btn=fm.querySelector(".ei-sub-btn");btn.innerHTML="Se trimite...";btn.disabled=true;
-  try{
-    await fetch("https://ivory-booking.YOUR-SUBDOMAIN.workers.dev/lead",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(data)});
-  }catch(err){}
-  btn.innerHTML="✓ Trimis! Verifica emailul";
-  setTimeout(close,2000);
-});
-})();
-}catch(__v9e){console.warn('v9 guard:',__v9e.message)}</script>
+
+
 
 
 
