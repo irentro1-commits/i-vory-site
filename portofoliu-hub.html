@@ -357,7 +357,7 @@ BODIES.forEach(b=>{
 /* bloom */
 const composer=new EffectComposer(renderer);
 composer.addPass(new RenderPass(scene,cam));
-const bloom=new UnrealBloomPass(new THREE.Vector2(innerWidth,innerHeight),0.95,0.5,0.6);
+const bloom=new UnrealBloomPass(new THREE.Vector2(Math.round(innerWidth*0.5),Math.round(innerHeight*0.5)),0.95,0.55,0.6);
 composer.addPass(bloom);
 
 /* interaction */
@@ -371,7 +371,7 @@ addEventListener('mousemove',e=>{
 });
 addEventListener('resize',()=>{
   cam.aspect=innerWidth/innerHeight; cam.updateProjectionMatrix();
-  renderer.setSize(innerWidth,innerHeight); composer.setSize(innerWidth,innerHeight);
+  renderer.setSize(innerWidth,innerHeight); composer.setSize(innerWidth,innerHeight); bloom.setSize(Math.round(innerWidth*0.5),Math.round(innerHeight*0.5));
   neb.material.uniforms.uRes.value.set(innerWidth,innerHeight);
 });
 
@@ -465,10 +465,14 @@ function loop(){
   composer.render();
   }catch(err){window.__loopErr=(window.__loopErr||'')+' '+err.message;}
 }
-loop();
-
-addEventListener('load',()=>setTimeout(()=>{const l=document.getElementById('ld');l.classList.add('out');setTimeout(()=>l.style.display='none',900);},500));
-setTimeout(()=>{const l=document.getElementById('ld');if(l){l.classList.add('out');setTimeout(()=>l.style.display='none',900);}},3500);
+function __hideLoader(){const l=document.getElementById('ld'); if(l && !l.classList.contains('out')){l.classList.add('out'); setTimeout(()=>l.style.display='none',900);}}
+(async()=>{
+  try{ if(renderer.compileAsync){ await renderer.compileAsync(scene,cam); } }catch(_){}
+  try{ composer.render(); }catch(_){}
+  __hideLoader();
+  loop();
+})();
+setTimeout(__hideLoader,8000);
 } /* end desktop hub */
 </script>
 <script>
