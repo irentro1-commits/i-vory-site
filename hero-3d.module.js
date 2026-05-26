@@ -16,7 +16,7 @@ stepPre(.15,0);
 setTimeout(()=>stepPre(.3,1),400);
 
 try{
-const THREE=await import('three');
+const __M=await import('/vendor/three-hub.min.js?v=2');const THREE=__M.THREE;
 stepPre(.55,2);
 
 const container=document.getElementById('hero3d');
@@ -32,9 +32,9 @@ renderer.toneMappingExposure=1.15;
 container.appendChild(renderer.domElement);
 
 // Post-processing bloom
-const {EffectComposer}=await import('three/addons/postprocessing/EffectComposer.js');
-const {RenderPass}=await import('three/addons/postprocessing/RenderPass.js');
-const {UnrealBloomPass}=await import('three/addons/postprocessing/UnrealBloomPass.js');
+const {EffectComposer}=__M;
+const {RenderPass}=__M;
+const {UnrealBloomPass}=__M;
 const composer=new EffectComposer(renderer);
 composer.setPixelRatio(Math.min(window.devicePixelRatio,window.__HERO_FULL?2:1.25));
 composer.setSize(container.clientWidth,container.clientHeight);
@@ -202,7 +202,7 @@ function updateShooting(dt,t){
 // ========== PLANET EARTH — U41 realistic NASA Blue Marble + MeshStandardMaterial reactiv la lighting + clouds layer + atmosphere glow rim ==========
 const _texLoader=new THREE.TextureLoader();
 _texLoader.crossOrigin='anonymous';
-const _NASA='https://threejs.org/examples/textures/planets/';
+const _NASA='/tex/planets/';
 // Day surface (continents + oceans)
 const earthDayTex=_texLoader.load(_NASA+'earth_atmos_2048.jpg', undefined, undefined, ()=>{
   // Fallback la base64 local daca CDN three.js fail
@@ -463,7 +463,7 @@ stepPre(.85,4);
 let elephantGroup=null,scaleF=1,glowMat=null,glowMesh=null;
 if(window.__HERO_FULL){
 // ========== ELEPHANT 3D EXTRUDED FROM SVG ==========
-const {SVGLoader}=await import('three/addons/loaders/SVGLoader.js');
+const {SVGLoader}=__M;
 const svgText=window.__LOGO_SVG_B64?atob(window.__LOGO_SVG_B64):'';
 const svgLoader=new SVGLoader();
 const svgData=svgLoader.parse(svgText);
