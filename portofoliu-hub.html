@@ -300,7 +300,7 @@ void main(){
 /* ---------- setup ---------- */
 const canvas=document.getElementById('c');
 const renderer=new THREE.WebGLRenderer({canvas,antialias:false,powerPreference:'high-performance'});
-renderer.setPixelRatio(Math.min(devicePixelRatio,window.__MOB?1.15:1.6));
+renderer.setPixelRatio(Math.min(devicePixelRatio,window.__MOB?1.0:1.5));
 renderer.setSize(innerWidth,innerHeight);
 renderer.toneMapping=THREE.ACESFilmicToneMapping;
 renderer.toneMappingExposure=1.0;
@@ -404,9 +404,11 @@ canvas.addEventListener('click',(e)=>{
 });
 
 const tmpV=new THREE.Vector3(), cV=new THREE.Vector3(), eV=new THREE.Vector3();
-const clock=new THREE.Clock();
-function loop(){
+const clock=new THREE.Clock(); let __lf=0; const __frameMin=33; /* ~30fps cap = mult mai putin TBT, scena ramane vie */
+function loop(ts){
   requestAnimationFrame(loop);
+  if(ts && ts-__lf<__frameMin) return;
+  __lf=ts||0;
   try{
   const t=clock.getElapsedTime();
   neb.material.uniforms.uTime.value=t;
