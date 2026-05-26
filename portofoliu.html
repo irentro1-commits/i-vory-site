@@ -50,11 +50,11 @@
   .belt{position:fixed;left:0;right:0;top:calc(50% + .55rem);text-align:center;z-index:9;pointer-events:none}
   .belt svg{width:clamp(230px,44vw,520px);height:auto;display:inline-block;animation:beltp 6s ease-in-out infinite}
   @keyframes beltp{0%,100%{opacity:.8}50%{opacity:1}}
-  html.pt .cap{top:6.5%;transform:translate(-50%,0)}
-  html.pt .belt{top:11.5%}
+  html.pt .cap{top:3%;transform:translate(-50%,0)}
+  html.pt .belt{top:9.5%}
   html.pt .hint{bottom:1.1rem}
   html.pt .lab .k{font-size:.62rem;letter-spacing:.16em}
-  html.pt .lab .n{font-size:1.7rem;margin-top:.26rem}
+  html.pt .lab .n{font-size:1.45rem;margin-top:.22rem}
   .hint{position:fixed;left:0;right:0;top:auto;bottom:1.5rem;text-align:center;z-index:9;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:#8f8a82;pointer-events:none;transition:opacity .6s}
   .hint.gone{opacity:0}
 
@@ -554,7 +554,7 @@ if(true){(function(){
   var off=document.createElement('canvas'),o=off.getContext('2d');
   o.font='700 '+fs+'px Geist, system-ui, sans-serif';
   var tw=0,ch; for(var i=0;i<TEXT.length;i++){tw+=o.measureText(TEXT[i]).width+ls;} tw-=ls;
-  var pad=Math.ceil(fs*0.7);
+  var pad=Math.ceil(fs*0.35);
   off.width=Math.ceil(tw)+pad*2; off.height=Math.ceil(fs*1.6)+pad*2;
   o.font='700 '+fs+'px Geist, system-ui, sans-serif'; o.textBaseline='middle'; o.fillStyle='#fff';
   var x=pad,y=off.height/2;
