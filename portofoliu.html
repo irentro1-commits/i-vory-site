@@ -332,7 +332,7 @@ cam.position.copy(HOME);
 const neb=new THREE.Mesh(
   new THREE.SphereGeometry(70,32,32),
   new THREE.ShaderMaterial({
-    uniforms:{uTime:{value:0},uRes:{value:new THREE.Vector2(innerWidth,innerHeight)},uYoff:{value:window.__PT?0.06:0},uR:{value:window.__PT?0.18:0.355}},
+    uniforms:{uTime:{value:0},uRes:{value:new THREE.Vector2(innerWidth,innerHeight)},uYoff:{value:0},uR:{value:window.__PT?0.22:0.355}},
     vertexShader:`varying vec3 vDir;void main(){vDir=position;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}`,
     fragmentShader:FRAG_NEB,side:THREE.BackSide,depthWrite:false,depthTest:false}));
 neb.renderOrder=-10; scene.add(neb);
