@@ -144,31 +144,17 @@ const SOCK=`precision highp float;varying vec2 vUv;uniform float uFade;void main
 
 /* ---------- bodies ---------- */
 // WEBSITES = galaxie
-const FRAG_GX=`precision highp float;varying vec2 vUv;uniform float uTime;uniform float uHover;uniform float uFade;
+const FRAG_GX=`precision highp float;varying vec2 vUv;uniform float uTime;uniform float uHover;uniform float uFade;uniform sampler2D uTex;
 ${NOISE}
 void main(){
- vec2 uv=(vUv-0.5)*2.0;
- float t=uTime*0.022;
- vec2 p=uv*1.2;
- float w=fbm(vec3(p*1.3, t));
- vec2 q=p+vec2(w*0.5-0.25, fbm(vec3(p*1.1+3.0, t))*0.6-0.3);
- float neb=fbm(vec3(q*1.6,t*0.6)); neb=neb*neb*1.5;
- float cs=fbm(vec3(uv.x*2.0+w*0.6, uv.y*0.7-t*0.15, 2.0));
- float dust=clamp(smoothstep(0.34,0.70,cs)*smoothstep(1.15,-0.45,uv.y),0.0,1.0);
- vec3 cSky=vec3(0.14,0.34,0.52), cTeal=vec3(0.10,0.52,0.52), cDust=vec3(0.36,0.23,0.14), cRim=vec3(0.95,0.62,0.32);
- vec3 col=mix(cSky,cTeal,smoothstep(0.2,0.9,neb));
- col=mix(col,cDust,dust*0.92);
- col+=cRim*pow(dust,2.2)*0.6*(0.6+0.4*sin(uv.y*6.0+t*3.0));
- col*=0.42+0.9*neb;
- float h=hash(vec3(floor((uv+5.0)*55.0),7.0));
- if(h>0.972) col+=vec3(0.9,0.95,1.0)*(h-0.972)/0.028;
- vec2 sp0=vec2(-0.62,0.55), sp1=vec2(0.52,0.64), sp2=vec2(-0.28,-0.52);
- vec2 sd; float dd,gl,spk;
- sd=uv-sp0; dd=length(sd); gl=0.013/(dd+0.013); spk=max(0.0,1.0-abs(sd.x)*17.0)*max(0.0,1.0-abs(sd.y)*1.1)+max(0.0,1.0-abs(sd.y)*17.0)*max(0.0,1.0-abs(sd.x)*1.1); col+=vec3(0.9,0.94,1.0)*(gl*0.5+spk*0.4);
- sd=uv-sp1; dd=length(sd); gl=0.010/(dd+0.012); spk=max(0.0,1.0-abs(sd.x)*20.0)*max(0.0,1.0-abs(sd.y)*1.3)+max(0.0,1.0-abs(sd.y)*20.0)*max(0.0,1.0-abs(sd.x)*1.3); col+=vec3(0.85,0.9,1.0)*(gl*0.45+spk*0.3);
- sd=uv-sp2; dd=length(sd); gl=0.008/(dd+0.012); col+=vec3(0.8,0.88,1.0)*gl*0.4;
- float fe=smoothstep(1.25,0.55,length(uv));
- gl_FragColor=vec4(col*fe*uFade, 1.0);
+ vec2 uv=vUv;
+ vec2 duv=uv+vec2(sin(uTime*0.05)*0.006, cos(uTime*0.045)*0.006);
+ vec3 tex=texture2D(uTex,duv).rgb;
+ tex=pow(tex,vec3(0.9))*1.2;
+ vec2 c=(vUv-0.5)*2.0;
+ float fe=smoothstep(1.15,0.42,length(c));
+ tex*=1.0+uHover*0.4;
+ gl_FragColor=vec4(tex*fe, fe*uFade);
 }`;
 
 // DESIGN = supernova
@@ -348,7 +334,7 @@ neb.renderOrder=-10; scene.add(neb); neb.visible=false;
 /* bodies */
 const group=new THREE.Group(); scene.add(group);
 function makeBody(frag,size,pos,blend,ro){
-  const u={uTime:{value:0},uHover:{value:0},uFade:{value:1}};
+  const u={uTime:{value:0},uHover:{value:0},uFade:{value:1},uTex:{value:pillarsTex}};
   const sk=new THREE.Mesh(new THREE.PlaneGeometry(size*(window.__PT?1.32:2.15),size*(window.__PT?1.32:2.15)),
     new THREE.ShaderMaterial({uniforms:u,vertexShader:VERT,fragmentShader:SOCK,transparent:true,blending:THREE.NormalBlending,depthWrite:false,depthTest:false}));
   sk.position.set(pos.x,pos.y,pos.z); sk.renderOrder=-5; group.add(sk);
@@ -357,6 +343,7 @@ function makeBody(frag,size,pos,blend,ro){
       transparent:true,blending:blend||THREE.AdditiveBlending,depthWrite:false,depthTest:false}));
   m.position.set(pos.x,pos.y,pos.z); m.renderOrder=ro||0; group.add(m); return m;
 }
+const pillarsTex=new THREE.TextureLoader().load('/tex/pillars.webp');try{pillarsTex.colorSpace=THREE.SRGBColorSpace;}catch(e){}
 const PT=window.__PT;
 const LAY = PT
  ? [{p:{x:-2.0,y:1.5,z:0},s:2.9},{p:{x:2.0,y:1.5,z:0},s:2.9},{p:{x:-2.0,y:-1.5,z:0},s:2.9},{p:{x:2.0,y:-1.5,z:0},s:2.9}]
