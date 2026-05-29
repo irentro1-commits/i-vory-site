@@ -148,12 +148,22 @@ const FRAG_GX=`precision highp float;varying vec2 vUv;uniform float uTime;unifor
 ${NOISE}
 void main(){
  vec2 uv=vUv;
- vec2 duv=uv+vec2(sin(uTime*0.05)*0.006, cos(uTime*0.045)*0.006);
+ float t=uTime;
+ float wx=fbm(vec3(uv*2.6, t*0.05))-0.5;
+ float wy=fbm(vec3(uv*2.6+11.0, t*0.05))-0.5;
+ vec2 duv=uv+vec2(wx,wy)*0.014;
+ float br=1.0+0.018*sin(t*0.22);
+ duv=(duv-0.5)*br+0.5;
  vec3 tex=texture2D(uTex,duv).rgb;
  tex=pow(tex,vec3(0.9))*1.2;
+ float shim=0.82+0.34*fbm(vec3(uv*3.2, t*0.16));
+ tex*=shim;
+ float lum=dot(tex,vec3(0.333));
+ float tw=0.6+0.7*sin(t*2.6+uv.x*52.0+uv.y*48.0);
+ tex+=tex*smoothstep(0.52,0.92,lum)*tw*0.5;
  vec2 c=(vUv-0.5)*2.0;
  float fe=smoothstep(1.15,0.42,length(c));
- tex*=1.0+uHover*0.4;
+ tex*=1.0+uHover*0.45;
  gl_FragColor=vec4(tex*fe, fe*uFade);
 }`;
 
