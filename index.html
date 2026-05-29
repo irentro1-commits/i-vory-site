@@ -89,7 +89,7 @@
 <!-- OPT-S3.3 2026-05-03: mobile bundle (earth-tex + logo-svg + mobile-fx concatenate). 1 HTTP request in loc de 3, executare imediata fara chain serial. Estimat -300-500ms FCP/LCP mobile. Desktop NU foloseste bundle (foloseste fisierele individuale via desktop branch line 1899). -->
 <link rel="preload" media="(max-width:768px)" as="script" href="/mobile-bundle.js?v=1">
 <!-- OPT-S3.1 2026-05-03: desktop-only modulepreload pentru hero 3D stack — browser incepe fetch three.module.js + hero-3d.module.js paralel cu HTML parse, fara sa astepte importmap evaluation. Estimat -150-300ms LCP desktop. Pure additive: daca preload fail, comportament identic. -->
-<script>try{if(!window.matchMedia("(max-width:768px)").matches){var t=document.createElement('link');t.rel='modulepreload';t.href='/vendor/three-hub.min.js?v=2';document.head.appendChild(t);var h=document.createElement('link');h.rel='modulepreload';h.href='/hero-3d.module.js?v=36';document.head.appendChild(h);}}catch(_){}</script>
+<script>try{if(!window.matchMedia("(max-width:768px)").matches){var t=document.createElement('link');t.rel='modulepreload';t.href='/vendor/three-hub.min.js?v=2';document.head.appendChild(t);var h=document.createElement('link');h.rel='modulepreload';h.href='/hero-3d.module.js?v=37';document.head.appendChild(h);}}catch(_){}</script>
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;700;800&family=Geist+Mono:wght@500&display=swap"></noscript>
 <script>try{(function(){/* U16: defer Fraunces + Instrument Serif + extra Geist weights (below-fold: mobile menu + accent italics + calc price) dupa window.load */var load=function(){var l=document.createElement('link');l.rel='stylesheet';l.href='https://fonts.googleapis.com/css2?family=Geist:wght@600;900&family=Instrument+Serif:ital@0;1&family=Fraunces:ital,opsz,wght@0,9..144,700;1,9..144,400&display=swap';document.head.appendChild(l)};if(document.readyState==='complete'){('requestIdleCallback' in window)?requestIdleCallback(load,{timeout:2500}):setTimeout(load,2000)}else{window.addEventListener('load',function(){('requestIdleCallback' in window)?requestIdleCallback(load,{timeout:2500}):setTimeout(load,2000)})}})()}catch(_){}</script>
 <style id="v95-consolidated">
@@ -1890,7 +1890,7 @@ if(isMobile){
 <script>try{/* U34: load hero-3d.module.js DOAR desktop. Mobile + in-app skip parse 600+ linii Three.js. Preloader + .hero3d deja ascunse pe mobil via m-nopre CSS. */
 (function(){
 if(window.__IS_MOBILE||window.__IS_INAPP)return;
-var s=document.createElement('script');s.type='module';s.src='/hero-3d.module.js?v=36';document.head.appendChild(s);
+var s=document.createElement('script');s.type='module';s.src='/hero-3d.module.js?v=37';document.head.appendChild(s);
 })();}catch(_){}</script>
 
 <script>try{

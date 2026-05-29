@@ -622,12 +622,14 @@ function animate(){
   }
   
   if(window.__HERO_FULL)composer.render();else renderer.render(scene,camera);
-  if(window.__HERO_VISIBLE!==false)__rafId=requestAnimationFrame(animate);
+  if(window.__HERO_VISIBLE!==false&&!window.__HERO_SCROLLING)__rafId=requestAnimationFrame(animate);else __rafId=null;
 }
 // U12c: pause rAF Three.js cand hero iese din viewport (Chrome mobile scroll fix)
 var __rafId=null;window.__HERO_VISIBLE=true;
 try{var __heroObs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){if(!window.__HERO_VISIBLE){window.__HERO_VISIBLE=true;animate()}}else{window.__HERO_VISIBLE=false;if(__rafId)cancelAnimationFrame(__rafId)}})},{threshold:0.01});__heroObs.observe(container);}catch(_){}
 animate();
+/* scroll pause: ingheata render-ul 3D in timpul scroll-ului (compozitor liber=scroll smooth, stele nu se mai agita). Reia 140ms dupa ultimul scroll. */
+window.__HERO_SCROLLING=false;var __ssT=null;addEventListener('scroll',function(){window.__HERO_SCROLLING=true;clearTimeout(__ssT);__ssT=setTimeout(function(){window.__HERO_SCROLLING=false;if(window.__HERO_VISIBLE!==false&&__rafId===null)animate();},140)},{passive:true});
 
 window.addEventListener('resize',()=>{
   camera.aspect=container.clientWidth/container.clientHeight;
