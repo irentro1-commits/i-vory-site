@@ -245,9 +245,9 @@ void main(){
   pos=np; if(tr<0.02)break;
  }
  float ring=smoothstep(HOR*1.7,HOR*1.04,md)*step(HOR,md); ring*=ring;
- vec3 bg = hit ? vec3(0.0) : starfield(normalize(vel))*tr;
+ vec2 ev=uv*vec2(0.8,1.18); float rr2=length(ev); float vig=smoothstep(1.2,0.66,rr2); vec3 bg = (hit ? vec3(0.0) : starfield(normalize(vel))*tr)*vig;
  vec3 col = (bg + acc + temp(0.95)*ring*2.0)*(1.0+uHover*0.4);
- float fe=smoothstep(1.2,0.72,length(uv));
+ float fe=smoothstep(1.14,0.7,rr2);
  gl_FragColor=vec4(col, fe*uFade);
 }`;
 
