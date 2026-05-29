@@ -628,8 +628,19 @@ function animate(){
 var __rafId=null;window.__HERO_VISIBLE=true;
 try{var __heroObs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){if(!window.__HERO_VISIBLE){window.__HERO_VISIBLE=true;animate()}}else{window.__HERO_VISIBLE=false;if(__rafId)cancelAnimationFrame(__rafId)}})},{threshold:0.01});__heroObs.observe(container);}catch(_){}
 animate();
-/* scroll pause: ingheata render-ul 3D in timpul scroll-ului (compozitor liber=scroll smooth, stele nu se mai agita). Reia 140ms dupa ultimul scroll. */
-window.__HERO_SCROLLING=false;var __ssT=null;addEventListener('scroll',function(){window.__HERO_SCROLLING=true;clearTimeout(__ssT);__ssT=setTimeout(function(){window.__HERO_SCROLLING=false;if(window.__HERO_VISIBLE!==false&&__rafId===null)animate();},140)},{passive:true});
+/* scroll smooth: in timpul scroll-ului ASCUND canvasul 3D (compozitorul il sare, ramane bgblobs deep-space dedesubt) + pauza render. La scroll-end reapare cu fade elegant. Cauza jank = compositing canvas fixed full-viewport peste sectiuni transparente (confirmat A/B: hidden=57fps, visible=stall 1s). */
+window.__HERO_SCROLLING=false;var __ssT=null;
+try{container.style.transition='opacity .45s ease';}catch(_){}
+addEventListener('scroll',function(){
+  window.__HERO_SCROLLING=true;
+  try{container.style.visibility='hidden';}catch(_){}
+  clearTimeout(__ssT);
+  __ssT=setTimeout(function(){
+    window.__HERO_SCROLLING=false;
+    try{container.style.opacity='0';container.style.visibility='visible';requestAnimationFrame(function(){container.style.opacity='1';});}catch(_){}
+    if(window.__HERO_VISIBLE!==false&&__rafId===null)animate();
+  },140);
+},{passive:true});
 
 window.addEventListener('resize',()=>{
   camera.aspect=container.clientWidth/container.clientHeight;
