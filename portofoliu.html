@@ -213,7 +213,7 @@ vec3 starfield(vec3 d){
  return col;
 }
 void main(){
- vec2 uv=(vUv-0.5)*2.0;
+ vec2 uv=(vUv-0.5)*2.0; uv*=1.22;
  float my=0.17, mx=uTime*0.04;
  float cd=13.0;
  vec3 ro=vec3(sin(mx)*cos(my),sin(my),cos(mx)*cos(my))*cd;
@@ -245,9 +245,9 @@ void main(){
   pos=np; if(tr<0.02)break;
  }
  float ring=smoothstep(HOR*1.7,HOR*1.04,md)*step(HOR,md); ring*=ring;
- vec2 ev=uv*vec2(0.8,1.18); float rr2=length(ev); float vig=smoothstep(1.2,0.66,rr2); vec3 bg = (hit ? vec3(0.0) : starfield(normalize(vel))*tr)*vig;
+ float rr2=length(uv); float vig=smoothstep(1.16,0.58,rr2); vec3 bg = (hit ? vec3(0.0) : starfield(normalize(vel))*tr)*vig;
  vec3 col = (bg + acc + temp(0.95)*ring*2.0)*(1.0+uHover*0.4);
- float fe=smoothstep(1.14,0.7,rr2);
+ float fe=smoothstep(1.12,0.64,rr2);
  gl_FragColor=vec4(col, fe*uFade);
 }`;
 
