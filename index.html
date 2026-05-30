@@ -1947,10 +1947,29 @@ var __ca=document.getElementById('cookieAccept');if(__ca)__ca.addEventListener('
 var __cd=document.getElementById('cookieDecline');if(__cd)__cd.addEventListener('click',function(){localStorage.setItem('cookie-consent','declined');cb.classList.remove('show');window['ga-disable-G-256CM7TGEG']=true});
 }
 
-// Counter animation - DISABLED 30 Mai 2026 (Andy: "cifrele nu merg pe site").
-// Race condition cu premium-fx.js Effect #7 (line ~192). Fix: counter unic in premium-fx.js, citeste data-target.
-// Daca premium-fx.js nu se incarca (Lighthouse), fallback: counterele raman vizibile cu textContent original ("0").
-// Acceptat: PSI vede "0" ramane "0" — score impact zero.
+// Counter animation v3 30 Mai 2026: MUTAT inapoi in index.html (always-loaded) + trigger pe SCROLL (getBoundingClientRect, mai fiabil decat IntersectionObserver). Era in premium-fx.js care acum se incarca pe prima interactiune (gated PSI) => counter pornea TARZIU, Andy il prindea la jumatate (2/102/2/15 = mid-animatie). Acum porneste imediat ce sectiunea intra in view, independent de premium-fx. Seteaza dataset.counted='1' => premium-fx.js #7 SARE (guard existent) cand se incarca tarziu = zero dublu. Dur 900ms.
+(function(){
+  var done=false;
+  function run(){
+    if(done)return;
+    var nums=document.querySelectorAll('.proof-num[data-target]');
+    if(!nums.length)return;
+    var r=nums[0].getBoundingClientRect();
+    if(r.top<window.innerHeight*0.9 && r.bottom>0){
+      done=true;
+      nums.forEach(function(el){
+        if(el.dataset.counted)return; el.dataset.counted='1';
+        var target=parseInt(el.dataset.target,10)||0,dur=700,start=performance.now();
+        (function tick(now){var p=Math.min(1,(now-start)/dur),eased=1-Math.pow(1-p,3);el.textContent=Math.round(eased*target)+'+';if(p<1)requestAnimationFrame(tick);else el.textContent=target+'+';})(performance.now());
+        // PLASA SIGURANTA: daca rAF e throttled/pauzat (tab fundal), forteaza valoarea finala. Andy vede GARANTAT 4/200/4/30, niciodata blocat la jumatate (ex 102).
+        setTimeout(function(){el.textContent=target+'+';},dur+250);
+      });
+      window.removeEventListener('scroll',run);
+    }
+  }
+  window.addEventListener('scroll',run,{passive:true});
+  run();
+})();
 
 // FAQ - a11y: init aria-expanded + sync on toggle (30 Mai 2026)
 document.querySelectorAll('.faq-q').forEach(function(q){q.setAttribute('aria-expanded','false')});
