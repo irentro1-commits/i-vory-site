@@ -374,8 +374,9 @@ if(!__MOB){(function(){
   void 0;
 })();
 
-// 13. EXIT-INTENT MODAL
+// 13. EXIT-INTENT MODAL — REMOVED (Andy 30 Mai 2026: popup "Stai putin / Audit gratuit 15 minute" pe mouseleave = notificare ieftina/urata, scoasa)
 (function(){
+  return; // disabled - kept body for revert
   if(sessionStorage.getItem('exitShown'))return;
   let shown=false;
   const modal=document.createElement('div');
@@ -731,8 +732,9 @@ if(!__MOB){(function(){
   });
 })();
 
-// 29. SMART CTA FLOAT — WhatsApp expand after 10sec
+// 29. SMART CTA FLOAT — REMOVED (Andy 30 Mai 2026: tooltip "Raspundem in 2 min" = notificare ieftina/urata, scoasa)
 (function(){
+  return; // disabled - kept body for revert
   setTimeout(()=>{
     const wa=document.querySelector('a[href*="whatsapp"][class*="float"],a[href*="api.whatsapp"][style*="fixed"],.whatsapp-float,a[aria-label*="WhatsApp"]')||document.querySelectorAll('a[href*="whatsapp.com"]')[document.querySelectorAll('a[href*="whatsapp.com"]').length-1];
     if(!wa)return;
