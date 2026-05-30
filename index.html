@@ -107,7 +107,7 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
 .bgblobs{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none;background:radial-gradient(ellipse at 50% -8%,#181232 0%,#0d0a20 38%,#08060f 70%,#050507 100%)}
 /* Camp de stele CSS static (desktop-only): paint o singura data, fixed nu re-paint la scroll => zero cost perf. Cand hero3d 3D se ascunde la scroll, raman stele + nebula glow = deep-space, nu negru. */
 @media(min-width:769px){.bgblobs::before{content:"";position:absolute;inset:0;pointer-events:none;background-repeat:no-repeat;background-image:radial-gradient(1.5px 1.5px at 8% 12%,rgba(255,255,255,.9),transparent),radial-gradient(1px 1px at 19% 44%,rgba(200,220,255,.75),transparent),radial-gradient(1px 1px at 31% 22%,rgba(255,240,220,.7),transparent),radial-gradient(2px 2px at 42% 70%,rgba(255,255,255,.85),transparent),radial-gradient(1px 1px at 55% 33%,rgba(180,210,255,.7),transparent),radial-gradient(1.5px 1.5px at 63% 58%,rgba(255,255,255,.9),transparent),radial-gradient(1px 1px at 71% 18%,rgba(220,230,255,.65),transparent),radial-gradient(1px 1px at 78% 80%,rgba(255,255,255,.7),transparent),radial-gradient(1.5px 1.5px at 87% 38%,rgba(200,220,255,.8),transparent),radial-gradient(1px 1px at 93% 65%,rgba(255,245,230,.6),transparent),radial-gradient(1px 1px at 15% 78%,rgba(255,255,255,.6),transparent),radial-gradient(1.5px 1.5px at 25% 90%,rgba(190,210,255,.7),transparent),radial-gradient(1px 1px at 38% 50%,rgba(255,255,255,.55),transparent),radial-gradient(1px 1px at 48% 15%,rgba(220,230,255,.65),transparent),radial-gradient(2px 2px at 58% 86%,rgba(255,255,255,.8),transparent),radial-gradient(1px 1px at 68% 42%,rgba(255,240,220,.6),transparent),radial-gradient(1px 1px at 82% 10%,rgba(255,255,255,.7),transparent),radial-gradient(1.5px 1.5px at 90% 88%,rgba(200,220,255,.75),transparent),radial-gradient(1px 1px at 5% 55%,rgba(255,255,255,.5),transparent),radial-gradient(1px 1px at 35% 8%,rgba(255,255,255,.6),transparent),radial-gradient(1px 1px at 50% 62%,rgba(180,210,255,.6),transparent),radial-gradient(1px 1px at 73% 72%,rgba(255,255,255,.62),transparent)}}
-.blob{position:absolute;border-radius:50%;filter:blur(100px);opacity:.55;will-change:transform}
+.blob{position:absolute;border-radius:50%;filter:blur(60px);opacity:.55;will-change:transform}/*PERF 30 Mai FAZA B: blur 100->60px (paint mult mai ieftin pe suprafete 40-55vw)*/
 .blob1{width:55vw;height:55vw;background:radial-gradient(circle,rgba(123,44,255,.5),rgba(123,44,255,0) 70%);top:-15vw;left:-10vw;animation:blobMove1 22s ease-in-out infinite}
 .blob2{width:50vw;height:50vw;background:radial-gradient(circle,rgba(0,224,192,.38),rgba(0,224,192,0) 70%);top:30vh;right:-15vw;animation:blobMove2 28s ease-in-out infinite}
 .blob3{width:45vw;height:45vw;background:radial-gradient(circle,rgba(240,80,180,.28),rgba(240,80,180,0) 70%);bottom:-10vw;left:20vw;animation:blobMove3 25s ease-in-out infinite}
@@ -1899,11 +1899,7 @@ if(isMobile){
 // PERF 30 Mai 2026: dismiss preloader pe LOAD (decuplat de hero3d, care acum se incarca pe prima interactiune). Content + bgblobs deep-space apar imediat; Pamantul 3D fade-in cand userul interactioneaza. Safety 4.5s pastrat ca ultim backup.
 (function(){var __dp=function(){var p=document.getElementById('pre');if(p)p.classList.add('done')};if(document.readyState==='complete'){setTimeout(__dp,350)}else{window.addEventListener('load',function(){setTimeout(__dp,350)})}setTimeout(__dp,4500)})();
 
-// Custom cursor
-var dot=document.getElementById('cd'),ring=document.getElementById('cr'),mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;dot.style.left=mx-4+'px';dot.style.top=my-4+'px'});
-(function ar(){rx+=(mx-rx)*.15;ry+=(my-ry)*.15;ring.style.left=rx-18+'px';ring.style.top=ry-18+'px';requestAnimationFrame(ar)})();
-document.querySelectorAll('a,button,.type-card,.pk,.pf-img,.dce-item,.how-item,.pf-tab').forEach(function(el){el.addEventListener('mouseenter',function(){ring.classList.add('big')});el.addEventListener('mouseleave',function(){ring.classList.remove('big')})});
+// Custom cursor — DISABLED 30 Mai FAZA C: .cd/.cr (dot+ring) n-au CSS = INVIZIBILE, dar ar() rula rAF PERMANENT + mousemove + mouseenter/leave pe zeci de elemente, degeaba. Cursorul vizibil premium = meteor-cursor.js (nebula wisp). Redundanta + waste scoase, cursor unic.
 
 // Nav scroll state
 window.addEventListener('scroll',function(){document.getElementById('nav').classList.toggle('sc',scrollY>60)},{passive:true});
@@ -2155,5 +2151,7 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")close()});
 <!-- MARKER_END:nav_canonical_js_v1 -->
 <script>try{if(!(window.matchMedia&&matchMedia("(max-width:768px)").matches)){/* PERF 30 Mai 2026: meteor-cursor (efect de cursor) gated pe prima interactiune. Sub PSI (fara cursor) nu se incarca = -TBT. User real misca mouse => apare. */var __mcL=function(){var __mc=document.createElement("script");__mc.src="/meteor-cursor.js";__mc.defer=true;document.head.appendChild(__mc);};var __mcE=['mousemove','pointerdown','scroll','touchstart','keydown'];var __mcK=function(){__mcE.forEach(function(e){window.removeEventListener(e,__mcK)});__mcL();};__mcE.forEach(function(e){window.addEventListener(e,__mcK,{once:true,passive:true})});}}catch(_){}</script>
 <script src="/gtm-events.js?v=2" defer></script>
+<!-- SCRIS KINETIC 30 Mai FAZA D: reveal premium word-by-word pe titluri, always-loaded (trebuie sa ruleze pe load pt titlurile above-fold). Lightweight: word-wrap + IntersectionObserver + plasa siguranta 1.5s. -->
+<script src="/kinetic-type.js?v=1" defer></script>
 </body>
 </html>
