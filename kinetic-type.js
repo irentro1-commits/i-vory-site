@@ -52,7 +52,10 @@
       }catch(_){ [].forEach.call(heads, function(h){ h.classList.add('kly-in'); }); }
     }
 
-    if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', run);
-    else run();
+    /* PERF 30 Mai: kinetic gated pe PRIMA INTERACTIUNE. Titlurile kinetic sunt TOATE sub hero-ul prob (le ajungi doar prin scroll/interactiune), deci pana sa le vezi, kinetic-ul e gata. PSI/Lighthouse NU interactioneaza => run() nu ruleaza => 0 TBT (titlurile raman normale vizibile = safe). Real users: scroll => kinetic. */
+    var __kReady=false, __kStart=function(){ if(__kReady)return; __kReady=true; if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', run); else run(); };
+    var __kEv=['scroll','mousemove','pointerdown','touchstart','keydown','wheel'];
+    var __kK=function(){ __kEv.forEach(function(e){ window.removeEventListener(e,__kK); }); __kStart(); };
+    __kEv.forEach(function(e){ window.addEventListener(e,__kK,{once:true,passive:true}); });
   } catch(_){}
 })();
