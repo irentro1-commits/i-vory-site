@@ -542,7 +542,7 @@ scene.add(glowMesh);
 } // end U12b !MOB elephant+glow block
 
 // Mouse + scroll state
-let mouseX=0,mouseY=0,targetMouseX=0,targetMouseY=0,scrollProg=0;
+let mouseX=0,mouseY=0,targetMouseX=0,targetMouseY=0,scrollProg=0,scrollProgS=0;/*scrollProgS = scroll lerped pt camera lina*/
 window.addEventListener('mousemove',e=>{targetMouseX=(e.clientX/window.innerWidth-.5)*2;targetMouseY=(e.clientY/window.innerHeight-.5)*2},{passive:true});
 window.addEventListener('scroll',()=>{const pr=document.getElementById('prob');if(!pr)return;const r=pr.getBoundingClientRect();const tot=pr.offsetHeight-window.innerHeight;scrollProg=Math.max(0,Math.min(1,-r.top/tot))},{passive:true});
 
@@ -595,7 +595,8 @@ function animate(){
   mars.position.y=_mby+pullY*.3;
   // Scroll camera — zoom out & pitch as you scroll
   // Cinematic multi-stage camera path
-  const _sP=scrollProg;
+  scrollProgS+=(scrollProg-scrollProgS)*.09; /* SMOOTH 30 Mai: glisare lina (lerp) - camera urmeaza scroll-ul fluid, nu sare la valoarea bruta => scroll mega-blana */
+  const _sP=scrollProgS;
   const _stage=_sP*4; // 4 stages
   const _baseZ=window.__IS_MOBILE?7:8;
   camera.position.z=_baseZ+Math.sin(_stage*Math.PI*.5)*(window.__IS_MOBILE?2.5:5)+_sP*(window.__IS_MOBILE?2:3);
@@ -603,8 +604,8 @@ function animate(){
   camera.position.y=Math.sin(_stage*.6)*(window.__IS_MOBILE?.6:1.3)+_sP*.3;
   camera.rotation.x=-_sP*.12+Math.sin(_stage*.4)*.05;
   camera.rotation.y=Math.sin(_stage*.5)*(window.__IS_MOBILE?.04:.08);
-  particles.rotation.y=t*.05+mouseX*.3+scrollProg*.8;
-  particles.rotation.x=mouseY*.2+scrollProg*.3;
+  particles.rotation.y=t*.05+mouseX*.3+scrollProgS*.8;
+  particles.rotation.x=mouseY*.2+scrollProgS*.3;
   // Gravitational drift — orbits slowly in XY plane with bobbing
   if(elephantGroup){
   elephantGroup.rotation.y=t*.15+mouseX*.9;
@@ -622,7 +623,8 @@ function animate(){
   }
   
   if(window.__HERO_FULL)composer.render();else renderer.render(scene,camera);
-  if(window.__HERO_VISIBLE!==false&&!window.__HERO_SCROLLING)__rafId=requestAnimationFrame(animate);else __rafId=null;
+  /* SMOOTH 30 Mai: randeaza CONTINUU la scroll (scos !__HERO_SCROLLING). Inainte: rAF se pauza la scroll => scena legata de scroll (camera urmeaza scrollProg) INGHETA in timpul scroll-ului apoi SAREA la pozitia noua la scroll-end = "se teleporteaza imaginea din spate". Acum camera glseaza fluid cu scrollProgS (lerp). Three.js usurat (pixelRatio 1.5, particule/stele reduse) tine 60fps la scroll pe desktop. */
+  if(window.__HERO_VISIBLE!==false)__rafId=requestAnimationFrame(animate);else __rafId=null;
 }
 // U12c: pause rAF Three.js cand hero iese din viewport (Chrome mobile scroll fix)
 var __rafId=null;window.__HERO_VISIBLE=true;
