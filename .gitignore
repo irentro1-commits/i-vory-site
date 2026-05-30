@@ -16,3 +16,9 @@ desktop.ini
 # secrets (defensive — .secrets/ normally lives outside repo, but block it here too)
 .secrets/
 *.secret
+
+# tooling local (NU deploy)
+node_modules/
+_tex-backup-2048/
+_resize_tmp.mjs
+package-lock.json
