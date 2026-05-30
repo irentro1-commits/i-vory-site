@@ -3,6 +3,8 @@ _*.bat
 _*.txt
 *.backup
 *.bak
+_backups-*/
+_menu-propagate.py
 
 # skill drafts (local only, not for deploy)
 hyperpremium-landing-skill-*.md
