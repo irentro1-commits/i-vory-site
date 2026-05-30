@@ -598,8 +598,9 @@ if(!__MOB){(function(){
   document.head.appendChild(s);
 })();
 
-// 23. SOCIAL PROOF BADGES on packages
+// 23. SOCIAL PROOF BADGES — REMOVED (Andy 30 Mai 2026: badge "ales de N antreprenori" = cifra inventata/fake, scos)
 (function(){
+  return; // disabled - kept body for revert
   const pks=document.querySelectorAll('.pk');
   if(!pks.length)return;
   const counts=[12,24,8];
@@ -779,8 +780,9 @@ if(!__MOB){(function(){
   document.querySelectorAll('section.sec').forEach(s=>obs.observe(s));
 })();
 
-// 33. DYNAMIC FAVICON — animates when tab inactive
+// 33. DYNAMIC FAVICON — REMOVED (Andy 30 Mai 2026: schimba titlul tab in "(1) Te-am asteptat" + bulina rosie pe favicon cand schimbi tab = FOMO bait ieftin, scos. Favicon-ul real ramane din <head>.)
 (function(){
+  return; // disabled - kept body for revert
   const link=document.querySelector('link[rel*="icon"]')||document.createElement('link');
   link.type='image/svg+xml';link.rel='icon';
   if(!link.parentNode)document.head.appendChild(link);
