@@ -146,8 +146,9 @@ if(!__MOB){(function(){
   });
 })();
 
-// AMBIENT AUDIO TOGGLE (all)
+// AMBIENT AUDIO TOGGLE - REMOVED (Andy 30 Mai 2026: scos butonul de microfon, deranja UX desktop)
 (function(){
+  return; // disabled - kept IIFE body for revert reference
   const audioBtn=document.createElement('button');
   audioBtn.setAttribute('aria-label','Sunet ambient');
   const svgMute='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="1" y1="1" x2="23" y2="23"></line><path d="M9 9v3a3 3 0 0 0 5.12 2.12M15 9.34V4a3 3 0 0 0-5.94-.6"></path><path d="M17 16.95A7 7 0 0 1 5 12v-2m14 0v2a7 7 0 0 1-.11 1.23"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>';
@@ -190,6 +191,8 @@ if(!__MOB){(function(){
 // ========== PREMIUM FX ROUND 4 — 2026 ==========
 
 // 7. ANIMATED NUMBER COUNTERS with cinematic easing
+// FIX 30 Mai 2026 (Andy: "cifrele nu merg pe site"): citeste data-target intai (HTML are <div data-target="4">0</div>),
+// nu textContent. Suffix '+' added. Race cu duplicate counter in index.html rezolvata prin disable acolo.
 (function(){
   const nums=document.querySelectorAll('.proof-num,[data-count]');
   if(!nums.length)return;
@@ -198,10 +201,16 @@ if(!__MOB){(function(){
       if(!en.isIntersecting||en.target.dataset.counted)return;
       en.target.dataset.counted='1';
       const el=en.target;
-      const txt=el.textContent.trim();
-      const match=txt.match(/^([^\d]*)(\d+(?:[.,]\d+)?)(.*)$/);
-      if(!match)return;
-      const prefix=match[1],end=parseFloat(match[2].replace(',','.')),suffix=match[3];
+      let prefix='',end=0,suffix='+';
+      if(el.dataset.target){
+        end=parseFloat(el.dataset.target);
+      }else{
+        const txt=el.textContent.trim();
+        const match=txt.match(/^([^\d]*)(\d+(?:[.,]\d+)?)(.*)$/);
+        if(!match)return;
+        prefix=match[1];end=parseFloat(match[2].replace(',','.'));suffix=match[3];
+      }
+      if(!isFinite(end))return;
       const dur=1800,start=performance.now();
       function tick(t){
         const p=Math.min((t-start)/dur,1);
@@ -338,8 +347,9 @@ if(!__MOB){(function(){
 
 // ========== PREMIUM FX ROUND 5 — 2026 ==========
 
-// 12. LIVE TICKER under nav
+// 12. LIVE TICKER - REMOVED (Andy 30 Mai 2026: banda cu programari/live era tampita, scos complet)
 (function(){
+  return; // disabled - kept IIFE body for revert reference
   const ticker=document.createElement('div');
   ticker.style.cssText='position:fixed;bottom:0;left:0;right:0;background:linear-gradient(90deg,rgba(6,8,18,.95),rgba(10,20,35,.95),rgba(6,8,18,.95));backdrop-filter:blur(8px);border-bottom:1px solid rgba(0,224,192,.15);padding:.4rem 1.2rem;font-family:var(--fd,Syne),sans-serif;font-size:.72rem;color:#b8c5d0;z-index:99;display:flex;align-items:center;gap:.7rem;overflow:hidden;letter-spacing:.08em;text-transform:uppercase';
   const dot='<span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#ff3344;box-shadow:0 0 8px rgba(255,51,68,.8);animation:livePulse 1.6s ease-in-out infinite"></span>';
@@ -467,6 +477,8 @@ if(!__MOB){(function(){
       });
     }
   }
+  // FIX perf 30 Mai 2026: rAF loop ruleaza doar cand exista particule (era forever clearRect viewport, waste GPU desktop).
+  let __burstRunning=false;
   function tick(){
     bctx.clearRect(0,0,burstCvs.width,burstCvs.height);
     for(let i=particles.length-1;i>=0;i--){
@@ -478,9 +490,9 @@ if(!__MOB){(function(){
       bctx.arc(p.x,p.y,p.size*p.life,0,Math.PI*2);
       bctx.fill();
     }
-    requestAnimationFrame(tick);
+    if(particles.length){requestAnimationFrame(tick)}else{__burstRunning=false}
   }
-  tick();
+  function startTick(){if(!__burstRunning){__burstRunning=true;requestAnimationFrame(tick)}}
   document.addEventListener('click',e=>{
     const t=e.target.closest('a.bh,button.bh,a.cta,.b-peach');
     if(!t)return;
@@ -488,6 +500,7 @@ if(!__MOB){(function(){
     const isPeach=t.classList.contains('b-peach');
     const palette=isPeach?['255,154,61','255,184,107','255,228,181']:['0,224,192','125,255,230','180,255,240'];
     burst(r.left+r.width/2,r.top+r.height/2,palette);
+    startTick();
   });
 })();
 
@@ -807,9 +820,11 @@ if(!__MOB){(function(){
   document.head.appendChild(s);
 })();
 
-// 36. SMOOTH SNAP between major sections (gentle, not aggressive)
+// 36. SMOOTH SNAP - DISABLED (Andy 30 Mai 2026: scroll-snap facea pagina sa "sara" desktop = bulversat).
+// scroll-snap-type pe html cu proximity prinde scroll si snap-uieste la sectiuni: break smooth scroll natural.
+// Daca vrem snap inapoi, foloseste-l doar pe sectiuni cu story-mode (prob), nu global.
 (function(){
-  // Soft snap via CSS scroll-snap-stop=normal
+  return; // disabled - kept IIFE body for revert reference
   const s=document.createElement('style');
   s.textContent='@media(min-width:769px){html{scroll-snap-type:y proximity}section.sec{scroll-snap-align:start;scroll-snap-stop:normal}.prob{scroll-snap-align:none}}';
   document.head.appendChild(s);
@@ -907,8 +922,9 @@ if(!__MOB){(function(){
   });
 })();
 
-// 43. LIVE VISITOR COUNTER (subtle, fake-real)
+// 43. LIVE VISITOR COUNTER - REMOVED (Andy 30 Mai 2026: "X oameni online" fake-real, scos)
 (function(){
+  return; // disabled - kept IIFE body for revert reference
   const wrap=document.createElement('div');
   wrap.style.cssText='position:fixed;bottom:1.5rem;left:5.5rem;background:rgba(6,8,18,.85);backdrop-filter:blur(10px);border:1px solid rgba(0,224,192,.2);color:#b8c5d0;padding:.5rem .9rem;border-radius:100px;font-family:var(--fb,DM Sans),sans-serif;font-size:.7rem;z-index:97;display:flex;align-items:center;gap:.5rem;box-shadow:0 4px 20px rgba(0,0,0,.4)';
   let count=8+Math.floor(Math.random()*12);
@@ -963,8 +979,9 @@ if(!__MOB){(function(){
 
 // ========== PREMIUM FX ROUND 10 — ULTRA ==========
 
-// 45. AUDIO-REACTIVE PARTICLES (FFT analyzer hooks into ambient audio)
+// 45. AUDIO-REACTIVE PARTICLES - REMOVED (Andy 30 Mai 2026: depinde de butonul audio scos)
 (function(){
+  return; // disabled - kept IIFE body for revert reference
   // Hook into existing audio button
   const origAudio=document.querySelector('[aria-label="Sunet ambient"]');
   if(!origAudio)return;
