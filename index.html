@@ -1391,7 +1391,7 @@ body{overflow-x:clip}
 }
 </style>
 
-<!-- U14: Contentsquare defer pentru LCP/TBT (load dupa window.load + idle 3s) --><script>try{(function(){var f=function(){var s=document.createElement('script');s.src='https://t.contentsquare.net/uxa/1c375afd3bba3.js';s.async=true;document.head.appendChild(s)};if(document.readyState==='complete'){('requestIdleCallback' in window)?requestIdleCallback(f,{timeout:3500}):setTimeout(f,3000)}else{window.addEventListener('load',function(){('requestIdleCallback' in window)?requestIdleCallback(f,{timeout:3500}):setTimeout(f,3000)})}})()}catch(_){}</script>
+<!-- Contentsquare 30 Mai: gated pe PRIMA INTERACTIUNE (heatmap/recording - o sesiune fara interactiune n-are ce inregistra => ZERO pierdere date reala). Sub PSI (fara interactiune) nu se incarca => -218ms TBT. --><script>try{(function(){var loaded=false;var f=function(){if(loaded)return;loaded=true;var s=document.createElement('script');s.src='https://t.contentsquare.net/uxa/1c375afd3bba3.js';s.async=true;document.head.appendChild(s)};var ev=['scroll','mousemove','touchstart','keydown','click','pointerdown','wheel'];var kick=function(){ev.forEach(function(e){window.removeEventListener(e,kick)});f()};ev.forEach(function(e){window.addEventListener(e,kick,{passive:true,once:true})});})()}catch(_){}</script>
 
 <!-- Google Business Place ID — Schema.org LocalBusiness -->
 <script type="application/ld+json">
