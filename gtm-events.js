@@ -57,7 +57,8 @@
 
   /* --- 5. Google Review clicks --------------------------------------------- */
   document.addEventListener('click', function (e) {
-    var link = e.target.closest('a[href*="search.google.com/local/writereview"]');
+    /* FIX 30 Mai 2026: pattern-ul cauta writereview dar link-urile reale sunt g.page/r/... => review_click nu se declansa niciodata. Acum prinde ambele. */
+    var link = e.target.closest('a[href*="g.page/r/"], a[href*="search.google.com/local/writereview"]');
     if (!link) return;
     push('review_click', { page_path: window.location.pathname });
   }, true);
