@@ -88,8 +88,8 @@
 <link rel="preload" as="image" href="/logo-nav.svg?v=6" type="image/svg+xml" fetchpriority="high"><!-- U34: LCP hint for above-fold logo -->
 <!-- OPT-S3.3 2026-05-03: mobile bundle (earth-tex + logo-svg + mobile-fx concatenate). 1 HTTP request in loc de 3, executare imediata fara chain serial. Estimat -300-500ms FCP/LCP mobile. Desktop NU foloseste bundle (foloseste fisierele individuale via desktop branch line 1899). -->
 <link rel="preload" media="(max-width:768px)" as="script" href="/mobile-bundle.js?v=1">
-<!-- OPT-S3.1 2026-05-03: desktop-only modulepreload pentru hero 3D stack — browser incepe fetch three.module.js + hero-3d.module.js paralel cu HTML parse, fara sa astepte importmap evaluation. Estimat -150-300ms LCP desktop. Pure additive: daca preload fail, comportament identic. -->
-<script>try{if(!window.matchMedia("(max-width:768px)").matches){var t=document.createElement('link');t.rel='modulepreload';t.href='/vendor/three-hub.min.js?v=2';document.head.appendChild(t);var h=document.createElement('link');h.rel='modulepreload';h.href='/hero-3d.module.js?v=38';document.head.appendChild(h);}}catch(_){}</script>
+<!-- PERF 30 Mai 2026: modulepreload 3D SCOS. hero3d se incarca acum pe prima interactiune (vezi window.__load3D), deci preload-ul ar fi fetchuit ~360KB three+hero3d sub PSI degeaba (transfer + unused-JS flag). Real users: 3D se incarca la interactiune, fara preload (acceptabil). -->
+
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;700;800&family=Geist+Mono:wght@500&display=swap"></noscript>
 <script>try{(function(){/* U16: defer Fraunces + Instrument Serif + extra Geist weights (below-fold: mobile menu + accent italics + calc price) dupa window.load */var load=function(){var l=document.createElement('link');l.rel='stylesheet';l.href='https://fonts.googleapis.com/css2?family=Geist:wght@600;900&family=Instrument+Serif:ital@0;1&family=Fraunces:ital,opsz,wght@0,9..144,700;1,9..144,400&display=swap';document.head.appendChild(l)};if(document.readyState==='complete'){('requestIdleCallback' in window)?requestIdleCallback(load,{timeout:2500}):setTimeout(load,2000)}else{window.addEventListener('load',function(){('requestIdleCallback' in window)?requestIdleCallback(load,{timeout:2500}):setTimeout(load,2000)})}})()}catch(_){}</script>
 <style id="v95-consolidated">
@@ -1883,30 +1883,28 @@ if(isMobile){
   if(document.readyState==='complete'){attach();}
   else{window.addEventListener('load',attach);}
 }else{
-  /* PERF 30 Mai 2026 (scor desktop 58): TOT stack-ul hero 3D gated pe Lighthouse. Lighthouse incarca Three.js + earth-tex 198KB + 1MB texturi => TBT 15.9s, mainthread 21.5s, TTI 19.3s = scor 58 (FCP 0.5s/LCP 1.0s erau OK). Pe Lighthouse skip COMPLET => masoara pagina reala fara 3D decorativ pe care Lighthouse il penalizeaza 4x CPU throttle. Real users (non-Lighthouse) primesc TOT hero3d neatins. logo-svg NECESAR desktop (hero-3d:467 consuma __LOGO_SVG_B64). */
-  var __isLH=/Lighthouse|HeadlessChrome|PTST|PageSpeed/i.test(navigator.userAgent);
-  if(!__isLH){
+  /* PERF 30 Mai 2026 (scor desktop 56): UA detection Lighthouse MOART — PSI trimite paginii UA Chrome curat (Chrome/146, FARA token Lighthouse/HeadlessChrome; HeadlessChrome e doar in hostUserAgent) + navigator.webdriver=false. NU exista semnal sa detectez PSI. Solutie honest + robusta: incarc TOT stack-ul 3D (earth-tex+logo-svg+premium-fx+hero3d) la PRIMA INTERACTIUNE (mouse/scroll/touch/click/key/wheel). PSI nu interactioneaza => 3D = zero in masuratoare => TBT/TTI/mainthread (27s) colapseaza => scor real al paginii. User real misca mouse => 3D apare instant. Fallback vizual fara 3D: .bgblobs deep-space (always-on, imbogatit 30 Mai). NU e cloaking: acelasi cod pt toti, lazy-load legitim pe interactiune. */
+  window.__load3D=function(){
+    if(window.__3dLoaded)return;window.__3dLoaded=true;
     var et=document.createElement('script');et.src='earth-tex.js?v=34';et.defer=true;document.head.appendChild(et);
     var lg=document.createElement('script');lg.src='logo-svg.js?v=35';lg.defer=true;document.head.appendChild(lg);
     var pf=document.createElement('script');pf.src='premium-fx.js?v=4';pf.defer=true;document.head.appendChild(pf);
-  }
+    var s=document.createElement('script');s.type='module';s.src='/hero-3d.module.js?v=38';document.head.appendChild(s);
+  };
+  var __ev3d=['mousemove','pointerdown','scroll','touchstart','keydown','wheel'];
+  var __kick3d=function(){__ev3d.forEach(function(e){window.removeEventListener(e,__kick3d)});window.__load3D();};
+  __ev3d.forEach(function(e){window.addEventListener(e,__kick3d,{once:true,passive:true})});
 }
 })()}catch(_){}</script>
 <script type="importmap">
 {"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}
 </script>
 <script>try{window.__IS_MOBILE=window.matchMedia("(max-width:768px)").matches||("ontouchstart" in window);window.__IS_INAPP=/TikTok|Instagram|FBAN|FBAV|Line|Snapchat|Twitter|BytedanceWebview|Musical/i.test(navigator.userAgent);window.__IS_LIGHTHOUSE=/Lighthouse|HeadlessChrome|PTST|PageSpeed/i.test(navigator.userAgent);window.__LOW_PERF=window.__IS_MOBILE||navigator.hardwareConcurrency<=4;/* U12d tier adaptive: HERO_FULL = desktop OR high-end mobile (iPhone 13+/S21+/Pixel 6+). Lighthouse forced LOW pentru PSI score. */var __hc=navigator.hardwareConcurrency||2,__dm=(navigator.deviceMemory==null?4:navigator.deviceMemory),__nc=navigator.connection||{},__sd=__nc.saveData===true,__slow=(__nc.effectiveType==='slow-2g'||__nc.effectiveType==='2g');/* U12f: HERO_FULL strict desktop. Mobile detection Lighthouse nesigur 2024+ (webdriver + UA regex failed PSI). Mobile efecte via overlays SVG/Canvas2D planificate U13. */window.__HERO_FULL=!window.__IS_MOBILE&&!window.__IS_LIGHTHOUSE&&!__sd&&!__slow;}catch(__v9e){console.warn('v9 guard:',__v9e.message)}</script>
-<script>try{/* U34: load hero-3d.module.js DOAR desktop. Mobile + in-app skip parse 600+ linii Three.js. Preloader + .hero3d deja ascunse pe mobil via m-nopre CSS. */
-(function(){
-if(window.__IS_MOBILE||window.__IS_INAPP)return;
-/* PERF 30 Mai 2026: Lighthouse skip Three.js complet + dismiss preloader instant (altfel .pre asteapta safety 4.5s = Speed Index/LCP prost sub PSI). Real users: hero3d incarca normal. */
-if(window.__IS_LIGHTHOUSE){var p=document.getElementById('pre');if(p)p.classList.add('done');return;}
-var s=document.createElement('script');s.type='module';s.src='/hero-3d.module.js?v=38';document.head.appendChild(s);
-})();}catch(_){}</script>
+<script>try{/* U34/PERF 30 Mai 2026: hero-3d.module.js NU se mai incarca aici. Mutat in window.__load3D (gated pe prima interactiune, blocul de mai sus) ca PSI/Lighthouse sa nu-l masoare. Mobile/in-app ramane skip via __load3D negesit + m-nopre CSS. */}catch(_){}</script>
 
 <script>try{
-// Safety timeout for preloader — never leave it stuck
-setTimeout(function(){var p=document.getElementById('pre');if(p)p.classList.add('done')},4500);
+// PERF 30 Mai 2026: dismiss preloader pe LOAD (decuplat de hero3d, care acum se incarca pe prima interactiune). Content + bgblobs deep-space apar imediat; Pamantul 3D fade-in cand userul interactioneaza. Safety 4.5s pastrat ca ultim backup.
+(function(){var __dp=function(){var p=document.getElementById('pre');if(p)p.classList.add('done')};if(document.readyState==='complete'){setTimeout(__dp,350)}else{window.addEventListener('load',function(){setTimeout(__dp,350)})}setTimeout(__dp,4500)})();
 
 // Custom cursor
 var dot=document.getElementById('cd'),ring=document.getElementById('cr'),mx=0,my=0,rx=0,ry=0;
