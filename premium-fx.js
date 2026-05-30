@@ -22,17 +22,21 @@ const __LOW=false; // force full premium
   // 2. PARALLAX TITLE SHIFT (desktop mouse + mobile scroll-based)
   const titles=document.querySelectorAll('.sec h2,.s2 h2,.sh,.contact-h');
   if(!__MOB){
-    let mx=0,my=0,tmx=0,tmy=0;
+    let mx=0,my=0,tmx=0,tmy=0,__pOn=false;
     window.addEventListener('mousemove',e=>{
       tmx=(e.clientX/window.innerWidth-.5)*2;
       tmy=(e.clientY/window.innerHeight-.5)*2;
+      if(!__pOn&&!document.hidden){__pOn=true;tick();}
     },{passive:true});
+    /* PERF 30 Mai FAZA B: rAF parallax se OPRESTE cand titlul s-a asezat (mouse nemiscat) + pe tab hidden. Reia la mousemove. Inainte: rAF permanent lerp chiar nemiscat (ardea un frame/16ms degeaba mereu). */
     function tick(){
+      if(document.hidden){__pOn=false;return;}
       mx+=(tmx-mx)*.06;my+=(tmy-my)*.06;
       titles.forEach(t=>{t.style.transform=`translate(${-mx*8}px,${-my*6}px)`});
+      if(Math.abs(tmx-mx)<.001&&Math.abs(tmy-my)<.001){__pOn=false;return;}
       requestAnimationFrame(tick);
     }
-    tick();
+    document.addEventListener('visibilitychange',function(){if(!document.hidden&&!__pOn){__pOn=true;tick();}});
   }
 
 
@@ -57,7 +61,9 @@ const __LOW=false; // force full premium
     scrollVel=Math.min(Math.abs(cur-lastScroll)*.5,30);
     lastScroll=cur;
   },{passive:true});
+  /* PERF 30 Mai FAZA B: skip cand tab hidden sau cand nu se scrolleaza (scrollVel≈0) - inainte rula calcul + scria uniforma la fiecare 40ms permanent, chiar in fundal. */
   setInterval(()=>{
+    if(document.hidden||scrollVel<.02)return;
     scrollVel*=.85;
     if(window.__starMat&&window.__starMat.uniforms.warp){
       window.__starMat.uniforms.warp.value=scrollVel*.03;
@@ -88,7 +94,13 @@ if(!__MOB){(function(){
   addEventListener('mousemove',e=>{dmx=(e.clientX/innerWidth-.5)*2;dmy=(e.clientY/innerHeight-.5)*2},{passive:true});
   // Touch drift on mobile
   addEventListener('touchmove',e=>{if(e.touches[0]){dmx=(e.touches[0].clientX/innerWidth-.5)*2;dmy=(e.touches[0].clientY/innerHeight-.5)*2}},{passive:true});
+  /* PERF 30 Mai FAZA B: pauza pe tab hidden (baterie) + FREEZE in timpul scroll-ului (compositing screen-blend full-screen concura cu scroll = jank) + 30fps skip-frame (dust ambient, imperceptibil). */
+  let __dustOn=true,__dustSkip=0;
   function dustTick(){
+    if(document.hidden){__dustOn=false;return;}
+    requestAnimationFrame(dustTick);
+    if(window.__HERO_SCROLLING)return;
+    if((__dustSkip^=1))return;
     dctx.clearRect(0,0,dcvs.width,dcvs.height);
     for(const p of dust){
       p.x+=p.vx+dmx*p.z*.3;p.y+=p.vy+dmy*p.z*.3;
@@ -98,9 +110,9 @@ if(!__MOB){(function(){
       dctx.fillStyle=`rgba(${p.hue[0]},${p.hue[1]},${p.hue[2]},${p.a})`;
       dctx.arc(p.x,p.y,p.r*p.z,0,Math.PI*2);dctx.fill();
     }
-    requestAnimationFrame(dustTick);
   }
   dustTick();
+  document.addEventListener('visibilitychange',function(){if(!document.hidden&&!__dustOn){__dustOn=true;dustTick();}});
 })();
 
 // LOGO BREATHING (all devices)
@@ -109,7 +121,9 @@ if(!__MOB){(function(){
   if(navLogo){
     navLogo.style.transition='filter 2s ease-in-out';
     let phase=0;
+    /* PERF 30 Mai FAZA B: skip pe tab hidden (era repaint drop-shadow 20fps permanent, inclusiv in fundal). */
     setInterval(()=>{
+      if(document.hidden)return;
       phase+=.04;
       const intensity=.4+Math.sin(phase)*.35;
       navLogo.style.filter=`drop-shadow(0 0 ${8+intensity*12}px rgba(0,224,192,${intensity}))`;
@@ -872,8 +886,9 @@ if(__MOB){console.log("[fx] mobile - skip heavy R9+R10 effects");return;}
   document.querySelectorAll('.contact-h').forEach(h=>{if(h.children.length===0)obs.observe(h)});
 })();
 
-// 39. PARALLAX DEPTH LAYERS on hero (mouse-based, desktop only)
+// 39. PARALLAX DEPTH LAYERS — DISABLED (PERF 30 Mai FAZA B)
 if(!__MOB){(function(){
+  return; /* DISABLED: redundant cu parallax-ul intern Three.js (camera urmareste mouse-ul via __mx/__my din hero-3d.module.js) + facea querySelector('.hero3d/.bgblobs/.godrays') la FIECARE frame (rAF permanent) + tinta .godrays nici nu exista in DOM. Hero3d pastreaza mouse-parallax-ul lui. */
   const layers=[
     {sel:'.hero3d',depth:.02},
     {sel:'.bgblobs',depth:.04},
@@ -1082,8 +1097,10 @@ if(!__MOB){(function(){
   const hud=document.createElement('div');
   hud.style.cssText='position:fixed;top:90px;right:10px;background:rgba(6,8,18,.92);backdrop-filter:blur(10px);border:1px solid rgba(0,224,192,.3);color:#7dffe6;padding:.6rem .9rem;font:11px monospace;z-index:9999;border-radius:6px;display:none;line-height:1.6;letter-spacing:.05em';
   document.body.appendChild(hud);
-  let frames=0,lastT=performance.now(),fps=60;
+  let frames=0,lastT=performance.now(),fps=60,__hudOn=false;
+  /* PERF 30 Mai FAZA B: rAF FPS-counter ruleaza DOAR cand HUD-ul e vizibil (era rAF permanent pt un tool dev ascuns 99% din timp). */
   function tick(){
+    if(hud.style.display==='none'){__hudOn=false;return;}
     frames++;
     const now=performance.now();
     if(now-lastT>=1000){
@@ -1094,11 +1111,12 @@ if(!__MOB){(function(){
     }
     requestAnimationFrame(tick);
   }
-  tick();
+  /* nu pornesc tick() la init - doar la toggle (HUD off by default) */
   addEventListener('keydown',e=>{
     if(e.ctrlKey&&e.shiftKey&&e.key==='P'){
       e.preventDefault();
       hud.style.display=hud.style.display==='none'?'block':'none';
+      if(hud.style.display!=='none'&&!__hudOn){__hudOn=true;lastT=performance.now();frames=0;tick();}
     }
   });
 })();

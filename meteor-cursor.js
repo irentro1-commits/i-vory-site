@@ -48,6 +48,7 @@
     lastMoveTs=Date.now();
     m.classList.remove('idle');
     cv.classList.remove('idle');
+    if(!window.__mcOn){window.__mcOn=true;tick();} /*PERF 30 Mai FAZA B: reia bucla la miscare*/
   });
   document.addEventListener('mouseleave',function(){m.style.opacity='0'});
 
@@ -65,7 +66,9 @@
     [160,220,255],[200,240,255],[140,180,240]
   ];
   // === 4. Physics loop — trail particles + core glow ===
+  window.__mcOn=true;
   function tick(){
+    if(document.hidden){window.__mcOn=false;return;} /*PERF 30 Mai FAZA B: pauza pe tab hidden*/
     cx+=(mx-cx)*speed;
     cy+=(my-cy)*speed;
     m.style.left=cx+'px';m.style.top=cy+'px';
@@ -127,6 +130,8 @@
     }
 
     if(trail.length>200)trail.splice(0,trail.length-200);
+    /*PERF 30 Mai FAZA B: pauza cand mouse-ul sta nemiscat >1.6s SI trail gol (era clearRect full-screen 60fps permanent chiar cu cursorul stationar). Reia la mousemove.*/
+    if(Date.now()-lastMoveTs>1600&&trail.length===0){window.__mcOn=false;return;}
     requestAnimationFrame(tick);
   }
   tick();

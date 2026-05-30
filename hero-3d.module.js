@@ -24,7 +24,7 @@ const scene=new THREE.Scene();
 const camera=new THREE.PerspectiveCamera(window.__IS_MOBILE?90:60,container.clientWidth/container.clientHeight,.1,100);
 camera.position.z=8;
 const renderer=new THREE.WebGLRenderer({antialias:true,alpha:true,powerPreference:'high-performance'});
-renderer.setPixelRatio(Math.min(window.devicePixelRatio,window.__HERO_FULL?2:1.25));
+renderer.setPixelRatio(Math.min(window.devicePixelRatio,window.__HERO_FULL?1.5:1.25)/*PERF 30 Mai: cap 2->1.5, -44% pixeli pe 4K, bloom ascunde diferenta*/);
 renderer.setSize(container.clientWidth,container.clientHeight);
 renderer.setClearColor(0x000000,0);
 renderer.toneMapping=THREE.ACESFilmicToneMapping;
@@ -36,7 +36,7 @@ const {EffectComposer}=__M;
 const {RenderPass}=__M;
 const {UnrealBloomPass}=__M;
 const composer=new EffectComposer(renderer);
-composer.setPixelRatio(Math.min(window.devicePixelRatio,window.__HERO_FULL?2:1.25));
+composer.setPixelRatio(Math.min(window.devicePixelRatio,window.__HERO_FULL?1.5:1.25)/*PERF 30 Mai: cap 2->1.5, -44% pixeli pe 4K, bloom ascunde diferenta*/);
 composer.setSize(container.clientWidth,container.clientHeight);
 
 stepPre(.7,3);
@@ -356,7 +356,7 @@ nebula.position.z=-30;
 if(window.__HERO_FULL)scene.add(nebula);
 
 // Particle field — 4000 particles forming a cloud (U12b: 1200 on mobile)
-const particleCount=window.__HERO_FULL?4000:1200;
+const particleCount=window.__HERO_FULL?2500:1200;/*PERF 30 Mai: 4000->2500, -37% vertex load, inca dens*/
 const positions=new Float32Array(particleCount*3);
 const colors=new Float32Array(particleCount*3);
 const sizes=new Float32Array(particleCount);
@@ -417,7 +417,7 @@ const particles=new THREE.Points(geometry,particleMaterial);
 scene.add(particles);
 
 // ========== DEEP SPACE STARFIELD ==========
-const starCount=window.__HERO_FULL?(window.__LOW_PERF?4500:5500):1500;
+const starCount=window.__HERO_FULL?(window.__LOW_PERF?3000:3500):1500;/*PERF 30 Mai: 5500->3500, -36% stele, inca dens*/
 const starPos=new Float32Array(starCount*3);
 const starCol=new Float32Array(starCount*3);
 const starSize=new Float32Array(starCount);
