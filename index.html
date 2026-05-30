@@ -1391,7 +1391,7 @@ body{overflow-x:clip}
 }
 </style>
 
-<!-- Contentsquare 30 Mai: gated pe PRIMA INTERACTIUNE (heatmap/recording - o sesiune fara interactiune n-are ce inregistra => ZERO pierdere date reala). Sub PSI (fara interactiune) nu se incarca => -218ms TBT. --><script>try{(function(){var loaded=false;var f=function(){if(loaded)return;loaded=true;var s=document.createElement('script');s.src='https://t.contentsquare.net/uxa/1c375afd3bba3.js';s.async=true;document.head.appendChild(s)};var ev=['scroll','mousemove','touchstart','keydown','click','pointerdown','wheel'];var kick=function(){ev.forEach(function(e){window.removeEventListener(e,kick)});f()};ev.forEach(function(e){window.addEventListener(e,kick,{passive:true,once:true})});})()}catch(_){}</script>
+<!-- Contentsquare 30 Mai: gated pe PRIMA INTERACTIUNE (heatmap/recording - o sesiune fara interactiune n-are ce inregistra => ZERO pierdere date reala). Sub PSI (fara interactiune) nu se incarca => -218ms TBT. --><script>try{(function(){var loaded=false;var f=function(){if(loaded)return;try{if(localStorage.getItem('cookie-consent')==='declined')return;}catch(_){}loaded=true;var s=document.createElement('script');s.src='https://t.contentsquare.net/uxa/1c375afd3bba3.js';s.async=true;document.head.appendChild(s)};var ev=['scroll','mousemove','touchstart','keydown','click','pointerdown','wheel'];var kick=function(){ev.forEach(function(e){window.removeEventListener(e,kick)});f()};ev.forEach(function(e){window.addEventListener(e,kick,{passive:true,once:true})});})()}catch(_){}</script>
 
 <!-- Google Business Place ID — Schema.org LocalBusiness -->
 <script type="application/ld+json">
@@ -1444,7 +1444,9 @@ body{overflow-x:clip}
 <script>(function(){
 var GTM_ID='GTM-ND5ZF7NB',loaded=false;
 function loadGTM(){
-  if(loaded)return;loaded=true;
+  if(loaded)return;
+  try{if(localStorage.getItem('cookie-consent')==='declined')return;}catch(_){}/* GDPR 30 Mai: nu incarca GA daca userul a refuzat cookie-urile */
+  loaded=true;
   (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -1930,12 +1932,13 @@ if(__cpBtn){__cpBtn.addEventListener("click",function(){
 });}
 
 // Cookie consent
-var cb=document.getElementById('cookieBar');
-if(cb){
+/* 30 Mai: init pe DOM-ready - markup-ul #cookieBar e dupa footer (mai jos in DOM), iar acest script ruleaza la parse => getElementById era null. */
+function __initCookie(){var cb=document.getElementById('cookieBar');if(!cb)return;
 if(!localStorage.getItem('cookie-consent')){setTimeout(function(){cb.classList.add('show')},2500)}
 var __ca=document.getElementById('cookieAccept');if(__ca)__ca.addEventListener('click',function(){localStorage.setItem('cookie-consent','accepted');cb.classList.remove('show')});
 var __cd=document.getElementById('cookieDecline');if(__cd)__cd.addEventListener('click',function(){localStorage.setItem('cookie-consent','declined');cb.classList.remove('show');window['ga-disable-G-256CM7TGEG']=true});
 }
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',__initCookie);else __initCookie();
 
 // Counter animation v3 30 Mai 2026: MUTAT inapoi in index.html (always-loaded) + trigger pe SCROLL (getBoundingClientRect, mai fiabil decat IntersectionObserver). Era in premium-fx.js care acum se incarca pe prima interactiune (gated PSI) => counter pornea TARZIU, Andy il prindea la jumatate (2/102/2/15 = mid-animatie). Acum porneste imediat ce sectiunea intra in view, independent de premium-fx. Seteaza dataset.counted='1' => premium-fx.js #7 SARE (guard existent) cand se incarca tarziu = zero dublu. Dur 900ms.
 (function(){
@@ -2147,6 +2150,14 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")close()});
 </div>
 </div>
 </footer>
+<!-- COOKIE CONSENT 30 Mai: markup RE-ADAUGAT (era sters din DOM => bannerul nu aparea niciodata + GA/Contentsquare se incarcau fara consimtamant = gap GDPR). Handler JS existent (show 2.5s daca nu exista consimtamant + accept/decline + ga-disable) il cableaza. -->
+<div class="cookie-bar" id="cookieBar" role="region" aria-label="Consimțământ cookie-uri">
+<p>Folosim cookie-uri ca să înțelegem cum e folosit site-ul și să-l facem mai bun. <a href="/cookies.html">Detalii</a></p>
+<div class="cookie-btns">
+<button type="button" class="cookie-btn cookie-accept" id="cookieAccept">Accept</button>
+<button type="button" class="cookie-btn cookie-decline" id="cookieDecline">Refuz</button>
+</div>
+</div>
 <!-- MARKER_START:nav_canonical_js_v1 -->
 <script id="nav-canonical-js-v1">(function(){var ham=document.getElementById('ham'),mm=document.getElementById('mm');if(ham&&mm){ham.addEventListener('click',function(){mm.classList.toggle('op');document.body.style.overflow=mm.classList.contains('op')?'hidden':''});var mmClose=document.getElementById('mmClose');if(mmClose){mmClose.addEventListener('click',function(){mm.classList.remove('op');document.body.style.overflow=''})}var mmLinks=mm.querySelectorAll('a');mmLinks.forEach(function(l){l.addEventListener('click',function(){mm.classList.remove('op');document.body.style.overflow=''})})}})();</script>
 <!-- MARKER_END:nav_canonical_js_v1 -->
