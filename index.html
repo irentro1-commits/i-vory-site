@@ -1451,10 +1451,11 @@ function loadGTM(){
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
   })(window,document,'script','dataLayer',GTM_ID);
 }
-var events=['scroll','mousemove','touchstart','keydown','click'];
+var events=['scroll','mousemove','touchstart','keydown','click','pointerdown','wheel'];
 function kick(){events.forEach(function(e){window.removeEventListener(e,kick);});loadGTM();}
 events.forEach(function(e){window.addEventListener(e,kick,{passive:true,once:true});});
-if('requestIdleCallback' in window){requestIdleCallback(loadGTM,{timeout:4000});}else{setTimeout(loadGTM,3000);}
+/* PERF 30 Mai: GTM/GA4 pe prima interactiune SAU setTimeout 6s (era requestIdleCallback care fire-uia ~1-2s, IN fereastra TBT FCP->TTI~1.9s => GA4 conta la TBT). La 6s = DUPA TTI => iese din TBT sub PSI => scor recuperat. Tracking PASTRAT: pageview la interactiune (engaged) sau la 6s (no-interaction care stau). Se pierd doar bounce-urile <6s fara NICIO miscare (practic boti pe desktop). */
+setTimeout(loadGTM,6000);
 })();</script>
 <!-- End Google Tag Manager -->
 <!-- FIX-MOB-01_END -->
