@@ -151,7 +151,7 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
 
 
 
-nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.1rem 2.5rem;display:flex;justify-content:space-between;align-items:center;transition:background .4s,backdrop-filter .4s,border-color .5s;border-bottom:1px solid transparent}nav.sc{background:rgba(5,5,5,.75);backdrop-filter:blur(20px) saturate(1.5);border-bottom-color:var(--br)}.nl{font-family:var(--fd);font-weight:800;font-size:1.35rem;color:var(--t);text-decoration:none;letter-spacing:-.04em}.nk{display:flex;align-items:center;gap:2.2rem;list-style:none}.nk a{color:var(--td);text-decoration:none;font-size:.8rem;font-weight:500;letter-spacing:.04em;transition:color .3s}.nk a:hover{color:var(--t)}.nc{display:inline-flex;align-items:center;gap:.5rem;background:linear-gradient(135deg,#ff9a3d,#ffb86b);color:#1a0a00;padding:.7rem 1.4rem;border-radius:100px;font-family:var(--fd);font-weight:700;font-size:.85rem;text-decoration:none;transition:all .3s var(--e);box-shadow:0 8px 24px rgba(255,154,61,.3),0 0 40px rgba(255,154,61,.15)}.nc:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,224,192,.25)}.ham{display:none;background:none;border:none;cursor:pointer;padding:6px}.ham svg{stroke:var(--t)}.mm{position:fixed;inset:0;background:radial-gradient(ellipse at 30% 10%,#0f0a1e 0%,#050308 45%,#020104 100%);backdrop-filter:blur(40px);-webkit-backdrop-filter:blur(40px);z-index:999;display:flex;flex-direction:column;opacity:0;visibility:hidden;transition:opacity .5s cubic-bezier(.2,.9,.3,1.1),visibility .5s;overflow-y:auto;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.1rem 2.5rem;display:flex;justify-content:space-between;align-items:center;transition:background .4s,backdrop-filter .4s,border-color .5s;border-bottom:1px solid transparent}nav.sc{background:rgba(5,5,5,.75);backdrop-filter:blur(20px) saturate(1.5);border-bottom-color:var(--br)}.nl{font-family:var(--fd);font-weight:800;font-size:1.35rem;color:var(--t);text-decoration:none;letter-spacing:-.04em}.nk{display:flex;align-items:center;gap:2.2rem;list-style:none}.nk a{color:var(--td);text-decoration:none;font-size:.8rem;font-weight:500;letter-spacing:.04em;transition:color .3s}.nk a:hover{color:var(--t)}.nc{display:inline-flex;align-items:center;gap:.5rem;background:linear-gradient(135deg,#ff9a3d,#ffb86b);color:#1a0a00;padding:.7rem 1.4rem;border-radius:100px;font-family:var(--fd);font-weight:700;font-size:.85rem;text-decoration:none;transition:all .3s var(--e);box-shadow:0 8px 24px rgba(255,154,61,.3),0 0 40px rgba(255,154,61,.15)}.nc:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,224,192,.25)}.ham{display:none;background:none;border:none;cursor:pointer;padding:6px}.ham svg{stroke:var(--t)}.mm{position:fixed;inset:0;background:radial-gradient(ellipse at 30% 10%,#0f0a1e 0%,#050308 45%,#020104 100%);backdrop-filter:blur(40px);-webkit-backdrop-filter:blur(40px);z-index:1001;display:flex;flex-direction:column;opacity:0;visibility:hidden;transition:opacity .5s cubic-bezier(.2,.9,.3,1.1),visibility .5s;overflow-y:auto;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
 .mm::before{content:"";position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.035'/%3E%3C/svg%3E");pointer-events:none;mix-blend-mode:overlay}
 .mm::after{content:"";position:absolute;top:-30%;left:-20%;width:70%;height:70%;background:radial-gradient(circle,rgba(0,224,192,.12),transparent 65%);pointer-events:none;filter:blur(30px)}
 .mm.op{opacity:1;visibility:visible}
@@ -233,7 +233,7 @@ footer{border-top:1px solid var(--br);padding:2.5rem;background:rgba(5,5,5,.5);b
 @keyframes mq{to{transform:translateX(-50%)}}
 
 @media(max-width:1024px){.pg{grid-template-columns:1fr}.pf-grid{grid-template-columns:repeat(3,1fr)}.contact-alts{grid-template-columns:1fr}.types-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:768px){nav{padding:.7rem 1.2rem;min-height:60px}.nk{display:none}.ham{display:block}.sec{padding:4.5rem 1.2rem}
+@media(max-width:768px){nav{padding:.7rem 1.2rem;min-height:60px}.nk{display:none}.ham{display:flex;align-items:center;justify-content:center}.sec{padding:4.5rem 1.2rem}
 @media(max-width:768px){
   .dce-grid{grid-template-columns:1fr !important;gap:1rem !important}
   .dce-item{padding:1.5rem !important}
@@ -1186,7 +1186,7 @@ body{overflow-x:clip}
             "Thursday",
             "Friday"
           ],
-          "opens": "09:00",
+          "opens": "10:00",
           "closes": "18:00"
         }
       ],
@@ -1429,7 +1429,7 @@ body{overflow-x:clip}
   "openingHoursSpecification": {
     "@type": "OpeningHoursSpecification",
     "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-    "opens": "09:00",
+    "opens": "10:00",
     "closes": "18:00"
   },
   "sameAs": [
@@ -1612,9 +1612,6 @@ input, select, textarea, [role="button"] {
 .ham, #ham {
   min-height: 44px;
   min-width: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 .mm-close, .mm-cta, .nc, .bh {
   min-height: 44px;
@@ -1623,6 +1620,17 @@ input, select, textarea, [role="button"] {
 @media (max-width: 768px) {
   .nk a, .mm-item { min-height: 44px; display: flex; align-items: center; }
 }
+/* MENIU REDESIGN 30 Mai: hamburger doar pe mobil + nav 3-zone premium + accent hero serif adevarat */
+@media(min-width:769px){
+  #nav .nk{position:absolute;left:50%;transform:translateX(-50%)}
+  #nav .nlang{margin-left:auto}
+}
+@media(max-width:768px){
+  #nav .nlang{display:none}
+  #nav .nc{margin-left:auto}
+  #ham{margin-left:.4rem}
+}
+.prob-line .pac{font-family:'Instrument Serif','Cormorant Garamond',serif !important}
 /* MARKER_END:mobile_tap_responsive_v1 */
 </style>
 <!-- MARKER_END:nav_mobile_transparent_v1 -->
@@ -1697,8 +1705,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <nav class="mm-nav">
     <a href="/portofoliu.html" class="mm-item" style="--d:.05s"><span class="mm-num">01</span><span class="mm-label">Portofoliu</span></a>
     <a href="/servicii.html" class="mm-item" style="--d:.1s"><span class="mm-num">02</span><span class="mm-label">Prețuri</span></a>
+    <a href="#contact" class="mm-item" style="--d:.15s"><span class="mm-num">03</span><span class="mm-label">Contact</span></a>
     <a href="/blog/" class="mm-item" style="--d:.2s"><span class="mm-num">04</span><span class="mm-label">Blog</span></a>
-    <a href="#contact" class="mm-item" style="--d:.25s"><span class="mm-num">05</span><span class="mm-label">Contact</span></a>
   <!-- LANG_MM_START --><a href="https://i-vory.studio/" class="mm-lang" data-lang-switch="en" aria-label="Switch to English version"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><span>English</span></a><!-- LANG_MM_END --></nav>
   <div class="mm-bottom">
     <a href="https://api.whatsapp.com/send/?phone=40775579706" target="_blank" class="mm-cta" data-cta="mobilemenu_whatsapp"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.38 5.07L2 22l5.07-1.38C8.42 21.5 10.15 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2z"/></svg>WhatsApp</a>
@@ -1850,7 +1858,7 @@ if(mq){var items=["Av. Popa-Alexandru","Dr. Ghibu · Medical","Kinetoterapeut A.
 <div class="cta-row" style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;margin-top:.5rem"><a href="https://api.whatsapp.com/send/?phone=40775579706" target="_blank" class="bh" style="font-size:1rem;padding:1.1rem 2.2rem;white-space:nowrap">Scrie-ne pe WhatsApp &rarr;</a><a href="https://calendly.com/ivorymarketing2/30min" target="_blank" rel="noopener" class="bh b-ghost" data-cta="call_calendly" style="font-size:1rem;padding:1.1rem 2.2rem;white-space:nowrap;border:1.5px solid rgba(255,245,230,.5);background:transparent;color:#fff5e6;font-family:inherit;font-weight:700;border-radius:100px;backdrop-filter:blur(8px);text-decoration:none;display:inline-flex;align-items:center">Alege o oră &rarr;</a></div>
 </div></div></section>
 
-<section class="sec" style="text-align:center;padding:3.4rem 1.4rem;border-top:1px solid var(--br);background:rgba(3,3,9,.55)"><div class="si rv"><div class="lb" style="justify-content:center">Dovadă, nu vorbe</div><h2 class="sh" style="font-size:clamp(1.4rem,3.2vw,2rem);margin-bottom:1.3rem">Vezi exact ce livrăm.</h2><a href="/portofoliu.html" class="bh" data-cta="band_portofoliu" style="font-size:.92rem;padding:1rem 2.1rem">Deschide portofoliul →</a></div></section><section class="contact" id="contact"><div class="contact-blob"></div><div class="contact-inner rv"><div class="contact-header"><h2 class="contact-h">Hai să <span style="color:var(--ac)">vorbim.</span></h2><p class="contact-s">Răspundem în mai puțin de o oră. Dacă putem ajuta, îți spunem exact cum. Dacă nu, îți spunem direct.</p></div><div class="contact-actions" style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;margin-bottom:3rem"><a href="https://api.whatsapp.com/send/?phone=40775579706" target="_blank" class="bh" data-cta="contact_whatsapp" style="font-size:.95rem;padding:1.1rem 2rem;white-space:nowrap">Scrie pe WhatsApp →</a><a href="https://calendly.com/ivorymarketing2/30min" target="_blank" class="bh b-ghost" data-cta="contact_calendly" style="font-size:.95rem;padding:1.1rem 2rem;text-decoration:none;border:1.5px solid rgba(255,245,230,.5);background:transparent;color:#fff5e6;font-family:inherit;font-weight:700;border-radius:100px;display:inline-flex;align-items:center">Programează call gratuit →</a><button type="button" class="bh b-ghost" id="copyEmailBtn" data-cta="contact_email_copy" data-email="contact@i-vory.studio" style="font-size:.95rem;padding:1.1rem 2rem;white-space:nowrap;cursor:pointer;border:1.5px solid rgba(255,245,230,.5);background:transparent;color:#fff5e6;font-family:inherit;font-weight:700;border-radius:100px">Copiază email →</button></div><div class="contact-alts"><div class="contact-alt"><div class="contact-alt-label">Program</div><div class="contact-alt-value">Luni - Vineri, 9 - 18</div><div class="contact-alt-note">București, România</div></div><div class="contact-alt"><div class="contact-alt-label">Google Reviews</div><div class="contact-alt-value"><a href="https://g.page/r/CQeGrQyEB-thEBM/review" target="_blank" rel="noopener">Lasă-ne o recenzie</a></div><div class="contact-alt-note">Pentru clienți care ne-au testat</div></div></div></div></section>
+<section class="sec" style="text-align:center;padding:3.4rem 1.4rem;border-top:1px solid var(--br);background:rgba(3,3,9,.55)"><div class="si rv"><div class="lb" style="justify-content:center">Dovadă, nu vorbe</div><h2 class="sh" style="font-size:clamp(1.4rem,3.2vw,2rem);margin-bottom:1.3rem">Vezi exact ce livrăm.</h2><a href="/portofoliu.html" class="bh" data-cta="band_portofoliu" style="font-size:.92rem;padding:1rem 2.1rem">Deschide portofoliul →</a></div></section><section class="contact" id="contact"><div class="contact-blob"></div><div class="contact-inner rv"><div class="contact-header"><h2 class="contact-h">Hai să <span style="color:var(--ac)">vorbim.</span></h2><p class="contact-s">Răspundem în mai puțin de o oră. Dacă putem ajuta, îți spunem exact cum. Dacă nu, îți spunem direct.</p></div><div class="contact-actions" style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;margin-bottom:3rem"><a href="https://api.whatsapp.com/send/?phone=40775579706" target="_blank" class="bh" data-cta="contact_whatsapp" style="font-size:.95rem;padding:1.1rem 2rem;white-space:nowrap">Scrie pe WhatsApp →</a><a href="https://calendly.com/ivorymarketing2/30min" target="_blank" class="bh b-ghost" data-cta="contact_calendly" style="font-size:.95rem;padding:1.1rem 2rem;text-decoration:none;border:1.5px solid rgba(255,245,230,.5);background:transparent;color:#fff5e6;font-family:inherit;font-weight:700;border-radius:100px;display:inline-flex;align-items:center">Programează call gratuit →</a><button type="button" class="bh b-ghost" id="copyEmailBtn" data-cta="contact_email_copy" data-email="contact@i-vory.studio" style="font-size:.95rem;padding:1.1rem 2rem;white-space:nowrap;cursor:pointer;border:1.5px solid rgba(255,245,230,.5);background:transparent;color:#fff5e6;font-family:inherit;font-weight:700;border-radius:100px">Copiază email →</button></div><div class="contact-alts"><div class="contact-alt"><div class="contact-alt-label">Program</div><div class="contact-alt-value">Luni - Vineri, 10:00 - 18:00</div><div class="contact-alt-note">București, România</div></div><div class="contact-alt"><div class="contact-alt-label">Google Reviews</div><div class="contact-alt-value"><a href="https://g.page/r/CQeGrQyEB-thEBM/review" target="_blank" rel="noopener">Lasă-ne o recenzie</a></div><div class="contact-alt-note">Pentru clienți care ne-au testat</div></div></div></div></section>
 
 </main>
 
@@ -2130,7 +2138,7 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")close()});
 <ul class="ft-contact">
 <li><a href="mailto:contact@i-vory.studio">contact@i-vory.studio</a></li>
 <li><a href="tel:+40775579706">+40 775 579 706</a></li>
-<li>Luni - Vineri · 9:00 - 19:00</li>
+<li>Luni - Vineri · 10:00 - 18:00</li>
 <li>București, România</li>
 <!-- REVIEWS_LINK_CONTACT_START --><li><a href="https://g.page/r/CQeGrQyEB-thEBM" target="_blank" rel="noopener" data-cta="footer_google_reviews_text">Recenzii Google →</a></li><!-- REVIEWS_LINK_CONTACT_END -->
 </ul>
