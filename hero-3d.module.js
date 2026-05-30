@@ -629,16 +629,13 @@ var __rafId=null;window.__HERO_VISIBLE=true;
 try{var __heroObs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){if(!window.__HERO_VISIBLE){window.__HERO_VISIBLE=true;animate()}}else{window.__HERO_VISIBLE=false;if(__rafId)cancelAnimationFrame(__rafId)}})},{threshold:0.01});__heroObs.observe(container);}catch(_){}
 animate();
 /* scroll smooth: in timpul scroll-ului ASCUND canvasul 3D (compozitorul il sare, ramane bgblobs deep-space dedesubt) + pauza render. La scroll-end reapare cu fade elegant. Cauza jank = compositing canvas fixed full-viewport peste sectiuni transparente (confirmat A/B: hidden=57fps, visible=stall 1s). */
-/* FIX 30 Mai 2026 (Andy "la scroll se vede prost"): reaparitia era fade LENT .45s = "puls"/clipire vizibila la fiecare oprire din scroll. Acum: fade rapid .2s + reappar mai prompt (100ms). Hide-on-scroll pastrat (perf: compozitorul sare canvasul fixed). Fundalul de rezerva in timpul scroll = bgblobs deep-space (imbogatit), deci tranzitia e lina (deep-space -> deep-space+nebula). */
+/* FIX 30 Mai 2026 v3 (Andy: "la scroll dispare fundalul premium si apare ala de cacat - doar la scroll - daca nu dau scroll revine premium"): NU mai ascund canvasul 3D la scroll. Ramane VIZIBIL cu ultimul frame randat (frozen) => fundalul premium (Pamant+nebula) PERSISTA in timpul scroll-ului, NU mai apare bgblobs deep-space CSS. Perf pastrat: rAF PAUZAT cat __HERO_SCROLLING=true (linia 625 nu mai reprogrameaza animate) => 0 re-randare Three.js la scroll, doar compositing frame static = ieftin pe GPU desktop. Reia animatia la scroll-end (100ms). Vechiul hide-on-scroll (visibility:hidden + fade) SCOS - era ce facea fundalul premium sa "dispara". Daca apare lag pe masini slabe -> revin la hide tintit. */
 window.__HERO_SCROLLING=false;var __ssT=null;
-try{container.style.transition='opacity .2s ease';}catch(_){}
 addEventListener('scroll',function(){
   window.__HERO_SCROLLING=true;
-  try{container.style.visibility='hidden';}catch(_){}
   clearTimeout(__ssT);
   __ssT=setTimeout(function(){
     window.__HERO_SCROLLING=false;
-    try{container.style.opacity='0';container.style.visibility='visible';requestAnimationFrame(function(){container.style.opacity='1';});}catch(_){}
     if(window.__HERO_VISIBLE!==false&&__rafId===null)animate();
   },100);
 },{passive:true});
