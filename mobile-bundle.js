@@ -263,14 +263,9 @@ window.__LOGO_SVG_B64="PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZ
   root.appendChild(logoImg);
 
   // ===== STARFIELD ANIMATION (U27: single-pass + drift lent stanga) =====
-  var running=true,__sf_lf=0,__sf_sp=0;
-  ['scroll','touchmove'].forEach(function(ev){window.addEventListener(ev,function(){__sf_sp=performance.now();},{passive:true});});
-  function tickStars(ts){
+  var running=true;
+  function tickStars(){
     if(!running)return;
-    requestAnimationFrame(tickStars);
-    if(performance.now()-__sf_sp<200)return;
-    if(ts&&ts-__sf_lf<33)return;
-    __sf_lf=ts||0;
     sctx.clearRect(0,0,W,H);
     for(var i=0;i<stars.length;i++){
       var s=stars[i];
@@ -286,6 +281,7 @@ window.__LOGO_SVG_B64="PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZ
       sctx.fill();
     }
     sctx.shadowBlur=0;
+    requestAnimationFrame(tickStars);
   }
   if(!REDUCED)requestAnimationFrame(tickStars);
   else{

@@ -70,7 +70,6 @@
   @media (max-width:560px){.nav{padding:1rem 1.2rem}.hero{padding:6.5rem 1.2rem 1.5rem}.gallery,.cta{padding-left:1.2rem;padding-right:1.2rem}.stage{aspect-ratio:1/1}}
   html.mob .stage{background:radial-gradient(130% 110% at 30% 18%,rgba(167,139,255,.30),transparent 60%),radial-gradient(120% 110% at 82% 86%,rgba(0,224,192,.22),transparent 62%),#06040a}
 @media (max-width:900px),(pointer:coarse){*,*::before,*::after{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}.nav{background:rgba(6,6,8,.93)!important}.chip,.stage .chip{background:rgba(5,5,5,.85)!important}.card{background:rgba(12,12,14,.93)!important}.play{background:rgba(5,5,5,.82)!important}}</style>
-<style>html.mob #bg{background:radial-gradient(130% 110% at 50% 30%,rgba(255,206,128,.30),transparent 58%),radial-gradient(120% 110% at 80% 88%,rgba(255,120,80,.22),transparent 60%),radial-gradient(120% 120% at 12% 96%,rgba(0,224,192,.10),transparent 62%),#04060a !important}</style>
 </head>
 <body>
 <canvas id="bg"></canvas>
@@ -162,7 +161,7 @@ loop();
 
 <script>
 /* MOBIL: wormhole live raw-WebGL in panou (zero Three.js) */
-if(false/*A:static mobil*/){(function(){
+if(window.__MOB){(function(){
   var cv=document.getElementById('bg'); if(!cv) return;
   var gl=cv.getContext('webgl',{antialias:false,alpha:true,premultipliedAlpha:false}); if(!gl) return;
   var dpr=Math.min(window.devicePixelRatio||1,1.5);
@@ -204,7 +203,9 @@ if(false/*A:static mobil*/){(function(){
   var uT=gl.getUniformLocation(pr,'uTime'),uR=gl.getUniformLocation(pr,'uRes');
   gl.clearColor(0,0,0,0);
   addEventListener('resize',size);
-  var t0=performance.now(),__lf=0,__sp=0;['scroll','touchmove'].forEach(function(ev){addEventListener(ev,function(){__sp=performance.now();},{passive:true});});function loop(ts){requestAnimationFrame(loop);if(document.hidden)return;if(ts-__lf<40)return;if(performance.now()-__sp<160)return;__lf=ts;gl.clear(gl.COLOR_BUFFER_BIT);gl.uniform1f(uT,(performance.now()-t0)/1000);gl.uniform2f(uR,cv.width,cv.height);gl.drawArrays(gl.TRIANGLES,0,3);}requestAnimationFrame(loop);
+  var t0=performance.now();
+  function loop(){gl.clear(gl.COLOR_BUFFER_BIT);gl.uniform1f(uT,(performance.now()-t0)/1000);gl.uniform2f(uR,cv.width,cv.height);gl.drawArrays(gl.TRIANGLES,0,3);requestAnimationFrame(loop);}
+  loop();
 })();}
 </script>
 <script>
