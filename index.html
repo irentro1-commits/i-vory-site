@@ -85,14 +85,14 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <!-- U16: fonts critical reduced 15+ → 5 weights (Geist 400/500/700/800 + Mono 500). Fraunces + Instrument Serif + Geist 600/900 deferred to post-load (below-fold only). LCP unblock. -->
-<link rel="preload" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;700;800&family=Geist+Mono:wght@500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;700;800&family=Geist+Mono:wght@500&family=Instrument+Serif:ital@0;1&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <link rel="preload" as="image" href="/logo-nav.svg?v=6" type="image/svg+xml" fetchpriority="high"><!-- U34: LCP hint for above-fold logo -->
 <!-- OPT-S3.3 2026-05-03: mobile bundle (earth-tex + logo-svg + mobile-fx concatenate). 1 HTTP request in loc de 3, executare imediata fara chain serial. Estimat -300-500ms FCP/LCP mobile. Desktop NU foloseste bundle (foloseste fisierele individuale via desktop branch line 1899). -->
 <link rel="preload" media="(max-width:768px)" as="script" href="/mobile-bundle.js?v=1">
 <!-- PERF 30 Mai 2026: modulepreload 3D SCOS. hero3d se incarca acum pe prima interactiune (vezi window.__load3D), deci preload-ul ar fi fetchuit ~360KB three+hero3d sub PSI degeaba (transfer + unused-JS flag). Real users: 3D se incarca la interactiune, fara preload (acceptabil). -->
 
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;700;800&family=Geist+Mono:wght@500&display=swap"></noscript>
-<script>try{(function(){/* U16: defer Fraunces + Instrument Serif + extra Geist weights (below-fold: mobile menu + accent italics + calc price) dupa window.load */var load=function(){var l=document.createElement('link');l.rel='stylesheet';l.href='https://fonts.googleapis.com/css2?family=Geist:wght@600;900&family=Instrument+Serif:ital@0;1&family=Fraunces:ital,opsz,wght@0,9..144,700;1,9..144,400&display=swap';document.head.appendChild(l)};if(document.readyState==='complete'){('requestIdleCallback' in window)?requestIdleCallback(load,{timeout:2500}):setTimeout(load,2000)}else{window.addEventListener('load',function(){('requestIdleCallback' in window)?requestIdleCallback(load,{timeout:2500}):setTimeout(load,2000)})}})()}catch(_){}</script>
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;700;800&family=Geist+Mono:wght@500&family=Instrument+Serif:ital@0;1&display=swap"></noscript>
+<script>try{(function(){/* U16: defer Fraunces + Instrument Serif + extra Geist weights (below-fold: mobile menu + accent italics + calc price) dupa window.load */var load=function(){var l=document.createElement('link');l.rel='stylesheet';l.href='https://fonts.googleapis.com/css2?family=Geist:wght@600;900&family=Fraunces:ital,opsz,wght@0,9..144,700;1,9..144,400&display=swap';document.head.appendChild(l)};if(document.readyState==='complete'){('requestIdleCallback' in window)?requestIdleCallback(load,{timeout:2500}):setTimeout(load,2000)}else{window.addEventListener('load',function(){('requestIdleCallback' in window)?requestIdleCallback(load,{timeout:2500}):setTimeout(load,2000)})}})()}catch(_){}</script>
 <style id="v95-consolidated">
 
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
