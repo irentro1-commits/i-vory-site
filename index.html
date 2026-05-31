@@ -86,6 +86,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <!-- U16: fonts critical reduced 15+ → 5 weights (Geist 400/500/700/800 + Mono 500). Fraunces + Instrument Serif + Geist 600/900 deferred to post-load (below-fold only). LCP unblock. -->
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;700;800&family=Geist+Mono:wght@500&family=Instrument+Serif:ital@0;1&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap"><!-- FIX 1 Iun: Instrument Serif bulletproof (plain stylesheet, garantat iOS) - accentul hero above-fold NU mai cade pe serif de sistem pe mobil -->
 <link rel="preload" as="image" href="/logo-nav.svg?v=6" type="image/svg+xml" fetchpriority="high"><!-- U34: LCP hint for above-fold logo -->
 <!-- OPT-S3.3 2026-05-03: mobile bundle (earth-tex + logo-svg + mobile-fx concatenate). 1 HTTP request in loc de 3, executare imediata fara chain serial. Estimat -300-500ms FCP/LCP mobile. Desktop NU foloseste bundle (foloseste fisierele individuale via desktop branch line 1899). -->
 <link rel="preload" media="(max-width:768px)" as="script" href="/mobile-bundle.js?v=1">
