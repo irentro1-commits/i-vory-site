@@ -11,7 +11,7 @@
 
     var st = document.createElement('style');
     st.textContent =
-      '.kly{display:inline-block}'
+      '.kly{display:block}'/* block, nu inline-block: altfel butonul de dupa titlu (ex Deschide portofoliul) curge LANGA titlu in loc de sub el */
       + '.kly-w{display:inline-block;opacity:0;will-change:opacity,transform,filter}'
       + '.kly-in .kly-w{opacity:1!important;transform:none!important;filter:none!important}'
       + '.kv-up .kly-w{transform:translateY(1.3em);transition:opacity 1.75s cubic-bezier(.16,1,.3,1),transform 1.75s cubic-bezier(.16,1,.3,1)}'
