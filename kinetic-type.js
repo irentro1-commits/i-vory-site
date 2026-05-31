@@ -14,11 +14,11 @@
       '.kly{display:inline-block}'
       + '.kly-w{display:inline-block;opacity:0;will-change:opacity,transform,filter}'
       + '.kly-in .kly-w{opacity:1!important;transform:none!important;filter:none!important}'
-      + '.kv-up .kly-w{transform:translateY(1.3em);transition:opacity 1.3s cubic-bezier(.16,1,.3,1),transform 1.3s cubic-bezier(.16,1,.3,1)}'
-      + '.kv-blur .kly-w{transform:translateY(.5em);filter:blur(18px);transition:opacity 1.4s ease,transform 1.4s ease,filter 1.4s ease}'
-      + '.kv-scale .kly-w{transform:scale(.32);transition:opacity 1.25s cubic-bezier(.2,1.3,.4,1),transform 1.25s cubic-bezier(.2,1.3,.4,1)}'
-      + '.kv-slide .kly-w{transform:translateX(-1.4em);transition:opacity 1.3s cubic-bezier(.16,1,.3,1),transform 1.3s cubic-bezier(.16,1,.3,1)}'
-      + '.kv-rot .kly-w{transform:translateY(1.1em) rotate(9deg);transform-origin:left bottom;transition:opacity 1.3s ease,transform 1.3s cubic-bezier(.16,1,.3,1)}'
+      + '.kv-up .kly-w{transform:translateY(1.3em);transition:opacity 1.6s cubic-bezier(.16,1,.3,1),transform 1.6s cubic-bezier(.16,1,.3,1)}'
+      + '.kv-blur .kly-w{transform:translateY(.5em);filter:blur(18px);transition:opacity 1.7s ease,transform 1.7s ease,filter 1.7s ease}'
+      + '.kv-scale .kly-w{transform:scale(.32);transition:opacity 1.55s cubic-bezier(.2,1.3,.4,1),transform 1.55s cubic-bezier(.2,1.3,.4,1)}'
+      + '.kv-slide .kly-w{transform:translateX(-1.4em);transition:opacity 1.6s cubic-bezier(.16,1,.3,1),transform 1.6s cubic-bezier(.16,1,.3,1)}'
+      + '.kv-rot .kly-w{transform:translateY(1.1em) rotate(9deg);transform-origin:left bottom;transition:opacity 1.6s ease,transform 1.6s cubic-bezier(.16,1,.3,1)}'
       + '@media(prefers-reduced-motion:reduce){.kly-w{opacity:1!important;transform:none!important;filter:none!important;transition:none!important}}';
     document.head.appendChild(st);
 
@@ -51,7 +51,7 @@
         if(reduce){ h.classList.add('kly-in'); return; }
         wrapWords(h);
         var ws = h.querySelectorAll('.kly-w');
-        [].forEach.call(ws, function(w, j){ w.style.transitionDelay = Math.min(j * 0.12, 1.6).toFixed(2) + 's'; });
+        [].forEach.call(ws, function(w, j){ w.style.transitionDelay = Math.min(j * 0.15, 2.0).toFixed(2) + 's'; });
       });
       if(reduce) return;
 
