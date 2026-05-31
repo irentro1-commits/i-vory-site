@@ -1669,6 +1669,7 @@ input, select, textarea, [role="button"] {
 @media(max-width:720px){.nlang{padding:.3rem .55rem;margin:0 .3rem}.nlang span{display:none}}
 </style>
 <!-- LANG_CSS_END -->
+<style id="nav-autohide">/* HEADER AUTO-HIDE 1 Iun: nav se ascunde la scroll jos, reapare la scroll sus (senzatie premium) */#nav{transition:background .4s,backdrop-filter .4s,border-color .5s,transform .38s cubic-bezier(.4,0,.2,1)!important;will-change:transform}#nav.nav-hidden{transform:translateY(-100%)}</style>
 </head>
 <body>
 <!-- U6: Brand loader (first body element — paints before everything else) -->
@@ -1915,7 +1916,7 @@ if(isMobile){
 // Custom cursor — DISABLED 30 Mai FAZA C: .cd/.cr (dot+ring) n-au CSS = INVIZIBILE, dar ar() rula rAF PERMANENT + mousemove + mouseenter/leave pe zeci de elemente, degeaba. Cursorul vizibil premium = meteor-cursor.js (nebula wisp). Redundanta + waste scoase, cursor unic.
 
 // Nav scroll state
-window.addEventListener('scroll',function(){document.getElementById('nav').classList.toggle('sc',scrollY>60)},{passive:true});
+var __navLastY=0;window.addEventListener('scroll',function(){var y=window.scrollY||window.pageYOffset||0,n=document.getElementById('nav');if(!n)return;n.classList.toggle('sc',y>60);if(y<80){n.classList.remove('nav-hidden')}else if(y>__navLastY+5){n.classList.add('nav-hidden')}else if(y<__navLastY-5){n.classList.remove('nav-hidden')}__navLastY=y},{passive:true});
 
 // Mobile menu: handler unic in nav-canonical-js-v1 (scos duplicatul care facea dublu-toggle)
 

@@ -1053,5 +1053,7 @@ document.addEventListener('click',function(e){var btn=e.target.closest('.faq-q')
 <script>try{window.__IS_MOBILE=window.matchMedia("(max-width:768px)").matches||("ontouchstart" in window);window.__IS_LIGHTHOUSE=/Lighthouse|HeadlessChrome|PTST|PageSpeed/i.test(navigator.userAgent);if(!window.__IS_MOBILE&&!window.__IS_LIGHTHOUSE){var pf=document.createElement("script");pf.src="premium-fx.js?v=3";pf.defer=true;document.head.appendChild(pf);}}catch(_){}</script>
 <script>try{if(!(window.matchMedia&&matchMedia("(max-width:768px)").matches)){var __mc=document.createElement("script");__mc.src="/meteor-cursor.js";__mc.defer=true;document.head.appendChild(__mc);}}catch(_){}</script>
 <script src="/gtm-events.js?v=2" defer></script>
+<style id="nav-autohide">nav.nav-hidden,#nav.nav-hidden,header.nav.nav-hidden{transform:translateY(-100%)!important}#nav,header.nav{transition:transform .38s cubic-bezier(.4,0,.2,1),background .4s,backdrop-filter .4s,border-color .5s!important;will-change:transform}</style>
+<script id="nav-autohide-js">(function(){var n=document.getElementById("nav")||document.querySelector("header.nav")||document.querySelector("nav");if(!n)return;var ly=0;window.addEventListener("scroll",function(){var y=window.scrollY||window.pageYOffset||0;if(y<80){n.classList.remove("nav-hidden")}else if(y>ly+5){n.classList.add("nav-hidden")}else if(y<ly-5){n.classList.remove("nav-hidden")}ly=y},{passive:true});})();</script>
 </body>
 </html>

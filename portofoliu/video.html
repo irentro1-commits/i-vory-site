@@ -276,5 +276,7 @@ document.getElementById('count').textContent=PROJECTS.length+' proiecte';
 const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 </script>
+<style id="nav-autohide">nav.nav-hidden,#nav.nav-hidden,header.nav.nav-hidden{transform:translateY(-100%)!important}#nav,header.nav{transition:transform .38s cubic-bezier(.4,0,.2,1),background .4s,backdrop-filter .4s,border-color .5s!important;will-change:transform}</style>
+<script id="nav-autohide-js">(function(){var n=document.getElementById("nav")||document.querySelector("header.nav")||document.querySelector("nav");if(!n)return;var ly=0;window.addEventListener("scroll",function(){var y=window.scrollY||window.pageYOffset||0;if(y<80){n.classList.remove("nav-hidden")}else if(y>ly+5){n.classList.add("nav-hidden")}else if(y<ly-5){n.classList.remove("nav-hidden")}ly=y},{passive:true});})();</script>
 </body>
 </html>
