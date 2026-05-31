@@ -323,7 +323,7 @@ void main(){
 /* ---------- setup ---------- */
 const canvas=document.getElementById('c');
 const renderer=new THREE.WebGLRenderer({canvas,antialias:false,powerPreference:'high-performance'});
-renderer.setPixelRatio(Math.min(devicePixelRatio,window.__MOB?1.4:1.7));
+renderer.setPixelRatio(Math.min(devicePixelRatio,window.__MOB?1.0:1.7));
 renderer.setSize(innerWidth,innerHeight);
 renderer.toneMapping=THREE.ACESFilmicToneMapping;
 renderer.toneMappingExposure=1.0;
@@ -432,6 +432,7 @@ const tmpV=new THREE.Vector3(), cV=new THREE.Vector3(), eV=new THREE.Vector3();
 const clock=new THREE.Clock(); let __lf=0; const __frameMin=33; /* ~30fps cap = mult mai putin TBT, scena ramane vie */
 function loop(ts){
   requestAnimationFrame(loop);
+  if(document.hidden) return;
   if(ts && ts-__lf<__frameMin) return;
   __lf=ts||0;
   try{
@@ -582,8 +583,11 @@ if(true){(function(){
   ctx.setTransform(dpr,0,0,dpr,0,0);
  }
  build(); addEventListener('resize',build); setTimeout(build,700);
- var t0=performance.now();
- (function loop(){
+ var t0=performance.now(),__tl=0;
+ (function loop(ts){
+  requestAnimationFrame(loop);
+  if(document.hidden)return;
+  if(ts-__tl<40)return;__tl=ts;
   var t=(performance.now()-t0)/1000;
   ctx.clearRect(0,0,W,H);
   // alb pe fundal = contrast, fara umbra care strica fundalul
@@ -592,7 +596,7 @@ if(true){(function(){
    ctx.globalAlpha=0.87+0.13*Math.sin(t*2.0+p.ph); ctx.fillStyle=p.c;
    ctx.beginPath(); ctx.arc(p.ox+dx,p.oy+dy,p.r,0,6.283); ctx.fill();
   }
-  ctx.globalAlpha=1; requestAnimationFrame(loop);
+  ctx.globalAlpha=1;
  })();
 })();}
 </script>

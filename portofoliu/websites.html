@@ -238,9 +238,7 @@ if(window.__MOB){(function(){
   var uT=gl.getUniformLocation(pr,'uTime'),uR=gl.getUniformLocation(pr,'uRes');
   gl.clearColor(0,0,0,0);
   addEventListener('resize',size);
-  var t0=performance.now();
-  function loop(){gl.clear(gl.COLOR_BUFFER_BIT);gl.uniform1f(uT,(performance.now()-t0)/1000);gl.uniform2f(uR,cv.width,cv.height);gl.drawArrays(gl.TRIANGLES,0,3);requestAnimationFrame(loop);}
-  loop();
+  var t0=performance.now(),__lf=0,__sp=0;['scroll','touchmove'].forEach(function(ev){addEventListener(ev,function(){__sp=performance.now();},{passive:true});});function loop(ts){requestAnimationFrame(loop);if(document.hidden)return;if(ts-__lf<40)return;if(performance.now()-__sp<160)return;__lf=ts;gl.clear(gl.COLOR_BUFFER_BIT);gl.uniform1f(uT,(performance.now()-t0)/1000);gl.uniform2f(uR,cv.width,cv.height);gl.drawArrays(gl.TRIANGLES,0,3);}requestAnimationFrame(loop);
 })();}
 </script>
 
